@@ -15,7 +15,14 @@ class SessionController extends ControllerBase {
             return $this->toIndex();
         }
 
-        echo "Welcome $user->FirstName";
+        return $this->redirectUser($user);
+    }
+
+    private function redirectUser($user) {
+        return $this->dispatcher->forward(array(
+            "controller" => "admin",
+            "action" => "index"
+        ));
     }
 
     private function toIndex() {
