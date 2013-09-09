@@ -1,5 +1,6 @@
 <?php
-
+use Phalcon\Mvc\Model\Validator\Email as EmailValidator;
+use Phalcon\Mvc\Model\Validator\PresenceOf;
 
 class User extends \Phalcon\Mvc\Model {
 
@@ -58,17 +59,13 @@ class User extends \Phalcon\Mvc\Model {
     /**
      * Validations and business logic
      */
-    // public function validation() {
-    //     $this->validate(
-    //         new Email(
-    //             array(
-    //                 "field"    => "email",
-    //                 "required" => true,
-    //             )
-    //         )
-    //     );
-    //     if ($this->validationHasFailed() == true) {
-    //         return false;
-    //     }
-    // }
+    public function validation() {
+        $this->validate(new EmailValidator(array("field" => "email")));
+
+        $this->validate(new PresenceOf(array("field" => "FirstName")));
+
+        if ($this->validationHasFailed() == true) { return false; }
+
+        return true;
+    }
 }
