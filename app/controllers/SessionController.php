@@ -1,4 +1,6 @@
 <?php
+require '../app/services/Authenticate.php';
+
 class SessionController extends ControllerBase {
     public function loginAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
@@ -6,10 +8,7 @@ class SessionController extends ControllerBase {
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
 
-        $conditions = "email = ?1 AND password = ?2";
-        $parameters = array(1 => $email, 2 => $password);
-
-        $user = User::findFirst(array($conditions,"bind" => $parameters));
+        $user = Authenticate::authentication($email, $password);
 
         if(!$user) {
             $this->flash->error("User or password invalid");
