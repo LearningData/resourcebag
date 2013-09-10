@@ -1,4 +1,4 @@
-<h1>Welcome {{ userId }}</h1>
+<h1>Welcome {{ user.FirstName }}</h1>
 
 <nav>
     <a href="/schoolbag/admin/newSchool">New School</a>

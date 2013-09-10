@@ -16,7 +16,7 @@ class AdminController extends \Phalcon\Mvc\Controller {
 
         $paginator = new Paginator(array("data" => $school, "limit"=> 10,"page" => $numberPage));
         $this->view->page = $paginator->getPaginate();
-        $this->view->userId = $user->FirstName;
+
         $this->view->user = $user;
     }
 
