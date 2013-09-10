@@ -5,13 +5,13 @@ class UserTest extends PHPUnit_Framework_TestCase {
     function setUp() {
         $this->user = new User();
 
-        $this->user->userID = 1;
-        $this->user->FirstName = 'test';
-        $this->user->LastName = 'last';
+        $this->user->id = 1;
+        $this->user->name = 'test';
+        $this->user->lastName = 'last';
         $this->user->email = "a@b.com";
         $this->user->password = '1234';
-        $this->user->schoolID = 1;
-        $this->user->Type = 1;
+        $this->user->schoolId = 1;
+        $this->user->type = 1;
         $this->user->year = 2012;
     }
 
@@ -34,10 +34,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     function testRequiredNameFail() {
-        $this->user->FirstName = null;
+        $this->user->name = null;
         $this->assertFalse($this->user->validation());
 
-        $this->user->FirstName = "";
+        $this->user->name = "";
         $this->assertFalse($this->user->validation());
 
         $this->assertEquals(count($this->user->getMessages()), 2);

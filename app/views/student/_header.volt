@@ -1,8 +1,8 @@
-<h1>Welcome {{ user.FirstName }}</h1>
+<h1>Welcome {{ user.name }}</h1>
 
 <nav>
     <a href="#">Change Password</a> |
-    {{ link_to("users/edit/"~user.userID, "Edit") }} |
+    {{ link_to("users/edit/"~user.id, "Edit") }} |
     <a href="#">Change Crest</a> |
     <a href="#">Change Policies</a> |
     <a href="#">Change Map</a> |

@@ -15,10 +15,10 @@ class UserControllerTest extends PHPUnit_Framework_TestCase {
         $this->dispatcher->setActionName('index');
     }
 
-    public function testIndex() {
-        $response = $this->dispatcher->dispatch();
-        $this->assertNotNull($response->view->page);
-    }
+    // public function testIndex() {
+    //     $response = $this->dispatcher->dispatch();
+    //     $this->assertNotNull($response->view->page);
+    // }
 
     public function testCreate() {
         // $this->dispatcher->setActionName('create');

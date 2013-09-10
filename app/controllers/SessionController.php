@@ -4,10 +4,10 @@ require '../app/services/Authenticate.php';
 class SessionController extends ControllerBase {
     public function loginAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
-
+        echo "HERE 1";
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
-
+        echo "HERE 2";
         $user = Authenticate::authentication($email, $password);
 
         if(!$user) {
@@ -15,7 +15,9 @@ class SessionController extends ControllerBase {
             return $this->toIndex();
         }
 
-        $this->session->set("userId", $user->userID);
+        echo "HERE 3";
+
+        $this->session->set("userId", $user->id);
         return $this->redirectUser($user);
     }
 
@@ -30,12 +32,12 @@ class SessionController extends ControllerBase {
     }
 
     private function redirectUser($user) {
-        if ($user->Type == "S") {
-            $this->response->redirect("student");
+        if ($user->type == "S") {
+            return $this->response->redirect("student");
         }
 
-        if ($user->Type == "A") {
-            $this->response->redirect("admin");
+        if ($user->type == "A") {
+            return $this->response->redirect("admin");
         }
     }
 }

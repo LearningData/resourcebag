@@ -17,25 +17,24 @@ class UsersController extends ControllerBase {
 
     // public function newAction() {}
 
-    public function editAction($userID) {
+    public function editAction($id) {
         if (!$this->request->isPost()) {
-            $user = User::findFirstByuserID($userID);
+            $user = User::findFirstById($id);
             if (!$user) {
                 $this->flash->error("user was not found");
                 return $this->toIndex();
             }
 
-            $this->view->userID = $user->userID;
+            $this->view->id = $user->id;
 
-            $this->tag->setDefault("userID", $user->userID);
-            $this->tag->setDefault("schoolID", $user->schoolID);
+            $this->tag->setDefault("userID", $user->id);
+            $this->tag->setDefault("schoolID", $user->schoolId);
             $this->tag->setDefault("year", $user->year);
-            $this->tag->setDefault("FirstName", $user->FirstName);
-            $this->tag->setDefault("LastName", $user->LastName);
-            $this->tag->setDefault("Type", $user->Type);
+            $this->tag->setDefault("FirstName", $user->name);
+            $this->tag->setDefault("LastName", $user->lastName);
+            $this->tag->setDefault("Type", $user->type);
             $this->tag->setDefault("email", $user->email);
             $this->tag->setDefault("password", $user->password);
-
         }
     }
 
@@ -80,7 +79,7 @@ class UsersController extends ControllerBase {
             return $this->dispatcher->forward(array(
                 "controller" => "users",
                 "action" => "edit",
-                "params" => array($user->userID)
+                "params" => array($user->id)
             ));
         }
 
@@ -121,7 +120,7 @@ class UsersController extends ControllerBase {
 
     private function populeUsers() {
         $user = new User();
-        $user->userID = $this->request->getPost("userID");
+        $user->id = $this->request->getPost("userID");
         $user->schoolID = $this->request->getPost("schoolID");
         $user->year = $this->request->getPost("year");
         $user->FirstName = $this->request->getPost("FirstName");
