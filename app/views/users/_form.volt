@@ -1,6 +1,17 @@
 <table>
     <tr>
         <td align="right">
+            <label for="Type">Type</label>
+        </td>
+        <td align="left">
+            <select name="Type">
+                <option value="T">Teacher</option>
+                <option value="S" selected="true">Student</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
             <label for="FirstName">FirstName</label>
         </td>
         <td align="left">
@@ -17,26 +28,18 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="year">Year</label>
-        </td>
-        <td align="left">
-            {{ text_field("year", "type" : "numeric") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="Type">Type</label>
-        </td>
-        <td align="left">
-                {{ text_field("Type") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
             <label for="email">Email</label>
         </td>
         <td align="left">
             {{ text_field("email", "size" : 30) }}
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="confirmEmail">Confirm Email</label>
+        </td>
+        <td align="left">
+            {{ text_field("confirmEmail", "size" : 30) }}
         </td>
     </tr>
     <tr>
