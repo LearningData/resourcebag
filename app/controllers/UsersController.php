@@ -2,20 +2,20 @@
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class UsersController extends ControllerBase {
-    public function indexAction() {
-        $numberPage = $this->request->getQuery("page", "int");
-        $users = User::find();
+    // public function indexAction() {
+    //     $numberPage = $this->request->getQuery("page", "int");
+    //     $users = User::find();
 
-        if (count($users) == 0) {
-            $this->flash->notice("The search did not find any users");
-            return $this->toIndex();
-        }
+    //     if (count($users) == 0) {
+    //         $this->flash->notice("The search did not find any users");
+    //         return $this->toIndex();
+    //     }
 
-        $paginator = new Paginator(array("data" => $users, "limit"=> 10,"page" => $numberPage));
-        $this->view->page = $paginator->getPaginate();
-    }
+    //     $paginator = new Paginator(array("data" => $users, "limit"=> 10,"page" => $numberPage));
+    //     $this->view->page = $paginator->getPaginate();
+    // }
 
-    public function newAction() {}
+    // public function newAction() {}
 
     public function editAction($userID) {
         if (!$this->request->isPost()) {
@@ -88,25 +88,25 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
-    public function deleteAction($userID) {
-        $user = User::findFirstByuserID($userID);
+    // public function deleteAction($userID) {
+    //     $user = User::findFirstByuserID($userID);
 
-        if (!$user) {
-            $this->flash->error("user was not found");
-            return $this->toIndex();
-        }
+    //     if (!$user) {
+    //         $this->flash->error("user was not found");
+    //         return $this->toIndex();
+    //     }
 
-        if (!$user->delete()) {
-            foreach ($user->getMessages() as $message){
-                $this->flash->error($message);
-            }
+    //     if (!$user->delete()) {
+    //         foreach ($user->getMessages() as $message){
+    //             $this->flash->error($message);
+    //         }
 
-            return $this->toIndex();
-        }
+    //         return $this->toIndex();
+    //     }
 
-        $this->flash->success("user was deleted successfully");
-        return $this->toIndex();
-    }
+    //     $this->flash->success("user was deleted successfully");
+    //     return $this->toIndex();
+    // }
 
     public function signUpAction() {
         $this->view->schools = School::find();
