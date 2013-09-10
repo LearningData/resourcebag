@@ -121,11 +121,11 @@ class UsersController extends ControllerBase {
     private function populeUsers() {
         $user = new User();
         $user->id = $this->request->getPost("userID");
-        $user->schoolID = $this->request->getPost("schoolID");
+        $user->schoolId = $this->request->getPost("schoolID");
         $user->year = $this->request->getPost("year");
-        $user->FirstName = $this->request->getPost("FirstName");
-        $user->LastName = $this->request->getPost("LastName");
-        $user->Type = $this->request->getPost("Type");
+        $user->name = $this->request->getPost("FirstName");
+        $user->lastName = $this->request->getPost("LastName");
+        $user->type = $this->request->getPost("Type");
         $user->email = $this->request->getPost("email", "email");
         $user->password = $this->request->getPost("password");
 
