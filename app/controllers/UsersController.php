@@ -108,6 +108,8 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
+    public function signUpAction() {}
+
     private function toIndex() {
         return $this->dispatcher->forward(array(
             "controller" => "users",
