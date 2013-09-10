@@ -108,7 +108,9 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
-    public function signUpAction() {}
+    public function signUpAction() {
+        $this->view->schools = School::find();
+    }
 
     private function toIndex() {
         return $this->dispatcher->forward(array(

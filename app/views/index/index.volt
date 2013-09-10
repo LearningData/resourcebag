@@ -5,5 +5,7 @@
 <p>{{ text_field("email") }}</p>
 <p><label for="password">Password:</label></p>
 <p>{{ password_field("password") }}</p>
-<p>{{ submit_button("Save") }}</p>
+<p>{{ submit_button("Login") }}</p>
+
+<a href="/schoolbag/users/signUp">Sign Up</a>
 </form>
