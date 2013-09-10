@@ -16,7 +16,7 @@ class SessionController extends ControllerBase {
         }
 
         $this->session->set("userId", $user->userID);
-        return $this->redirectUser();
+        return $this->redirectUser($user);
     }
 
     public function logoutAction() {
@@ -29,8 +29,14 @@ class SessionController extends ControllerBase {
 
     }
 
-    private function redirectUser() {
-        $this->response->redirect("admin");
+    private function redirectUser($user) {
+        if ($user->Type == "S") {
+            $this->response->redirect("student");
+        }
+
+        if ($user->Type == "A") {
+            $this->response->redirect("admin");
+        }
     }
 }
 ?>
