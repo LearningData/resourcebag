@@ -44,7 +44,15 @@
             <label for="password">Password</label>
         </td>
         <td align="left">
-            {{ text_field("password", "size" : 30) }}
+            {{ password_field("password", "size" : 30) }}
+        </td>
+    </tr>
+    <tr>
+        <td align="right">
+            <label for="confirmPassword">Confirm Password</label>
+        </td>
+        <td align="left">
+            {{ password_field("password", "size" : 30) }}
         </td>
     </tr>
     <tr>
