@@ -1,14 +1,6 @@
 <table>
     <tr>
         <td align="right">
-            <label for="schoolID">SchoolID</label>
-        </td>
-        <td align="left">
-            {{ text_field("schoolID", "type" : "numeric") }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
             <label for="SchoolName">SchoolName</label>
         </td>
         <td align="left">
@@ -55,7 +47,7 @@
             {{ text_field("allTY", "type" : "numeric") }}
         </td>
     </tr>
-
+        {{ hidden_field("schoolID", "type" : "numeric") }}
     <tr>
         <td></td>
         <td>{{ submit_button("Save") }}</td>

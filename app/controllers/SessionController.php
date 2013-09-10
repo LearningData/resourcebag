@@ -15,21 +15,22 @@ class SessionController extends ControllerBase {
             return $this->toIndex();
         }
 
-        return $this->redirectUser($user);
+        $this->session->set("userId", $user->userID);
+        return $this->redirectUser();
     }
 
-    private function redirectUser($user) {
-        return $this->dispatcher->forward(array(
-            "controller" => "admin",
-            "action" => "index"
-        ));
-    }
+    public function logoutAction() {
+        $this->session->remove("userId");
 
-    private function toIndex() {
         return $this->dispatcher->forward(array(
             "controller" => "index",
             "action" => "index"
         ));
+
+    }
+
+    private function redirectUser() {
+        $this->response->redirect("admin");
     }
 }
 ?>
