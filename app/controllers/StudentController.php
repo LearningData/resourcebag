@@ -1,5 +1,5 @@
 <?php
-class StudentController extends ControllerBase {
+class StudentController extends UsersController {
     public function indexAction() {
         $userId = $this->session->get("userId");
         if(!$userId) {
@@ -8,6 +8,11 @@ class StudentController extends ControllerBase {
 
         $user = User::findFirst($userId);
         $this->view->user = $user;
+    }
+
+    public function changePasswordAction($userId) {
+        $this->view->userId = $userId;
+        $this->tag->setDefault("user-id", $userId);
     }
 }
 ?>
