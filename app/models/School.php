@@ -13,6 +13,13 @@ class School extends \Phalcon\Mvc\Model {
         return "schoolinfo";
     }
 
+    public function users() {
+        return User::query()
+                            ->where("schoolId = :id:")
+                            ->bind(array("id" => $this->id))
+                            ->execute();
+    }
+
     public function columnMap() {
         return array(
             'schoolID' => 'id',

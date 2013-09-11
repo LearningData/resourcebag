@@ -17,6 +17,10 @@ class User extends \Phalcon\Mvc\Model {
         return "users";
     }
 
+    public function school() {
+        return School::findFirst("id = $this->schoolId");
+    }
+
     public function getController() {
         switch ($this->type) {
             case "A":
