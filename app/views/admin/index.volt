@@ -19,16 +19,16 @@
     {% if page.items is defined %}
         {% for school in page.items %}
             <tr>
-                <td>{{ school.schoolID }}</td>
-                <td>{{ school.SchoolName }}</td>
-                <td>{{ school.Address }}</td>
-                <td>{{ school.SchoolPath }}</td>
-                <td>{{ school.AccessCode }}</td>
-                <td>{{ school.TeacherAccessCode }}</td>
+                <td>{{ school.id }}</td>
+                <td>{{ school.name }}</td>
+                <td>{{ school.address }}</td>
+                <td>{{ school.path }}</td>
+                <td>{{ school.accessCode }}</td>
+                <td>{{ school.teacherAccessCode }}</td>
                 <td>{{ school.allTY }}</td>
 
-                <td>{{ link_to("admin/editSchool/"~school.schoolID, "Edit") }}</td>
-                <td>{{ link_to("admin/deleteSchool/"~school.schoolID, "Delete") }}</td>
+                <td>{{ link_to("admin/editSchool/"~school.id, "Edit") }}</td>
+                <td>{{ link_to("admin/deleteSchool/"~school.id, "Delete") }}</td>
             </tr>
         {% endfor %}
     {% endif %}

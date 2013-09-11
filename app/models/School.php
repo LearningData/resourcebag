@@ -1,50 +1,28 @@
 <?php
 
 class School extends \Phalcon\Mvc\Model {
+    public $schoolID;
+    public $SchoolName;
+    public $Address;
+    public $SchoolPath;
+    public $AccessCode;
+    public $TeacherAccessCode;
+    public $allTY;
 
     public function getSource() {
         return "schoolinfo";
     }
-    /**
-     *
-     * @var integer
-     */
-    public $schoolID;
 
-    /**
-     *
-     * @var string
-     */
-    public $SchoolName;
-
-    /**
-     *
-     * @var string
-     */
-    public $Address;
-
-    /**
-     *
-     * @var string
-     */
-    public $SchoolPath;
-
-    /**
-     *
-     * @var string
-     */
-    public $AccessCode;
-
-    /**
-     *
-     * @var string
-     */
-    public $TeacherAccessCode;
-
-    /**
-     *
-     * @var integer
-     */
-    public $allTY;
+    public function columnMap() {
+        return array(
+            'schoolID' => 'id',
+            'SchoolName' => 'name',
+            'Address' => 'address',
+            'SchoolPath' => 'path',
+            'AccessCode' => 'accessCode',
+            'TeacherAccessCode' => 'teacherAccessCode',
+            'allTY' => 'allTY'
+        );
+    }
 
 }

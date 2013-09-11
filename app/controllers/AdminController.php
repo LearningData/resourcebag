@@ -66,7 +66,7 @@ class AdminController extends \Phalcon\Mvc\Controller {
 
     public function editSchoolAction($schoolID) {
         if (!$this->request->isPost()) {
-            $school = School::findFirstByschoolID($schoolID);
+            $school = School::findFirstById($schoolID);
             if (!$school) {
                 $this->flash->error("school was not found");
                 return $this->toIndex();
@@ -74,12 +74,12 @@ class AdminController extends \Phalcon\Mvc\Controller {
 
             $this->view->schoolID = $school->schoolID;
 
-            $this->tag->setDefault("schoolID", $school->schoolID);
-            $this->tag->setDefault("SchoolName", $school->SchoolName);
-            $this->tag->setDefault("Address", $school->Address);
-            $this->tag->setDefault("SchoolPath", $school->SchoolPath);
-            $this->tag->setDefault("AccessCode", $school->AccessCode);
-            $this->tag->setDefault("TeacherAccessCode", $school->TeacherAccessCode);
+            $this->tag->setDefault("schoolID", $school->id);
+            $this->tag->setDefault("SchoolName", $school->name);
+            $this->tag->setDefault("Address", $school->address);
+            $this->tag->setDefault("SchoolPath", $school->path);
+            $this->tag->setDefault("AccessCode", $school->accessCode);
+            $this->tag->setDefault("TeacherAccessCode", $school->teacherAccessCode);
             $this->tag->setDefault("allTY", $school->allTY);
 
             $this->view->render("admin/schools", "edit");
@@ -91,7 +91,7 @@ class AdminController extends \Phalcon\Mvc\Controller {
 
         $schoolID = $this->request->getPost("schoolID");
 
-        $school = School::findFirstByschoolID($schoolID);
+        $school = School::findFirstById($schoolID);
 
         if (!$school) {
             $this->flash->error("school does not exist " . $schoolID);
@@ -108,7 +108,7 @@ class AdminController extends \Phalcon\Mvc\Controller {
             return $this->dispatcher->forward(array(
                 "controller" => "admin",
                 "action" => "editSchool",
-                "params" => array($school->schoolID)
+                "params" => array($school->id)
             ));
         }
 
@@ -125,12 +125,12 @@ class AdminController extends \Phalcon\Mvc\Controller {
 
     private function populeSchool() {
         $school = new School();
-        $school->schoolID = $this->request->getPost("schoolID");
-        $school->SchoolName = $this->request->getPost("SchoolName");
-        $school->Address = $this->request->getPost("Address");
-        $school->SchoolPath = $this->request->getPost("SchoolPath");
-        $school->AccessCode = $this->request->getPost("AccessCode");
-        $school->TeacherAccessCode = $this->request->getPost("TeacherAccessCode");
+        $school->id = $this->request->getPost("schoolID");
+        $school->name = $this->request->getPost("SchoolName");
+        $school->address = $this->request->getPost("Address");
+        $school->path = $this->request->getPost("SchoolPath");
+        $school->accessCode = $this->request->getPost("AccessCode");
+        $school->teacherAccessCode = $this->request->getPost("TeacherAccessCode");
         $school->allTY = $this->request->getPost("allTY");
 
         return $school;
