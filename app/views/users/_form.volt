@@ -64,7 +64,7 @@
             <h2>Your's school information</h2>
         </td>
     </tr>
-<!--     <tr>
+    <tr>
         <td align="right">
             <label for="schoolID">School</label>
         </td>
@@ -72,7 +72,7 @@
             {{ select('schoolID', schools, 'using': ['schoolID', 'SchoolName'],
                 'emptyText': 'Please, choose one school') }}
         </td>
-    </tr> -->
+    </tr>
     <tr>
         <td align="right">
             <label for="accessCode">Access Code</label>

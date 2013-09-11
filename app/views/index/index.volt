@@ -7,5 +7,5 @@
 <p>{{ password_field("password") }}</p>
 <p>{{ submit_button("Login") }}</p>
 
-<a href="/schoolbag/users/signUp">Sign Up</a>
+<a href="/schoolbag/register/">Sign Up</a>
 </form>

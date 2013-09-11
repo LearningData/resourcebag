@@ -2,5 +2,5 @@
 
 {{ content() }}
 
-{{ form("users/create", "method":"post") }}
+{{ form("register/create", "method":"post") }}
 {% include "users/_form.volt" %}
