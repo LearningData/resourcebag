@@ -69,7 +69,7 @@
             <label for="schoolID">School</label>
         </td>
         <td align="left">
-            {{ select('schoolID', schools, 'using': ['schoolID', 'SchoolName'],
+            {{ select('schoolID', schools, 'using': ['id', 'name'],
                 'emptyText': 'Please, choose one school') }}
         </td>
     </tr>
