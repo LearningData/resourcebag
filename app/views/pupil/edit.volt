@@ -1,6 +1,6 @@
 <table width="100%">
     <tr>
-        <td align="left">{{ link_to("student", "Go Back") }}</td>
+        <td align="left">{{ link_to("pupil", "Go Back") }}</td>
     <tr>
 </table>
 
@@ -8,5 +8,5 @@
     <h1>Edit user</h1>
 </div>
 
-{{ form("student/update", "method":"post") }}
+{{ form("pupil/update", "method":"post") }}
 {% include "users/_update_form.volt" %}

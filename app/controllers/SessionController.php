@@ -31,13 +31,7 @@ class SessionController extends ControllerBase {
     }
 
     private function redirectUser($user) {
-        if ($user->type == "S") {
-            return $this->response->redirect("student");
-        }
-
-        if ($user->type == "A") {
-            return $this->response->redirect("admin");
-        }
+        return $this->response->redirect($user->getController());
     }
 }
 ?>

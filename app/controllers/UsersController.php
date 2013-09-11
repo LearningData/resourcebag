@@ -70,6 +70,10 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
+    public function changePasswordAction($userId) {
+        $this->view->userId = $userId;
+    }
+
     public function updatePasswordAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
 

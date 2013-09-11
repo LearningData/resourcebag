@@ -42,5 +42,25 @@ class UserTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(count($this->user->getMessages()), 2);
     }
+
+    function testGetControllerAdmin() {
+        $this->user->type = "A";
+        $this->assertEquals("admin", $this->user->getController());
+    }
+
+    function testGetControllerTeacher() {
+        $this->user->type = "T";
+        $this->assertEquals("teacher", $this->user->getController());
+    }
+
+    function testGetControllerPupil() {
+        $this->user->type = "P";
+        $this->assertEquals("pupil", $this->user->getController());
+    }
+
+    function testGetControllerStudent() {
+        $this->user->type = "S";
+        $this->assertEquals("student", $this->user->getController());
+    }
 }
  ?>

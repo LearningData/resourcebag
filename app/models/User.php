@@ -17,6 +17,19 @@ class User extends \Phalcon\Mvc\Model {
         return "users";
     }
 
+    public function getController() {
+        switch ($this->type) {
+            case "A":
+                return "admin";
+            case "T":
+                return "teacher";
+            case "P":
+                return "pupil";
+            case "S":
+                return "student";
+        }
+    }
+
     public function validation() {
         $this->validate(new EmailValidator(array("field" => "email")));
 
