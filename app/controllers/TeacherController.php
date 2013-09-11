@@ -1,5 +1,3 @@
 <?php
-class TeacherController extends UsersController {
-
-}
+class TeacherController extends UsersController {}
 ?>
