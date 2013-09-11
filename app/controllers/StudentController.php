@@ -12,7 +12,6 @@ class StudentController extends UsersController {
 
     public function changePasswordAction($userId) {
         $this->view->userId = $userId;
-        $this->tag->setDefault("user-id", $userId);
     }
 }
 ?>
