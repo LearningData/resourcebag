@@ -8,8 +8,6 @@ class TeacherController extends UsersController {
 
         $user = User::findFirst($userId);
         $this->view->user = $user;
-
-        echo "Teacher Page: " . $user->name . " " . $user->lastName;
     }
 
     public function changePasswordAction($userId) {
