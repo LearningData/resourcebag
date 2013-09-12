@@ -4,7 +4,7 @@
     {{ link_to("teacher/changePassword/"~user.id, "Change Password") }} |
     {{ link_to("teacher/edit/"~user.id, "Edit") }} |
     <a href="#">Edit subjects</a> |
-    <a href="#">Create Class</a> |
+    {{ link_to("teacher/newClass/", "Create Class") }} |
     <a href="#">Edit Class</a> |
     <a href="#">Delete Class</a> |
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |

@@ -3,13 +3,11 @@ use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class UsersController extends ControllerBase {
     public function indexAction() {
-        $userId = $this->session->get("userId");
-        if(!$userId) {
+        $user = $this->getUserBySession();
+
+        if(!$user) {
             return $this->response->redirect("index");
         }
-
-        $user = User::findFirst($userId);
-        $this->view->user = $user;
     }
 
     public function editAction($id) {
@@ -67,8 +65,7 @@ class UsersController extends ControllerBase {
     public function updatePasswordAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
 
-        $userID = $this->request->getPost("user-id");
-        $user = User::findFirstById($userID);
+        $user = $this->getUserBySession();
 
         if (!$user) {
             $this->flash->error("user does not exist " . $userID);
@@ -103,5 +100,13 @@ class UsersController extends ControllerBase {
         return $this->dispatcher->forward(array(
             "action" => "index"
         ));
+    }
+
+    protected function getUserBySession() {
+        $userId = $this->session->get("userId");
+        $user = User::findFirstById($userId);
+        $this->view->user = $user;
+
+        return $user;
     }
 }

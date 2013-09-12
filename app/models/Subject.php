@@ -4,7 +4,7 @@ class Subject extends \Phalcon\Mvc\Model {
     public $ID;
     public $subject;
 
-    public getSource() {
+    public function getSource() {
         return "subjects";
     }
 
