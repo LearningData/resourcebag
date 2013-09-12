@@ -4,7 +4,7 @@
     {{ link_to("teacher/changePassword/", "Change Password") }} |
     {{ link_to("teacher/edit/", "Edit") }} |
     {{ link_to("teacher/newClass/", "Create Class") }} |
-    {{ link_to("teacher/listClass/", "Edit Class") }} |
+    {{ link_to("teacher/listClasses/", "Edit Class") }} |
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
     <a href="#">Select Friends</a> |
     <a href="#">Roll Call</a> |

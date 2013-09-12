@@ -5,7 +5,7 @@ class TeacherController extends UsersController {
         $this->view->teachers = $teachers;
     }
 
-    public function listClassAction() {
+    public function listClassesAction() {
         $teacherId = $this->view->user->id;
         $this->view->classes = ClassList::find("teacherId = $teacherId");
     }
