@@ -1,8 +1,4 @@
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("pupil", "Go Back") }}</td>
-    <tr>
-</table>
+{% include "pupil/_header.volt" %}
 
 <div align="center">
     <h1>Edit user</h1>

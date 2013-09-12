@@ -1,38 +1,24 @@
 <?php
 class TeacherController extends UsersController {
     public function listTeachersAction() {
-        $user = $this->getUserBySession();
-
-        if (!$user) {
-            return $this->response->redirect("index");
-        }
-
-        $this->view->teachers = $user->getTeachers();
+        $teachers = $this->view->user->getTeachers();
+        $this->view->teachers = $teachers;
     }
 
     public function newClassAction() {
-        $user = $this->getUserBySession();
-
-        $this->view->user = $user;
         $this->view->subjects = Subject::find();
     }
 
     public function createClassAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
 
-        $user = $this->getUserBySession();
-
-        if (!$user) {
-            return $this->response->redirect("index");
-        }
-
         $classList = new ClassList();
         $classList->subjectId = $this->request->getPost("subject-id");
         $classList->year = $this->request->getPost("year");
         $classList->extraRef = $this->request->getPost("extra-ref");
         $classList->schyear = $this->request->getPost("schyear");
-        $classList->teacherId = $user->id;
-        $classList->schoolId = $user->schoolId;
+        $classList->teacherId = $this->view->user->id;
+        $classList->schoolId = $this->view->user->schoolId;
 
         if(!$classList->save()) {
             foreach ($classList->getMessages() as $message) {

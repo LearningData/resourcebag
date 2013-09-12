@@ -1,12 +1,3 @@
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("student", "Go Back") }}</td>
-    <tr>
-</table>
-
-<div align="center">
-    <h1>Edit user</h1>
-</div>
-
+{% include "student/_header.volt" %}
 {{ form("student/update", "method":"post") }}
 {% include "users/_update_form.volt" %}

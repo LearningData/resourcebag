@@ -1,8 +1,8 @@
 <h1>Welcome {{ user.name }} {{ user.lastName }}</h1>
 
 <nav>
-    {{ link_to("teacher/changePassword/"~user.id, "Change Password") }} |
-    {{ link_to("teacher/edit/"~user.id, "Edit") }} |
+    {{ link_to("teacher/changePassword/", "Change Password") }} |
+    {{ link_to("teacher/edit/", "Edit") }} |
     <a href="#">Edit subjects</a> |
     {{ link_to("teacher/newClass/", "Create Class") }} |
     <a href="#">Edit Class</a> |
@@ -14,3 +14,5 @@
     <a href="#">School's Website</a> |
     <a href="/schoolbag/session/logout">logout</a>
 </nav>
+
+{{ content() }}

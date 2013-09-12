@@ -10,8 +10,5 @@
     <label for="confirm-new-password">Confirm New Password</label>
     <input type="password" name="confirm-new-password">
 </p>
-<p>
-    <input type="hidden" name="user-id" value="{{ userId }}">
-</p>
 
 <input type="submit">

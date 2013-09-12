@@ -2,30 +2,19 @@
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class UsersController extends ControllerBase {
-    public function indexAction() {
+    public function beforeExecuteRoute($dispatcher){
         $user = $this->getUserBySession();
-
-        if(!$user) {
-            return $this->response->redirect("index");
+        if (!$user) {
+            $this->response->redirect("index");
+            return false;
         }
+
+        $this->view->user = $user;
     }
 
-    public function editAction($id) {
-        if (!$this->request->isPost()) {
-            $user = User::findFirstById($id);
-            if (!$user) {
-                $this->flash->error("user was not found");
-                return $this->toIndex();
-            }
+    public function indexAction() {}
 
-            $this->view->id = $user->id;
-
-            $this->tag->setDefault("userID", $user->id);
-            $this->tag->setDefault("FirstName", $user->name);
-            $this->tag->setDefault("LastName", $user->lastName);
-            $this->tag->setDefault("email", $user->email);
-        }
-    }
+    public function editAction() {}
 
     public function updateAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
@@ -33,11 +22,6 @@ class UsersController extends ControllerBase {
         $userID = $this->request->getPost("userID");
 
         $user = User::findFirstById($userID);
-
-        if (!$user) {
-            $this->flash->error("user does not exist " . $userID);
-            return $this->toIndex();
-        }
 
         $user->name = $this->request->getPost("FirstName");
         $user->lastName = $this->request->getPost("LastName");
@@ -58,20 +42,11 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
-    public function changePasswordAction($userId) {
-        $this->view->userId = $userId;
-    }
+    public function changePasswordAction() {}
 
     public function updatePasswordAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
-
-        $user = $this->getUserBySession();
-
-        if (!$user) {
-            $this->flash->error("user does not exist " . $userID);
-            return $this->toIndex();
-        }
-
+        $user = $this->view->user;
         $oldPassword = $this->request->getPost("old-password");
         $newPassword = $this->request->getPost("new-password");
         $confirmPassword = $this->request->getPost("confirm-new-password");
