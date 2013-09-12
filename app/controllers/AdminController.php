@@ -1,7 +1,7 @@
 <?php
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
-class AdminController extends \Phalcon\Mvc\Controller {
+class AdminController extends UsersController {
     public function indexAction() {
         $userId = $this->session->get("userId");
 
