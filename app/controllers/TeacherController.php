@@ -5,8 +5,36 @@ class TeacherController extends UsersController {
         $this->view->teachers = $teachers;
     }
 
+    public function listClassAction() {
+        $teacherId = $this->view->user->id;
+        $this->view->classes = ClassList::find("teacherId = $teacherId");
+    }
+
     public function newClassAction() {
         $this->view->subjects = Subject::find();
+    }
+
+    public function deleteClassAction($classId) {
+        $classList = ClassList::findFirstById($classId);
+
+        if (!$classList) {
+            $this->flash->error("school was not found");
+            return $this->toIndex();
+        }
+
+        if (!$classList->delete()) {
+            foreach ($classList->getMessages() as $message){
+                $this->flash->error($message);
+            }
+
+            return $this->toIndex();
+        }
+
+        $this->flash->success("Class was deleted successfully");
+
+        return $this->dispatcher->forward(array(
+                "action" => "listClass"
+        ));
     }
 
     public function createClassAction() {
