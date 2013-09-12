@@ -31,5 +31,4 @@ class School extends \Phalcon\Mvc\Model {
             'allTY' => 'allTY'
         );
     }
-
 }

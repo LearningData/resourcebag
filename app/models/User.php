@@ -21,6 +21,15 @@ class User extends \Phalcon\Mvc\Model {
         return School::findFirst("id = $this->schoolId");
     }
 
+    public function getTeachers() {
+        $conditions = "schoolId = ?1 AND type = ?2";
+        $parameters = array(1 => $this->schoolId, 2 => $this->type);
+
+        $params = array($conditions, "bind" => $parameters);
+
+        return User::find($params);
+    }
+
     public function getController() {
         switch ($this->type) {
             case "A":
