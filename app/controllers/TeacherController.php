@@ -9,5 +9,7 @@ class TeacherController extends UsersController {
 
         $this->view->teachers = $user->getTeachers();
     }
+
+    public function newClassAction() {}
 }
 ?>
