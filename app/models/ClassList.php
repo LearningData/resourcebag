@@ -10,8 +10,16 @@ class ClassList extends \Phalcon\Mvc\Model {
     public $teacherID;
     public $schyear;
 
+    public function initialize() {
+        $this->belongsTo("subjectId", "Subject", "id");
+    }
+
     public function getSource() {
         return "classlist";
+    }
+
+    public function getSubject() {
+        return $this->getRelated("Subject");
     }
 
     public function columnMap() {

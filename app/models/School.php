@@ -9,15 +9,16 @@ class School extends \Phalcon\Mvc\Model {
     public $TeacherAccessCode;
     public $allTY;
 
+    public function initialize() {
+        $this->hasMany("id", "User", "schoolId");
+    }
+
     public function getSource() {
         return "schoolinfo";
     }
 
     public function users() {
-        return User::query()
-                            ->where("schoolId = :id:")
-                            ->bind(array("id" => $this->id))
-                            ->execute();
+        return $this->getRelated("User");
     }
 
     public function columnMap() {

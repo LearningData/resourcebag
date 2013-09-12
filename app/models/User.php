@@ -12,6 +12,9 @@ class User extends \Phalcon\Mvc\Model {
     public $email;
     public $password;
 
+    public function initialize() {
+        $this->belongsTo("schoolId", "School", "id");
+    }
 
     public function getSource() {
         return "users";
