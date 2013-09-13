@@ -54,12 +54,12 @@ class UserTest extends PHPUnit_Framework_TestCase {
     }
 
     function testGetControllerPupil() {
-        $this->user->type = "P";
-        $this->assertEquals("pupil", $this->user->getController());
+        $this->user->type = "S";
+        $this->assertEquals("school", $this->user->getController());
     }
 
     function testGetControllerStudent() {
-        $this->user->type = "S";
+        $this->user->type = "P";
         $this->assertEquals("student", $this->user->getController());
     }
 }
