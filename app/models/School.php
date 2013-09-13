@@ -10,7 +10,8 @@ class School extends \Phalcon\Mvc\Model {
     public $allTY;
 
     public function initialize() {
-        $this->hasMany("id", "User", "schoolId");
+        $this->hasMany("id", "User", "schoolId", array("alias" => "Users"));
+        $this->hasMany("id", "ClassList", "schoolId", array("alias" => "Classes"));
     }
 
     public function getSource() {

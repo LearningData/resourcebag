@@ -12,14 +12,11 @@ class ClassList extends \Phalcon\Mvc\Model {
 
     public function initialize() {
         $this->belongsTo("subjectId", "Subject", "id");
+        $this->belongsTo("schoolId", "School", "id");
     }
 
     public function getSource() {
         return "classlist";
-    }
-
-    public function getSubject() {
-        return $this->getRelated("Subject");
     }
 
     public function columnMap() {

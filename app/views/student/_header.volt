@@ -3,6 +3,7 @@
 <nav>
     {{ link_to("student/changePassword/", "Change Password") }} |
     {{ link_to("student/edit/", "Edit") }} |
+    {{ link_to("student/listClasses/", "Join Classes") }} |
     <a href="#">Change Crest</a> |
     <a href="#">Change Policies</a> |
     <a href="#">Change Map</a> |
