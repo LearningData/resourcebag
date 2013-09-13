@@ -1,4 +1,6 @@
 {% include "student/_header.volt" %}
+
+
 <h1>Classes</h1>
 
 <form action="/schoolbag/student/listClasses" method="get">
@@ -17,7 +19,7 @@
                 {{ classList.getSubject().name }} {{ classList.extraRef }}
             </td>
             <td>
-                <a href="#">Join</a>
+                {{ link_to("student/joinClass/"~classList.id, "Join Classes") }} |
             </td>
         </tr>
     {% endfor %}

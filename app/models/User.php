@@ -14,6 +14,15 @@ class User extends \Phalcon\Mvc\Model {
 
     public function initialize() {
         $this->belongsTo("schoolId", "School", "id");
+
+        $this->hasManyToMany(
+            "id",
+            "ClassListUser",
+            "studentId",
+            "classId",
+            "ClassList",
+            "id"
+        );
     }
 
     public function getSource() {
