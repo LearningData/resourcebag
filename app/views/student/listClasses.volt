@@ -19,7 +19,7 @@
                 {{ classList.getSubject().name }} {{ classList.extraRef }}
             </td>
             <td>
-                {{ link_to("student/joinClass/"~classList.id, "Join Classes") }} |
+                {{ link_to("student/joinClass/"~classList.id, "Join Class bla") }}
             </td>
         </tr>
     {% endfor %}

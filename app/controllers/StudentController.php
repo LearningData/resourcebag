@@ -7,7 +7,8 @@ class StudentController extends UsersController {
             $subjectId = 1;
         }
         $user = $this->view->user;
-        $classes = $user->school->getClasses("year = " . $user->year . " and subjectId = $subjectId");
+        $params = "year = " . $user->year . " and subjectId = $subjectId";
+        $classes = $user->school->getClasses($params);
         $this->view->classes = $classes;
         $this->view->subjects = Subject::find(array("order" => "name"));
     }
@@ -32,5 +33,13 @@ class StudentController extends UsersController {
     }
 
     public function myClassesAction() {}
+
+    public function listTeachersAction() {
+        $user = $this->view->user;
+        $school = $user->school;
+
+        $teachers = $school->getUsers("type = 'T' and year = " . $user->year);
+        $this->view->teachers = $teachers;
+    }
 }
 ?>

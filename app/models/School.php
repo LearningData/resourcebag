@@ -18,10 +18,6 @@ class School extends \Phalcon\Mvc\Model {
         return "schoolinfo";
     }
 
-    public function users() {
-        return $this->getRelated("User");
-    }
-
     public function columnMap() {
         return array(
             'schoolID' => 'id',
