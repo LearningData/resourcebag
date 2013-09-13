@@ -1,8 +1,8 @@
 <h1>Welcome {{ user.name }}</h1>
 
 <nav>
-    {{ link_to("pupil/changePassword/", "Change Password") }} |
-    {{ link_to("pupil/edit/", "Edit") }} |
+    {{ link_to("school/changePassword/", "Change Password") }} |
+    {{ link_to("school/edit/", "Edit") }} |
     <a href="#">Join Classes</a> |
     <a href="#">List of Teachers</a> |
     <a href="#">Moodle</a> |

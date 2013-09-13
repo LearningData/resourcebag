@@ -49,9 +49,9 @@ class User extends \Phalcon\Mvc\Model {
             case "T":
                 return "teacher";
             case "P":
-                return "pupil";
-            case "S":
                 return "student";
+            case "S":
+                return "school";
         }
     }
 
