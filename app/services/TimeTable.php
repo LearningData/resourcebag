@@ -28,6 +28,7 @@
 
         public static function minutes() {
             return array(
+                "00" => "00",
                 "05" => "05",
                 "10" => "10",
                 "15" => "15",

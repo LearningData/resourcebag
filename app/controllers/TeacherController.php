@@ -13,6 +13,7 @@ class TeacherController extends UsersController {
     public function newClassAction() {
         $this->view->subjects = Subject::find();
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
+        $this->view->mondaySlots = TimeTableConfig::find("schoolId = " . $this->view->user->schoolId . " and weekDay = 2");
     }
 
     public function deleteClassAction($classId) {
@@ -53,10 +54,31 @@ class TeacherController extends UsersController {
             foreach ($classList->getMessages() as $message) {
                 $this->flash->error($message);
             }
+
             return $this->dispatcher->forward(array(
                 "controller" => "teacher",
                 "action" => "newClass"
             ));
+        }
+
+        $monday = $this->request->getPost("monday");
+
+        foreach ($monday as $slotId) {
+            $slot = new TimeTableSlot();
+            $slot->timeSlotId = $slotId;
+            $slot->schoolId = $this->view->user->schoolId;
+            $slot->day = 2;
+            $slot->classId = $classList->id;
+            $slot->room = "hack room";
+
+            if (!$slot->save()) {
+                $this->flash->error("Was not possible to create the slots");
+
+                return $this->dispatcher->forward(array(
+                    "controller" => "teacher",
+                    "action" => "newClass"
+                ));
+            }
         }
 
         $this->flash->success("Class was created successfully");
@@ -64,6 +86,39 @@ class TeacherController extends UsersController {
                 "controller" => "teacher",
                 "action" => "index"
         ));
+    }
+
+    public function timetableAction() {
+        $schoolId = $this->view->user->schoolId;
+        $params = "schoolId = $schoolId and weekDay = 2";
+        $mondaySlots = TimeTableConfig::find($params);
+        $this->view->myHash = array('first' => 1, 'second' => 2);
+
+        $user = $this->view->user;
+        $this->view->classes = ClassList::find("teacherId = " . $user->id);
+        $slots = array();
+
+        foreach ($this->view->classes as $classList) {
+            $query = "classId = " . $classList->id;
+            $slot = TimeTableSlot::findFirst($query);
+            if ($slot) {
+                $slots[$slot->timeSlotId] = $slot;
+            }
+        }
+
+        $monday = array();
+
+        foreach ($mondaySlots as $mondaySlot) {
+            if (array_key_exists($mondaySlot->id, $slots)) {
+                $slot = $slots[$mondaySlot->id];
+                $monday[$mondaySlot->id] = $slot->classId . " " . $slot->startTime;
+            } else {
+                $monday[$mondaySlot->id] = $mondaySlot->startTime;
+            }
+        }
+
+        $this->view->slots = $monday;
+        $this->view->render("teacher/timetable", "index");
     }
 }
 ?>

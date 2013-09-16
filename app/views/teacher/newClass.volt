@@ -21,5 +21,31 @@
         <input type="hidden" name="schyear" value="{{ schoolYear.value }}">
     </p>
 
+    <h2>Slots</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for slot in mondaySlots %}
+                <tr>
+                    <td>
+                        <input type="checkbox"
+                            name="monday[]"
+                            value="{{ slot.id }}"> {{ slot.startTime }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <input type="submit">
 </form>
