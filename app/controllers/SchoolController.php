@@ -1,48 +1,42 @@
 <?php
+require '../app/services/TimeTable.php';
+
 class SchoolController extends UsersController {
     public function timetableAction() {
-        $this->view->hours = array(
-            "07" => "07",
-            "08" => "08",
-            "09" => "09",
-            "10" => "10",
-            "11" => "11",
-            "12" => "12",
-            "13" => "13",
-            "14" => "14",
-            "15" => "15"
-        );
-        $this->view->minutes = array(
-            "05" => "05",
-            "10" => "10",
-            "15" => "15",
-            "20" => "20",
-            "25" => "25",
-            "25" => "30",
-            "35" => "35",
-            "40" => "40",
-            "45" => "45",
-            "50" => "50",
-            "55" => "55"
-        );
-        $this->view->weekDays = array(
-            1 => "Sunday",
-            2 => "Monday",
-            3 => "Tuesday",
-            4 => "Wednesday",
-            5 => "Thursday",
-            6 => "Friday",
-            7 => "Saturday"
-        );
+        $slots = TimeTableConfig::findBySchoolId($this->view->user->schoolId);
+        $this->view->hours = TimeTable::hours();
+        $this->view->minutes = TimeTable::minutes();
+        $this->view->weekDays = TimeTable::weekDays();
+
+        $this->view->slots = $slots;
     }
 
     public function createSlotAction() {
         if($this->request->isPost()) {
+            $schoolId = $this->view->user->schoolId;
+
             $req = $this->request;
             $startTime = $req->getPost("start-hour") . ":" . $req->getPost("start-minutes");
-            $startTime = $req->getPost("end-hour") . ":" . $req->getPost("end-minutes");
-            echo "Start time: " . $startTime;
-            echo "End time: " . $endTime;
+            $endTime = $req->getPost("end-hour") . ":" . $req->getPost("end-minutes");
+            $idTimeSlot = $req->getPost("start-hour") . $req->getPost("start-minutes");
+
+            $timeTableConfig = new TimeTableConfig();
+            $timeTableConfig->id = $idTimeSlot;
+            $timeTableConfig->startTime = $startTime;
+            $timeTableConfig->endTime = $endTime;
+            $timeTableConfig->preset = $req->getPost("preset");
+            $timeTableConfig->weekDay = $req->getPost("week-day");
+            $timeTableConfig->schoolId = $schoolId;
+
+            if ($timeTableConfig->save()) {
+                $this->flash->success("user was created successfully");
+            } else {
+                foreach ($timeTableConfig->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+            }
+
+            return $this->dispatcher->forward(array("action" => "timetable"));
         }
     }
 }

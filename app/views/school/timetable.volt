@@ -15,13 +15,19 @@
     </p>
     <p>
         <label>Preset</label>
-        <input type="text" >
+        <input type="text" name="preset">
     </p>
     <p>
         <label>Day of Week</label>
-        {{ select("end-hour", weekDays, 'using': ['id', 'value']) }}
+        {{ select("week-day", weekDays, 'using': ['id', 'value']) }}
     </p>
     <p>
         <input type="submit">
     </p>
 </form>
+
+<h1>Slots</h1>
+
+{% for slot in slots %}
+    <p>{{ slot.startTime }} - {{ slot.endTime }}</p>
+{% endfor %}
