@@ -39,5 +39,25 @@ class SchoolController extends UsersController {
             return $this->dispatcher->forward(array("action" => "timetable"));
         }
     }
+
+    public function deleteSlotAction($slotId) {
+        $schoolId = $this->view->user->schoolId;
+
+        $conditions = "schoolId = ?1 AND id = ?2";
+        $parameters = array(1 => $schoolId, 2 => $slotId);
+        $params = array($conditions, "bind" => $parameters);
+
+        $slots = TimeTableConfig::find("schoolId = $schoolId and id = $slotId");
+
+        foreach ($slots as $slot) {
+            if($slot->delete()) {
+                $this->flash->success("Slot was deleted");
+            } else {
+                $this->flash->error("Slot was not deleted");
+            }
+        }
+
+        return $this->dispatcher->forward(array("action" => "timetable"));
+    }
 }
 ?>

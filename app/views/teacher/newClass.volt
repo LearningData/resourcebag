@@ -17,8 +17,8 @@
         <input type="text" name="extra-ref">
     </p>
     <p>
-        <label for="schyear">SchYear</label>
-        <input type="text" name="schyear">
+        <label for="schyear">School Year: {{ schoolYear.value }}</label>
+        <input type="hidden" name="schyear" value="{{ schoolYear.value }}">
     </p>
 
     <input type="submit">

@@ -12,6 +12,7 @@ class TeacherController extends UsersController {
 
     public function newClassAction() {
         $this->view->subjects = Subject::find();
+        $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
     }
 
     public function deleteClassAction($classId) {

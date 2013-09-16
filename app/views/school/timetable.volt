@@ -29,5 +29,8 @@
 <h1>Slots</h1>
 
 {% for slot in slots %}
-    <p>{{ slot.startTime }} - {{ slot.endTime }}</p>
+    <p>
+        {{ slot.startTime }} - {{ slot.endTime }} - {{ slot.weekDay }}
+        {{ link_to("school/deleteSlot/"~slot.id, "delete") }}
+    </p>
 {% endfor %}

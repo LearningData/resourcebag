@@ -116,6 +116,50 @@ class AdminController extends UsersController {
         return $this->toIndex();
     }
 
+    public function listConfigsAction() {
+        $this->view->configs = Config::find();
+        $this->view->render("admin/configs", "index");
+    }
+
+    public function newConfigAction() {
+        $this->view->render("admin/configs", "new");
+    }
+
+    public function createConfigAction() {
+        if (!$this->request->isPost()) { return $this->toIndex(); }
+
+        $config = new Config();
+
+        $config->name = $this->request->getPost("name");
+        $config->value = $this->request->getPost("value");
+
+        if($config->save()) {
+            $this->flash->success("config was created");
+        } else {
+            $this->flash->error("config was not created");
+        }
+
+        return $this->dispatcher->forward(
+            array("action" => "listConfigs")
+        );
+    }
+
+    public function deleteConfigAction($configId) {
+        $config = Config::findFirstById($configId);
+
+        if($config) {
+            if($config->delete()) {
+                $this->flash->success("config was deleted");
+            } else {
+                $this->flash->error("config was not deleted");
+            }
+        }
+
+        return $this->dispatcher->forward(
+            array("action" => "listConfigs")
+        );
+    }
+
     private function toIndex() {
         return $this->dispatcher->forward(array(
             "controller" => "admin",
