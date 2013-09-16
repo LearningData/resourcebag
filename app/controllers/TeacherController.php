@@ -35,7 +35,7 @@ class TeacherController extends UsersController {
         $this->flash->success("Class was deleted successfully");
 
         return $this->dispatcher->forward(array(
-                "action" => "listClass"
+                "action" => "listClasses"
         ));
     }
 
@@ -102,7 +102,7 @@ class TeacherController extends UsersController {
             $query = "classId = " . $classList->id;
             $slot = TimeTableSlot::findFirst($query);
             if ($slot) {
-                $slots[$slot->timeSlotId] = $slot;
+                $slots[$slot->timeSlotId] = $classList->subject->name;
             }
         }
 
@@ -110,8 +110,8 @@ class TeacherController extends UsersController {
 
         foreach ($mondaySlots as $mondaySlot) {
             if (array_key_exists($mondaySlot->id, $slots)) {
-                $slot = $slots[$mondaySlot->id];
-                $monday[$mondaySlot->id] = $slot->classId . " " . $slot->startTime;
+                $subjectName = $slots[$mondaySlot->id];
+                $monday[$mondaySlot->id] = $mondaySlot->startTime . " / " . $subjectName;
             } else {
                 $monday[$mondaySlot->id] = $mondaySlot->startTime;
             }
