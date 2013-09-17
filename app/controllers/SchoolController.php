@@ -1,5 +1,4 @@
 <?php
-require '../app/services/TimeTable.php';
 
 class SchoolController extends UsersController {
     public function timetableAction() {
@@ -21,7 +20,7 @@ class SchoolController extends UsersController {
             $idTimeSlot = $req->getPost("start-hour") . $req->getPost("start-minutes");
 
             $timeTableConfig = new TimeTableConfig();
-            $timeTableConfig->id = $idTimeSlot;
+            $timeTableConfig->timeSlotId = $idTimeSlot;
             $timeTableConfig->startTime = $startTime;
             $timeTableConfig->endTime = $endTime;
             $timeTableConfig->preset = $req->getPost("preset");
@@ -41,20 +40,12 @@ class SchoolController extends UsersController {
     }
 
     public function deleteSlotAction($slotId) {
-        $schoolId = $this->view->user->schoolId;
+        $slot = TimeTableConfig::findFirstById($slotId);
 
-        $conditions = "schoolId = ?1 AND id = ?2";
-        $parameters = array(1 => $schoolId, 2 => $slotId);
-        $params = array($conditions, "bind" => $parameters);
-
-        $slots = TimeTableConfig::find("schoolId = $schoolId and id = $slotId");
-
-        foreach ($slots as $slot) {
-            if($slot->delete()) {
-                $this->flash->success("Slot was deleted");
-            } else {
-                $this->flash->error("Slot was not deleted");
-            }
+        if($slot->delete()) {
+            $this->flash->success("Slot was deleted");
+        } else {
+            $this->flash->error("Slot was not deleted");
         }
 
         return $this->dispatcher->forward(array("action" => "timetable"));

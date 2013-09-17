@@ -41,5 +41,16 @@ class StudentController extends UsersController {
         $teachers = $school->getUsers("type = 'T' and year = " . $user->year);
         $this->view->teachers = $teachers;
     }
+
+    public function timetableAction() {
+        $user = $this->view->user;
+        $slots = array();
+
+        for($i=2; $i <= 7; $i++) {
+            $slots[$i] = TimeTable::getSlotsByDay($user, $i);
+        }
+        $this->view->slots = $slots;
+        $this->view->render("student/timetable", "index");
+    }
 }
 ?>

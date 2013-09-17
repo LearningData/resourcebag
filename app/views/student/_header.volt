@@ -6,6 +6,7 @@
     {{ link_to("student/listClasses/", "Join Classes") }} |
     {{ link_to("student/myClasses/", "My Classes") }} |
     {{ link_to("student/listTeachers/", "Teachers") }} |
+    {{ link_to("student/timetable", "Timetable") }} |
     <a href="#">Change Crest</a> |
     <a href="#">Change Policies</a> |
     <a href="#">Change Map</a> |

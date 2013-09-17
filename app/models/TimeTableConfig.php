@@ -16,8 +16,9 @@ class TimeTableConfig extends \Phalcon\Mvc\Model {
 
     public function columnMap() {
         return array(
+            "id" => "id",
             'schoolID' => 'schoolId',
-            'timeslotID' => 'id',
+            'timeslotID' => 'timeSlotId',
             'startTime' => 'startTime',
             'endTime' => 'endTime',
             'Preset' => 'preset',

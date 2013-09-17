@@ -1,4 +1,4 @@
-{% include "teacher/_header.volt" %}
+{% include "student/_header.volt" %}
 
 <h1>Timetable</h1>
 

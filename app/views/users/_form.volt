@@ -6,7 +6,7 @@
         <td align="left">
             <select name="Type">
                 <option value="T">Teacher</option>
-                <option value="S" selected="true">Student</option>
+                <option value="P" selected="true">Student</option>
             </select>
         </td>
     </tr>

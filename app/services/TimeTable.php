@@ -1,5 +1,62 @@
 <?php
     class TimeTable {
+        public static function getSlotsByDay($user, $weekDay) {
+            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
+            $configs = TimeTableConfig::find($params);
+
+            $classes = ClassList::find("teacherId = " . $user->id);
+            $teacherClasses = array();
+
+            foreach($classes as $classList) {
+                $query = "classId = " . $classList->id . " and day = $weekDay";
+                $slots = TimeTableSlot::find($query);
+
+                foreach($slots as $slot) {
+                    $teacherClasses[$slot->timeSlotId] = $classList->subject->name;
+                }
+            }
+
+            $slots = array();
+
+            foreach ($configs as $config) {
+                if (array_key_exists($config->timeSlotId, $teacherClasses)) {
+                    $subjectName = $teacherClasses[$config->timeSlotId];
+                    $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
+                } else {
+                    $slots[$config->timeSlotId] = $config->startTime;
+                }
+            }
+
+            return $slots;
+        }
+
+        public static function getEmptySlotsByDay($user, $weekDay) {
+            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
+            $configs = TimeTableConfig::find($params);
+
+            $classes = ClassList::find("teacherId = " . $user->id);
+            $teacherClasses = array();
+
+            foreach ($classes as $classList) {
+                $query = "classId = " . $classList->id . " and day = $weekDay";
+                $slot = TimeTableSlot::findFirst($query);
+
+                if ($slot) {
+                    $teacherClasses[$slot->timeSlotId] = $classList->subject->name;
+                }
+            }
+
+            $slots = array();
+
+            foreach ($configs as $config) {
+                if (!array_key_exists($config->timeSlotId, $teacherClasses)) {
+                    $slots[$config->timeSlotId] = $config;
+                }
+            }
+
+            return $slots;
+        }
+
         public static function weekDays() {
             return array(
                 1 => "Sunday",

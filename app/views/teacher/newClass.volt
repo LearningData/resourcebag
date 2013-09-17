@@ -22,30 +22,67 @@
     </p>
 
     <h2>Slots</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for slot in mondaySlots %}
-                <tr>
-                    <td>
-                        <input type="checkbox"
-                            name="monday[]"
-                            value="{{ slot.id }}"> {{ slot.startTime }}
-                    </td>
-                </tr>
+    <section>
+        <div id="monday">
+            <h3>monday</h3>
+            {% for slot in slots[2] %}
+                <p>
+                    <input type="checkbox"
+                                name="day2[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
             {% endfor %}
-        </tbody>
-    </table>
-
+        </div>
+        <div id="tuesday">
+            <h3>tuesday</h3>
+            {% for slot in slots[3] %}
+                <p>
+                    <input type="checkbox"
+                                name="day3[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
+            {% endfor %}
+        </div>
+        <div id="wednesday">
+            <h3>wednesday</h3>
+            {% for slot in slots[4] %}
+                <p>
+                    <input type="checkbox"
+                                name="day4[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
+            {% endfor %}
+        </div>
+        <div id="thursday">
+            <h3>thursday</h3>
+            {% for slot in slots[5] %}
+                <p>
+                    <input type="checkbox"
+                                name="day5[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
+            {% endfor %}
+        </div>
+        <div id="friday">
+            <h3>friday</h3>
+            {% for slot in slots[6] %}
+                <p>
+                    <input type="checkbox"
+                                name="day6[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
+            {% endfor %}
+        </div>
+        <div id="saturday">
+            <h3>saturday</h3>
+            {% for slot in slots[7] %}
+                <p>
+                    <input type="checkbox"
+                                name="day7[]"
+                                value="{{ slot.timeSlotId }}"> {{ slot.startTime }}
+                </p>
+            {% endfor %}
+        </div>
+    </section>
     <input type="submit">
 </form>

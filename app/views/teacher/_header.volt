@@ -6,6 +6,7 @@
     {{ link_to("teacher/newClass/", "Create Class") }} |
     {{ link_to("teacher/listClasses/", "Edit Class") }} |
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
+    {{ link_to("teacher/timetable", "Timetable") }} |
     <a href="#">Select Friends</a> |
     <a href="#">Roll Call</a> |
     <a href="#">Moodle</a> |

@@ -13,7 +13,11 @@ class TeacherController extends UsersController {
     public function newClassAction() {
         $this->view->subjects = Subject::find();
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
-        $this->view->mondaySlots = TimeTableConfig::find("schoolId = " . $this->view->user->schoolId . " and weekDay = 2");
+        $slots = array();
+        for($i = 2; $i <=7; $i++) {
+            $slots[$i] = TimeTable::getEmptySlotsByDay($this->view->user, $i);
+        }
+        $this->view->slots = $slots;
     }
 
     public function deleteClassAction($classId) {
@@ -61,23 +65,24 @@ class TeacherController extends UsersController {
             ));
         }
 
-        $monday = $this->request->getPost("monday");
+        for($i=2; $i <= 7; $i++){
+            $slots = $this->request->getPost("day$i");
+            foreach ($slots as $slotId) {
+                $slot = new TimeTableSlot();
+                $slot->timeSlotId = $slotId;
+                $slot->schoolId = $this->view->user->schoolId;
+                $slot->day = $i;
+                $slot->classId = $classList->id;
+                $slot->room = "hack room";
 
-        foreach ($monday as $slotId) {
-            $slot = new TimeTableSlot();
-            $slot->timeSlotId = $slotId;
-            $slot->schoolId = $this->view->user->schoolId;
-            $slot->day = 2;
-            $slot->classId = $classList->id;
-            $slot->room = "hack room";
+                if (!$slot->save()) {
+                    $this->flash->error("Was not possible to create the slots");
 
-            if (!$slot->save()) {
-                $this->flash->error("Was not possible to create the slots");
-
-                return $this->dispatcher->forward(array(
-                    "controller" => "teacher",
-                    "action" => "newClass"
-                ));
+                    return $this->dispatcher->forward(array(
+                        "controller" => "teacher",
+                        "action" => "newClass"
+                    ));
+                }
             }
         }
 
@@ -89,35 +94,13 @@ class TeacherController extends UsersController {
     }
 
     public function timetableAction() {
-        $schoolId = $this->view->user->schoolId;
-        $params = "schoolId = $schoolId and weekDay = 2";
-        $mondaySlots = TimeTableConfig::find($params);
-        $this->view->myHash = array('first' => 1, 'second' => 2);
-
         $user = $this->view->user;
-        $this->view->classes = ClassList::find("teacherId = " . $user->id);
         $slots = array();
 
-        foreach ($this->view->classes as $classList) {
-            $query = "classId = " . $classList->id;
-            $slot = TimeTableSlot::findFirst($query);
-            if ($slot) {
-                $slots[$slot->timeSlotId] = $classList->subject->name;
-            }
+        for($i=2; $i <= 7; $i++) {
+            $slots[$i] = TimeTable::getSlotsByDay($user, $i);
         }
-
-        $monday = array();
-
-        foreach ($mondaySlots as $mondaySlot) {
-            if (array_key_exists($mondaySlot->id, $slots)) {
-                $subjectName = $slots[$mondaySlot->id];
-                $monday[$mondaySlot->id] = $mondaySlot->startTime . " / " . $subjectName;
-            } else {
-                $monday[$mondaySlot->id] = $mondaySlot->startTime;
-            }
-        }
-
-        $this->view->slots = $monday;
+        $this->view->slots = $slots;
         $this->view->render("teacher/timetable", "index");
     }
 }
