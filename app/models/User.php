@@ -42,15 +42,20 @@ class User extends \Phalcon\Mvc\Model {
         return User::find($params);
     }
 
+    public static function getTypeStudent() { return "P"; }
+    public static function getTypeTeacher() { return "T"; }
+    public static function getTypeSchool() { return "S"; }
+    public static function getTypeAdmin() { return "A"; }
+
     public function getController() {
         switch ($this->type) {
-            case "A":
+            case User::getTypeAdmin():
                 return "admin";
-            case "T":
+            case User::getTypeTeacher():
                 return "teacher";
-            case "P":
+            case User::getTypeStudent():
                 return "student";
-            case "S":
+            case User::getTypeSchool():
                 return "school";
         }
     }

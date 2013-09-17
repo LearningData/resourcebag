@@ -1,4 +1,6 @@
 <?php
+require "../app/services/TimeTable.php";
+
 class StudentController extends UsersController {
     public function listClassesAction() {
         if ($this->request->get("subject-id")) {
@@ -38,7 +40,8 @@ class StudentController extends UsersController {
         $user = $this->view->user;
         $school = $user->school;
 
-        $teachers = $school->getUsers("type = 'T' and year = " . $user->year);
+        $type = User::getTypeTeacher();
+        $teachers = $school->getUsers("type = '$type' and year = " . $user->year);
         $this->view->teachers = $teachers;
     }
 

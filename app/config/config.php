@@ -1,5 +1,4 @@
 <?php
-require "../app/services/TimeTable.php";
 
 return new \Phalcon\Config(array(
     'database' => array(
