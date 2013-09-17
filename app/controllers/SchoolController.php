@@ -2,10 +2,10 @@
 
 class SchoolController extends UsersController {
     public function timetableAction() {
-        $slots = TimeTableConfig::findBySchoolId($this->view->user->schoolId);
-        $this->view->hours = TimeTable::hours();
-        $this->view->minutes = TimeTable::minutes();
-        $this->view->weekDays = TimeTable::weekDays();
+        $slots = TimetableConfig::findBySchoolId($this->view->user->schoolId);
+        $this->view->hours = Timetable::hours();
+        $this->view->minutes = Timetable::minutes();
+        $this->view->weekDays = Timetable::weekDays();
 
         $this->view->slots = $slots;
     }
@@ -19,7 +19,7 @@ class SchoolController extends UsersController {
             $endTime = $req->getPost("end-hour") . ":" . $req->getPost("end-minutes");
             $idTimeSlot = $req->getPost("start-hour") . $req->getPost("start-minutes");
 
-            $timeTableConfig = new TimeTableConfig();
+            $timeTableConfig = new TimetableConfig();
             $timeTableConfig->timeSlotId = $idTimeSlot;
             $timeTableConfig->startTime = $startTime;
             $timeTableConfig->endTime = $endTime;
@@ -40,7 +40,7 @@ class SchoolController extends UsersController {
     }
 
     public function deleteSlotAction($slotId) {
-        $slot = TimeTableConfig::findFirstById($slotId);
+        $slot = TimetableConfig::findFirstById($slotId);
 
         if($slot->delete()) {
             $this->flash->success("Slot was deleted");

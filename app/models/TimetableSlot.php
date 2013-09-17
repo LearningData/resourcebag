@@ -1,6 +1,6 @@
 <?php
 
-class TimeTableSlot extends \Phalcon\Mvc\Model {
+class TimetableSlot extends \Phalcon\Mvc\Model {
     public $schoolID;
     public $Day;
     public $timeslotID;

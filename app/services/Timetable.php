@@ -1,15 +1,15 @@
 <?php
-    class TimeTable {
+    class Timetable {
         public static function getSlotsByDay($user, $weekDay) {
             $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
-            $configs = TimeTableConfig::find($params);
+            $configs = TimetableConfig::find($params);
 
             $classes = ClassList::find("teacherId = " . $user->id);
             $teacherClasses = array();
 
             foreach($classes as $classList) {
                 $query = "classId = " . $classList->id . " and day = $weekDay";
-                $slots = TimeTableSlot::find($query);
+                $slots = TimetableSlot::find($query);
 
                 foreach($slots as $slot) {
                     $teacherClasses[$slot->timeSlotId] = $classList->subject->name;
@@ -32,14 +32,14 @@
 
         public static function getEmptySlotsByDay($user, $weekDay) {
             $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
-            $configs = TimeTableConfig::find($params);
+            $configs = TimetableConfig::find($params);
 
             $classes = ClassList::find("teacherId = " . $user->id);
             $teacherClasses = array();
 
             foreach ($classes as $classList) {
                 $query = "classId = " . $classList->id . " and day = $weekDay";
-                $slot = TimeTableSlot::findFirst($query);
+                $slot = TimetableSlot::findFirst($query);
 
                 if ($slot) {
                     $teacherClasses[$slot->timeSlotId] = $classList->subject->name;

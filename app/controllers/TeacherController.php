@@ -1,4 +1,6 @@
 <?php
+require "../app/services/Timetable.php";
+
 class TeacherController extends UsersController {
     public function listTeachersAction() {
         $teachers = $this->view->user->getTeachers();
@@ -15,7 +17,7 @@ class TeacherController extends UsersController {
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
         $slots = array();
         for($i = 2; $i <=7; $i++) {
-            $slots[$i] = TimeTable::getEmptySlotsByDay($this->view->user, $i);
+            $slots[$i] = Timetable::getEmptySlotsByDay($this->view->user, $i);
         }
         $this->view->slots = $slots;
     }
@@ -68,7 +70,7 @@ class TeacherController extends UsersController {
         for($i=2; $i <= 7; $i++){
             $slots = $this->request->getPost("day$i");
             foreach ($slots as $slotId) {
-                $slot = new TimeTableSlot();
+                $slot = new TimetableSlot();
                 $slot->timeSlotId = $slotId;
                 $slot->schoolId = $this->view->user->schoolId;
                 $slot->day = $i;
@@ -98,7 +100,7 @@ class TeacherController extends UsersController {
         $slots = array();
 
         for($i=2; $i <= 7; $i++) {
-            $slots[$i] = TimeTable::getSlotsByDay($user, $i);
+            $slots[$i] = Timetable::getSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
         $this->view->render("teacher/timetable", "index");

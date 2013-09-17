@@ -1,6 +1,6 @@
 <?php
 
-class TimeTableConfig extends \Phalcon\Mvc\Model {
+class TimetableConfig extends \Phalcon\Mvc\Model {
     public $schoolID;
     public $timeslotID;
     public $startTime;

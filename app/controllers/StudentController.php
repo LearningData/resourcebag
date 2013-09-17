@@ -1,5 +1,5 @@
 <?php
-require "../app/services/TimeTable.php";
+require "../app/services/Timetable.php";
 
 class StudentController extends UsersController {
     public function listClassesAction() {
@@ -50,7 +50,7 @@ class StudentController extends UsersController {
         $slots = array();
 
         for($i=2; $i <= 7; $i++) {
-            $slots[$i] = TimeTable::getSlotsByDay($user, $i);
+            $slots[$i] = Timetable::getSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
         $this->view->render("student/timetable", "index");
