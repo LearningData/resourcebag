@@ -17,12 +17,32 @@ class StudentController extends UsersController {
 
     public function joinClassAction($classId) {
         if ($classId) {
+            $user = $this->view->user;
+            $classList = ClassList::findFirstById($classId);
             $classListUser = new ClassListUser();
-            $classListUser->schoolId = $this->view->user->schoolId;
-            $classListUser->studentId = $this->view->user->id;
+            $classListUser->schoolId = $user->schoolId;
+            $classListUser->studentId = $user->id;
             $classListUser->classId = $classId;
 
             if ($classListUser->save()) {
+                $slots = TimetableSlot::find("classId = $classId");
+
+                foreach ($slots as $slot) {
+                    $timetableChange = new TimetableChange();
+                    $timetableChange->schoolId = $slot->schoolId;
+                    $timetableChange->day = $slot->day;
+                    $timetableChange->studentId = $user->id;
+                    $timetableChange->timeSlotId = $slot->timeSlotId;
+                    $timetableChange->room = $slot->room;
+                    $timetableChange->subjectId = $classList->subject->id;
+
+                    if (!$timetableChange->save()) {
+                        $classListUser->delete();
+                        $this->flash->error("was not possible join in class");
+                        $this->dispatcher->forward(array("action" => "index"));
+                    }
+                }
+
                 $this->flash->success("joined in class");
             } else {
                 $this->flash->error("error to save");
@@ -50,7 +70,7 @@ class StudentController extends UsersController {
         $slots = array();
 
         for($i=2; $i <= 7; $i++) {
-            $slots[$i] = Timetable::getSlotsByDay($user, $i);
+            $slots[$i] = Timetable::getStudentSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
         $this->view->render("student/timetable", "index");

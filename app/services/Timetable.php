@@ -5,22 +5,49 @@
             $configs = TimetableConfig::find($params);
 
             $classes = ClassList::find("teacherId = " . $user->id);
-            $teacherClasses = array();
+            $studentClasses = array();
 
             foreach($classes as $classList) {
                 $query = "classId = " . $classList->id . " and day = $weekDay";
                 $slots = TimetableSlot::find($query);
 
                 foreach($slots as $slot) {
-                    $teacherClasses[$slot->timeSlotId] = $classList->subject->name;
+                    $studentClasses[$slot->timeSlotId] = $classList->subject->name;
                 }
             }
 
             $slots = array();
 
             foreach ($configs as $config) {
-                if (array_key_exists($config->timeSlotId, $teacherClasses)) {
-                    $subjectName = $teacherClasses[$config->timeSlotId];
+                if (array_key_exists($config->timeSlotId, $studentClasses)) {
+                    $subjectName = $studentClasses[$config->timeSlotId];
+                    $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
+                } else {
+                    $slots[$config->timeSlotId] = $config->startTime;
+                }
+            }
+
+            return $slots;
+        }
+
+        public static function getStudentSlotsByDay($user, $weekDay) {
+            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
+            $configs = TimetableConfig::find($params);
+
+            $classes = ClassList::find("teacherId = " . $user->id);
+            $studentClasses = array();
+
+            $changes = TimetableChange::find("day = $weekDay");
+
+            foreach($changes as $slot) {
+                $studentClasses[$slot->timeSlotId] = $slot->subject->name;
+            }
+
+            $slots = array();
+
+            foreach ($configs as $config) {
+                if (array_key_exists($config->timeSlotId, $studentClasses)) {
+                    $subjectName = $studentClasses[$config->timeSlotId];
                     $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
                 } else {
                     $slots[$config->timeSlotId] = $config->startTime;
@@ -35,21 +62,21 @@
             $configs = TimetableConfig::find($params);
 
             $classes = ClassList::find("teacherId = " . $user->id);
-            $teacherClasses = array();
+            $studentClasses = array();
 
             foreach ($classes as $classList) {
                 $query = "classId = " . $classList->id . " and day = $weekDay";
                 $slot = TimetableSlot::findFirst($query);
 
                 if ($slot) {
-                    $teacherClasses[$slot->timeSlotId] = $classList->subject->name;
+                    $studentClasses[$slot->timeSlotId] = $classList->subject->name;
                 }
             }
 
             $slots = array();
 
             foreach ($configs as $config) {
-                if (!array_key_exists($config->timeSlotId, $teacherClasses)) {
+                if (!array_key_exists($config->timeSlotId, $studentClasses)) {
                     $slots[$config->timeSlotId] = $config;
                 }
             }

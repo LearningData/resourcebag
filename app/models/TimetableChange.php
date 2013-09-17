@@ -1,6 +1,5 @@
 <?php
 
-
 class TimetableChange extends \Phalcon\Mvc\Model {
     public $schoolID;
     public $Day;
@@ -9,6 +8,9 @@ class TimetableChange extends \Phalcon\Mvc\Model {
     public $Room;
     public $subjectID;
 
+    public function initialize() {
+        $this->belongsTo("subjectId", "Subject", "id");
+    }
 
     public function getSource() {
         return "timetablechanges";
