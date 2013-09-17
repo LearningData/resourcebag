@@ -16,16 +16,7 @@
                 }
             }
 
-            $slots = array();
-
-            foreach ($configs as $config) {
-                if (array_key_exists($config->timeSlotId, $studentClasses)) {
-                    $subjectName = $studentClasses[$config->timeSlotId];
-                    $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
-                } else {
-                    $slots[$config->timeSlotId] = $config->startTime;
-                }
-            }
+            $slots = Timetable::populeSlots($studentClasses, $configs);
 
             return $slots;
         }
@@ -34,20 +25,24 @@
             $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
             $configs = TimetableConfig::find($params);
 
-            $classes = ClassList::find("teacherId = " . $user->id);
             $studentClasses = array();
-
             $changes = TimetableChange::find("day = $weekDay");
 
             foreach($changes as $slot) {
                 $studentClasses[$slot->timeSlotId] = $slot->subject->name;
             }
 
+            $slots = Timetable::populeSlots($studentClasses, $configs);
+
+            return $slots;
+        }
+
+        public static function populeSlots($classes, $configs) {
             $slots = array();
 
             foreach ($configs as $config) {
-                if (array_key_exists($config->timeSlotId, $studentClasses)) {
-                    $subjectName = $studentClasses[$config->timeSlotId];
+                if (array_key_exists($config->timeSlotId, $classes)) {
+                    $subjectName = $classes[$config->timeSlotId];
                     $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
                 } else {
                     $slots[$config->timeSlotId] = $config->startTime;

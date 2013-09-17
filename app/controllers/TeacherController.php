@@ -105,5 +105,11 @@ class TeacherController extends UsersController {
         $this->view->slots = $slots;
         $this->view->render("teacher/timetable", "index");
     }
+
+    public function subjectsAction() {
+        $teacherId = $this->view->user->id;
+        $this->view->classes = ClassList::find("teacherId = $teacherId");
+        $this->view->render("teacher/subject", "index");
+    }
 }
 ?>

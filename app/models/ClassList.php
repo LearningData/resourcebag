@@ -13,6 +13,16 @@ class ClassList extends \Phalcon\Mvc\Model {
     public function initialize() {
         $this->belongsTo("subjectId", "Subject", "id");
         $this->belongsTo("schoolId", "School", "id");
+
+        $this->hasManyToMany(
+            "id",
+            "ClassListUser",
+            "classId",
+            "studentId",
+            "User",
+            "id",
+            array("alias" => "Users")
+        );
     }
 
     public function getSource() {

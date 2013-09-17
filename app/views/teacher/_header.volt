@@ -7,6 +7,7 @@
     {{ link_to("teacher/listClasses/", "Edit Class") }} |
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
     {{ link_to("teacher/timetable", "Timetable") }} |
+    {{ link_to("teacher/subjects", "Subjects") }} |
     <a href="#">Select Friends</a> |
     <a href="#">Roll Call</a> |
     <a href="#">Moodle</a> |
