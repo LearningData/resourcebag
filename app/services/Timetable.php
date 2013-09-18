@@ -92,34 +92,25 @@
         }
 
         public static function hours() {
-            return array(
-                "07" => "07",
-                "08" => "08",
-                "09" => "09",
-                "10" => "10",
-                "11" => "11",
-                "12" => "12",
-                "13" => "13",
-                "14" => "14",
-                "15" => "15"
-            );
+            $hours = array();
+
+            for ($i=7; $i <= 15 ; $i++) {
+                $hour = sprintf("%02s", $i);
+                $hours[$hour] = $hour;
+            }
+
+            return $hours;
         }
 
         public static function minutes() {
-            return array(
-                "00" => "00",
-                "05" => "05",
-                "10" => "10",
-                "15" => "15",
-                "20" => "20",
-                "25" => "25",
-                "30" => "30",
-                "35" => "35",
-                "40" => "40",
-                "45" => "45",
-                "50" => "50",
-                "55" => "55"
-            );
+            $minutes = array();
+
+            for ($i=0; $i <= 55 ; $i = $i + 5) {
+                $minute = sprintf("%02s", $i);
+                $minutes[$minute] = $minute;
+            }
+
+            return $minutes;
         }
     }
 ?>
