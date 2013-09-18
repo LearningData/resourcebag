@@ -70,5 +70,19 @@
             $this->assertEquals($this->stubConfig->startTime,
                 $slots[$this->stubConfig->timeSlotId]);
         }
+
+        function testPopuleSlotsWithClass() {
+            $this->stubConfig->timeSlotId = 2;
+            $startTime = $this->stubConfig->startTime;
+            $className = $this->classes[$this->stubConfig->timeSlotId];
+
+            $slots = Timetable::populeSlots($this->classes, $this->configs);
+            $expected = $startTime . " / " . $className;
+
+            $this->assertEquals(
+                $expected,
+                $slots[$this->stubConfig->timeSlotId]
+            );
+        }
     }
 ?>
