@@ -22,6 +22,10 @@
         {{ select("week-day", weekDays, 'using': ['id', 'value']) }}
     </p>
     <p>
+        <label>Year: {{ year }}</label>
+        <input type="hidden" name="year" value="{{ year }}">
+    </p>
+    <p>
         <input type="submit">
     </p>
 </form>
