@@ -40,12 +40,14 @@
         public static function populeSlots($classes, $configs) {
             $slots = array();
 
-            foreach ($configs as $config) {
-                if (array_key_exists($config->timeSlotId, $classes)) {
-                    $subjectName = $classes[$config->timeSlotId];
-                    $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
-                } else {
-                    $slots[$config->timeSlotId] = $config->startTime;
+            if($classes && $configs) {
+                foreach ($configs as $config) {
+                    if (array_key_exists($config->timeSlotId, $classes)) {
+                        $subjectName = $classes[$config->timeSlotId];
+                        $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
+                    } else {
+                        $slots[$config->timeSlotId] = $config->startTime;
+                    }
                 }
             }
 

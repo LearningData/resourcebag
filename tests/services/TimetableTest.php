@@ -2,6 +2,15 @@
     require 'app/services/Timetable.php';
 
     class ClassName extends PHPUnit_Framework_TestCase {
+        function setUp() {
+            $stubConfig = $this->getMock('TimetableConfig');
+            $stubConfig->startTime = "13:00:00";
+            $stubConfig->timeSlotId = 1;
+
+            $this->stubConfig = $stubConfig;
+            $this->configs = array($stubConfig);
+            $this->classes = array(2 => "test");
+        }
         function testArrayHours() {
             $hours = Timetable::hours();
 
@@ -45,6 +54,21 @@
             $this->assertEquals($minutes["45"], "45");
             $this->assertEquals($minutes["50"], "50");
             $this->assertEquals($minutes["55"], "55");
+        }
+
+        function testPopuleSlotsWithNullParams() {
+            $this->assertEquals(array(), Timetable::populeSlots(null, null));
+        }
+
+        function testPopuleSlotsSize() {
+            $slots = Timetable::populeSlots($this->classes, $this->configs);
+            $this->assertEquals(1, sizeof($slots));
+        }
+
+        function testPopuleSlotsEmpty() {
+            $slots = Timetable::populeSlots($this->classes, $this->configs);
+            $this->assertEquals($this->stubConfig->startTime,
+                $slots[$this->stubConfig->timeSlotId]);
         }
     }
 ?>
