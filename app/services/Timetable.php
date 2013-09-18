@@ -1,32 +1,35 @@
 <?php
     class Timetable {
-        public static function getSlotsByDay($user, $weekDay) {
-            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
-            $configs = TimetableConfig::find($params);
+        public static function getSlotsByDay($user, $day) {
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
 
-            $classes = ClassList::find("teacherId = " . $user->id);
-            $studentClasses = array();
+            $classesList = ClassList::find("teacherId = " . $user->id);
 
-            foreach($classes as $classList) {
-                $query = "classId = " . $classList->id . " and day = $weekDay";
-                $slots = TimetableSlot::find($query);
-
-                foreach($slots as $slot) {
-                    $studentClasses[$slot->timeSlotId] = $classList->subject->name;
-                }
-            }
-
-            $slots = Timetable::populeSlots($studentClasses, $configs);
+            $classes = Timetable::populeClasses($classesList, $day);
+            $slots = Timetable::populeSlots($classes, $configs);
 
             return $slots;
         }
 
-        public static function getStudentSlotsByDay($user, $weekDay) {
-            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
-            $configs = TimetableConfig::find($params);
+        public static function populeClasses($classesList, $day) {
+            $classes = array();
+
+            foreach($classesList as $classList) {
+                $slots = TimetableSlot::findByClassAndDay($classList->id, $day);
+
+                foreach($slots as $slot) {
+                    $classes[$slot->timeSlotId] = $classList->subject->name;
+                }
+            }
+
+            return $classes;
+        }
+
+        public static function getStudentSlotsByDay($user, $day) {
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
 
             $studentClasses = array();
-            $changes = TimetableChange::find("day = $weekDay");
+            $changes = TimetableChange::find("day = $day");
 
             foreach($changes as $slot) {
                 $studentClasses[$slot->timeSlotId] = $slot->subject->name;
@@ -40,7 +43,7 @@
         public static function populeSlots($classes, $configs) {
             $slots = array();
 
-            if($classes && $configs) {
+            if($configs) {
                 foreach ($configs as $config) {
                     if (array_key_exists($config->timeSlotId, $classes)) {
                         $subjectName = $classes[$config->timeSlotId];
@@ -54,26 +57,16 @@
             return $slots;
         }
 
-        public static function getEmptySlotsByDay($user, $weekDay) {
-            $params = "schoolId = " . $user->schoolId . " and weekDay = $weekDay";
-            $configs = TimetableConfig::find($params);
+        public static function getEmptySlotsByDay($user, $day) {
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
 
-            $classes = ClassList::find("teacherId = " . $user->id);
-            $studentClasses = array();
-
-            foreach ($classes as $classList) {
-                $query = "classId = " . $classList->id . " and day = $weekDay";
-                $slot = TimetableSlot::findFirst($query);
-
-                if ($slot) {
-                    $studentClasses[$slot->timeSlotId] = $classList->subject->name;
-                }
-            }
+            $classesList = ClassList::find("teacherId = " . $user->id);
+            $classes = Timetable::populeClasses($classesList, $day);
 
             $slots = array();
 
             foreach ($configs as $config) {
-                if (!array_key_exists($config->timeSlotId, $studentClasses)) {
+                if (!array_key_exists($config->timeSlotId, $classes)) {
                     $slots[$config->timeSlotId] = $config;
                 }
             }

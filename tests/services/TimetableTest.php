@@ -71,6 +71,11 @@
                 $slots[$this->stubConfig->timeSlotId]);
         }
 
+        function testPopuleSlotsWithEmptyClasses() {
+            $slots = Timetable::populeSlots(array(), $this->configs);
+            $this->assertEquals(1, sizeof($slots));
+        }
+
         function testPopuleSlotsWithClass() {
             $this->stubConfig->timeSlotId = 2;
             $startTime = $this->stubConfig->startTime;

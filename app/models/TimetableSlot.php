@@ -11,6 +11,13 @@ class TimetableSlot extends \Phalcon\Mvc\Model {
         return "timetableslots";
     }
 
+    public static function findByClassAndDay($classId, $day) {
+        $query = "classId = " . $classId . " and day = $day";
+        $slots = TimetableSlot::find($query);
+
+        return $slots;
+    }
+
     public function columnMap() {
         return array(
             'schoolID' => 'schoolId',

@@ -14,6 +14,16 @@ class TimetableConfig extends \Phalcon\Mvc\Model {
         return "timetableconfig";
     }
 
+    public static function findBySchoolAndDay($schoolId, $day) {
+        $conditions = "schoolId = ?1 AND weekDay = ?2";
+        $parameters = array(1 => $schoolId, 2 => $day);
+        $params = array($conditions, "bind" => $parameters);
+
+        $configs = TimetableConfig::find($params);
+
+        return $configs;
+    }
+
     public function columnMap() {
         return array(
             "id" => "id",
@@ -26,5 +36,4 @@ class TimetableConfig extends \Phalcon\Mvc\Model {
             'weekDay' => 'weekDay'
         );
     }
-
 }
