@@ -69,6 +69,8 @@ class TeacherController extends UsersController {
 
         for($i=2; $i <= 7; $i++){
             $slots = $this->request->getPost("day$i");
+            if (!$slots) { continue; }
+
             foreach ($slots as $slotId) {
                 $slot = new TimetableSlot();
                 $slot->timeSlotId = $slotId;

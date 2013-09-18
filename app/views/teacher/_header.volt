@@ -1,6 +1,6 @@
 <h1>Welcome {{ user.name }} {{ user.lastName }}</h1>
 
-<nav>
+<ul class="breadcrumb">
     {{ link_to("teacher/changePassword/", "Change Password") }} |
     {{ link_to("teacher/edit/", "Edit") }} |
     {{ link_to("teacher/newClass/", "Create Class") }} |
@@ -13,6 +13,6 @@
     <a href="#">Moodle</a> |
     <a href="#">School's Website</a> |
     <a href="/schoolbag/session/logout">logout</a>
-</nav>
+</ul>
 
 {{ content() }}

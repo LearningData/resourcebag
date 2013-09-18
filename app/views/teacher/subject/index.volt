@@ -2,7 +2,7 @@
 
 <h1>Subjects</h1>
 
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Class</th>
@@ -15,7 +15,11 @@
         <tr>
             <td>{{listClass.subject.name }} ({{ listClass.extraRef }}) </td>
             <td>{{ listClass.year }}</td>
-            <td>{{ listClass.users.count() }}</td>
+            {% if listClass.users.count() %}
+                <td><a href="#">{{ listClass.users.count() }}</a></td>
+            {% else %}
+                <td>{{ listClass.users.count() }}</td>
+            {% endif %}
         </tr>
     {% endfor %}
     </tbody>

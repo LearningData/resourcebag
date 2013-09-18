@@ -2,41 +2,26 @@
 
 <h1>Timetable</h1>
 
-<section>
-    <div id="monday">
-        <h3>monday</h3>
-        {% for slot in slots[2] %}
-            <p>{{ slot }}</p>
-        {% endfor %}
-    </div>
-    <div id="tuesday">
-        <h3>tuesday</h3>
-            {% for slot in slots[3] %}
-                <p>{{ slot }}</p>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for daySlots in slots %}
+                <td>
+                {% for slot in daySlots %}
+                    <p>{{ slot }}</p>
+                {% endfor %}
+                </td>
             {% endfor %}
-    </div>
-    <div id="wednesday">
-        <h3>wednesday</h3>
-        {% for slot in slots[4] %}
-            <p>{{ slot }}</p>
-        {% endfor %}
-    </div>
-    <div id="thursday">
-        <h3>thursday</h3>
-            {% for slot in slots[5] %}
-                <p>{{ slot }}</p>
-            {% endfor %}
-    </div>
-    <div id="friday">
-        <h3>friday</h3>
-            {% for slot in slots[6] %}
-                <p>{{ slot }}</p>
-            {% endfor %}
-    </div>
-    <div id="saturday">
-        <h3>saturday</h3>
-            {% for slot in slots[7] %}
-                <p>{{ slot }}</p>
-            {% endfor %}
-    </div>
-</section>
+        </tr>
+    </tbody>
+</table>
