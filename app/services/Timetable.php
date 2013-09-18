@@ -29,7 +29,7 @@
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
 
             $studentClasses = array();
-            $changes = TimetableChange::find("day = $day");
+            $changes = TimetableChange::find("studentId = " .$user->id ." and day = $day");
 
             foreach($changes as $slot) {
                 $studentClasses[$slot->timeSlotId] = $slot->subject->name;
