@@ -19,7 +19,7 @@
                 </a>
             </td>
             <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
-            <td><a href="#">Correct</a></td>
+            <td>{{ link_to("teacher/homework/list/"~classList.id, "Correct") }}</td>
             <td>{{ classList.year }}</td>
             {% if classList.users.count() %}
                 <td>

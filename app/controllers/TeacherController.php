@@ -115,14 +115,17 @@ class TeacherController extends UsersController {
     }
 
     public function homeworkAction($action=null, $classId=null){
-        if ($action && $classId && $action == "new") {
+        if ($action && $classId) {
             $classList = ClassList::findFirstById($classId);
             if (!$classList) {
                 return $this->dispatcher->forward(array("action" => "timetable"));
             }
 
             $this->view->classList = $classList;
-            $this->view->pick("teacher/homework/new");
+            if($action == "new") { $this->view->pick("teacher/homework/new"); }
+
+            $this->view->homeworks = Homework::find("classId = $classId");
+            if($action == "list") { $this->view->pick("teacher/homework/list"); }
         }
     }
 
