@@ -159,8 +159,7 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Homework created");
-            return $this->dispatcher->forward(array(
-                    "action" => "homework"));
+        return $this->dispatcher->forward(array("action" => "homework"));
     }
 }
 ?>

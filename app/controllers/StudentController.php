@@ -54,7 +54,7 @@ class StudentController extends UsersController {
         $this->dispatcher->forward(array("action" => "index"));
     }
 
-    public function myClassesAction() {}
+    public function subjectsAction() {}
 
     public function listTeachersAction() {
         $user = $this->view->user;
@@ -74,6 +74,49 @@ class StudentController extends UsersController {
         }
         $this->view->slots = $slots;
         $this->view->pick("student/timetable/index");
+    }
+
+    public function homeworkAction($action=null, $classId=null){
+        if ($action && $classId) {
+            $classList = ClassList::findFirstById($classId);
+            if (!$classList) {
+                return $this->dispatcher->forward(array("action" => "timetable"));
+            }
+
+            $this->view->classList = $classList;
+            if($action == "new") { $this->view->pick("student/homework/new"); }
+
+            $this->view->homeworks = Homework::find("classId = $classId and studentId = " . $this->view->user->id);
+            if($action == "list") { $this->view->pick("student/homework/list"); }
+        }
+    }
+
+    public function createHomeworkAction() {
+        if (!$this->request->isPost()) { return $this->toIndex(); }
+
+        $homework = new Homework();
+        $homework->text = $this->request->getPost("description");
+        $homework->classId = $this->request->getPost("class-id");
+        $homework->dueDate = $this->request->getPost("due-date");
+        $homework->schoolId = $this->view->user->schoolId;
+        $homework->teacherId = $this->request->getPost("teacher-id");
+        $homework->studentId = $this->view->user->id;
+        $homework->timeSlotId = "0000";
+        $homework->setDate = date("Y-m-d");
+        $homework->submittedDate = "0000-00-00";
+        $homework->reviewedDate = "0000-00-00";
+        $homework->status = 0;
+
+        if (!$homework->save()) {
+            $this->flash->error("Was not possible to create the homework");
+            foreach ($homework->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+        } else {
+            $this->flash->success("The homework was created");
+        }
+
+        return $this->dispatcher->forward(array("action" => "homework"));
     }
 }
 ?>
