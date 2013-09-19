@@ -62,5 +62,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->user->type = "P";
         $this->assertEquals("student", $this->user->getController());
     }
+
+    function testUserIsStudent() {
+        $this->user->type = User::getTypeStudent();
+        $this->assertTrue($this->user->isStudent());
+    }
 }
  ?>

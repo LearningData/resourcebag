@@ -49,6 +49,36 @@ $di->set('view', function() use ($config) {
     return $view;
 }, true);
 
+$di->set("router", function() {
+    $router = new Phalcon\Mvc\Router();
+
+    $router->add(
+        "/teacher/noticeboard",
+        array(
+            "controller" => "notice",
+            "action"     => "index"
+        )
+    );
+
+    $router->add(
+        "/student/noticeboard",
+        array(
+            "controller" => "notice",
+            "action"     => "index"
+        )
+    );
+
+    $router->add(
+        "/school/noticeboard",
+        array(
+            "controller" => "notice",
+            "action"     => "index"
+        )
+    );
+
+    return $router;
+});
+
 /**
  * Database connection is created based in the parameters defined in the configuration file
  */

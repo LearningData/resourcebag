@@ -4,9 +4,6 @@
     {{ link_to("school/changePassword/", "Change Password") }} |
     {{ link_to("school/edit/", "Edit") }} |
     {{ link_to("school/timetable/", "Timetable") }} |
-    <a href="#">Join Classes</a> |
-    <a href="#">List of Teachers</a> |
-    <a href="#">Moodle</a> |
-    <a href="#">School's Website</a> |
+    {{ link_to("school/noticeboard/", "Notice Board") }} |
     <a href="/schoolbag/session/logout">logout</a>
 </nav>

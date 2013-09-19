@@ -8,5 +8,6 @@
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
     {{ link_to("teacher/timetable", "Timetable") }} |
     {{ link_to("teacher/subjects", "Subjects") }} |
+    {{ link_to("teacher/noticeboard", "Notice Board") }} |
     {{ link_to("session/logout", "Logout") }}
 </ul>

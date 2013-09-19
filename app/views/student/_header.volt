@@ -7,5 +7,6 @@
     {{ link_to("student/subjects/", "Subjects") }} |
     {{ link_to("student/listTeachers/", "Teachers") }} |
     {{ link_to("student/timetable", "Timetable") }} |
+    {{ link_to("student/noticeboard", "Notice Board") }} |
     {{ link_to("session/logout", "Logout") }}
 </nav>
