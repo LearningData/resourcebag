@@ -73,7 +73,7 @@ class StudentController extends UsersController {
             $slots[$i] = Timetable::getStudentSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
-        $this->view->render("student/timetable", "index");
+        $this->view->pick("student/timetable/index");
     }
 }
 ?>

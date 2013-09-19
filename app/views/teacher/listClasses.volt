@@ -1,5 +1,3 @@
-{% include "teacher/_header.volt" %}
-
 <h1>Listing classes</h1>
 <table>
 {% for listClass in classes %}

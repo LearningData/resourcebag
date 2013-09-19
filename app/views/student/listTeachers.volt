@@ -1,5 +1,3 @@
-{% include "student/_header.volt" %}
-
 <h1>Teachers</h1>
 
 {% for teacher in teachers %}

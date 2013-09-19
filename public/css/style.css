@@ -1,0 +1,9 @@
+body {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+textarea {
+    height: 130px;
+    width: 500px;
+}

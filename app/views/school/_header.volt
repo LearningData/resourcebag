@@ -10,5 +10,3 @@
     <a href="#">School's Website</a> |
     <a href="/schoolbag/session/logout">logout</a>
 </nav>
-
-{{ content() }}

@@ -83,12 +83,4 @@ class UsersController extends ControllerBase {
             "action" => "index"
         ));
     }
-
-    protected function getUserBySession() {
-        $userId = $this->session->get("userId");
-        $user = User::findFirstById($userId);
-        $this->view->user = $user;
-
-        return $user;
-    }
 }

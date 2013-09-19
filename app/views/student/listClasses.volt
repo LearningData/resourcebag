@@ -1,6 +1,3 @@
-{% include "student/_header.volt" %}
-
-
 <h1>Classes</h1>
 
 <form action="/schoolbag/student/listClasses" method="get">

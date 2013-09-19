@@ -1,5 +1,3 @@
-{% include "student/_header.volt" %}
-
 <h1>Timetable</h1>
 
 <table class="table table-condensed">

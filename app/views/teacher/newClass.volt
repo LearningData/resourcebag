@@ -1,5 +1,3 @@
-{% include "teacher/_header.volt" %}
-
 <h1>New Class</h1>
 
 <form action="/schoolbag/teacher/createClass" method="post">

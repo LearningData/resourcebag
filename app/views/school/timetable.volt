@@ -1,5 +1,3 @@
-{% include "school/_header.volt" %}
-
 <h1>Timetable</h1>
 
 <form action="/schoolbag/school/createSlot" method="post">

@@ -1,4 +1,3 @@
-{% include "teacher/_header.volt" %}
 <div align="center">
     <h1>Edit user</h1>
 </div>

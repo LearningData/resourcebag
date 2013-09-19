@@ -105,13 +105,59 @@ class TeacherController extends UsersController {
             $slots[$i] = Timetable::getSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
-        $this->view->render("teacher/timetable", "index");
+        $this->view->pick("teacher/timetable/index");
     }
 
     public function subjectsAction() {
         $teacherId = $this->view->user->id;
         $this->view->classes = ClassList::find("teacherId = $teacherId");
-        $this->view->render("teacher/subject", "index");
+        $this->view->pick("teacher/subject/index");
+    }
+
+    public function homeworkAction($action=null, $classId=null){
+        if ($action && $classId && $action == "new") {
+            $classList = ClassList::findFirstById($classId);
+            if (!$classList) {
+                return $this->dispatcher->forward(array("action" => "timetable"));
+            }
+
+            $this->view->classList = $classList;
+            $this->view->pick("teacher/homework/new");
+        }
+    }
+
+    public function createHomeworkAction() {
+        if (!$this->request->isPost()) { return $this->toIndex(); }
+
+        $students = $this->request->getPost("students");
+
+        if(!$students) { return $this->toIndex(); }
+
+        foreach ($students as $studentId) {
+            $homework = new Homework();
+            $homework->text = $this->request->getPost("description");
+            $homework->classId = $this->request->getPost("class-id");
+            $homework->dueDate = $this->request->getPost("due-date");
+            $homework->schoolId = $this->view->user->schoolId;
+            $homework->teacherId = $this->view->user->id;
+            $homework->studentId = $studentId;
+            $homework->timeSlotId = "0000";
+            $homework->setDate = date("Y-m-d");
+            $homework->submittedDate = "0000-00-00";
+            $homework->reviewedDate = "0000-00-00";
+            $homework->status = 0;
+
+            if (!$homework->save()) {
+                $this->flash->error("Error to save homework for student: $studentId");
+                foreach ($homework->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+            }
+        }
+
+        $this->flash->success("Homework created");
+            return $this->dispatcher->forward(array(
+                    "action" => "homework"));
     }
 }
 ?>
