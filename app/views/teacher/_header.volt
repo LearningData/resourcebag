@@ -8,9 +8,5 @@
     {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
     {{ link_to("teacher/timetable", "Timetable") }} |
     {{ link_to("teacher/subjects", "Subjects") }} |
-    <a href="#">Select Friends</a> |
-    <a href="#">Roll Call</a> |
-    <a href="#">Moodle</a> |
-    <a href="#">School's Website</a> |
-    <a href="/schoolbag/session/logout">logout</a>
+    {{ link_to("session/logout", "Logout") }}
 </ul>

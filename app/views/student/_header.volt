@@ -7,10 +7,5 @@
     {{ link_to("student/subjects/", "Subjects") }} |
     {{ link_to("student/listTeachers/", "Teachers") }} |
     {{ link_to("student/timetable", "Timetable") }} |
-    <a href="#">Change Crest</a> |
-    <a href="#">Change Policies</a> |
-    <a href="#">Change Map</a> |
-    <a href="#">Moodle</a> |
-    <a href="#">School's Website</a> |
-    <a href="/schoolbag/session/logout">logout</a>
+    {{ link_to("session/logout", "Logout") }}
 </nav>

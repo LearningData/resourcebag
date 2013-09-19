@@ -7,5 +7,3 @@
     <a href="/schoolbag/admin/newConfig">New Configuration</a>
     <a href="/schoolbag/session/logout">Logout</a>
 </nav>
-
-{{ content() }}
