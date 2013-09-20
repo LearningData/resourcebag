@@ -14,9 +14,7 @@
     {% for classList in classes %}
         <tr>
             <td>
-                <a href="#">
-                    {{classList.subject.name }} ({{ classList.extraRef }})
-                </a>
+                {{classList.subject.name }} ({{ classList.extraRef }})
             </td>
             <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
             <td>{{ link_to("teacher/homework/list/"~classList.id, "Correct") }}</td>

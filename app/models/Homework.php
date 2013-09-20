@@ -20,7 +20,7 @@ class Homework extends \Phalcon\Mvc\Model {
 
     public function columnMap() {
         return array(
-            'homeworkID' => 'homeworkId',
+            'homeworkID' => 'id',
             'schoolID' => 'schoolId',
             'studentID' => 'studentId',
             'teacherID' => 'teacherId',

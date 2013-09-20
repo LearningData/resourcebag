@@ -11,7 +11,11 @@
     <tbody>
     {% for homework in homeworks %}
         <tr>
-            <td>{{ homework.text }}</td>
+            <td>
+                <a href="#">
+                    {{ homework.text }}
+                </a>
+            </td>
             <td>{{ homework.setDate }}</td>
             <td>{{ homework.dueDate }}</td>
             <td>{{ homework.status }}</td>
