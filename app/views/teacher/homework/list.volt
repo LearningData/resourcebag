@@ -16,7 +16,13 @@
             <td>{{ homework.text }}</td>
             <td>{{ homework.setDate }}</td>
             <td>{{ homework.dueDate }}</td>
-            <td>{{ homework.status }}</td>
+            <td>
+                {% if homework.submittedDate == "0000-00-00" %}
+                    Not submitted yet
+                {% else %}
+                    <a href="#">Submitted</a>
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
