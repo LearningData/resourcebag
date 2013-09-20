@@ -16,6 +16,7 @@ class Homework extends \Phalcon\Mvc\Model {
 
     public function initialize() {
         $this->belongsTo("studentId", "User", "id", array("alias" =>"Student"));
+        $this->hasMany("id", "HomeworkFile", "homeworkId", array("alias" => "Files"));
     }
 
     public function columnMap() {

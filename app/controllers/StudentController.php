@@ -86,7 +86,9 @@ class StudentController extends UsersController {
             $this->view->classList = $classList;
             if($action == "new") { $this->view->pick("student/homework/new"); }
 
-            $this->view->homeworks = Homework::find("classId = $classId and studentId = " . $this->view->user->id);
+            $query = "classId = $classId and studentId = " .
+                    $this->view->user->id . " and submittedDate = '0000-00-00'";
+            $this->view->homeworks = Homework::find($query);
             if($action == "list") { $this->view->pick("student/homework/list"); }
         }
     }

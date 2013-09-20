@@ -83,6 +83,14 @@ $di->set("router", function() {
             "action"     => "answer"
         )
     );
+
+    $router->add(
+        "/student/homework/submit/{homeworkId}",
+        array(
+            "controller" => "homework",
+            "action"     => "submit"
+        )
+    );
     return $router;
 });
 
