@@ -5,7 +5,7 @@ class ControllerBase extends Controller {
     protected function getUserBySession() {
         $userId = $this->session->get("userId");
         $user = User::findFirstById($userId);
-        $this->view->user = $user;
+        if ($user) { $this->view->user = $user; }
 
         return $user;
     }
