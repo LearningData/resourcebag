@@ -14,6 +14,9 @@ class Homework extends \Phalcon\Mvc\Model {
     public $text;
     public $status;
 
+    public function initialize() {
+        $this->belongsTo("studentId", "User", "id", array("alias" =>"Student"));
+    }
 
     public function columnMap() {
         return array(

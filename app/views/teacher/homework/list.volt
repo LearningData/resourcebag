@@ -12,7 +12,7 @@
     <tbody>
     {% for homework in homeworks %}
         <tr>
-            <td>{{ homework.studentId }}</td>
+            <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
             <td>{{ homework.text }}</td>
             <td>{{ homework.setDate }}</td>
             <td>{{ homework.dueDate }}</td>
