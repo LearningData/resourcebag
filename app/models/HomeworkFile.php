@@ -2,6 +2,7 @@
 
 class HomeworkFile extends \Phalcon\Mvc\Model {
     public $name;
+    public $description;
     public $originalName;
     public $size;
     public $type;
@@ -16,6 +17,7 @@ class HomeworkFile extends \Phalcon\Mvc\Model {
     public function columnMap() {
         return array(
             'name' => 'name',
+            'description' => 'description',
             'originalName' => 'originalName',
             'size' => 'size',
             'type' => 'type',

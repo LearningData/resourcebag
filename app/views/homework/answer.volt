@@ -2,15 +2,33 @@
 
 <section>
     <h4>Files uploaded:</h4>
-    {% for file in homework.files %}
-        <p>{{ file.originalName }}</p>
-    {% endfor %}
+    <table class="table">
+        <thead>
+            <th>File Name</th>
+            <th>Description</th>
+        </thead>
+        {% for file in homework.files %}
+            <tr>
+                <td>{{ file.originalName }}</td>
+                <td>{{ file.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 </section>
 <br><br>
 
-<form action="/schoolbag/homework/uploadAnswer"
+<form action="/schoolbag/homework/uploadFile"
             method="post" enctype="multipart/form-data">
-    <input type="file" name="file">
+    <p>
+        <label>File</label>
+        <input type="file" name="file">
+    </p>
+    <p>
+        <label>Description</label>
+        <textarea name="description"></textarea>
+    </p>
     <input type="hidden" name="homework-id" value="{{ homework.id }}">
-    <input type="submit">
+    <p>
+        <input type="submit">
+    </p>
 </form>

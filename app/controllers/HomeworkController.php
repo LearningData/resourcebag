@@ -30,8 +30,9 @@ class HomeworkController extends ControllerBase {
         );
     }
 
-    public function uploadAnswerAction() {
+    public function uploadFileAction() {
         $homeworkId = $this->request->getPost("homework-id");
+        $description = $this->request->getPost("description");
 
         if ($this->request->hasFiles() == true) {
             foreach ($this->request->getUploadedFiles() as $file){
@@ -42,6 +43,7 @@ class HomeworkController extends ControllerBase {
                 $homeworkFile->type = $file->getType();
                 $homeworkFile->file = file_get_contents($file->getTempName());
                 $homeworkFile->homeworkId = $homeworkId;
+                $homeworkFile->description = $description;
 
                 if ($homeworkFile->save()) {
                     $this->flash->success("The file was uploaded.");
