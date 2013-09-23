@@ -14,6 +14,11 @@ class Homework extends \Phalcon\Mvc\Model {
     public $text;
     public $status;
 
+    public static $PENDING = 0;
+    public static $STARTED = 1;
+    public static $SUBMITTED = 2;
+    public static $REVIEWED = 3;
+
     public function initialize() {
         $this->belongsTo("studentId", "User", "id", array("alias" =>"Student"));
         $this->hasMany("id", "HomeworkFile", "homeworkId", array("alias" => "Files"));
@@ -34,7 +39,17 @@ class Homework extends \Phalcon\Mvc\Model {
     }
 
     public function isPending() {
-        return $this->getStatus() == "pending";
+        return $this->status == Homework::$PENDING;
+    }
+
+    public function isSubmitted() {
+        return $this->status == Homework::$SUBMITTED;
+    }
+
+    public static function findHomeworksByStatus($userId, $classId, $status) {
+        $query = "classId = $classId and studentId = $userId and status = $status";
+
+        return Homework::find($query);
     }
 
     public function columnMap() {

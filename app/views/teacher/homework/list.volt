@@ -1,4 +1,9 @@
 <h2>Homeworks</h2>
+<h5>
+    <a href="/schoolbag/teacher/homework/{{ classList.id }}">all</a> |
+    <a href="/schoolbag/teacher/homework/{{ classList.id }}?filter=3">reviewed</a> |
+    <a href="/schoolbag/teacher/homework/{{ classList.id }}?filter=2">submitted</a> |
+</h5>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -17,10 +22,10 @@
             <td>{{ homework.setDate }}</td>
             <td>{{ homework.dueDate }}</td>
             <td>
-                {% if homework.submittedDate == "0000-00-00" %}
-                    Not submitted yet
-                {% else %}
+                {% if homework.isSubmitted() %}
                     {{ link_to("homework/review/"~homework.id, "Submitted") }}
+                {% else %}
+                    {{ homework.getStatus() }}
                 {% endif %}
             </td>
         </tr>

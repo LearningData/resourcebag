@@ -6,29 +6,33 @@ class HomeworkController extends ControllerBase {
         $classList = ClassList::findFirstById($classId);
 
         if ($user->isStudent()) {
-            $query = "classId = $classId and studentId = " .$user->id;
-            if ($this->request->get("filter") == "s") {
-                $query .= " and submittedDate != '0000-00-00'";
-                $query .= " and reviewedDate = '0000-00-00'";
-            }
+            $status = $this->request->get("filter");
 
-            if ($this->request->get("filter") == "r") {
-                $query .= " and reviewedDate != '0000-00-00'";
-            }
-
-            if ($this->request->get("filter") == "p") {
-                $query .= " and reviewedDate = '0000-00-00' and submittedDate = '0000-00-00'";
+            if ($status != "") {
+                $homeworks = Homework::findHomeworksByStatus($user->id,
+                    $classId, $status);
+            } else {
+                $query = "classId = $classId and studentId = " .$user->id;
+                $homeworks = Homework::find($query);
             }
 
             $template = "student/homework/list";
         } else {
-            $query = "classId = $classId and reviewedDate = '0000-00-00'";
+            $status = $this->request->get("filter");
+
+            if ($status != "") {
+                $homeworks = Homework::find("classId = $classId and status = $status");
+            } else {
+                $query = "classId = $classId and status >= 2";
+                $homeworks = Homework::find($query);
+            }
+
             $template = "teacher/homework/list";
         }
 
         $this->view->classList = $classList;
         $this->view->user = $user;
-        $this->view->homeworks = Homework::find($query);
+        $this->view->homeworks = $homeworks;
 
         $this->view->pick($template);
     }
@@ -72,6 +76,7 @@ class HomeworkController extends ControllerBase {
         $user = $this->getUserBySession();
 
         $homework->reviewedDate = date("Y-m-d");
+        $homework->status = Homework::$REVIEWED;
 
         if (!$homework->save()) {
             $this->flash->error("Error to review the homework");
@@ -79,7 +84,8 @@ class HomeworkController extends ControllerBase {
             $this->flash->success("Homework was reviewed.");
         }
 
-        return $this->response->redirect("teacher/homework/list/" . $homework->classId);
+        $uri = "teacher/homework/" . $homework->classId;
+        return $this->response->redirect($uri);
     }
 
     public function downloadFileAction($fileId) {
@@ -103,6 +109,7 @@ class HomeworkController extends ControllerBase {
         if (!$homework) { echo "error"; }
 
         $homework->submittedDate = date("Y-m-d");
+        $homework->status = Homework::$SUBMITTED;
 
         if ($homework->save()) {
             $this->flash->success("The homework was submitted.");
@@ -110,11 +117,7 @@ class HomeworkController extends ControllerBase {
             $this->flash->error("The homework was not submitted.");
         }
 
-        $this->dispatcher->forward(
-            array("controller" => "student",
-                "action" => "homework",
-                "params" => array("action" => "list", "classId" => $homework->classId))
-        );
+        return $this->response->redirect("student/homework/" . $homework->classId);
     }
 
     public function createHomeworkByStudentAction($classId) {
