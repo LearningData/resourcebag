@@ -78,7 +78,7 @@ class UsersController extends ControllerBase {
         return $this->toIndex();
     }
 
-    private function toIndex() {
+    protected function toIndex() {
         return $this->dispatcher->forward(array(
             "action" => "index"
         ));
