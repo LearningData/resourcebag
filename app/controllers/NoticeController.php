@@ -9,5 +9,9 @@ class NoticeController extends ControllerBase {
         $this->view->query = $param;
         $this->view->notices = NoticeBoard::find($param);
     }
+
+    public function newAction() {
+        $user = $this->getUserBySession();
+    }
 }
 

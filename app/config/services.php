@@ -68,11 +68,28 @@ $di->set("router", function() {
         )
     );
 
+
     $router->add(
         "/school/noticeboard",
         array(
             "controller" => "notice",
             "action"     => "index"
+        )
+    );
+
+    $router->add(
+        "/school/noticeboard/new",
+        array(
+            "controller" => "notice",
+            "action"     => "new"
+        )
+    );
+
+    $router->add(
+        "/teacher/noticeboard/new",
+        array(
+            "controller" => "notice",
+            "action"     => "new"
         )
     );
 
