@@ -6,11 +6,13 @@
         <thead>
             <th>File Name</th>
             <th>Description</th>
+            <th></th>
         </thead>
         {% for file in homework.files %}
             <tr>
                 <td>{{ file.originalName }}</td>
                 <td>{{ file.description }}</td>
+                <td>{{ link_to("homework/removeFile/"~file.id,"Remove") }}</td>
             </tr>
         {% endfor %}
     </table>

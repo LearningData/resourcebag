@@ -89,10 +89,41 @@ $di->set("router", function() {
         "/teacher/noticeboard/new",
         array(
             "controller" => "notice",
-            "action"     => "new"
+            "action" => "new"
         )
     );
 
+    $router->add(
+        "/student/homework/{classId}",
+        array(
+            "controller" => "homework",
+            "action" => "index"
+        )
+    );
+
+    $router->add(
+        "/teacher/homework/{classId}",
+        array(
+            "controller" => "homework",
+            "action"     => "index"
+        )
+    );
+
+    $router->add(
+        "/student/homework/new/{classId}",
+        array(
+            "controller" => "homework",
+            "action" => "newHomework"
+        )
+    );
+
+    $router->add(
+        "/teacher/homework/new/{classId}",
+        array(
+            "controller" => "homework",
+            "action"     => "newHomework"
+        )
+    );
     $router->add(
         "/student/homework/answer/{homeworkId}",
         array(

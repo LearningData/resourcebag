@@ -19,6 +19,24 @@ class Homework extends \Phalcon\Mvc\Model {
         $this->hasMany("id", "HomeworkFile", "homeworkId", array("alias" => "Files"));
     }
 
+    public function getStatus() {
+        if ($this->reviewedDate == "0000-00-00" and
+            $this->submittedDate != "0000-00-00") {
+
+            return "submitted";
+        }
+
+        if ($this->reviewedDate != "0000-00-00") {
+            return "reviewed";
+        }
+
+        return "pending";
+    }
+
+    public function isPending() {
+        return $this->getStatus() == "pending";
+    }
+
     public function columnMap() {
         return array(
             'homeworkID' => 'id',

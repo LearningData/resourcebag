@@ -1,6 +1,56 @@
 <?php
 
 class HomeworkController extends ControllerBase {
+    public function indexAction($classId) {
+        $user = $this->getUserBySession();
+        $classList = ClassList::findFirstById($classId);
+
+        if ($user->isStudent()) {
+            $query = "classId = $classId and studentId = " .$user->id;
+            if ($this->request->get("filter") == "s") {
+                $query .= " and submittedDate != '0000-00-00'";
+                $query .= " and reviewedDate = '0000-00-00'";
+            }
+
+            if ($this->request->get("filter") == "r") {
+                $query .= " and reviewedDate != '0000-00-00'";
+            }
+
+            if ($this->request->get("filter") == "p") {
+                $query .= " and reviewedDate = '0000-00-00' and submittedDate = '0000-00-00'";
+            }
+
+            $template = "student/homework/list";
+        } else {
+            $query = "classId = $classId and reviewedDate = '0000-00-00'";
+            $template = "teacher/homework/list";
+        }
+
+        $this->view->classList = $classList;
+        $this->view->user = $user;
+        $this->view->homeworks = Homework::find($query);
+
+        $this->view->pick($template);
+    }
+
+    public function newHomeworkAction($classId) {
+        $user = $this->getUserBySession();
+        $classList = ClassList::findFirstById($classId);
+        if (!$classList) {
+            return $this->dispatcher->forward(array("action" => "timetable"));
+        }
+
+        $this->view->classList = $classList;
+
+        if ($user->isStudent()) {
+            $template = "student/homework/new";
+        } else {
+            $template = "teacher/homework/new";
+        }
+
+        $this->view->pick($template);
+    }
+
     public function answerAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
         $user = $this->getUserBySession();
@@ -67,6 +117,21 @@ class HomeworkController extends ControllerBase {
         );
     }
 
+    public function createHomeworkByStudentAction($classId) {
+        $user = $this->getUserBySession();
+        $teacherId = $this->request->getPost("teacher-id");
+        $homework = $this->populeHomework($teacherId, $user->id);
+
+        if (!$homework->save()) {
+            $this->flash->error("Was not possible to create the homework");
+            $this->appendErrorMessages($homework->getMessages());
+        } else {
+            $this->flash->success("The homework was created");
+        }
+
+        return $this->dispatcher->forward(array("action" => "homework"));
+    }
+
     public function uploadFileAction() {
         $homeworkId = $this->request->getPost("homework-id");
         $description = $this->request->getPost("description");
@@ -96,5 +161,43 @@ class HomeworkController extends ControllerBase {
         return $this->dispatcher->forward(array("action" => "answer",
             "params" => array("homeworkId" => $homeworkId)));
     }
-}
 
+    public function removeFileAction($fileId) {
+        $file = HomeworkFile::findFirstById($fileId);
+
+        $homeworkId = $file->homeworkId;
+
+        if ($file->delete()) {
+            $this->flash->success("File was removed");
+        } else {
+            $this->flash->error("File was not removed");
+        }
+
+        return $this->dispatcher->forward(array("action" => "answer",
+            "params" => array("homeworkId" => $homeworkId)));
+    }
+
+    private function populeHomework($teacherId, $studentId) {
+        $homework = new Homework();
+
+        $homework->text = $this->request->getPost("description");
+        $homework->classId = $this->request->getPost("class-id");
+        $homework->dueDate = $this->request->getPost("due-date");
+        $homework->schoolId = $this->view->user->schoolId;
+        $homework->teacherId = $teacherId;
+        $homework->studentId = $studentId;
+        $homework->timeSlotId = "0000";
+        $homework->setDate = date("Y-m-d");
+        $homework->submittedDate = "0000-00-00";
+        $homework->reviewedDate = "0000-00-00";
+        $homework->status = 0;
+
+        return $homework;
+    }
+
+    private function appendErrorMessages($messages) {
+        foreach ($messages as $message) {
+            $this->flash->error($message);
+        }
+    }
+}

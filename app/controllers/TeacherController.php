@@ -114,22 +114,6 @@ class TeacherController extends UsersController {
         $this->view->pick("teacher/subject/index");
     }
 
-    public function homeworkAction($action=null, $classId=null){
-        if ($action && $classId) {
-            $classList = ClassList::findFirstById($classId);
-            if (!$classList) {
-                return $this->dispatcher->forward(array("action" => "timetable"));
-            }
-
-            $this->view->classList = $classList;
-            if($action == "new") { $this->view->pick("teacher/homework/new"); }
-
-            $query = "classId = $classId and reviewedDate = '0000-00-00'";
-            $this->view->homeworks = Homework::find($query);
-            if($action == "list") { $this->view->pick("teacher/homework/list"); }
-        }
-    }
-
     public function createHomeworkAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
 
@@ -160,7 +144,7 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Homework created");
-        return $this->dispatcher->forward(array("action" => "homework"));
+        return $this->response->redirect("student/homework/" . $homework->classId);
     }
 }
 ?>

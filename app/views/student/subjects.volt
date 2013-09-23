@@ -18,7 +18,7 @@
                 </a>
             </td>
             <td>{{ link_to("student/homework/new/"~classList.id, "New") }}</td>
-            <td>{{ link_to("student/homework/list/"~classList.id, "Show") }}</td>
+            <td>{{ link_to("student/homework/"~classList.id, "Show") }}</td>
             <td>{{ classList.user.name }} {{ classList.user.lastName }}</td>
         </tr>
     {% endfor %}
