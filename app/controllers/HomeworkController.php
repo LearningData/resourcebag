@@ -9,12 +9,27 @@ class HomeworkController extends ControllerBase {
         $this->view->homework = $homework;
     }
 
-    public function correctAction($homeworkId) {
+    public function reviewAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
         $user = $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
         $this->view->homework = $homework;
+    }
+
+    public function reviewedAction($homeworkId) {
+        $homework = Homework::findFirstById($homeworkId);
+        $user = $this->getUserBySession();
+
+        $homework->reviewedDate = date("Y-m-d");
+
+        if (!$homework->save()) {
+            $this->flash->error("Error to review the homework");
+        } else {
+            $this->flash->success("Homework was reviewed.");
+        }
+
+        return $this->response->redirect("teacher/homework/list/" . $homework->classId);
     }
 
     public function downloadFileAction($fileId) {
@@ -23,19 +38,12 @@ class HomeworkController extends ControllerBase {
             $this->flash->error("Error to download file.");
         }
 
-        ob_clean();
-
-        $size = $file->size;
-        $type = $file->type;
-        $name = $file->name;
-
-        header("Content-length: $size");
-        header("Content-type: $type");
-        header("Content-Disposition: attachment; filename=$name");
+        header("Content-length: " . $file->size);
+        header("Content-type: " . $file->type);
+        header("Content-Disposition: attachment; filename=" . $file->name);
 
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-
-        $this->response->resetHeaders()->setContent($file->file)->send();
+        $this->response->setContent($file->file)->send();
     }
 
     public function submitAction($homeworkId) {

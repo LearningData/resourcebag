@@ -124,7 +124,8 @@ class TeacherController extends UsersController {
             $this->view->classList = $classList;
             if($action == "new") { $this->view->pick("teacher/homework/new"); }
 
-            $this->view->homeworks = Homework::find("classId = $classId");
+            $query = "classId = $classId and reviewedDate = '0000-00-00'";
+            $this->view->homeworks = Homework::find($query);
             if($action == "list") { $this->view->pick("teacher/homework/list"); }
         }
     }
