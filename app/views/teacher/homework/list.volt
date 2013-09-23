@@ -20,7 +20,7 @@
                 {% if homework.submittedDate == "0000-00-00" %}
                     Not submitted yet
                 {% else %}
-                    <a href="#">Submitted</a>
+                    {{ link_to("homework/correct/"~homework.id, "Submitted") }}
                 {% endif %}
             </td>
         </tr>

@@ -9,6 +9,35 @@ class HomeworkController extends ControllerBase {
         $this->view->homework = $homework;
     }
 
+    public function correctAction($homeworkId) {
+        $homework = Homework::findFirstById($homeworkId);
+        $user = $this->getUserBySession();
+
+        if (!$homework) { echo "error"; }
+        $this->view->homework = $homework;
+    }
+
+    public function downloadFileAction($fileId) {
+        $file = HomeworkFile::findFirst("id = $fileId");
+        if (!$file) {
+            $this->flash->error("Error to download file.");
+        }
+
+        ob_clean();
+
+        $size = $file->size;
+        $type = $file->type;
+        $name = $file->name;
+
+        header("Content-length: $size");
+        header("Content-type: $type");
+        header("Content-Disposition: attachment; filename=$name");
+
+        $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+
+        $this->response->resetHeaders()->setContent($file->file)->send();
+    }
+
     public function submitAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
         $user = $this->getUserBySession();
