@@ -72,19 +72,20 @@ class HomeworkController extends ControllerBase {
     }
 
     public function reviewedAction($homeworkId) {
-        $homework = Homework::findFirstById($homeworkId);
-        $user = $this->getUserBySession();
-
-        $homework->reviewedDate = date("Y-m-d");
-        $homework->status = Homework::$REVIEWED;
-
-        if (!$homework->save()) {
-            $this->flash->error("Error to review the homework");
-        } else {
-            $this->flash->success("Homework was reviewed.");
-        }
+        $homework = $this->reviewHomework($homeworkId);
 
         $uri = "teacher/homework/" . $homework->classId;
+        return $this->response->redirect($uri);
+    }
+
+    public function reviewManyHomeworksAction() {
+        $ids = $this->request->getPost("ids");
+
+        foreach ($ids as $id) {
+            $this->reviewHomework($id);
+        }
+
+        $uri = "teacher/homework/" . $this->request->getPost("class-id");
         return $this->response->redirect($uri);
     }
 
@@ -194,6 +195,22 @@ class HomeworkController extends ControllerBase {
         $homework->submittedDate = "0000-00-00";
         $homework->reviewedDate = "0000-00-00";
         $homework->status = 0;
+
+        return $homework;
+    }
+
+    private function reviewHomework($homeworkId) {
+        $homework = Homework::findFirstById($homeworkId);
+        $user = $this->getUserBySession();
+
+        $homework->reviewedDate = date("Y-m-d");
+        $homework->status = Homework::$REVIEWED;
+
+        if (!$homework->save()) {
+            $this->flash->error("Error to review the homework");
+        } else {
+            $this->flash->success("Homework was reviewed.");
+        }
 
         return $homework;
     }
