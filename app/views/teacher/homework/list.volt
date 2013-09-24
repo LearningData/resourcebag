@@ -39,6 +39,6 @@
         {% endfor %}
         </tbody>
     </table>
-    <input type="hidden" name="class-id" value="{{ homework.classId }}">
+    <input type="hidden" name="class-id" value="{{ classList.id }}">
     <input type="submit">
 </form>
