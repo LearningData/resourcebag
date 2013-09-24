@@ -13,10 +13,10 @@
     </p>
     <p>
         <label>Due Date</label>
-        <input type="date" name="due-date">
+        <input type="text" name="due-date" id="due-date">
     </p>
+    <input type="hidden" name="week-days" value="{{ weekDays }}" id="week-days">
     <input type="hidden" name="class-id" value="{{ classList.id }}">
     <input type="hidden" name="teacher-id" value="{{ classList.teacherId }}"
     <p><input type="submit"></p>
-
 </form>

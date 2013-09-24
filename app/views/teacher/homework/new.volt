@@ -13,7 +13,7 @@
     </p>
     <p>
         <label>Due Date</label>
-        <input type="date" name="due-date">
+        <input type="text" name="due-date" id="due-date">
     </p>
     <h3>Assign students</h3>
     {% for student in classList.users %}
@@ -22,6 +22,7 @@
                 value="{{ student.id }}"> {{ student.name }}
         </p>
     {% endfor %}
+    <input type="hidden" name="week-days" value="{{ weekDays }}" id="week-days">
     <input type="hidden" name="class-id" value="{{ classList.id }}"
     <p><input type="submit"></p>
 

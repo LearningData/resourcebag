@@ -12,7 +12,7 @@
                 <th>Homework</th>
                 <th>Assigned Date</th>
                 <th>Due Date</th>
-                <th>Submitted</th>
+                <th>Status</th>
                 <th>Review</th>
             </tr>
         </thead>
@@ -32,7 +32,13 @@
                             name="ids[]" value="{{ homework.id }}">
                     </td>
                 {% else %}
-                    <td>{{ homework.getStatus() }}</td>
+                    <td>
+                    {% if homework.isReviewed() %}
+                        {{ link_to("homework/show/"~homework.id, "Reviewed") }}
+                    {% else %}
+                        {{ homework.getStatus() }}
+                    {% endif %}
+                    </td>
                     <td></td>
                 {% endif %}
             </tr>

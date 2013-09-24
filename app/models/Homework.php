@@ -46,6 +46,10 @@ class Homework extends \Phalcon\Mvc\Model {
         return $this->status == Homework::$SUBMITTED;
     }
 
+    public function isReviewed() {
+        return $this->status == Homework::$REVIEWED;
+    }
+
     public static function findHomeworksByStatus($userId, $classId, $status) {
         $query = "classId = $classId and studentId = $userId and status = $status";
 

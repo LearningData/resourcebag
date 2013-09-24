@@ -33,7 +33,13 @@
             {% endif %}
             <td>{{ homework.setDate }}</td>
             <td>{{ homework.dueDate }}</td>
-            <td>{{ homework.getStatus()}}</td>
+            <td>
+                {% if homework.isReviewed() %}
+                    {{ link_to("homework/show/"~homework.id, "Reviewed")}}
+                {% else %}
+                    {{ homework.getStatus()}}
+                {% endif %}
+            </td>
         </tr>
     {% endfor %}
     </tbody>

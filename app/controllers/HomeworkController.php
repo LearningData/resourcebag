@@ -37,6 +37,11 @@ class HomeworkController extends ControllerBase {
         $this->view->pick($template);
     }
 
+    public function showAction($homeworkId) {
+        $this->getUserBySession();
+        $this->view->homework = Homework::findFirstById($homeworkId);
+    }
+
     public function newHomeworkAction($classId) {
         $user = $this->getUserBySession();
         $classList = ClassList::findFirstById($classId);
@@ -45,6 +50,15 @@ class HomeworkController extends ControllerBase {
         }
 
         $this->view->classList = $classList;
+        $slots = TimetableSlot::find("classId = " . $classList->id);
+
+        $weekDays = "";
+
+        foreach ($slots as $slot) {
+            $weekDays .= $slot->day . ",";
+        }
+
+        $this->view->weekDays = $weekDays;
 
         if ($user->isStudent()) {
             $template = "student/homework/new";

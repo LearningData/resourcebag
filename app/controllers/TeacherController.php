@@ -16,7 +16,7 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
         $slots = array();
-        for($i = 2; $i <=7; $i++) {
+        for($i = 1; $i <=6; $i++) {
             $slots[$i] = Timetable::getEmptySlotsByDay($this->view->user, $i);
         }
         $this->view->slots = $slots;
@@ -101,7 +101,7 @@ class TeacherController extends UsersController {
         $user = $this->view->user;
         $slots = array();
 
-        for($i=2; $i <= 7; $i++) {
+        for($i=1; $i <= 6; $i++) {
             $slots[$i] = Timetable::getSlotsByDay($user, $i);
         }
         $this->view->slots = $slots;

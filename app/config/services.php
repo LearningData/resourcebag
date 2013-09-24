@@ -124,6 +124,22 @@ $di->set("router", function() {
             "action"     => "newHomework"
         )
     );
+
+    $router->add(
+        "/student/homework/show/{homeworkId}",
+        array(
+            "controller" => "homework",
+            "action" => "show"
+        )
+    );
+
+    $router->add(
+        "/teacher/classhomework/show/{homeworkId}",
+        array(
+            "controller" => "homework",
+            "action"     => "show"
+        )
+    );
     $router->add(
         "/student/homework/answer/{homeworkId}",
         array(
