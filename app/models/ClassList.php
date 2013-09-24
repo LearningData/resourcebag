@@ -24,10 +24,20 @@ class ClassList extends \Phalcon\Mvc\Model {
             "id",
             array("alias" => "Users")
         );
+
+        $this->hasMany("id", "Homework", "classId", array("alias" => "Homeworks"));
     }
 
     public function getSource() {
         return "classlist";
+    }
+
+    public function getPendingHomework() {
+        return $this->getHomeworks("status = " . Homework::$PENDING);
+    }
+
+    public function getSubmittedHomework() {
+        return $this->getHomeworks("status = " . Homework::$SUBMITTED);
     }
 
     public function columnMap() {
