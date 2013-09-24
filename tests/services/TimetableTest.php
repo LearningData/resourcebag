@@ -28,13 +28,13 @@
         function testArrayWeekDays() {
             $weekDays = Timetable::weekDays();
 
-            $this->assertEquals($weekDays[1], "Sunday");
-            $this->assertEquals($weekDays[2], "Monday");
-            $this->assertEquals($weekDays[3], "Tuesday");
-            $this->assertEquals($weekDays[4], "Wednesday");
-            $this->assertEquals($weekDays[5], "Thursday");
-            $this->assertEquals($weekDays[6], "Friday");
-            $this->assertEquals($weekDays[7], "Saturday");
+            $this->assertEquals($weekDays[0], "Sunday");
+            $this->assertEquals($weekDays[1], "Monday");
+            $this->assertEquals($weekDays[2], "Tuesday");
+            $this->assertEquals($weekDays[3], "Wednesday");
+            $this->assertEquals($weekDays[4], "Thursday");
+            $this->assertEquals($weekDays[5], "Friday");
+            $this->assertEquals($weekDays[6], "Saturday");
         }
 
         function testArrayMinutes() {
