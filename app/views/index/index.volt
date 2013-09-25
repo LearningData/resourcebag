@@ -1,5 +1,4 @@
 <h1>Schoolbag</h1>
-{{ content() }}
 {{ form("session/login", "method":"post") }}
 <p><label for="email">Email:</label></p>
 <p>{{ text_field("email") }}</p>

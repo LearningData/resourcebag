@@ -1,6 +1,3 @@
-{% include "admin/_header.volt" %}
-
-{{ content() }}
 
 <center><h1>Listing school</h1></center>
 <table class="browse" align="center">

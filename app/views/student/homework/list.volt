@@ -1,4 +1,3 @@
-{{ content() }}
 <h2>Homework</h2>
 <h5>
     {{ link_to("student/homework/new", "New Homework")}} |
