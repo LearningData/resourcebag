@@ -86,7 +86,7 @@ class StudentController extends UsersController {
         $homework->schoolId = $this->view->user->schoolId;
         $homework->teacherId = $this->request->getPost("teacher-id");
         $homework->studentId = $this->view->user->id;
-        $homework->timeSlotId = "0000";
+        $homework->timeSlotId = $this->request->getPost("due-time");
         $homework->setDate = date("Y-m-d");
         $homework->submittedDate = "0000-00-00";
         $homework->reviewedDate = "0000-00-00";

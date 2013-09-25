@@ -53,12 +53,19 @@ class HomeworkController extends ControllerBase {
         $slots = TimetableSlot::find("classId = " . $classList->id);
 
         $weekDays = "";
+        $classTimes = array();
 
         foreach ($slots as $slot) {
             $weekDays .= $slot->day . ",";
+            $query = "classId = " . $classList->id .
+            " and day = " .$slot->day;
+            if(!array_key_exists($slot->day, $classTimes)) {
+                $classTimes[$slot->day] = TimetableSlot::find($query);
+            }
         }
 
         $this->view->weekDays = $weekDays;
+        $this->view->classTimes = $classTimes;
 
         if ($user->isStudent()) {
             $template = "student/homework/new";
