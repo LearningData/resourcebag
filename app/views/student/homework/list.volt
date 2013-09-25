@@ -1,9 +1,9 @@
 <h2>Active {{ classList.subject.name }} ({{ classList.extraRef }})</h2>
 <h5>
-    <a href="/schoolbag/student/homework/{{ classList.id }}">all</a> |
-    <a href="/schoolbag/student/homework/{{ classList.id }}?filter=3">reviewed</a> |
-    <a href="/schoolbag/student/homework/{{ classList.id }}?filter=2">submitted</a> |
-    <a href="/schoolbag/student/homework/{{ classList.id }}?filter=0">pending</a>
+    {{ link_to("student/homework/"~classList.id, "All") }} |
+    {{ link_to("student/homework/"~classList.id~"?filter=3", "Reviewed") }} |
+    {{ link_to("student/homework/"~classList.id~"?filter=2", "Submitted") }} |
+    {{ link_to("student/homework/"~classList.id~"?filter=0", "Pending") }}
 </h5>
 <table class="table table-hover">
     <thead>
