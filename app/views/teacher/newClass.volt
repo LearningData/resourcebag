@@ -1,6 +1,6 @@
 <h1>New Class</h1>
 
-<form action="/schoolbag/teacher/createClass" method="post">
+{{ form("teacher/createClass", "method":"post") }}
     <p>
         <label for="subject-id">Subject</label>
         {{ select('subject-id', subjects, 'using': ['id', 'name'],

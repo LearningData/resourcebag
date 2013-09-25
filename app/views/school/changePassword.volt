@@ -1,4 +1,5 @@
 <h1>Change your password</h1>
-<form action="/schoolbag/school/updatePassword" method="POST">
+
+{{ form("school/updatePassword", "method":"post") }}
     {% include "users/_password_fields.volt" %}
 </form>

@@ -1,6 +1,6 @@
 <h1>Timetable</h1>
 
-<form action="/schoolbag/school/createSlot" method="post">
+{{ form("school/createSlot", "method":"post") }}
     <p>
         <label>Start Time</label>
         {{ select("start-hour", hours, 'using': ['id', 'value']) }}

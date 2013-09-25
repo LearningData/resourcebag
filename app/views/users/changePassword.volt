@@ -1,5 +1,5 @@
 <h1>Change your password</h1>
-<form action="/schoolbag/{{ controller }}/updatePassword" method="POST">
+{{ form(controller~"/updatePassword", "method":"post") }}
     <p>
         <label for="old-password">Old Password</label>
         <input type="password" name="old-password">
