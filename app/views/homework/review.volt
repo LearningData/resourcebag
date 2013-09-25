@@ -16,7 +16,7 @@
         {% endfor %}
     </tbody>
 </table>
-<form action="/schoolbag/homework/reviewed/{{ homework.id }}">
+{{ form("homework/reviewed/"~homework.id, "method":"post") }}
     <p>
         <input type="submit">
     </p>

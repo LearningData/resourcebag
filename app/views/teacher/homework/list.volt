@@ -1,10 +1,10 @@
 <h2>Homeworks</h2>
 <h5>
-    <a href="/schoolbag/teacher/homework/{{ classList.id }}">all</a> |
-    <a href="/schoolbag/teacher/homework/{{ classList.id }}?filter=3">reviewed</a> |
-    <a href="/schoolbag/teacher/homework/{{ classList.id }}?filter=2">submitted</a>
+    {{ link_to("teacher/homework/"~classList.id, "All") }} |
+    {{ link_to("teacher/homework/"~classList.id~"?filter=3", "Reviewed") }} |
+    {{ link_to("teacher/homework/"~classList.id~"?filter=2", "Submitted") }} |
 </h5>
-<form action="/schoolbag/homework/reviewManyHomeworks" method="post">
+{{ form("homework/reviewManyHomeworks", "method":"post") }}
     <table class="table table-hover">
         <thead>
             <tr>

@@ -19,8 +19,7 @@
 </section>
 <br><br>
 
-<form action="/schoolbag/homework/uploadFile"
-            method="post" enctype="multipart/form-data">
+{{ form("homework/uploadFile", "method":"post", "enctype":"multipart/form-data") }}
     <p>
         <label>File</label>
         <input type="file" name="file">

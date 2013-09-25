@@ -1,6 +1,6 @@
 <h2>New {{ classList.subject.name }} homework </h2>
 
-<form action="/schoolbag/teacher/createHomework" method="post">
+{{ form("teacher/createHomework", "method":"post") }}
     <p>
         <label>Homework</label>
         <textarea rows="4" cols="300" name="description"></textarea>
