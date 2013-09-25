@@ -2,8 +2,8 @@ $(function() {
     $("#due-date").datepicker({
         dateFormat: 'yy-mm-dd',
         minDate: 1,
-        beforeShowDay: enableDays,
-        onSelect: showTimes
+        //beforeShowDay: enableDays,
+        //onSelect: showTimes
     });
 });
 

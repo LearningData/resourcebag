@@ -94,7 +94,7 @@ $di->set("router", function() {
     );
 
     $router->add(
-        "/student/homework/{classId}",
+        "/student/homework",
         array(
             "controller" => "homework",
             "action" => "index"
@@ -102,7 +102,7 @@ $di->set("router", function() {
     );
 
     $router->add(
-        "/teacher/homework/{classId}",
+        "/teacher/homework",
         array(
             "controller" => "homework",
             "action"     => "index"
@@ -110,7 +110,7 @@ $di->set("router", function() {
     );
 
     $router->add(
-        "/student/homework/new/{classId}",
+        "/student/homework/new",
         array(
             "controller" => "homework",
             "action" => "newHomework"
@@ -118,7 +118,7 @@ $di->set("router", function() {
     );
 
     $router->add(
-        "/teacher/homework/new/{classId}",
+        "/teacher/homework/new",
         array(
             "controller" => "homework",
             "action"     => "newHomework"
@@ -184,4 +184,12 @@ $di->set('session', function() {
     $session = new SessionAdapter();
     $session->start();
     return $session;
+});
+
+$di->set('flash', function(){
+    return new Phalcon\Flash\Session(array(
+      'error' => 'alert alert-error',
+      'success' => 'alert alert-success',
+      'notice' => 'alert alert-info',
+    ));
 });

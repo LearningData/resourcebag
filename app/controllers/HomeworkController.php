@@ -1,18 +1,16 @@
 <?php
 
 class HomeworkController extends ControllerBase {
-    public function indexAction($classId) {
+    public function indexAction() {
         $user = $this->getUserBySession();
-        $classList = ClassList::findFirstById($classId);
 
         if ($user->isStudent()) {
             $status = $this->request->get("filter");
 
             if ($status != "") {
-                $homeworks = Homework::findHomeworksByStatus($user->id,
-                    $classId, $status);
+                $homeworks = Homework::findHomeworksByStatus($user->id, $status);
             } else {
-                $query = "classId = $classId and studentId = " .$user->id;
+                $query = "studentId = " .$user->id;
                 $homeworks = Homework::find($query);
             }
 
@@ -30,7 +28,6 @@ class HomeworkController extends ControllerBase {
             $template = "teacher/homework/list";
         }
 
-        $this->view->classList = $classList;
         $this->view->user = $user;
         $this->view->homeworks = $homeworks;
 
@@ -42,32 +39,35 @@ class HomeworkController extends ControllerBase {
         $this->view->homework = Homework::findFirstById($homeworkId);
     }
 
-    public function newHomeworkAction($classId) {
+    public function newHomeworkAction() {
         $user = $this->getUserBySession();
-        $classList = ClassList::findFirstById($classId);
-        if (!$classList) {
-            return $this->dispatcher->forward(array("action" => "timetable"));
-        }
+        // $this->view->classList = $classList;
+        // $slots = TimetableSlot::find("classId = " . $classList->id);
 
-        $this->view->classList = $classList;
-        $slots = TimetableSlot::find("classId = " . $classList->id);
+        // $weekDays = "";
+        // $classTimes = array();
 
-        $weekDays = "";
-        $classTimes = array();
+        // foreach ($slots as $slot) {
+        //     $weekDays .= $slot->day . ",";
+        //     $query = "classId = " . $classList->id .
+        //     " and day = " .$slot->day;
+        //     if(!array_key_exists($slot->day, $classTimes)) {
+        //         $classTimes[$slot->day] = TimetableSlot::find($query);
+        //     }
+        // }
 
-        foreach ($slots as $slot) {
-            $weekDays .= $slot->day . ",";
-            $query = "classId = " . $classList->id .
-            " and day = " .$slot->day;
-            if(!array_key_exists($slot->day, $classTimes)) {
-                $classTimes[$slot->day] = TimetableSlot::find($query);
-            }
-        }
-
-        $this->view->weekDays = $weekDays;
-        $this->view->classTimes = $classTimes;
+        // $this->view->weekDays = $weekDays;
+        // $this->view->classTimes = $classTimes;
 
         if ($user->isStudent()) {
+            $classes = array();
+
+            foreach ($user->classes as $classList) {
+                $classes[$classList->id] = $classList->subject->name;
+            }
+
+            $this->view->classes = $classes;
+
             $template = "student/homework/new";
         } else {
             $template = "teacher/homework/new";
@@ -139,7 +139,7 @@ class HomeworkController extends ControllerBase {
             $this->flash->error("The homework was not submitted.");
         }
 
-        return $this->response->redirect("student/homework/" . $homework->classId);
+        return $this->response->redirect("student/homework");
     }
 
     public function createHomeworkByStudentAction($classId) {

@@ -86,7 +86,7 @@ class StudentController extends UsersController {
         $homework->schoolId = $this->view->user->schoolId;
         $homework->teacherId = $this->request->getPost("teacher-id");
         $homework->studentId = $this->view->user->id;
-        $homework->timeSlotId = $this->request->getPost("due-time");
+        $homework->timeSlotId = "0000";
         $homework->setDate = date("Y-m-d");
         $homework->submittedDate = "0000-00-00";
         $homework->reviewedDate = "0000-00-00";
@@ -97,11 +97,13 @@ class StudentController extends UsersController {
             foreach ($homework->getMessages() as $message) {
                 $this->flash->error($message);
             }
+
+            return $this->response->redirect("student/homework/new");
         } else {
             $this->flash->success("The homework was created");
         }
 
-        return $this->response->redirect("student/homework/" . $homework->classId);
+        return $this->response->redirect("student/homework");
     }
 }
 ?>

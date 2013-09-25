@@ -160,7 +160,7 @@ class AdminController extends UsersController {
         );
     }
 
-    private function toIndex() {
+    protected function toIndex() {
         return $this->dispatcher->forward(array(
             "controller" => "admin",
             "action" => "index"

@@ -21,7 +21,8 @@ class User extends \Phalcon\Mvc\Model {
             "studentId",
             "classId",
             "ClassList",
-            "id"
+            "id",
+            array("alias" => "Classes")
         );
     }
 

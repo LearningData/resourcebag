@@ -21,6 +21,7 @@ class Homework extends \Phalcon\Mvc\Model {
 
     public function initialize() {
         $this->belongsTo("studentId", "User", "id", array("alias" =>"Student"));
+        $this->belongsTo("classId", "ClassList", "id");
         $this->hasMany("id", "HomeworkFile", "homeworkId", array("alias" => "Files"));
     }
 
@@ -50,8 +51,8 @@ class Homework extends \Phalcon\Mvc\Model {
         return $this->status == Homework::$REVIEWED;
     }
 
-    public static function findHomeworksByStatus($userId, $classId, $status) {
-        $query = "classId = $classId and studentId = $userId and status = $status";
+    public static function findHomeworksByStatus($userId, $status) {
+        $query = "studentId = $userId and status = $status";
 
         return Homework::find($query);
     }

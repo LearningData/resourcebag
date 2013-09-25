@@ -1,14 +1,18 @@
-<h2>Active {{ classList.subject.name }} ({{ classList.extraRef }})</h2>
+{{ content() }}
+<h2>Homework</h2>
 <h5>
-    {{ link_to("student/homework/"~classList.id, "All") }} |
-    {{ link_to("student/homework/"~classList.id~"?filter=3", "Reviewed") }} |
-    {{ link_to("student/homework/"~classList.id~"?filter=2", "Submitted") }} |
-    {{ link_to("student/homework/"~classList.id~"?filter=0", "Pending") }}
+    {{ link_to("student/homework/new", "New Homework")}} |
+    {{ link_to("student/homework", "All") }} |
+    {{ link_to("student/homework?filter=3", "Reviewed") }} |
+    {{ link_to("student/homework?filter=2", "Submitted") }} |
+    {{ link_to("student/homework?filter=0", "Pending") }}
 </h5>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>Homework</th>
+            <th>Subject</th>
+            <th>Teacher</th>
             <th></th>
             <th></th>
             <th>Assigned Date</th>
@@ -20,6 +24,11 @@
     {% for homework in homeworks %}
         <tr>
             <td>{{ homework.text }}</td>
+            <td>{{ homework.classList.subject.name }}</td>
+            <td>
+                {{ homework.classList.user.name }}
+                {{ homework.classList.user.lastName}}
+            </td>
             {% if homework.isPending() %}
                 <td>
                     {{ link_to("student/homework/answer/"~homework.id, "Edit") }}

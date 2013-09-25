@@ -8,14 +8,16 @@
         <link rel="stylesheet"
             href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
-    {% if user is defined %}
-        <header>
-        {% set header = user.getController()~"/_header" %}
-        {{ partial(header)}}
-        </header>
-    {% endif %}
     <body>
-        <div>{{ content() }}</div>
+        {% if user is defined %}
+            <header>
+            {% set header = user.getController()~"/_header" %}
+            {{ partial(header)}}
+            </header>
+        {% endif %}
+
+        {{ content() }}
+
         {{ javascript_include("js/jquery-1.9.1.js") }}
         {{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
         {{ javascript_include("js/bootstrap.min.js") }}
