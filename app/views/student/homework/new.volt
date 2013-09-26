@@ -7,11 +7,23 @@
     </p>
     <p>
         <label>Class</label>
-        {{ select('classList-id', classes, 'using': ['id', 'name']) }}
+        <select name="classList-id" id="classList-id"
+                onchange="return getEnableDays(this);">
+            {% for classId, name in classes %}
+                <option value="{{ classId }}">
+                    {{ name }}
+                </option>
+            {% endfor %}
+        </select>
     </p>
     <p>
         <label>Due Date</label>
         <input type="text" name="due-date" id="due-date">
     </p>
+    <div id="due-times">
+
+    </div>
+    <input type="hidden" name="week-days" id="week-days">
+    <input type="hidden" name="class-id" id="class-id">
     <p><input type="submit"></p>
 </form>
