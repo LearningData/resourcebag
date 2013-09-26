@@ -41,23 +41,6 @@ class HomeworkController extends ControllerBase {
 
     public function newHomeworkAction() {
         $user = $this->getUserBySession();
-        // $this->view->classList = $classList;
-        // $slots = TimetableSlot::find("classId = " . $classList->id);
-
-        // $weekDays = "";
-        // $classTimes = array();
-
-        // foreach ($slots as $slot) {
-        //     $weekDays .= $slot->day . ",";
-        //     $query = "classId = " . $classList->id .
-        //     " and day = " .$slot->day;
-        //     if(!array_key_exists($slot->day, $classTimes)) {
-        //         $classTimes[$slot->day] = TimetableSlot::find($query);
-        //     }
-        // }
-
-        // $this->view->weekDays = $weekDays;
-        // $this->view->classTimes = $classTimes;
 
         if ($user->isStudent()) {
             $classes = array();
@@ -67,7 +50,6 @@ class HomeworkController extends ControllerBase {
             }
 
             $this->view->classes = $classes;
-
             $template = "student/homework/new";
         } else {
             $template = "teacher/homework/new";

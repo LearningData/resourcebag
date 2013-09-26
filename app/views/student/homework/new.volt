@@ -20,9 +20,7 @@
         <label>Due Date</label>
         <input type="text" name="due-date" id="due-date">
     </p>
-    <div id="due-times">
-
-    </div>
+    <div id="due-times"></div>
     <input type="hidden" name="week-days" id="week-days">
     <input type="hidden" name="class-id" id="class-id">
     <p><input type="submit"></p>

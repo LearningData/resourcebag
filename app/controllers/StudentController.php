@@ -78,15 +78,17 @@ class StudentController extends UsersController {
 
     public function createHomeworkAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
+        $classListId = $this->request->getPost("classList-id");
+        $classList = ClassList::findFirstById($classListId);
 
         $homework = new Homework();
         $homework->text = $this->request->getPost("description");
-        $homework->classId = $this->request->getPost("class-id");
+        $homework->classId = $classList->id;
         $homework->dueDate = $this->request->getPost("due-date");
         $homework->schoolId = $this->view->user->schoolId;
-        $homework->teacherId = $this->request->getPost("teacher-id");
+        $homework->teacherId = $classList->user->id;
         $homework->studentId = $this->view->user->id;
-        $homework->timeSlotId = "0000";
+        $homework->timeSlotId = $this->request->getPost("due-time");
         $homework->setDate = date("Y-m-d");
         $homework->submittedDate = "0000-00-00";
         $homework->reviewedDate = "0000-00-00";
