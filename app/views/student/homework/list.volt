@@ -17,7 +17,7 @@
 			<th>Teacher</th>
 			<th></th>
 			<th></th>
-			<th>Assigned Date</th>
+			<!--th>Assigned Date</th-->
 			<th>Due Date</th>
 			<th>Status</th>
 		</tr>
@@ -36,7 +36,7 @@
 			<td></td>
 			<td></td>
 			{% endif %}
-			<td>{{ homework.setDate }}</td>
+			<!--td>{{ homework.setDate }}</td-->
 			<td>{{ homework.dueDate }}</td>
 			<td> {% if homework.isReviewed() %}
 			{{ link_to("homework/show/"~homework.id, "Reviewed")}}
