@@ -1,2 +1,4 @@
 app/cache/*.php
 coverage
+.project
+.settings

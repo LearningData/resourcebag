@@ -1,9 +1,549 @@
-body {
-    margin-left: 10px;
-    margin-right: 10px;
+/*//////RESET DEFAULT//////*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.row .row {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+ul {
+	list-style: none;
+	padding: 0;
+}
+*, a {
+	outline: none;
+	text-decoration: none;
+	margin:0;
+	padding:0;
+	border:none;
+}
+a:hover, a:focus {
+    color: #2A6496;
+    text-decoration: none;
+}
+.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search,.bt-myprofile, .bt-logout {
+	background-image: url('../img/sprite.png');
+	background-repeat: no-repeat;
 }
 
-textarea {
-    height: 130px;
-    width: 500px;
+html, body {
+    height: 100%;
 }
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #414042;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+}
+h1, .h1 {
+    font-size: 30px;
+    font-weight:300;
+    margin:30px 0;
+}
+
+.badge {
+	background-color: #525353;
+	border-radius: 10px 10px 10px 10px;
+	display: block;
+	float: right;
+	font-size: 10px;
+	font-weight: bold;
+	margin: 10px;
+	min-width: 20px;
+	padding: 5px 4px;
+	position: absolute;
+	right: 5px;
+	top: 8px;
+	z-index: 1;
+}
+/*//////MEDIA//////*/
+@media screen and (min-width: 768px) {
+	.sidebar .container {
+		display: block;
+		background: #E6E7E8;
+	}
+	.collapse {
+		display: block;
+	}
+	.navbar-nav, .navbar-nav > li, .navbar-brand {
+		float: none;
+	}
+}
+
+
+/*//////DEFAULT TABLE//////*/
+.table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	padding: 0;
+	border: #eceded solid 1px;
+	border-top: 0;
+	font-size: 14px;
+	background-color:#f6f6f6;
+}
+.table > tbody > tr.active > td, .table tr.active, .table tr.active td {
+	background-color: #e6e7e8;
+}
+table > tbody > tr.active td:first-child {
+	border: #d1d3d4 solid;
+	border-width: 2px 1px 2px 2px
+}
+table > tbody > tr.active td:last-child {
+	border: #d1d3d4 solid;
+	border-width: 2px 2px 2px 0;
+}
+/*.table td:first-child {
+	border-right: solid 1px #dcddde;
+	font-weight: bold;
+	text-align: center;
+}*/
+.table tr:hover, ul li:hover {
+	background-color: #f0f2f2;
+}
+.table thead > tr > th {
+    border-bottom: none;
+    vertical-align: bottom;
+    background-color: #eceded;
+}
+.table tbody > tr > td, .table thead > tr > th	{
+	padding:20px 10px;
+}
+
+
+/*//////DEFAULT NAVIGATION ARROWS//////*/
+.default-prev, .default-next, .ui-datepicker-prev, .ui-datepicker-next {
+	position: absolute;
+	display: block;
+	top: 8px;
+	left: 15px;
+	width: 20px;
+	height: 20px;
+	background-position: -500px 0;
+	text-indent: -9999px;
+	cursor: pointer;
+}
+.default-next, .ui-datepicker-next {
+	left: 100%;
+	background-position: -521px 0;
+	margin-left: -35px;
+}
+.ui-datepicker-prev, .ui-datepicker-next {
+	top: 17px
+}
+
+/*//////SIDEBAR / MAIN MENU//////*/
+.schoolbag-brand {
+	text-align: center;
+	display: block;
+	padding: 20px 0;
+}
+.sidebar header {
+	background: #E6E7E8;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+}
+
+.navbar-nav li a {
+	color: #3a3a3a;
+	padding-top: 18px;
+	padding-bottom: 15px;
+}
+.navbar-nav > li a {
+	padding-left: 55px;
+}
+.navbar-nav > li a:hover, .navbar-nav > li.active a {
+	color: #fff;
+	border-left: solid 5px;
+	padding-left: 50px;
+}
+.navbar-nav > li.dashboard a {
+	background-position: 18px 15px;
+}
+.navbar-nav > li.dashboard a:hover, .navbar-nav > li.dashboard.active a {
+	background-color: #fff;
+	color: #414042;
+	border-color: #666562;
+	background-position: 13px 15px;
+}
+.navbar-nav > li.messages a {
+	background-position: 18px -27px;
+}
+.navbar-nav > li.messages a:hover, .navbar-nav > li.messages.active a {
+	background-color: #10a236;
+	border-color: #006228;
+	background-position: 13px -577px;
+}
+.navbar-nav > li.notices a {
+	background-position: 18px -81px;
+}
+.navbar-nav > li.notices a:hover, .navbar-nav > li.notices.active a {
+	background-color: #0ba6d3;
+	border-color: #00637f;
+	background-position: 13px -631px;
+}
+.navbar-nav > li.calendar a {
+	background-position: 18px -132px;
+}
+.navbar-nav > li.calendar a:hover, .navbar-nav > li.calendar.active a {
+	background-color: #9752a3;
+	border-color: #5a2a60;
+	background-position: 13px -681px;
+}
+.navbar-nav > li.timetable a {
+	background-position: 18px -182px;
+}
+.navbar-nav > li.timetable a:hover, .navbar-nav > li.timetable.active a {
+	background-color: #dc3b42;
+	border-color: #821a1e;
+	background-position: 13px -732px;
+}
+.navbar-nav > li.homework a {
+	background-position: 18px -234px;
+}
+.navbar-nav > li.homework a:hover, .navbar-nav > li.homework.active a {
+	background-color: #ff9e19;
+	border-color: #a30c00;
+	background-position: 13px -782px;
+}
+.navbar-nav > li.classes a {
+	background-position: 18px -279px;
+}
+.navbar-nav > li.classes a:hover, .navbar-nav > li.classes.active a {
+	background-color: #ff0097;
+	border-color: #8d0054;
+	background-position: 13px -829px;
+}
+.navbar-nav > li.ebooks a {
+	background-position: 18px -330px;
+}
+.navbar-nav > li.ebooks a:hover, .navbar-nav > li.ebooks.active a {
+	background-color: #898c27;
+	border-color: #545a1b;
+	background-position: 13px -880px;
+}
+.navbar-nav > li.journal a {
+	background-position: 18px -380px;
+}
+.navbar-nav > li.journal a:hover, .navbar-nav > li.journal.active a {
+	background-color: #731a12;
+	border-color: #3b0000;
+	background-position: 13px -930px;
+}
+.navbar-nav > li.copies a {
+	background-position: 18px -432px;
+}
+.navbar-nav > li.copies a:hover, .navbar-nav > li.copies.active a {
+	background-color: #9299ce;
+	border-color: #575a7b;
+	background-position: 13px -982px;
+}
+.navbar-nav > li.resources a {
+	background-position: 18px -480px;
+}
+.navbar-nav > li.resources a:hover, .navbar-nav > li.resources.active a {
+	background-color: #438c76;
+	border-color: #215949;
+	background-position: 13px -1030px;
+}
+.navbar-nav > li.policies a {
+	background-position: 18px -531px;
+}
+.navbar-nav > li.policies a:hover, .navbar-nav > li.policies.active a {
+	background-color: #939598;
+	border-color: #575a5b;
+	background-position: 13px -1081px;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+}
+
+/*//////HEADER TITLE DEFAULT- ALL BOX HOME//////*/
+.header-title, .ui-datepicker-header {
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	padding: 15px;
+}
+.header-title {
+	padding-left: 40px;
+}
+.header-title h2, .ui-datepicker-header h2 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	margin: 0;
+}
+
+/*//////TIMETABLE HOME//////*/
+.header-timetable {
+	background-color: #dc3b42;
+	background-position: 10px -737px;
+}
+.header-navigation {
+	background-color: #e27176;
+	padding: 10px;
+	position: relative;
+}
+.header-navigation h3 {
+	font-size: 14px;
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+/*//////DEFAULT LIST HOME//////*/
+.notice-home ul li, .messages-home ul li, .homework-home ul li {
+	border-bottom: #d1d3d4 solid 1px;
+	padding: 10px 10px 10px 45px;
+	font-size: 12px;
+}
+.notice-home ul li:last-child, .messages-home ul li:last-child, .homework-home ul li:last-child {
+	border: none;
+}
+.notice-home ul li.star {
+	background-position: -485px -90px;
+}
+.notice-home ul li.flag {
+	background-position: -485px -28px;
+}
+.notice-home ul li.comment {
+	background-position: -485px -145px;
+}
+
+/*//////NOTICES HOME//////*/
+.header-notices {
+	background-color: #0ba6d3;
+	background-position: 10px -635px;
+}
+.notice-home ul {
+  padding: 0;
+}
+.notice-home ul li p {
+  margin: 0;
+}
+/*//////EVENTS HOME//////*/
+#datepicker {
+	min-height: 300px;
+}
+.ui-datepicker-header {
+	background-color: #9752a3;
+	color: #fff;
+	text-align: center;
+	padding: 25px 0 5px;
+}
+.ui-datepicker-header h2 {
+	font-size: 16px;
+	position: absolute;
+	left: 50%;
+	top: 5px;
+	margin-left: -26px;
+}
+.ui-datepicker-header span {
+	text-transform: uppercase;
+}
+table.ui-datepicker-calendar {
+	width: 90%;
+	margin: 5px 5% 20px 5%;
+	font-size: 16px;
+	text-align: center;
+}
+table.ui-datepicker-calendar td, table.ui-datepicker-calendar th {
+	text-align: center;
+	padding: 5px 0;
+}
+table.ui-datepicker-calendar .ui-datepicker-week-end {
+	background: #dfdddd;
+}
+table.ui-datepicker-calendar td a, table.ui-datepicker-calendar th a {
+	color: #414042;
+}
+table.ui-datepicker-calendar .ui-datepicker-other-month {
+	color: #dcdcdc;
+}
+table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
+	color: #c4c4c4;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+	background-color: #9752a3;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	padding: 2px 5px;
+}
+table.ui-datepicker-calendar td a.ui-state-highlight {
+	color: #fff;
+}
+
+.table-events {
+	border-width: 1px 0 0;
+}
+.table-events td {
+	padding: 13px 15px !important;
+}
+.table-events td:first-child {
+	font-weight: normal;
+	text-align: left;
+}
+.table-events td:last-child {
+	vertical-align: middle;
+}
+
+/*//////MESSAGES HOME//////*/
+.header-messages {
+	background-color: #10a236;
+	background-position: 10px -583px;
+}
+
+.messages-home ul li {
+	position: relative;
+	padding-left: 65px;
+}
+.messages-home ul li p {
+	margin: 0;
+}
+.messages-home .badge {
+	background: #fff;
+	color: #10a236;
+	font-size: 14px;
+	padding: 7px 4px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	margin-top: 2px;
+	width: 25px;
+	height: 25px;
+}
+
+.label-message {
+	width: 35px;
+	height: 35px;
+	float: left;
+	text-align: center;
+	background: #939598;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	margin-top: -18px;
+	padding-top: 9px;
+}
+
+.msg-unread {
+	font-weight: bold;
+}
+
+/*//////HOMEWORK HOME//////*/
+.header-homework {
+	background-color: #e8a132;
+	background-position: 10px -787px;
+}
+
+.box-home {
+	background-color: #f6f6f6;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+}
+.homework-home ul li {
+	position: relative;
+	padding-left: 45px;
+}
+.homework-home  ul li p {
+	margin: 0;
+}
+.icheckbox_flat-yellow {
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	margin-top: -10px !important;
+}
+
+
+/*//////USER PROFILE//////*/
+.user-profile{
+  width: 80%;
+  margin: 0 auto;
+}
+.tb-user{
+  float: left;
+  margin-right: 10px;
+}
+.tb-user img{
+  border: #d5d5d5 solid 1px;
+}
+.name-school{
+  font-size: 11px;
+  margin-bottom:13px;
+}
+.bt-myprofile,
+.bt-logout  {
+  font-size: 11px;
+  color: #4d4d4f;
+  padding-left:17px;
+  background-position: -500px -230px;
+}
+.bt-logout{
+  margin-left: 8px;
+  background-position: -500px -270px;
+}
+/*//////SEARCH//////*/
+.form-search {
+	position: relative;
+}
+.form-control {
+  width: 95%;
+  margin: 30px auto;
+  border: #898989 solid 1px;
+}
+.btn-search {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 10px;
+	right: 20px;
+	border: none;
+	text-indent: -9999px;
+	background-position: -500px -310px;
+	background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+/*//////HOME WORK PAGE//////*/
+.nav-homework ul li a	{
+	width: 25%;
+	height: 60px;
+	float:left;
+	background-color:#ff9e19;
+	text-align:center;
+	font-size:18px;
+	padding:18px 0 0;
+	font-weight: 300;
+}
+.nav-homework ul li a	{
+	color:#fff;
+}
+.nav-homework ul li a:hover	{
+	text-decoration:none;
+	border-bottom:#a30c00 solid 5px;
+}
+.nav-homework ul li.bt-new a	{
+	border-bottom:#a30c00 solid 5px;
+	background-color: #a30c00
+}
+

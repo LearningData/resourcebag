@@ -1,13 +1,22 @@
-<h1>Welcome {{ user.name }}</h1>
+<!--h1>Welcome</h1-->
+<a class="schoolbag-brand" href="/">{{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}</a>
+<div class="user-profile">
+	<div class="tb-user">
+		{{ image("img/thumb-tmp.jpg", "alt":"") }}
+	</div>
+	<p class="name-school">
+		{{ user.name }}
+		<br />
+		<strong>St. Mary's High School</strong>
+	</p>
+	{{ link_to("student/edit/", "My Profile", 'class':"bt-myprofile") }}
+	{{ link_to("session/logout", "Logout", 'class':"bt-logout") }}
+	<!--{{ link_to("student/changePassword/", "Change Password") }}-->
 
-<nav>
-    {{ link_to("student/changePassword/", "Change Password") }} |
-    {{ link_to("student/edit/", "Edit") }} |
-    {{ link_to("student/listClasses/", "Join Classes") }} |
-    {{ link_to("student/subjects/", "Subjects") }} |
-    {{ link_to("student/homework", "Homework") }} |
-    {{ link_to("student/listTeachers/", "Teachers") }} |
-    {{ link_to("student/timetable", "Timetable") }} |
-    {{ link_to("student/noticeboard", "Notice Board") }} |
-    {{ link_to("session/logout", "Logout") }}
-</nav>
+	<form class="form-search" role="search">
+		<input type="text" class="form-control" placeholder="Search">
+		<button type="submit" class="btn-search">
+			Search
+		</button>
+	</form>
+</div>
