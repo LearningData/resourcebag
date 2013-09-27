@@ -1,23 +1,17 @@
 <?php
+use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class HomeworkController extends ControllerBase {
     public function indexAction() {
         $user = $this->getUserBySession();
+        $numberPage = $this->request->getQuery("page", "int");
+        $status = $this->request->get("filter");
 
         if ($user->isStudent()) {
-            $status = $this->request->get("filter");
-
-            if ($status != "") {
-                $homeworks = Homework::findHomeworksByStatus($user->id, $status);
-            } else {
-                $query = "studentId = " .$user->id;
-                $homeworks = Homework::find($query);
-            }
+            $homeworks = $user->getHomeworkByStatus($status);
 
             $template = "student/homework/list";
         } else {
-            $status = $this->request->get("filter");
-
             if ($status != "") {
                 $homeworks = Homework::find("classId = $classId and status = $status");
             } else {
@@ -29,7 +23,10 @@ class HomeworkController extends ControllerBase {
         }
 
         $this->view->user = $user;
-        $this->view->homeworks = $homeworks;
+        $this->view->status = $status;
+        $params = array("data" => $homeworks, "limit"=> 10,"page" => $numberPage);
+        $paginator = new Paginator($params);
+        $this->view->page = $paginator->getPaginate();
 
         $this->view->pick($template);
     }
@@ -55,6 +52,7 @@ class HomeworkController extends ControllerBase {
             $template = "teacher/homework/new";
         }
 
+        $this->view->status = $status;
         $this->view->pick($template);
     }
 

@@ -26,14 +26,24 @@
         }
 
         public static function getStudentSlotsByDay($user, $day) {
-            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
+            $dayOfWeek = $day->format("w");
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $dayOfWeek);
 
             $studentClasses = array();
-            $query = "studentId = " . $user->id . " and day = $day";
-            $changes = TimetableChange::find($query);
 
-            foreach($changes as $slot) {
-                $studentClasses[$slot->timeSlotId] = $slot->subject->name;
+            foreach ($user->classes as $classList) {
+                $query = "classId = " . $classList->id . " and day = $dayOfWeek";
+                $slot = TimetableSlot::findFirst($query);
+                if (!$slot) { continue; }
+
+                $homeworkQuery = "studentId = " . $user->id .
+                    " and classId = " . $classList->id .
+                    " and dueDate = '" . $day->format("Y-m-d") . "'" .
+                    " and status >= " . Homework::$SUBMITTED;
+
+                $homeworks = Homework::find($homeworkQuery);
+                $content = $classList->subject->name . " / " . count($homeworks);
+                $studentClasses[$slot->timeSlotId] = $content;
             }
 
             $slots = Timetable::populeSlots($studentClasses, $configs);
@@ -107,6 +117,16 @@
             }
 
             return $minutes;
+        }
+
+        public static function getCurrentWeek() {
+            $timestamp = time();
+            $lastSunday = date("Y-m-d H:i:s", strtotime("last monday", $timestamp));
+            $start = new DateTime($lastSunday);
+            $interval = new DateInterval("P1D");
+            $period = new DatePeriod($start,$interval, 5);
+
+            return $period;
         }
     }
 ?>

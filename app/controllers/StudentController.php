@@ -69,9 +69,14 @@ class StudentController extends UsersController {
         $user = $this->view->user;
         $slots = array();
 
-        for($i=1; $i <= 6; $i++) {
-            $slots[$i] = Timetable::getStudentSlotsByDay($user, $i);
+        $days = Timetable::getCurrentWeek();
+
+        foreach($days as $day) {
+            $dayOfWeek = $day->format("w");
+            $slots[$dayOfWeek] = Timetable::getStudentSlotsByDay($user, $day);
         }
+
+        $this->view->period = Timetable::getCurrentWeek();
         $this->view->slots = $slots;
         $this->view->pick("student/timetable/index");
     }

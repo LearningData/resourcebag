@@ -3,12 +3,9 @@
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
+            {% for day in period %}
+                <th>{{ day.format("l d") }}</th>
+            {% endfor %}
         </tr>
     </thead>
     <tbody>
