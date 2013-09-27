@@ -43,6 +43,17 @@ class User extends \Phalcon\Mvc\Model {
         return User::find($params);
     }
 
+    public function getHomeworkByStatus($status) {
+        if ($status != "") {
+            $homeworks = Homework::findHomeworksByStatus($this->id, $status);
+        } else {
+            $query = "studentId = " .$this->id;
+            $homeworks = Homework::find($query);
+        }
+
+        return $homeworks;
+    }
+
     public static function getTypeStudent() { return "P"; }
     public static function getTypeTeacher() { return "T"; }
     public static function getTypeSchool() { return "S"; }

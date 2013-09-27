@@ -7,6 +7,10 @@ class TimetableSlot extends \Phalcon\Mvc\Model {
     public $classID;
     public $Room;
 
+    public function initialize() {
+        $this->belongsTo("classId", "ClassList", "id");
+    }
+
     public function getSource() {
         return "timetableslots";
     }

@@ -4,7 +4,7 @@
     <thead>
         <tr>
             {% for day in period %}
-                <th>{{ day }}</th>
+                <th>{{ day.format("l d") }}</th>
             {% endfor %}
         </tr>
     </thead>
