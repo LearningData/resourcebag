@@ -17,7 +17,7 @@
     </ul>
 
 </nav>
-<table class="table table-hover">
+<table class="table table-homework">
         <tr>
             <th>Homework</th>
             <th>Subject</th>
