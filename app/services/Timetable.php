@@ -108,5 +108,20 @@
 
             return $minutes;
         }
+
+        public static function getCurrentWeek() {
+            $timestamp = time();
+            $lastSunday = date("Y-m-d H:i:s", strtotime("last monday", $timestamp));
+            $start = new DateTime($lastSunday);
+            $interval = new DateInterval("P1D");
+            $period = new DatePeriod($start,$interval, 5);
+            $days = array();
+
+            foreach($period as $day) {
+                $days []= $day->format("l d");
+            }
+
+            return $days;
+        }
     }
 ?>
