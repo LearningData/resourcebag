@@ -24,7 +24,7 @@ a:hover, a:focus {
 	color: #2A6496;
 	text-decoration: none;
 }
-.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .btn-icon {
+.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .btn-icon, .nav-homework ul li.bt-new a {
 	background-image: url('../img/sprite.png');
 	background-repeat: no-repeat;
 }
@@ -540,8 +540,15 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .nav-homework ul li.bt-new a {
 	border-bottom: #a30c00 solid 5px;
-	background-color: #a30c00
+	background-color: #a30c00;
+	background-position: 50px -1125px;
+	padding-left:30px;
 }
+.nav-homework ul li.bt-new :hover {
+  border-bottom: #760900 solid 5px;
+  background-color: #760900;
+}
+
 .btn-icon {
 	width: 21px;
 	height: 21px;
@@ -551,19 +558,19 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 }
-span.btn-icon	{
+span.btn-icon {
 	background-color: #d9d9d9;
 }
-span.btn-icon:hover	{
+span.btn-icon:hover {
 	background-color: #b1b1b1;
 }
-a.btn-icon	{
+a.btn-icon {
 	background-color: #ff9e19;
 }
-a.btn-icon:hover	{
+a.btn-icon:hover {
 	background-color: #f47920;
 }
-.btn-review	{
+.btn-review {
 	background-position: -500px -490px;
 }
 .btn-edit {
@@ -575,6 +582,4 @@ a.btn-icon:hover	{
 .btn-pending {
 	background-position: -500px -460px;
 }
-
-
 
