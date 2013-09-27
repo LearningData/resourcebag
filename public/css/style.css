@@ -588,6 +588,7 @@ a.btn-icon:hover {
   background-color: #e27176;
   vertical-align: middle;
   padding: 10px;
+  border-right:#fb7f84 1px solid;
 }
 .nav-timetable {
   -webkit-border-radius: 5px 5px 0 0;
@@ -613,7 +614,7 @@ a.btn-icon:hover {
 }
 .nav-timetable-btn-next span {
   left: 100%;
-  margin-left: -35px;
+  margin-left: -50px;
   background-position: -530px -520px;
 }
 .nav-timetable-title  h2 {

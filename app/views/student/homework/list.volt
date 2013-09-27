@@ -38,10 +38,7 @@
                     <span class="btn-icon btn-pending"> pending </span>
                 {% else %}
                 {% endif %}
-                {% if homework.isReviewed() %}
-                    {{ link_to("homework/show/"~homework.id, "class":"btn-icon btn-review", "Review")}}
-                {% else %}
-                <span class="btn-icon btn-review"> {{ homework.getStatus()}} </span>{% endif %}
+                
                 {{ link_to("student/homework/answer/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
                 {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
             </td>
