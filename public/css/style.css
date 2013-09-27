@@ -16,21 +16,21 @@ ul {
 *, a {
 	outline: none;
 	text-decoration: none;
-	margin:0;
-	padding:0;
-	border:none;
+	margin: 0;
+	padding: 0;
+	border: none;
 }
 a:hover, a:focus {
-    color: #2A6496;
-    text-decoration: none;
+	color: #2A6496;
+	text-decoration: none;
 }
-.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search,.bt-myprofile, .bt-logout {
+.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .btn-icon {
 	background-image: url('../img/sprite.png');
 	background-repeat: no-repeat;
 }
 
 html, body {
-    height: 100%;
+	height: 100%;
 }
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -38,19 +38,21 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    line-height: 1.1;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;
+	line-height: 1.1;
 }
 h1, .h1 {
-    font-size: 30px;
-    font-weight:300;
-    margin:30px 0;
+	font-size: 30px;
+	font-weight: 300;
+	margin: 30px 0;
 }
 
 .badge {
 	background-color: #525353;
-	border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 	display: block;
 	float: right;
 	font-size: 10px;
@@ -77,18 +79,18 @@ h1, .h1 {
 	}
 }
 
-
 /*//////DEFAULT TABLE//////*/
 .table {
 	border-collapse: separate;
 	border-spacing: 0;
-	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
 	padding: 0;
 	border: #eceded solid 1px;
 	border-top: 0;
 	font-size: 14px;
-	background-color:#f6f6f6;
+	background-color: #f6f6f6;
 }
 .table > tbody > tr.active > td, .table tr.active, .table tr.active td {
 	background-color: #e6e7e8;
@@ -102,22 +104,21 @@ table > tbody > tr.active td:last-child {
 	border-width: 2px 2px 2px 0;
 }
 /*.table td:first-child {
-	border-right: solid 1px #dcddde;
-	font-weight: bold;
-	text-align: center;
-}*/
+ border-right: solid 1px #dcddde;
+ font-weight: bold;
+ text-align: center;
+ }*/
 .table tr:hover, ul li:hover {
 	background-color: #f0f2f2;
 }
 .table thead > tr > th {
-    border-bottom: none;
-    vertical-align: bottom;
-    background-color: #eceded;
+	border-bottom: none;
+	vertical-align: bottom;
+	background-color: #eceded;
 }
-.table tbody > tr > td, .table thead > tr > th	{
-	padding:20px 10px;
+.table tbody > tr > td, .table thead > tr > th {
+	padding: 20px 10px;
 }
-
 
 /*//////DEFAULT NAVIGATION ARROWS//////*/
 .default-prev, .default-next, .ui-datepicker-prev, .ui-datepicker-next {
@@ -148,8 +149,9 @@ table > tbody > tr.active td:last-child {
 }
 .sidebar header {
 	background: #E6E7E8;
-	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
 }
 
 .navbar-nav li a {
@@ -261,14 +263,16 @@ table > tbody > tr.active td:last-child {
 	background-color: #939598;
 	border-color: #575a5b;
 	background-position: 13px -1081px;
-	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
 }
 
 /*//////HEADER TITLE DEFAULT- ALL BOX HOME//////*/
 .header-title, .ui-datepicker-header {
-	border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
 	padding: 15px;
 }
 .header-title {
@@ -325,10 +329,10 @@ table > tbody > tr.active td:last-child {
 	background-position: 10px -635px;
 }
 .notice-home ul {
-  padding: 0;
+	padding: 0;
 }
 .notice-home ul li p {
-  margin: 0;
+	margin: 0;
 }
 /*//////EVENTS HOME//////*/
 #datepicker {
@@ -374,8 +378,9 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 }
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
 	background-color: #9752a3;
-	border-radius: 50px;
+	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
+	border-radius: 50px;
 	padding: 2px 5px;
 }
 table.ui-datepicker-calendar td a.ui-state-highlight {
@@ -414,8 +419,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 	color: #10a236;
 	font-size: 14px;
 	padding: 7px 4px;
-	border-radius: 15px;
+	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
+	border-radius: 15px;
 	margin-top: 2px;
 	width: 25px;
 	height: 25px;
@@ -449,8 +455,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 .box-home {
 	background-color: #f6f6f6;
-	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
 }
 .homework-home ul li {
 	position: relative;
@@ -466,42 +473,40 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 	margin-top: -10px !important;
 }
 
-
 /*//////USER PROFILE//////*/
-.user-profile{
-  width: 80%;
-  margin: 0 auto;
+.user-profile {
+	width: 80%;
+	margin: 0 auto;
 }
-.tb-user{
-  float: left;
-  margin-right: 10px;
+.tb-user {
+	float: left;
+	margin-right: 10px;
 }
-.tb-user img{
-  border: #d5d5d5 solid 1px;
+.tb-user img {
+	border: #d5d5d5 solid 1px;
 }
-.name-school{
-  font-size: 11px;
-  margin-bottom:13px;
+.name-school {
+	font-size: 11px;
+	margin-bottom: 13px;
 }
-.bt-myprofile,
-.bt-logout  {
-  font-size: 11px;
-  color: #4d4d4f;
-  padding-left:17px;
-  background-position: -500px -230px;
+.bt-myprofile, .bt-logout {
+	font-size: 11px;
+	color: #4d4d4f;
+	padding-left: 17px;
+	background-position: -500px -230px;
 }
-.bt-logout{
-  margin-left: 8px;
-  background-position: -500px -270px;
+.bt-logout {
+	margin-left: 8px;
+	background-position: -500px -270px;
 }
 /*//////SEARCH//////*/
 .form-search {
 	position: relative;
 }
 .form-control {
-  width: 95%;
-  margin: 30px auto;
-  border: #898989 solid 1px;
+	width: 95%;
+	margin: 30px auto;
+	border: #898989 solid 1px;
 }
 .btn-search {
 	position: absolute;
@@ -515,35 +520,61 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 	background-color: transparent;
 }
 
-
-
-
-
-
-
-
-
-
 /*//////HOME WORK PAGE//////*/
-.nav-homework ul li a	{
+.nav-homework ul li a {
 	width: 25%;
 	height: 60px;
-	float:left;
-	background-color:#ff9e19;
-	text-align:center;
-	font-size:18px;
-	padding:18px 0 0;
+	float: left;
+	background-color: #ff9e19;
+	text-align: center;
+	font-size: 18px;
+	padding: 18px 0 0;
 	font-weight: 300;
 }
-.nav-homework ul li a	{
-	color:#fff;
+.nav-homework ul li a {
+	color: #fff;
 }
-.nav-homework ul li a:hover	{
-	text-decoration:none;
-	border-bottom:#a30c00 solid 5px;
+.nav-homework ul li a:hover {
+	text-decoration: none;
+	border-bottom: #a30c00 solid 5px;
 }
-.nav-homework ul li.bt-new a	{
-	border-bottom:#a30c00 solid 5px;
+.nav-homework ul li.bt-new a {
+	border-bottom: #a30c00 solid 5px;
 	background-color: #a30c00
 }
+.btn-icon {
+	width: 21px;
+	height: 21px;
+	display: inline-block;
+	text-indent: -9999px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+span.btn-icon	{
+	background-color: #d9d9d9;
+}
+span.btn-icon:hover	{
+	background-color: #b1b1b1;
+}
+a.btn-icon	{
+	background-color: #ff9e19;
+}
+a.btn-icon:hover	{
+	background-color: #f47920;
+}
+.btn-review	{
+	background-position: -500px -490px;
+}
+.btn-edit {
+	background-position: -500px -340px;
+}
+.btn-submit {
+	background-position: -500px -430px;
+}
+.btn-pending {
+	background-position: -500px -460px;
+}
+
+
 
