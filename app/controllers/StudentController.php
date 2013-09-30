@@ -55,6 +55,9 @@ class StudentController extends UsersController {
     }
 
     public function subjectsAction() {}
+    public function calendarAction() {
+      return $this->view->pick("student/calendar/index");
+    }
 
     public function listTeachersAction() {
         $user = $this->view->user;

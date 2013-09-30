@@ -12,7 +12,7 @@
 			<span class="badge">14</span>
 		</li>
 		<li class="calendar">
-			<a href="#">Calendar</a>
+			{{ link_to("student/calendar", "Calendar") }}
 			<span class="badge">7</span>
 		</li>
 		<li class="timetable">

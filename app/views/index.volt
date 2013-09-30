@@ -5,8 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{{ stylesheet_link("css/bootstrap.min.css") }}
 		{{ stylesheet_link("css/style.css") }}
-		<link rel="stylesheet"
-		href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		{{ stylesheet_link("css/uniform.default.css") }}
+		{{ stylesheet_link("css/fullcalendar.css") }}
+		
+		<!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /-->
 	</head>
 	<body>
 		<div class="container">
@@ -33,6 +35,9 @@
 		{{ javascript_include("js/jquery-1.9.1.js") }}
 		{{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
 		{{ javascript_include("js/bootstrap.min.js") }}
+		{{ javascript_include("js/jquery.uniform.min.js") }}
+		{{ javascript_include("js/fullcalendar.min.js") }}
+		
 		{{ javascript_include("js/application.js") }}
 	</body>
 </html>
