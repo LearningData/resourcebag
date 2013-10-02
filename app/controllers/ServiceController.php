@@ -1,6 +1,29 @@
 <?php
 
 class ServiceController extends ControllerBase {
+    public function homeworksAction($userId) {
+        $homeworks = Homework::find("studentId = $userId");
+
+        $jsonHomeworks = array();
+
+        foreach ($homeworks as $homework) {
+            $subject = $homework->classList->subject->name;
+            $jsonHomeworks []= array("id" => $homework->id,
+                 "subject" => $subject,
+                 "description" => $homework->text
+            );
+        }
+
+        $response = new Phalcon\Http\Response();
+        $content = array('status' => 'success', 'homeworks' => $jsonHomeworks);
+
+        header('Content-Type: application/json');
+
+        $response->setJsonContent($content);
+
+        return $response;
+    }
+
     public function daysByClassAction($classId) {
         $slots = TimetableSlot::find("classId = " . $classId);
 
