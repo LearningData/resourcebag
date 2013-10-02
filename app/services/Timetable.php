@@ -2,9 +2,7 @@
     class Timetable {
         public static function getSlotsByDay($user, $day) {
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
-
             $classesList = ClassList::find("teacherId = " . $user->id);
-
             $classes = Timetable::populeClasses($classesList, $day);
             $slots = Timetable::populeSlots($classes, $configs);
 
@@ -28,7 +26,6 @@
         public static function getStudentSlotsByDay($user, $day) {
             $dayOfWeek = $day->format("w");
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $dayOfWeek);
-
             $studentClasses = array();
 
             foreach ($user->classes as $classList) {
@@ -70,10 +67,8 @@
 
         public static function getEmptySlotsByDay($user, $day) {
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
-
             $classesList = ClassList::find("teacherId = " . $user->id);
             $classes = Timetable::populeClasses($classesList, $day);
-
             $slots = array();
 
             foreach ($configs as $config) {

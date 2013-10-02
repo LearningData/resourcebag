@@ -1,7 +1,7 @@
 <?php
-
 class DashboardController extends ControllerBase {
-
-    public function indexAction(){}
+    public function indexAction(){
+        $user = $this->getUserBySession();
+    }
 }
 

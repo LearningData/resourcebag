@@ -38,7 +38,7 @@
                     <span class="btn-icon btn-pending"> pending </span>
                 {% else %}
                 {% endif %}
-                
+
                 {{ link_to("student/homework/answer/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
                 {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
             </td>
@@ -48,7 +48,7 @@
         </tr>
         {% endfor %}
     </tbody>
-    <tbody>
+    <tfoot>
         <tr>
             <td colspan="2" align="right">
                 <table align="center">

@@ -24,10 +24,10 @@ class HomeworkController extends ControllerBase {
 
         $this->view->user = $user;
         $this->view->status = $status;
+
         $params = array("data" => $homeworks, "limit"=> 10,"page" => $numberPage);
         $paginator = new Paginator($params);
         $this->view->page = $paginator->getPaginate();
-
         $this->view->pick($template);
     }
 
