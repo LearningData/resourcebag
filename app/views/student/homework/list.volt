@@ -32,7 +32,7 @@
             <td>{{ homework.text }}</td>
             <td>{{ homework.classList.subject.name }}</td>
             <td> {{ homework.classList.user.name }}{{ homework.classList.user.lastName}} </td>
-            <td>{{ homework.dueDate }}</td>
+            <td>{{ homework.getDueDate() }}</td>
             <td>
                 {% if homework.isPending() %}
                     <span class="btn-icon btn-pending"> pending </span>

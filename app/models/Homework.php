@@ -26,6 +26,10 @@ class Homework extends \Phalcon\Mvc\Model {
         $this->hasMany("id", "HomeworkFile", "homeworkId", array("alias" => "Files"));
     }
 
+    public function getDueDate() {
+        return date("d-m-Y", strtotime($this->dueDate));
+    }
+
     public function getStatus() {
         if ($this->reviewedDate == "0000-00-00" and
             $this->submittedDate != "0000-00-00") {
