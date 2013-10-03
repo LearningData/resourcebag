@@ -1,6 +1,5 @@
 <?php
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
-
 require "../app/services/HomeworkService.php";
 
 class HomeworkController extends ControllerBase {

@@ -28,6 +28,13 @@
                     {% endif %}
                 </div>
                 <div class="col-lg-9">
+                    {% for type, messages in flash.getMessages() %}
+                        {% for message in messages %}
+                          <div class="alert">
+                                {{ message }}
+                           </div>
+                        {% endfor%}
+                    {% endfor %}
                     {{ content() }}
                 </div>
             </div>
