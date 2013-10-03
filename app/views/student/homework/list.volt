@@ -29,7 +29,7 @@
     <tbody>
         {% for homework in page.items %}
         <tr>
-            <td>{{ homework.text }}</td>
+            <td>{{ homework.title }}</td>
             <td>{{ homework.classList.subject.name }}</td>
             <td> {{ homework.classList.user.name }}{{ homework.classList.user.lastName}} </td>
             <td>{{ homework.getDueDate() }}</td>

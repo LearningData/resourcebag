@@ -2,6 +2,9 @@
 
 {{ form("student/createHomework", "method":"post") }}
 <p>
+    <input type="text" name="title" placeholder="Title">
+</p>
+<p>
     <textarea name="description" placeholder="Homework"></textarea>
 </p>
 <p>

@@ -93,6 +93,7 @@ class StudentController extends UsersController {
         $homework->text = $this->request->getPost("description");
         $homework->classId = $classList->id;
         $homework->dueDate = $this->request->getPost("due-date");
+        $homework->title = $this->request->getPost("title");
         $homework->schoolId = $this->view->user->schoolId;
         $homework->teacherId = $classList->user->id;
         $homework->studentId = $this->view->user->id;
@@ -113,7 +114,8 @@ class StudentController extends UsersController {
             $this->flash->success("The homework was created");
         }
 
-        return $this->response->redirect("student/homework");
+        return $this->response->redirect("student/homework?filter=" .
+            Homework::$PENDING);
     }
 }
 ?>

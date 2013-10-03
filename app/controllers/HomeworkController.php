@@ -198,6 +198,7 @@ class HomeworkController extends ControllerBase {
         $homework->text = $this->request->getPost("description");
         $homework->classId = $this->request->getPost("class-id");
         $homework->dueDate = $this->request->getPost("due-date");
+        $homework->title = $this->request->getPost("title");
         $homework->schoolId = $this->view->user->schoolId;
         $homework->teacherId = $teacherId;
         $homework->studentId = $studentId;
