@@ -1,6 +1,6 @@
 <h2 class="h2-homework">Set new homework</h2>
 
-{{ form("student/createHomework", "method":"post") }}
+{{ form("homework/createHomeworkByStudent", "method":"post") }}
 <p>
     <input type="text" name="title" placeholder="Title">
 </p>
@@ -9,7 +9,8 @@
 </p>
 <p>
     <label>Class</label>
-    <select name="classList-id" id="classList-id" class="customSelect" onchange="return getEnableDays(this);">
+    <select name="classList-id" id="classList-id"
+        class="customSelect" onchange="return getEnableDays(this);">
         {% for classId, name in classes %}
         <option value="{{ classId }}"> {{ name }} </option>
         {% endfor %}

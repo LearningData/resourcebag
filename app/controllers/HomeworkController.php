@@ -1,6 +1,8 @@
 <?php
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
+require "../app/services/HomeworkService.php";
+
 class HomeworkController extends ControllerBase {
     public function indexAction() {
         $user = $this->getUserBySession();
@@ -62,7 +64,6 @@ class HomeworkController extends ControllerBase {
             $template = "teacher/homework/new";
         }
 
-        $this->view->status = $status;
         $this->view->pick($template);
     }
 
@@ -132,10 +133,10 @@ class HomeworkController extends ControllerBase {
         return $this->response->redirect("student/homework");
     }
 
-    public function createHomeworkByStudentAction($classId) {
+    public function createHomeworkByStudentAction() {
         $user = $this->getUserBySession();
         $teacherId = $this->request->getPost("teacher-id");
-        $homework = $this->populeHomework($teacherId, $user->id);
+        $homework = HomeworkService::create($user, $this->request->getPost());
 
         if (!$homework->save()) {
             $this->flash->error("Was not possible to create the homework");
@@ -144,7 +145,7 @@ class HomeworkController extends ControllerBase {
             $this->flash->success("The homework was created");
         }
 
-        return $this->dispatcher->forward(array("action" => "homework"));
+        return $this->response->redirect("student/homework?filter=0");
     }
 
     public function uploadFileAction() {
@@ -153,14 +154,8 @@ class HomeworkController extends ControllerBase {
 
         if ($this->request->hasFiles() == true) {
             foreach ($this->request->getUploadedFiles() as $file){
-                $homeworkFile = new HomeworkFile();
-                $homeworkFile->originalName = $file->getName();
-                $homeworkFile->name = $file->getName();
-                $homeworkFile->size = $file->getSize();
-                $homeworkFile->type = $file->getType();
-                $homeworkFile->file = file_get_contents($file->getTempName());
-                $homeworkFile->homeworkId = $homeworkId;
-                $homeworkFile->description = $description;
+                $homeworkFile = HomeworkService::createFile($homeworkId,
+                    $file, $description);
 
                 if ($homeworkFile->save()) {
                     $this->flash->success("The file was uploaded.");
@@ -179,7 +174,6 @@ class HomeworkController extends ControllerBase {
 
     public function removeFileAction($fileId) {
         $file = HomeworkFile::findFirstById($fileId);
-
         $homeworkId = $file->homeworkId;
 
         if ($file->delete()) {
@@ -192,29 +186,9 @@ class HomeworkController extends ControllerBase {
             "params" => array("homeworkId" => $homeworkId)));
     }
 
-    private function populeHomework($teacherId, $studentId) {
-        $homework = new Homework();
-
-        $homework->text = $this->request->getPost("description");
-        $homework->classId = $this->request->getPost("class-id");
-        $homework->dueDate = $this->request->getPost("due-date");
-        $homework->title = $this->request->getPost("title");
-        $homework->schoolId = $this->view->user->schoolId;
-        $homework->teacherId = $teacherId;
-        $homework->studentId = $studentId;
-        $homework->timeSlotId = "0000";
-        $homework->setDate = date("Y-m-d");
-        $homework->submittedDate = "0000-00-00";
-        $homework->reviewedDate = "0000-00-00";
-        $homework->status = 0;
-
-        return $homework;
-    }
-
     private function reviewHomework($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
         $user = $this->getUserBySession();
-
         $homework->reviewedDate = date("Y-m-d");
         $homework->status = Homework::$REVIEWED;
 

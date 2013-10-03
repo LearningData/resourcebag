@@ -83,39 +83,5 @@ class StudentController extends UsersController {
         $this->view->slots = $slots;
         $this->view->pick("student/timetable/index");
     }
-
-    public function createHomeworkAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
-        $classListId = $this->request->getPost("classList-id");
-        $classList = ClassList::findFirstById($classListId);
-
-        $homework = new Homework();
-        $homework->text = $this->request->getPost("description");
-        $homework->classId = $classList->id;
-        $homework->dueDate = $this->request->getPost("due-date");
-        $homework->title = $this->request->getPost("title");
-        $homework->schoolId = $this->view->user->schoolId;
-        $homework->teacherId = $classList->user->id;
-        $homework->studentId = $this->view->user->id;
-        $homework->timeSlotId = $this->request->getPost("due-time");
-        $homework->setDate = date("Y-m-d");
-        $homework->submittedDate = "0000-00-00";
-        $homework->reviewedDate = "0000-00-00";
-        $homework->status = 0;
-
-        if (!$homework->save()) {
-            $this->flash->error("Was not possible to create the homework");
-            foreach ($homework->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-
-            return $this->response->redirect("student/homework/new");
-        } else {
-            $this->flash->success("The homework was created");
-        }
-
-        return $this->response->redirect("student/homework?filter=" .
-            Homework::$PENDING);
-    }
 }
 ?>
