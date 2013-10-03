@@ -48,19 +48,11 @@
         </tr>
         {% endfor %}
     </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2" align="right">
-                <table align="center">
-                    <tr>
-                        <td>{{ link_to("student/homework", "First") }}</td>
-                        <td>{{ link_to("student/homework?page="~page.before~"&filter="~status, "Previous") }}</td>
-                        <td>{{ link_to("student/homework?page="~page.next~"&filter="~status, "Next") }}</td>
-                        <td>{{ link_to("student/homework?page="~page.last~"&filter="~status, "Last") }}</td>
-                        <td>{{ page.current~"/"~page.total_pages }}</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    <tbody>
 </table>
+<ul>
+    <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+    {% for link in links %}
+        <li>{{ link_to(link['url'], link['page']) }}</li>
+    {% endfor %}
+    <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "Next") }}</li>
+</li>

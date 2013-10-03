@@ -13,6 +13,7 @@ class Homework extends \Phalcon\Mvc\Model {
     public $reviewedDate;
     public $text;
     public $status;
+    public $title;
 
     public static $PENDING = 0;
     public static $STARTED = 1;
@@ -70,7 +71,8 @@ class Homework extends \Phalcon\Mvc\Model {
             'submittedDate' => 'submittedDate',
             'reviewedDate' => 'reviewedDate',
             'text' => 'text',
-            'status' => 'status'
+            'status' => 'status',
+            'title' => 'title'
         );
     }
 }

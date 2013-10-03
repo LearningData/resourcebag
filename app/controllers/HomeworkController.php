@@ -9,14 +9,12 @@ class HomeworkController extends ControllerBase {
 
         if ($user->isStudent()) {
             $homeworks = $user->getHomeworkByStatus($status);
-
             $template = "student/homework/list";
         } else {
             if ($status != "") {
                 $homeworks = Homework::find("classId = $classId and status = $status");
             } else {
-                $query = "classId = $classId and status >= 2";
-                $homeworks = Homework::find($query);
+                $homeworks = Homework::find("classId = $classId and status >= 2");
             }
 
             $template = "teacher/homework/list";
@@ -25,9 +23,21 @@ class HomeworkController extends ControllerBase {
         $this->view->user = $user;
         $this->view->status = $status;
 
-        $params = array("data" => $homeworks, "limit"=> 10,"page" => $numberPage);
+        $params = array("data" => $homeworks,
+            "limit"=> 10, "page" => $numberPage
+        );
+
         $paginator = new Paginator($params);
         $this->view->page = $paginator->getPaginate();
+        $totalPages = $this->view->page->total_pages;
+        $links = array();
+        foreach (range(1, $totalPages) as $number) {
+            $attributes = "/homework?page=$number&filter=$status";
+            $links []= array("url"=> $user->getController() . $attributes,
+                "page" => $number
+            );
+        }
+        $this->view->links = $links;
         $this->view->pick($template);
     }
 
