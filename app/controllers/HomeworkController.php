@@ -134,8 +134,10 @@ class HomeworkController extends ControllerBase {
 
     public function createHomeworkByStudentAction() {
         $user = $this->getUserBySession();
-        $teacherId = $this->request->getPost("teacher-id");
-        $homework = HomeworkService::create($user, $this->request->getPost());
+        $classListId = $this->request->getPost("classList-id");
+        $classList = ClassList::findFirstById($classListId);
+        $homework = HomeworkService::create($user,
+            $classList, $this->request->getPost());
 
         if (!$homework->save()) {
             $this->flash->error("Was not possible to create the homework");
