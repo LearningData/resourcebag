@@ -11,6 +11,10 @@
         <input type="text" name="year">
     </p>
     <p>
+        <label for="room">Room</label>
+        <input type="text" name="room">
+    </p>
+    <p>
         <label for="extra-ref">Extra Ref</label>
         <input type="text" name="extra-ref">
     </p>
