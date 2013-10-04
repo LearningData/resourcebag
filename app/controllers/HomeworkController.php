@@ -118,7 +118,10 @@ class HomeworkController extends ControllerBase {
         $homework = Homework::findFirstById($homeworkId);
         $user = $this->getUserBySession();
 
-        if (!$homework) { echo "error"; }
+        if (!$homework->files->count()) {
+            $this->flash->error("Please upload a file before submit the homework");
+            return $this->response->redirect("student/homework");
+        }
 
         $homework->submittedDate = date("Y-m-d");
         $homework->status = Homework::$SUBMITTED;
@@ -127,6 +130,7 @@ class HomeworkController extends ControllerBase {
             $this->flash->success("The homework was submitted.");
         } else {
             $this->flash->error("The homework was not submitted.");
+            $this->appendErrorMessages($homework->getMessages());
         }
 
         return $this->response->redirect("student/homework");
