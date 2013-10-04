@@ -9,5 +9,11 @@ class ControllerBase extends Controller {
 
         return $user;
     }
+
+    protected function appendErrorMessages($messages) {
+        foreach ($messages as $message) {
+            $this->flash->error($message);
+        }
+    }
 }
 ?>

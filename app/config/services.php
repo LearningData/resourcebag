@@ -141,10 +141,10 @@ $di->set("router", function() {
         )
     );
     $router->add(
-        "/student/homework/answer/{homeworkId}",
+        "/student/homework/edit/{homeworkId}",
         array(
             "controller" => "homework",
-            "action"     => "answer"
+            "action"     => "edit"
         )
     );
 

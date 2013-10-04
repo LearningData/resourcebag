@@ -1,44 +1,30 @@
 <?php
-use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 require "../app/services/HomeworkService.php";
 
 class HomeworkController extends ControllerBase {
     public function indexAction() {
         $user = $this->getUserBySession();
-        $numberPage = $this->request->getQuery("page", "int");
+        $currentPage = $this->request->getQuery("page", "int");
         $status = $this->request->get("filter");
+        $template = $user->getController() . "/homework/list";
 
         if ($user->isStudent()) {
             $homeworks = $user->getHomeworkByStatus($status);
-            $template = "student/homework/list";
         } else {
             if ($status != "") {
                 $homeworks = Homework::find("classId = $classId and status = $status");
             } else {
                 $homeworks = Homework::find("classId = $classId and status >= 2");
             }
-
-            $template = "teacher/homework/list";
         }
 
         $this->view->user = $user;
         $this->view->status = $status;
-
-        $params = array("data" => $homeworks,
-            "limit"=> 10, "page" => $numberPage
-        );
-
-        $paginator = new Paginator($params);
-        $this->view->page = $paginator->getPaginate();
+        $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
-        $links = array();
-        foreach (range(1, $totalPages) as $number) {
-            $attributes = "/homework?page=$number&filter=$status";
-            $links []= array("url"=> $user->getController() . $attributes,
-                "page" => $number
-            );
-        }
-        $this->view->links = $links;
+        $this->view->links = HomeworkService::getPaginateLinks($user->getController(),
+            $totalPages, $status);
+
         $this->view->pick($template);
     }
 
@@ -49,6 +35,7 @@ class HomeworkController extends ControllerBase {
 
     public function newHomeworkAction() {
         $user = $this->getUserBySession();
+        $template = $user->getController() . "/homework/new";
 
         if ($user->isStudent()) {
             $classes = array();
@@ -58,17 +45,14 @@ class HomeworkController extends ControllerBase {
             }
 
             $this->view->classes = $classes;
-            $template = "student/homework/new";
-        } else {
-            $template = "teacher/homework/new";
         }
 
         $this->view->pick($template);
     }
 
-    public function answerAction($homeworkId) {
+    public function editAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
-        $user = $this->getUserBySession();
+        $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
         $this->view->homework = $homework;
@@ -76,7 +60,7 @@ class HomeworkController extends ControllerBase {
 
     public function reviewAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
-        $user = $this->getUserBySession();
+        $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
         $this->view->homework = $homework;
@@ -116,7 +100,7 @@ class HomeworkController extends ControllerBase {
 
     public function submitAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
-        $user = $this->getUserBySession();
+        $this->getUserBySession();
 
         if (!$homework->files->count()) {
             $this->flash->error("Please upload a file before submit the homework");
@@ -126,7 +110,7 @@ class HomeworkController extends ControllerBase {
         $homework->submittedDate = date("Y-m-d");
         $homework->status = Homework::$SUBMITTED;
 
-        if ($homework->save()) {
+        if($homework->save()) {
             $this->flash->success("The homework was submitted.");
         } else {
             $this->flash->error("The homework was not submitted.");
@@ -173,7 +157,7 @@ class HomeworkController extends ControllerBase {
             }
         }
 
-        return $this->dispatcher->forward(array("action" => "answer",
+        return $this->dispatcher->forward(array("action" => "edit",
             "params" => array("homeworkId" => $homeworkId)));
     }
 
@@ -187,13 +171,13 @@ class HomeworkController extends ControllerBase {
             $this->flash->error("File was not removed");
         }
 
-        return $this->dispatcher->forward(array("action" => "answer",
+        return $this->dispatcher->forward(array("action" => "edit",
             "params" => array("homeworkId" => $homeworkId)));
     }
 
     private function reviewHomework($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
-        $user = $this->getUserBySession();
+        $this->getUserBySession();
         $homework->reviewedDate = date("Y-m-d");
         $homework->status = Homework::$REVIEWED;
 
@@ -204,11 +188,5 @@ class HomeworkController extends ControllerBase {
         }
 
         return $homework;
-    }
-
-    private function appendErrorMessages($messages) {
-        foreach ($messages as $message) {
-            $this->flash->error($message);
-        }
     }
 }

@@ -42,7 +42,7 @@
                 {% else %}
                 {% endif %}
 
-                {{ link_to("student/homework/answer/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
+                {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
                 {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
             </td>
