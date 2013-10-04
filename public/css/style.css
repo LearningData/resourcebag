@@ -106,6 +106,7 @@ span.customSelect {
   top: 8px;
   z-index: 1;
 }
+
 /*//////MEDIA//////*/
 @media screen and (min-width: 768px) {
   .sidebar .container {
@@ -147,8 +148,21 @@ table > tbody > tr.active td:last-child {
 .table tr:hover, ul li:hover {
   background-color: #f0f2f2;
 }
+
 .table tbody > tr > td, .table thead > tr > th {
   padding: 20px 10px;
+}
+
+.table .collapse {
+    display: none;
+}
+
+.table .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease;
+    transition: height 0.3s ease;
 }
 
 /*//////DEFAULT NAVIGATION ARROWS//////*/
@@ -575,6 +589,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   background-position: 50px -1125px;
   padding-left: 30px;
 }
+
 .nav-homework ul li.bt-new :hover {
   border-bottom: #760900 solid 5px;
   background-color: #760900;

@@ -17,7 +17,7 @@
     </ul>
 
 </nav>
-<table class="table table-homework">
+<table id="accordion" class="accordion table table-homework">
         <tr>
             <th>Homework</th>
             <th>Subject</th>
@@ -28,28 +28,31 @@
     </thead>
     <tbody>
         {% for homework in page.items %}
-        <tr>
-            <td>{{ homework.title }}</td>
-            <td>{{ homework.classList.subject.name }}</td>
-            <td>
-                {{ homework.classList.user.name }}
-                {{ homework.classList.user.lastName}}
-            </td>
-            <td>{{ homework.getDueDate() }}</td>
-            <td>
-                {% if homework.isPending() %}
-                    <span class="btn-icon btn-pending"> pending </span>
-                {% else %}
-                {% endif %}
+        <tbody class="accordion-group">
+            <tr data-toggle="collapse" data-target="#hw{{ homework.id }}" data-parent="#accordion">
+                <td>{{ homework.title }}</td>
+                <td>{{ homework.classList.subject.name }}</td>
+                <td>
+                    {{ homework.classList.user.name }}
+                    {{ homework.classList.user.lastName}}
+                </td>
+                <td>{{ homework.getDueDate() }}</td>
+                <td>
+                    {% if homework.isPending() %}
+                        <span class="btn-icon btn-pending"> pending </span>
+                    {% else %}
+                    {% endif %}
 
-                {{ link_to("student/homework/answer/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
-                {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
-                {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="5" style="display: none;">description</td>
-        </tr>
+                    {{ link_to("student/homework/answer/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
+                    {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
+                    {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
+                </td>
+            </tr>
+
+            <tr  id="hw{{ homework.id }}" class="collapse">
+                <td colspan="5">{{ homework.text }}</td>
+            </tr>
+        </tbody>
         {% endfor %}
     </tbody>
 </table>
