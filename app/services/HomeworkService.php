@@ -1,22 +1,24 @@
 <?php
-class HomeworkService {
-    public static function create($user, $params) {
-        $classListId = $params["classList-id"];
-        $classList = ClassList::findFirstById($classListId);
+use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
+class HomeworkService {
+    public static function create($user, $classList, $params) {
         $homework = new Homework();
         $homework->text = $params["description"];
-        $homework->classId = $classListId;
+        $homework->classId = $classList->id;
         $homework->dueDate = $params["due-date"];
         $homework->title = $params["title"];
         $homework->schoolId = $user->schoolId;
         $homework->teacherId = $classList->user->id;
         $homework->studentId = $user->id;
-        $homework->timeSlotId = "0000";
         $homework->setDate = date("Y-m-d");
         $homework->submittedDate = "0000-00-00";
         $homework->reviewedDate = "0000-00-00";
         $homework->status = Homework::$PENDING;
+
+        if(array_key_exists("due-time", $params)) {
+            $homework->timeSlotId = $params["due-time"];
+        }
 
         return $homework;
     }
@@ -32,6 +34,27 @@ class HomeworkService {
         $homeworkFile->description = $description;
 
         return $homeworkFile;
+    }
+
+    public static function getPaginateLinks($controller, $pages, $status) {
+        $links = array();
+        foreach (range(1, $pages) as $page) {
+            $url = "$controller/homework?page=$page&filter=$status";
+            $links []= array("url"=> $url,
+                "page" => $page
+            );
+        }
+
+        return $links;
+    }
+
+    public static function getPage($homeworks, $currentPage) {
+        $params = array("data" => $homeworks,
+            "limit"=> 10, "page" => $currentPage
+        );
+
+        $paginator = new Paginator($params);
+        return $paginator->getPaginate();
     }
 }
 ?>
