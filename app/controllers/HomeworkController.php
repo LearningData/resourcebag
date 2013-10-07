@@ -37,16 +37,7 @@ class HomeworkController extends ControllerBase {
         $user = $this->getUserBySession();
         $template = $user->getController() . "/homework/new";
 
-        if ($user->isStudent()) {
-            $classes = array();
-
-            foreach ($user->classes as $classList) {
-                $classes[$classList->id] = $classList->subject->name;
-            }
-
-            $this->view->classes = $classes;
-        }
-
+        $this->view->classes = ClassListService::getClassesByUser($user);
         $this->view->pick($template);
     }
 
