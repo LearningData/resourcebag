@@ -597,38 +597,26 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 .to-do .nav-homework .bt-to-do a {
     border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
-    background-position: 50px -1125px;
-    padding-left: 30px;
 }
 
 .to-do .nav-homework .bt-to-do :hover {
-  border-bottom: #760900 solid 5px;
-  background-color: #760900;
+    border-bottom: #760900 solid 5px;
 }
 
-.progress .nav-homework .bt-progress a {
+.in-progress .nav-homework .bt-in-progress a {
     border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
-    background-position: 50px -1125px;
-    padding-left: 30px;
 }
 
-.progress .nav-homework .bt-progress :hover {
-  border-bottom: #760900 solid 5px;
-  background-color: #760900;
+.in-progress .nav-homework .bt-in-progress :hover {
+    border-bottom: #760900 solid 5px;
 }
 
 .complete .nav-homework .bt-complete a {
     border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
-    background-position: 50px -1125px;
-    padding-left: 30px;
 }
 
 .complete .nav-homework .bt-complete :hover {
-  border-bottom: #760900 solid 5px;
-  background-color: #760900;
+    border-bottom: #760900 solid 5px;
 }
 .table.table-homework thead > tr > th {
   border-bottom: none;
@@ -689,7 +677,7 @@ a.btn-icon:hover {
     background-position: -500px -371px;
 }
 
-.progress .table-homework .btn-review {
+.in-progress .table-homework .btn-review {
     display: none;
 }
 
