@@ -28,6 +28,10 @@ class ClassList extends \Phalcon\Mvc\Model {
         $this->hasMany("id", "Homework", "classId", array("alias" => "Homeworks"));
     }
 
+    public static function getClassesByTeacherId($teacherId) {
+        return ClassList::find("teacherId = $teacherId");
+    }
+
     public function getSource() {
         return "classlist";
     }

@@ -120,20 +120,13 @@ class TeacherController extends UsersController {
         $students = $this->request->getPost("students");
 
         if(!$students) { return $this->toIndex(); }
+        $classListId = $this->request->getPost("class-id");
+        $classList = ClassList::findFirstById($classListId);
 
         foreach ($students as $studentId) {
-            $homework = new Homework();
-            $homework->text = $this->request->getPost("description");
-            $homework->classId = $this->request->getPost("class-id");
-            $homework->dueDate = $this->request->getPost("due-date");
-            $homework->schoolId = $this->view->user->schoolId;
-            $homework->teacherId = $this->view->user->id;
-            $homework->studentId = $studentId;
-            $homework->timeSlotId = "0000";
-            $homework->setDate = date("Y-m-d");
-            $homework->submittedDate = "0000-00-00";
-            $homework->reviewedDate = "0000-00-00";
-            $homework->status = 0;
+            $student = User::findFirstById($studentId);
+            $params = $this->request->getPost();
+            $homework = HomeworkService::create($student, $classList, $params);
 
             if (!$homework->save()) {
                 $this->flash->error("Error to save homework for student: $studentId");
