@@ -106,6 +106,7 @@ span.customSelect {
   top: 8px;
   z-index: 1;
 }
+
 /*//////MEDIA//////*/
 @media screen and (min-width: 768px) {
   .sidebar .container {
@@ -147,8 +148,21 @@ table > tbody > tr.active td:last-child {
 .table tr:hover, ul li:hover {
   background-color: #f0f2f2;
 }
+
 .table tbody > tr > td, .table thead > tr > th {
   padding: 20px 10px;
+}
+
+.table .collapse {
+    display: none;
+}
+
+.table .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease;
+    transition: height 0.3s ease;
 }
 
 /*//////DEFAULT NAVIGATION ARROWS//////*/
@@ -575,11 +589,47 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   background-position: 50px -1125px;
   padding-left: 30px;
 }
+
 .nav-homework ul li.bt-new :hover {
   border-bottom: #760900 solid 5px;
   background-color: #760900;
 }
 
+.to-do .nav-homework .bt-to-do a {
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+    background-position: 50px -1125px;
+    padding-left: 30px;
+}
+
+.to-do .nav-homework .bt-to-do :hover {
+  border-bottom: #760900 solid 5px;
+  background-color: #760900;
+}
+
+.progress .nav-homework .bt-progress a {
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+    background-position: 50px -1125px;
+    padding-left: 30px;
+}
+
+.progress .nav-homework .bt-progress :hover {
+  border-bottom: #760900 solid 5px;
+  background-color: #760900;
+}
+
+.complete .nav-homework .bt-complete a {
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+    background-position: 50px -1125px;
+    padding-left: 30px;
+}
+
+.complete .nav-homework .bt-complete :hover {
+  border-bottom: #760900 solid 5px;
+  background-color: #760900;
+}
 .table.table-homework thead > tr > th {
   border-bottom: none;
   vertical-align: bottom;
@@ -628,6 +678,23 @@ a.btn-icon:hover {
 }
 .btn-remove {
   background-position: -500px -400px;
+}
+
+.to-do .table-homework .btn-edit, .to-do .table-homework .btn-review, .to-do .table-homework .btn-submit {
+	display: none;
+}
+
+.to-do .btn-pending {
+    background-color: #f47920;
+    background-position: -500px -371px;
+}
+
+.progress .table-homework .btn-review {
+    display: none;
+}
+
+.complete .table-homework .btn-edit, .complete .table-homework .btn-submit {
+    display: none;
 }
 
 h2.h2-homework{
