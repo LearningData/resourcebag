@@ -23,6 +23,7 @@ class NoticeController extends ControllerBase {
 
     public function newAction() {
         $user = $this->getUserBySession();
+        if ($user->isStudent()) { $this->response->redirect("notice/index"); }
     }
 
     private function getNotices() {
