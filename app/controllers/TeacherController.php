@@ -77,7 +77,7 @@ class TeacherController extends UsersController {
                 $slot->schoolId = $this->view->user->schoolId;
                 $slot->day = $i;
                 $slot->classId = $classList->id;
-                $slot->room = "hack room";
+                $slot->room = $this->request->getPost("room");
 
                 if (!$slot->save()) {
                     $this->flash->error("Was not possible to create the slots");
