@@ -19,7 +19,7 @@
             {{ link_to("teacher/timetable", "Timetable") }}
         </li>
         <li class="homework">
-            {{ link_to("teacher/homework?filter=0", "Homework") }}
+            {{ link_to("teacher/homework?filter=2", "Homework") }}
         </li>
         <li class="classes">
             {{ link_to("teacher/listClasses/", "Classes") }}

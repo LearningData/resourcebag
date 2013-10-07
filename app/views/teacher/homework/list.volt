@@ -1,9 +1,4 @@
 <h2>Homeworks</h2>
-<h5>
-    {{ link_to("teacher/homework/"~classList.id, "All") }} |
-    {{ link_to("teacher/homework/"~classList.id~"?filter=3", "Reviewed") }} |
-    {{ link_to("teacher/homework/"~classList.id~"?filter=2", "Submitted") }} |
-</h5>
 {{ form("homework/reviewManyHomeworks", "method":"post") }}
     <table class="table table-hover">
         <thead>
@@ -17,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for homework in homeworks %}
+        {% for homework in page.items %}
             <tr>
                 <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
                 <td>{{ homework.text }}</td>
@@ -45,6 +40,12 @@
         {% endfor %}
         </tbody>
     </table>
-    <input type="hidden" name="class-id" value="{{ classList.id }}">
+    <ul>
+        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+        {% for link in links %}
+            <li>{{ link_to(link['url'], link['page']) }}</li>
+        {% endfor %}
+        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "Next") }}</li>
+    </li>
     <input type="submit">
 </form>

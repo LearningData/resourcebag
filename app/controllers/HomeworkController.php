@@ -12,9 +12,9 @@ class HomeworkController extends ControllerBase {
             $homeworks = $user->getHomeworkByStatus($status);
         } else {
             if ($status != "") {
-                $homeworks = Homework::find("classId = $classId and status = $status");
+                $homeworks = Homework::find("teacherId = " .$user->id . " and status = $status");
             } else {
-                $homeworks = Homework::find("classId = $classId and status >= 2");
+                $homeworks = Homework::find("teacherId = " .$user->id . " and status >= 2");
             }
         }
 
@@ -58,9 +58,8 @@ class HomeworkController extends ControllerBase {
     }
 
     public function reviewedAction($homeworkId) {
-        $homework = $this->reviewHomework($homeworkId);
-
-        $uri = "teacher/homework/" . $homework->classId;
+        $this->reviewHomework($homeworkId);
+        $uri = "teacher/homework";
         return $this->response->redirect($uri);
     }
 
