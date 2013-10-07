@@ -137,7 +137,7 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Homework created");
-        return $this->response->redirect("student/homework/" . $homework->classId);
+        return $this->response->redirect("teacher/homework");
     }
 }
 ?>

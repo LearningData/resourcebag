@@ -67,6 +67,26 @@ $(function() {
     });
 });
 
+function populeStudentsAndDays(classId) {
+    getEnableDays(classId);
+    if ($("[name='student']").length > 0) {
+        $("[name='student']").remove();
+    }
+    var url = "http://localhost:7001/schoolbag/service/getStudents/" + classId.value;
+    $.get(url, function(response) {
+        var students = response.students;
+        for (var i = students.length - 1; i >= 0; i--) {
+            var student = students[i];
+            var input = "<p name='student'><input  type='checkbox' name='students[]' value='" + student.id + "'>" + student.name+ "</p>";
+
+            console.log(input);
+             $("#students").append(input);
+            console.log(student.name);
+        };
+    });
+
+}
+
 function getEnableDays(classId) {
     var url = "http://localhost:7001/schoolbag/service/daysByClass/" + classId.value;
     $.get(url, function(response) {

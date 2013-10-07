@@ -54,4 +54,25 @@ class ServiceController extends ControllerBase {
 
         return $response;
     }
+
+    public function getStudentsAction($classId) {
+        $classList = ClassList::findFirstById($classId);
+
+        $users = $classList->users;
+        $students = array();
+
+        foreach($users as $user) {
+            $students []= array(
+                "id" => $user->id,
+                "name" => $user->name . " " . $user->lastName
+            );
+        }
+
+        $response = new Phalcon\Http\Response();
+
+        header('Content-Type: application/json');
+        $response->setJsonContent(array("students" => $students));
+
+        return $response;
+     }
 }
