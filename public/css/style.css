@@ -633,27 +633,27 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   background-color: #760900;
 }
 
-.to-do .nav-homework .bt-to-do a {
+.nav-homework.to-do .bt-to-do a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.to-do .nav-homework .bt-to-do :hover {
+.nav-homework.to-do .bt-to-do :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.in-progress .nav-homework .bt-in-progress a {
+.nav-homework.in-progress .bt-in-progress a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.in-progress .nav-homework .bt-in-progress :hover {
+.nav-homework.in-progress .bt-in-progress :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.complete .nav-homework .bt-complete a {
+.nav-homework.complete .bt-complete a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.complete .nav-homework .bt-complete :hover {
+.nav-homework.complete .bt-complete :hover {
     border-bottom: #760900 solid 5px;
 }
 .table.table-homework thead > tr > th {
