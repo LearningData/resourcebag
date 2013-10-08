@@ -1,7 +1,7 @@
 <div class="container">
     <div class="box">
         <div class="box-header">
-            <div class="header-title header-homework"> 
+            <div id="dashboard-homework-head" class="header-title header-homework"> 
                 <h2>Homework</h2>
             </div>
         </div>
