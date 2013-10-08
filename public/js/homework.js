@@ -33,18 +33,14 @@ var homework = (function() {
     })
 
     getClasses = function( dfdDialog ) {
-        var url = urlBase + "/service/homeworks/" + studentId;
-        var subjects = {}
+        var url = urlBase + "/service/classes/" + studentId;
         $.get( url, function(response) {
-            var homeworks = response.homeworks
-            for ( var i = 0; i < homeworks.length; i++ ) {
-                subjects[homeworks[i].subjectId] = homeworks[i].subject
-            }
-            dfdDialog.resolve(subjects)
+            var classes = jQuery.parseJSON(response).classes
+            dfdDialog.resolve( classes )
         });
     }
 
-    createNewHomeworkDialog = function( subjectList ) {
+    createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Set New Homework</h4></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
@@ -65,11 +61,9 @@ var homework = (function() {
             placeholder: "Description:"
         })
         modalBody.append( descriptionInput )
-        console.log(subjectList)
         var options= ["<option value=\" \"> Class </option>"]
-        for ( var i in subjectList ) {
-        //TODO get real ids for options
-            options.push("<option value=" + i + ">" + subjectList[i] + "</option>") 
+        for ( var i = 0; i < classes.length; i++ ) {
+            options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>") 
         }
         var selectClass = $( "<select>", {
             name: "classList-id",
