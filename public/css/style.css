@@ -805,3 +805,62 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .table-events td:last-child {
   vertical-align: middle;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.paginator { padding-top: 10px; margin-left: auto; margin-right: auto; }
+.paginator li {float:left;}
+.paginator a  {color:#ff9e19;}
+.paginator a, .pageList .this-page { padding: 2px 6px; text-decoration: none; }
+.paginator a:hover, .paginator li:hover {text-decoration: none; background:none;}
+.paginator a:visited { padding: 2px 6px; text-decoration: none; }
+.paginator .AtStart { margin-right: 20px; padding: 2px 6px; color: #aaa; }
+.paginator .Prev { margin-right: 20px; padding: 2px 6px; }
+.paginator .break { padding: 2px 6px; border: none; background: #fff; text-decoration: none; }
+.paginator .Next { margin-left: 20px; padding: 2px 6px;}
+.paginator .AtEnd { margin-left: 20px; padding: 2px 6px; color: #aaa; }
+.paginator .this-page {padding: 2px 10px; font-weight: bold; vertical-align: top; color: #fff; background-color: #a30c00; }
+

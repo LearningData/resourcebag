@@ -56,11 +56,11 @@
             {% endfor %}
         </tbody>
     </table>
-    <ul>
-        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+    <ul class="paginator">
+        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev" ) }}</li>
         {% for link in links %}
-            <li>{{ link_to(link['url'], link['page']) }}</li>
+            <li>{{ link_to(link['url'], "class":"this-page", link['page']) }}</li>
         {% endfor %}
-        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "Next") }}</li>
+        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>
 </div>
