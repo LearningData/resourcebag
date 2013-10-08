@@ -10,7 +10,8 @@ class ServiceController extends ControllerBase {
             $subject = $homework->classList->subject->name;
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
-                 "description" => $homework->text
+                 "description" => $homework->text,
+                 "status" => $homework->status
             );
         }
 
@@ -54,4 +55,25 @@ class ServiceController extends ControllerBase {
 
         return $response;
     }
+
+    public function getStudentsAction($classId) {
+        $classList = ClassList::findFirstById($classId);
+
+        $users = $classList->users;
+        $students = array();
+
+        foreach($users as $user) {
+            $students []= array(
+                "id" => $user->id,
+                "name" => $user->name . " " . $user->lastName
+            );
+        }
+
+        $response = new Phalcon\Http\Response();
+
+        header('Content-Type: application/json');
+        $response->setJsonContent(array("students" => $students));
+
+        return $response;
+     }
 }

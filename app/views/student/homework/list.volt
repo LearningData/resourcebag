@@ -1,4 +1,4 @@
-<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "in-progress" : ""))) }}">
+<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "progress" : ""))) }}">
     <h1>Homework</h1>
     <nav class="nav-homework">
         <ul>
@@ -9,7 +9,7 @@
             <li class="bt-to-do">
                 {{ link_to("student/homework?filter=0", "To Do") }}
             </li>
-            <li class="bt-in-progress">
+            <li class="bt-progress">
                 {{ link_to("student/homework?filter=3", "In Progress") }}
             </li>
             <li class="bt-complete">
