@@ -149,6 +149,14 @@ $di->set("router", function() {
     );
 
     $router->add(
+        "/student/homework/start/{homeworkId}",
+        array(
+            "controller" => "homework",
+            "action"     => "start"
+        )
+    );
+
+    $router->add(
         "/student/homework/submit/{homeworkId}",
         array(
             "controller" => "homework",

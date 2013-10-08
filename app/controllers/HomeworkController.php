@@ -33,6 +33,14 @@ class HomeworkController extends ControllerBase {
         $this->view->homework = Homework::findFirstById($homeworkId);
     }
 
+    public function startAction($homeworkId) {
+        $homework = Homework::findFirstById($homeworkId);
+        $homework->status = Homework::$STARTED;
+        $homework->save();
+
+        return $this->response->redirect("student/homework/edit/" . $homework->id);
+    }
+
     public function newHomeworkAction() {
         $user = $this->getUserBySession();
         $template = $user->getController() . "/homework/new";

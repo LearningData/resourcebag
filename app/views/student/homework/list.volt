@@ -40,8 +40,8 @@
                     <td>{{ homework.getDueDate() }}</td>
                     <td data-target="--">
                         {% if homework.isPending() %}
-                            <span class="btn-icon btn-pending"> pending </span>
-                        {% else %}
+                            {{ link_to("student/homework/start/"~homework.id,
+                                "class":"btn-icon btn-pending", "Start")}}
                         {% endif %}
 
                         {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
