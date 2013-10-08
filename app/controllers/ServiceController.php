@@ -11,7 +11,8 @@ class ServiceController extends ControllerBase {
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
                  "description" => $homework->text,
-                 "status" => $homework->status
+                 "status" => $homework->status,
+                 "class-id" => $homework->classId
             );
         }
 
@@ -21,6 +22,22 @@ class ServiceController extends ControllerBase {
         header('Content-Type: application/json');
 
         $response->setJsonContent($content);
+
+        return $response;
+    }
+
+    public function classesAction($userId) {
+        $user = User::findFirstById($userId);
+
+        $json = array();
+
+        foreach ($user->classes as $classList) {
+            $json []= array("id" => $classList->id,
+                "subject" => $classList->subject->name);
+        }
+
+        $response = new Phalcon\Http\Response();
+        $response->setJsonContent(array("classes" => $json));
 
         return $response;
     }
