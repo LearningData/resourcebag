@@ -13,8 +13,9 @@
         <tr>
             <td>{{ file.originalName }}</td>
             <td>{{ file.description }}</td>
-            <td>{{ link_to("homework/removeFile/"~file.id, "class":"btn-remove btn-icon", "Remove") }}</td>
+            <td><span data-name="{{ file.originalName }}" data-file-id="{{ file.id }}" class="btn-remove btn-icon">"Remove"</span></td>
         </tr>
         {% endfor %}
     </table>
 </section>
+

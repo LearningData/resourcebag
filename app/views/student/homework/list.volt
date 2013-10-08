@@ -46,7 +46,7 @@
 
                         {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
                         {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
-                        {{ link_to("student/homework/submit/"~homework.id, "class":"btn-submit btn-icon", "Submit") }}
+                        <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon">"Submit"</span>
                     </td>
                 </tr>
                 <tr  id="hw{{ homework.id }}" class="collapse">

@@ -1,20 +1,35 @@
 var homework = (function() {
 
     //init
-    var urlBase = "http://localhost:7001/schoolbag/"
+    var urlBase = "http://localhost:7001/schoolbag"
     var studentId = 1652
+    $( ".btn-remove" ).tooltip({title: "Remove File"})
+    $( ".btn-submit" ).tooltip({title: "Submit Homework"})
+    $( ".btn-pending" ).tooltip({title: "Start Homework"})
+    $( ".btn-review" ).tooltip({title: "Review Homework"})
 
     //events
     $( ".bt-new a" ).click(function ( event ) {
         event.preventDefault()
-        $('#newHomeworkModal').modal( "show" )
+        $( "#newHomeworkModal" ).modal( "show" )
     })
 
     $( ".bt-upload" ).click(function ( event ) {
         event.preventDefault()
-        console.log($ ( this ).data())
         uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
-        $('#uploadHomeworkModal').modal( "show" )
+        $( "#uploadHomeworkModal" ).modal( "show" )
+    })
+
+    $( ".btn-remove" ).click(function ( event ) {
+        event.preventDefault()
+        removeHomeworkFileDialog( $ ( this ).data() )
+        $( "#removeHomeworkModal" ).modal( "show" )
+    })
+
+    $( ".btn-submit" ).click(function ( event ) {
+        event.preventDefault()
+        submitHomeworkDialog( $ ( this ).data() )
+        $( "#submitHomeworkModal" ).modal( "show" )
     })
 
     getClasses = function( dfdDialog ) {
@@ -196,13 +211,72 @@ var homework = (function() {
         modalDialog.appendTo( modal )
         modal.appendTo( "body" )
         $( fileInput ).uniform();
-        //Events
-        $("#due-date").datepicker({
-            dateFormat : 'yy-mm-dd',
-            minDate : 1,
-            beforeShowDay : enableDays,
-            onSelect : showTimes
+    }
+
+    removeHomeworkFileDialog = function( data ) {
+        var modal = $( "<div class=\"modal fade\" id=\"removeHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
+        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Upload Homework File</h4></div>")
+        var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to remove the file" + data.name +" </p></div>" )
+
+        //buttons
+        var send = $( "<a>", {
+            href: urlBase + "/homework/removeFile/" + data.fileId,
+            "class": "btn btn-homework",
+            html: "Yes"
         })
+
+        var cancel = $( "<button>", {
+            "class": "btn btn-homework",
+            "data-dismiss": "modal",
+            html: "Cancel"
+        })
+        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
+        modalFooter.append( send )
+        modalFooter.append( cancel )
+
+        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
+
+        var modalContent = $ ( "<div class=\"modal-homework modal-content\"></div>" )
+        modalContent.append( modalHeader )
+        modalContent.append( modalBody )
+        modalContent.append( modalFooter )
+
+        modalContent.appendTo( modalDialog )
+        modalDialog.appendTo( modal )
+        modal.appendTo( "body" )
+    }
+
+    submitHomeworkDialog = function( data ) {
+        var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
+        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Upload Homework File</h4></div>")
+        var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework" + data.title +" </p></div>" )
+
+        //buttons
+        var send = $( "<a>", {
+            href: urlBase + "/student/homework/submit/" + data.homeworkId,
+            "class": "btn btn-homework",
+            html: "Yes"
+        })
+
+        var cancel = $( "<button>", {
+            "class": "btn btn-homework",
+            "data-dismiss": "modal",
+            html: "Cancel"
+        })
+        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
+        modalFooter.append( send )
+        modalFooter.append( cancel )
+
+        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
+
+        var modalContent = $ ( "<div class=\"modal-homework modal-content\"></div>" )
+        modalContent.append( modalHeader )
+        modalContent.append( modalBody )
+        modalContent.append( modalFooter )
+
+        modalContent.appendTo( modalDialog )
+        modalDialog.appendTo( modal )
+        modal.appendTo( "body" )
     }
     
     //init
