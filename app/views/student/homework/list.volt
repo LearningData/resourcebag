@@ -1,4 +1,4 @@
-<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "in-progress" : ""))) }}">
+<div class="{{ (status == 0 ? "to-do" : (status >= 2 ? "complete" : ( status == 1 ? "in-progress" : ""))) }}">
     <h1>Homework</h1>
     <nav class="nav-homework">
         <ul>
@@ -10,13 +10,12 @@
                 {{ link_to("student/homework?filter=0", "To Do") }}
             </li>
             <li class="bt-in-progress">
-                {{ link_to("student/homework?filter=3", "In Progress") }}
+                {{ link_to("student/homework?filter=1", "In Progress") }}
             </li>
             <li class="bt-complete">
                 {{ link_to("student/homework?filter=2", "Complete") }}
             </li>
         </ul>
-
     </nav>
     <table id="accordion" class="accordion table table-homework">
             <tr>
@@ -56,11 +55,11 @@
             {% endfor %}
         </tbody>
     </table>
-    <ul>
-        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+    <ul class="paginator homework">
+        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev" ) }}</li>
         {% for link in links %}
-            <li>{{ link_to(link['url'], link['page']) }}</li>
+            <li>{{ link_to(link['url'], "class":"this-page", link['page']) }}</li>
         {% endfor %}
-        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "Next") }}</li>
+        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>
 </div>
