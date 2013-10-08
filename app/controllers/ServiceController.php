@@ -93,4 +93,24 @@ class ServiceController extends ControllerBase {
 
         return $response;
      }
+
+     public function timetableAction() {
+        $user = $this->getUserBySession();
+        $slots = array();
+
+        $days = Timetable::getCurrentWeek();
+
+        foreach($days as $day) {
+            $dayOfWeek = $day->format("w");
+            $slots[$dayOfWeek] = Timetable::getStudentSlotsByDay($user, $day);
+        }
+
+        $response = new Phalcon\Http\Response();
+        //$period = Timetable::getCurrentWeek();
+
+        header('Content-Type: application/json');
+        $response->setJsonContent(array("week" => $slots));
+
+        return $response;
+     }
 }

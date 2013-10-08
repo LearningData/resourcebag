@@ -39,7 +39,12 @@
                     " and status >= " . Homework::$SUBMITTED;
 
                 $homeworks = Homework::find($homeworkQuery);
-                $content = $classList->subject->name . " / " . count($homeworks);
+                //$content = $classList->subject->name . " / " . count($homeworks);
+                $content = array(
+                    "subject" => $classList->subject->name,
+                    "room" => $slot->room,
+                    "homeworks" => count($homeworks)
+                );
                 $studentClasses[$slot->timeSlotId] = $content;
             }
 
@@ -54,10 +59,11 @@
             if($configs) {
                 foreach ($configs as $config) {
                     if (array_key_exists($config->timeSlotId, $classes)) {
-                        $subjectName = $classes[$config->timeSlotId];
-                        $slots[$config->timeSlotId] = $config->startTime . " / " . $subjectName;
+                        $content = $classes[$config->timeSlotId];
+                        $content["time"] = $config->startTime;
+                        $slots []= $content;
                     } else {
-                        $slots[$config->timeSlotId] = $config->startTime;
+                        $slots []= array("time" => $config->startTime);
                     }
                 }
             }
