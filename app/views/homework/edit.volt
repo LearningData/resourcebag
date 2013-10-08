@@ -1,7 +1,7 @@
 <h2 class="h2-homework">Homework {{ homework.text }}</h2>
 
 <section>
-    <div id="upload-homework-file" class="bt-upload" data-homework-id="{{ homework.id }}">Upload Homework File</div>
+    <div id="upload-homework-file" class="bt-upload" data-homework-id="{{ homework.id }}">Upload File</div>
     <h4>Files uploaded:</h4>
     <table class="table">
         <thead>
