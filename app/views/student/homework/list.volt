@@ -1,4 +1,4 @@
-<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "in-progress" : ""))) }}">
+<div class="{{ (status == 0 ? "to-do" : (status >= 2 ? "complete" : ( status == 1 ? "in-progress" : ""))) }}">
     <h1>Homework</h1>
     <nav class="nav-homework">
         <ul>
@@ -16,7 +16,6 @@
                 {{ link_to("student/homework?filter=2", "Complete") }}
             </li>
         </ul>
-
     </nav>
     <table id="accordion" class="accordion table table-homework">
             <tr>
