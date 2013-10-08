@@ -282,13 +282,10 @@ var homework = (function() {
             paginator.classList.add( "hidden" )
             return
         }
-        var pageNumber
+        var pageNumber = 1
         var startPos = window.location.href.indexOf( "?" )
         startPos = window.location.href.substring( startPos).indexOf( "page" )
-        if ( startPos == -1 ) {
-            pageNumber == 1
-        } else {
-            
+        if ( startPos != -1 ) {
             var endPos = window.location.href.indexOf( "&" )
             pageNumber = parseInt(window.location.href.substring( startPos, endPos ).split( "=" )[1])
         }
