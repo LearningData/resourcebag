@@ -12,6 +12,7 @@ var homework = (function() {
 
     $( ".bt-upload" ).click(function ( event ) {
         event.preventDefault()
+        console.log($ ( this ).data())
         uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
         $('#uploadHomeworkModal').modal( "show" )
     })
@@ -56,8 +57,8 @@ var homework = (function() {
             options.push("<option value=" + i + ">" + subjectList[i] + "</option>") 
         }
         var selectClass = $( "<select>", {
-            name: "classlist-id",
-            id: "classlist-id",
+            name: "classList-id",
+            id: "classList-id",
             "class": "form-control customSelect",
             onchange: "return getEnableDays(this)"
         })
