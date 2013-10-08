@@ -851,9 +851,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 
 
-.paginator { padding-top: 10px; margin-left: auto; margin-right: auto; }
+.paginator { padding-top: 10px; margin-left: auto; margin-right: auto; display: table; }
 .paginator li {float:left;}
-.paginator a  {color:#ff9e19;}
+.paginator a  {color:#ff9e19; margin: 0 2px;}
 .paginator a, .pageList .this-page { padding: 2px 6px; text-decoration: none; }
 .paginator a:hover, .paginator li:hover {text-decoration: none; background:none;}
 .paginator a:visited { padding: 2px 6px; text-decoration: none; }

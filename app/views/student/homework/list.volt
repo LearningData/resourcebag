@@ -1,4 +1,4 @@
-<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "progress" : ""))) }}">
+<div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "in-progress" : ""))) }}">
     <h1>Homework</h1>
     <nav class="nav-homework">
         <ul>
@@ -9,7 +9,7 @@
             <li class="bt-to-do">
                 {{ link_to("student/homework?filter=0", "To Do") }}
             </li>
-            <li class="bt-progress">
+            <li class="bt-in-progress">
                 {{ link_to("student/homework?filter=3", "In Progress") }}
             </li>
             <li class="bt-complete">
@@ -40,8 +40,8 @@
                     <td>{{ homework.getDueDate() }}</td>
                     <td data-target="--">
                         {% if homework.isPending() %}
-                            <span class="btn-icon btn-pending"> pending </span>
-                        {% else %}
+                            {{ link_to("student/homework/start/"~homework.id,
+                                "class":"btn-icon btn-pending", "Start")}}
                         {% endif %}
 
                         {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}

@@ -1,6 +1,7 @@
 <h2 class="h2-homework">Homework {{ homework.text }}</h2>
 
 <section>
+    <div id="upload-homework-file" class="bt-upload" data-homework-id="{{ homework.id }}">Upload File</div>
     <h4>Files uploaded:</h4>
     <table class="table">
         <thead>
@@ -17,18 +18,3 @@
         {% endfor %}
     </table>
 </section>
-<br>
-<br>
-
-{{ form("homework/uploadFile", "method":"post", "enctype":"multipart/form-data") }}
-<p>
-    <input type="file" name="file">
-</p>
-<p>
-    <textarea name="description" placeholder="Description"></textarea>
-</p>
-<input type="hidden" name="homework-id" value="{{ homework.id }}">
-<p>
-    <input type="submit" class="btn btn-homework" value="save">
-</p>
-</form>

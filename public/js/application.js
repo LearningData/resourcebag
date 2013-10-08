@@ -53,7 +53,8 @@ $(document).ready(function() {
             url : 'http://google.com/'
         }]
     });
-
+    
+    dashboard.init()
 });
 
 $("input[type=file], select").uniform();
