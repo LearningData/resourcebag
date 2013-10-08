@@ -10,6 +10,10 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public $classID;
     public $fileAttached;
 
+    public function initialize() {
+        $this->hasMany("id", "NoticeBoardFile", "noticeId", array("alias" => "Files"));
+    }
+
     public function getSource() {
         return "noticeboard";
     }
@@ -22,8 +26,8 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
             'userType' => 'userType',
             'uploadedBy' => 'uploadedBy',
             'classID' => 'classId',
-            'fileAttached' => 'fileAttached'
+            'fileAttached' => 'fileAttached',
+            'id' => 'id'
         );
     }
-
 }

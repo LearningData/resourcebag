@@ -3,6 +3,15 @@
 class DownloadController extends ControllerBase {
     public function homeworkAction($fileId) {
         $file = HomeworkFile::findFirst("id = $fileId");
+        $this->setContent($file);
+    }
+
+    public function noticeboardAction($fileId) {
+        $file = NoticeBoardFile::findFirst($fileId);
+        $this->setContent($file);
+    }
+
+    private function setContent($file) {
         if (!$file) {
             $this->flash->error("Error to download file.");
         }
