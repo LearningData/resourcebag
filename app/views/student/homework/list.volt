@@ -1,5 +1,6 @@
 <div class="{{ (status == 0 ? "to-do" : (status == 2 ? "complete" : ( status == 3 ? "progress" : ""))) }}">
-    <h1>Homework</h1>
+    <h1>Homework</h1> 
+    
     <nav class="nav-homework">
         <ul>
             <li class="bt-new">
