@@ -51,7 +51,24 @@ class NoticeController extends ControllerBase {
         $notice->uploadedBy = $user->id;
 
         if($notice->save()) {
-            $this->flash->success("The notice was saved");
+            foreach ($this->request->getUploadedFiles() as $file){
+                $noticeFile = new NoticeBoardFile();
+                $noticeFile->originalName = $file->getName();
+                $noticeFile->name = $file->getName();
+                $noticeFile->size = $file->getSize();
+                $noticeFile->type = $file->getType();
+                $noticeFile->file = file_get_contents($file->getTempName());
+                $noticeFile->noticeId = $notice->id;
+
+                if ($noticeFile->save()) {
+                    $this->flash->success("The file was uploaded.");
+                } else {
+                    $this->flash->error("The file was not uploaded.");
+                    foreach ($noticeFile->getMessages() as $message) {
+                        $this->flash->error($message);
+                    }
+                }
+            }
         } else {
             foreach ($notice->getMessages() as $message) {
                 $this->flash->error($message);
