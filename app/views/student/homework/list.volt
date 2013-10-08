@@ -10,7 +10,7 @@
                 {{ link_to("student/homework?filter=0", "To Do") }}
             </li>
             <li class="bt-in-progress">
-                {{ link_to("student/homework?filter=3", "In Progress") }}
+                {{ link_to("student/homework?filter=1", "In Progress") }}
             </li>
             <li class="bt-complete">
                 {{ link_to("student/homework?filter=2", "Complete") }}
