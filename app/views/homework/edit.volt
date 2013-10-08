@@ -3,7 +3,7 @@
 <section>
     <div id="upload-homework-file" class="bt-upload" data-homework-id="{{ homework.id }}">Upload File</div>
     <h4>Files uploaded:</h4>
-    <table class="table">
+    <table class="table table-homework">
         <thead>
             <th>File Name</th>
             <th>Description</th>

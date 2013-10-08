@@ -107,6 +107,28 @@ span.customSelect {
   z-index: 1;
 }
 
+/*//////MODAL//////*/
+ 
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-content {
+    border-radius: 0px;
+    background-color: #f2f2f2;
+}
+
+.modal-footer {
+    border-top: none;
+    text-align: left;
+}
+
+.modal-title {
+    padding-left: 5px;
+    border-left: 3px black solid;
+}
+
+
 /*//////MEDIA//////*/
 @media screen and (min-width: 768px) {
   .sidebar .container {
@@ -498,12 +520,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   background-position: 10px -787px;
 }
 
-.box-home {
-  background-color: #f6f6f6;
-  -webkit-border-radius: 0 0 5px 5px;
-  -moz-border-radius: 0 0 5px 5px;
-  border-radius: 0 0 5px 5px;
-}
 .homework-home ul li {
   position: relative;
   padding-left: 45px;
@@ -566,7 +582,16 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*//////HOME WORK PAGE//////*/
-.nav-homework ul li a {
+
+.table-homework .tooltip-inner {
+    background-color: #ff9e19;
+}
+
+.table-homework .tooltip.top .tooltip-arrow {
+  border-top-color: #ff9e19;
+}
+
+.nav-homework ul li a, .bt-upload {
   width: 25%;
   height: 60px;
   float: left;
@@ -646,7 +671,7 @@ span.btn-icon {
 span.btn-icon:hover {
   background-color: #b1b1b1;
 }
-a.btn-icon {
+a.btn-icon, .table-homework .btn-icon {
   background-color: #ff9e19;
 }
 a.btn-icon:hover {
@@ -668,21 +693,36 @@ a.btn-icon:hover {
   background-position: -500px -400px;
 }
 
-.to-do .table-homework .btn-edit, .to-do .table-homework .btn-review, .to-do .table-homework .btn-submit {
-	display: none;
+.bt-upload {
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+    background-position: 50px -1125px;
+    padding-left: 30px;
+    float: none;
 }
 
-.to-do .btn-pending {
-    background-color: #f47920;
+.bt-upload :hover {
+    border-bottom: #760900 solid 5px;
+    background-color: #760900;
+}
+
+.table-homework .btn-edit, .table-homework .btn-review, .table-homework .btn-submit,
+.table-homework .btn-pending {
+    display: none;
+    background-color: #ff9e19
+}
+
+.table-homework .to-do .btn-pending {
+    display: inline-block;
     background-position: -500px -371px;
 }
 
-.in-progress .table-homework .btn-review {
-    display: none;
+.table-homework .in-progress .btn-edit, .table-homework .in-progress .btn-submit {
+    display: inline-block;
 }
 
-.complete .table-homework .btn-edit, .complete .table-homework .btn-submit {
-    display: none;
+.table-homework .complete .btn-review, .table-homework .reviewed .btn-review {
+    display: inline-block;
 }
 
 h2.h2-homework{
@@ -736,6 +776,15 @@ h2.h2-homework{
   margin: 0;
 }
 
+.modal-homework .modal-title {
+    border-left-color: #ff9e19
+}
+
+.modal-homework select {
+    width: 95%;
+    margin: 10px;
+    background-color: white;
+}
 
 
 
@@ -806,19 +855,52 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   vertical-align: middle;
 }
 
+/*///////////////DASHBOARD/////////////*/
+.box {
+    background-color: #f6f6f6;
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.box-home {
+  background-color: #f6f6f6;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+ 
+.box-child {
+    width: auto;
+    height: 335px;
+    overflow: hidden;
+}
+ 
+#dashboard-homework > ul > a {
+    color: #414042
+}
+ 
+#dashboard-homework > ul li {
+    position: relative;
+    border-bottom: #d1d3d4 solid 1px;
+    padding: 10px 10px 10px 45px;
+    font-size: 12px;
+}
+ 
+#dashboard-homework > ul li > p {
+    margin: 0px;
+}
+ 
+#dashboard-homework > ul li {
+    position: relative;
+    border-bottom: #d1d3d4 solid 1px;
+    padding: 10px 10px 10px 45px;
+    font-size: 12px;
+}
+ 
+#dashboard-homework > ul li > p {
+    margin: 0px;
+}
+ 
 /*Paginator - Defatul - Pls change color for any section*/
 .paginator { padding-top: 10px; margin-left: auto; margin-right: auto; display: table; }
 .paginator li {float:left;}

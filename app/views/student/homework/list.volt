@@ -1,4 +1,3 @@
-<div class="{{ (status == 0 ? "to-do" : (status >= 2 ? "complete" : ( status == 1 ? "in-progress" : ""))) }}">
     <h1>Homework</h1>
     <nav class="nav-homework">
         <ul>
@@ -17,7 +16,7 @@
             </li>
         </ul>
     </nav>
-    <table id="accordion" class="accordion table table-homework">
+    <table class="accordion table table-homework">
             <tr>
                 <th>Homework</th>
                 <th>Subject</th>
@@ -28,30 +27,28 @@
         </thead>
         <tbody>
             {% for homework in page.items %}
-            <tbody class="accordion-group">
-                <tr>
-                    <td data-toggle="collapse" data-parent="#accordion" data-target="#hw{{ homework.id }}">{{ homework.title }}</td>
-                    <td>{{ homework.classList.subject.name }}</td>
-                    <td>
-                        {{ homework.classList.user.name }}
-                        {{ homework.classList.user.lastName}}
-                    </td>
-                    <td>{{ homework.getDueDate() }}</td>
-                    <td data-target="--">
-                        {% if homework.isPending() %}
-                            {{ link_to("student/homework/start/"~homework.id,
-                                "class":"btn-icon btn-pending", "Start")}}
-                        {% endif %}
+            <tr class="{{ (homework.status == 0 ? "to-do" : (home-work.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }}">
+                <td data-toggle="collapse" data-target="#hw{{ homework.id }}">{{ homework.title }}</td>
+                <td>{{ homework.classList.subject.name }}</td>
+                <td>
+                    {{ homework.classList.user.name }}
+                    {{ homework.classList.user.lastName}}
+                </td>
+                <td>{{ homework.getDueDate() }}</td>
+                <td data-target="--">
+                    {% if homework.isPending() %}
+                        {{ link_to("student/homework/start/"~homework.id,
+                            "class":"btn-icon btn-pending", "Start")}}
+                    {% endif %}
 
-                        {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
-                        {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
-                        <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon">"Submit"</span>
-                    </td>
-                </tr>
-                <tr  id="hw{{ homework.id }}" class="collapse">
-                    <td colspan="5">{{ homework.text }}</td>
-                </tr>
-            </tbody>
+                    {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
+                    {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
+                    <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon">"Submit"</span>
+                </td>
+            </tr>
+            <tr  id="hw{{ homework.id }}" class="collapse">
+                <td colspan="5">{{ homework.text }}</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
@@ -62,4 +59,3 @@
         {% endfor %}
         <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>
-</div>
