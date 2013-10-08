@@ -155,6 +155,7 @@ span.customSelect {
   border-top: 0;
   font-size: 14px;
   background-color: #f6f6f6;
+    margin-bottom: 5px;
 }
 .table > tbody > tr.active > td, .table tr.active, .table tr.active td {
   background-color: #e6e7e8;
@@ -601,6 +602,18 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
   padding: 18px 0 0;
   font-weight: 300;
 }
+
+.homework-view .bt-return {
+    width: 25%;
+    height: 60px;
+    float: left;
+    color: #fff;
+    background-color: #ff9e19;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+}
+
 .nav-homework ul li a {
   color: #fff;
 }
@@ -725,7 +738,13 @@ a.btn-icon:hover {
     display: inline-block;
 }
 
-h2.h2-homework{
+.homework-header {
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+h2.h2-homework, .homework-subheader {
   font-weight: 100;
   border-left:#ff9e19 5px solid;
   padding: 10px 0 10px 10px;

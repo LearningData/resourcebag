@@ -3,35 +3,38 @@ var homework = (function() {
     //init
     var urlBase = "http://localhost:7001/schoolbag"
     var studentId = 1652
-    $( ".btn-remove" ).tooltip({title: "Remove File"})
-    $( ".btn-submit" ).tooltip({title: "Submit Homework"})
-    $( ".btn-pending" ).tooltip({title: "Start Homework"})
-    $( ".btn-review" ).tooltip({title: "Review Homework"})
+    $( ".btn-remove" ).tooltip( {title: "Remove File"} )
+    $( ".btn-submit" ).tooltip( {title: "Submit Homework"} )
+    $( ".btn-pending" ).tooltip( {title: "Start Homework"} )
+    $( ".btn-review" ).tooltip( {title: "Review Homework"} )
 
     //events
-    $( ".bt-new a" ).click(function ( event ) {
+    $( ".bt-new a" ).click(function( event ) {
         event.preventDefault()
         $( "#newHomeworkModal" ).modal( "show" )
     })
-
-    $( ".bt-upload" ).click(function ( event ) {
+    $( ".bt-upload" ).click(function( event ) {
         event.preventDefault()
         uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
         $( "#uploadHomeworkModal" ).modal( "show" )
     })
-
-    $( ".btn-remove" ).click(function ( event ) {
+    $( ".btn-remove" ).click(function( event ) {
         event.preventDefault()
         removeHomeworkFileDialog( $ ( this ).data() )
         $( "#removeHomeworkModal" ).modal( "show" )
     })
-
-    $( ".btn-submit" ).click(function ( event ) {
+    $( ".btn-submit" ).click(function( event ) {
         event.preventDefault()
         submitHomeworkDialog( $ ( this ).data() )
         $( "#submitHomeworkModal" ).modal( "show" )
     })
-
+    $( ".homework-header" ).click( function( event ) {
+        window.location.href = urlBase + "/student/homework"
+    })
+    $( ".homework-view .bt-return" ).click( function( event ){
+        window.location.href = urlBase + "/student/homework"
+    })
+    
     getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/" + studentId;
         $.get( url, function(response) {
@@ -272,11 +275,39 @@ var homework = (function() {
         modalDialog.appendTo( modal )
         modal.appendTo( "body" )
     }
+
+    stylePaginator = function() {
+        var paginator = $( ".paginator" )[0]
+        if ( paginator.children.length == 3 ) {
+            paginator.classList.add( "hidden" )
+            return
+        }
+        var pageNumber
+        var startPos = window.location.href.indexOf( "?" )
+        startPos = window.location.href.substring( startPos).indexOf( "page" )
+        if ( startPos == -1 ) {
+            pageNumber == 1
+        } else {
+            
+            var endPos = window.location.href.indexOf( "&" )
+            pageNumber = parseInt(window.location.href.substring( startPos, endPos ).split( "=" )[1])
+        }
+        paginator.children[pageNumber].classList.add( "this-page" )
+        if ( pageNumber == 1) {
+            paginator.children[0].style.display = "none"
+        }
+        if ( pageNumber == paginator.children.length - 2) {
+            paginator.children[paginator.children.length - 1].style.display = "none"
+        }
+
+    }
     
     //init
     var dfdDialog = $.Deferred();
     dfdDialog.done(createNewHomeworkDialog)
     getClasses( dfdDialog )
+    stylePaginator() 
+
     return {
 
     };

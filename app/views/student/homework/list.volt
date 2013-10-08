@@ -1,4 +1,4 @@
-    <h1>Homework</h1>
+    <h1 class="homework-header">Homework</h1>
     <nav class="nav-homework">
         <ul>
             <li class="bt-new">
@@ -55,7 +55,7 @@
     <ul class="paginator homework">
         <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev" ) }}</li>
         {% for link in links %}
-            <li>{{ link_to(link['url'], "class":"this-page", link['page']) }}</li>
+            <li>{{ link_to(link['url'], link['page']) }}</li>
         {% endfor %}
         <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>

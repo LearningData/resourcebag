@@ -1,6 +1,7 @@
-<h2>Homework {{ homework.text }}</h2>
+<h1 class="homework-header">Homework</h1>
+<h2 class="homework-subheader">{{ homework.text }}</h2>
 
-<section>
+<section class="homework-view">
     <h4>Files uploaded:</h4>
     <table class="table">
         <thead>
@@ -16,4 +17,5 @@
             </tr>
         {% endfor %}
     </table>
+    <button class="bt-return">Back To Homework</button>
 </section>
