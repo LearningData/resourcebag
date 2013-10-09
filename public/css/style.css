@@ -607,7 +607,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin: 20px 0;
     background-color: white;
 }
-
+div.uploader   {
+    margin:15px 0!important;
+}
 
 
 /*//////SEARCH//////*/
@@ -718,6 +720,7 @@ a.btn-icon:hover,
 .btn-remove.btn-icon:hover,
 .btn-submit.btn-icon:hover {
     background-color: #F47920;
+    cursor:pointer;
 }
 .btn-review {
     background-position: -500px -490px;
@@ -832,11 +835,15 @@ a.btn-icon:hover,
 #datepicker {
     min-height: 300px;
 }
+.ui-datepicker  {
+    background-color:#fff;
+}
 .ui-datepicker-header {
-    background-color: #9752a3;
+    background-color: #ff9e19;
     color: #fff;
     text-align: center;
-    padding: 25px 0 5px;
+    padding: 17px 0 13px;
+    min-width: 230px;
 }
 .ui-datepicker-header h2 {
     font-size: 16px;
@@ -849,8 +856,8 @@ a.btn-icon:hover,
     text-transform: uppercase;
 }
 table.ui-datepicker-calendar {
-    width: 90%;
-    margin: 5px 5% 20px 5%;
+    width: 100%;
+    margin:0;
     font-size: 16px;
     text-align: center;
 }
