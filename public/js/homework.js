@@ -13,7 +13,7 @@ var homework = (function() {
         event.preventDefault()
         $( "#newHomeworkModal" ).modal( "show" )
     })
-    $( ".bt-upload" ).click(function( event ) {
+    $( "#upload-homework-file" ).click(function( event ) {
         event.preventDefault()
         uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
         $( "#uploadHomeworkModal" ).modal( "show" )
