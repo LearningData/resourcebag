@@ -2,7 +2,7 @@ var homework = (function() {
 
     //init
     var urlBase = window.location.origin + "/schoolbag"
-    var studentId = 1652
+
     $( ".btn-remove" ).tooltip( {title: "Remove File"} )
     $( ".btn-submit" ).tooltip( {title: "Submit Homework"} )
     $( ".btn-pending" ).tooltip( {title: "Start Homework"} )
@@ -44,9 +44,9 @@ var homework = (function() {
     })*/
 
     getClasses = function( dfdDialog ) {
-        var url = urlBase + "/service/classes/" + studentId;
+        var url = urlBase + "/service/classes/";
         $.get( url, function(response) {
-            var classes = jQuery.parseJSON(response).classes
+            var classes = response.classes
             dfdDialog.resolve( classes )
         });
     }
@@ -74,7 +74,7 @@ var homework = (function() {
         modalBody.append( descriptionInput )
         var options= ["<option value=\" \"> Class </option>"]
         for ( var i = 0; i < classes.length; i++ ) {
-            options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>") 
+            options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
         }
         var selectClass = $( "<select>", {
             name: "classList-id",
@@ -307,12 +307,12 @@ var homework = (function() {
         }
 
     }
-    
+
     //init
     var dfdDialog = $.Deferred();
     dfdDialog.done(createNewHomeworkDialog)
     getClasses( dfdDialog )
-    stylePaginator() 
+    stylePaginator()
 
     return {
 

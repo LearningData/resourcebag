@@ -1,7 +1,6 @@
 var dashboard = (function() {
 
     var urlBase = "http://localhost:7001/schoolbag"
-    var studentId = 1652
 
 
     //events
@@ -12,11 +11,11 @@ var dashboard = (function() {
 
     init = function() {
         populateHomework()
-    
+
     }
 
     populateHomework = function() {
-        var url = urlBase + "/service/homeworks/" + studentId;
+        var url = urlBase + "/service/homeworks/";
         $.get(url, function(response) {
             var works = []
             for ( var i = 0; i < response.homeworks.length; i++ ) {

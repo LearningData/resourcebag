@@ -1,8 +1,9 @@
 <?php
 
 class ServiceController extends ControllerBase {
-    public function homeworksAction($userId) {
-        $homeworks = Homework::find("studentId = $userId");
+    public function homeworksAction() {
+        $user = $this->getUserBySession();
+        $homeworks = Homework::find("studentId = " . $user->id);
 
         $jsonHomeworks = array();
 
@@ -12,23 +13,16 @@ class ServiceController extends ControllerBase {
                  "subject" => $subject,
                  "description" => $homework->text,
                  "status" => $homework->status,
-                 "class-id" => $homework->classId
             );
         }
 
-        $response = new Phalcon\Http\Response();
         $content = array('status' => 'success', 'homeworks' => $jsonHomeworks);
 
-        header('Content-Type: application/json');
-
-        $response->setJsonContent($content);
-
-        return $response;
+        return $this->setContent($content);
     }
 
-    public function classesAction($userId) {
-        $user = User::findFirstById($userId);
-
+    public function classesAction() {
+        $user = $this->getUserBySession();
         $json = array();
 
         foreach ($user->classes as $classList) {
@@ -36,46 +30,32 @@ class ServiceController extends ControllerBase {
                 "subject" => $classList->subject->name);
         }
 
-        $response = new Phalcon\Http\Response();
-        $response->setJsonContent(array("classes" => $json));
-
-        return $response;
+        return $this->setContent(array("classes" => $json));
     }
 
     public function daysByClassAction($classId) {
         $slots = TimetableSlot::find("classId = " . $classId);
-
         $weekDays = "";
 
         foreach ($slots as $slot) { $weekDays .= $slot->day . ","; }
 
-        $response = new Phalcon\Http\Response();
         $content = array('status' => 'success', 'weekDays' => $weekDays);
 
-        header('Content-Type: application/json');
-
-        $response->setJsonContent($content);
-
-        return $response;
+        return $this->setContent($content);
     }
 
     public function getClassTimesAction($classId, $day) {
         $query = "classId = $classId and day = $day";
-
         $times = array();
         $slots = TimetableSlot::find($query);
+
         foreach ($slots as $slot) { array_push($times, $slot->timeSlotId); }
-        $response = new Phalcon\Http\Response();
 
-        header('Content-Type: application/json');
-        $response->setJsonContent(array("times" => $times));
-
-        return $response;
+        return $this->setContent(array("times" => $times));
     }
 
     public function getStudentsAction($classId) {
         $classList = ClassList::findFirstById($classId);
-
         $users = $classList->users;
         $students = array();
 
@@ -86,12 +66,7 @@ class ServiceController extends ControllerBase {
             );
         }
 
-        $response = new Phalcon\Http\Response();
-
-        header('Content-Type: application/json');
-        $response->setJsonContent(array("students" => $students));
-
-        return $response;
+        return $this->setContent(array("students" => $students));
      }
 
      public function timetableAction() {
@@ -105,11 +80,13 @@ class ServiceController extends ControllerBase {
             $slots[$dayOfWeek] = Timetable::getStudentSlotsByDay($user, $day);
         }
 
-        $response = new Phalcon\Http\Response();
-        //$period = Timetable::getCurrentWeek();
+        return $this->setContent(array("week" => $slots));
+     }
 
+     private function setContent($content) {
         header('Content-Type: application/json');
-        $response->setJsonContent(array("week" => $slots));
+        $response = new Phalcon\Http\Response();
+        $response->setJsonContent($content);
 
         return $response;
      }
