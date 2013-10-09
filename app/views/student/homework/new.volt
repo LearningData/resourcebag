@@ -1,4 +1,4 @@
-<h2 class="h2-homework">Set new homework</h2>
+<h2 class="homework-subheader">Set new homework</h2>
 
 {{ form("homework/createHomeworkByStudent", "method":"post") }}
 <p>

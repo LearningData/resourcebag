@@ -45,7 +45,7 @@ var homework = (function() {
 
     createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Set New Homework</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Set New Homework</h24></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var titleInput = $ ( "<input>", {
@@ -103,14 +103,14 @@ var homework = (function() {
         modalBody.append(classId)
         //buttons
         var send = $( "<input>", {
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             type: "submit",
             value: "save"
         })
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -147,7 +147,7 @@ var homework = (function() {
 
     uploadHomeworkFileDialog = function( homeworkId ) {
         var modal = $( "<div class=\"modal fade\" id=\"uploadHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Upload Homework File</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Upload Homework File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var fileInput = $ ( "<input>", {
@@ -175,14 +175,14 @@ var homework = (function() {
         modalBody.append(homeworkId)
         //buttons
         var send = $( "<input>", {
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             type: "submit",
             value: "save"
         })
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -212,18 +212,18 @@ var homework = (function() {
 
     removeHomeworkFileDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"removeHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Remove File</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Remove File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to remove the file " + data.name +" </p></div>" )
 
         //buttons
         var send = $( "<a>", {
             href: urlBase + "/homework/removeFile/" + data.fileId,
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             html: "Yes"
         })
 
         var cancel = $( "<button>", {
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -245,18 +245,18 @@ var homework = (function() {
 
     submitHomeworkDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Submit Homework</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title bdr-hwk\">Submit Homework</h4></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework " + data.title +" </p></div>" )
 
         //buttons
         var send = $( "<a>", {
             href: urlBase + "/student/homework/submit/" + data.homeworkId,
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv",
             html: "Yes"
         })
 
         var cancel = $( "<button>", {
-            "class": "btn btn-homework",
+            "class": "btn bg-hwk bg-hwk-hv˙",
             "data-dismiss": "modal",
             html: "Cancel"
         })
