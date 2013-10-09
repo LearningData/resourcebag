@@ -2,7 +2,6 @@
 
 class NoticeRoutes extends Phalcon\Mvc\Router\Group {
     public function initialize() {
-        /* NOTICEBOARD */
         $this->add("/teacher/noticeboard",
             array(
                 "controller" => "notice",
@@ -15,6 +14,13 @@ class NoticeRoutes extends Phalcon\Mvc\Router\Group {
             array(
                 "controller" => "notice",
                 "action" => "new"
+            )
+        );
+
+        $this->add("/teacher/noticeboard/edit/{noticeId}",
+            array(
+                "controller" => "notice",
+                "action"     => "edit"
             )
         );
 

@@ -40,6 +40,26 @@ class NoticeController extends ControllerBase {
         $this->view->classes = $classes;
     }
 
+    public function editAction($noticeId) {
+        $user = $this->getUserBySession();
+        $classesList = ClassList::getClassesByTeacherId($user->id);
+        $classes = array();
+
+        foreach ($classesList as $classList) {
+            $classes[$classList->id] = $classList->subject->name;
+        }
+
+        $this->view->classes = $classes;
+        $this->views->types = array("T" => "T", "P" =>"P");
+        $notice  = NoticeBoard::findFirstById($noticeId);
+
+        $this->tag->setDefault("notice", $notice->text);
+        $this->tag->setDefault("type", $notice->type);
+        $this->tag->setDefault("class-id", $notice->classId);
+
+        if ($user->isStudent()) { $this->response->redirect("student/notice/index"); }
+    }
+
     public function createAction() {
         $user = $this->getUserBySession();
 
@@ -49,6 +69,10 @@ class NoticeController extends ControllerBase {
         $notice->userType = $this->request->getPost("type");
         $notice->schoolId = $user->schoolId;
         $notice->uploadedBy = $user->id;
+
+        if($this->request->getPost("class-id") != "") {
+            $notice->classId = $this->request->getPost("class-id");
+        }
 
         if($notice->save()) {
             foreach ($this->request->getUploadedFiles() as $file){
