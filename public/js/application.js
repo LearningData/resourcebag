@@ -90,6 +90,17 @@ function host() {
     return "http://" + window.location.host
 }
 
+function getUser() {
+    var pathname = window.location.pathname
+    if ( pathname.indexOf("teacher") != -1 ) {
+        return "teacher"
+    } else if ( pathname.indexOf("student") != -1 ) {
+        return "student"
+    } else {
+        return "user"
+    }
+}
+
 function getEnableDays(classId) {
     var url = host() + "/schoolbag/service/daysByClass/" + classId.value;
     $.get(url, function(response) {

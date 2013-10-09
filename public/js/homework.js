@@ -1,7 +1,7 @@
 var homework = (function() {
 
     //init
-    var urlBase = "http://localhost:7001/schoolbag"
+    var urlBase = window.location.origin + "/schoolbag"
     var studentId = 1652
     $( ".btn-remove" ).tooltip( {title: "Remove File"} )
     $( ".btn-submit" ).tooltip( {title: "Submit Homework"} )
@@ -29,12 +29,20 @@ var homework = (function() {
         $( "#submitHomeworkModal" ).modal( "show" )
     })
     $( ".homework-header" ).click( function( event ) {
-        window.location.href = urlBase + "/student/homework"
+        window.location.href = urlBase + "/" + getUser() + "/homework"
     })
     $( ".homework-view .bt-return" ).click( function( event ){
-        window.location.href = urlBase + "/student/homework"
+        window.location.href = urlBase + "/" + getUser() + "/homework"
     })
-    
+    /*$( ".homework-collapse" ).click( function( event ){
+        var element = event.target
+        var target = element.getAttribute("data-target")
+        $( target ).collapse( "toggle" )
+        element.classList.toggle("icon-plus-sign-alt")
+        element.classList.toggle("icon-minus-sign-alt")
+        
+    })*/
+
     getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/" + studentId;
         $.get( url, function(response) {
@@ -278,10 +286,6 @@ var homework = (function() {
 
     stylePaginator = function() {
         var paginator = $( ".paginator" )[0]
-        if ( paginator.children.length == 3 ) {
-            paginator.classList.add( "hidden" )
-            return
-        }
         var pageNumber = 1
         var startPos = window.location.href.indexOf( "?" )
         startPos = window.location.href.substring( startPos).indexOf( "page" )
@@ -290,11 +294,16 @@ var homework = (function() {
             pageNumber = parseInt(window.location.href.substring( startPos, endPos ).split( "=" )[1])
         }
         paginator.children[pageNumber].classList.add( "this-page" )
+        paginator.children[pageNumber].onclick = function() {
+            event.preventDefault()
+        }
         if ( pageNumber == 1) {
-            paginator.children[0].style.display = "none"
+            paginator.classList.add("AtStart")
+            $( ".paginator .Prev" ).replaceWith( $( "<span class=\"icon-chevron-left Prev\"></span>" ) )
         }
         if ( pageNumber == paginator.children.length - 2) {
-            paginator.children[paginator.children.length - 1].style.display = "none"
+            paginator.classList.add("AtEnd")
+            $( ".paginator .Next" ).replaceWith( $( "<span class=\"icon-chevron-right Next\"></span>" ) )
         }
 
     }
