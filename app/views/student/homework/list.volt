@@ -27,7 +27,7 @@
         </thead>
         <tbody>
             {% for homework in page.items %}
-            <tr class="{{ (homework.status == 0 ? "to-do" : (home-work.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }}">
+            <tr class="{{ (homework.status == 0 ? "to-do" : (homework.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }}">
                 <td data-toggle="collapse" data-target="#hw{{ homework.id }}">{{ homework.title }}</td>
                 <td>{{ homework.classList.subject.name }}</td>
                 <td>
