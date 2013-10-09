@@ -97,7 +97,7 @@ function getUser() {
     } else if ( pathname.indexOf("student") != -1 ) {
         return "student"
     } else {
-        return "user"
+        return "student"
     }
 }
 
@@ -136,12 +136,18 @@ function showTimes(date) {
     $.get(url, function(response) {
         var times = response.times;
         for (var i = times.length - 1; i >= 0; i--) {
+            console.log(times)
             var time = times[i];
-            var field = '<p name="pdue-time"><input type="radio" name="due-time" value="' + time + '">' + time + '</p>';
+            var field = '<p name="pdue-time"><input type="radio" name="due-time" value="' + time + '">' + time.substring(0,2) + ":" + time.substring(2)+ '</p>';
             input = jQuery(field);
             $("#due-times").append(input);
         };
     });
+}
+
+function prettyDate( date ) {
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    return days[date.getUTCDay()] + " " + date.getUTCDate()
 }
 
 function hiddenRadioElements() {

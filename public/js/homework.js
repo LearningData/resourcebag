@@ -286,6 +286,8 @@ var homework = (function() {
 
     stylePaginator = function() {
         var paginator = $( ".paginator" )[0]
+        if ( paginator == undefined )
+            return
         var pageNumber = 1
         var startPos = window.location.href.indexOf( "?" )
         startPos = window.location.href.substring( startPos).indexOf( "page" )

@@ -150,7 +150,7 @@ span.customSelect {
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
     .collapse {
         display: block;
     }
@@ -202,6 +202,10 @@ table > tbody > tr.active td:last-child {
     overflow: hidden;
     -webkit-transition: height 0.3s ease;
     transition: height 0.3s ease;
+}
+
+.table>thead>tr>th.active {
+    color: #030303;
 }
 
 /*//////DEFAULT NAVIGATION ARROWS//////*/
@@ -387,6 +391,8 @@ table > tbody > tr.active td:last-child {
   text-transform: uppercase;
   font-weight: 400;
 }
+
+
 
 /*//////DEFAULT LIST HOME//////*/
 .notice-home ul li, .messages-home ul li, .homework-home ul li {
@@ -811,6 +817,37 @@ h2.h2-homework, .homework-subheader {
   margin: 0;
 }
 
+.table.table-timetable.day {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	padding: 0;
+	border: #d1d3d4 solid 1px;
+	border-top: 0;
+	font-size: 12px;
+}
+.table.table-timetable.day > tbody > tr.active > td, .table.table-timetable.day tr.active, .table tr.active td {
+	background-color: #e6e7e8;
+}
+.table.table-timetable.day > tbody > tr.active td:first-child {
+	border: #d1d3d4 solid;
+	border-width: 2px 1px 2px 2px
+}
+.table.table-timetable.day > tbody > tr.active td:last-child {
+	border: #d1d3d4 solid;
+	border-width: 2px 2px 2px 0;
+}
+.table.table-timetable.day td:first-child {
+	border-right: solid 1px #dcddde;
+	font-weight: bold;
+	text-align: center;
+}
+.table.table-timetable.day tr:hover, ul li:hover {
+	background-color: #f0f2f2;
+}
+
+
 .modal-homework .modal-title {
     border-left-color: #ff9e19
 }
@@ -936,6 +973,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin: 0px;
 }
  
+
+
+
 /*Paginator - Defatul - Pls change color for any section*/
 .paginator { padding-top: 10px; margin-left: auto; margin-right: auto; display: table; }
 .paginator li {float:left;}
