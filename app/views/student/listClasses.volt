@@ -1,3 +1,8 @@
+<h1>My Classes</h1>
+{% for classList in user.classes %}
+    <p>{{ classList.subject.name }}</p>
+{% endfor %}
+
 <h1>Classes</h1>
 
 {{ form("student/listClasses", "method":"get") }}
