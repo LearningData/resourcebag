@@ -4,21 +4,17 @@
     <p>
         {{ text_area('notice') }}
     </p>
-    {% if notice.userType == "P" %}
-    <p>
-        {{ radio_field("type", "checked": "true", "value": "P") }} Teachers/Students
-    </p>
-    <p>
-        {{ radio_field("type", "value": "T") }} Teachers
-    </p>
-    {% else %}
-    <p>
-        {{ radio_field("type", "value": "P") }} Teachers/Students
-    </p>
-    <p>
-        {{ radio_field("type", "checked": "true", "value": "T") }} Teachers
-    </p>
-    {% endif %}
+    {% for name, value in types %}
+        {% if name == notice.userType %}
+            <p>
+                {{ radio_field("type", "checked": "true", "value": name) }} {{ value }}
+            </p>
+        {% else %}
+            <p>
+                {{ radio_field("type", "value": name) }} {{ value }}
+            </p>
+        {% endif %}
+    {% endfor %}
     <p>
         {{ select('class-id', classes, 'using': ['id', 'name']) }}
     </p>
