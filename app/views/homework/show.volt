@@ -2,6 +2,7 @@
 <h2 class="homework-subheader">{{ homework.text }}</h2>
 
 <section class="homework-view">
+    <hr class="div">
     <h4>Files uploaded:</h4>
     <table class="table">
         <thead>
@@ -13,9 +14,9 @@
             <tr>
                 <td>{{ file.originalName }}</td>
                 <td>{{ file.description }}</td>
-                <td>{{ link_to("download/homework/"~file.id,"Download") }}</td>
+                <td>{{ link_to("download/homework/"~file.id, "class":"btn-icon icon-download") }}</td>
             </tr>
         {% endfor %}
     </table>
-    <button class="bt-return">Back To Homework</button>
+    <button class="btn bg-hwk bg-hwk-hv mtop-20 bt-return">Back To Homework</button>
 </section>

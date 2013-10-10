@@ -2,7 +2,8 @@
 <h2 class="homework-subheader">{{ homework.text }}</h2>
 
 <section class="homework-view">
-    <button id="upload-homework-file" class="bt-upload" data-homework-id="{{ homework.id }}">Upload File</button>
+    <button id="upload-homework-file" class="btn bg-hwk bg-hwk-hv mtop-20" data-homework-id="{{ homework.id }}">Upload File</button>
+    <hr class="div">
     <h4>Files uploaded:</h4>
     <table class="table table-homework">
         <thead>
@@ -18,6 +19,6 @@
         </tr>
         {% endfor %}
     </table>
-    <button class="bt-return">Back To Homework</button>
+    <button class="btn bg-hwk bg-hwk-hv mtop-20 bt-return">Back To Homework</button>
 </section>
 

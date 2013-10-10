@@ -11,6 +11,7 @@
             $this->configs = array($stubConfig);
             $this->classes = array(2 => "test");
         }
+
         function testArrayHours() {
             $hours = Timetable::hours();
 
@@ -68,7 +69,7 @@
         function testPopuleSlotsEmpty() {
             $slots = Timetable::populeSlots($this->classes, $this->configs);
             $this->assertEquals($this->stubConfig->startTime,
-                $slots[$this->stubConfig->timeSlotId]);
+                $slots[0]["time"]);
         }
 
         function testPopuleSlotsWithEmptyClasses() {
@@ -79,14 +80,12 @@
         function testPopuleSlotsWithClass() {
             $this->stubConfig->timeSlotId = 2;
             $startTime = $this->stubConfig->startTime;
-            $className = $this->classes[$this->stubConfig->timeSlotId];
-
+            $this->classes[$this->stubConfig->timeSlotId] = array();
             $slots = Timetable::populeSlots($this->classes, $this->configs);
-            $expected = $startTime . " / " . $className;
 
             $this->assertEquals(
-                $expected,
-                $slots[$this->stubConfig->timeSlotId]
+                $startTime,
+                $slots[0]["time"]
             );
         }
     }

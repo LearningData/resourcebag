@@ -40,7 +40,6 @@
                     {{ link_to("student/homework/start/"~homework.id,
                         "class":"btn-icon btn-pending", "Start")}}
                 {% endif %}
-
                 {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
                 <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon">"Submit"</span>

@@ -20,7 +20,7 @@
                 <td>{{ homework.dueDate }}</td>
                 {% if homework.isSubmitted() %}
                     <td>
-                        {{ link_to("homework/review/"~homework.id, "Submitted") }}
+                        {{ link_to("teacher/homework/review/"~homework.id, "Submitted") }}
                     </td>
                     <td>
                         <input type="checkbox"
@@ -29,7 +29,7 @@
                 {% else %}
                     <td>
                     {% if homework.isReviewed() %}
-                        {{ link_to("homework/show/"~homework.id, "Reviewed") }}
+                        {{ link_to("teacher/homework/show/"~homework.id, "Reviewed") }}
                     {% else %}
                         {{ homework.getStatus() }}
                     {% endif %}
@@ -41,11 +41,11 @@
         </tbody>
     </table>
     <ul>
-        <li>{{ link_to("/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+        <li>{{ link_to("teacher/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
         {% for link in links %}
             <li>{{ link_to(link['url'], link['page']) }}</li>
         {% endfor %}
-        <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "Next") }}</li>
+        <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "Next") }}</li>
     </li>
     <input type="submit">
 </form>

@@ -40,6 +40,45 @@ class NoticeController extends ControllerBase {
         $this->view->classes = $classes;
     }
 
+    public function editAction($noticeId) {
+        $user = $this->getUserBySession();
+        if ($user->isStudent()) { $this->response->redirect("student/noticeboard"); }
+
+        $classesList = ClassList::getClassesByTeacherId($user->id);
+        $classes = array();
+
+        foreach ($classesList as $classList) {
+            $classes[$classList->id] = $classList->subject->name;
+        }
+
+        $this->view->classes = $classes;
+
+        $notice  = NoticeBoard::findFirstById($noticeId);
+        $this->view->notice = $notice;
+
+        $this->tag->setDefault("notice", $notice->text);
+        $this->tag->setDefault("class-id", $notice->classId);
+        $this->tag->setDefault("notice-id", $notice->id);
+    }
+
+    public function updateAction() {
+        $user = $this->getUserBySession();
+        $noticeId = $this->request->getPost("notice-id");
+        $notice = NoticeBoard::findFirstById($noticeId);
+
+        $notice->text = $this->request->getPost("notice");
+        $notice->userType = $this->request->getPost("type");
+        $notice->classId = $this->request->getPost("class-id");
+
+        if($notice->save()) {
+            $this->flash->success("Notice was updated.");
+        } else {
+            $this->appendErrorMessages($notice->getMessages());
+        }
+
+        $this->response->redirect($user->getController() . "/noticeboard");
+    }
+
     public function createAction() {
         $user = $this->getUserBySession();
 
@@ -49,6 +88,10 @@ class NoticeController extends ControllerBase {
         $notice->userType = $this->request->getPost("type");
         $notice->schoolId = $user->schoolId;
         $notice->uploadedBy = $user->id;
+
+        if($this->request->getPost("class-id") != "") {
+            $notice->classId = $this->request->getPost("class-id");
+        }
 
         if($notice->save()) {
             foreach ($this->request->getUploadedFiles() as $file){

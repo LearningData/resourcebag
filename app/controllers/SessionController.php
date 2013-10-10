@@ -1,7 +1,7 @@
 <?php
 require '../app/services/Authenticate.php';
 
-class SessionController extends ControllerBase {
+class SessionController extends Phalcon\Mvc\Controller {
     public function loginAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
 
@@ -20,6 +20,7 @@ class SessionController extends ControllerBase {
 
     public function logoutAction() {
         $this->session->remove("userId");
+        $this->session->destroy();
         $this->toIndex();
     }
 
