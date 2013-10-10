@@ -80,6 +80,10 @@ class User extends \Phalcon\Mvc\Model {
         return $this->type == User::getTypeTeacher();
     }
 
+    public function isSchool() {
+        return $this->type == User::getTypeSchool();
+    }
+
     public function validation() {
         $this->validate(new EmailValidator(array("field" => "email")));
 

@@ -11,9 +11,13 @@
     {% for file in notice.files %}
         <p>{{ link_to("download/noticeboard/"~file.id, "Download") }}</p>
     {% endfor %}
-
-    {% if user.id == notice.author.id %}
-        {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "Edit") }}
-    {% endif %}
+    <p>
+        {% if user.id == notice.author.id %}
+            {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "Edit") }}
+        {% endif %}
+    </p>
+    <p>
+        {{ notice.getDate() }}
+    </p>
     <hr>
 {% endfor %}
