@@ -13,6 +13,7 @@ class User extends \Phalcon\Mvc\Model {
     public $password;
 
     public function initialize() {
+        $this->belongsTo("userId", "UserPhoto", "id", array("alias" => "Photo"));
         $this->belongsTo("schoolId", "School", "id");
 
         $this->hasManyToMany(
