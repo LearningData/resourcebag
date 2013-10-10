@@ -7,7 +7,11 @@ class ClassListService {
         if ($user->isStudent()) {
             $classesList = $user->classes;
         } else {
-            $classesList = ClassList::getClassesByTeacherId($user->id);
+            if ($user->isTeacher()) {
+                $classesList = ClassList::getClassesByTeacherId($user->id);
+            } else {
+                $classesList = ClassList::find("schoolId = " . $user->schoolId);
+            }
         }
 
         foreach ($classesList as $classList) {
@@ -15,6 +19,17 @@ class ClassListService {
         }
 
         return $classes;
+    }
+
+    public static function classesToIds($classes) {
+        $classIdParams = "";
+
+        foreach ($classes as $classList) {
+            $classIdParams .= $classList->id . ",";
+        }
+
+        $classIdParams .= "''";
+        return $classIdParams;
     }
 }
 ?>

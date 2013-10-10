@@ -25,18 +25,7 @@ class NoticeController extends ControllerBase {
         $user = $this->getUserBySession();
         if ($user->isStudent()) { $this->response->redirect("notice/index"); }
 
-        if($user->isTeacher()) {
-            $classesList = ClassList::getClassesByTeacherId($user->id);
-        } else {
-            $classesList = ClassList::find("schoolId = " . $user->schoolId);
-        }
-
-        $classes = array();
-
-        foreach ($classesList as $classList) {
-            $classList->name = $classList->subject->name;
-            $classes[$classList->id] = $classList->subject->name;
-        }
+        $classes = ClassListService::getClassesByUser($user);
         $this->view->classes = $classes;
     }
 
@@ -44,14 +33,11 @@ class NoticeController extends ControllerBase {
         $user = $this->getUserBySession();
         if ($user->isStudent()) { $this->response->redirect("student/noticeboard"); }
 
-        $classesList = ClassList::getClassesByTeacherId($user->id);
-        $classes = array();
 
-        foreach ($classesList as $classList) {
-            $classes[$classList->id] = $classList->subject->name;
-        }
-
+        $classes = ClassListService::getClassesByUser($user);
         $this->view->classes = $classes;
+        $this->view->types = array("A" => "Teachers/Students",
+             "P" => "Students", "T" => "Teachers");
 
         $notice  = NoticeBoard::findFirstById($noticeId);
         $this->view->notice = $notice;
@@ -83,7 +69,7 @@ class NoticeController extends ControllerBase {
         $user = $this->getUserBySession();
 
         $notice = new NoticeBoard();
-        $notice->date = date("Y-m-d");
+        $notice->date = $this->request->getPost("date");
         $notice->text = $this->request->getPost("notice");
         $notice->userType = $this->request->getPost("type");
         $notice->schoolId = $user->schoolId;
@@ -123,10 +109,19 @@ class NoticeController extends ControllerBase {
 
     private function getNotices() {
         $user = $this->getUserBySession();
-        $param = "schoolId = " . $user->schoolId;
-        if($user->isStudent()) { $param .= " and userType = 'P'"; }
 
-        return NoticeBoard::find($param);
+        if($user->isStudent()) {
+            return NoticeBoard::getStudentNotices($user);
+        }
+
+        if($user->isSchool()) {
+            return NoticeBoard::find("schoolId = " . $user->schoolId .
+                " order by date desc");
+        }
+
+        if($user->isTeacher()) {
+            return NoticeBoard::getTeacherNotices($user);
+        }
     }
 }
 

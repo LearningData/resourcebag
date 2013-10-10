@@ -18,6 +18,31 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
         return "noticeboard";
     }
 
+    public function getDate() {
+        return date("d-m-Y", strtotime($this->date));
+    }
+
+    public static function getStudentNotices($user) {
+        $classIdParams = ClassListService::classesToIds($user->classes);
+
+        $notices = NoticeBoard::find("schoolId = " . $user->schoolId .
+            " and classId in (" . $classIdParams . ")" .
+            " and (userType = 'P' or userType = 'A') order by date desc");
+
+        return $notices;
+    }
+
+    public static function getTeacherNotices($user) {
+        $classes = ClassList::getClassesByTeacherId($user->id);
+        $classIdParams = ClassListService::classesToIds($classes);
+
+        $notices = NoticeBoard::find("schoolId = " . $user->schoolId .
+            " and classId in (" . $classIdParams . ")" .
+            " and (userType = 'T' or userType = 'A') order by date desc");
+
+        return $notices;
+    }
+
     public function columnMap() {
         return array(
             'schoolID' => 'schoolId',
