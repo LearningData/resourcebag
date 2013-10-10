@@ -9,7 +9,34 @@ var createTimetable = (function() {
             var id = "#subj" + classInfo.time.substring(0,5)
             id = id.replace(":", "")
             var element = timetable.find( id )
-            element.append((classInfo.subject || "") + " | " + (classInfo.room || ""))
+            if ( classInfo.subject && classInfo.room ) {
+                element.append( classInfo.subject + " | " + classInfo.room )
+            } else if ( classInfo.subject ) {
+                element.append( classInfo.subject )
+            } else if ( classInfo.room ) {
+                element.append( classInfo.room )
+            }
+        }
+        return timetable
+    }
+
+    createWeekTable = function( data, date ) {
+        var timetable = $( "<table class=\"table table-timetable week\">")
+        createWeekRows( timetable, data )
+        for ( var day in data ) {
+            for ( var i = 0; i < data[day].length; i++ ) {
+                var classInfo = data[day][i]
+                var id = "#" + day + "subj" + classInfo.time.substring(0,5)
+                id = id.replace(":", "")
+                var element = timetable.find( id )
+                if ( classInfo.subject && classInfo.room ) {
+                    element.append( classInfo.subject + " | " + classInfo.room )
+                } else if ( classInfo.subject ) {
+                    element.append( classInfo.subject )
+                } else if ( classInfo.room ) {
+                    element.append( classInfo.room )
+                }
+            }
         }
         return timetable
     }
@@ -22,6 +49,22 @@ var createTimetable = (function() {
         }
         periods.sort(function ( a, b ) { return a - b } )*/
         return periods
+    }
+
+    createWeekRows = function( timetable, data ) {
+        var periods = setTimePeriods()
+        var tableRows = []
+        for ( var i = 0; i < periods.length - 1; i++ ) {
+            var row = "<tr id=\"tt" + periods[i] + "\">"
+            for ( var day in data ) {
+                row += "<td id=\""+ day + "subj" + periods[i].replace(":", "") + "\"</td>"
+            }
+            row += "</tr>"
+            tableRows.push(row)
+        }
+        var tableBody = $( "<tbody>")
+        tableBody.append( tableRows.join("") )
+        timetable.append( tableBody )
     }
 
     createTimetableRows = function( timetable ) {
@@ -37,6 +80,7 @@ var createTimetable = (function() {
     
     return {
         dayTable: createDayTable,
+        weekTable: createWeekTable,
         dayTableRows: createTimetableRows
     };
 })()

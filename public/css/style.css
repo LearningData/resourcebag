@@ -149,7 +149,6 @@ span.customSelect {
 
 /*//////MEDIA//////*/
 @media screen and (min-width: 768px) {
-<<<<<<< HEAD
   .sidebar .container {
     display: block;
     background: #E6E7E8;
@@ -167,18 +166,6 @@ span.customSelect {
   .navbar-nav, .navbar-nav > li, .navbar-brand {
     float: none;
   }
-=======
-    .sidebar .container {
-        display: block;
-        background: #E6E7E8;
-    }
-    .collapse {
-        display: block;
-    }
-    .navbar-nav, .navbar-nav > li, .navbar-brand {
-        float: none;
-    }
->>>>>>> b8d7bebf96dc0c8711c541b357a6447b93ede6a3
 }
 
 @media screen and (min-width: 1200px) {
@@ -239,7 +226,7 @@ table > tbody > tr.active td:last-child {
 }
 
 .table>thead>tr>th.active {
-    color: #030303;
+    color: #676a74;
 }
 
 /*//////DEFAULT NAVIGATION ARROWS//////*/
@@ -823,6 +810,10 @@ a.btn-icon:hover,
 }
 
 /*//////TIMETABLE PAGE//////*/
+.table.table-timetable {
+    table-layout: fixed;
+}
+
 .table.table-timetable th {
     font-size: 16px;
     color: #fff;
@@ -832,6 +823,8 @@ a.btn-icon:hover,
     vertical-align: middle;
     padding: 10px;
     border-right: #fb7f84 1px solid;
+    height: 50px;
+    cursor: pointer;
 }
 .nav-timetable {
     -webkit-border-radius: 5px 5px 0 0;

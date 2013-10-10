@@ -43,7 +43,7 @@ var dashboard = (function() {
     populateTimetable = function( date ) {
         var header = $( "#dashboard-timetable .header-navigation h3")
         header.empty()
-        header.append(prettyDate(date))
+        header.append(prettyDay(date))
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
             var day = date.getUTCDay()
