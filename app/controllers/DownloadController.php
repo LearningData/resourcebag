@@ -11,6 +11,14 @@ class DownloadController extends ControllerBase {
         $this->setContent($file);
     }
 
+    public function photoAction() {
+        $user = $this->getUserBySession();
+        $photo = UserPhoto::findFirst("userId = " . $user->id);
+        header("Content-type: " . $photo->type);
+        $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+        $this->response->setContent($photo->file)->send();
+    }
+
     private function setContent($file) {
         if (!$file) {
             $this->flash->error("Error to download file.");
