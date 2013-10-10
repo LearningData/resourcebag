@@ -2,3 +2,4 @@ app/cache/*.php
 coverage
 .project
 .settings
+.DS_Store
