@@ -86,9 +86,6 @@ class NoticeboardMigration_104 extends Migration
                     )
                 )
             ),
-            'indexes' => array(
-                new Index('PRIMARY', array('id'))
-            ),
             'options' => array(
                 'TABLE_TYPE' => 'BASE TABLE',
                 'AUTO_INCREMENT' => '221',

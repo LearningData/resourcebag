@@ -11,6 +11,19 @@ class SchoolController extends UsersController {
         $this->view->slots = $slots;
     }
 
+    public function listUsersAction() {
+        $user = $this->getUserBySession();
+        if (!$user->isSchool()) { return $this->toIndex(); }
+
+        $users = User::find("schoolId = " . $user->schoolId);
+        $this->view->users = $users;
+    }
+
+    public function editUserAction($userId) {
+        $user = User::findFirstById($userId);
+        $this->view->schoolUser = $user;
+    }
+
     public function createSlotAction() {
         if($this->request->isPost()) {
             $schoolId = $this->view->user->schoolId;

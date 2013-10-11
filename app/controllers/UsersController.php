@@ -4,7 +4,48 @@ use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 class UsersController extends ControllerBase {
     public function indexAction() {}
 
+    public function newAction() {
+        $types = array("T" => "Teacher",
+            "P" => "Student", "S" => "School Admin");
+        $this->view->types = $types;
+    }
+
     public function editAction() {}
+
+    public function createAction() {
+        if (!$this->request->isPost()) { return $this->toIndex(); }
+        $admin = $this->getUserBySession();
+        $password = $this->request->getPost("password");
+
+        if($password != $this->request->getPost("confirm-password")) {
+            $this->flash->error("You need confirm the password");
+            return $this->dispatcher->forward(array("action" => "new"));
+        }
+
+        $user = new User();
+        $user->name = $this->request->getPost("name");
+        $user->lastName = $this->request->getPost("last-name");
+        $user->schoolId = $admin->schoolId;
+        $user->password = $password;
+        $user->year = $this->request->getPost("year");
+        $user->type = $this->request->getPost("type");
+        $user->email = $this->request->getPost("email");
+
+        if (!$user->save()) {
+            foreach ($user->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+
+            return $this->dispatcher->forward(array("action" => "new"));
+        }
+
+        foreach ($this->request->getUploadedFiles() as $file){
+            $this->uploadPhoto($file, $user->id);
+        }
+
+        $this->flash->success("user was updated successfully");
+        return $this->toIndex();
+    }
 
     public function updateAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
@@ -29,31 +70,27 @@ class UsersController extends ControllerBase {
         }
 
         foreach ($this->request->getUploadedFiles() as $file){
-            if ($user->photo) {
-                $photo = $user->photo;
-            } else {
-                $photo = new UserPhoto();
-                $photo->userId = $user->id;
-            }
-
-            $photo->originalName = $file->getName();
-            $photo->name = $file->getName();
-            $photo->size = $file->getSize();
-            $photo->type = $file->getType();
-            $photo->file = file_get_contents($file->getTempName());
-
-            if ($photo->save()) {
-                $this->flash->success("The file was uploaded.");
-            } else {
-                $this->flash->error("The file was not uploaded.");
-                foreach ($photo->getMessages() as $message) {
-                    $this->flash->error($message);
-                }
-            }
+            $this->uploadPhoto($file, $user->id);
         }
 
         $this->flash->success("user was updated successfully");
         return $this->toIndex();
+    }
+
+    public function removeAction($userId) {
+        $admin = $this->getUserBySession();
+        if (!$admin->isSchool()) { $this->toIndex(); }
+
+        $user = User::findFirstById($userId);
+        if($user->delete()) {
+            $this->flash->success("User was deleted");
+        } else {
+            $this->flash->error("Was not possible remove the user.");
+        }
+
+        return $this->dispatcher->forward(
+            array("controller" => "school", "action" => "listUsers")
+        );
     }
 
     public function changePasswordAction() {}
@@ -89,5 +126,29 @@ class UsersController extends ControllerBase {
         return $this->dispatcher->forward(array(
             "action" => "index"
         ));
+    }
+
+    private function uploadPhoto($file, $userId) {
+        $photo = UserPhoto::findFirst("userId = " . $userId);
+
+        if (!$photo) {
+            $photo = new UserPhoto();
+            $photo->userId = $userId;
+        }
+
+        $photo->originalName = $file->getName();
+        $photo->name = $file->getName();
+        $photo->size = $file->getSize();
+        $photo->type = $file->getType();
+        $photo->file = file_get_contents($file->getTempName());
+
+        if ($photo->save()) {
+            $this->flash->success("The file was uploaded.");
+        } else {
+            $this->flash->error("The file was not uploaded.");
+            foreach ($photo->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+        }
     }
 }
