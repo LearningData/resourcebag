@@ -5,7 +5,7 @@
 <div class="user-profile">
     <div class="tb-user">
         {% if user.photo %}
-            {{ image("/download/photo", "alt":"", "width":"67", "height":"62") }}
+            {{ image("download/photo", "alt":"", "width":"67", "height":"62") }}
         {% else %}
             {{ image("#") }}
         {% endif %}
