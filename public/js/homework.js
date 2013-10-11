@@ -61,7 +61,8 @@ var homework = (function() {
             "class": "form-control",
             placeholder: "Title:",
             name: "title",
-            id: "title"
+            id: "title",
+            required: "required"
         })
         modalBody.append( titleInput )
 
@@ -69,10 +70,11 @@ var homework = (function() {
             name: "description",
             rows: "5",
             "class": "form-control",
-            placeholder: "Description:"
+            placeholder: "Description:",
+            required: "required"
         })
         modalBody.append( descriptionInput )
-        var options= ["<option value=\" \"> Class </option>"]
+        var options= ["<option value=\"\"> Class </option>"]
         for ( var i = 0; i < classes.length; i++ ) {
             options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
         }
@@ -80,6 +82,7 @@ var homework = (function() {
             name: "classList-id",
             id: "classList-id",
             "class": "form-control customSelect",
+            required: "required",
             onchange: "return getEnableDays(this)"
         })
         selectClass.append( options.join("") )
@@ -89,7 +92,8 @@ var homework = (function() {
             name: "due-date",
             "class": "form-control",
             placeholder: "Due Date",
-            id: "due-date"
+            id: "due-date",
+            required: "required"
         })
 
         modalBody.append( dueDateInput )
@@ -162,7 +166,8 @@ var homework = (function() {
             type: "file",
             name: "file",
             "class": "form-control",
-            placeholder: "File:"
+            placeholder: "File:",
+            required: "required"
         })
         modalBody.append( fileInput )
 
