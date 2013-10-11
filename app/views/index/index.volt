@@ -1,10 +1,8 @@
 <h1>Schoolbag</h1>
 {{ form("session/login", "method":"post") }}
-<p><label for="email">Email:</label></p>
-<p>{{ text_field("email") }}</p>
-<p><label for="password">Password:</label></p>
-<p>{{ password_field("password") }}</p>
-<p>{{ submit_button("Login") }}</p>
+<p>{{ text_field("email", "placeholder":"Email") }}</p>
+{{ password_field("password","placeholder":"Password" ) }}
 
-{{ link_to("register", "Sign Up") }}
+{{ submit_button("Login","class":"btn btn-login") }}
+{{ link_to("register", "Sign Up","class":"btn btn-login") }}
 </form>
