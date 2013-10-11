@@ -4,7 +4,12 @@
 </a>
 <div class="user-profile">
     <div class="tb-user">
-        {{ image("/download/photo", "alt":"", "width":"67", "height":"62") }}
+        {% if user.photo %}
+            {{ image("/download/photo", "alt":"", "width":"67", "height":"62") }}
+        {% else %}
+            {{ image("#") }}
+        {% endif %}
+
     </div>
     <p class="name-school">
         {{ user.name }}
