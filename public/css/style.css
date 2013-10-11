@@ -24,7 +24,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .btn-icon, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -48,6 +48,36 @@ h1, .h1 {
     margin: 30px 0;
 }
 
+/* ICONS - DEFAULT */
+.btn-icon {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color:#fff;
+    font-size:14px;
+    text-align: center;
+    display: inherit;
+    vertical-align: middle;
+}
+.btn-icon:hover {
+    color:#fff;
+}
+.icon-download  {
+    font-size: 18px;
+}
+.icon-caret-right   {
+    font-size: 20px;
+}
+
+span.btn-icon {
+    background-color: #d9d9d9;
+}
+span.btn-icon:hover {
+    background-color: #b1b1b1;
+}
 
 /* Default Margin / Padding */
 .mtop-20    {
@@ -698,46 +728,15 @@ div.uploader   {
     background-color: #eceded;
 }
 
-.btn-icon {
-    width: 21px;
-    height: 21px;
-    display: inline-block;
-    text-indent: -9999px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-}
-span.btn-icon {
-    background-color: #d9d9d9;
-}
-span.btn-icon:hover {
-    background-color: #b1b1b1;
-}
-a.btn-icon, .table-homework .btn-icon {
+.table-homework .btn-icon {
     background-color: #ff9e19;
 }
-a.btn-icon:hover,
-.btn-remove.btn-icon:hover,
-.btn-submit.btn-icon:hover {
+.table-homework .btn-icon:hover,
+.table-homework .btn-remove.btn-icon:hover,
+.table-homework .btn-submit.btn-icon:hover {
     background-color: #F47920;
     cursor:pointer;
 }
-.btn-review {
-    background-position: -500px -490px;
-}
-.btn-edit {
-    background-position: -500px -340px;
-}
-.btn-submit {
-    background-position: -500px -430px;
-}
-.btn-pending {
-    background-position: -500px -460px;
-}
-.btn-remove {
-    background-position: -500px -400px;
-}
-
 .table-homework .btn-edit, .table-homework .btn-review, .table-homework .btn-submit, .table-homework .btn-pending {
     display: none;
     background-color: #ff9e19
@@ -745,7 +744,6 @@ a.btn-icon:hover,
 
 .table-homework .to-do .btn-pending {
     display: inline-block;
-    background-position: -500px -371px;
 }
 
 .table-homework .in-progress .btn-edit, .table-homework .in-progress .btn-submit {
@@ -767,6 +765,8 @@ a.btn-icon:hover,
     background-color:#FFF9F0;
     padding: 10px 50px 10px 220px;
 }
+
+
 .homework-header {
     font-size: 30px;
     cursor: pointer;

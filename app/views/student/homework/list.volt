@@ -38,12 +38,12 @@
                 <td data-target="--">
                     {% if homework.isPending() %}
                         {{ link_to("student/homework/start/"~homework.id,
-                            "class":"btn-icon btn-pending", "Start")}}
+                            "class":"btn-icon btn-pending icon-caret-right", "title":"Start")}}
                     {% endif %}
 
-                    {{ link_to("student/homework/edit/"~homework.id, "class":"btn-edit btn-icon", "Edit") }}
+                    {{ link_to("student/homework/edit/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                     {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
-                    <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon">"Submit"</span>
+                    <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
                 </td>
             </tr>
             <tr  id="hw{{ homework.id }}" class="collapse">
