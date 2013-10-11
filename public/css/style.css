@@ -930,6 +930,24 @@ div.uploader   {
     background-color: white;
 }
 
+/*//////NOTICES PAGE//////*/
+.student.notice-page .notice {
+    display: inline;
+}
+
+.notice-page h3 {
+    background-color: #0BA6D3
+}
+
+.notice-page .message {
+    height: 50%;
+    overflow-y: auto;
+}
+
+.notice-page .author {
+    float: right;
+}
+
 /*//////DATEPICKER//////*/
 #datepicker {
     min-height: 300px;

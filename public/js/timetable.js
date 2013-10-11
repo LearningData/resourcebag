@@ -73,6 +73,6 @@ var timetablePage = (function() {
 
     return {
 
-    };
+    }
 })()
 

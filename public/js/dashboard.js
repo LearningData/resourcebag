@@ -7,9 +7,11 @@ var dashboard = (function() {
     $( "#dashboard-homework-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/homework"
     })
-
     $( "#dashboard-timetable-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/timetable"
+    })
+    $( "#dashboard-notices-head" ).click( function() {
+        window.location.href = urlBase + "/" + getUser() + "/noticeboard"
     })
     $( "#dashboard-timetable .header-navigation a.default-prev").click(
         function() {
