@@ -45,7 +45,9 @@
         {{ javascript_include("js/bootstrap.min.js") }}
         {{ javascript_include("js/jquery.uniform.min.js") }}
         {{ javascript_include("js/fullcalendar.min.js") }}
+        {{ javascript_include("js/createTimetable.js") }}
         {{ javascript_include("js/dashboard.js") }}
+        {{ javascript_include("js/timetable.js") }}
         {{ javascript_include("js/homework.js") }}
         {{ javascript_include("js/application.js") }}
     </body>

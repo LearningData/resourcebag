@@ -28,6 +28,30 @@ class UsersController extends ControllerBase {
             ));
         }
 
+        foreach ($this->request->getUploadedFiles() as $file){
+            if ($user->photo) {
+                $photo = $user->photo;
+            } else {
+                $photo = new UserPhoto();
+                $photo->userId = $user->id;
+            }
+
+            $photo->originalName = $file->getName();
+            $photo->name = $file->getName();
+            $photo->size = $file->getSize();
+            $photo->type = $file->getType();
+            $photo->file = file_get_contents($file->getTempName());
+
+            if ($photo->save()) {
+                $this->flash->success("The file was uploaded.");
+            } else {
+                $this->flash->error("The file was not uploaded.");
+                foreach ($photo->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
+            }
+        }
+
         $this->flash->success("user was updated successfully");
         return $this->toIndex();
     }

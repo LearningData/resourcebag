@@ -90,6 +90,17 @@ function host() {
     return "http://" + window.location.host
 }
 
+function getUser() {
+    var pathname = window.location.pathname
+    if ( pathname.indexOf("teacher") != -1 ) {
+        return "teacher"
+    } else if ( pathname.indexOf("student") != -1 ) {
+        return "student"
+    } else {
+        return "student"
+    }
+}
+
 function getEnableDays(classId) {
     var url = host() + "/schoolbag/service/daysByClass/" + classId.value;
     $.get(url, function(response) {
@@ -125,12 +136,23 @@ function showTimes(date) {
     $.get(url, function(response) {
         var times = response.times;
         for (var i = times.length - 1; i >= 0; i--) {
+            console.log(times)
             var time = times[i];
-            var field = '<p name="pdue-time"><input type="radio" name="due-time" value="' + time + '">' + time + '</p>';
+            var field = '<p name="pdue-time"><input type="radio" name="due-time" value="' + time + '">' + time.substring(0,2) + ":" + time.substring(2)+ '</p>';
             input = jQuery(field);
             $("#due-times").append(input);
         };
     });
+}
+
+function prettyDay( date ) {
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    return days[date.getUTCDay()] + " " + date.getUTCDate()
+}
+
+function prettyDate( date ) {
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    return date.getUTCDate() + " " + months[date.getUTCMonth()]
 }
 
 function hiddenRadioElements() {

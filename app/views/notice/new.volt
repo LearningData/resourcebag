@@ -6,10 +6,16 @@
     <textarea name="notice"></textarea>
 </p>
 <p>
-    <input type="radio" name="type" value="P"> Teachers/Students
+    <input type="date" name="date">
 </p>
 <p>
-    <input type="radio" name="type" value="T"> Teacher
+    <input type="radio" name="type" value="A"> Teachers/Students
+</p>
+<p>
+    <input type="radio" name="type" value="T"> Teachers
+</p>
+<p>
+    <input type="radio" name="type" value="P"> Students
 </p>
 <p>
     {{ select('class-id', classes, 'using': ['id', 'name']) }}

@@ -10,20 +10,24 @@
             </div>
         </div>
     </div>
+    <div class="box">
+        <div class="box-header">
+            <div id="dashboard-timetable-head" class="header-title header-timetable"> 
+                <h2>Timetable</h2>
+            </div>
+        </div>
+        <div class="box-child">
+            <div id="dashboard-timetable">
+                <div class="header-navigation">
+                    <a title="Prev" class="default-prev"><span>Prev</span></a>
+                    <a title="Next" class="default-next"><span>Next</span></a>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!--	<div class="box">
-		<div class="box-header">
-			<div class="header-title header-timetable">
-				<h2>Timetable</h2>
-			</div>
-			<div class="header-navigation">
-				<a title="Prev" class="default-prev"><span>Prev</span></a>
-				<a title="Next" class="default-next"><span>Next</span></a>
-				<h3>Current Day</h3>
-			</div>
-			<table class="box-child table">
-			</table>
-		</div>
-		<div class="box">
 			<div class="box-header messages-home">
 				<div class="header-title header-messages">
 					<span class="badge">12</span>
