@@ -1,16 +1,5 @@
 <div class="container">
-    <div class="box">
-        <div class="box-header">
-            <div id="dashboard-homework-head" class="header-title header-homework"> 
-                <h2>Homework</h2>
-            </div>
-        </div>
-        <div class="box-child">
-            <div id="dashboard-homework">
-            </div>
-        </div>
-    </div>
-    <div class="box">
+    <div class="box box-timetable">
         <div class="box-header">
             <div id="dashboard-timetable-head" class="header-title header-timetable"> 
                 <h2>Timetable</h2>
@@ -26,37 +15,47 @@
             </div>
         </div>
     </div>
-
-<!--	<div class="box">
-			<div class="box-header messages-home">
-				<div class="header-title header-messages">
-					<span class="badge">12</span>
-					<h2>Messages</h2>
-				</div>
-				<ul>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="box">
-		<div class="box-header notice-home">
-			<div class="header-title header-notices">
-				<h2>School Notices</h2>
-			</div>
-			<ul class="box-child">
-				<li class="star">
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="box">
-		<div class="box-header">
-			<div id="datepicker"></div>
-				<table class="box-child table table-events">
-				</table>
-				</div>
-			</div>
-		</div>
-	</div>
-    -->
+    <div class="box box-homework">
+        <div class="box-header">
+            <div id="dashboard-homework-head" class="header-title header-homework"> 
+                <h2>Homework</h2>
+            </div>
+        </div>
+        <div class="box-child">
+            <div id="dashboard-homework">
+            </div>
+        </div>
+    </div>
+    <!--<div class="box box-messages">
+        <div class="box-header">
+            <div id="dashboard-messages-head "class="header-title header-messages">
+                <h2>Messages</h2>
+            </div>
+        </div>
+        <div class="box-child">
+            <div id="dashboard-messages">
+            </div>
+        </div>
+    </div>-->
+    <div class="box box-notices">
+        <div class="box-header">
+            <div id="dashboard-notices-head" class="header-title header-notices">
+                <h2>School Notices</h2>
+            </div>
+        </div>
+        <div class="box-child">
+            <div id="dashboard-notices">
+            </div>
+        </div>
+    </div>
+    <div class="box box-events">
+        <div class="box-header">
+            <div id="dashboard-events-head" class="header-title header-events"> 
+            </div>
+        </div>
+        <div class="box-child">
+            <div id="dashboard-events">
+            </div>
+        </div>
+    </div>
 </div>

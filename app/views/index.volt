@@ -44,6 +44,7 @@
         {{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
         {{ javascript_include("js/bootstrap.min.js") }}
         {{ javascript_include("js/jquery.uniform.min.js") }}
+        {{ javascript_include("js/jquery.slimscroll.min.js") }}
         {{ javascript_include("js/fullcalendar.min.js") }}
         {{ javascript_include("js/createTimetable.js") }}
         {{ javascript_include("js/dashboard.js") }}

@@ -387,6 +387,9 @@ table > tbody > tr.active td:last-child {
 .header-title {
     padding-left: 40px;
 }
+.header-title.header-events {
+    padding: 0px;
+}
 .header-title h2, .ui-datepicker-header h2 {
     font-size: 16px;
     font-weight: bold;
@@ -435,6 +438,10 @@ table > tbody > tr.active td:last-child {
 }
 
 /*//////NOTICES HOME//////*/
+#dashboard-notices, .header-notices, .notice-home {
+    height: 100%;
+    overflow: hidden;
+}
 .header-notices {
     background-color: #0ba6d3;
     background-position: 10px -635px;
@@ -445,6 +452,32 @@ table > tbody > tr.active td:last-child {
 .notice-home ul li p {
     margin: 0;
 }
+
+.notice-home > div {
+    height: 49%;
+}
+
+.notice-home .note {
+    padding: 0px 5px;
+    margin: 5px;
+    float: left;
+}
+
+.notice-home .note h3 {
+    background-color: #0da8d5;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+.notice-home .notice-lesser .note {
+    width: 47%;
+    height: 100%;
+}
+
+.notice-home .notice-lesser .note:last-child {
+    float: right;
+}
+
 /*//////EVENTS HOME//////*/
 #datepicker {
     min-height: 300px;
@@ -971,9 +1004,12 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 /*///////////////DASHBOARD/////////////*/
 .box {
+    position: relative;
     background-color: #f6f6f6;
     border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
+    float: left;
+    overflow: hidden;
 }
 
 .box-home {
@@ -985,8 +1021,87 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 .box-child {
     width: auto;
+}
+
+.box-notices .box-child, .box-homework .box-child {
     height: 335px;
-    overflow: hidden;
+    overflow-y: auto;
+}
+
+.box-homework .box-child ul {
+    padding-bottom: 0px;
+}
+
+@media screen and (max-width: 767px) {
+	.box {
+		width: 99%;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.box:nth-child(1) {
+		width: 66.6%;
+	}
+
+	.box:nth-child(2) {
+		width: 33%;
+	}
+
+	.box:nth-child(3) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(4) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(5) {
+		width: 49.9%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.box:nth-child(1) {
+		width: 66.6%;
+	}
+
+	.box:nth-child(2) {
+		width: 33%;
+	}
+
+	.box:nth-child(3) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(4) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(5) {
+		width: 49.9%;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.box:nth-child(1) {
+		width: 66.6%;
+	}
+
+	.box:nth-child(2) {
+		width: 33%;
+	}
+
+	.box:nth-child(3) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(4) {
+		width: 49.9%;
+	}
+
+	.box:nth-child(5) {
+		width: 49.9%;
+	}
 }
 
 #dashboard-homework > ul > a {
