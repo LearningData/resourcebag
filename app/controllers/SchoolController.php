@@ -19,6 +19,11 @@ class SchoolController extends UsersController {
         $this->view->users = $users;
     }
 
+    public function editUserAction($userId) {
+        $user = User::findFirstById($userId);
+        $this->view->schoolUser = $user;
+    }
+
     public function createSlotAction() {
         if($this->request->isPost()) {
             $schoolId = $this->view->user->schoolId;

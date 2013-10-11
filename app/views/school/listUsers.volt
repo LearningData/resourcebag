@@ -10,7 +10,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.name }} {{ user.lastName }}</td>
-                <td>{{ link_to("#", "Edit") }}</td>
+                <td>{{ link_to("school/editUser/"~user.id, "Edit") }}</td>
                 <td>{{ link_to("users/remove/"~user.id, "Remove") }}</td>
             </tr>
         {% endfor %}
