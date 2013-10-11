@@ -5,7 +5,8 @@ class UsersController extends ControllerBase {
     public function indexAction() {}
 
     public function newAction() {
-        $types = array("T" => "Teacher", "P" => "Student", "S" => "School Admin");
+        $types = array("T" => "Teacher",
+            "P" => "Student", "S" => "School Admin");
         $this->view->types = $types;
     }
 
@@ -74,6 +75,22 @@ class UsersController extends ControllerBase {
 
         $this->flash->success("user was updated successfully");
         return $this->toIndex();
+    }
+
+    public function removeAction($userId) {
+        $admin = $this->getUserBySession();
+        if (!$admin->isSchool()) { $this->toIndex(); }
+
+        $user = User::findFirstById($userId);
+        if($user->delete()) {
+            $this->flash->success("User was deleted");
+        } else {
+            $this->flash->error("Was not possible remove the user.");
+        }
+
+        return $this->dispatcher->forward(
+            array("controller" => "school", "action" => "listUsers")
+        );
     }
 
     public function changePasswordAction() {}
