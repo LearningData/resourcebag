@@ -764,22 +764,20 @@ div.uploader   {
     background-color: #ff9e19
 }
 
-.table-homework .to-do .btn-pending {
-    display: inline-block;
-}
-
-.table-homework .in-progress .btn-edit, .table-homework .in-progress .btn-submit {
-    display: inline-block;
-}
-
-.table-homework .complete .btn-review, .table-homework .reviewed .btn-review {
-    display: inline-block;
+.table-homework .to-do .btn-pending, 
+.table-homework .in-progress .btn-edit, 
+.table-homework .in-progress .btn-submit, 
+.table-homework .complete .btn-review, 
+.table-homework .reviewed .btn-review {
+    display: inherit;
 }
 .table-homework .tooltip-inner {
     background-color: #ff9e19;
+    margin-right: 5px;
 }
 
-.table-homework .tooltip.top .tooltip-arrow {
+.table-homework .tooltip.top .tooltip-arrow,
+.table-homework .btn-download {
     border-top-color: #ff9e19;
 }
 .table-homework .collapse td, .table-homework .collapsing td, .table-homework .in td {
@@ -1048,6 +1046,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .paginator .Prev {
     margin-right: 20px;
     padding: 2px 6px;
+    color:#eaedee;
 }
 .paginator .break {
     padding: 2px 6px;
@@ -1058,6 +1057,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .paginator .Next {
     margin-left: 20px;
     padding: 2px 6px;
+    color:#eaedee;
 }
 .paginator .AtEnd {
     margin-left: 20px;

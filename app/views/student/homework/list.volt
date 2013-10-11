@@ -42,7 +42,7 @@
                     {% endif %}
 
                     {{ link_to("student/homework/edit/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
-                    {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon", "Show") }}
+                    {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
                     <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
                 </td>
             </tr>

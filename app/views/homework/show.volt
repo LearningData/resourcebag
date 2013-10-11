@@ -4,7 +4,7 @@
 <section class="homework-view">
     <hr class="div">
     <h4>Files uploaded:</h4>
-    <table class="table">
+    <table class="table table-homework">
         <thead>
             <th>File Name</th>
             <th>Description</th>
@@ -14,7 +14,7 @@
             <tr>
                 <td>{{ file.originalName }}</td>
                 <td>{{ file.description }}</td>
-                <td>{{ link_to("download/homework/"~file.id, "class":"btn-icon icon-download") }}</td>
+                <td>{{ link_to("download/homework/"~file.id, "class":"btn-icon btn-download icon-download") }}</td>
             </tr>
         {% endfor %}
     </table>
