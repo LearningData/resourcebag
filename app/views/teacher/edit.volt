@@ -2,5 +2,5 @@
     <h1>Edit user</h1>
 </div>
 
-{{ form("teacher/update", "method":"post") }}
+{{ form("teacher/update", "method":"post", "enctype":"multipart/form-data") }}
 {% include "users/_update_form.volt" %}

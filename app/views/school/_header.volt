@@ -5,5 +5,6 @@
     {{ link_to("school/edit", "Edit") }} |
     {{ link_to("school/timetable", "Timetable") }} |
     {{ link_to("school/noticeboard", "Notice Board") }} |
+    {{ link_to("school/users/new", "Create New User") }} |
     {{ link_to("session/logout", "Logout") }}
 </nav>
