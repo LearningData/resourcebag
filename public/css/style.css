@@ -446,15 +446,13 @@ table > tbody > tr.active td:last-child {
     font-weight: 400;
 }
 
-
-
 /*//////DEFAULT LIST HOME//////*/
-.notice-home ul li, .messages-home ul li, .homework-home ul li {
+.box-messages .box-child ul li, .box-homework .box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
     padding: 10px 10px 10px 45px;
     font-size: 12px;
 }
-.notice-home ul li:last-child, .messages-home ul li:last-child, .homework-home ul li:last-child {
+.box-messages .box-child ul li:last-child, .box-homework .box-child ul li:last-child {
     border: none;
 }
 .notice-home ul li.star {
@@ -507,6 +505,53 @@ table > tbody > tr.active td:last-child {
 .notice-home .notice-lesser .note:last-child {
     float: right;
 }
+
+/*//////MESSAGES HOME//////*/
+.header-messages {
+	background-color: #10a236;
+	background-position: 10px -583px;
+}
+
+.box-messages .box-child ul li {
+	position: relative;
+	padding-left: 65px;
+}
+.box-messages .box-child ul li p {
+	margin: 0;
+}
+.box-messages .box-child .badge {
+	background: #fff;
+	color: #10a236;
+	font-size: 14px;
+	padding: 7px 4px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	margin-top: 2px;
+	width: 25px;
+	height: 25px;
+}
+
+.msg-label {
+	width: 35px;
+	height: 35px;
+	float: left;
+	text-align: center;
+	background: #939598;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	margin-top: -18px;
+	padding-top: 9px;
+}
+
+.msg-unread {
+	font-weight: bold;
+}
+
+
 
 /*//////EVENTS HOME//////*/
 #datepicker {
@@ -1019,7 +1064,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*///////////////DASHBOARD/////////////*/
-.box {
+/*.box {
     position: relative;
     background-color: #f6f6f6;
     border-radius: 0 0 5px 5px;
@@ -1027,7 +1072,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     float: left;
     overflow: hidden;
 }
-
+*/
 .box-home {
     background-color: #f6f6f6;
     -webkit-border-radius: 0 0 5px 5px;
@@ -1047,7 +1092,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .box-homework .box-child ul {
     padding-bottom: 0px;
 }
-
+/*
 @media screen and (max-width: 767px) {
 	.box {
 		width: 99%;
@@ -1119,7 +1164,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 		width: 49.9%;
 	}
 }
-
+*/
 #dashboard-homework > ul > a {
     color: #414042
 }
