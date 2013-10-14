@@ -15,7 +15,7 @@ class TimetableConfig extends \Phalcon\Mvc\Model {
     }
 
     public static function findBySchoolAndDay($schoolId, $day) {
-        $conditions = "schoolId = ?1 AND weekDay = ?2";
+        $conditions = "schoolId = ?1 AND weekDay = ?2 order by startTime";
         $parameters = array(1 => $schoolId, 2 => $day);
         $params = array($conditions, "bind" => $parameters);
 
