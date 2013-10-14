@@ -1234,9 +1234,15 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 #login  {
     background:#f3f5f8;
 }
-.header-login   {
+.jumbotron   {
     height: 100px;
+    padding: 0;
     background-color: #fff;
+    margin-bottom: 55px;
+}
+.schoolbag-brand-login  {
+    margin: 25px 0 0 30px;
+    display: block;
 }
 
 .col-block-images img  {
@@ -1244,19 +1250,21 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin: 0 0 10px 10px;
 }
 .block1 {
-    width: 180px;
+    width: 25%;
     float: right;
+    padding-right: 5%;
 }
 .block2{
-    width: 140px;
+    width: 18.5%;
     float: right;
+    padding-right: 5%;
 }
 .block3{
-    width: 100px;
+    width: 30%;
     float: right;
 }
 .block4{
-    width: 60px;
+    width: 16.5%;
     float: right;
 }
 .btn-login  {

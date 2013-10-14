@@ -8,47 +8,44 @@
         {{ stylesheet_link("css/style.css") }}
     </head>
     <body id="login">
-        <div class="row">
-            <div class="col-lg-12 ">
-                <header class="header-login">
-                    <div class="container">
-                        <a href="/" class=""> <img width="153" heigth="46" src="img/logo-login.png" alt="Schoolbag"></a>
-                    </div>
+        <div class="jumbotron">
+            <div class="container">
+                <header>
+                    <a href="/" class="schoolbag-brand-login"> <img width="153" heigth="46" src="img/logo-login.png" alt="Schoolbag"></a>
                 </header>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-7 ">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7 ">
                     <div class="col-block-images">
                         <div class="block1">
-                            <img src="img/artwork/art-work-01.jpg" width="160" height="180" />
-                            <img src="img/artwork/art-work-02.jpg" width="80" height="90" />
-                            <img src="img/artwork/art-work-03.jpg" width="80" height="90" />
-                            <img src="img/artwork/art-work-04.jpg" width="160" height="90" />
+                            <img src="img/artwork/art-work-01.jpg" width="160" height="180" class="img-responsive" />
+                            <img src="img/artwork/art-work-02.jpg" width="80" height="90" class="img-responsive" />
+                            <img src="img/artwork/art-work-03.jpg" width="80" height="90" class="img-responsive" />
+                            <img src="img/artwork/art-work-04.jpg" width="160" height="90" class="img-responsive" />
                         </div>
                         <div class="block2">
-                            <img src="img/artwork/art-work-06.jpg" width="60" height="65" />
-                            <img src="img/artwork/art-work-07.jpg" width="60" height="65" />
-                            <img src="img/artwork/art-work-05.jpg" width="120" height="135" />
-                            <img src="img/artwork/art-work-08.jpg" width="160" height="90" />
+                            <img src="img/artwork/art-work-06.jpg" width="60" height="65" class="img-responsive" />
+                            <img src="img/artwork/art-work-07.jpg" width="60" height="65" class="img-responsive" />
+                            <img src="img/artwork/art-work-05.jpg" width="120" height="135" class="img-responsive" />
+                            <img src="img/artwork/art-work-08.jpg" width="160" height="90" class="img-responsive" />
                         </div>
                         <div class="block3">
-                            <img src="img/artwork/art-work-09.jpg" width="80" height="90" />
-                            <img src="img/artwork/art-work-12.jpg" width="80" height="45" />
-                            <img src="img/artwork/art-work-10.jpg" width="40" height="45" />
-                            <img src="img/artwork/art-work-11.jpg" width="40" height="45" />
-
+                            <img src="img/artwork/art-work-09.jpg" width="80" height="90" class="img-responsive" />
+                            <img src="img/artwork/art-work-12.jpg" width="80" height="45" class="img-responsive" />
+                            <img src="img/artwork/art-work-10.jpg" width="40" height="45" class="img-responsive" />
+                            <img src="img/artwork/art-work-11.jpg" width="40" height="45" class="img-responsive" />
                         </div>
                         <div class="block4">
-                            <img src="img/artwork/art-work-14.jpg" width="20" height="23" />
-                            <img src="img/artwork/art-work-15.jpg" width="20" height="23" />
-                            <img src="img/artwork/art-work-13.jpg" width="40" height="45" />
-                            <img src="img/artwork/art-work-16.jpg" width="40" height="23" />
+                            <img src="img/artwork/art-work-14.jpg" width="20" height="23" class="img-responsive" />
+                            <img src="img/artwork/art-work-15.jpg" width="20" height="23" class="img-responsive" />
+                            <img src="img/artwork/art-work-13.jpg" width="40" height="45" class="img-responsive" />
+                            <img src="img/artwork/art-work-16.jpg" width="40" height="23" class="img-responsive" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
                     <div class="col-login">
                         {{ form("session/login", "method":"post") }}
                         <p>
