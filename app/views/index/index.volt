@@ -45,9 +45,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
-=======
                 <div class="col-md-6 col-lg-5">
                     <div class="col-lg-9">
                         {% for type, messages in flash.getMessages() %}
@@ -59,7 +57,6 @@
                         {% endfor %}
                         {{ content() }}
                     </div>
->>>>>>> ec701467a4be57f6bcab1c11652fad4226d9c02f
                     <div class="col-login">
                         {{ form("session/login", "method":"post") }}
                         <p>
