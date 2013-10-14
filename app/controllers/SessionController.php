@@ -11,7 +11,7 @@ class SessionController extends Phalcon\Mvc\Controller {
 
         if(!$user) {
             $this->flash->error("User or password invalid");
-            return $this->toIndex();
+            return $this->response->redirect("");
         }
 
         $this->session->set("userId", $user->id);
@@ -21,7 +21,7 @@ class SessionController extends Phalcon\Mvc\Controller {
     public function logoutAction() {
         $this->session->remove("userId");
         $this->session->destroy();
-        $this->toIndex();
+        return $this->response->redirect("");
     }
 
     private function toIndex() {
