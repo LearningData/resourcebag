@@ -3,7 +3,7 @@ require '../app/services/Authenticate.php';
 
 class SessionController extends Phalcon\Mvc\Controller {
     public function loginAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->request->isPost()) { return $this->response->redirect(""); }
 
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");
@@ -22,13 +22,6 @@ class SessionController extends Phalcon\Mvc\Controller {
         $this->session->remove("userId");
         $this->session->destroy();
         return $this->response->redirect("");
-    }
-
-    private function toIndex() {
-        return $this->dispatcher->forward(array(
-            "controller" => "index",
-            "action" => "index"
-        ));
     }
 
     private function redirectUser($user) {
