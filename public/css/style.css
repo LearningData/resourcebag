@@ -474,11 +474,9 @@ table > tbody > tr.active td:last-child {
     background-color: #0ba6d3;
     background-position: 10px -635px;
 }
-.notice-home ul {
-    padding: 0;
-}
-.notice-home ul li p {
-    margin: 0;
+
+.notice-home {
+    border: #d1d3d4 solid 1px;
 }
 
 .notice-home > div {
@@ -489,16 +487,17 @@ table > tbody > tr.active td:last-child {
     padding: 0px 5px;
     margin: 5px;
     float: left;
+    border: solid 1px #cad3e2;
 }
 
 .notice-home .note h3 {
-    background-color: #0da8d5;
+    color: #0ba6d3;
     padding: 10px;
     margin-top: 0px;
 }
 
 .notice-home .notice-lesser .note {
-    width: 47%;
+    width: 46%;
     height: 100%;
 }
 
