@@ -53,6 +53,30 @@
             return $slots;
         }
 
+        public static function getTeacherSlotsByDay($user, $day) {
+            $dayOfWeek = $day->format("w");
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $dayOfWeek);
+            $teacherClasses = array();
+
+            $classes = ClassList::find("teacherId = " . $user->id);
+
+            foreach ($classes as $classList) {
+                $query = "classId = " . $classList->id . " and day = $dayOfWeek";
+                $slot = TimetableSlot::findFirst($query);
+                if (!$slot) { continue; }
+
+                $content = array(
+                    "subject" => $classList->subject->name,
+                    "room" => $slot->room,
+                );
+                $teacherClasses[$slot->timeSlotId] = $content;
+            }
+
+            $slots = Timetable::populeSlots($teacherClasses, $configs);
+
+            return $slots;
+        }
+
         public static function populeSlots($classes, $configs) {
             $slots = array();
 
