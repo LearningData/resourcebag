@@ -9,10 +9,6 @@ class CalendarController extends ControllerBase {
         $this->getUserBySession();
     }
 
-    public function indexAction() {
-        $this->getUserBySession();
-    }
-
     public function createAction() {
         $user = $this->getUserBySession();
         $event = new Event();
