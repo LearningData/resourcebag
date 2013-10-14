@@ -83,6 +83,12 @@ class ServiceController extends ControllerBase {
         return $this->setContent(array("week" => $slots));
      }
 
+     public function calendarAction() {
+        $user = $this->getUserBySession();
+
+        return $this->setContent($user->events->toArray());
+     }
+
      private function setContent($content) {
         header('Content-Type: application/json');
         $response = new Phalcon\Http\Response();
