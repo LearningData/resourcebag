@@ -7,7 +7,7 @@ class ServiceController extends ControllerBase {
 
         $jsonHomeworks = array();
 
-        foreach ($homeworks as $homework) {
+        foreach($homeworks as $homework) {
             $subject = $homework->classList->subject->name;
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
