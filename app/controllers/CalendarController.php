@@ -2,6 +2,7 @@
 class CalendarController extends ControllerBase {
     public function newAction(){
         $this->getUserBySession();
+        $this->view->options = array(false => "False", true => "True");
     }
 
     public function indexAction() {
@@ -19,8 +20,8 @@ class CalendarController extends ControllerBase {
         $event->description = $this->request->getPost("description");
         $event->start = $this->request->getPost("start");
         $event->end = $this->request->getPost("end");
-        $event->link = $this->request->getPost("link");
-        $event->allDay = 0;
+        $event->url = $this->request->getPost("link");
+        $event->allDay = $this->request->getPost("allDay");
         $event->createdAt = date("Y-m-d H:i:s", time());
 
         if($event->save()) {

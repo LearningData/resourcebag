@@ -22,6 +22,9 @@
         {{ text_area("description") }}
     </p>
     <p>
+        {{ select_static("allDay", options)}}
+    </p>
+    <p>
         <label>Start Date</label>
         <input type="date" name="start">
     </p>
