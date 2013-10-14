@@ -46,17 +46,14 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
-                <div class="col-md-6 col-lg-5">
-                    <div class="col-lg-9">
-                        {% for type, messages in flash.getMessages() %}
-                            {% for message in messages %}
-                              <div class="alert">
-                                    {{ message }}
-                               </div>
-                            {% endfor%}
-                        {% endfor %}
-                        {{ content() }}
+                    {% for type, messages in flash.getMessages() %}
+                    {% for message in messages %}
+                    <div class="alert">
+                        {{ message }}
                     </div>
+                    {% endfor%}
+                    {% endfor %}
+                    {{ content() }}
                     <div class="col-login">
                         {{ form("session/login", "method":"post") }}
                         <p>
@@ -70,11 +67,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-        {{ javascript_include("js/jquery-1.9.1.js") }}
-        {{ javascript_include("js/bootstrap.min.js") }}
-        {{ javascript_include("js/createTimetable.js") }}
-        {{ javascript_include("js/application.js") }}
+            {{ javascript_include("js/jquery-1.9.1.js") }}
+            {{ javascript_include("js/bootstrap.min.js") }}
+            {{ javascript_include("js/createTimetable.js") }}
+            {{ javascript_include("js/application.js") }}
     </body>
 </html>
 
