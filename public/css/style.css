@@ -979,8 +979,15 @@ div.uploader   {
     display: inline;
 }
 
+.notice-page .note {
+    padding: 0px 5px;
+    margin: 5px;
+    float: left;
+    border: solid 1px #cad3e2;
+}
+
 .notice-page h3 {
-    background-color: #0BA6D3
+    color: #0ba6d3;
 }
 
 .notice-page .message {

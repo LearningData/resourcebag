@@ -23,17 +23,11 @@
 {% else %}
     <div class="gridster student notice-page">
     <ul>
-    {% for notice in notices %}
-        <li class="notice" data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-            <h3>{{ notice.getDate() }}</h3>
-            <p class="message">{{ notice.text }}</p>
-            <span class="author">Created by {{ notice.author.name }} {{ notice.author.lastName }}</span>
-<!--            {% for file in notice.files %}
-                <span>{{ link_to("download/noticeboard/"~file.id, "Download") }}</span>
-            {% endfor %}
--->
-        </li>
-    {% endfor %}
+        <li id = "ntebrd1" class="note" data-row=1 data-col=1 data-sizex=6 data-sizey=6></li>
+        <li id = "ntebrd2" class="note" data-row=1 data-col=7 data-sizex=3 data-sizey=6></li>
+        <li id = "ntebrd3" class="note" data-row=7 data-col=1 data-sizex=3 data-sizey=2></li>
+        <li id = "ntebrd4" class="note" data-row=7 data-col=4 data-sizex=3 data-sizey=2></li>
+        <li id = "ntebrd5" class="note" data-row=7 data-col=7 data-sizex=3 data-sizey=2></li>
     </ul>
     </div>
 {% endif %}

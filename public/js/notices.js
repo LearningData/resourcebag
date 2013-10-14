@@ -2,35 +2,42 @@ var noticesPage = (function() {
 
     //init
     var urlBase = window.location.origin + "/schoolbag"
+    var notes = [], noteIndex = 0
+    var init = function() {
+        var url = urlBase + "/notice/jsonNotices/"
+        $.get(url, function(response) {
+            notes = response.notices
+            gridifyNotes()
+        })
+    }
 
     var gridifyNotes = function() {
+        for ( var i = 0; i < 5; i++ ) {
+            var note = notes[i + noteIndex]
+            if (note == undefined)
+                return
+            var header = $( "<h3>" + note.text.substring(0,15) + "</h3>" )
+            var infoElement = $( "<div><span class=\"date\"" + note.date + "</span><span class=\"author\">" + note.author + "</span></div>" )
+            var pElement = $( "<p class=\"message\">" + note.text + "</p>" )
+            var item = $( "#ntebrd" + (i + 1) )
+            item.append( header )
+            item.append( item )
+            item.append( pElement )
+            //add image
+        }
         var container = $( ".student.notice-page" )[0]
         var width = container.clientWidth
-        var row = 1, col = 1, maxCols = 4
-        var notes = $( ".student.notice-page .notice" )
-        notes[0].setAttribute("data-sizex", "2")
-        notes[0].setAttribute("data-sizey", "2")
-        notes[1].setAttribute("data-sizey", "2")
-        notes[2].setAttribute("data-sizey", "2")
-
-        for (var i = 1; i < notes.length; i++) {
-            notes[i].setAttribute( "data-col", col )
-            notes[i].setAttribute( "data-row", row )
-            col++
-            if (col > maxCols) {
-                row++
-                col = 1
-            }
-            
-        }
         $( ".gridster ul" ).gridster({
             widget_margins: [10, 10],
-            widget_base_dimensions: [width/4 - 40, 140],
-            max_cols: 4,
+            widget_base_dimensions: [width / 9 - 20, document.documentElement.clientHeight / 8],
+            max_cols: 9,
         }).data( "gridster" ).disable();
-        for (var i = 0; i < notes.length; i++) {
-            var height = notes[i].clientHeight;
-            var pElement = $( notes[i] ).find( "p" )[0]
+        for (var i = 0; i < 5; i++) {
+            var note = $( "#ntebrd" + (i + 1) )
+            if (note == undefined)
+                return
+            var height = note.clientHeight;
+            var pElement = $( "#ntebrd" + (i + 1) + " p" )[0]
             var height = pElement.clientHeight
             var message = pElement.textContent
             while ( pElement.scrollHeight > height ) {
@@ -77,10 +84,9 @@ var noticesPage = (function() {
         modalDialog.appendTo( modal )
         modal.appendTo( "body" )
     }
-    gridifyNotes()
-    
+    init()
     return {
-
+        init: init
     }
 })()
 
