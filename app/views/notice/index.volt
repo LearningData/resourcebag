@@ -16,8 +16,12 @@
             {% endif %}
         </p>
         <p>
+            {{ link_to(user.getController()~"/noticeboard/show/"~notice.id, "Show")}}
+        </p>
+        <p>
             {{ notice.getDate() }}
         </p>
+
         <hr>
     {% endfor %}
 {% else %}
