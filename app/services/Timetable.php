@@ -63,7 +63,8 @@
                         $content["time"] = $config->startTime;
                         $slots []= $content;
                     } else {
-                        $slots []= array("time" => $config->startTime);
+                        $slots []= array("time" => $config->startTime,
+                            "subject" => $config->preset);
                     }
                 }
             }
