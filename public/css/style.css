@@ -1231,6 +1231,40 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 
 /*Login Page*/
+#login  {
+    background:#f3f5f8;
+}
+.header-login   {
+    height: 100px;
+    background-color: #fff;
+}
+
+.col-block-images img  {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+.block1 {
+    width: 180px;
+    float: right;
+}
+.block2{
+    width: 140px;
+    float: right;
+}
+.block3{
+    width: 100px;
+    float: right;
+}
+.block4{
+    width: 60px;
+    float: right;
+}
 .btn-login  {
     background-color: #f7941e;
+}
+.col-block-images   {
+    padding-right: 25px;
+}
+.col-login  {
+    padding-left: 25px;
 }
