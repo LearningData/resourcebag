@@ -3,6 +3,9 @@
         <li class="dashboard active">
             {{ link_to("dashboard", "Dashboard") }}
         </li>
+        <li class="homework">
+            {{ link_to("student/homework?filter=0", "Homework") }}
+        </li>
         <li class="messages">
             <span class="badge">21</span>
             <a href="#">Messages</a>
@@ -17,9 +20,6 @@
         </li>
         <li class="timetable">
             {{ link_to("student/timetable", "Timetable") }}
-        </li>
-        <li class="homework">
-            {{ link_to("student/homework?filter=0", "Homework") }}
         </li>
         <li class="classes">
             {{ link_to("student/listClasses/", "Classes") }}

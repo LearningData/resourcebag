@@ -17,8 +17,9 @@ $(document).ready(function() {
         center : 'prevYear',
         events : host() + "/schoolbag/service/calendar"
     });
-
-    dashboard.init()
+    if ( window.location.pathname.indexOf("dashboard") != -1 ) {
+        dashboard.init()
+    }
 });
 
 $("input[type=file], select").uniform();

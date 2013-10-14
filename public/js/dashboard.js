@@ -7,9 +7,11 @@ var dashboard = (function() {
     $( "#dashboard-homework-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/homework"
     })
-
     $( "#dashboard-timetable-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/timetable"
+    })
+    $( "#dashboard-notices-head" ).click( function() {
+        window.location.href = urlBase + "/" + getUser() + "/noticeboard"
     })
     $( "#dashboard-timetable .header-navigation a.default-prev").click(
         function() {
@@ -26,7 +28,7 @@ var dashboard = (function() {
         firstDay: 1,
         showOtherMonths: true,
         dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-        yearSuffix: " <h2>Events</h2>"	
+        yearSuffix: " <h2>Events</h2>"
     });
     init = function() {
         populateHomework()
@@ -34,6 +36,48 @@ var dashboard = (function() {
         populateEvents()
         populateMessages()
         populateNotices()
+        orderPanels()
+    }
+
+    orderPanels = function() {
+        //TODO add order and size to users customisations
+        var pnlHomework = $( "#dashboard-homework-box" )
+        var pnlTimetable = $( "#dashboard-timetable-box" )
+        var pnlEvents = $( "#dashboard-events-box" )
+        var pnlMessages = $( "#dashboard-messages-box" )
+        var pnlNotices = $( "#dashboard-notices-box" )
+        var container = $( ".dashboard-page" )[0]
+        var width = container.clientWidth
+        var mediaWidth = document.documentElement.clientWidth
+        var maxCols = 9
+        var largeX = 6, largeY = 4
+        var normalX = 3, normalY = 3
+        if (mediaWidth < 768 ) {
+            maxCols = 1
+            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 1, "data-sizey": 4})
+            pnlNotices.attr({"data-row": 5, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
+            pnlEvents.attr({"data-row": 8, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
+            pnlHomework.attr({"data-row": 11, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
+            pnlMessages.attr({"data-row": 14, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
+        } else if (mediaWidth < 992 ) {
+            maxCols = 9
+            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 5, "data-sizey": 4})
+            pnlNotices.attr({"data-row": 1, "data-col": 4, "data-sizex": 4, "data-sizey": 3})
+            pnlEvents.attr({"data-row": 4, "data-col": 1, "data-sizex": 5, "data-sizey": 3})
+            pnlHomework.attr({"data-row": 4, "data-col": 4, "data-sizex": 4, "data-sizey": 3})
+            pnlMessages.attr({"data-row": 7, "data-col": 1, "data-sizex": 5, "data-sizey": 3})
+        } else {
+            pnlTimetable.attr({"data-row": "1", "data-col": "1", "data-sizex": 6, "data-sizey": 4})
+            pnlNotices.attr({"data-row": "1", "data-col": "7", "data-sizex": 3, "data-sizey": 3})
+            pnlEvents.attr({"data-row": "5", "data-col": "1", "data-sizex": 3, "data-sizey": 3})
+            pnlHomework.attr({"data-row": "5", "data-col": "7", "data-sizex": 3, "data-sizey": 3})
+            pnlMessages.attr({"data-row": "5", "data-col": "1", "data-sizex": 3, "data-sizey": 3})
+        }
+        $( ".gridster ul" ).gridster({
+            widget_margins: [10, 10],
+            widget_base_dimensions: [width/maxCols - 25, 383 / 3],
+            max_cols: maxCols,
+        }).data( "gridster" ).disable();
     }
 
     populateHomework = function() {
@@ -89,16 +133,22 @@ var dashboard = (function() {
     populateMessages = function( date ) {
         //var url = urlBase + "/service/events/"
         //$.get(url, function(response) {
-            var response = {events: [{time: "09:00", event: "Fusce molestie magna risus, suscipit ullamcorper enim porttitor non."}, {time: "11:30", event: ""}, {time: "13:00", event: "Fusce molestie magna risus, suscipit ullamcorper enim porttitor non."}]}
+        var response = {messages: [{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
+{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1,sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
+{status: 1, sender: "P",text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
+{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}]}
             var items = []
-            for ( var i = 0; i < response.events.length; i++ ) {
-                items.push("<tr><td>" + response.events[i].event + "</td><td>" + response.events[i].time + "</td></tr>")
+            for ( var i = 0; i < response.messages.length; i++ ) {
+                var msg = response.messages[i]
+                items.push("<li " + ((msg.status == 0) ? "class=\"msg-unread\"" : "") + "><div class=msg-label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
             }
-            var tableBody = $( "<tbody>")
-            tableBody.append( items.join("") )
-            var table = $ ( "<table class=\"table table-events\"><table>" )
-            table.append( tableBody )
-            //$( "#dashboard-events" ).append( table )
+            var list = $( "<ul>")
+            list.append( items.join("") )
+            $( "#dashboard-messages" ).append( list )
+            $ (".box-messages .box-child").slimScroll({height:"335px"})
         //})
 
     }
@@ -107,9 +157,9 @@ var dashboard = (function() {
         var url = urlBase + "/notice/jsonNotices/"
         $.get(url, function(response) {
             var notices = response.notices
-            var firstNote = $( "<div><div class=\"note\"><h3>" + notices[0].date + "</h3><span>" + notices[0].text + "</span></div></div>" )
-            var items = [ "<div class=\"note\"><h3>" + notices[1].date + "</h3><span>" + notices[1].text + "</span></div>" ,
-                "<div class=\"note\"><h3>" + notices[2].date + "</h3><span>" + notices[2].text + "</span></div>" ]
+            var firstNote = $( "<div><div class=\"note\"><h3>" + notices[0].text.substring(0,15) + "</h3><span>" + notices[0].text + "</span></div></div>" )
+            var items = [ "<div class=\"note\"><h3>" + notices[1].text.substring(0,15) + "</h3><span>" + notices[1].text + "</span></div>" ,
+                "<div class=\"note\"><h3>" + notices[2].text.substring(0,15) + "</h3><span>" + notices[2].text + "</span></div>" ]
             var noticeElement = $( "<div class=\"notice-home\">")
             noticeElement.append( firstNote )
             var innerElement = $( "<div class=\"notice-lesser\">" )
