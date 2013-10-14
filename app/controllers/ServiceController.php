@@ -7,7 +7,7 @@ class ServiceController extends ControllerBase {
 
         $jsonHomeworks = array();
 
-        foreach ($homeworks as $homework) {
+        foreach($homeworks as $homework) {
             $subject = $homework->classList->subject->name;
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
@@ -81,6 +81,12 @@ class ServiceController extends ControllerBase {
         }
 
         return $this->setContent(array("week" => $slots));
+     }
+
+     public function calendarAction() {
+        $user = $this->getUserBySession();
+
+        return $this->setContent($user->events->toArray());
      }
 
      private function setContent($content) {
