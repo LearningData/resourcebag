@@ -22,12 +22,9 @@
         {{ text_area("description") }}
     </p>
     <p>
-<<<<<<< HEAD
         {{ select_static("allDay", options)}}
     </p>
     <p>
-=======
->>>>>>> fixed
         <label>Start Date</label>
         <input type="date" name="start">
     </p>
