@@ -5,7 +5,7 @@
 <div class="user-profile">
     <div class="tb-user">
         {% if user.photo %}
-            {{ image("/download/photo", "alt":"", "width":"67", "height":"62") }}
+            {{ image("download/photo", "alt":"", "width":"67", "height":"62") }}
         {% else %}
             {{ image("#") }}
         {% endif %}
@@ -14,7 +14,7 @@
     <p class="name-school">
         {{ user.name }}
         <br />
-        <strong>St. Mary's High School</strong>
+        <strong>{{ user.school.name }}</strong>
     </p>
     {{ link_to("student/edit/", "My Profile", 'class':"bt-myprofile") }}
     {{ link_to("session/logout", "Logout", 'class':"bt-logout") }}

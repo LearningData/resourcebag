@@ -15,7 +15,7 @@
         <tr>
             <td>{{ file.originalName }}</td>
             <td>{{ file.description }}</td>
-            <td><span data-name="{{ file.originalName }}" data-file-id="{{ file.id }}" class="btn-remove btn-icon">"Remove"</span></td>
+            <td><span data-name="{{ file.originalName }}" data-file-id="{{ file.id }}" class="btn-remove btn-icon icon-remove" title="Remove"></span></td>
         </tr>
         {% endfor %}
     </table>
