@@ -10,6 +10,7 @@
             <th>Submitted</th>
             <th>Year</th>
             <th>Students</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +34,13 @@
             {% else %}
                 <td>{{ classList.users.count() }}</td>
             {% endif %}
+            <td>
+                {{ link_to("teacher/deleteClass/"~classList.id,
+                    "Remove this class") }}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+
+{{ link_to("teacher/newClass", "Create a New Class") }}
