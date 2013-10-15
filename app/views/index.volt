@@ -11,35 +11,43 @@
         {{ stylesheet_link("css/fullcalendar.css") }}
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="sidebar col-lg-3 ">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    {% if user is defined %}
-                    <header>
-                        {% set header = user.getController()~"/_header" %}
-                        {{ partial(header)}}
-                        {{ partial(user.getController()~"/_sidebar") }}
-                    </header>
-                    {% endif %}
-                </div>
-                <div class="col-lg-9">
-                    {% for type, messages in flash.getMessages() %}
-                        {% for message in messages %}
-                          <div class="alert alert-warning fade in">
-                                {{ message }}
-                                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
-                           </div>
-                        {% endfor%}
-                    {% endfor %}
-                    {{ content() }}
-                </div>
-            </div>
+
+        <!--
+        div container and div row disable
+        <!div class="container">
+        <div class="row">
+        -->
+        <div class="sidebar col-lg-3 ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% if user is defined %}
+            <header>
+                {% set header = user.getController()~"/_header" %}
+                {{ partial(header)}}
+                {{ partial(user.getController()~"/_sidebar") }}
+            </header>
+            {% endif %}
         </div>
+        <div class="col-lg-9">
+            {% for type, messages in flash.getMessages() %}
+            {% for message in messages %}
+            <div class="alert alert-warning fade in">
+                {{ message }}
+                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
+            </div>
+            {% endfor%}
+            {% endfor %}
+            {{ content() }}
+        </div>
+        <!--
+        div container and div row disable
+        </div>
+        </div>
+        -->
+
         {{ javascript_include("js/jquery-1.9.1.js") }}
         {{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
         {{ javascript_include("js/bootstrap.min.js") }}

@@ -48,6 +48,18 @@ h1, .h1 {
     margin: 30px 0;
 }
 
+h2, .h2 {
+    font-size: 24px;
+}
+
+h3, .h3 {
+    font-size: 20px;
+}
+
+h4, .h4 {
+    font-size: 16px;
+}
+
 /* ICONS - DEFAULT */
 .btn-icon {
     width: 21px;
@@ -964,13 +976,10 @@ div.uploader {
 }
 
 .notice-page .note {
-    padding: 0px 5px;
-    margin: 5px;
-    float: left;
     border: solid 1px #cad3e2;
 }
 
-.notice-page h3 {
+.notice-page h2, .notice-page h3, .notice-page h4 {
     color: #0ba6d3;
 }
 
@@ -1023,10 +1032,10 @@ table.ui-datepicker-calendar td, table.ui-datepicker-calendar th {
     padding: 5px 0;
 }
 table.ui-datepicker-calendar td.ui-state-disabled {
-    background-color:#ffffff;
+    background-color: #ffffff;
 }
 table.ui-datepicker-calendar td a {
-    background-color:#f6f6f6;
+    background-color: #f6f6f6;
     border-radius: 50px;
     -moz-border-radius: 50px;
     padding: 2px 5px;
@@ -1053,11 +1062,11 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .ui-state-highlight span, .ui-state-highlight a {
     background-color: #9752a3;
 }
-.ui-datepicker-today span, .ui-datepicker-today a   {
+.ui-datepicker-today span, .ui-datepicker-today a {
     background-color: #ff9e19;
 }
 
-#due-times input    {
+#due-times input {
     margin-right: 10px;
 }
 
