@@ -21,8 +21,8 @@
     <input type="text" name="due-date" id="due-date">
 </p>
 <div id="due-times"></div>
-<input type="hidden" name="week-days" id="week-days">
-<input type="hidden" name="class-id" id="class-id">
+ <input type="hidden" name="week-days" id="week-days"> 
+ <input type="hidden" name="class-id" id="class-id"> 
 <p>
     <input class="btn btn-homework" type="submit" value="save">
 </p>
