@@ -60,7 +60,7 @@ class TeacherController extends UsersController {
             ));
         }
 
-        for($i=2; $i <= 7; $i++){
+        for($i=1; $i <= 6; $i++){
             $slots = $this->request->getPost("day$i");
             if (!$slots) { continue; }
 

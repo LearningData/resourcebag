@@ -64,14 +64,16 @@
 
             foreach ($classes as $classList) {
                 $query = "classId = " . $classList->id . " and day = $dayOfWeek";
-                $slot = TimetableSlot::findFirst($query);
-                if (!$slot) { continue; }
+                $slots = TimetableSlot::find($query);
+                if (!$slots) { continue; }
 
-                $content = array(
-                    "subject" => $classList->subject->name,
-                    "room" => $slot->room,
-                );
-                $teacherClasses[$slot->timeSlotId] = $content;
+                foreach ($slots as $slot) {
+                    $content = array(
+                        "subject" => $classList->subject->name,
+                        "room" => $slot->room,
+                    );
+                    $teacherClasses[$slot->timeSlotId] = $content;
+                }
             }
 
             $slots = Timetable::populeSlots($teacherClasses, $configs);
