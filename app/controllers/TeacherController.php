@@ -122,28 +122,38 @@ class TeacherController extends UsersController {
 
     public function createHomeworkAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
-
-        $students = $this->request->getPost("students");
-
-        if(!$students) { return $this->toIndex(); }
         $classListId = $this->request->getPost("class-id");
         $classList = ClassList::findFirstById($classListId);
+        $forAll = $this->request->getPost("all");
 
-        foreach ($students as $studentId) {
-            $student = User::findFirstById($studentId);
+        if($forAll) {
+            $students = $classList->users;
+        } else {
+            $studentsId = $this->request->getPost("students");
+            if(!$studentsId) { return $this->toIndex(); }
+            $students = array();
+
+            foreach ($studentsId as $key => $studentId) {
+                $students []= User::findFirstById($studentId);
+            }
+        }
+
+        foreach ($students as $student) {
             $params = $this->request->getPost();
             $homework = HomeworkService::create($student, $classList, $params);
 
             if (!$homework->save()) {
-                $this->flash->error("Error to save homework for student: $studentId");
+                $this->flash->error("Error to save homework for student: " .
+                    $student->id);
                 foreach ($homework->getMessages() as $message) {
                     $this->flash->error($message);
                 }
 
-                return $this->dispatcher->forward(array(
-                    "controller" => "teacher",
-                    "action" => "newHomework"
-                ));
+                // return $this->dispatcher->forward(array(
+                //     "controller" => "teacher",
+                //     "action" => "newHomework"
+                // ));
+                return $this->response->redirect("teacher/subjects");
             }
         }
 

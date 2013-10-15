@@ -22,6 +22,7 @@
         value="{{ classList.id }}">
     <h3>Assign students</h3>
     <div id="students">
+        <p>{{ check_field("all", "value": true) }} All</p>
         {% for user in classList.users %}
             <p>{{ check_field("students[]", "value": user.id) }}
                 {{ user.name }} {{ user.lastName }}</p>
