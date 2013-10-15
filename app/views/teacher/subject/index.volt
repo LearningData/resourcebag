@@ -10,6 +10,7 @@
             <th>Submitted</th>
             <th>Year</th>
             <th>Students</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +20,7 @@
                 {{classList.subject.name }} ({{ classList.extraRef }})
             </td>
             <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
-            <td>{{ link_to("teacher/homework/"~classList.id, "Correct") }}</td>
+            <td>{{ link_to("teacher/homework/class/"~classList.id, "Correct") }}</td>
             <td>{{ classList.getPendingHomework().count() }}</td>
             <td>{{ classList.getSubmittedHomework().count() }}</td>
             <td>{{ classList.year }}</td>
@@ -33,7 +34,13 @@
             {% else %}
                 <td>{{ classList.users.count() }}</td>
             {% endif %}
+            <td>
+                {{ link_to("teacher/deleteClass/"~classList.id,
+                    "Remove this class") }}
+            </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+
+{{ link_to("teacher/newClass", "Create a New Class") }}

@@ -7,11 +7,6 @@ class TeacherController extends UsersController {
         $this->view->teachers = $teachers;
     }
 
-    public function listClassesAction() {
-        $teacherId = $this->view->user->id;
-        $this->view->classes = ClassList::find("teacherId = $teacherId");
-    }
-
     public function newClassAction() {
         $this->view->subjects = Subject::find();
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
@@ -40,9 +35,7 @@ class TeacherController extends UsersController {
 
         $this->flash->success("Class was deleted successfully");
 
-        return $this->dispatcher->forward(array(
-                "action" => "listClasses"
-        ));
+        return $this->response->redirect("teacher/subjects");
     }
 
     public function createClassAction() {
@@ -91,10 +84,7 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Class was created successfully");
-        return $this->dispatcher->forward(array(
-                "controller" => "teacher",
-                "action" => "index"
-        ));
+        return $this->response->redirect("teacher/subjects");
     }
 
     public function timetableAction() {

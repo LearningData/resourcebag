@@ -15,14 +15,7 @@
         <br />
         <strong>{{ user.school.name }}</strong>
     </p>
-    {{ link_to("teacher/changePassword/", "Change Password") }} |
     {{ link_to("teacher/edit/", "Edit") }} |
-    {{ link_to("teacher/newClass/", "Create Class") }} |
-    {{ link_to("teacher/listClasses/", "Edit Class") }} |
-    {{ link_to("teacher/listTeachers/", "List of Teachers") }} |
-    {{ link_to("teacher/timetable", "Timetable") }} |
-    {{ link_to("teacher/subjects", "Subjects") }} |
-    {{ link_to("teacher/noticeboard", "Notice Board") }} |
     {{ link_to("session/logout", "Logout") }}
     <!--{{ link_to("student/changePassword/", "Change Password") }}-->
 
