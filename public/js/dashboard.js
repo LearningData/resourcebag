@@ -38,7 +38,21 @@ var dashboard = (function() {
         populateNotices()
         orderPanels()
     }
+    
+/*    orderPanels = function() {
+        var pnlHomework = $( "#dashboard-homework-box" )
+        var pnlTimetable = $( "#dashboard-timetable-box" )
+        var pnlMessages = $( "#dashboard-messages-box" )
+        var pnlEvents = $( "#dashboard-events-box" )
+        var pnlNotices = $( "#dashboard-notices-box" )
 
+        pnlTimetable.addClass("col-md-8")
+        pnlHomework.addClass( "col-md-4" )
+        pnlMessages.addClass("col-md-4")
+        pnlEvents.addClass("col-md-4")
+        pnlNotices.addClass("col-md-4")
+    }
+*/
     orderPanels = function() {
         //TODO add order and size to users customisations
         var pnlHomework = $( "#dashboard-homework-box" )
@@ -54,28 +68,21 @@ var dashboard = (function() {
         var normalX = 3, normalY = 3
         if (mediaWidth < 768 ) {
             maxCols = 1
-            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 1, "data-sizey": 4})
+            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 1, "data-sizey": 5})
             pnlNotices.attr({"data-row": 5, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
             pnlEvents.attr({"data-row": 8, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
             pnlHomework.attr({"data-row": 11, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
             pnlMessages.attr({"data-row": 14, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
-        } else if (mediaWidth < 992 ) {
-            maxCols = 9
-            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 5, "data-sizey": 4})
-            pnlNotices.attr({"data-row": 1, "data-col": 4, "data-sizex": 4, "data-sizey": 3})
-            pnlEvents.attr({"data-row": 4, "data-col": 1, "data-sizex": 5, "data-sizey": 3})
-            pnlHomework.attr({"data-row": 4, "data-col": 4, "data-sizex": 4, "data-sizey": 3})
-            pnlMessages.attr({"data-row": 7, "data-col": 1, "data-sizex": 5, "data-sizey": 3})
         } else {
-            pnlTimetable.attr({"data-row": "1", "data-col": "1", "data-sizex": 6, "data-sizey": 4})
-            pnlNotices.attr({"data-row": "1", "data-col": "7", "data-sizex": 3, "data-sizey": 3})
-            pnlEvents.attr({"data-row": "5", "data-col": "1", "data-sizex": 3, "data-sizey": 3})
-            pnlHomework.attr({"data-row": "5", "data-col": "7", "data-sizex": 3, "data-sizey": 3})
-            pnlMessages.attr({"data-row": "5", "data-col": "1", "data-sizex": 3, "data-sizey": 3})
-        }
+            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 6, "data-sizey": 4})
+            pnlNotices.attr({"data-row": 5, "data-col": 4, "data-sizex": 3, "data-sizey": 3})
+            pnlEvents.attr({"data-row": 4, "data-col": 1, "data-sizex": 3, "data-sizey": 3})
+            pnlHomework.attr({"data-row": 1, "data-col": 4, "data-sizex": 3, "data-sizey": 3})
+            pnlMessages.attr({"data-row": 5, "data-col": 1, "data-sizex": 3, "data-sizey": 3})
+        } 
         $( ".gridster ul" ).gridster({
-            widget_margins: [10, 10],
-            widget_base_dimensions: [width/maxCols - 25, 383 / 3],
+            widget_margins: [5, 5],
+            widget_base_dimensions: [width/maxCols - 10, 385 / 3],
             max_cols: maxCols,
         }).data( "gridster" ).disable();
     }

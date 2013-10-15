@@ -67,11 +67,13 @@ var createTimetable = (function() {
         timetable.append( tableBody )
     }
 
-    createTimetableRows = function( timetable ) {
+    createTimetableRows = function( timetable, fullpage ) {
         var periods = setTimePeriods()
         var tableRows = []
+        var colSpan = (fullpage) ? 5 : 3
         for ( var i = 0; i < periods.length - 1; i++ ) {
-            tableRows.push("<tr id=\"tt" + periods[i] + "\"><td>" + periods[i] + " - " + periods[i+1] + "</td><td id=\"subj" + periods[i].replace(":", "") + "\" colspan=\"5\"></td></tr>")
+            var rowStr = "<tr id=\"tt" + periods[i] + "\"><td>" + periods[i] + " - " + periods[i+1] + "</td><td id=\"subj" + periods[i].replace(":", "") + "\" \" colspan=\"" + colSpan + "\"></td></tr>"
+            tableRows.push(rowStr)
         }
         var tableBody = $( "<tbody>")
         tableBody.append( tableRows.join("") )

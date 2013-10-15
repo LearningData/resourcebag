@@ -506,7 +506,7 @@ table > tbody > tr.active td:last-child {
 }
 
 .notice-home .notice-lesser .note {
-    width: 46%;
+    width: 45%;
     height: 100%;
 }
 
@@ -518,6 +518,10 @@ table > tbody > tr.active td:last-child {
 .header-messages {
     background-color: #10a236;
     background-position: 10px -583px;
+}
+
+.box-child {
+    background-color: #f6f6f6;
 }
 
 .box-messages .box-child ul li {

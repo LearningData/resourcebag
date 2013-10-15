@@ -38,7 +38,7 @@ var timetablePage = (function() {
             if ( response.week[day] == undefined ) {
                 var timetable = $( "<table class=\"table table-timetable day\">")
                 timetable.prepend(tableHead)
-                createTimetable.dayTableRows( timetable )
+                createTimetable.dayTableRows( timetable, true)
                 $( ".table.table-timetable" ).replace( timetable )
                 return
             }
