@@ -43,7 +43,9 @@
                 $content = array(
                     "subject" => $classList->subject->name,
                     "room" => $slot->room,
-                    "homeworks" => count($homeworks)
+                    "homeworks" => count($homeworks),
+                    "teacher" => $classList->user->name .
+                        " " . $classList->user->lastName
                 );
                 $studentClasses[$slot->timeSlotId] = $content;
             }
