@@ -22,13 +22,13 @@
             {{ link_to("teacher/homework?filter=2", "Homework") }}
         </li>
         <li class="classes">
-            {{ link_to("teacher/listClasses/", "Classes") }}
+            {{ link_to("teacher/subjects/", "Classes") }}
         </li>
         <li class="ebooks">
             <a href="#">Ebooks</a>
         </li>
         <li class="journal">
-            {{ link_to("teacher/subjects/", "Journal") }}
+            {{ link_to("#", "Journal") }}
         </li>
         <li class="copies">
             <a href="#">Copies</a>
