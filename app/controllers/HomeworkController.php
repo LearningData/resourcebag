@@ -103,8 +103,7 @@ class HomeworkController extends ControllerBase {
             $this->reviewHomework($id);
         }
 
-        $uri = "teacher/homework/" . $this->request->getPost("class-id");
-        return $this->response->redirect($uri);
+        return $this->response->redirect("teacher/homework");
     }
 
     public function submitAction($homeworkId) {
