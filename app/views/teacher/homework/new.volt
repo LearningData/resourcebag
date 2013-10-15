@@ -10,23 +10,23 @@
         <textarea rows="4" cols="300" name="description"></textarea>
     </p>
     <p>
-        <label>Class</label>
-        <select name="classList-id" id="classList-id"
-            class="customSelect" onchange="return populeStudentsAndDays(this);">
-            {% for classId, name in classes %}
-            <option value="{{ classId }}"> {{ name }} </option>
-            {% endfor %}
-        </select>
+        <label>Class: {{ classList.subject.name }}</label>
     </p>
     <p>
         <label>Due Date</label>
         <input type="text" name="due-date" id="due-date">
     </p>
     <div id="due-times"></div>
-    <input type="hidden" name="week-days" id="week-days">
-    <input type="hidden" name="class-id" id="class-id">
+    <input type="hidden" name="week-days" id="week-days" value="{{ weekDays }}">
+    <input type="hidden" name="class-id" id="class-id"
+        value="{{ classList.id }}">
     <h3>Assign students</h3>
-    <div id="students"></div>
-    <p><input type="submit"></p>
+    <div id="students">
+        {% for user in classList.users %}
+            <p>{{ check_field("students[]", "value": user.id) }}
+                {{ user.name }} {{ user.lastName }}</p>
+        {% endfor %}
+    </div>
+    <p><input class="btn btn-homework" type="submit" value="save"></p>
 
 </form>

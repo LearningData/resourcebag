@@ -87,6 +87,17 @@ class TeacherController extends UsersController {
         return $this->response->redirect("teacher/subjects");
     }
 
+    public function newHomeworkAction($classId) {
+        $this->view->classList = ClassList::findFirstById($classId);
+        $slots = TimetableSlot::find("classId = " . $classId);
+        $weekDays = "";
+
+        foreach ($slots as $slot) { $weekDays .= $slot->day . ","; }
+
+        $this->view->weekDays = $weekDays;
+        $this->view->pick("teacher/homework/new");
+    }
+
     public function timetableAction() {
         $user = $this->view->user;
         $slots = array();
@@ -128,6 +139,11 @@ class TeacherController extends UsersController {
                 foreach ($homework->getMessages() as $message) {
                     $this->flash->error($message);
                 }
+
+                return $this->dispatcher->forward(array(
+                    "controller" => "teacher",
+                    "action" => "newHomework"
+                ));
             }
         }
 
