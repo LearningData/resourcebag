@@ -28,6 +28,31 @@ class HomeworkController extends ControllerBase {
         $this->view->pick($template);
     }
 
+    public function listByClassAction($classId) {
+        $user = $this->getUserBySession();
+        $currentPage = $this->request->getQuery("page", "int");
+        $status = $this->request->get("filter");
+
+        if(!$user->isTeacher()) {
+            $this->response->redirect($user->getController());
+        }
+
+        if ($status != "") {
+            $homeworks = Homework::find("classId = $classId and status = $status");
+        } else {
+            $homeworks = Homework::find("classId = $classId and status >= 2");
+        }
+
+        $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
+        $totalPages = $this->view->page->total_pages;
+        $this->view->links = HomeworkService::getPaginateLinks(
+            $user->getController(),
+            $totalPages, $status
+        );
+
+        $this->view->pick("teacher/homework/list");
+    }
+
     public function showAction($homeworkId) {
         $this->getUserBySession();
         $this->view->homework = Homework::findFirstById($homeworkId);

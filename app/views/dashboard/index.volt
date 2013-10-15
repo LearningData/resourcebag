@@ -1,4 +1,4 @@
-<div class="dashboard-page container gridster">
+<div class="dashboard-page container- gridster">
     <ul>
         <li id="dashboard-timetable-box" class="box box-timetable">
             <div class="box-header">

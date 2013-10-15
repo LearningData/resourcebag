@@ -16,7 +16,7 @@
             {% for daySlots in slots %}
                 <td>
                 {% for slot in daySlots %}
-                    <p>{{ slot }}</p>
+                    <p>{{ slot["time"] }} {{ slot["subject"] }}</p>
                 {% endfor %}
                 </td>
             {% endfor %}

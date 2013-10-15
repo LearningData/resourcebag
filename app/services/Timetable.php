@@ -43,12 +43,40 @@
                 $content = array(
                     "subject" => $classList->subject->name,
                     "room" => $slot->room,
-                    "homeworks" => count($homeworks)
+                    "homeworks" => count($homeworks),
+                    "teacher" => $classList->user->name .
+                        " " . $classList->user->lastName
                 );
                 $studentClasses[$slot->timeSlotId] = $content;
             }
 
             $slots = Timetable::populeSlots($studentClasses, $configs);
+
+            return $slots;
+        }
+
+        public static function getTeacherSlotsByDay($user, $day) {
+            $dayOfWeek = $day->format("w");
+            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $dayOfWeek);
+            $teacherClasses = array();
+
+            $classes = ClassList::find("teacherId = " . $user->id);
+
+            foreach ($classes as $classList) {
+                $query = "classId = " . $classList->id . " and day = $dayOfWeek";
+                $slots = TimetableSlot::find($query);
+                if (!$slots) { continue; }
+
+                foreach ($slots as $slot) {
+                    $content = array(
+                        "subject" => $classList->subject->name,
+                        "room" => $slot->room,
+                    );
+                    $teacherClasses[$slot->timeSlotId] = $content;
+                }
+            }
+
+            $slots = Timetable::populeSlots($teacherClasses, $configs);
 
             return $slots;
         }
@@ -63,7 +91,8 @@
                         $content["time"] = $config->startTime;
                         $slots []= $content;
                     } else {
-                        $slots []= array("time" => $config->startTime);
+                        $slots []= array("time" => $config->startTime,
+                            "subject" => $config->preset);
                     }
                 }
             }

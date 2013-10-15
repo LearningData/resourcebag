@@ -11,8 +11,6 @@
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/jquery.gridster.min.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}
-
-        <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /-->
     </head>
     <body>
         <div class="container">
@@ -34,8 +32,9 @@
                 <div class="col-lg-9">
                     {% for type, messages in flash.getMessages() %}
                         {% for message in messages %}
-                          <div class="alert">
+                          <div class="alert alert-warning fade in">
                                 {{ message }}
+                                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>
                            </div>
                         {% endfor%}
                     {% endfor %}

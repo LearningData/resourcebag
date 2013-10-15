@@ -20,6 +20,7 @@ $(document).ready(function() {
     if ( window.location.pathname.indexOf("dashboard") != -1 ) {
         dashboard.init()
     }
+    $(".alert").alert();
 });
 
 $("input[type=file], select").uniform();

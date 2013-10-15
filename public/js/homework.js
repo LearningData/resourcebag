@@ -174,6 +174,8 @@ console.log()
         $("#due-date").datepicker({
             dateFormat : 'yy-mm-dd',
             minDate : 1,
+            firstDay: 1,
+            dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
             beforeShowDay : enableDays,
             onSelect : showTimes
         })

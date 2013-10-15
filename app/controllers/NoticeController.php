@@ -5,6 +5,12 @@ class NoticeController extends ControllerBase {
         $this->view->notices = $this->getNotices();
     }
 
+    public function showAction($noticeId) {
+        $notice = NoticeBoard::findFirstById($noticeId);
+
+        $this->view->notice = $notice;
+    }
+
     public function jsonNoticesAction() {
         $notices = $this->getNotices();
         $json = array();

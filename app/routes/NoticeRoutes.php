@@ -24,6 +24,13 @@ class NoticeRoutes extends Phalcon\Mvc\Router\Group {
             )
         );
 
+        $this->add("/teacher/noticeboard/show/{noticeId}",
+            array(
+                "controller" => "notice",
+                "action"     => "show"
+            )
+        );
+
         $this->add(
             "/student/noticeboard",
             array(
@@ -32,6 +39,12 @@ class NoticeRoutes extends Phalcon\Mvc\Router\Group {
             )
         );
 
+        $this->add("/student/noticeboard/show/{noticeId}",
+            array(
+                "controller" => "notice",
+                "action"     => "show"
+            )
+        );
 
         $this->add(
             "/school/noticeboard",

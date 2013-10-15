@@ -75,9 +75,16 @@ class ServiceController extends ControllerBase {
 
         $days = Timetable::getCurrentWeek();
 
-        foreach($days as $day) {
-            $dayOfWeek = $day->format("w");
-            $slots[$dayOfWeek] = Timetable::getStudentSlotsByDay($user, $day);
+        if($user->isStudent()) {
+            foreach($days as $day) {
+                $dayOfWeek = $day->format("w");
+                $slots[$dayOfWeek] = Timetable::getStudentSlotsByDay($user, $day);
+            }
+        } else {
+            foreach($days as $day) {
+                $dayOfWeek = $day->format("w");
+                $slots[$dayOfWeek] = Timetable::getTeacherSlotsByDay($user, $day);
+            }
         }
 
         return $this->setContent(array("week" => $slots));

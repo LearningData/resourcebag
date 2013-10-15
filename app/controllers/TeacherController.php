@@ -7,11 +7,6 @@ class TeacherController extends UsersController {
         $this->view->teachers = $teachers;
     }
 
-    public function listClassesAction() {
-        $teacherId = $this->view->user->id;
-        $this->view->classes = ClassList::find("teacherId = $teacherId");
-    }
-
     public function newClassAction() {
         $this->view->subjects = Subject::find();
         $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
@@ -40,9 +35,7 @@ class TeacherController extends UsersController {
 
         $this->flash->success("Class was deleted successfully");
 
-        return $this->dispatcher->forward(array(
-                "action" => "listClasses"
-        ));
+        return $this->response->redirect("teacher/subjects");
     }
 
     public function createClassAction() {
@@ -67,7 +60,7 @@ class TeacherController extends UsersController {
             ));
         }
 
-        for($i=2; $i <= 7; $i++){
+        for($i=1; $i <= 6; $i++){
             $slots = $this->request->getPost("day$i");
             if (!$slots) { continue; }
 
@@ -91,19 +84,21 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Class was created successfully");
-        return $this->dispatcher->forward(array(
-                "controller" => "teacher",
-                "action" => "index"
-        ));
+        return $this->response->redirect("teacher/subjects");
     }
 
     public function timetableAction() {
         $user = $this->view->user;
         $slots = array();
 
-        for($i=1; $i <= 6; $i++) {
-            $slots[$i] = Timetable::getSlotsByDay($user, $i);
+        $days = Timetable::getCurrentWeek();
+
+        foreach($days as $day) {
+            $dayOfWeek = $day->format("w");
+            $slots[$dayOfWeek] = Timetable::getTeacherSlotsByDay($user, $day);
         }
+
+        $this->view->period = Timetable::getCurrentWeek();
         $this->view->slots = $slots;
         $this->view->pick("teacher/timetable/index");
     }
