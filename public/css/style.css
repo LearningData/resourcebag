@@ -145,6 +145,16 @@ span.customSelect {
     z-index: 1;
 }
 
+
+.btn-toolbar {
+    background-color: gray
+}
+
+.btn-toolbar .btn {
+    min-width: auto;
+    color: black;
+}
+    
 /*//////MODAL//////*/
 
 .modal-header {
@@ -798,27 +808,27 @@ div.uploader   {
     background-color: #760900;
 }
 
-.nav-homework.to-do .bt-to-do a {
+.nav-homework.status-0 .bt-to-do a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.to-do .bt-to-do :hover {
+.nav-homework.status-0 .bt-to-do :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.nav-homework.in-progress .bt-in-progress a {
+.nav-homework.status-1 .bt-in-progress a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.in-progress .bt-in-progress :hover {
+.nav-homework.status-1 .bt-in-progress :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.nav-homework.complete .bt-complete a {
+.nav-homework.status-2 .bt-complete a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.complete .bt-complete :hover {
+.nav-homework.status02 .bt-complete :hover {
     border-bottom: #760900 solid 5px;
 }
 .table.table-homework thead > tr > th {
@@ -883,6 +893,18 @@ div.uploader   {
     font-size: 20px;
     margin:0;
 }
+
+#homework-text-editor, .note-editor {
+    border: 2px solid #eceded;
+}
+
+/*///////////SummerNote overwrites//*/
+.note-editor .btn-toolbar.note-toolbar {
+    margin-top: 0px;
+    padding: 5px, 0;
+
+}
+
 
 /*//////TIMETABLE PAGE//////*/
 .table.table-timetable {

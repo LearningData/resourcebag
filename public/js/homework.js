@@ -18,6 +18,28 @@ var homework = (function() {
         uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
         $( "#uploadHomeworkModal" ).modal( "show" )
     })
+    $( "#add-homework-text" ).click(function( event ) {
+        event.preventDefault()
+        if ( $( "#homework-text-editor" ).length != 0 ) {
+            $( "#homework-text-editor" ).focus()
+        } else {
+console.log()
+            var textArea = $( "<div id=\"homework-text-editor\" spellcheck=true>" )
+            $( "#text-inputs" ).prepend( textArea )
+            $(  ).summernote()
+            $( textArea ).summernote({
+                height: 300,
+                focus: true,
+                toolbar: [
+                    [ "style", [ "bold", "italic", "underline" ] ],
+                    //['fontsize', ["fontsize"]],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    //['insert', ['picture', 'link']], // no insert buttons
+                ]
+            })
+        }
+    })
+
     $( ".btn-remove" ).click(function( event ) {
         event.preventDefault()
         removeHomeworkFileDialog( $ ( this ).data() )
@@ -31,8 +53,8 @@ var homework = (function() {
     $( ".homework-header" ).click( function( event ) {
         window.location.href = urlBase + "/" + getUser() + "/homework"
     })
-    $( ".homework-view .bt-return" ).click( function( event ){
-        window.location.href = urlBase + "/" + getUser() + "/homework"
+    $( ".homework-view .bt-return" ).click( function( event ) {
+        window.history.go( -1 )
     })
     /*$( ".homework-collapse" ).click( function( event ){
         var element = event.target

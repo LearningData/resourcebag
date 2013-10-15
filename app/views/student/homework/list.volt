@@ -1,5 +1,5 @@
     <h1 class="homework-header">Homework</h1>
-    <nav class="nav-homework">
+    <nav class="status-{{ status }} nav-homework">
         <ul>
             <li class="bt-new">
                 {{ link_to("student/homework/new", "Add New")}}

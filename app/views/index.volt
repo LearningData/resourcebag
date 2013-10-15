@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
+        {{ stylesheet_link("css/summernote.css") }}
+        {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/jquery.gridster.min.css") }}
@@ -47,6 +49,7 @@
         {{ javascript_include("js/jquery.uniform.min.js") }}
         {{ javascript_include("js/jquery.gridster.min.js") }}
         {{ javascript_include("js/jquery.slimscroll.min.js") }}
+        {{ javascript_include("js/summernote.min.js") }}
         {{ javascript_include("js/fullcalendar.min.js") }}
         {{ javascript_include("js/createTimetable.js") }}
         {{ javascript_include("js/dashboard.js") }}
