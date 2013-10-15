@@ -149,16 +149,16 @@ class TeacherController extends UsersController {
                     $this->flash->error($message);
                 }
 
-                // return $this->dispatcher->forward(array(
-                //     "controller" => "teacher",
-                //     "action" => "newHomework"
-                // ));
                 return $this->response->redirect("teacher/subjects");
             }
         }
 
         $this->flash->success("Homework created");
         return $this->response->redirect("teacher/homework");
+    }
+
+    public function showClassAction($classId) {
+        $this->view->classList = ClassList::findFirstById($classId);
     }
 }
 ?>
