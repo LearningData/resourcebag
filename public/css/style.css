@@ -275,12 +275,17 @@ table > tbody > tr.active td:last-child {
     display: none;
 }
 
+.table .homework-collapse span {
+    padding-right: 5px;
+    color: #414042;
+}
+
 .table .collapsing {
     position: relative;
     height: 0;
     overflow: hidden;
-    -webkit-transition: height 0.3s ease;
-    transition: height 0.3s ease;
+    -webkit-transition: height 0.1s ease;
+    transition: height 0.1s ease;
 }
 
 .table > thead > tr > th.active {

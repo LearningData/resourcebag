@@ -56,14 +56,15 @@ console.log()
     $( ".homework-view .bt-return" ).click( function( event ) {
         window.history.go( -1 )
     })
-    /*$( ".homework-collapse" ).click( function( event ){
+    $( ".homework-collapse" ).click( function( event ){
         var element = event.target
+        var icon = $( element).find( "td > span" ).context.firstChild
         var target = element.getAttribute("data-target")
         $( target ).collapse( "toggle" )
-        element.classList.toggle("icon-plus-sign-alt")
-        element.classList.toggle("icon-minus-sign-alt")
+        icon.classList.toggle("icon-chevron-right")
+        icon.classList.toggle("icon-chevron-down")
         
-    })*/
+    })
 
     getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/";
