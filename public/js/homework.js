@@ -96,7 +96,7 @@ var homework = (function() {
             required: "required"
         })
         modalBody.append( descriptionInput )
-        var options= ["<option value=\"\"> Class </option>"]
+        var options= ["<option value=\"\" disabled=\"disabled\"> Class:</option>"]
         for ( var i = 0; i < classes.length; i++ ) {
             options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
         }
@@ -113,8 +113,9 @@ var homework = (function() {
             type: "text",
             name: "due-date",
             "class": "form-control",
-            placeholder: "Due Date",
+            placeholder: "Due Date:",
             id: "due-date",
+            disabled: "disabled",
             required: "required"
         })
 
@@ -171,14 +172,6 @@ var homework = (function() {
         modal.appendTo( "body" )
 
         //Events
-        $("#due-date").datepicker({
-            dateFormat : 'yy-mm-dd',
-            minDate : 1,
-            firstDay: 1,
-            dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-            beforeShowDay : enableDays,
-            onSelect : showTimes
-        })
     }
 
     uploadHomeworkFileDialog = function( homeworkId ) {
