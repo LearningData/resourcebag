@@ -23,7 +23,7 @@
         <thead>
             <th>File Name</th>
             <th>Description</th>
-            <th>{{ homework.files.count() }}</th>
+            <th></th>
             <th></th>
         </thead>
         {% for file in homework.files %}
