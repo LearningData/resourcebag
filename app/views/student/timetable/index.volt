@@ -6,14 +6,14 @@
 </div>
 
 <table class="table table-timetable">
-<!--    <thead class="table-head">
+    <thead class="table-head">
         <tr>
             {% for day in period %}
             <th class="timetable-day" data-day="{{ day.format('N') }}">{{ day.format("l d") }}</th>
             {% endfor %}
         </tr>
     </thead>
-    <tbody>
+<!--    <tbody>
         <tr>
             {% for daySlots in slots %}
             <td> {% for slot in daySlots %}
