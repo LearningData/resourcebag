@@ -275,7 +275,7 @@ table > tbody > tr.active td:last-child {
     display: none;
 }
 
-.table .homework-collapse span.icon* {
+.table .homework-collapse span.collapse-icon {
     padding-right: 5px;
     color: #414042;
 }
@@ -790,18 +790,22 @@ div.uploader {
     background-color: transparent;
 }
 
-/*/DEFAULT COLORS AND BACKGROUND // CALENDAR/*/
-.cl-cldr {
+/*/DEFAULT COLORS AND BACKGROUND // CALENDAR/EVENTS/*/
+.cl-evt {
     /*text color*/
 }
-.bg-cldr {
+.bg-evt {
     background: #9752a3; /*background color*/
 }
-.bg-cldr-hv:hover {
-    /*background hover color*/
+.bg-evt:hover {
+    background: #5a2a60;
 }
-.bdr-cldr {
-    /*border color*/
+/*.bdr-evt:hover, bdr-evt:focus, .form-control.bdr-evt:hover, .form-control.bdr-evt:focus {
+    border-color: #9752a3;
+    
+}*/
+.bdr-evt, .form-control.bdr-evt {
+    border-color: #f2f2f2;
 }
 
 
@@ -928,7 +932,7 @@ div.uploader {
     margin: 0;
 }
 
-#homework-text-editor, .note-editor {
+.note-editor {
     border: 2px solid #eceded;
 }
 
@@ -966,17 +970,17 @@ div.uploader {
     text-align: center;
 }
 .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
-    background-position: -500px -520px;
+    background: none;
     cursor: pointer;
-    display: block;
     height: 30px;
     left: 15px;
     position: absolute;
-    text-indent: -9999px;
-    top: 15px;
-    width: 30px;ba
-    }
-    .nav-timetable-btn-next span {
+    width: 40px;
+    font-size: 36px;
+    color: #fff;
+    margin: -6px 0 0;
+}
+.nav-timetable-btn-next span {
     left: 100%;
     margin-left: -50px;
     background-position: -530px -520px;
@@ -1016,6 +1020,18 @@ div.uploader {
 }
 .table.table-timetable.day tr:hover {
     background-color: #f0f2f2;
+}
+
+.table.table-timetable td span {
+    display: block;
+}
+
+.table.table-timetable td span:nth-child(1) {
+    
+}
+
+.table.table-timetable td span:nth-child(2) {
+    font-size: smaller;
 }
 
 .modal-homework .modal-title {
@@ -1078,6 +1094,10 @@ div.uploader {
 #ui-datepicker-div .ui-datepicker-header {
     background-color: #ff9e19;
 }
+#ui-datepicker-div.event-page .ui-datepicker-header {
+    background-color: #9752a3;
+}
+
 .ui-datepicker-header h2 {
     font-size: 16px;
     position: absolute;
@@ -1132,6 +1152,9 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 }
 .ui-datepicker-today span, .ui-datepicker-today a {
     background-color: #ff9e19;
+}
+.event-page .ui-datepicker-today span, .ui-datepicker-today a {
+    background-color: #9752a3;
 }
 
 #due-times input {

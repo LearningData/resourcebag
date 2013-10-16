@@ -23,6 +23,7 @@ var calendarPage = (function() {
     }
 
     createNewEventDialog = function( date ) {
+        $( "#createNewEventModal" ).remove()
         var modal = $( "<div class=\"modal fade\" id=\"createNewEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">New Event " + date.toDateString() + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
@@ -31,7 +32,7 @@ var calendarPage = (function() {
             type: "text",
             name: "title",
             id: "title",
-            "class": "form-control",
+            "class": "form-control bdr-evt",
             placeholder: "Title:",
             required: "required"
         })
@@ -41,7 +42,7 @@ var calendarPage = (function() {
             type: "text",
             name: "link",
             id: "link",
-            "class": "form-control",
+            "class": "form-control bdr-evt",
             placeholder: "Link:"
         })
         modalBody.append( linkInput )
@@ -50,7 +51,7 @@ var calendarPage = (function() {
             type: "text",
             name: "location",
             id: "location",
-            "class": "form-control",
+            "class": "form-control bdr-evt",
             placeholder: "Location:"
         })
         modalBody.append( locationInput )
@@ -59,7 +60,7 @@ var calendarPage = (function() {
             type: "text",
             name: "contact",
             id: "contact",
-            "class": "form-control",
+            "class": "form-control bdr-evt",
             placeholder: "Contact:"
         })
         modalBody.append( contactInput )
@@ -67,22 +68,25 @@ var calendarPage = (function() {
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
-            "class": "form-control",
+            "class": "form-control bdr-evt",
             placeholder: "Description:"
         })
         modalBody.append( descriptionInput )
-
+        //var date = new Date( date )
+        dateStr = "" + date.getUTCFullYear() + "-"
+        dateStr +=  (date.getUTCMonth() < 9) ? "0" + (date.getUTCMonth() + 1) : (date.getUTCMonth() + 1) + "-"
+        dateStr += (date.getUTCDate() < 10) ? "0" + date.getUTCDate() : date.getUTCDate()
         var hiddenStart = $( "<input>", {
             type: "hidden",
             name: "start",
             id: "start",
-            value: new Date(date)
+            value: dateStr
         })
         var hiddenEnd = $( "<input>", {
             type: "hidden",
             name: "end",
             id: "end",
-            value: date.dateString
+            value: dateStr
         })
         var allDay = $( "<input>", {
             type: "hidden",
@@ -95,14 +99,14 @@ var calendarPage = (function() {
         modalBody.append( allDay )
         //buttons
         var send = $( "<input>", {
-            "class": "btn bg-cldr bg-cldr-hv",
+            "class": "btn bg-evt",
             type: "submit",
             value: "save"
         })
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn bg-cldr bg-cldr-hv",
+            "class": "btn bg-evt",
             "data-dismiss": "modal",
             html: "Cancel"
         })

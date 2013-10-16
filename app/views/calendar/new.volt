@@ -20,10 +20,10 @@
     </p>
     <div class="clearfix"></div>
     <p class="col-md-6">
-        <input type="date" name="start" placeholder="Start Date" class="form-control">
+        <input type="text" id="start-date" name="start" placeholder="Start Date" class="form-control">
     </p>
     <p class="col-md-6">
-        <input type="date" name="end" placeholder="End Date" class="form-control">
+        <input type="text" id="end-date" name="end" placeholder="End Date" class="form-control">
     </p>
     <p>
         {{ submit_button("Save","class":"btn bg-event bg-event-hv") }}

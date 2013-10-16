@@ -40,18 +40,29 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.policies" ).addClass( "active" )
     }
     $(".alert").alert();
+    $( "#start-date" ).datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate : 1,
+    })
+    $( "#end-date" ).datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate : 1,
+    })
+    $( "#start-date" ).datepicker( "widget" ).addClass("event-page")
+    $( "#end-date" ).datepicker( "widget" ).addClass("event-page")
 });
 
 $("input[type=file], select").uniform();
 
-$(function() {
-    $("#due-date").datepicker({
+function enableDatePicker( id ) {
+    $( id ).removeAttr("disabled")
+    $( id ).datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 1,
         beforeShowDay : enableDays,
         onSelect : showTimes
-    });
-});
+    })
+}
 
 function populeStudentsAndDays(classId) {
     getEnableDays(classId);
@@ -96,6 +107,7 @@ function getEnableDays(classId) {
     if ($("[name='pdue-time']").length > 0) {
         $("[name='pdue-time']").remove();
     }
+    enableDatePicker( "#due-date" )
 }
 
 function enableDays(date) {
