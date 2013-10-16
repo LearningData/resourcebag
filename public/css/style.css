@@ -1153,7 +1153,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .ui-datepicker-today span, .ui-datepicker-today a {
     background-color: #ff9e19;
 }
-.event-page .ui-datepicker-today span, .ui-datepicker-today a {
+.event-page .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a, .ui-datepicker-today a {
     background-color: #9752a3;
 }
 
