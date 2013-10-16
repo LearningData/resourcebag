@@ -27,12 +27,12 @@
         <li class="ebooks">
             <a href="#">Ebooks</a>
         </li>
-        <li class="journal">
+        <!--<li class="journal">
             {{ link_to("student/subjects/", "Journal") }}
         </li>
         <li class="copies">
             <a href="#">Copies</a>
-        </li>
+        </li>-->
         <li class="resources">
             <a href="#">Resources</a>
         </li>
