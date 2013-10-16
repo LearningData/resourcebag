@@ -30,7 +30,8 @@ var createTimetable = (function() {
                 id = id.replace(":", "")
                 var element = timetable.find( id )
                 if ( classInfo.subject && classInfo.room ) {
-                    element.append( classInfo.subject + " | " + classInfo.room )
+                    element.append( "<span>" + classInfo.subject + "</span>")
+                    element.append( "<span>" + classInfo.room + "</span>")
                 } else if ( classInfo.subject ) {
                     element.append( classInfo.subject )
                 } else if ( classInfo.room ) {
