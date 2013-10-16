@@ -198,6 +198,11 @@ span.customSelect {
     font-weight: 100;
 }
 
+.modal-calendar .modal-title {
+    border-left-color: #9752a3;
+}
+
+
 /*//////MEDIA//////*/
 @media screen and (min-width: 768px) {
     .sidebar .container {
@@ -616,7 +621,7 @@ table.ui-datepicker-calendar .ui-datepicker-other-month {
 table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     color: #c4c4c4;
 }
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight, .ui-datepicker-calendar .ui-datepicker-has-event a {
     background-color: #9752a3;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
@@ -770,6 +775,21 @@ div.uploader {
     background-position: -500px -310px;
     background-color: transparent;
 }
+
+/*/DEFAULT COLORS AND BACKGROUND // CALENDAR/*/
+.cl-cldr {
+    /*text color*/
+}
+.bg-cldr {
+    background: #9752a3; /*background color*/
+}
+.bg-cldr-hv:hover {
+    /*background hover color*/
+}
+.bdr-cldr {
+    /*border color*/
+}
+
 
 /*//////HOME WORK PAGE//////*/
 /*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
@@ -1043,6 +1063,7 @@ div.uploader {
     left: 50%;
     top: 5px;
     margin-left: -26px;
+    cursor: pointer;
 }
 .ui-datepicker-header span {
     text-transform: uppercase;

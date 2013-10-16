@@ -4,21 +4,12 @@ $(document).ready(function() {
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-
-    $('#calendar').fullCalendar({
-        header : {
-            left : 'prev,next ',
-            center : 'title',
-            right : ''
-        },
-
-        editable : false,
-        firstDay : 1,
-        center : 'prevYear',
-        events : host() + "/schoolbag/service/calendar"
-    });
+    
     if ( window.location.pathname.indexOf("dashboard") != -1 ) {
         dashboard.init()
+    }
+    else if ( window.location.pathname.indexOf("calendar") != -1 ) {
+        calendarPage.init()
     }
     $(".alert").alert();
 });
@@ -115,11 +106,17 @@ function prettyDay( date ) {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
     return days[date.getUTCDay()] + " " + date.getUTCDate()
 }
-
 function prettyDate( date ) {
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return date.getUTCDate() + " " + months[date.getUTCMonth()]
 }
+
+function prettyHour( date ) {
+    var hours = ( date.getUTCHours() < 10) ? "0" + date.getUTCHours() :  date.getUTCHours()
+    var mins = ( date.getUTCMinutes() < 10) ? "0" + date.getUTCMinutes() :  date.getUTCMinutes()
+    return hours + ":" + mins
+}
+
 
 function hiddenRadioElements() {
     $(":radio").each(function(index, element) {
