@@ -275,7 +275,7 @@ table > tbody > tr.active td:last-child {
     display: none;
 }
 
-.table .homework-collapse span {
+.table .homework-collapse span.icon* {
     padding-right: 5px;
     color: #414042;
 }

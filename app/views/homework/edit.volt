@@ -37,5 +37,5 @@
     {% else %}
         <h6>No files uploaded.</h6>
     {% endif %}
-    <button class="btn bg-hwk bg-hwk-hv mtop-20 bt-return">Exit</button>
+    <button class="btn bg-hwk bg-hwk-hv mtop-20 bt-return">Back</button>
 </section>
