@@ -37,7 +37,7 @@
             <a href="#">Resources</a>
         </li>
         <li class="policies">
-            <a href="#">School Policies</a>
+            {{ link_to("policies", "School Policies") }}
         </li>
     </nav>
 </div>
