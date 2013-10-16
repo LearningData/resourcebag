@@ -17,10 +17,13 @@
     {% for classList in classes %}
         <tr>
             <td>
-                {{classList.subject.name }} ({{ classList.extraRef }})
+                {{ link_to("teacher/showClass/"~classList.id,
+                    classList.subject.name~"("~classList.extraRef~")") }}
+
             </td>
             <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
-            <td>{{ link_to("teacher/homework/class/"~classList.id, "Correct") }}</td>
+            <td>{{ link_to("teacher/homework/class/"~classList.id~"?filter=2",
+                "Correct") }}</td>
             <td>{{ classList.getPendingHomework().count() }}</td>
             <td>{{ classList.getSubmittedHomework().count() }}</td>
             <td>{{ classList.year }}</td>

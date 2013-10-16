@@ -18,7 +18,6 @@
     </p>
     {{ link_to("student/edit/", "My Profile", 'class':"bt-myprofile") }}
     {{ link_to("session/logout", "Logout", 'class':"bt-logout") }}
-    <!--{{ link_to("student/changePassword/", "Change Password") }}-->
 
     <form class="form-search" role="search">
         <input type="text" class="form-control" placeholder="Search">

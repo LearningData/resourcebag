@@ -15,9 +15,8 @@
         <br />
         <strong>{{ user.school.name }}</strong>
     </p>
-    {{ link_to("teacher/edit/", "Edit") }} |
-    {{ link_to("session/logout", "Logout") }}
-    <!--{{ link_to("student/changePassword/", "Change Password") }}-->
+    {{ link_to("teacher/edit/", "My Profile", 'class':"bt-myprofile") }} |
+    {{ link_to("session/logout", "Logout", 'class':"bt-logout") }}
 
     <form class="form-search" role="search">
         <input type="text" class="form-control" placeholder="Search">

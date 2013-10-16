@@ -7,12 +7,12 @@
             {{ link_to("student/homework?filter=0", "Homework") }}
         </li>
         <li class="messages">
-            <span class="badge">21</span>
+            <!--span class="badge">21</span-->
             <a href="#">Messages</a>
         </li>
         <li class="notices">
             {{ link_to("student/noticeboard", "School Notices") }}
-            <span class="badge">14</span>
+            <span class="badge">5</span>
         </li>
         <li class="calendar">
             {{ link_to("student/calendar", "Calendar") }}

@@ -6,6 +6,7 @@
             $stubConfig = $this->getMock('TimetableConfig');
             $stubConfig->startTime = "13:00:00";
             $stubConfig->timeSlotId = 1;
+            $stubConfig->preset = "";
 
             $this->stubConfig = $stubConfig;
             $this->configs = array($stubConfig);
@@ -64,6 +65,12 @@
         function testPopuleSlotsSize() {
             $slots = Timetable::populeSlots($this->classes, $this->configs);
             $this->assertEquals(1, sizeof($slots));
+        }
+
+        function testPresetField() {
+            $this->stubConfig->preset = "preset test";
+            $slots = Timetable::populeSlots($this->classes, $this->configs);
+            $this->assertEquals($this->stubConfig->preset,$slots[0]["subject"]);
         }
 
         function testPopuleSlotsEmpty() {
