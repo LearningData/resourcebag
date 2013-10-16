@@ -20,24 +20,23 @@ var homework = (function() {
     })
     $( "#add-homework-text" ).click(function( event ) {
         event.preventDefault()
-        if ( $( "#homework-text-editor" ).length != 0 ) {
-            $( "#homework-text-editor" ).focus()
-        } else {
-console.log()
-            var textArea = $( "<div id=\"homework-text-editor\" spellcheck=true>" )
-            $( "#text-inputs" ).prepend( textArea )
-            $(  ).summernote()
-            $( textArea ).summernote({
-                height: 300,
-                focus: true,
-                toolbar: [
-                    [ "style", [ "bold", "italic", "underline" ] ],
-                    //['fontsize', ["fontsize"]],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    //['insert', ['picture', 'link']], // no insert buttons
-                ]
-            })
-        }
+        $("#save-homework-text").show()
+        $( "#summernote" ).summernote({
+            height: 300,
+            focus: true,
+            toolbar: [
+                [ "style", [ "bold", "italic", "underline" ] ],
+                //['fontsize', ["fontsize"]],
+                ['para', ['ul', 'ol', 'paragraph']],
+                //['insert', ['picture', 'link']], // no insert buttons
+            ]
+        })
+    })
+
+    $( "#save-homework-text" ).click(function( event ) {
+        event.preventDefault()
+        $('textarea[name="content-homework"]').val($('#summernote').code())[0]
+        $("#text-form").submit()
     })
 
     $( ".btn-remove" ).click(function( event ) {
@@ -62,7 +61,7 @@ console.log()
         $( target ).collapse( "toggle" )
         element.classList.toggle("icon-plus-sign-alt")
         element.classList.toggle("icon-minus-sign-alt")
-        
+
     })*/
 
     getClasses = function( dfdDialog ) {
