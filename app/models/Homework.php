@@ -12,6 +12,7 @@ class Homework extends \Phalcon\Mvc\Model {
     public $submittedDate;
     public $reviewedDate;
     public $text;
+    public $textEditor;
     public $status;
     public $title;
 
@@ -75,6 +76,7 @@ class Homework extends \Phalcon\Mvc\Model {
             'submittedDate' => 'submittedDate',
             'reviewedDate' => 'reviewedDate',
             'text' => 'text',
+            'textEditor' => 'textEditor',
             'status' => 'status',
             'title' => 'title'
         );

@@ -82,6 +82,24 @@ class HomeworkController extends ControllerBase {
         $this->view->homework = $homework;
     }
 
+    public function updateAction() {
+        $homeworkId = $this->request->getPost("homework-id");
+        $homework = Homework::findFirstById($homeworkId);
+        if (!$homework) { echo "error"; }
+
+        $homework->textEditor = $this->request->getPost("content-homework");
+        if($homework->textEditor) {
+            if ($homework->save()) {
+                $this->flash->success("Homework updated.");
+            } else {
+                $this->flash->error("Homework was not updated.");
+            }
+        }
+
+        $this->view->homework = $homework;
+        return $this->response->redirect("student/homework/edit/" . $homework->id);
+    }
+
     public function reviewAction($homeworkId) {
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();

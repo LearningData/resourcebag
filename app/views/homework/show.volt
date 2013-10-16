@@ -1,5 +1,5 @@
 <h1 class="homework-header">Homework</h1>
-<h2 class="homework-subheader">{{ homework.text }}</h2>
+<h2 class="homework-subheader">{{ homework.textEditor }}</h2>
 
 <section class="homework-view">
     <hr class="div">
