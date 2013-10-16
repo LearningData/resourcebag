@@ -27,14 +27,14 @@
         </thead>
         <tbody>
             {% for homework in page.items %}
-            <tr data-toggle="collapse" data-target="#hw{{ homework.id }}"class="{{ (homework.status == 0 ? "to-do" : (homework.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }} homework-collapse">
-                <td><span class="collapse-icon icon-chevron-right"></span>{{ homework.title }}</td>
-                <td>{{ homework.classList.subject.name }}</td>
-                <td>
+            <tr class="{{ (homework.status == 0 ? "to-do" : (homework.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }}">
+                <td class="homework-collapse" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"><span id="hwicon{{ homework.id }}" class="collapse-icon icon-chevron-right"></span>{{ homework.title }}</td>
+                <td class="homework-collapse" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"">{{ homework.classList.subject.name }}</td>
+                <td class="homework-collapse" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">
                     {{ homework.classList.user.name }}
                     {{ homework.classList.user.lastName}}
                 </td>
-                <td>{{ homework.getDueDate() }}</td>
+                <td class="homework-collapse" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.getDueDate() }}</td>
                 <td data-target="--">
                     {% if homework.isPending() %}
                         {{ link_to("student/homework/start/"~homework.id,

@@ -56,12 +56,14 @@ var homework = (function() {
         window.history.go( -1 )
     })
     $( ".homework-collapse" ).click( function( event ){
+        console.log(event.target)
         var element = event.target
-        var icon = $( element).find( "td > span" ).context.firstChild
         var target = element.getAttribute("data-target")
+        var iconTarget = element.getAttribute("data-icon")
+        console.log(element.getAttribute("data-icon"), iconTarget)
         $( target ).collapse( "toggle" )
-        icon.classList.toggle("icon-chevron-right")
-        icon.classList.toggle("icon-chevron-down")
+        $( iconTarget )[0].classList.toggle("icon-chevron-right")
+        $( iconTarget )[0].classList.toggle("icon-chevron-down")
         
     })
 
