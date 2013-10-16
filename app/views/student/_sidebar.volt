@@ -28,7 +28,7 @@
             <a href="#">Ebooks</a>
         </li>
         <li class="journal">
-            {{ link_to("student/subjects/", "Journal") }}
+            {{ link_to("#", "Journal") }}
         </li>
         <li class="copies">
             <a href="#">Copies</a>
@@ -37,7 +37,7 @@
             <a href="#">Resources</a>
         </li>
         <li class="policies">
-            <a href="#">School Policies</a>
+            {{ link_to("policies", "School Policies") }}
         </li>
     </nav>
 </div>
