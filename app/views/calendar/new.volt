@@ -1,38 +1,31 @@
 <h1>New Event</h1>
-
-{{ form("calendar/create", "method":"post") }}
-    <p>
-        <label>Title</label>
-        {{ text_field("title") }}
+{{ form("calendar/create", "method":"post", "class":"form-event") }}
+    <p class="col-md-6">
+        {{ text_field("title", "placeholder":"Title", "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ text_field("link", "placeholder":"Link", "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ text_field("location", "placeholder":"Location", "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ text_field("contact", "placeholder":"Contact", "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ text_area("description", "placeholder":"Description", "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ select_static("allDay", options, "class":"form-control")}}
+    </p>
+    <div class="clearfix"></div>
+    <p class="col-md-6">
+        <input type="date" name="start" placeholder="Start Date" class="form-control">
+    </p>
+    <p class="col-md-6">
+        <input type="date" name="end" placeholder="End Date" class="form-control">
     </p>
     <p>
-        <label>Link</label>
-        {{ text_field("link") }}
-    </p>
-    <p>
-        <label>Location</label>
-        {{ text_field("location") }}
-    </p>
-    <p>
-        <label>Contact</label>
-        {{ text_field("contact") }}
-    </p>
-    <p>
-        <label>Description</label>
-        {{ text_area("description") }}
-    </p>
-    <p>
-        {{ select_static("allDay", options)}}
-    </p>
-    <p>
-        <label>Start Date</label>
-        <input type="date" name="start">
-    </p>
-    <p>
-        <label>End Date</label>
-        <input type="date" name="end">
-    </p>
-    <p>
-        {{ submit_button("Save") }}
+        {{ submit_button("Save","class":"btn bg-event bg-event-hv") }}
     </p>
 </form>

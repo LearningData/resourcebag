@@ -96,6 +96,9 @@ span.btn-icon:hover {
 .mtop-20 {
     margin-top: 20px;
 }
+.mbottom-20 {
+    margin-bottom: 20px;
+}
 
 .btn {
     min-width: 180px;
@@ -117,17 +120,17 @@ span.btn-icon:hover {
     box-shadow: none;
 }
 
-::-webkit-input-placeholder {
-    color: #d1d3d4;
+.form-control:-moz-placeholder {
+    color: #a2a2a2
 }
-:-moz-placeholder {/* Firefox 18- */
-    color: #d1d3d4;
+.form-control::-moz-placeholder {
+    color: #a2a2a2
 }
-::-moz-placeholder {/* Firefox 19+ */
-    color: #d1d3d4;
+.form-control:-ms-input-placeholder {
+    color: #a2a2a2
 }
-:-ms-input-placeholder {
-    color: d1d3d4;
+.form-control::-webkit-input-placeholder {
+    color: #a2a2a2
 }
 
 span.customSelect {
@@ -156,7 +159,6 @@ span.customSelect {
     z-index: 1;
 }
 
-
 .btn-toolbar {
     background-color: gray
 }
@@ -165,7 +167,7 @@ span.customSelect {
     min-width: auto;
     color: black;
 }
-    
+
 /*//////MODAL//////*/
 
 .modal-header {
@@ -261,7 +263,7 @@ table > tbody > tr.active td:last-child {
     border: #d1d3d4 solid;
     border-width: 2px 2px 2px 0;
 }
-.table tr:hover, ul li:hover {
+.table tr:hover {
     background-color: #f0f2f2;
 }
 
@@ -751,12 +753,19 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border-radius: 0;
     box-shadow: none;
     color: #a2a2a2;
+    border: solid 1px #f2f2f2;
 }
 .form-control:focus {
     border-color: #f7941e;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
+}
+.form-event .form-control:focus {
+    border-color: #9752a3;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
 }
 
 div.uploader {
@@ -922,9 +931,7 @@ div.uploader {
 .note-editor .btn-toolbar.note-toolbar {
     margin-top: 0px;
     padding: 5px, 0;
-
 }
-
 
 /*//////TIMETABLE PAGE//////*/
 .table.table-timetable {
@@ -1002,7 +1009,7 @@ div.uploader {
     font-weight: bold;
     text-align: center;
 }
-.table.table-timetable.day tr:hover, ul li:hover {
+.table.table-timetable.day tr:hover {
     background-color: #f0f2f2;
 }
 
@@ -1017,21 +1024,30 @@ div.uploader {
 }
 
 /*//////NOTICES PAGE//////*/
-.student.notice-page .notice {
-    display: inline;
-}
-
-.notice-page .note {
+.notice-page .note div {
     border: solid 1px #cad3e2;
+    padding: 20px;
+    margin: 0 0 10px;
+    color: #6d6e71;
+    min-height: 230px;
+}
+.notice-page .note .message {
+    color: #6d6e71;
+    font-weight: 100;
+}
+.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
+    min-height: 460px;
+}
+.notice-page .note div img {
+    max-width: 90%;
+    height: auto;
+    margin: 10% auto 0;
+    display: block;
 }
 
 .notice-page h2, .notice-page h3, .notice-page h4 {
     color: #0ba6d3;
-}
-
-.notice-page .message {
-    height: 50%;
-    overflow-y: auto;
+    font-weight: bold;
 }
 
 .notice-page .author {
@@ -1374,4 +1390,19 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .col-login {
     padding-left: 25px;
+}
+
+/*//////EVENTS PAGE//////*/
+/*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
+.cl-event {
+    color: #9752a3; /*text color*/
+}
+.bg-event {
+    background: #9752a3; /*background color*/
+}
+.bg-event-hv:hover {
+    background: #5a2a60; /*background hover color*/
+}
+.bdr-event {
+    border-color: #9752a3/*border color*/
 }

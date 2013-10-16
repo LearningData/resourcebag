@@ -61,13 +61,16 @@ div.selector {
   padding: 0 0 0 10px;
   position: relative;
   overflow: hidden;
+  border: solid 1px #f2f2f2;
+  margin: 20px 0;
+  color: #cdcdcd;
 }
 div.selector span {
   text-overflow: ellipsis;
   display: block;
   overflow: hidden;
   white-space: nowrap;
-  background-position: right 16px;
+  background-position: right 20px;
   height: 45px;
   line-height: 41px;
   padding-right: 25px;
