@@ -16,6 +16,11 @@ $di = new FactoryDefault();
 /**
  * The URL component is used to generate all kind of urls in the application
  */
+
+$di->set("file-config", function() use($config) {
+    return $config;
+}, true);
+
 $di->set('url', function() use ($config) {
     $url = new UrlResolver();
     $url->setBaseUri($config->application->baseUri);

@@ -15,6 +15,7 @@ return new \Phalcon\Config(array(
         'viewsDir'       => __DIR__ . '/../../app/views/',
         'pluginsDir'     => __DIR__ . '/../../app/plugins/',
         'libraryDir'     => __DIR__ . '/../../app/library/',
+        'filesDir'     => __DIR__ . '/../../public/files/',
         'cacheDir'       => '/tmp/cache',
         'baseUri'        => '/schoolbag/',
     )
