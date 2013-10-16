@@ -12,6 +12,7 @@
 .fc table {
   border-collapse: collapse;
   border-spacing: 0;
+  position: relative;
 }
 
 html .fc, .fc table {
@@ -36,6 +37,7 @@ html .fc, .fc table {
 
 .fc-header td {
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .fc-header-left {
@@ -59,6 +61,7 @@ html .fc, .fc table {
 
 .fc-header-title h2 {
   margin-top: 0;
+  margin-bottom:0;
   white-space: nowrap;
   color:#fff;
   font-weight: 100;
@@ -66,11 +69,6 @@ html .fc, .fc table {
 
 .fc .fc-header-space {
   padding-left: 10px;
-}
-
-.fc-header .fc-button {
-  margin-bottom: 1em;
-  vertical-align: top;
 }
 
 /* buttons edges butting together */
@@ -134,29 +132,39 @@ html .fc, .fc table {
  ------------------------------------------------------------------------*/
 
 .fc-button {
-  position: relative;
-  display: inline-block;
-  padding: 0 .6em;
+  position: absolute;
+  display:block;
   overflow: hidden;
-  height: 1.9em;
-  line-height: 1.9em;
   white-space: nowrap;
   cursor: pointer;
+  font-size: 36px;
+  color: #fff;
+  margin: -6px 0 0;
+  width: 40px;
+  text-align: center;
+  
 }
 
-.fc-state-default {/* non-theme */
+.fc-button-prev {
+    left: 2%;
+}
+.fc-button-next {
+    right: 2%;
+}
+
+/*.fc-state-default { non-theme 
   border: 1px solid;
 }
-
-.fc-state-default.fc-corner-left {/* non-theme */
+*/
+/*.fc-state-default.fc-corner-left { non-theme 
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-}
+}*/
 
-.fc-state-default.fc-corner-right {/* non-theme */
+/*.fc-state-default.fc-corner-right { non-theme 
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-}
+}*/
 
 /*
  Our default prev/next buttons use HTML entities like &lsaquo; &rsaquo; &laquo; &raquo;
@@ -168,10 +176,6 @@ html .fc, .fc table {
   font-size: 2em;
   font-family: "Courier New", Courier, monospace;
   vertical-align: baseline; /* for IE7 */
-}
-
-.fc-button-prev .fc-text-arrow, .fc-button-next .fc-text-arrow {/* for &lsaquo; &rsaquo; */
-  font-weight: bold;
 }
 
 /* icon (for jquery ui) */
@@ -190,12 +194,13 @@ html .fc, .fc table {
   *top: -50%;
 }
 
+
 /*
  button states
  borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)
  */
 
-.fc-state-default {
+/*.fc-state-default {
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
@@ -239,7 +244,7 @@ html .fc, .fc table {
   filter: alpha(opacity=65);
   box-shadow: none;
 }
-
+*/
 /* Global Event Styles
  ------------------------------------------------------------------------*/
 

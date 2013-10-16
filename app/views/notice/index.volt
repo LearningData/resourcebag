@@ -31,7 +31,6 @@
 <div class="student notice-page">
     <ul>
         <li id = "ntebrd1" class="note note-lvl1 col-md-8">
-            
         </li>
         <li id = "ntebrd2" class="note note-lvl2 col-md-4">
             

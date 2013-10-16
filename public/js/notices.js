@@ -23,19 +23,37 @@ var noticesPage = (function() {
                 header = $( "<h3>" + note.text.substring(0,15) + "</h3>" )
             var infoElement = $( "<div><span class=\"date\"" + note.date + "</span><span class=\"author\">" + note.author + "</span></div>" )
             var pElement = $( "<p class=\"message\">" + note.text + "</p>" )
+            var itemDiv = $( "<div>" )
             var item = $( "#ntebrd" + (i + 1) )
-            item.append( header )
-            item.append( item )
-            item.append( pElement )
+            
+            //images temporary
+            
+            var imgNotices = $( "<img src='../img/notices/thankyou.png'/>" )
+            
+            if (i == 1 ) {
+                imgNotices = $( "<img src='../img/notices/meeting.png' />" )
+            }
+            else if ( i==2){
+                imgNotices = $( "<img src='../img/notices/announcements.png' />" )
+            }
+                else if ( i==3){
+                imgNotices = $( "<img src='../img/notices/announcements.png' />" )
+            }
+                else if ( i==4){
+                imgNotices = $( "<img src='../img/notices/announcements.png' />" )
+            }
+                
+            
+            item.append( itemDiv )
+            itemDiv.append( header )
+            itemDiv.append( pElement )
+            itemDiv.append( imgNotices )
+            
             //add image
         }
         var container = $( ".student.notice-page" )[0]
         var width = container.clientWidth
-        $( ".gridster ul" ).gridster({
-            widget_margins: [10, 10],
-            widget_base_dimensions: [width / 9 - 20, document.documentElement.clientHeight / 8],
-            max_cols: 9,
-        }).data( "gridster" ).disable();
+        
         for (var i = 0; i < 5; i++) {
             var note = $( "#ntebrd" + (i + 1) )
             if (note == undefined)
