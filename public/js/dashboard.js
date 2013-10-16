@@ -92,17 +92,17 @@ var dashboard = (function() {
         })
     }
 
-    findCurrentEvents = function() {
+    findCurrentEvents = function( date ) {
         var url = urlBase + "/service/calendar/"
         $.get( url, function(response ) {
             for ( var i = 0; i < response.length; i++ ) {
                 eventDate = new Date(response[i].start)
                 $('.ui-datepicker-calendar td').not('.ui-datepicker-other-month').each(function(index, value) {
-                    $( this ).addClass( "ui-datepicker-unselectable" )
+                    
                     if ( eventDate.getUTCFullYear() == value.getAttribute("data-year") &&
                      eventDate.getUTCMonth() == value.getAttribute("data-month") &&
                      eventDate.getUTCDate() + 1 == index + 1 ) {
-                        $(this).removeClass( "ui-datepicker-unselectable" )
+                        $(this).addClass( "ui-datepicker-has-event" )
                     }
                 })
             }

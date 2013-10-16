@@ -2,11 +2,11 @@
 <div class="nav-timetable">
     <a title="Prev" class="nav-timetable-btn-prev"><span>Prev</span></a>
     <a title="Next" class="nav-timetable-btn-next"><span>Next</span></a>
-    <div class="nav-timetable-title"><h2>Current Week</h2></div>
+    <div class="nav-timetable-title"><h2></h2></div>
 </div>
 
 <table class="table table-timetable">
-    <thead class="table-head">
+<!--    <thead class="table-head">
         <tr>
             {% for day in period %}
             <th class="timetable-day" data-day="{{ day.format('N') }}">{{ day.format("l d") }}</th>
@@ -22,5 +22,5 @@
             </p> {% endfor %} </td>
             {% endfor %}
         </tr>
-    </tbody>
+    </tbody>-->
 </table>

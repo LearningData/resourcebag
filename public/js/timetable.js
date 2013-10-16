@@ -28,9 +28,6 @@ var timetablePage = (function() {
             getWeekData( displayDate )
     })
 
-
-
-
     getTimetableData = function( day ) {
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
@@ -70,9 +67,11 @@ var timetablePage = (function() {
             $( ".table.table-timetable" ).replaceWith( timetable )
         })
     }
-
+    init = function() {
+        getWeekData( displayDate )
+    }
     return {
-
+        init: init
     }
 })()
 
