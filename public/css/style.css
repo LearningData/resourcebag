@@ -24,7 +24,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.navbar-nav > li a, .default-prev, .default-next, .notice-home ul li, .ui-datepicker-prev, .ui-datepicker-next, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.navbar-nav > li a, .notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -300,8 +300,6 @@ table > tbody > tr.active td:last-child {
     left: 15px;
     width: 20px;
     height: 20px;
-    background-position: -500px 0;
-    text-indent: -9999px;
     cursor: pointer;
 }
 .default-next, .ui-datepicker-next {
@@ -1177,6 +1175,12 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .table-events td:last-child {
     vertical-align: middle;
+}
+
+.ui-icon.icon-chevron-sign-left,
+.ui-icon.icon-chevron-sign-right    {
+    font-size: 21px;
+    color: #fff;
 }
 
 /*///////////////DASHBOARD/////////////*/
