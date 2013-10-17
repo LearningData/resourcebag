@@ -1,6 +1,5 @@
 var dashboard = (function() {
 
-    var urlBase = window.location.origin + "/schoolbag"
     var displayDate = new Date()
     var monthsToInt = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 
@@ -134,9 +133,9 @@ var dashboard = (function() {
         pnlMessages.addClass("col-md-4")
         pnlEvents.addClass("col-md-4")
         pnlNotices.addClass("col-md-4")
+    
     }
-*/
-    orderPanels = function() {
+*/    orderPanels = function() {
         //TODO add order and size to users customisations
         var pnlHomework = $( "#dashboard-homework-box" )
         var pnlTimetable = $( "#dashboard-timetable-box" )
@@ -232,22 +231,21 @@ var dashboard = (function() {
         var url = urlBase + "/notice/jsonNotices/"
         $.get(url, function(response) {
             var notices = response.notices
-            var firstNote = $( "<div><div class=\"note\"><h3>" + notices[0].text.substring(0,15) + "</h3><span>" + notices[0].text + "</span></div></div>" )
             var items = []
+            if (notices[0] != undefined) {
+                items.push( "<div class=\"note\"><h3>" + notices[0].text + "</h3><span>" + notices[0].text + "</span></div>" )
+            }
             if ( notices[1] != undefined ) {
-                items.push( "<div class=\"note\"><h3>" + notices[1].text.substring(0,15) + "</h3><span>" + notices[1].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h3>" + notices[1].text + "</h3><span>" + notices[1].text + "</span></div>" )
             }
             if ( notices[2] != undefined ) {
-                items.push( "<div class=\"note\"><h3>" + notices[2].text.substring(0,15) + "</h3><span>" + notices[2].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h3>" + notices[2].text + "</h3><span>" + notices[2].text + "</span></div>" )
             }
             var noticeElement = $( "<div class=\"notice-home\">")
-            noticeElement.append( firstNote )
-            var innerElement = $( "<div class=\"notice-lesser\">" )
-            innerElement.append( items.join( "" ) )
-            noticeElement.append( innerElement )
+            noticeElement.append( items.join( "" ) )
             $( "#dashboard-notices" ).append( noticeElement )
-            if ( innerElement[0].children.length == 1) {
-                innerElement.addClass( "one-child" )
+            if ( noticeElement[0].children.length == 2) {
+                noticeElement.addClass( "missing-child" )
             }
         })
     }

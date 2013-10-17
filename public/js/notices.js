@@ -16,11 +16,11 @@ var noticesPage = (function() {
             var note = notes[i + noteIndex]
             if (note == undefined)
                 return
-            var header = $( "<h4>" + note.text.substring(0,15) + "</h4>" )
+            var header = $( "<h4>" + note.text + "</h4>" )
             if (i == 0 )
-                header = $( "<h2>" + note.text.substring(0,15) + "</h2>" )
+                header = $( "<h2>" + note.text + "</h2>" )
             else if ( i==1)
-                header = $( "<h3>" + note.text.substring(0,15) + "</h3>" )
+                header = $( "<h3>" + note.text + "</h3>" )
             var infoElement = $( "<div><span class=\"date\"" + note.date + "</span><span class=\"author\">" + note.author + "</span></div>" )
             var pElement = $( "<p class=\"message\">" + note.text + "</p>" )
             var itemDiv = $( "<div>" )

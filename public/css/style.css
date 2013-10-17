@@ -507,41 +507,44 @@ table > tbody > tr.active td:last-child {
 
 .notice-home {
     border: #d1d3d4 solid 1px;
-}
-
-.notice-home > div {
-    height: 49%;
+    height: 100%;
+    padding: 5px;
 }
 
 .notice-home .note {
     padding: 0px 5px;
-    margin: 5px;
-    float: left;
+    float: none;
     border: solid 1px #cad3e2;
+    height: 49%;
+}
+
+.notice-home .note:nth-child(1) {
+    margin-bottom: 5px;
+}
+
+.notice-home .note:nth-child(2) {
+    float: left;
+    width: 48%;
+}
+
+.notice-home .note:nth-child(3) {
+    float: right;
+    width: 48%;
 }
 
 .notice-home .note h3 {
     color: #0ba6d3;
     padding: 10px;
     margin-top: 0px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.notice-home .notice-lesser .note {
-    width: 45%;
-    height: 100%;
-}
-
-.notice-home .notice-lesser .note:last-child {
-    float: right;
-}
-
-.notice-home .notice-lesser.one-child .note {
-    padding: 0px 5px 5px;
-    margin: 5px;
+.notice-home.missing-child .note:nth-child(2) {
     float: none;
-    border: solid 1px #cad3e2;
     width: auto;
-    height: 95%;
 }
 
 /*//////MESSAGES HOME//////*/
@@ -1075,6 +1078,9 @@ div.uploader {
 .notice-page h2, .notice-page h3, .notice-page h4 {
     color: #0ba6d3;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .notice-page .author {
@@ -1162,10 +1168,10 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .ui-datepicker-today span, .ui-datepicker-today a {
     background-color: #ff9e19;
 }
-.event-page .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a, .ui-datepicker-today a {
+.event-page .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a {
     background-color: #9752a3;
 }
-.datepicker-note .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a, .ui-datepicker-today a {
+.datepicker-note .ui-datepicker-today span {
     background-color: #0ba6d3;
 }
 
@@ -1201,6 +1207,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
  overflow: hidden;
  }
  */
+
 .box-home {
     background-color: #f6f6f6;
     -webkit-border-radius: 0 0 5px 5px;
@@ -1220,6 +1227,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .box-homework .box-child ul {
     padding-bottom: 0px;
 }
+
 /*
  @media screen and (max-width: 767px) {
  .box {
@@ -1248,37 +1256,40 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
  width: 49.9%;
  }
  }
-
  @media screen and (min-width: 992px) {
- .box:nth-child(1) {
- width: 66.6%;
- }
+    .box:nth-child(1) {
+        width: 66.6%;
+        height: 450px;
+    }
 
- .box:nth-child(2) {
- width: 33%;
- }
+     .box:nth-child(2) {
+        width: 33.3%
+        height: 400px;
+     }
 
- .box:nth-child(3) {
- width: 49.9%;
- }
+     .box:nth-child(3) {
+        width: 33.3%;
+     }
 
- .box:nth-child(4) {
- width: 49.9%;
- }
+     .box:nth-child(4) {
+        width: 33.3%;
+        margin-top: -300px
+     }
 
- .box:nth-child(5) {
- width: 49.9%;
- }
+     .box:nth-child(5) {
+        width: 33.3%;
+        margin-top: -300px
+     }
  }
 
  @media screen and (min-width: 1200px) {
- .box:nth-child(1) {
- width: 66.6%;
- }
+    .box:nth-child(1) {
+        width: 66.6%;
+    }
 
- .box:nth-child(2) {
- width: 33%;
- }
+    .box:nth-child(2) {
+        width: 33%;
+    }
 
  .box:nth-child(3) {
  width: 49.9%;
@@ -1291,8 +1302,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
  .box:nth-child(5) {
  width: 49.9%;
  }
- }
- */
+ }*/
+
 #dashboard-homework > ul > a {
     color: #414042
 }
