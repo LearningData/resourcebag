@@ -19,7 +19,7 @@
         <!div class="container">
         <div class="row">
         -->
-        <div class="sidebar col-lg-3 ">
+       <div class="sidebar col-sm-3 col-md-3 col-lg-3">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -33,7 +33,7 @@
             </header>
             {% endif %}
         </div>
-        <div class="col-lg-9">
+        <div class="col-sm-9 col-md-9 col-lg-9">
             {% for type, messages in flash.getMessages() %}
             {% for message in messages %}
             <div class="alert alert-warning fade in">

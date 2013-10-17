@@ -6,7 +6,7 @@ class FileService {
         if(file_exists($dir)) {
             if($handle = opendir($dir)) {
                 while (false !== ($file = readdir($handle))) {
-                    if(is_file($dir . $file) && substr($file, 0, 1) != '.') {
+                    if(is_file($dir . $file) && substr($file, 0) != ".") {
                         $files []= $file;
                     }
                 }
