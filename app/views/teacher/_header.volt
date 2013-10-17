@@ -1,4 +1,4 @@
-<a class="schoolbag-brand" href="http://demo.learningdata.net/schoolbag">
+<a class="schoolbag-brand" href="/">
     {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
 </a>
 <div class="user-profile">

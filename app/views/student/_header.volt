@@ -1,5 +1,5 @@
 <!--h1>Welcome</h1-->
-<a class="schoolbag-brand" href="http://demo.learningdata.net/schoolbag">
+<a class="schoolbag-brand" href="#">
     {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
 </a>
 <div class="user-profile">
@@ -16,8 +16,8 @@
         <br />
         <strong>{{ user.school.name }}</strong>
     </p>
-    <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> My Profile</a>
-    <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
+    {{ link_to("student/edit/", "My Profile", 'class':"bt-myprofile") }}
+    {{ link_to("session/logout", "Logout", 'class':"bt-logout") }}
 
     <form class="form-search" role="search">
         <input type="text" class="form-control" placeholder="Search">
