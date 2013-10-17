@@ -11,8 +11,14 @@ class PoliciesController extends ControllerBase {
 
         foreach($files as $file) {
             $path_parts = pathinfo($file);
+            $extension = $path_parts["extension"];
+
+            if ($extension != "pdf") {
+                $extension = "generic";
+            }
+
             $filesAndExtensions []= array("name" => $file,
-                "extension" => $path_parts["extension"]);
+                "extension" => $extension);
         }
 
         $this->view->files = $filesAndExtensions;
