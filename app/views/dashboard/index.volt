@@ -9,8 +9,8 @@
             <div class="box-child">
                 <div id="dashboard-timetable">
                     <div class="header-navigation">
-                        <a title="Prev" class="default-prev"><span>Prev</span></a>
-                        <a title="Next" class="default-next"><span>Next</span></a>
+                        <a title="Prev" class="default-prev"><span class="icon-chevron-sign-left"></span></a>
+                        <a title="Next" class="default-next"><span class="icon-chevron-sign-right"></span></a>
                         <h3></h3>
                     </div>
                 </div>

@@ -5,7 +5,23 @@ use \Phalcon\Config\Adapter\Ini as Config;
 class PoliciesController extends ControllerBase {
     public function indexAction() {
         $this->getUserBySession();
-        $this->view->files = FileService::listFiles($this->getDir());
+        $files = FileService::listFiles($this->getDir());
+
+        $filesAndExtensions = array();
+
+        foreach($files as $file) {
+            $path_parts = pathinfo($file);
+            $extension = $path_parts["extension"];
+
+            if ($extension != "pdf") {
+                $extension = "generic";
+            }
+
+            $filesAndExtensions []= array("name" => $file,
+                "extension" => $extension);
+        }
+
+        $this->view->files = $filesAndExtensions;
     }
 
     public function newAction() {}
@@ -13,8 +29,14 @@ class PoliciesController extends ControllerBase {
     public function uploadAction() {
         if ($this->request->hasFiles() == true) {
             foreach ($this->request->getUploadedFiles() as $file) {
-                move_uploaded_file($file->getTempName(),
+                $wasMoved = move_uploaded_file($file->getTempName(),
                     $this->getDir() . $file->getName());
+
+                if($wasMoved) {
+                    $this->flash->success($file->getName() . " was uploaded");
+                } else {
+                    $this->flash->error($file->getName() . " was not uploaded");
+                }
             }
 
         }

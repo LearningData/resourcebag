@@ -16,8 +16,8 @@
         <br />
         <strong>{{ user.school.name }}</strong>
     </p>
-    {{ link_to("student/edit/", "My Profile", 'class':"bt-myprofile") }}
-    {{ link_to("session/logout", "Logout", 'class':"bt-logout") }}
+    <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> My Profile</a>
+    <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
 
     <form class="form-search" role="search">
         <input type="text" class="form-control" placeholder="Search">
