@@ -6,7 +6,7 @@
     <textarea name="notice"></textarea>
 </p>
 <p>
-    <input type="date" name="date">
+    {{ text_field("date", "placeholder":"Notice Date", "id":"notice-note-date") }}
 </p>
 <p>
     <input type="radio" name="type" value="A"> Teachers/Students

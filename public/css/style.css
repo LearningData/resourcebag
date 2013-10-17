@@ -212,10 +212,7 @@ span.customSelect {
         background: #E6E7E8;
     }
     .collapse {
-        /*    display: block;    */
-    }
-    .navbar-toggle {
-        display: inline;
+            display: block;
     }
     .navbar-toggle:after {
         font-family: "fontawesome";
@@ -1106,6 +1103,9 @@ div.uploader {
 #ui-datepicker-div.event-page .ui-datepicker-header {
     background-color: #9752a3;
 }
+#ui-datepicker-div.datepicker-note .ui-datepicker-header {
+    background-color: #0ba6d3;
+}
 
 .ui-datepicker-header h2 {
     font-size: 16px;
@@ -1164,6 +1164,9 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 }
 .event-page .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a, .ui-datepicker-today a {
     background-color: #9752a3;
+}
+.datepicker-note .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a, .ui-datepicker-today a {
+    background-color: #0ba6d3;
 }
 
 #due-times input {
@@ -1428,7 +1431,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     color: #9752a3; /*text color*/
 }
 .bg-event {
-    background: #9752a3; /*background color*/
+    background: #9752a3; !important/*background color*/
 }
 .bg-event-hv:hover {
     background: #5a2a60; /*background hover color*/

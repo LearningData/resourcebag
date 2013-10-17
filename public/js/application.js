@@ -48,8 +48,13 @@ $(document).ready(function() {
         dateFormat : 'yy-mm-dd',
         minDate : 1,
     })
-    $( "#start-date" ).datepicker( "widget" ).addClass("event-page")
-    $( "#end-date" ).datepicker( "widget" ).addClass("event-page")
+    $( "#notice-note-date" ).datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate : 1,
+    })
+    $( "#start-date" ).datepicker( "widget" ).addClass( "event-page" )
+    $( "#end-date" ).datepicker( "widget" ).addClass( "event-page" )
+    $( "#notice-note-date" ).datepicker( "widget" ).addClass( "datepicker-note" )
 });
 
 $("input[type=file], select").uniform();
