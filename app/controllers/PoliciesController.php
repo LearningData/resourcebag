@@ -29,8 +29,14 @@ class PoliciesController extends ControllerBase {
     public function uploadAction() {
         if ($this->request->hasFiles() == true) {
             foreach ($this->request->getUploadedFiles() as $file) {
-                move_uploaded_file($file->getTempName(),
+                $wasMoved = move_uploaded_file($file->getTempName(),
                     $this->getDir() . $file->getName());
+
+                if($wasMoved) {
+                    $this->flash->success($file->getName() . " was uploaded");
+                } else {
+                    $this->flash->error($file->getName() . " was not uploaded");
+                }
             }
 
         }
