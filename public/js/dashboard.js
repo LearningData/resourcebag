@@ -233,16 +233,23 @@ var dashboard = (function() {
         $.get(url, function(response) {
             var notices = response.notices
             var firstNote = $( "<div><div class=\"note\"><h3>" + notices[0].text.substring(0,15) + "</h3><span>" + notices[0].text + "</span></div></div>" )
-            var items = [ "<div class=\"note\"><h3>" + notices[1].text.substring(0,15) + "</h3><span>" + notices[1].text + "</span></div>" ,
-                "<div class=\"note\"><h3>" + notices[2].text.substring(0,15) + "</h3><span>" + notices[2].text + "</span></div>" ]
+            var items = []
+            if ( notices[1] != undefined ) {
+                items.push( "<div class=\"note\"><h3>" + notices[1].text.substring(0,15) + "</h3><span>" + notices[1].text + "</span></div>" )
+            }
+            if ( notices[2] != undefined ) {
+                items.push( "<div class=\"note\"><h3>" + notices[2].text.substring(0,15) + "</h3><span>" + notices[2].text + "</span></div>" )
+            }
             var noticeElement = $( "<div class=\"notice-home\">")
             noticeElement.append( firstNote )
             var innerElement = $( "<div class=\"notice-lesser\">" )
             innerElement.append( items.join( "" ) )
             noticeElement.append( innerElement )
             $( "#dashboard-notices" ).append( noticeElement )
+            if ( innerElement[0].children.length == 1) {
+                innerElement.addClass( "one-child" )
+            }
         })
-
     }
 
     return {

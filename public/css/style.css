@@ -538,6 +538,15 @@ table > tbody > tr.active td:last-child {
     float: right;
 }
 
+.notice-home .notice-lesser.one-child .note {
+    padding: 0px 5px 5px;
+    margin: 5px;
+    float: none;
+    border: solid 1px #cad3e2;
+    width: auto;
+    height: 95%;
+}
+
 /*//////MESSAGES HOME//////*/
 .header-messages {
     background-color: #10a236;
@@ -1285,13 +1294,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     color: #414042
 }
 
-#dashboard-homework > ul li {
-    position: relative;
-    border-bottom: #d1d3d4 solid 1px;
-    padding: 10px 10px 10px 45px;
-    font-size: 12px;
-}
-
 #dashboard-homework > ul li > p {
     margin: 0px;
 }
@@ -1299,7 +1301,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 #dashboard-homework > ul li {
     position: relative;
     border-bottom: #d1d3d4 solid 1px;
-    padding: 10px 10px 10px 45px;
+    padding: 10px;
     font-size: 12px;
 }
 
