@@ -24,7 +24,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.navbar-nav > li a, .notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .bt-myprofile, .bt-logout, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.navbar-nav > li a, .notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -212,10 +212,10 @@ span.customSelect {
         background: #E6E7E8;
     }
     .collapse {
-        /*    display: block;    */
+        display: block; 
     }
     .navbar-toggle {
-        display: inline;
+        display: none;
     }
     .navbar-toggle:after {
         font-family: "fontawesome";
@@ -226,10 +226,11 @@ span.customSelect {
     }
 }
 
-@media screen and (min-width: 1200px) {
-    .collapse {
+@media screen and (max-width: 767px) {
+    .sidebar .container {
         display: block;
-    }
++        background: #E6E7E8;
+}
     .navbar-toggle {
         display: none;
     }
@@ -302,9 +303,17 @@ table > tbody > tr.active td:last-child {
     height: 20px;
     cursor: pointer;
 }
+.default-prev .icon-chevron-sign-left, 
+.default-next .icon-chevron-sign-right,
+.ui-icon.icon-chevron-sign-left,
+.ui-icon.icon-chevron-sign-right    {
+    font-size: 21px;
+    color: #fff;
+}
+
+
 .default-next, .ui-datepicker-next {
     left: 100%;
-    background-position: -521px 0;
     margin-left: -35px;
 }
 .ui-datepicker-prev, .ui-datepicker-next {
@@ -733,15 +742,20 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-size: 11px;
     margin-bottom: 13px;
 }
-.bt-myprofile, .bt-logout {
-    font-size: 11px;
+.btn-profile, .btn-logout {
+    font-size: 12px;
     color: #4d4d4f;
-    padding-left: 17px;
-    background-position: -500px -230px;
+    margin-right: 10px;
 }
-.bt-logout {
-    margin-left: 8px;
-    background-position: -500px -270px;
+.icon-user,
+.icon-off {
+    margin-right:1px;
+}
+.icon-user {
+    color: #0ba6d3;
+}
+.icon-off {
+    color: #dc3b42;
 }
 
 /*//////FORM ITENS // INNPUT, SELECT, TEXT-AREA//////*/
@@ -1175,12 +1189,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .table-events td:last-child {
     vertical-align: middle;
-}
-
-.ui-icon.icon-chevron-sign-left,
-.ui-icon.icon-chevron-sign-right    {
-    font-size: 21px;
-    color: #fff;
 }
 
 /*///////////////DASHBOARD/////////////*/
