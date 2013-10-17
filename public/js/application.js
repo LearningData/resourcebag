@@ -42,21 +42,21 @@ $(document).ready(function() {
     $(".alert").alert();
     $( "#start-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 1,
+        minDate : 0,
     })
     $( "#end-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 1,
+        minDate : 0,
     })
     $( "#notice-note-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 1,
+        minDate: 0,
     })
     $( "#start-date" ).datepicker( "widget" ).addClass( "event-page" )
     $( "#end-date" ).datepicker( "widget" ).addClass( "event-page" )
     $( "#notice-note-date" ).datepicker( "widget" ).addClass( "datepicker-note" )
 });
-
+var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file], select").uniform();
 
 function enableDatePicker( id ) {
