@@ -212,7 +212,24 @@ span.customSelect {
         background: #E6E7E8;
     }
     .collapse {
-        /*    display: block;    */
+            display: block; 
+    }
+    .navbar-toggle {
+        display: none;
+    }
+    .navbar-toggle:after {
+        font-family: "fontawesome";
+        content: "\f150";
+    }
+    .navbar-nav, .navbar-nav > li, .navbar-brand {
+        float: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .sidebar .container {
+        display: block;
+        background: #E6E7E8;
     }
     .navbar-toggle {
         display: inline;
