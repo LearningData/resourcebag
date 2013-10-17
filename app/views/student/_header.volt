@@ -1,5 +1,5 @@
 <!--h1>Welcome</h1-->
-<a class="schoolbag-brand" href="#">
+<a class="schoolbag-brand" href="http://demo.learningdata.net/schoolbag">
     {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
 </a>
 <div class="user-profile">
