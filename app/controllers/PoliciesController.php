@@ -5,7 +5,17 @@ use \Phalcon\Config\Adapter\Ini as Config;
 class PoliciesController extends ControllerBase {
     public function indexAction() {
         $this->getUserBySession();
-        $this->view->files = FileService::listFiles($this->getDir());
+        $files = FileService::listFiles($this->getDir());
+
+        $filesAndExtensions = array();
+
+        foreach($files as $file) {
+            $path_parts = pathinfo($file);
+            $filesAndExtensions []= array("name" => $file,
+                "extension" => $path_parts["extension"]);
+        }
+
+        $this->view->files = $filesAndExtensions;
     }
 
     public function newAction() {}

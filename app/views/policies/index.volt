@@ -3,5 +3,5 @@
     {{ link_to("policies/new", "New")}}
 {% endif %}
 {% for file in files %}
-    <p>{{ link_to("policies/download/"~file, file)}}</p>
+    <p>{{ file["extension"] }} - {{ link_to("policies/download/"~file["name"], file["name"])}}</p>
 {% endfor %}
