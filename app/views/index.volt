@@ -9,7 +9,6 @@
         {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}
         {{ stylesheet_link("css/uniform.default.css") }}
-        {{ stylesheet_link("css/jquery.gridster.min.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}
     </head>
     <body>
@@ -54,7 +53,6 @@
         {{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
         {{ javascript_include("js/bootstrap.min.js") }}
         {{ javascript_include("js/jquery.uniform.min.js") }}
-        {{ javascript_include("js/jquery.gridster.min.js") }}
         {{ javascript_include("js/jquery.slimscroll.min.js") }}
         {{ javascript_include("js/summernote.min.js") }}
         {{ javascript_include("js/fullcalendar.min.js") }}
