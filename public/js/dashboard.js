@@ -4,6 +4,7 @@ var dashboard = (function() {
     var monthsToInt = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 
     var timetable
+    var calendarEvents
     //events
     $( "#dashboard-homework-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/homework"
@@ -14,108 +15,81 @@ var dashboard = (function() {
     $( "#dashboard-notices-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/noticeboard"
     })
-    $( "#dashboard-events-head" ).click( function() {
-        window.location.href = urlBase + "/" + getUser() + "/calendar"
+    $( "#dashboard-events-head" ).click( function( event ) {
+        if ( $( event.target ).is( ".ui-datepicker-title, .ui-datepicker-title *, .ui-datepicker-header" ) ) {
+            window.location.href = urlBase + "/" + getUser() + "/calendar"
+        }
     })
     $( "#dashboard-timetable .header-navigation a.default-prev").click(
         function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() - 1)
+            displayDate.setDate(displayDate.getDate() - 1)
             populateTimetable( displayDate )
     })
     $( "#dashboard-timetable .header-navigation a.default-next").click(
         function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() + 1)
+            displayDate.setDate(displayDate.getDate() + 1)
             populateTimetable( displayDate )
     })
-    resetCalendarEvents = function() {
-        $( "#dashboard-events-head  a.ui-datepicker-next").click(function( event ){ 
-            event.stopPropagation()
-            findCurrentEvents()
-            resetCalendarEvents()
-        })
-        $( "#dashboard-events-head  a.ui-datepicker-prev").click(function( event ){ 
-            event.stopPropagation()
-            findCurrentEvents()
-            resetCalendarEvents()
-        })
-        $( "#dashboard-events-head .ui-datepicker-calendar td").click(function( event ){ 
-            findCurrentEvents()
-            resetCalendarEvents()
-            var day
-            if ( event.target.tagName == "A" ) {
-                day = event.target.textContent
-                event.target = event.target.parentElement
-            } else {
-                day = event.target.firstChild.textContent
-            }
-            var year = event.target.getAttribute("data-year")
-            var month = event.target.getAttribute("data-month")
-            fillDaysEvents( new Date(year, month, day) )
-        })
-    }
-    $( "#dashboard-events-head" ).datepicker({
-        inline: true,
-        firstDay: 1,
-        onBeforeShow: resetCalendarEvents,
-        showOtherMonths: true,
-        dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-        yearSuffix: " <h2>Events</h2>"
-    });
-    
-
-    fillDaysEvents = function( thisDate ) {
-        var url = urlBase + "/service/calendar/"
-        $.get( url, function(response ) {
-            var items = []
-            $( "#dashboard-events" ).empty( )
-
-            for ( var i = 0; i < response.length; i++ ) {
-                eventDate = new Date(response[i].start)
-                if ( eventDate.getUTCFullYear() == thisDate.getUTCFullYear() &&
-                   eventDate.getUTCMonth() == thisDate.getUTCMonth() &&
-                   eventDate.getUTCDate() == thisDate.getUTCDate() ) {
-                    var eventStr = "<tr><td>" + response[i].description + "</td>"
-                    if ( response[i].allDay == 0 ) {
-                        eventStr += "<td> All Day </td></tr>"
-                    } else {
-                        eventStr += "<td>" + prettyHour(eventDate) + "</td></tr>"
-                    }
-                    items.push(eventStr)
+    fillDaysEvents = function( dateStr, selectEvent ) {
+        var items = []
+        $( "#dashboard-events" ).empty( )
+        for ( var i = 0; i < calendarEvents.length; i++ ) {
+            var dateValues = calendarEvents[i].start.split(/[-\s]/)
+            eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
+            if ( eventDate.getFullYear() == selectEvent.selectedYear &&
+               eventDate.getMonth() == selectEvent.selectedMonth &&
+               eventDate.getDate() == selectEvent.selectedDay ) {
+                var eventStr = "<tr><td>" + calendarEvents[i].description + "</td>"
+                if ( calendarEvents[i].allDay == 0 ) {
+                    eventStr += "<td> All Day </td></tr>"
+                } else {
+                    eventStr += "<td>" + prettyHour(eventDate) + "</td></tr>"
                 }
+                items.push(eventStr)
             }
-            var tableBody = $( "<tbody></tbody>")
-            tableBody.append( items.join("") )
-            var table = $ ( "<table class=\"table table-events\"></table>" )
-            table.append( tableBody )
-            $( "#dashboard-events" ).append( table )
-        })
+        }
+        var tableBody = $( "<tbody></tbody>")
+        tableBody.append( items.join("") )
+        var table = $ ( "<table class=\"table table-events\"></table>" )
+        table.append( tableBody )
+        $( "#dashboard-events" ).append( table )
     }
 
     findCurrentEvents = function( date ) {
-        var url = urlBase + "/service/calendar/"
-        $.get( url, function(response ) {
-            $(".hasDatepicker").datepicker("option", "beforeShowDay", function(date) {
-                for ( var i = 0; i < response.length; i++ ) {
-                    eventDate = new Date(response[i].start)
-                    if ( eventDate.getUTCFullYear() == date.getUTCFullYear() &&
-                        eventDate.getUTCMonth() == date.getUTCMonth() &&
-                        eventDate.getUTCDate() == date.getUTCDate()
-                    ) {
-                        return [true, ""]
-                    }
-                }
-                return [false, ""]
-            })
-        })
+        for ( var i = 0; i < calendarEvents.length; i++ ) {
+            var dateValues = calendarEvents[i].start.split(/[-\s]/)
+            eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
+            if ( eventDate.getFullYear() == date.getFullYear() &&
+                eventDate.getMonth() == date.getMonth() &&
+                eventDate.getDate() == date.getDate()
+            ) {
+                return [true, ""]
+            }
+        }
+        return [false]
     }
 
 
     init = function() {
         populateHomework()
         populateTimetable( displayDate )
-        fillDaysEvents( displayDate )
-        findCurrentEvents()
-        resetCalendarEvents()
+        var url = urlBase + "/service/calendar/"
+        $.get( url, function(response ) {
+            calendarEvents = response
+            $( "#dashboard-events-head" ).datepicker({
+                inline: true,
+                firstDay: 1,
+                onSelect: fillDaysEvents,
+                beforeShowDay: findCurrentEvents,
+                showOtherMonths: true,
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+                yearSuffix: " <h2>Events</h2>",
+            })
+            fillDaysEvents("", { selectedYear: displayDate.getFullYear(),
+                selectedMonth: displayDate.getMonth() ,selectedDay: displayDate.getDate() })
+        })
+
+        
         populateMessages()
         populateNotices()
         orderPanels()
@@ -168,7 +142,6 @@ var dashboard = (function() {
             max_cols: maxCols,
         }).data( "gridster" ).disable();
     }
-
     populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
@@ -189,7 +162,7 @@ var dashboard = (function() {
         header.append(prettyDay(date))
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
-            var day = date.getUTCDay()
+            var day = date.getDay()
             if ( response.week[day] == undefined ) {
                 timetable.empty()
                 createTimetable.dayTableRows( timetable )

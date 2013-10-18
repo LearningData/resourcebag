@@ -72,10 +72,9 @@ var calendarPage = (function() {
             placeholder: "Description:"
         })
         modalBody.append( descriptionInput )
-        //var date = new Date( date )
-        dateStr = "" + date.getUTCFullYear() + "-"
-        dateStr +=  (date.getUTCMonth() < 9) ? "0" + (date.getUTCMonth() + 1) : (date.getUTCMonth() + 1) + "-"
-        dateStr += (date.getUTCDate() < 10) ? "0" + date.getUTCDate() : date.getUTCDate()
+        dateStr = "" + date.getFullYear() + "-"
+        dateStr +=  (date.getMonth() < 9) ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1) + "-"
+        dateStr += (date.getDate() < 10) ? "0" + date.getDate() : date.getDate()
         var hiddenStart = $( "<input>", {
             type: "hidden",
             name: "start",
