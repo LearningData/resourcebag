@@ -67,7 +67,7 @@ var createTimetable = (function() {
         tableBody.append( tableRows.join("") )
         timetable.append( tableBody )
     }
-
+    //fullpage -> false dashboard table
     createTimetableRows = function( timetable, fullpage ) {
         var periods = setTimePeriods()
         var tableRows = []
@@ -78,6 +78,9 @@ var createTimetable = (function() {
         }
         var tableBody = $( "<tbody>")
         tableBody.append( tableRows.join("") )
+        if ( periods.length > 19) timetable.addClass("over18Rows")
+        if ( periods.length > 13) timetable.addClass("over12Rows")
+        if ( periods.length > 6) timetable.addClass("over6Rows")
         timetable.append( tableBody )
     }
     

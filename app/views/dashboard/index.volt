@@ -27,6 +27,16 @@
                 </div>
             </div>
         </li>
+        <li id="dashboard-events-box" class="box box-events">
+            <div class="box-header">
+                <div id="dashboard-events-head" class="header-title header-events"> 
+                </div>
+            </div>
+            <div class="box-child">
+                <div id="dashboard-events">
+                </div>
+            </div>
+        </li>
         <li id="dashboard-messages-box" class="box box-messages">
             <div class="box-header">
                 <div id="dashboard-messages-head "class="header-title header-messages">
@@ -46,16 +56,6 @@
             </div>
             <div class="box-child">
                 <div id="dashboard-notices">
-                </div>
-            </div>
-        </li>
-        <li id="dashboard-events-box" class="box box-events">
-            <div class="box-header">
-                <div id="dashboard-events-head" class="header-title header-events"> 
-                </div>
-            </div>
-            <div class="box-child">
-                <div id="dashboard-events">
                 </div>
             </div>
         </li>

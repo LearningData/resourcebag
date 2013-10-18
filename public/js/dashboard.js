@@ -39,7 +39,7 @@ var dashboard = (function() {
             if ( eventDate.getFullYear() == selectEvent.selectedYear &&
                eventDate.getMonth() == selectEvent.selectedMonth &&
                eventDate.getDate() == selectEvent.selectedDay ) {
-                var eventStr = "<tr><td>" + calendarEvents[i].description + "</td>"
+                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "<td> All Day </td></tr>"
                 } else {
@@ -56,6 +56,8 @@ var dashboard = (function() {
     }
 
     findCurrentEvents = function( date ) {
+        if (date < new Date().setHours(0,0,0,0))
+            return [false]
         for ( var i = 0; i < calendarEvents.length; i++ ) {
             var dateValues = calendarEvents[i].start.split(/[-\s]/)
             eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
@@ -78,7 +80,7 @@ var dashboard = (function() {
             calendarEvents = response
             $( "#dashboard-events-head" ).datepicker({
                 inline: true,
-                firstDay: 1,
+                firstDay: 0,
                 onSelect: fillDaysEvents,
                 beforeShowDay: findCurrentEvents,
                 showOtherMonths: true,
@@ -92,62 +94,28 @@ var dashboard = (function() {
         
         populateMessages()
         populateNotices()
-        orderPanels()
+        //orderPanels()
     }
     
-/*    orderPanels = function() {
-        var pnlHomework = $( "#dashboard-homework-box" )
-        var pnlTimetable = $( "#dashboard-timetable-box" )
-        var pnlMessages = $( "#dashboard-messages-box" )
-        var pnlEvents = $( "#dashboard-events-box" )
-        var pnlNotices = $( "#dashboard-notices-box" )
-
-        pnlTimetable.addClass("col-md-8")
-        pnlHomework.addClass( "col-md-4" )
-        pnlMessages.addClass("col-md-4")
-        pnlEvents.addClass("col-md-4")
-        pnlNotices.addClass("col-md-4")
-    
-    }
-*/    orderPanels = function() {
-        //TODO add order and size to users customisations
-        var pnlHomework = $( "#dashboard-homework-box" )
-        var pnlTimetable = $( "#dashboard-timetable-box" )
-        var pnlEvents = $( "#dashboard-events-box" )
-        var pnlMessages = $( "#dashboard-messages-box" )
-        var pnlNotices = $( "#dashboard-notices-box" )
-        var container = $( ".dashboard-page" )[0]
-        var width = container.clientWidth
-        var mediaWidth = document.documentElement.clientWidth
-        var maxCols = 9
-        var largeX = 6, largeY = 4
-        var normalX = 3, normalY = 3
-        if (mediaWidth < 768 ) {
-            maxCols = 1
-            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 1, "data-sizey": 5})
-            pnlNotices.attr({"data-row": 5, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
-            pnlEvents.attr({"data-row": 8, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
-            pnlHomework.attr({"data-row": 11, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
-            pnlMessages.attr({"data-row": 14, "data-col": 1, "data-sizex": 1, "data-sizey": 3})
-        } else {
-            pnlTimetable.attr({"data-row": 1, "data-col": 1, "data-sizex": 6, "data-sizey": 4})
-            pnlNotices.attr({"data-row": 5, "data-col": 4, "data-sizex": 3, "data-sizey": 3})
-            pnlEvents.attr({"data-row": 4, "data-col": 1, "data-sizex": 3, "data-sizey": 3})
-            pnlHomework.attr({"data-row": 1, "data-col": 4, "data-sizex": 3, "data-sizey": 3})
-            pnlMessages.attr({"data-row": 5, "data-col": 1, "data-sizex": 3, "data-sizey": 3})
-        } 
-        $( ".gridster ul" ).gridster({
-            widget_margins: [5, 5],
-            widget_base_dimensions: [width/maxCols - 10, 385 / 3],
-            max_cols: maxCols,
-        }).data( "gridster" ).disable();
-    }
     populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
             var homeworkItems = []
-            for ( var i = 0; i < response.homeworks.length; i++ ) {
-                homeworkItems.push("<a href=" + urlBase + "/student/homework/edit/" + response.homeworks[i].id + "><li><p>" + response.homeworks[i].description + " (" + response.homeworks[i].subject + ")</p></li></a>")
+            var length = response.homeworks.length
+            for ( var i = 0; i < length; i++ ) {
+                var item = response.homeworks[i]
+                var icon
+                switch ( item.status ) {
+                    case "0" :
+                        icon = "icon-caret-right"
+                    break
+                    case "1" :
+                        icon = "icon-pencil"
+                    break
+                    default: 
+                        icon = "icon-eye-open"
+                }
+                homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + response.homeworks[i].id + "></a><p>" + response.homeworks[i].description + " (" + response.homeworks[i].subject + ")</p></li>")
             }
             var homeworkList = $( "<ul class=\"homeworkList\">")
             homeworkList.append( homeworkItems.join("") )
