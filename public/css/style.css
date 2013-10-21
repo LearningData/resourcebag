@@ -345,8 +345,6 @@ table > tbody > tr.active td:last-child {
     float: left;
 }
 
-
-
 .navbar-nav > li a:hover, .navbar-nav > li.active a {
     color: #fff;
     border-left: solid 5px;
@@ -412,25 +410,29 @@ table > tbody > tr.active td:last-child {
     background-color: #898c27;
     border-color: #545a1b;
 }
-.navbar-nav > li.journal a {
+.navbar-nav > li.journal a span {
+    color: #731a12;
 }
 .navbar-nav > li.journal a:hover, .navbar-nav > li.journal.active a {
     background-color: #731a12;
     border-color: #3b0000;
 }
 .navbar-nav > li.copies a {
+    color: #9299ce;
 }
 .navbar-nav > li.copies a:hover, .navbar-nav > li.copies.active a {
     background-color: #9299ce;
     border-color: #575a7b;
 }
-.navbar-nav > li.resources a {
+.navbar-nav > li.resources a span {
+    color:#438c76;
 }
 .navbar-nav > li.resources a:hover, .navbar-nav > li.resources.active a {
     background-color: #438c76;
     border-color: #215949;
 }
-.navbar-nav > li.policies a {
+.navbar-nav > li.policies a span {
+    color: #939598;
 }
 .navbar-nav > li.policies a:hover, .navbar-nav > li.policies.active a {
     background-color: #939598;

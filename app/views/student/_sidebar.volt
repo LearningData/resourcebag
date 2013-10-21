@@ -1,7 +1,7 @@
 <div class="nav-collapse collapse">
     <nav class="nav navbar-nav">
         <li class="dashboard active">
-            {{ link_to("dashboard", "Dashboard") }}
+            <a href="/schoolbag/student/dashboard"><span class="custom-icon-dash-top"></span><span class="custom-icon-dash"></span>Dashboard</a>
         </li>
         <li class="homework">
             <a href="/schoolbag/student/homework?filter=0"><span class="custom-icon-homework"></span>Homework</a>
