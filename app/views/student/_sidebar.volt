@@ -4,28 +4,28 @@
             {{ link_to("dashboard", "Dashboard") }}
         </li>
         <li class="homework">
-            <a href="/schoolbag/student/homework?filter=0"><span class="custon-icon-homework"></span>Homework</a>
+            <a href="/schoolbag/student/homework?filter=0"><span class="custom-icon-homework"></span>Homework</a>
         </li>
         <li class="messages">
             <!--span class="badge">21</span-->
             <a href="#"><span class="icon-envelope"></span> Messages</a>
         </li>
         <li class="notices">
-            <a href="/schoolbag/student/noticeboard"><span class="custon-icon-notices"></span>School Notices</a>
+            <a href="/schoolbag/student/noticeboard"><span class="custom-icon-notices"></span>School Notices</a>
             <span class="badge">5</span>
         </li>
         <li class="events">
-            <a href="/schoolbag/student/calendar"><span class="custon-icon-events"></span>Events</a>
+            <a href="/schoolbag/student/calendar"><span class="custom-icon-events"></span>Events</a>
             <span class="badge">7</span>
         </li>
         <li class="timetable">
-            <a href="/schoolbag/student/timetable"><span class="custon-icon-timetable"></span>Timetable</a>
+            <a href="/schoolbag/student/timetable"><span class="custom-icon-timetable"></span>Timetable</a>
         </li>
         <li class="classes">
             <a href="/schoolbag/student/listClasses"><span class="icon-group"></span>Classes</a>
         </li>
         <li class="ebooks">
-            <a href="#">Ebooks</a>
+            <a href="#"><span class="custom-icon-ebooks"></span>Ebooks</a>
         </li>
         <!--<li class="journal">
             {{ link_to("student/subjects/", "Journal") }}
@@ -34,10 +34,10 @@
             <a href="#">Copies</a>
         </li>-->
         <li class="resources">
-            <a href="#">Resources</a>
+            <a href="#"> <span class="icon-wrench"></span> Resources</a>
         </li>
         <li class="policies">
-            {{ link_to("policies", "School Policies") }}
+            <a href="/schoolbag/student/policies"><span class="icon-lock"></span>School Policies</a>
         </li>
     </nav>
 </div>

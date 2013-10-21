@@ -339,15 +339,20 @@ table > tbody > tr.active td:last-child {
     padding-bottom: 15px;
 }
 .navbar-nav > li a span {
-    margin-right: 10px;
     font-size: 16px;
+    width: 40px;
+    display: block;
+    float: left;
 }
+
+
+
 .navbar-nav > li a:hover, .navbar-nav > li.active a {
     color: #fff;
     border-left: solid 5px;
     padding-left: 10px;
 }
-.navbar-nav > li a:hover span   {
+.navbar-nav > li a:hover span, .navbar-nav > li.active span   {
     color: #FFFFFF!important;
 }
 .navbar-nav > li.dashboard a {
@@ -357,7 +362,13 @@ table > tbody > tr.active td:last-child {
     background-color: #fff;
     color: #414042;
     border-color: #666562;
-    background-position: 13px 15px;
+}
+.navbar-nav > li.homework a span {
+    color: #ff9e19;
+}
+.navbar-nav > li.homework a:hover, .navbar-nav > li.homework.active a {
+    background-color: #ff9e19;
+    border-color: #a30c00;
 }
 .navbar-nav > li.messages a span{
     color: #10a236;
@@ -366,35 +377,26 @@ table > tbody > tr.active td:last-child {
     background-color: #10a236;
     border-color: #006228;
 }
-.navbar-nav > li.notices a {
-    background-position: 18px -81px;
+.navbar-nav > li.notices a span {
+    color: #0ba6d3;
 }
 .navbar-nav > li.notices a:hover, .navbar-nav > li.notices.active a {
     background-color: #0ba6d3;
     border-color: #00637f;
-    background-position: 13px -631px;
 }
-.navbar-nav > li.events a {
+.navbar-nav > li.events a span {
+    color: #9752a3;
 }
 .navbar-nav > li.events a:hover, .navbar-nav > li.events.active a {
     background-color: #9752a3;
     border-color: #5a2a60;
 }
-.navbar-nav > li.timetable a {
-    background-position: 18px -182px;
+.navbar-nav > li.timetable a span {
+    color: #dc3b42;
 }
 .navbar-nav > li.timetable a:hover, .navbar-nav > li.timetable.active a {
     background-color: #dc3b42;
     border-color: #821a1e;
-    background-position: 13px -732px;
-}
-.navbar-nav > li.homework a {
-    background-position: 18px -234px;
-}
-.navbar-nav > li.homework a:hover, .navbar-nav > li.homework.active a {
-    background-color: #ff9e19;
-    border-color: #a30c00;
-    background-position: 13px -782px;
 }
 .navbar-nav > li.classes a span {
     color:#ff0097;
@@ -403,40 +405,32 @@ table > tbody > tr.active td:last-child {
     background-color: #ff0097;
     border-color: #8d0054;
 }
-.navbar-nav > li.ebooks a {
-    background-position: 18px -330px;
+.navbar-nav > li.ebooks a span {
+    color: #898c27;
 }
 .navbar-nav > li.ebooks a:hover, .navbar-nav > li.ebooks.active a {
     background-color: #898c27;
     border-color: #545a1b;
-    background-position: 13px -880px;
 }
 .navbar-nav > li.journal a {
-    background-position: 18px -380px;
 }
 .navbar-nav > li.journal a:hover, .navbar-nav > li.journal.active a {
     background-color: #731a12;
     border-color: #3b0000;
-    background-position: 13px -930px;
 }
 .navbar-nav > li.copies a {
-    background-position: 18px -432px;
 }
 .navbar-nav > li.copies a:hover, .navbar-nav > li.copies.active a {
     background-color: #9299ce;
     border-color: #575a7b;
-    background-position: 13px -982px;
 }
 .navbar-nav > li.resources a {
-    background-position: 18px -480px;
 }
 .navbar-nav > li.resources a:hover, .navbar-nav > li.resources.active a {
     background-color: #438c76;
     border-color: #215949;
-    background-position: 13px -1030px;
 }
 .navbar-nav > li.policies a {
-    background-position: 18px -531px;
 }
 .navbar-nav > li.policies a:hover, .navbar-nav > li.policies.active a {
     background-color: #939598;
