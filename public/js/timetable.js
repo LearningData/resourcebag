@@ -16,15 +16,15 @@ var timetablePage = (function() {
         getWeekView( displayDate )
         $( ".timetable-day" ).removeClass( "active" )
     })
-    $( ".nav-timetable-btn-prev").click(
-        function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() - 7)
-            getWeekView( displayDate )
+    $( ".nav-timetable-btn-prev").click( function() {
+        displayDate.setUTCDate(displayDate.getUTCDate() - 7)
+        getWeekView( displayDate )
+        $( ".timetable-day" ).removeClass( "active" )
     })
-    $( ".nav-timetable-btn-next").click(
-        function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() + 7)
-            getWeekView( displayDate )
+    $( ".nav-timetable-btn-next").click( function() {
+        displayDate.setUTCDate(displayDate.getUTCDate() + 7)
+        getWeekView( displayDate )
+        $( ".timetable-day" ).removeClass( "active" )
     })
 
     var getTimetableData = function( day ) {
