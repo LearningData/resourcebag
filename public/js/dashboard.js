@@ -94,7 +94,6 @@ var dashboard = (function() {
         
         populateMessages()
         populateNotices()
-        //orderPanels()
     }
     
     populateHomework = function() {
@@ -142,7 +141,7 @@ var dashboard = (function() {
                 var tableRows = []
                 for ( var i = 0; i < data.length; i++ ) {
                     var rowStr = "<tr><td>" + data[i].time + "</td>"
-                    rowStr += "<td>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
+                    rowStr += "<td colSpan=3>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                     tableRows.push(rowStr)
                 }
                 var tableBody = $( "<tbody>")
