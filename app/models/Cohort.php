@@ -6,6 +6,12 @@ class Cohort extends \Phalcon\Mvc\Model {
     public $stage;
     public $courseId;
     public $id;
+    public $groupId;
+
+    public function initialize() {
+        $this->hasMany("id", "ClassList", "cohortId", array("alias" => "Classes"));
+        $this->belongsTo("groupId", "Group", "id");
+    }
 
     public function getSource() {
         return "cohorts";
@@ -17,6 +23,7 @@ class Cohort extends \Phalcon\Mvc\Model {
             'schoolId' => 'schoolId',
             'stage' => 'stage',
             'courseId' => 'courseId',
+            'groupId' => 'groupId',
             'id' => 'id'
         );
     }

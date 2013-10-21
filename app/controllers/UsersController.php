@@ -27,7 +27,6 @@ class UsersController extends ControllerBase {
         $user->lastName = $this->request->getPost("last-name");
         $user->schoolId = $admin->schoolId;
         $user->password = $password;
-        $user->year = $this->request->getPost("year");
         $user->type = $this->request->getPost("type");
         $user->email = $this->request->getPost("email");
 

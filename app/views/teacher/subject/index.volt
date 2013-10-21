@@ -26,7 +26,7 @@
                 "Correct") }}</td>
             <td>{{ classList.getPendingHomework().count() }}</td>
             <td>{{ classList.getSubmittedHomework().count() }}</td>
-            <td>{{ classList.year }}</td>
+            <td>{{ classList.cohort.stage }}</td>
             {% if classList.users.count() %}
                 <td>
                     <a data-toggle="modal" href="#modal{{ classList.id }}">

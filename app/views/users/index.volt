@@ -8,7 +8,6 @@
         <tr>
                         <th>UserID</th>
             <th>SchoolID</th>
-            <th>Year</th>
             <th>FirstName</th>
             <th>LastName</th>
             <th>Type</th>
@@ -23,7 +22,6 @@
             <tr>
                             <td>{{ user.userID }}</td>
             <td>{{ user.schoolID }}</td>
-            <td>{{ user.year }}</td>
             <td>{{ user.FirstName }}</td>
             <td>{{ user.LastName }}</td>
             <td>{{ user.Type }}</td>

@@ -12,7 +12,6 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->user->password = '1234';
         $this->user->schoolId = 1;
         $this->user->type = 1;
-        $this->user->year = 2012;
     }
 
     function testCorrectEmailFormat() {

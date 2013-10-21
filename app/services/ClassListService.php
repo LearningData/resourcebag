@@ -31,5 +31,17 @@ class ClassListService {
         $classIdParams .= "''";
         return $classIdParams;
     }
+
+    public function getClassesByGroup($group) {
+        $classes = array();
+
+        foreach ($group->cohorts as $cohort) {
+            foreach ($cohort->classes as $classList) {
+                $classes [$classList->id]= $classList->subject->name;
+            }
+        }
+
+        return $classes;
+    }
 }
 ?>
