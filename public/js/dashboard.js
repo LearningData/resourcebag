@@ -114,7 +114,7 @@ var dashboard = (function() {
                     default: 
                         icon = "icon-eye-open"
                 }
-                homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + response.homeworks[i].id + "></a><p>" + response.homeworks[i].description + " (" + response.homeworks[i].subject + ")</p></li>")
+                homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + response.homeworks[i].id + "></a><p>" + response.homeworks[i].description + " (" + response.homeworks[i].subject + ")</p></li>")
             }
             var homeworkList = $( "<ul class=\"homeworkList\">")
             homeworkList.append( homeworkItems.join("") )
@@ -134,7 +134,7 @@ var dashboard = (function() {
             if ( timetable) {
                 timetable.remove()
             }
-            if ( response.week[day] == undefined ) {
+            if ( data == undefined || data.length == 0 ) {
                 timetable = $( "<div class=\"table table-timetable none\"> No Classes Today</div>")
             } else {
                 timetable = $( "<table class=\"table table-timetable day\">")
@@ -165,7 +165,8 @@ var dashboard = (function() {
             var items = []
             for ( var i = 0; i < response.messages.length; i++ ) {
                 var msg = response.messages[i]
-                items.push("<li " + ((msg.status == 0) ? "class=\"msg-unread\"" : "") + "><div class=msg-label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
+                var classStr = "class=" + ((msg.status == 0) ? "\"msg-unread dash-brd-hv\"" : "\"dash-brd-hv\"")
+                items.push("<li " + classStr + "><div class=msg-label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
             }
             var list = $( "<ul>")
             list.append( items.join("") )
