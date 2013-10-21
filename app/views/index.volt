@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
+        {{ stylesheet_link("css/font-custom.css") }}        
         {{ stylesheet_link("css/summernote.css") }}
         {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}

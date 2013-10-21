@@ -72,7 +72,7 @@ var dashboard = (function() {
     }
 
 
-    init = function() {
+    var init = function() {
         populateHomework()
         populateTimetable( displayDate )
         var url = urlBase + "/service/calendar/"
@@ -124,28 +124,36 @@ var dashboard = (function() {
         })
     }
 
-    populateTimetable = function( date ) {
+    var populateTimetable = function( date ) {
         var header = $( "#dashboard-timetable .header-navigation h3")
         header.empty()
         header.append(prettyDay(date))
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
             var day = date.getDay()
-            if ( response.week[day] == undefined ) {
-                timetable.empty()
-                createTimetable.dayTableRows( timetable )
-                return
-            }
+            data = response.week[day]
             if ( timetable) {
                 timetable.remove()
             }
-            timetable = createTimetable.dayTable( response.week, day)
+            if ( response.week[day] == undefined ) {
+                timetable = $( "<div class=\"table table-timetable none\"> No Classes Today</div>")
+            } else {
+                timetable = $( "<table class=\"table table-timetable day\">")
+                var tableRows = []
+                for ( var i = 0; i < data.length; i++ ) {
+                    var rowStr = "<tr><td>" + data[i].time + "</td>"
+                    rowStr += "<td>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
+                    tableRows.push(rowStr)
+                }
+                var tableBody = $( "<tbody>")
+                tableBody.append( tableRows.join("") )
+                timetable.append( tableBody )
+            }
             $( "#dashboard-timetable" ).append( timetable )
         })
     }
     
-
-    populateMessages = function( date ) {
+    var populateMessages = function( date ) {
         //var url = urlBase + "/service/events/"
         //$.get(url, function(response) {
         var response = {messages: [{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
@@ -168,7 +176,7 @@ var dashboard = (function() {
 
     }
 
-    populateNotices = function( date ) {
+    var populateNotices = function( date ) {
         var url = urlBase + "/notice/jsonNotices/"
         $.get(url, function(response) {
             var notices = response.notices
