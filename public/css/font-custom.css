@@ -44,4 +44,5 @@
 .custom-icon-dash-top:before {
     content: "\e606";
     color: #d1444a;
+    position:absolute;
 }
