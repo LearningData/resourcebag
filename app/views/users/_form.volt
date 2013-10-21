@@ -5,8 +5,7 @@
         </td>
         <td align="left">
             <select name="Type">
-                <option value="T">Teacher</option>
-                <option value="P" selected="true">Student</option>
+                <option value="T" selected="true">Teacher</option>
             </select>
         </td>
     </tr>
@@ -79,23 +78,6 @@
         </td>
         <td align="left">
             {{ text_field("accessCode", "size" : 30) }}
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            <label for="year">Year/Class</label>
-        </td>
-        <td align="left">
-        <select name="year">
-            <option value="-1">Juniors</option>
-            <option value="0">Seniors</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
         </td>
     </tr>
     {{ hidden_field("userID", "type" : "numeric") }}
