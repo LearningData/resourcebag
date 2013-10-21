@@ -24,7 +24,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.navbar-nav > li a, .notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -338,13 +338,17 @@ table > tbody > tr.active td:last-child {
     padding-top: 18px;
     padding-bottom: 15px;
 }
-.navbar-nav > li a {
-    padding-left: 55px;
+.navbar-nav > li a span {
+    margin-right: 10px;
+    font-size: 16px;
 }
 .navbar-nav > li a:hover, .navbar-nav > li.active a {
     color: #fff;
     border-left: solid 5px;
-    padding-left: 50px;
+    padding-left: 10px;
+}
+.navbar-nav > li a:hover span   {
+    color: #FFFFFF!important;
 }
 .navbar-nav > li.dashboard a {
     background-position: 18px 15px;
@@ -355,13 +359,12 @@ table > tbody > tr.active td:last-child {
     border-color: #666562;
     background-position: 13px 15px;
 }
-.navbar-nav > li.messages a {
-    background-position: 18px -27px;
+.navbar-nav > li.messages a span{
+    color: #10a236;
 }
 .navbar-nav > li.messages a:hover, .navbar-nav > li.messages.active a {
     background-color: #10a236;
     border-color: #006228;
-    background-position: 13px -577px;
 }
 .navbar-nav > li.notices a {
     background-position: 18px -81px;
@@ -371,13 +374,11 @@ table > tbody > tr.active td:last-child {
     border-color: #00637f;
     background-position: 13px -631px;
 }
-.navbar-nav > li.calendar a {
-    background-position: 18px -132px;
+.navbar-nav > li.events a {
 }
-.navbar-nav > li.calendar a:hover, .navbar-nav > li.calendar.active a {
+.navbar-nav > li.events a:hover, .navbar-nav > li.events.active a {
     background-color: #9752a3;
     border-color: #5a2a60;
-    background-position: 13px -681px;
 }
 .navbar-nav > li.timetable a {
     background-position: 18px -182px;
@@ -395,13 +396,12 @@ table > tbody > tr.active td:last-child {
     border-color: #a30c00;
     background-position: 13px -782px;
 }
-.navbar-nav > li.classes a {
-    background-position: 18px -279px;
+.navbar-nav > li.classes a span {
+    color:#ff0097;
 }
 .navbar-nav > li.classes a:hover, .navbar-nav > li.classes.active a {
     background-color: #ff0097;
     border-color: #8d0054;
-    background-position: 13px -829px;
 }
 .navbar-nav > li.ebooks a {
     background-position: 18px -330px;
@@ -780,7 +780,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .form-search {
     position: relative;
 }
-.form-control {
+.form-control, input[type='text'] {
     width: 95%;
     height: 45px;
     margin: 20px 0;

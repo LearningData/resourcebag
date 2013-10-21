@@ -4,25 +4,25 @@
             {{ link_to("dashboard", "Dashboard") }}
         </li>
         <li class="homework">
-            {{ link_to("student/homework?filter=0", "Homework") }}
+            <a href="/schoolbag/student/homework?filter=0"><span class="custon-icon-homework"></span>Homework</a>
         </li>
         <li class="messages">
             <!--span class="badge">21</span-->
-            <a href="#">Messages</a>
+            <a href="#"><span class="icon-envelope"></span> Messages</a>
         </li>
         <li class="notices">
-            {{ link_to("student/noticeboard", "School Notices") }}
+            <a href="/schoolbag/student/noticeboard"><span class="custon-icon-notices"></span>School Notices</a>
             <span class="badge">5</span>
         </li>
-        <li class="calendar">
-            {{ link_to("student/calendar", "Calendar") }}
+        <li class="events">
+            <a href="/schoolbag/student/calendar"><span class="custon-icon-events"></span>Events</a>
             <span class="badge">7</span>
         </li>
         <li class="timetable">
-            {{ link_to("student/timetable", "Timetable") }}
+            <a href="/schoolbag/student/timetable"><span class="custon-icon-timetable"></span>Timetable</a>
         </li>
         <li class="classes">
-            {{ link_to("student/listClasses/", "Classes") }}
+            <a href="/schoolbag/student/listClasses"><span class="icon-group"></span>Classes</a>
         </li>
         <li class="ebooks">
             <a href="#">Ebooks</a>
