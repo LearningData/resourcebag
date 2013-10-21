@@ -486,6 +486,12 @@ table > tbody > tr.active td:last-child {
     font-weight: 400;
 }
 
+.table.table-timetable.none {
+    text-align: center;
+    font-size: large;
+}
+
+
 /*//////DEFAULT LIST HOME//////*/
 .box-messages .box-child ul li, .box-homework .box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
@@ -1048,6 +1054,7 @@ div.uploader {
 
 .table.table-timetable td span {
     display: block;
+    text-align: center;
 }
 
 .table.table-timetable td span:nth-child(1) {
@@ -1055,7 +1062,11 @@ div.uploader {
 }
 
 .table.table-timetable td span:nth-child(2) {
-    font-size: smaller;
+    font-size: 12px;
+}
+
+.table.table-timetable td span:nth-child(3) {
+    font-size: 10px;
 }
 
 .modal-homework .modal-title {
