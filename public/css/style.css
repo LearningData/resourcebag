@@ -1271,7 +1271,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
     .box:nth-child(5) {
         width: 32.5%;
-        margin: 0px 5px;
+        margin: 0px 5px 5px 5px;
         margin-top: -374px;
         height: auto;
     }
@@ -1461,4 +1461,35 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .bdr-event {
     border-color: #9752a3/*border color*/
+}
+
+/*//////NOTICE PAGE//////*/
+.cl-notice {
+    color: #9752a3; /*text color*/
+}
+.bg-notice {
+    background: #0ba6d3; !important/*background color*/
+}
+.bg-notice-hv:hover {
+    background: #0ba6d3; /*background hover color*/
+}
+.bdr-notice {
+    border-color: #0ba6d3;/*border color*/
+}
+
+.frm-notice .uploader .action {
+    background-color: #0ba6d3;
+}
+
+.frm-notice .radio-box {
+    width: 95%;
+    margin: 20px 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: #A2A2A2;
+    border: solid 1px #F2F2F2;
+}
+
+.frm-notice .radio-box label {
+    font-weight: normal;
 }

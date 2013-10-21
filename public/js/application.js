@@ -57,7 +57,7 @@ $(document).ready(function() {
     $( "#notice-note-date" ).datepicker( "widget" ).addClass( "datepicker-note" )
 });
 var urlBase = window.location.origin + "/schoolbag"
-$("input[type=file], select").uniform();
+$("input[type=file]").uniform();
 
 function enableDatePicker( id ) {
     $( id ).removeAttr("disabled")
