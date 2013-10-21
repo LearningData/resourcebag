@@ -1,39 +1,40 @@
 @font-face {
-	font-family: 'custom';
-	src:url('../font/custom.eot');
-	src:url('../font/custom.svg');
-	src:url('../font/custom.ttf');
-	src:url('../font/custom.woff');
+	font-family: 'custom-icon';
+	src:url('../font/custom-icon.eot');
+	src:url('../font/custom-icon.svg');
+	src:url('../font/custom-icon.ttf');
+	src:url('../font/custom-icon.woff');
 	font-weight: normal;
     font-style: normal;
 }
+[class*="custom-icon-"] {
+    font-family: 'custom-icon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 18px!important;
 
-[class*="custon-icon-"] {
-	font-family: 'custom';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.custon-icon-events:before {
-	content: "\e600";
+.custom-icon-timetable:before {
+    content: "\e600";
 }
-.custon-icon-timetable:before {
-	content: "\e605";
+.custom-icon-notices:before {
+    content: "\e601";
 }
-.custon-icon-notices:before {
-	content: "\e603";
+.custom-icon-homework:before {
+    content: "\e602";
 }
-.custon-icon-homework:before {
-	content: "\e604";
+.custom-icon-events:before {
+    content: "\e603";
 }
-.custon-icon-ebooks:before {
-	content: "\e602";
+.custom-icon-ebooks:before {
+    content: "\e604";
 }
+
