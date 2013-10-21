@@ -7,6 +7,10 @@ class UsersController extends ControllerBase {
     public function newAction() {
         $types = array("T" => "Teacher",
             "P" => "Student", "S" => "School Admin");
+
+        $cohorts = Cohort::find("schoolId = " . $this->view->user->schoolId);
+
+        $this->view->cohorts = $cohorts;
         $this->view->types = $types;
     }
 
@@ -28,6 +32,7 @@ class UsersController extends ControllerBase {
         $user->schoolId = $admin->schoolId;
         $user->password = $password;
         $user->type = $this->request->getPost("type");
+        $user->groupId = $this->request->getPost("group-id");
         $user->email = $this->request->getPost("email");
 
         if (!$user->save()) {

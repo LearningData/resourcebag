@@ -6,7 +6,7 @@
 <table class="browse" align="center">
     <thead>
         <tr>
-                        <th>UserID</th>
+            <th>UserID</th>
             <th>SchoolID</th>
             <th>FirstName</th>
             <th>LastName</th>
