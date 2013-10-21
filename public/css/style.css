@@ -1,4 +1,3 @@
-/*//////RESET DEFAULT//////*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
@@ -24,7 +23,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.notice-home ul li, .header-timetable, .header-notices, .header-messages, .header-homework, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.notice-home ul li, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -345,8 +344,6 @@ table > tbody > tr.active td:last-child {
     float: left;
 }
 
-
-
 .navbar-nav > li a:hover, .navbar-nav > li.active a {
     color: #fff;
     border-left: solid 5px;
@@ -356,7 +353,7 @@ table > tbody > tr.active td:last-child {
     color: #FFFFFF!important;
 }
 .navbar-nav > li.dashboard a {
-    background-position: 18px 15px;
+    position: relative;
 }
 .navbar-nav > li.dashboard a:hover, .navbar-nav > li.dashboard.active a {
     background-color: #fff;
@@ -412,25 +409,29 @@ table > tbody > tr.active td:last-child {
     background-color: #898c27;
     border-color: #545a1b;
 }
-.navbar-nav > li.journal a {
+.navbar-nav > li.journal a span {
+    color: #731a12;
 }
 .navbar-nav > li.journal a:hover, .navbar-nav > li.journal.active a {
     background-color: #731a12;
     border-color: #3b0000;
 }
 .navbar-nav > li.copies a {
+    color: #9299ce;
 }
 .navbar-nav > li.copies a:hover, .navbar-nav > li.copies.active a {
     background-color: #9299ce;
     border-color: #575a7b;
 }
-.navbar-nav > li.resources a {
+.navbar-nav > li.resources a span {
+    color:#438c76;
 }
 .navbar-nav > li.resources a:hover, .navbar-nav > li.resources.active a {
     background-color: #438c76;
     border-color: #215949;
 }
-.navbar-nav > li.policies a {
+.navbar-nav > li.policies a span {
+    color: #939598;
 }
 .navbar-nav > li.policies a:hover, .navbar-nav > li.policies.active a {
     background-color: #939598;
@@ -448,8 +449,8 @@ table > tbody > tr.active td:last-child {
     border-radius: 5px 5px 0 0;
     padding: 15px;
 }
-.header-title {
-    padding-left: 40px;
+.header-title span  {
+    margin-right: 15px;
 }
 .header-title.header-events {
     padding: 0px;
@@ -464,7 +465,6 @@ table > tbody > tr.active td:last-child {
 /*//////TIMETABLE HOME//////*/
 .header-timetable {
     background-color: #dc3b42;
-    background-position: 10px -737px;
 }
 .header-navigation {
     background-color: #e27176;
@@ -512,7 +512,6 @@ table > tbody > tr.active td:last-child {
 }
 .header-notices {
     background-color: #0ba6d3;
-    background-position: 10px -635px;
 }
 
 .notice-home {
@@ -560,7 +559,6 @@ table > tbody > tr.active td:last-child {
 /*//////MESSAGES HOME//////*/
 .header-messages {
     background-color: #10a236;
-    background-position: 10px -583px;
 }
 
 .box-child {
@@ -675,7 +673,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 /*//////MESSAGES HOME//////*/
 .header-messages {
     background-color: #10a236;
-    background-position: 10px -583px;
 }
 
 .messages-home ul li {
@@ -721,7 +718,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 /*//////HOMEWORK HOME//////*/
 .header-homework {
     background-color: #FF9E19;
-    background-position: 10px -787px;
 }
 
 .homework-home ul li {

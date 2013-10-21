@@ -37,4 +37,12 @@
 .custom-icon-ebooks:before {
     content: "\e604";
 }
-
+.custom-icon-dash:before {
+    content: "\e605";
+    color: #828282;
+}
+.custom-icon-dash-top:before {
+    content: "\e606";
+    color: #d1444a;
+    position:absolute;
+}
