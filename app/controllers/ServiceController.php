@@ -3,20 +3,9 @@
 class ServiceController extends ControllerBase {
     public function homeworksAction() {
         $user = $this->getUserBySession();
-        $homeworks = Homework::find("studentId = " . $user->id);
 
-        $jsonHomeworks = array();
-
-        foreach($homeworks as $homework) {
-            $subject = $homework->classList->subject->name;
-            $jsonHomeworks []= array("id" => $homework->id,
-                 "subject" => $subject,
-                 "description" => $homework->text,
-                 "status" => $homework->status,
-            );
-        }
-
-        $content = array('status' => 'success', 'homeworks' => $jsonHomeworks);
+        $homeworks = HomeworkService::jsonToDashboard($user);
+        $content = array('status' => 'success', 'homeworks' => $homeworks);
 
         return $this->setContent($content);
     }
