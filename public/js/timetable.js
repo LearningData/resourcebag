@@ -106,7 +106,7 @@ var timetablePage = (function() {
         })
     }
 
-    createWeekTimes = function( week ) {
+    var createWeekTimes = function( week ) {
         var times = {}
         for ( var day in week ) {
             for ( var i = 0; i < week[day].length; i++ ) {

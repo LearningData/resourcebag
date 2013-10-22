@@ -85,7 +85,7 @@ var dashboard = (function() {
                 beforeShowDay: findCurrentEvents,
                 showOtherMonths: true,
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-                yearSuffix: " <h2>Events</h2>",
+                yearSuffix: " <h2>Events</h2>"
             })
             fillDaysEvents("", { selectedYear: displayDate.getFullYear(),
                 selectedMonth: displayDate.getMonth() ,selectedDay: displayDate.getDate() })
@@ -96,7 +96,7 @@ var dashboard = (function() {
         populateNotices()
     }
     
-    populateHomework = function() {
+    var populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
             var homeworkItems = []
