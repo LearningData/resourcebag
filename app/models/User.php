@@ -26,6 +26,16 @@ class User extends \Phalcon\Mvc\Model {
             array("alias" => "Classes")
         );
 
+        $this->hasManyToMany(
+            "id",
+            "GroupMembers",
+            "userId",
+            "groupId",
+            "Group",
+            "id",
+            array("alias" => "Groups")
+        );
+
         $this->hasMany("id", "Event", "userId", array("alias" => "Events"));
     }
 

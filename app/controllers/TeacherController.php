@@ -8,8 +8,10 @@ class TeacherController extends UsersController {
     }
 
     public function newClassAction() {
+        $user = $this->getUserBySession();
         $this->view->subjects = Subject::find();
-        $this->view->schoolYear = Config::findFirst("name = 'schoolYear'");
+        $this->view->cohorts = Cohort::find("schoolId=" . $user->schoolId);
+
         $slots = array();
         for($i = 1; $i <=6; $i++) {
             $slots[$i] = Timetable::getEmptySlotsByDay($this->view->user, $i);
@@ -43,9 +45,8 @@ class TeacherController extends UsersController {
 
         $classList = new ClassList();
         $classList->subjectId = $this->request->getPost("subject-id");
-        $classList->year = $this->request->getPost("year");
+        $classList->cohortId = $this->request->getPost("cohort-id");
         $classList->extraRef = $this->request->getPost("extra-ref");
-        $classList->schyear = $this->request->getPost("schyear");
         $classList->teacherId = $this->view->user->id;
         $classList->schoolId = $this->view->user->schoolId;
 
@@ -133,7 +134,7 @@ class TeacherController extends UsersController {
             if(!$studentsId) { return $this->toIndex(); }
             $students = array();
 
-            foreach ($studentsId as $key => $studentId) {
+            foreach ($studentsId as $studentId) {
                 $students []= User::findFirstById($studentId);
             }
         }
