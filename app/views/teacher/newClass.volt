@@ -7,8 +7,9 @@
                 'emptyText': 'Please, choose one subject') }}
     </p>
     <p>
-        <label for="year">Year</label>
-        <input type="text" name="year">
+        <label for="cohort-id">Cohort</label>
+        {{ select('cohort-id', cohorts, 'using': ['id', 'stage'],
+                'emptyText': 'Please, choose one cohort') }}
     </p>
     <p>
         <label for="room">Room</label>
@@ -17,10 +18,6 @@
     <p>
         <label for="extra-ref">Extra Ref</label>
         <input type="text" name="extra-ref">
-    </p>
-    <p>
-        <label for="schyear">School Year: {{ schoolYear.value }}</label>
-        <input type="hidden" name="schyear" value="{{ schoolYear.value }}">
     </p>
 
     <h2>Slots</h2>

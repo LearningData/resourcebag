@@ -5,24 +5,12 @@
 
 <h1>Classes</h1>
 
-{{ form("student/listClasses", "method":"get") }}
+{{ form("student/joinClass", "method":"post") }}
     <p>
-        {{ select('subject-id', subjects, 'using': ['id', 'name'],
-            'emptyText': 'Please, choose one subject')}}
+        {{ select('class-id', classes, 'using': ['id', 'name'],
+            'emptyText': 'Please, choose one class')}}
     </p>
     <p>
         <input type="submit">
     </p>
 </form>
-<table>
-    {% for classList in classes %}
-        <tr>
-            <td>
-                {{ classList.getSubject().name }} {{ classList.extraRef }}
-            </td>
-            <td>
-                {{ link_to("student/joinClass/"~classList.id, "Join Class") }}
-            </td>
-        </tr>
-    {% endfor %}
-</table>

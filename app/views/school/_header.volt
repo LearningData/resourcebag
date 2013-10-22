@@ -7,5 +7,6 @@
     {{ link_to("school/noticeboard", "Notice Board") }} |
     {{ link_to("school/users/new", "Create New User") }} |
     {{ link_to("school/listUsers", "List Users") }} |
+    {{ link_to("cohort", "List Cohorts") }} |
     {{ link_to("session/logout", "Logout") }}
 </nav>

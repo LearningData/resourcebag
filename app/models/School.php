@@ -11,7 +11,7 @@ class School extends \Phalcon\Mvc\Model {
 
     public function initialize() {
         $this->hasMany("id", "User", "schoolId", array("alias" => "Users"));
-        $this->hasMany("id", "ClassList", "schoolId", array("alias" => "Classes"));
+        $this->hasMany("id", "Cohort", "schoolId", array("alias" => "Cohorts"));
     }
 
     public function getSource() {

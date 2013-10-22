@@ -1,5 +1,5 @@
 <?php
-class RegisterController extends ControllerBase {
+class RegisterController extends Phalcon\Mvc\Controller {
     public function indexAction() {
         $this->view->schools = School::find();
     }
@@ -33,7 +33,6 @@ class RegisterController extends ControllerBase {
         $user = new User();
         $user->id = $this->request->getPost("userID");
         $user->schoolId = $this->request->getPost("schoolID");
-        $user->year = $this->request->getPost("year");
         $user->name = $this->request->getPost("FirstName");
         $user->lastName = $this->request->getPost("LastName");
         $user->type = $this->request->getPost("Type");

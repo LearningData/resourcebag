@@ -1,21 +1,16 @@
 <?php
 require "../app/services/Timetable.php";
+require "../app/services/ClassListService.php";
 
 class StudentController extends UsersController {
     public function listClassesAction() {
-        if ($this->request->get("subject-id")) {
-            $subjectId = $this->request->get("subject-id");
-        } else {
-            $subjectId = 1;
-        }
-        $user = $this->view->user;
-        $params = "year = " . $user->year . " and subjectId = $subjectId";
-        $classes = $user->school->getClasses($params);
-        $this->view->classes = $classes;
-        $this->view->subjects = Subject::find(array("order" => "name"));
+        $group = $this->view->user->getGroups("year=2014")->getFirst();
+        $this->view->classes = ClassListService::getClassesByGroup($group);
     }
 
-    public function joinClassAction($classId) {
+    public function joinClassAction() {
+        $classId = $this->request->getPost("class-id");
+
         if ($classId) {
             $user = $this->view->user;
             $classList = ClassList::findFirstById($classId);
@@ -64,7 +59,7 @@ class StudentController extends UsersController {
         $school = $user->school;
 
         $type = User::getTypeTeacher();
-        $teachers = $school->getUsers("type = '$type' and year = " . $user->year);
+        $teachers = $school->getUsers("type = '$type'");
         $this->view->teachers = $teachers;
     }
 

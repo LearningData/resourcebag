@@ -17,22 +17,14 @@
 </p>
 
 <p>
-    <label>Year</label>
-    <select name="year">
-        <option value="-1">Juniors</option>
-        <option value="0">Seniors</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-    </select>
+    <label>Type</label>
+    {{ select('type', types, 'using': ['id', 'name'],
+         'emptyText': 'Please, choose one type') }}
 </p>
 
 <p>
-    <label>Type</label>
-    {{ select('type', types, 'using': ['id', 'name'],
+    <label>Cohort</label>
+    {{ select('group-id', cohorts, 'using': ['groupId', 'stage'],
          'emptyText': 'Please, choose one type') }}
 </p>
 
