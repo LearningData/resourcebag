@@ -17,6 +17,7 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.nessages" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("noticeboard") != -1 ) {
+        notices.init()
         $( ".nav.navbar-nav li.notices" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("calendar") != -1 ) {
@@ -42,15 +43,15 @@ $(document).ready(function() {
     $(".alert").alert();
     $( "#start-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 0,
+        minDate : 0
     })
     $( "#end-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 0,
+        minDate : 0
     })
     $( "#notice-note-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate: 0,
+        minDate: 0
     })
     $( "#start-date" ).datepicker( "widget" ).addClass( "event-page" )
     $( "#end-date" ).datepicker( "widget" ).addClass( "event-page" )
