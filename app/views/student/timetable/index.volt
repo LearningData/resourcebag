@@ -5,7 +5,7 @@
     <div class="nav-timetable-title"><h2></h2></div>
 </div>
 
-<table class="table table-timetable">
+<table class="table table-timetable week">
     <thead class="table-head">
         <tr>
             {% for day in period %}
@@ -13,14 +13,4 @@
             {% endfor %}
         </tr>
     </thead>
-<!--    <tbody>
-        <tr>
-            {% for daySlots in slots %}
-            <td> {% for slot in daySlots %}
-            <p>
-                {{ slot["time"] }} {{ slot["subject"] }} {{ slot["room"] }} {{ slot["homeworks"] }}
-            </p> {% endfor %} </td>
-            {% endfor %}
-        </tr>
-    </tbody>-->
 </table>

@@ -12,7 +12,7 @@
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}
     </head>
-    <body>
+    <body class="{{ user.getController() }}">
 
         <!--
         div container and div row disable

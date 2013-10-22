@@ -462,30 +462,6 @@ table > tbody > tr.active td:last-child {
     margin: 0;
 }
 
-/*//////TIMETABLE HOME//////*/
-.header-timetable {
-    background-color: #dc3b42;
-}
-.header-navigation {
-    background-color: #e27176;
-    padding: 10px;
-    position: relative;
-}
-.header-navigation h3 {
-    font-size: 14px;
-    margin: 0;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 400;
-}
-
-.table.table-timetable.none {
-    text-align: center;
-    font-size: large;
-}
-
-
 /*//////DEFAULT LIST HOME//////*/
 .box-messages .box-child ul li, .box-homework .box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
@@ -962,6 +938,74 @@ div.uploader {
     padding: 5px, 0;
 }
 
+.modal-homework .modal-title {
+    border-left-color: #ff9e19
+}
+
+.modal-homework select {
+    width: 95%;
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+/*//////NOTICES PAGE//////*/
+.notice-page .note div {
+    border: solid 1px #cad3e2;
+    padding: 20px;
+    margin: 0 0 10px;
+    color: #6d6e71;
+    min-height: 230px;
+}
+.notice-page .note .message {
+    color: #6d6e71;
+    font-weight: 100;
+}
+.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
+    min-height: 460px;
+}
+.notice-page .note div img {
+    max-width: 90%;
+    height: auto;
+    margin: 10% auto 0;
+    display: block;
+}
+
+.notice-page h2, .notice-page h3, .notice-page h4 {
+    color: #0ba6d3;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice-page .author {
+    float: right;
+}
+
+/*//////TIMETABLE HOME//////*/
+.header-timetable {
+    background-color: #dc3b42;
+}
+.header-navigation {
+    background-color: #e27176;
+    padding: 10px;
+    position: relative;
+}
+.header-navigation h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.table.table-timetable.none {
+    text-align: center;
+    font-size: large;
+}
+
+
 /*//////TIMETABLE PAGE//////*/
 .table.table-timetable {
     table-layout: fixed;
@@ -1059,49 +1103,7 @@ div.uploader {
     font-size: 10px;
 }
 
-.modal-homework .modal-title {
-    border-left-color: #ff9e19
-}
 
-.modal-homework select {
-    width: 95%;
-    margin: 10px 0;
-    background-color: #fff;
-}
-
-/*//////NOTICES PAGE//////*/
-.notice-page .note div {
-    border: solid 1px #cad3e2;
-    padding: 20px;
-    margin: 0 0 10px;
-    color: #6d6e71;
-    min-height: 230px;
-}
-.notice-page .note .message {
-    color: #6d6e71;
-    font-weight: 100;
-}
-.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
-    min-height: 460px;
-}
-.notice-page .note div img {
-    max-width: 90%;
-    height: auto;
-    margin: 10% auto 0;
-    display: block;
-}
-
-.notice-page h2, .notice-page h3, .notice-page h4 {
-    color: #0ba6d3;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.notice-page .author {
-    float: right;
-}
 
 /*//////DATEPICKER//////*/
 #datepicker {
@@ -1489,3 +1491,25 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .frm-notice .radio-box label {
     font-weight: normal;
 }
+
+
+/********************************************************************
+****************Default styles by section****************************
+*********************************************************************/
+/*//////MODAL//////*/
+
+.modal-timetable .modal-title {
+    border-left-color: #dc3b42;
+}
+
+/*/////FORMS/////*/
+
+.form-timetable .btn {
+    background-color: #dc3b42;
+}
+
+.form-timetable .btn:focus{
+    background-color: #db3a41;
+}
+
+
