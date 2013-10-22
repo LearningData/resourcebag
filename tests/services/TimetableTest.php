@@ -5,6 +5,7 @@
         function setUp() {
             $stubConfig = $this->getMock('TimetableConfig');
             $stubConfig->startTime = "13:00:00";
+            $stubConfig->endTime = "14:00:00";
             $stubConfig->timeSlotId = 1;
             $stubConfig->preset = "";
 

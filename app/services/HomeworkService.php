@@ -2,6 +2,28 @@
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class HomeworkService {
+    public static function jsonToDashboard($user) {
+        $jsonHomeworks = array();
+
+        if ($user->isStudent()) {
+            $homeworks = $user->homeworks;
+        } else {
+            $homeworks = Homework::find("teacherId = " .$user->id);
+        }
+
+        foreach($homeworks as $homework) {
+            $subject = $homework->classList->subject->name;
+            $jsonHomeworks []= array("id" => $homework->id,
+                 "subject" => $subject,
+                 "description" => $homework->text,
+                 "status" => $homework->status,
+                 "student" => $homework->user->name . " " . $homework->user->lastName
+            );
+        }
+
+        return $jsonHomeworks;
+    }
+
     public static function create($user, $classList, $params) {
         $homework = new Homework();
         $homework->text = $params["description"];
