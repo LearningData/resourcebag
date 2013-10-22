@@ -69,6 +69,7 @@
 
                 foreach ($slots as $slot) {
                     $content = array(
+                        "class-id" => $classList->id,
                         "subject" => $classList->subject->name,
                         "room" => $slot->room,
                     );
@@ -89,10 +90,12 @@
                     if (array_key_exists($config->timeSlotId, $classes)) {
                         $content = $classes[$config->timeSlotId];
                         $content["time"] = $config->startTime;
+                        $content["endTime"] = $config->endTime;
                         $slots []= $content;
                     } else {
                         $slots []= array("time" => $config->startTime,
-                            "subject" => $config->preset);
+                            "subject" => $config->preset,
+                            "endTime" => $config->endTime);
                     }
                 }
             }
