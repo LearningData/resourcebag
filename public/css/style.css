@@ -27,7 +27,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.notice-home ul li, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.notice-home ul li {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -313,7 +313,7 @@ table > tbody > tr.active td:last-child {
     position: absolute;
     display: block;
     top: 8px;
-    left: 15px;
+    left: 5px;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -849,8 +849,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .nav-homework ul li.bt-new a {
     border-bottom: #a30c00 solid 5px;
     background-color: #a30c00;
-    background-position: 50px -1125px;
-    padding-left: 30px;
 }
 
 .nav-homework ul li.bt-new :hover {
@@ -1193,6 +1191,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     text-align: center;
     padding: 17px 0 13px;
     min-width: 230px;
+    padding:25px 0 10px
 }
 #dashboard-events-box .ui-datepicker-header {
     background-color: #9752a3;
@@ -1211,12 +1210,13 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-size: 16px;
     position: absolute;
     left: 50%;
-    top: 5px;
+    top: 10px;
     margin-left: -26px;
     cursor: pointer;
 }
 .ui-datepicker-header span {
     text-transform: uppercase;
+    margin:0;
 }
 table.ui-datepicker-calendar {
     width: 100%;
