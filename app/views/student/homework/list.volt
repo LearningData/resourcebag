@@ -17,6 +17,7 @@
         </ul>
     </nav>
     <table class="accordion table table-homework">
+        <thead>
             <tr>
                 <th>Homework</th>
                 <th>Subject</th>

@@ -696,24 +696,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-weight: bold;
 }
 
-/*//////HOMEWORK HOME//////*/
-.header-homework {
-    background-color: #FF9E19;
-}
-
-.homework-home ul li {
-    position: relative;
-    padding-left: 45px;
-}
-.homework-home  ul li p {
-    margin: 0;
-}
-.icheckbox_flat-yellow {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    margin-top: -10px !important;
-}
 
 /*//////USER PROFILE//////*/
 .user-profile {
@@ -807,8 +789,20 @@ div.uploader {
     border-color: #f2f2f2;
 }
 
+/*//////HOMEWORK//////*/
+.header-homework {
+    background-color: #FF9E19;
+}
 
-/*//////HOME WORK PAGE//////*/
+.homework-home ul li {
+    position: relative;
+    padding-left: 45px;
+}
+.homework-home  ul li p {
+    margin: 0;
+}
+
+/*//////HOMEWORK PAGE//////*/
 /*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
 .cl-hwk {
     color: #ff9e19; /*text color*/
@@ -876,10 +870,13 @@ div.uploader {
 .nav-homework.status02 .bt-complete :hover {
     border-bottom: #760900 solid 5px;
 }
+
+/**TABLE HOMEWORK**/
 .table.table-homework thead > tr > th {
     border-bottom: none;
     vertical-align: bottom;
     background-color: #eceded;
+    padding: 0px
 }
 
 .table-homework .btn-icon {
@@ -951,6 +948,13 @@ div.uploader {
     background-color: #fff;
 }
 
+.review.form-hwk {
+    display: inline;
+}
+
+
+/*------END HOMEWORK------*/
+
 /*//////NOTICES PAGE//////*/
 .notice-page .note div {
     border: solid 1px #cad3e2;
@@ -1003,8 +1007,6 @@ div.uploader {
     text-transform: uppercase;
     font-weight: 400;
 }
-
-
 
 /*//////TIMETABLE PAGE//////*/
 .table.table-timetable {
@@ -1103,7 +1105,8 @@ div.uploader {
     font-size: 10px;
 }
 
-/**TABLE**/
+/**TABLE TIMETABLE**/
+
 .teacher .table.table-timetable.week tr:hover{
     background-color: transparent;
 }

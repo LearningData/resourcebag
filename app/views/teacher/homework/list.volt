@@ -1,6 +1,6 @@
 <h2>Homeworks</h2>
 {{ form("homework/reviewManyHomeworks", "method":"post") }}
-    <table class="table table-hover">
+    <table class="table table-homework">
         <thead>
             <tr>
                 <th>Student</th>
@@ -15,7 +15,7 @@
         {% for homework in page.items %}
             <tr>
                 <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
-                <td>{{ homework.text }}</td>
+                <td>{{ homework.title }}</td>
                 <td>{{ homework.setDate }}</td>
                 <td>{{ homework.dueDate }}</td>
                 {% if homework.isSubmitted() %}
