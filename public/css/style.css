@@ -23,7 +23,7 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.notice-home ul li, .btn-search, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
+.notice-home ul li, .nav-homework ul li.bt-new a, .nav-timetable-btn-prev span, .nav-timetable-btn-next span {
     background-image: url('../img/sprite.png');
     background-repeat: no-repeat;
 }
@@ -45,6 +45,7 @@ h1, .h1 {
     font-size: 30px;
     font-weight: 300;
     margin: 30px 0;
+    border-bottom: 5px solid #000000;
 }
 
 h2, .h2 {
@@ -778,12 +779,10 @@ div.uploader {
     position: absolute;
     width: 20px;
     height: 20px;
-    top: 10px;
+    top: 13px;
     right: 20px;
     border: none;
-    text-indent: -9999px;
-    background-position: -500px -310px;
-    background-color: transparent;
+    background: none;
 }
 
 /*/DEFAULT COLORS AND BACKGROUND // CALENDAR/EVENTS/*/

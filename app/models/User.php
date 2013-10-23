@@ -37,6 +37,7 @@ class User extends \Phalcon\Mvc\Model {
         );
 
         $this->hasMany("id", "Event", "userId", array("alias" => "Events"));
+        $this->hasMany("id", "Homework", "studentId", array("alias" => "Homeworks"));
     }
 
     public function getSource() {

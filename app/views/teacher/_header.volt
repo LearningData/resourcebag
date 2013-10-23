@@ -20,8 +20,8 @@
 
     <form class="form-search" role="search">
         <input type="text" class="form-control" placeholder="Search">
-        <button type="submit" class="btn-search">
-            Search
+        <button type="submit" class="btn-search icon-search">
+            
         </button>
     </form>
 </div>

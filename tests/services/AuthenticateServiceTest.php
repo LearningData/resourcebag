@@ -13,6 +13,7 @@ class AuthenticateServiceTest extends PHPUnit_Framework_TestCase {
         $this->user->password = $this->password;
         $this->user->schoolId = 1;
         $this->user->type = 1;
+        $this->user->id = 1;
 
         $this->user->save();
 
