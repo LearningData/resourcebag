@@ -1,8 +1,10 @@
 <h1 class="homework-header">Homework</h1>
-<h2 class="homework-subheader">{{ homework.textEditor }}</h2>
+<h2 class="homework-subheader">{{ homework.title }}</h2>
+<h3 class="homework-description">{{ homework.text }}</h3>
 
 <section class="homework-view">
     <hr class="div">
+    <div class="homework-subheader">{{ homework.textEditor }}</div>
     <h4>Files uploaded:</h4>
     <table class="table table-homework">
         <thead>

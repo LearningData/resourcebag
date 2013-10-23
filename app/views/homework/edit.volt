@@ -1,5 +1,6 @@
 <h1 id="homework-header" class="homework-header">Homework</h2>
-<h2 class="homework-subheader">{{ homework.textEditor }}</h2>
+<h2 class="homework-subheader">{{ homework.title }}</h2>
+<h3 class="homework-description">{{ homework.text }}</h3>
 
 <section class="homework-view">
      <button id="add-homework-text" class="btn bg-hwk bg-hwk-hv mtop-20" data-homework-id="{{ homework.id }}">Add Text Input</button>
@@ -7,6 +8,7 @@
     <button id="save-homework-text" class="btn bg-hwk bg-hwk-hv mtop-20" data-homework-id="{{ homework.id }}" style="display:none">Save Text</button>
     {{ form("homework/update", "id": "text-form", "method":"post", "enctype":"multipart/form-data") }}
     <div id="text-inputs">
+        <div class="homework-subheader">{{ homework.textEditor }}</div>
         <div id="homework-text-editor" spellcheck="true">
             <input type="hidden" name="homework-id" value="{{ homework.id }}">
             <textarea id="summernote"
