@@ -16,7 +16,8 @@ class NoticeController extends ControllerBase {
         $json = array();
 
         foreach ($notices as $notice) {
-            $json []= array("date" => $notice->date, "text" => $notice->text);
+            $json []= array("id" => $notice->id, "date" => $notice->date,
+                "text" => $notice->text);
         }
 
         header('Content-Type: application/json');
