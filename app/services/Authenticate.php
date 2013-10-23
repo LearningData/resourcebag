@@ -1,12 +1,21 @@
 <?php
-class Authenticate {
-    public static function authentication($email, $password) {
-        $conditions = "email = ?1 AND password = ?2";
-        $parameters = array(1 => $email, 2 => $password);
+use Phalcon\Mvc\User\Component;
 
-        $user = User::findFirst(array($conditions,"bind" => $parameters));
+class Authenticate extends Component {
+    public function authentication($email, $password) {
+        $user = User::findFirstByEmail($email);
 
-        return $user;
+        if($user) {
+            if(Authenticate::checkPassword($password, $user->password)) {
+                return $user;
+            }
+        }
+
+        return false;
+    }
+
+    public function checkPassword($password1, $password2) {
+        return $this->security->checkHash($password1, $password2);
     }
 }
 ?>
