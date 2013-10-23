@@ -9,29 +9,15 @@ var dashboard = (function() {
     $( "#dashboard-homework-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/homework"
     })
-    $( ".teacher #dashboard-homework-head" ).click( function() {
-        window.location.href = urlBase + "/teacher/homework"
-    })
     $( "#dashboard-timetable-head" ).click( function() {
-        window.location.href = urlBase + "/timetable"
-    })
-    $( ".teacher #dashboard-timetable-head" ).click( function() {
-        window.location.href = urlBase + "/teacher/timetable"
+        window.location.href = urlBase + "/" + getUser() + "/timetable"
     })
     $( "#dashboard-notices-head" ).click( function() {
         window.location.href = urlBase + "/" + getUser() + "/noticeboard"
     })
-    $( ".teacher #dashboard-notices-head" ).click( function() {
-        window.location.href = urlBase + "/teacher/noticeboard"
-    })
     $( "#dashboard-events-head" ).click( function( event ) {
         if ( $( event.target ).is( ".ui-datepicker-title, .ui-datepicker-title *, .ui-datepicker-header" ) ) {
             window.location.href = urlBase + "/" + getUser() + "/calendar"
-        }
-    })
-    $( ".teacher #dashboard-events-head" ).click( function( event ) {
-        if ( $( event.target ).is( ".ui-datepicker-title, .ui-datepicker-title *, .ui-datepicker-header" ) ) {
-            window.location.href = urlBase + "/teacher/calendar"
         }
     })
     $( "#dashboard-timetable .header-navigation a.default-prev").click(

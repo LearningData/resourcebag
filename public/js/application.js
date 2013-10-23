@@ -60,6 +60,21 @@ $(document).ready(function() {
 var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file]").uniform();
 
+function getUser() {
+    var body = $ ( "body" )
+    if ( body.hasClass( "teacher" ) ) {
+        return "teacher"
+    } else if ( body.hasClass( "student") ) {
+        return "student"
+    } else if ( body.hasClass( "school" ) ) {
+        return "school"
+    } else if ( body.hasClass( "administrator" ) ) {
+        return "administrator"
+    }
+    return ""
+}
+
+
 function enableDatePicker( id ) {
     $( id ).removeAttr("disabled")
     $( id ).datepicker({
@@ -90,17 +105,6 @@ function populeStudentsAndDays(classId) {
 
 function host() {
     return "http://" + window.location.host
-}
-
-function getUser() {
-    var pathname = window.location.pathname
-    if ( pathname.indexOf("teacher") != -1 ) {
-        return "teacher"
-    } else if ( pathname.indexOf("student") != -1 ) {
-        return "student"
-    } else {
-        return "student"
-    }
 }
 
 function getEnableDays(classId) {
@@ -146,6 +150,11 @@ function showTimes(date) {
             $("#due-times").append(input);
         };
     });
+}
+
+function dayOfWeek( date ) {
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+    return days[date.getUTCDay()]
 }
 
 function prettyDay( date ) {
