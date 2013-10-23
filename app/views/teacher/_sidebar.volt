@@ -11,7 +11,7 @@
             {{ link_to("teacher/noticeboard", "School Notices") }}
             <span class="badge">14</span>
         </li>
-        <li class="calendar">
+        <li class="events">
             {{ link_to("teacher/calendar", "Calendar") }}
             <span class="badge">7</span>
         </li>

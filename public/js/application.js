@@ -22,7 +22,7 @@ $(document).ready(function() {
     }
     else if ( window.location.pathname.indexOf("calendar") != -1 ) {
         calendarPage.init()
-        $( ".nav.navbar-nav li.calendar" ).addClass( "active" )
+        $( ".nav.navbar-nav li.events" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("timetable") != -1 ) {
         timetablePage.init()
