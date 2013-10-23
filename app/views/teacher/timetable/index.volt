@@ -1,5 +1,6 @@
 <h1 class="timetable-header">Timetable</h1>
-<!--{{ link_to("teacher/timetable/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}-->
+{{ link_to("teacher/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}
+<button class="btn btn-tmtbl btn-timetable-edit mbottom-20">Edit</button>
 <div class="nav-timetable">
     <a title="Prev" class="nav-timetable-btn-prev"><span class="icon-chevron-sign-left"></span></a>
     <a title="Next" class="nav-timetable-btn-next"><span class="icon-chevron-sign-right"></span></a>
@@ -10,7 +11,7 @@
     <thead class="table-head">
         <tr>
             {% for day in period %}
-            <th class="timetable-day" data-day="{{ day.format('N') }}">{{ day.format("l d") }}</th>
+            <th class="timetable-day" data-day="{{ day.format('N') }}">{{ day.format("l") }}</th>
             {% endfor %}
         </tr>
     </thead>

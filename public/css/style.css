@@ -981,7 +981,8 @@ div.uploader {
     float: right;
 }
 
-/*//////TIMETABLE HOME//////*/
+/*//////TIMETABLE//////*/
+/**DASH**/
 .header-timetable {
     background-color: #dc3b42;
 }
@@ -999,10 +1000,6 @@ div.uploader {
     font-weight: 400;
 }
 
-.table.table-timetable.none {
-    text-align: center;
-    font-size: large;
-}
 
 
 /*//////TIMETABLE PAGE//////*/
@@ -1102,17 +1099,49 @@ div.uploader {
     font-size: 10px;
 }
 
-/*teacher_view*/
-
-.teacher .table.table-timetable.week td:hover {
-    background-color: #f0f2f2;
+/**TABLE**/
+.teacher .table.table-timetable.week tr:hover{
+    background-color: transparent;
 }
 
+.teacher .table.table-timetable.week td:hover{
+    background-color: #f0f2f2;
+}
 
 .teacher .table.table-timetable.week td .subject {
     color: blue;
     cursor: pointer;
 }
+
+.table.table-timetable td {
+    position: relative;
+}
+
+.table.table-timetable.edit td span.cell-icon, .table.table-timetable td.edit span.cell-icon {
+    display: inline;
+}
+
+.table.table-timetable td span.cell-icon {
+    display: none;
+    line-height: 21px;
+    background: red;
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.table.table-timetable.table-condensed th {
+    background-color: #e5242d;
+    cursor: default;
+}
+
+
+.table.table-timetable.none {
+    text-align: center;
+    font-size: large;
+}
+
 
 /*------END TIMETABLE------*/
 
@@ -1515,6 +1544,20 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*/////FORMS & FORM CONTROLS/////*/
+
+form select {
+    width: 85%;
+    height: 45px;
+    margin: 20px 0;
+    box-shadow: none;
+    color: #a2a2a2;
+    border: solid 1px #f2f2f2;
+    padding: 6px 12px;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
 /*timetable*/
 .form-tmtbl .btn, .btn.btn-tmtbl {
     background-color: #e5242d;

@@ -27,6 +27,9 @@ var timetablePage = (function() {
             getWeekView( displayDate )
             $( ".timetable-day" ).removeClass( "active" )
         })
+        $( ".teacher .btn-timetable-edit").click( function() {
+            $( ".teacher .table-timetable" ).toggleClass( "edit" )
+        })
        
     }
 
@@ -68,7 +71,7 @@ var timetablePage = (function() {
             for (var i = 0; i < headRows.length; i++ ) {
                 var thisDay = new Date( firstDay )
                 thisDay.setDate(firstDay.getUTCDate() + parseInt(headRows[i].getAttribute("data-day")))
-                headRows[i].textContent = prettyDay(thisDay)
+                headRows[i].textContent = dayOfWeek(thisDay)
        }
        return tableHead
 }
@@ -84,6 +87,12 @@ var timetablePage = (function() {
                 for (var i = 0; i < dayData.length; i++ ) {
                     if ( dayData[i].time == timeSlot ) {
                         rowStr += timetableFunctions.getTimetableTextBlock( dayData[i] )
+                        if (getUser() != "teacher") break
+                        if (dayData[i]["class-id"] == undefined) {
+                            rowStr += "<span class=\"cell-icon btn-icon icon-plus\"></span>"
+                        } else {
+                            rowStr += "<span class=\"cell-icon btn-icon icon-remove\"></span>"
+                        }
                     }
                 }
                 rowStr += "</td>"
@@ -107,15 +116,24 @@ var timetablePage = (function() {
             timetable.append( getWeekRows( response.week ) )
             timetable.prepend(tableHead)
             $( ".table.table-timetable" ).replaceWith( timetable )
+            $( ".teacher .table.table-timetable.week td .cell-icon").click(function( event ) {
+                event.stopPropagation()
+                if ($( event.target ).hasClass("icon-remove") ) { 
+                    removeSubjectClass(event.target.parentElement, event.target)
+                 }
+                else if ($( event.target ).hasClass("icon-plus") ) { 
+                    addSubjectClass(event.target.parentElement, event.target)
+                }
+            })
             $( ".teacher .table.table-timetable.week td .subject").click(function( event ) {
                 event.preventDefault()
+                event.stopPropagation()
                 window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
             })
-            /*$( ".teacher .table.table-timetable.week td").click(function( event ) {
-                event.preventDefault()
-                createNewClassModalDialog()
-                $( "#newClassModal" ).modal( "show" )
-            })*/
+            $( ".teacher .table.table-timetable.week td").click(function( event ) {
+                $( ".teacher .table.table-timetable.week td").removeClass( "edit" )
+                event.target.classList.add( "edit" )
+            })
         })
     }
 
@@ -127,6 +145,37 @@ var timetablePage = (function() {
             }
         }
         return times
+    }
+    
+
+    var addSubjectClass = function(cell, icon) {
+        $( icon ).detach()
+        $( cell ).empty()
+        var selectClass = $( "<select>", {
+            "class": "form-control customSelect"
+        })
+
+        selectClass.append("<option disabled selected>Select Class</option><option>Class 1</option><option>Class 2</option><option>Class 3</option><option value=\"redirect\">New Class</option>")
+        $( cell ).append( selectClass )
+        selectClass.change(function( event ) {
+            if (selectClass.value = "redirect") {
+                window.location.href = urlBase + "/" + getUser() + "/newClass?thisDay=2"
+                return
+            }
+            $( cell ).append( "<span>" + selectClass.value + "</span>" )
+            icon.classList.remove( "icon-plus" )
+            icon.classList.add( "icon-remove" )
+            $( cell ).append( icon )
+            $( selectClass ).remove( )
+        })
+    }
+
+    var removeSubjectClass = function( cell, icon ) {
+        $( icon ).detach()
+        $( cell ).empty()
+        icon.classList.remove( "icon-remove" )
+        icon.classList.add( "icon-plus" )
+        $( cell ).append( icon )
     }
 
     var createNewClassModalDialog = function( classes ) {
