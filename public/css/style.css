@@ -1103,6 +1103,19 @@ div.uploader {
     font-size: 10px;
 }
 
+/*teacher_view*/
+
+.teacher .table.table-timetable.week td:hover {
+    background-color: #f0f2f2;
+}
+
+
+.teacher .table.table-timetable.week td .subject {
+    color: blue;
+    cursor: pointer;
+}
+
+/*------END TIMETABLE------*/
 
 
 /*//////DATEPICKER//////*/
@@ -1494,22 +1507,29 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 
 /********************************************************************
-****************Default styles by section****************************
+*******************UI Default styles*********************************
 *********************************************************************/
 /*//////MODAL//////*/
 
 .modal-timetable .modal-title {
-    border-left-color: #dc3b42;
+    border-left-color: #e5242d;
 }
 
-/*/////FORMS/////*/
-
-.form-timetable .btn {
-    background-color: #dc3b42;
+/*/////FORMS & FORM CONTROLS/////*/
+/*timetable*/
+.form-tmtbl .btn, .btn.btn-tmtbl {
+    background-color: #e5242d;
 }
 
-.form-timetable .btn:focus{
-    background-color: #db3a41;
+.form-tmtbl .btn:focus:hover, .btn.btn-tmtbl:hover {
+    background-color: #da3940;
+}
+/*homework*/
+.form-hwk .btn, .btn.btn-hwk {
+    background-color: #ff9e19;
 }
 
-
+.form-hwk .btn:hover, .btn.btn-hwk:hover {
+    background-color: #f47920;
+}
+/*------ END UI DEFAULTS ------*/

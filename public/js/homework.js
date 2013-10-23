@@ -53,14 +53,16 @@ var homework = (function() {
         window.location.href = urlBase + "/" + getUser() + "/homework"
     })
     $( ".homework-view .bt-return" ).click( function( event ) {
-        window.history.go( -1 )
+        if ( document.referrer.indexOf("homework") != -1 ) {
+            window.history.go( -1 )
+        } else {
+            window.location.href = urlBase + "/" + getUser() + "/homework"
+        }
     })
     $( ".homework-collapse" ).click( function( event ){
-        console.log(event.target)
         var element = event.target
         var target = element.getAttribute("data-target")
         var iconTarget = element.getAttribute("data-icon")
-        console.log(element.getAttribute("data-icon"), iconTarget)
         $( target ).collapse( "toggle" )
         $( iconTarget )[0].classList.toggle("icon-chevron-right")
         $( iconTarget )[0].classList.toggle("icon-chevron-down")
@@ -275,7 +277,7 @@ var homework = (function() {
         modal.appendTo( "body" )
     }
 
-    submitHomeworkDialog = function( data ) {
+    var submitHomeworkDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title bdr-hwk\">Submit Homework</h4></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework " + data.title +" </p></div>" )

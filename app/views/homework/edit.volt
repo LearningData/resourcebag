@@ -37,5 +37,6 @@
     {% else %}
         <h6>No files uploaded.</h6>
     {% endif %}
+    {{ link_to("student/homework/submit/"~homework.id, "class":"btn btn-hwk mtop-20", "Submit Homework") }}
     <button class="btn bg-hwk bg-hwk-hv mtop-20 bt-return">Back</button>
 </section>
