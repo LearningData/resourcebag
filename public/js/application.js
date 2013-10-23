@@ -17,7 +17,7 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.nessages" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("noticeboard") != -1 ) {
-        notices.init()
+        noticesPage.init()
         $( ".nav.navbar-nav li.notices" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("calendar") != -1 ) {
