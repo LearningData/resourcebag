@@ -16,7 +16,7 @@ var timetableFunctions = (function() {
     }
 
     var getTextBlock = function( data ) {
-        var text = "<span>" + (data.subject || "") + "</span>"
+        var text = "<span data-subject-id=\"" + data["class-id"] + "\" class=\"subject\">" + (data.subject || "") + "</span>"
         text += "<span>" + (data.teacher || "") + "</span>"
         text += "<span>" + (data.room || "") + "</span>"
         return text

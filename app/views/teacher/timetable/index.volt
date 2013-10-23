@@ -1,4 +1,5 @@
 <h1 class="timetable-header">Timetable</h1>
+<!--{{ link_to("teacher/timetable/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}-->
 <div class="nav-timetable">
     <a title="Prev" class="nav-timetable-btn-prev"><span class="icon-chevron-sign-left"></span></a>
     <a title="Next" class="nav-timetable-btn-next"><span class="icon-chevron-sign-right"></span></a>

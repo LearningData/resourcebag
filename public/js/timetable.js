@@ -107,6 +107,10 @@ var timetablePage = (function() {
             timetable.append( getWeekRows( response.week ) )
             timetable.prepend(tableHead)
             $( ".table.table-timetable" ).replaceWith( timetable )
+            $( ".teacher .table.table-timetable.week td .subject").click(function( event ) {
+                event.preventDefault()
+                window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
+            })
             /*$( ".teacher .table.table-timetable.week td").click(function( event ) {
                 event.preventDefault()
                 createNewClassModalDialog()
