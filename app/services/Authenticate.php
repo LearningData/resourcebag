@@ -23,12 +23,12 @@ class Authenticate extends Component {
     }
 
     public function destroySession() {
-        $this->session->remove("userId");
+        $this->session->remove("schoolbag");
         $this->session->destroy();
     }
 
     public function getUser() {
-        $session = $this->session->get("schoolbag");
+        $session = $this->session->get($this->request->getServerAddress());
 
         if(isset($session["id"])) {
             $user = User::findFirstById($session["id"]);
@@ -58,8 +58,8 @@ class Authenticate extends Component {
     }
 
     private function createSession($user) {
-        $this->session->set("schoolbag", array("id" => $user->id,
-            "name" => $user->name));
+        $this->session->set($this->request->getServerAddress(),
+            array("id" => $user->id, "name" => $user->name));
     }
 
     private function saveSuccess($user) {
