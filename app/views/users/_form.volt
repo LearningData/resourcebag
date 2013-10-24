@@ -35,10 +35,10 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="confirmEmail">Confirm Email</label>
+            <label for="confirm-email">Confirm Email</label>
         </td>
         <td align="left">
-            {{ text_field("confirmEmail", "size" : 30) }}
+            {{ text_field("confirm-email", "size" : 30) }}
         </td>
     </tr>
     <tr>
@@ -51,10 +51,10 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="confirmPassword">Confirm Password</label>
+            <label for="confirm-password">Confirm Password</label>
         </td>
         <td align="left">
-            {{ password_field("password", "size" : 30) }}
+            {{ password_field("confirm-password", "size" : 30) }}
         </td>
     </tr>
     <tr>

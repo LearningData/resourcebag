@@ -3,16 +3,14 @@ use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class AdminController extends UsersController {
     public function indexAction() {
-        $userId = $this->session->get("userId");
+        $user = Authenticate::getUser();
 
-        if(!$userId) {
+        if(!$user) {
             return $this->response->redirect("index");
         }
 
         $numberPage = $this->request->getQuery("page", "int");
         $school = School::find();
-
-        $user = User::findFirst($userId);
 
         $paginator = new Paginator(array("data" => $school, "limit"=> 10,"page" => $numberPage));
         $this->view->page = $paginator->getPaginate();

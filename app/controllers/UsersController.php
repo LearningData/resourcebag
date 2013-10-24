@@ -1,6 +1,8 @@
 <?php
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
+require '../app/services/Authenticate.php';
+
 class UsersController extends ControllerBase {
     public function indexAction() {}
 
@@ -20,8 +22,10 @@ class UsersController extends ControllerBase {
         if (!$this->request->isPost()) { return $this->toIndex(); }
         $admin = $this->getUserBySession();
         $password = $this->request->getPost("password");
+        $confirmPassword = $this->request->getPost("confirm-password");
+        $password = $this->security->hash($password);
 
-        if($password != $this->request->getPost("confirm-password")) {
+        if(!Authenticate::checkPassword($confirmPassword, $password)) {
             $this->flash->error("You need confirm the password");
             return $this->dispatcher->forward(array("action" => "new"));
         }
@@ -106,12 +110,14 @@ class UsersController extends ControllerBase {
         $newPassword = $this->request->getPost("new-password");
         $confirmPassword = $this->request->getPost("confirm-new-password");
 
-        if($oldPassword != $user->password) {
+        $newPassword = $this->security->hash($newPassword);
+
+        if(!Authenticate::checkPassword($oldPassword, $user->password)) {
             $this->flash->error("invalid password");
             return $this->toIndex();
         }
 
-        if ($newPassword == $confirmPassword) {
+        if (Authenticate::checkPassword($confirmPassword, $newPassword)) {
             $user->password = $newPassword;
         } else {
             $this->flash->error("confirm your password");
