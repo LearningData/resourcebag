@@ -1343,7 +1343,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 #dashboard-homework > ul li > p {
     margin: 0px;
-    display: inline-block;
+    display: inline;
     margin-left: 5px;
 }
 

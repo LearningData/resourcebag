@@ -95,27 +95,57 @@ var dashboard = (function() {
         populateMessages()
         populateNotices()
     }
-    
+
+    var studentHomeworkList = function(homework) {
+        var homeworkItems = []
+        var length = homework.length
+        for ( var i = 0; i < length; i++ ) {
+            var item = homework[i]
+            var icon
+            switch ( item.status ) {
+                case "0" :
+                    icon = "icon-caret-right"
+                break
+                case "1" :
+                    icon = "icon-pencil"
+                break
+                default: 
+                    continue
+            }
+            homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+        }
+        return homeworkItems
+    }
+    var teacherHomeworkList = function(homework) {
+        console.log(homework)
+        var homeworkItems = []
+        var length = homework.length
+        for ( var i = 0; i < length; i++ ) {
+            var item = homework[i]
+            var urlSegment
+            var icon
+            switch ( item.status ) {
+                case "2" :
+                    icon = "icon-pencil"
+                    urlSegment = "show"
+                break
+                case "3" :
+                    icon = "icon-eye-open"
+                    urlSegment = "review"
+                break
+                default: 
+                    continue
+            }
+            homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacherstudent/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+        }
+        return homeworkItems
+    }
+
     var populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
-            var homeworkItems = []
-            var length = response.homeworks.length
-            for ( var i = 0; i < length; i++ ) {
-                var item = response.homeworks[i]
-                var icon
-                switch ( item.status ) {
-                    case "0" :
-                        icon = "icon-caret-right"
-                    break
-                    case "1" :
-                        icon = "icon-pencil"
-                    break
-                    default: 
-                        icon = "icon-eye-open"
-                }
-                homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + response.homeworks[i].id + "></a><p>" + response.homeworks[i].description + " (" + response.homeworks[i].subject + ")</p></li>")
-            }
+            console.log(getUser())
+            var homeworkItems = getUser() == "student" ? studentHomeworkList(response.homeworks) : teacherHomeworkList(response.homeworks)
             var homeworkList = $( "<ul class=\"homeworkList\">")
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework" ).append( homeworkList )
