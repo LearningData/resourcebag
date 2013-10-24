@@ -1088,6 +1088,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .teacher .table.table-timetable.week td .subject {
     color: blue;
     cursor: pointer;
+    margin: 3%;
 }
 
 .table.table-timetable td {

@@ -131,8 +131,10 @@ var timetablePage = (function() {
                 window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
             })
             $( ".teacher .table.table-timetable.week td").click(function( event ) {
+                console.log(event.currentTarget)
+                console.log(event.target)
                 $( ".teacher .table.table-timetable.week td").removeClass( "edit" )
-                event.target.classList.add( "edit" )
+                event.currentTarget.classList.add( "edit" )
             })
         })
     }
@@ -150,32 +152,37 @@ var timetablePage = (function() {
 
     var addSubjectClass = function(cell, icon) {
         $( icon ).detach()
-        $( cell ).empty()
+        var cell = $( cell )
+        cell.empty()
         var selectClass = $( "<select>", {
             "class": "form-control customSelect"
         })
 
-        selectClass.append("<option disabled selected>Select Class</option><option>Class 1</option><option>Class 2</option><option>Class 3</option><option value=\"redirect\">New Class</option>")
-        $( cell ).append( selectClass )
+        selectClass.append("<option value=\"\" disabled selected>Select Class</option><option value=\"1\">Class 1</option><option value=\"class 2\">Class 2</option><option>Class 3</option><option value=\"redirect\">New Class</option>")
+        cell.append( selectClass )
         selectClass.change(function( event ) {
-            if (selectClass.value = "redirect") {
+            var selected = event.target.value
+            if (selected == "redirect") {
                 window.location.href = urlBase + "/" + getUser() + "/newClass?thisDay=2"
                 return
             }
-            $( cell ).append( "<span>" + selectClass.value + "</span>" )
+            cell.append( "<span>" + selected + "</span>" )
             icon.classList.remove( "icon-plus" )
             icon.classList.add( "icon-remove" )
-            $( cell ).append( icon )
+            cell.append( icon )
             $( selectClass ).remove( )
+            cell.removeClass("edit")
         })
     }
 
     var removeSubjectClass = function( cell, icon ) {
         $( icon ).detach()
-        $( cell ).empty()
+        var cell = $( cell )
+        cell.empty()
         icon.classList.remove( "icon-remove" )
         icon.classList.add( "icon-plus" )
-        $( cell ).append( icon )
+        cell.append( icon )
+        cell.removeClass("edit")
     }
 
     var createNewClassModalDialog = function( classes ) {
