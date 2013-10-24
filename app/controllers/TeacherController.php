@@ -2,6 +2,14 @@
 require "../app/services/Timetable.php";
 
 class TeacherController extends UsersController {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+    }
+
     public function listTeachersAction() {
         $teachers = $this->view->user->getTeachers();
         $this->view->teachers = $teachers;
