@@ -1,20 +1,18 @@
 <h2>New homework </h2>
 
-{{ form("teacher/createHomework", "method":"post") }}
-    <p>
-        <label>Title</label>
-        <input type="text" name="title">
+{{ form("teacher/createHomework", "method":"post", "class":"form-hwk") }}
+    <p class="col-md-6">
+        <input type="text" name="title" placeholder="Title:">
     </p>
-    <p>
-        <label>Homework</label>
-        <textarea rows="4" cols="300" name="description"></textarea>
+    <p class="col-md-6">
+        <textarea rows="2" cols="300" name="description" placeholder="Description:"></textarea>
     </p>
-    <p>
-        <label>Class: {{ classList.subject.name }}</label>
+    <div class="clearfix"></div>
+    <p class="col-md-6">
+        <input type="text" name="class" disabled="disabled" value="{{ classList.subject.name }}">
     </p>
-    <p>
-        <label>Due Date</label>
-        <input type="text" name="due-date" id="due-date">
+    <p class="col-md-6">
+        <input type="text" name="due-date" id="teacher-due-date" placeholder="Due Date">
     </p>
     <div id="due-times"></div>
     <input type="hidden" name="week-days" id="week-days" value="{{ weekDays }}">

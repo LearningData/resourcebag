@@ -41,6 +41,12 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.policies" ).addClass( "active" )
     }
     $(".alert").alert();
+    $( "#teacher-due-date" ).datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate : 1,
+        beforeShowDay : enableDays,
+        onSelect : showTimes
+    })
     $( "#start-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
