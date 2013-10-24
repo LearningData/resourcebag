@@ -14,8 +14,8 @@ class Authenticate extends Component {
         return false;
     }
 
-    public function checkPassword($password1, $password2) {
-        return $this->security->checkHash($password1, $password2);
+    public function checkPassword($password, $hashedPassword) {
+        return $this->security->checkHash($password, $hashedPassword);
     }
 }
 ?>

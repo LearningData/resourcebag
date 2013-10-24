@@ -9,6 +9,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
     public function createAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
+        $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
 
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
@@ -36,6 +37,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {
+                echo "$message <br>";
                 $this->flash->error($message);
             }
             return $this->dispatcher->forward(array(
@@ -50,6 +52,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
     private function toIndex() {
         return $this->dispatcher->forward(array(
+            "controller" => "register",
             "action" => "index"
         ));
     }
