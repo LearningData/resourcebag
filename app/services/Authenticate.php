@@ -7,6 +7,7 @@ class Authenticate extends Component {
 
         if($user) {
             if(Authenticate::checkPassword($password, $user->password)) {
+                Authenticate::createSession($user);
                 Authenticate::saveSuccess($user);
                 return $user;
             }
@@ -26,6 +27,22 @@ class Authenticate extends Component {
         $this->session->destroy();
     }
 
+    public function getUser() {
+        $session = $this->session->get("schoolbag");
+
+        if(isset($session["id"])) {
+            $user = User::findFirstById($session["id"]);
+            if ($user) {
+                $this->view->user = $user;
+                return $user;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
     private function saveLoginFail($userId) {
         $failedLogin = new FailedLogin();
         $failedLogin->userId = $userId;
@@ -40,8 +57,13 @@ class Authenticate extends Component {
         }
     }
 
+    private function createSession($user) {
+        $this->session->set("schoolbag", array("id" => $user->id,
+            "name" => $user->name));
+    }
+
     private function saveSuccess($user) {
-        $this->session->set("userId", $user->id);
+
 
         $successLogin = new SuccessLogin();
         $successLogin->userId = $user->id;
