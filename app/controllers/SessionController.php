@@ -14,8 +14,6 @@ class SessionController extends Phalcon\Mvc\Controller {
             return $this->response->redirect("");
         }
 
-        $this->session->set("userId", $user->id);
-
         return $this->response->redirect("dashboard");
     }
 
