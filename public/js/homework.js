@@ -1,4 +1,4 @@
-var homework = (function() {
+var homeworkPage = (function() {
 
     //init
     var urlBase = window.location.origin + "/schoolbag"
@@ -46,6 +46,9 @@ var homework = (function() {
     })
     $( ".btn-submit" ).click(function( event ) {
         event.preventDefault()
+        if ($( event.currentTarget ).hasClass("btn-inactive")) {
+            return
+        }
         submitHomeworkDialog( $ ( this ).data() )
         $( "#submitHomeworkModal" ).modal( "show" )
     })
@@ -69,7 +72,7 @@ var homework = (function() {
         
     })
 
-    getClasses = function( dfdDialog ) {
+    var getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/";
         $.get( url, function(response) {
             var classes = response.classes
@@ -77,7 +80,7 @@ var homework = (function() {
         });
     }
 
-    createNewHomeworkDialog = function( classes ) {
+    var createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Set New Homework</h24></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
@@ -178,7 +181,7 @@ var homework = (function() {
         //Events
     }
 
-    uploadHomeworkFileDialog = function( homeworkId ) {
+    var uploadHomeworkFileDialog = function( homeworkId ) {
         var modal = $( "<div class=\"modal fade\" id=\"uploadHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Upload Homework File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
@@ -310,7 +313,7 @@ var homework = (function() {
         modal.appendTo( "body" )
     }
 
-    stylePaginator = function() {
+    var stylePaginator = function() {
         var paginator = $( ".paginator" )[0]
         if ( paginator == undefined )
             return
@@ -337,13 +340,15 @@ var homework = (function() {
     }
 
     //init
-    var dfdDialog = $.Deferred();
-    dfdDialog.done(createNewHomeworkDialog)
-    getClasses( dfdDialog )
-    stylePaginator()
+    var init = function() {
+        var dfdDialog = $.Deferred();
+        dfdDialog.done(createNewHomeworkDialog)
+        getClasses( dfdDialog )
+        stylePaginator()
+    }
 
     return {
-
+        init: init
     };
 })()
 

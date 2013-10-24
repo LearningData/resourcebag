@@ -11,6 +11,7 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.dashboard" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("homework") != -1 ) {
+        homeworkPage.init()
         $( ".nav.navbar-nav li.homework" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("messages") != -1 ) {

@@ -44,7 +44,11 @@
 
                     {{ link_to("student/homework/edit/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                     {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
-                    <span data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
+                    {% if !homework.Files.count() %}
+                    <span data-title="{{ homework.title }}" class="btn-submit btn-inactive btn-icon icon-ok" title="Please upload a file"></span>
+                    {% else %}
+                    <span data-count="{{ homework.Files.count() }}" data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
+                    {% endif %}
                 </td>
             </tr>
             <tr  id="hw{{ homework.id }}" class="collapse">
@@ -59,4 +63,4 @@
             <li>{{ link_to(link['url'], link['page']) }}</li>
         {% endfor %}
         <li>{{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
-    </li>
+    </ul>

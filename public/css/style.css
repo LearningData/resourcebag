@@ -78,6 +78,12 @@ h4, .h4 {
     display: inherit;
     vertical-align: middle;
 }
+
+.btn-icon.btn-inactive, .btn.btn-inactive {
+    background-color: #d9d9d9 !important;
+    
+}
+
 .btn-icon:hover {
     color: #fff;
 }
@@ -816,29 +822,47 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #760900;
 }
 
-.nav-homework.status-0 .bt-to-do a {
+.nav-homework.status .btn-all a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.status-0 .bt-to-do :hover {
+.nav-homework.status .btn-all :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.nav-homework.status-1 .bt-in-progress a {
+
+.nav-homework.status0 .bt-to-do a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.status-1 .bt-in-progress :hover {
+.nav-homework.status0 .bt-to-do :hover {
     border-bottom: #760900 solid 5px;
 }
 
-.nav-homework.status-2 .bt-complete a {
+.nav-homework.status1 .bt-in-progress a {
     border-bottom: #a30c00 solid 5px;
 }
 
-.nav-homework.status02 .bt-complete :hover {
+.nav-homework.status1 .bt-in-progress :hover {
     border-bottom: #760900 solid 5px;
 }
+
+.nav-homework.status2 .bt-complete a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.nav-homework.status2 .bt-complete :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.nav-homework.status3 .btn-reviewed a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.nav-homework.status3 .btn-reviewed :hover {
+    border-bottom: #760900 solid 5px;
+}
+
 
 /**TABLE HOMEWORK**/
 .table.table-homework thead > tr > th {
@@ -859,7 +883,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .table-homework .btn-edit, .table-homework .btn-review, .table-homework .btn-submit, .table-homework .btn-pending {
     display: none;
     background-color: #ff9e19
-}
+}f
 
 .table-homework .to-do .btn-pending, .table-homework .in-progress .btn-edit, .table-homework .in-progress .btn-submit, .table-homework .complete .btn-review, .table-homework .reviewed .btn-review {
     display: inherit;
@@ -1409,6 +1433,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .paginator.homework .this-page a {
     color: #fff;
     background-color: #a30c00;
+    cursor: default;
 }
 
 /*Login Page*/

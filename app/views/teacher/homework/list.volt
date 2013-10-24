@@ -1,5 +1,22 @@
 <h2>Homeworks</h2>
-{{ form("homework/reviewManyHomeworks", "method":"post") }}
+<nav class="status{{ status }} nav-homework">
+    <ul>
+        <li class="bt-new">
+            {{ link_to("student/homework/new", "Add New")}}
+        </li>
+        <li class="btn-all">
+            {{ link_to("student/homework", "All") }}
+        </li>
+        <li class="bt-complete">
+            {{ link_to("student/homework?filter=2", "Submitted") }}
+        </li>
+        <li class="btn-reviewed">
+            {{ link_to("student/homework?filter=3", "Reviewed") }}
+        </li>
+    </ul>
+</nav>
+
+{{ form("homework/reviewManyHomeworks", "method":"post", "class":"form-hwk") }}
     <table class="table table-homework">
         <thead>
             <tr>
@@ -40,12 +57,13 @@
         {% endfor %}
         </tbody>
     </table>
-    <ul>
-        <li>{{ link_to("teacher/homework?page="~page.before~"&filter="~status, "Prev") }}</li>
+    <ul class="paginator homework">
+        <li>{{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}</li>
         {% for link in links %}
             <li>{{ link_to(link['url'], link['page']) }}</li>
         {% endfor %}
-        <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "Next") }}</li>
+        <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>
-    <input type="submit">
+    </ul>
+    <input type="submit" class="btn btn-left">
 </form>
