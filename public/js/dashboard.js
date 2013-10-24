@@ -97,6 +97,12 @@ var dashboard = (function() {
     }
 
     var studentHomeworkList = function(homework) {
+        homework.sort(function(a, b) {
+            if (a["due-date"] < b["due-date"] ) return -1
+            if (a["due-date"] > b["due-date"] ) return 1
+            return 0
+        })
+        console.log(homework)
         var homeworkItems = []
         var length = homework.length
         for ( var i = 0; i < length; i++ ) {
@@ -112,12 +118,12 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            var overdue = new Date(item["due-date"]) < Date.now() ? "overdue" : ""
+            homeworkItems.push("<li class=\"dash-brd-hv " + overdue + "\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-warning-sign\" title=\"overdue\"></span></p></li>")
         }
         return homeworkItems
     }
     var teacherHomeworkList = function(homework) {
-        console.log(homework)
         var homeworkItems = []
         var length = homework.length
         for ( var i = 0; i < length; i++ ) {

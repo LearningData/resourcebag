@@ -796,6 +796,37 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .bdr-hwk {
     border-color: #ff9e19/*border color*/
 }
+/*Homework-dashboard*/
+
+#dashboard-homework > ul li {
+    padding-left: 5px;
+}
+
+#dashboard-homework > ul li > p {
+    margin: 0px;
+    display: inline;
+    margin-left: 5px;
+}
+
+#dashboard-homework > ul li > a{
+    display: inline-block;
+    line-height: 20px;
+}
+
+.homeworkList li.overdue {
+    color: #FF0000;
+}
+
+
+.homeworkList li span.icon-warning-sign {
+    display: none
+}
+
+.homeworkList li.overdue span.icon-warning-sign {
+    display: inline;
+    color: #FF0000;
+}
+
 .nav-homework ul li a {
     width: 25%;
     height: 60px;
@@ -1335,22 +1366,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     padding: 11px 15px;
 }
 
-    /*Homework*/
-
-#dashboard-homework > ul li {
-    padding-left: 5px;
-}
-
-#dashboard-homework > ul li > p {
-    margin: 0px;
-    display: inline;
-    margin-left: 5px;
-}
-
-#dashboard-homework > ul li > a{
-    display: inline-block;
-    line-height: 20px;
-}
 
     /*events*/
 #dashboard-events .table-events {
