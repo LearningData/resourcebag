@@ -21,6 +21,11 @@ class Authenticate extends Component {
         return $this->security->checkHash($password, $hashedPassword);
     }
 
+    public function destroySession() {
+        $this->session->remove("userId");
+        $this->session->destroy();
+    }
+
     private function saveLoginFail($userId) {
         $failedLogin = new FailedLogin();
         $failedLogin->userId = $userId;
