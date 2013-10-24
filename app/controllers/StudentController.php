@@ -3,6 +3,16 @@ require "../app/services/Timetable.php";
 require "../app/services/ClassListService.php";
 
 class StudentController extends UsersController {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user) { return $this->response->redirect("index"); }
+
+        if(!$user->isStudent()) {
+            return $this->response->redirect("dashboard");
+        }
+    }
+
     public function listClassesAction() {
         $group = $this->view->user->getGroups("year=2014")->getFirst();
         $this->view->classes = ClassListService::getClassesByGroup($group);

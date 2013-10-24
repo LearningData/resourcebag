@@ -1,6 +1,16 @@
 <?php
 
 class SchoolController extends UsersController {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user) { return $this->response->redirect("index"); }
+
+        if(!$user->isSchool()) {
+            return $this->response->redirect("dashboard");
+        }
+    }
+
     public function timetableAction() {
         $slots = TimetableConfig::findBySchoolId($this->view->user->schoolId);
         $this->view->hours = Timetable::hours();
@@ -12,8 +22,7 @@ class SchoolController extends UsersController {
     }
 
     public function listUsersAction() {
-        $user = $this->getUserBySession();
-        if (!$user->isSchool()) { return $this->toIndex(); }
+        $user = Authenticate::getUser();
 
         $users = User::find("schoolId = " . $user->schoolId);
         $this->view->users = $users;

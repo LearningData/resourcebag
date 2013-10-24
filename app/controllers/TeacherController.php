@@ -5,6 +5,8 @@ class TeacherController extends UsersController {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
 
+        if(!$user) { return $this->response->redirect("index"); }
+
         if(!$user->isTeacher()) {
             return $this->response->redirect("dashboard");
         }
