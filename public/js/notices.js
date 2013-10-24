@@ -8,6 +8,9 @@ var noticesPage = (function() {
             notes = response.notices
             gridifyNotes()
         })
+        $( ".btn-notice.btn-return" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/noticeboard"
+        })
     }
 
     var gridifyNotes = function() {

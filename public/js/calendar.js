@@ -20,6 +20,9 @@ var calendarPage = (function() {
             center : 'prevYear',
             events : urlBase + "/service/calendar"
         })
+        $( ".btn-evt.btn-return" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/calendar"
+        })
     }
 
     createNewEventDialog = function( date ) {

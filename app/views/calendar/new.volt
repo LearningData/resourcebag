@@ -1,5 +1,5 @@
 <h1>New Event</h1>
-{{ form("calendar/create", "method":"post", "class":"form-event") }}
+{{ form("calendar/create", "method":"post", "class":"form-evt form-inline") }}
     <p class="col-md-6">
         {{ text_field("title", "placeholder":"Title", "class":"form-control") }}
     </p>
@@ -25,7 +25,6 @@
     <p class="col-md-6">
         <input type="text" id="end-date" name="end" placeholder="End Date" class="form-control">
     </p>
-    <p>
-        {{ submit_button("Save","class":"btn bg-event bg-event-hv") }}
-    </p>
+    {{ submit_button("Save","class":"btn") }}
 </form>
+<button class="btn btn-evt btn-return">Back</button>

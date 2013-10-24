@@ -17,7 +17,7 @@
             {% endfor %}
         </tbody>
     </table>
-    {{ form("homework/reviewed/"~homework.id, "method":"post", "class":"review form-hwk") }}
+    {{ form("homework/reviewed/"~homework.id, "method":"post", "class":"form-hwk form-inline") }}
         <input type="submit" class="btn">
     </form>
     <button class="btn btn-hwk bt-return">Back</button>

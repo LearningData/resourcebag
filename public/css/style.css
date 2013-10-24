@@ -102,6 +102,11 @@ span.btn-icon:hover {
     background-color: #b1b1b1;
 }
 
+
+.form-inline {
+    display: inline;
+}
+
 /* Default Margin / Padding */
 .mtop-20 {
     margin-top: 20px;
@@ -942,9 +947,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #fff;
 }
 
-.review.form-hwk {
-    display: inline;
-}
 
 
 /*------END HOMEWORK------*/
@@ -1519,23 +1521,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border-color: #0ba6d3;/*border color*/
 }
 
-.frm-notice .uploader .action {
-    background-color: #0ba6d3;
-}
-
-.frm-notice .radio-box {
-    width: 95%;
-    margin: 20px 0 0;
-    border-radius: 0;
-    box-shadow: none;
-    color: #A2A2A2;
-    border: solid 1px #F2F2F2;
-}
-
-.frm-notice .radio-box label {
-    font-weight: normal;
-}
-
 
 /********************************************************************
 *******************UI Default styles*********************************
@@ -1616,4 +1601,40 @@ form input[disabled] {
 .form-hwk .btn:hover, .btn.btn-hwk:hover {
     background-color: #f47920;
 }
+
+/*notices*/
+.form-notice .btn, .btn.btn-notice {
+        background: #0ba6d3;
+}
+
+.form-notice .btn:hover, .btn.btn-notice:hover {
+        background: #0ba6d3;
+}
+.form-notice .uploader .action {
+    background-color: #0ba6d3;
+}
+.form-notice .radio-box {
+    width: 95%;
+    margin: 20px 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    color: #A2A2A2;
+    border: solid 1px #F2F2F2;
+}
+
+.form-notice .radio-box label {
+    font-weight: normal;
+}
+
+/*event*/
+.form-evt .btn, .btn.btn-evt {
+        background: #9752a3;
+}
+
+.form-evt .btn:hover, .btn.btn-evt:hover {
+    background-color: #5a2a60;
+}
+
+
+
 /*------ END UI DEFAULTS ------*/

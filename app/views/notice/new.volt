@@ -1,6 +1,6 @@
 <h1>New Notice</h1>
 
-{{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"frm-notice") }}
+{{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form-notice form-inline") }}
 <p class="col-md-6">
     {{ text_area("notice", "placeholder":"Notice", "class":"form-control") }}
 </p>
@@ -22,7 +22,6 @@
     <input type="file" name="file">
 </p>
 <div class="clearfix"></div>
-<p>
-    {{ submit_button("Save", "class":"btn bg-notice bg-notice-hv") }}
-</p>
+{{ submit_button("Save", "class":"btn btn-notice") }}
 </form>
+<button class="btn btn-notice btn-return">Back</button>
