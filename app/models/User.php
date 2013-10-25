@@ -98,6 +98,10 @@ class User extends \Phalcon\Mvc\Model {
         return $this->type == User::getTypeSchool();
     }
 
+    public function isAdmin() {
+        return $this->type == User::getTypeAdmin();
+    }
+
     public function validation() {
         $this->validate(new EmailValidator(array("field" => "email")));
 
