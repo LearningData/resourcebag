@@ -8,9 +8,9 @@ class ClassListService {
             $classesList = $user->classes;
         } else {
             if ($user->isTeacher()) {
-                $classesList = ClassList::getClassesByTeacherId($user->id);
+                $classesList = ClassList::findByTeacherId($user->id);
             } else {
-                $classesList = ClassList::find("schoolId = " . $user->schoolId);
+                $classesList = ClassList::findBySchoolId($user->schoolId);
             }
         }
 

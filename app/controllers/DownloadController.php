@@ -2,7 +2,7 @@
 
 class DownloadController extends ControllerBase {
     public function homeworkAction($fileId) {
-        $file = HomeworkFile::findFirst("id = $fileId");
+        $file = HomeworkFile::findFirstById($fileId);
         $this->setContent($file);
     }
 
@@ -13,7 +13,7 @@ class DownloadController extends ControllerBase {
 
     public function photoAction() {
         $user = $this->getUserBySession();
-        $photo = UserPhoto::findFirst("userId = " . $user->id);
+        $photo = UserPhoto::findFirstByUserId($user->id);
         header("Content-type: " . $photo->type);
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
         $this->response->setContent($photo->file)->send();
