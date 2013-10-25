@@ -30,6 +30,9 @@ var timetablePage = (function() {
         $( ".teacher .btn-timetable-edit").click( function() {
             $( ".teacher .table-timetable" ).toggleClass( "edit" )
         })
+        $( ".btn-tmtbl .btn-return" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/homework"
+        })
        
     }
 

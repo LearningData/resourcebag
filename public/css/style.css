@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
-
+.classList {
+    display: inline;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    border: 1px solid #FF0097;
+}
 .label {
     color: black;
 }
@@ -1566,12 +1571,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
 }
-.form-event .form-control:focus {
-    border-color: #9752a3;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
-}
 
 div.uploader {
     margin: 15px 0 !important;
@@ -1608,6 +1607,13 @@ form input[disabled] {
 .form-tmtbl .btn:focus:hover, .btn.btn-tmtbl:hover {
     background-color: #da3940;
 }
+
+.form-tmtbl .form-control:focus {
+    border-color: #e5242d;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+}
+
 /*homework*/
 .form-hwk .btn, .btn.btn-hwk {
     background-color: #ff9e19;
@@ -1617,6 +1623,7 @@ form input[disabled] {
     background-color: #f47920;
 }
 
+
 /*notices*/
 .form-notice .btn, .btn.btn-notice {
         background: #0ba6d3;
@@ -1625,16 +1632,23 @@ form input[disabled] {
 .form-notice .btn:hover, .btn.btn-notice:hover {
         background: #0ba6d3;
 }
+
+.form-notice .form-control {
+    
+
+}
+
+.form-notice .form-control:focus {
+    border-color: #0ba6d3;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 8px rgba(11, 166, 211, 0.6);
+}
+
 .form-notice .uploader .action {
     background-color: #0ba6d3;
 }
 .form-notice .radio-box {
-    width: 95%;
-    margin: 20px 0 0;
-    border-radius: 0;
-    box-shadow: none;
-    color: #A2A2A2;
-    border: solid 1px #F2F2F2;
+    height: auto;
 }
 
 .form-notice .radio-box label {
@@ -1648,6 +1662,12 @@ form input[disabled] {
 
 .form-evt .btn:hover, .btn.btn-evt:hover {
     background-color: #5a2a60;
+}
+
+.form-evt .form-control:focus {
+    border-color: #9752a3;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
 }
 
 

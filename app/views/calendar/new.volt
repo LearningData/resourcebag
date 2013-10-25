@@ -27,4 +27,4 @@
     </p>
     {{ submit_button("Save","class":"btn") }}
 </form>
-<button class="btn btn-evt btn-return">Back</button>
+<button class="btn btn-evt btn-return">Cancel</button>
