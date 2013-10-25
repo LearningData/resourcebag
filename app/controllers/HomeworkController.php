@@ -16,19 +16,17 @@ class HomeworkController extends ControllerBase {
         if ($user->isStudent()) {
             $homeworks = $user->getHomeworkByStatus($status);
         } else {
-            if ($status != "") {
-                $homeworks = Homework::find("teacherId = " .$user->id . " and status = $status");
-            } else {
-                $homeworks = Homework::find("teacherId = " .$user->id . " and status >= 2");
-            }
+            $homeworks = Homework::findByTeacherAndStatus($user->id, $status);
         }
 
         $this->view->user = $user;
         $this->view->status = $status;
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
-        $this->view->links = HomeworkService::getPaginateLinks($user->getController(),
-            $totalPages, $status);
+        $this->view->links = HomeworkService::getPaginateLinks(
+            $user->getController(),
+            $totalPages, $status
+        );
 
         $this->view->pick($template);
     }
@@ -42,11 +40,7 @@ class HomeworkController extends ControllerBase {
         $currentPage = $this->request->getQuery("page", "int");
         $status = $this->request->get("filter");
 
-        if ($status != "") {
-            $homeworks = Homework::find("classId = $classId and status = $status");
-        } else {
-            $homeworks = Homework::find("classId = $classId and status >= 2");
-        }
+        $homeworks = Homework::findByClassAndStatus($classId, $status);
 
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
