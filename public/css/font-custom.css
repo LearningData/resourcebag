@@ -25,24 +25,27 @@
 .custom-icon-timetable:before {
     content: "\e600";
 }
-.custom-icon-notices:before {
-    content: "\e601";
-}
-.custom-icon-homework:before {
-    content: "\e602";
-}
 .custom-icon-events:before {
     content: "\e603";
 }
 .custom-icon-ebooks:before {
     content: "\e604";
 }
-.custom-icon-dash:before {
-    content: "\e606";
-    color: #828282;
+.custom-icon-notices:before {
+    content: "\e601";
 }
 .custom-icon-dash-top:before {
     content: "\e605";
     color: #d1444a;
     position:absolute;
+}
+.custom-icon-dash:before {
+    content: "\e606";
+    color: #828282;
+}
+.custom-icon-new-homework:before {
+    content: "\e602";
+}
+.custom-icon-homework:before {
+    content: "\e607";
 }

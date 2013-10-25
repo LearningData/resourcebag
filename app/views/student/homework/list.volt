@@ -2,7 +2,7 @@
     <nav class="status-{{ status }} nav-homework">
         <ul>
             <li class="bt-new">
-                {{ link_to("student/homework/new", "Add New")}}
+                <a href="/schoolbag/student/homework/new"><span class="custom-icon-new-homework"></span> Add New</a>
             </li>
             <!--li>{{ link_to("student/homework", "All") }}</li-->
             <li class="bt-to-do">
