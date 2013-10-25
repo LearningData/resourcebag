@@ -1,4 +1,3 @@
-<!--h1>Welcome</h1-->
 <a class="schoolbag-brand" href="#">
     {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
 </a>
