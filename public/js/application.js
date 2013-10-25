@@ -6,6 +6,7 @@ $(document).ready(function() {
     var y = date.getFullYear();
     
     $( ".nav.navbar-nav li" ).removeClass( "active" )
+    timetablePage.init()
     if ( window.location.pathname.indexOf("dashboard") != -1 ) {
         dashboard.init()
         $( ".nav.navbar-nav li.dashboard" ).addClass( "active" )
@@ -26,11 +27,7 @@ $(document).ready(function() {
         $( ".nav.navbar-nav li.events" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("timetable") != -1 ) {
-        timetablePage.init()
         $( ".nav.navbar-nav li.timetable" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("listClasses") != -1 ) {
-        $( ".nav.navbar-nav li.classes" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("Ebooks") != -1 ) {
         $( ".nav.navbar-nav li.ebooks" ).addClass( "active" )
@@ -41,6 +38,14 @@ $(document).ready(function() {
     else if ( window.location.pathname.indexOf("policies") != -1 ) {
         $( ".nav.navbar-nav li.policies" ).addClass( "active" )
     }
+    //TODO improve navigation search, the classes/subject selection is unreliable
+    else if ( window.location.pathname.indexOf("Class") != -1 ) {
+        $( ".nav.navbar-nav li.classes" ).addClass( "active" )
+    }
+    else if ( window.location.pathname.indexOf("subject") != -1 ) {
+        $( ".nav.navbar-nav li.classes" ).addClass( "active" )
+    }
+
     $(".alert").alert();
     $( "#teacher-due-date" ).datepicker({
         dateFormat : 'yy-mm-dd',
