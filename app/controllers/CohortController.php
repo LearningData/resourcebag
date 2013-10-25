@@ -1,23 +1,28 @@
 <?php
 class CohortController extends ControllerBase {
-    public function indexAction(){
-        $user = $this->getUserBySession();
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user) { return $this->response->redirect("index"); }
 
         if(!$user->isSchool()) {
-            return $this->response->redirect($user->getController());
+            return $this->response->redirect("dashboard");
         }
+    }
 
-        $this->view->cohorts = Cohort::find("schoolId = " . $user->schoolId);
+    public function indexAction(){
+        $user = $this->getUserBySession();
+        $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
     }
 
     public function newAction() {
         $this->view->cohort = new Cohort();
-        $this->view->year = Config::findFirst("name='schoolYear'");
+        $this->view->year = Config::schoolYear();
     }
 
     public function editAction($cohortId) {
         $this->view->cohort = Cohort::findFirstById($cohortId);
-        $this->view->year = Config::findFirst("name='schoolYear'");
+        $this->view->year = Config::schoolYear();
     }
 
     public function removeAction($cohortId) {
@@ -48,11 +53,10 @@ class CohortController extends ControllerBase {
     }
 
     public function createAction() {
-        $year = Config::findFirst("name='schoolYear'");
         $user = $this->getUserBySession();
 
         $cohort = new Cohort();
-        $cohort->schoolYear = $year->value;
+        $cohort->schoolYear = Config::schoolYear();
         $cohort->stage = $this->request->getPost("stage");
         $cohort->courseId = 0;
         $cohort->schoolId = $user->schoolId;
