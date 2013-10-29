@@ -18,12 +18,16 @@ class Authenticate extends Component {
         return false;
     }
 
+    public function getTokenKey() {
+        return $this->getDi()->getSecurity()->getTokenKey();
+    }
+
     public function checkPassword($password, $hashedPassword) {
         return $this->security->checkHash($password, $hashedPassword);
     }
 
     public function destroySession() {
-        $this->session->remove("schoolbag");
+        $this->session->remove($this->request->getServerAddress());
         $this->session->destroy();
     }
 
