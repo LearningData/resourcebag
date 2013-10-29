@@ -3,16 +3,16 @@
     <nav class="status{{ status }} nav-homework">
         <ul>
             <li class="bt-new">
-                {{ link_to("student/homework/new", "Add New")}}
+                {{ link_to("teacher/homework/new", "Add New")}}
             </li>
-            <li class="btn-all">
-                {{ link_to("student/homework", "All") }}
-            </li>
+            <!--<li class="btn-all">
+                {{ link_to("teacher/homework", "All") }}
+            </li>-->
             <li class="bt-complete">
-                {{ link_to("student/homework?filter=2", "Submitted") }}
+                {{ link_to("teacher/homework?filter=2", "Submitted") }}
             </li>
             <li class="btn-reviewed">
-                {{ link_to("student/homework?filter=3", "Reviewed") }}
+                {{ link_to("teacher/homework?filter=3", "Reviewed") }}
             </li>
         </ul>
     </nav>
