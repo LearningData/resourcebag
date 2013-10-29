@@ -103,6 +103,10 @@ class User extends \Phalcon\Mvc\Model {
         return $this->type == User::getTypeAdmin();
     }
 
+    public function completeName() {
+        return $this->name . " " . $this->lastName;
+    }
+
     public function validation() {
         $this->validate(new EmailValidator(array("field" => "email")));
 
