@@ -1,0 +1,117 @@
+.homework .header {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 20px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.homework .header:hover {
+    color: #fff;
+    padding-left: 20px;
+}
+
+.homework .nav ul li a {
+    width: 25%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    padding: 18px 0 0;
+    font-weight: 300;
+}
+
+.homework .nav ul li a {
+    color: #fff;
+}
+.homework .nav ul li a:hover {
+    text-decoration: none;
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+}
+.homework .nav ul li.bt-new a {
+    border-bottom: #a30c00 solid 5px;
+    background-color: #a30c00;
+}
+
+.homework .nav ul li.bt-new :hover {
+    border-bottom: #760900 solid 5px;
+    background-color: #760900;
+}
+
+.homework .nav.status .btn-all a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.homework .nav.status .btn-all :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.homework .nav.status0 .bt-to-do a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.homework .nav.status0 .bt-to-do :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.homework .nav.status1 .bt-in-progress a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.homework .nav.status1 .bt-in-progress :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.homework .nav.status2 .bt-complete a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.homework .nav.status2 .bt-complete :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.homework .nav.status3 .btn-reviewed a {
+    border-bottom: #a30c00 solid 5px;
+}
+
+.homework .nav.status3 .btn-reviewed :hover {
+    border-bottom: #760900 solid 5px;
+}
+
+.homework .table [class*="btn-"] {
+    display: none;
+}
+
+
+.homework .table thead > tr > th {
+    border-bottom: none;
+    vertical-align: bottom;
+    background-color: #eceded;
+    padding: 0px;
+    text-align: center;
+}
+
+.homework .table .to-do .btn-pending, .homework .table .in-progress .btn-edit, .homework .table .in-progress .btn-submit, .homework .table .complete .btn-review, .homework .table .reviewed .btn-review {
+    display: inherit;
+}
+.homework .table .tooltip-inner {
+    background-color: #ff9e19;
+    margin-right: 5px;
+}
+
+.homework .table .tooltip.top .tooltip-arrow, .homework .table .btn-download {
+    border-top-color: #ff9e19;
+}
+
+.homework .table .collapse td, .homework .table .collapsing td, .homework .table .in td {
+    border-top: none;
+    background-color: #FFF9F0;
+    padding: 10px 50px 10px 220px;
+}
+
+.homework .table .collapse-toggle span.collapse-icon {
+    padding-right: 5px;
+    color: #414042;
+}
+
+

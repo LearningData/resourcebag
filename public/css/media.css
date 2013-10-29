@@ -1,20 +1,18 @@
 /*      Extra small devices Phones (<768px) and Small devices Tablets (≥768px).
  -----------------------------------------------------------------*/
-.user-profile-actions {
-    display: none;
+@media only screen and (min-width: 768px) and (max-width: 768px) {
+    .collapse {
+        /*display: block;*/
+        display: block;
+    }
+    .sidebar {
+        background: #E6E7E8;
+        padding: 0 0 20px;
+    }
+    .custom-icon-dash-top:before {
+        margin-left: -11px;
+    }
 }
-.collapse {
-    /*display: block;*/
-    display: block;
-}
-.sidebar {
-    background: #E6E7E8;
-    padding: 0 0 20px;
-}
-.custom-icon-dash-top:before {
-    margin-left: -11px;
-}
-
 /*      Small devices Tablets (≥768px).
  -----------------------------------------------------------------*/
 
@@ -38,6 +36,9 @@
  ---------------------------------------------*/
 
 @media only screen and (max-width: 767px) {
+    .user-profile-actions {
+        display: none;
+    }
     .schoolbag-brand {
         width: 100%;
         padding: 10px 0;

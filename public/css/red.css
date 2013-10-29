@@ -1,0 +1,34 @@
+.red .btn-icon, .red .btn {
+    background-color: #e5242d;
+}
+
+.red.btn-icon:hover, .red .btn:hover {
+    background-color:#da3940;
+}
+
+.red.ld-box .parent .title {
+    background-color: #e5242d;
+}
+
+.red .header:hover {
+   background-color: #da3940;
+}
+
+.red .form-control:focus {
+    border-color: #e5242d;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+}
+
+.red .modal-title {
+    border-left-color: #e5242d
+}
+
+.red.homework .nav ul li a {
+    background-color: #e5242d;
+}
+.red.homework .table [class*="btn-"] {
+    background-color: #e5242d;
+}
+

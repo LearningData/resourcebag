@@ -50,18 +50,18 @@
     }
 }
 
-.dashboard .ld-box .header .title {
+.dashboard .ld-box .parent .title {
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
 
     padding: 15px;
 }
 
-.dashboard .ld-box .header .title span  {
+.dashboard .ld-box .parent .title span  {
     margin-right: 15px;
 }
 
-.dashboard .ld-box .header .title h2 {
+.dashboard .ld-box .parent .title h2 {
     font-size: 16px;
     font-weight: bold;
     color: #fff;

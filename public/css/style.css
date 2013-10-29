@@ -86,7 +86,7 @@ h4, .h4 {
 
 .btn-icon.btn-inactive, .btn.btn-inactive {
     background-color: #d9d9d9 !important;
-    
+    cursor: default;
 }
 
 .btn-icon:hover {
@@ -262,11 +262,6 @@ table > tbody > tr.active td:last-child {
 
 .table .collapse {
     display: none;
-}
-
-.table .homework-collapse span.collapse-icon {
-    padding-right: 5px;
-    color: #414042;
 }
 
 .table .collapsing {
@@ -750,137 +745,12 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .cl-hwk {
     color: #ff9e19; /*text color*/
 }
-.bg-hwk {
-    background: #ff9e19; /*background color*/
-}
-.bg-hwk-hv:hover {
-    background: #f47920; /*background hover color*/
-}
 .bdr-hwk {
     border-color: #ff9e19/*border color*/
 }
 
-.nav-homework ul li a {
-    width: 25%;
-    height: 60px;
-    float: left;
-    background-color: #ff9e19;
-    text-align: center;
-    font-size: 18px;
-    padding: 18px 0 0;
-    font-weight: 300;
-}
-
-.nav-homework ul li a {
-    color: #fff;
-}
-.nav-homework ul li a:hover {
-    text-decoration: none;
-    border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
-}
-.nav-homework ul li.bt-new a {
-    border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
-}
-
-.nav-homework ul li.bt-new :hover {
-    border-bottom: #760900 solid 5px;
-    background-color: #760900;
-}
-
-.nav-homework.status .btn-all a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.nav-homework.status .btn-all :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-
-.nav-homework.status0 .bt-to-do a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.nav-homework.status0 .bt-to-do :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.nav-homework.status1 .bt-in-progress a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.nav-homework.status1 .bt-in-progress :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.nav-homework.status2 .bt-complete a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.nav-homework.status2 .bt-complete :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.nav-homework.status3 .btn-reviewed a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.nav-homework.status3 .btn-reviewed :hover {
-    border-bottom: #760900 solid 5px;
-}
-
 
 /**TABLE HOMEWORK**/
-.table.table-homework thead > tr > th {
-    border-bottom: none;
-    vertical-align: bottom;
-    background-color: #eceded;
-    padding: 0px;
-    text-align: center;
-}
-
-.table-homework .btn-icon {
-    background-color: #ff9e19;
-}
-.table-homework .btn-icon:hover, .table-homework .btn-remove.btn-icon:hover, .table-homework .btn-submit.btn-icon:hover {
-    background-color: #F47920;
-    cursor: pointer;
-}
-.table-homework .btn-edit, .table-homework .btn-review, .table-homework .btn-submit, .table-homework .btn-pending {
-    display: none;
-    background-color: #ff9e19
-}f
-
-.table-homework .to-do .btn-pending, .table-homework .in-progress .btn-edit, .table-homework .in-progress .btn-submit, .table-homework .complete .btn-review, .table-homework .reviewed .btn-review {
-    display: inherit;
-}
-.table-homework .tooltip-inner {
-    background-color: #ff9e19;
-    margin-right: 5px;
-}
-
-.table-homework .tooltip.top .tooltip-arrow, .table-homework .btn-download {
-    border-top-color: #ff9e19;
-}
-.table-homework .collapse td, .table-homework .collapsing td, .table-homework .in td {
-    border-top: none;
-    background-color: #FFF9F0;
-    padding: 10px 50px 10px 220px;
-}
-
-.homework-header {
-    font-size: 30px;
-    cursor: pointer;
-    padding: 20px;
-    padding-left: 0;
-    margin-bottom: 0;
-}
-.homework-header:hover {
-    color: #fff;
-    background-color: #FF9E19;
-    padding-left: 20px;
-}
 
 .homework-subheader {
     font-weight: 100;
@@ -899,17 +769,12 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     padding: 5px, 0;
 }
 
-.modal-homework .modal-title {
-    border-left-color: #ff9e19
-}
 
 .modal-homework select {
     width: 95%;
     margin: 10px 0;
     background-color: #fff;
 }
-
-
 
 /*------END HOMEWORK------*/
 
@@ -1377,12 +1242,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 
-/*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
-/*****DASHBOARD*********/
-
-
 /*//////EVENTS PAGE//////*/
-/*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
+/*/DEFAULT COLORS AND BACKGROUND // EVENT/*/
 .cl-event {
     color: #9752a3; /*text color*/
 }
@@ -1486,45 +1347,6 @@ form input[disabled] {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
 }
 
-/*homework*/
-.form-hwk .btn, .btn.btn-hwk {
-    background-color: #ff9e19;
-}
-
-.form-hwk .btn:hover, .btn.btn-hwk:hover {
-    background-color: #f47920;
-}
-
-/*notices*/
-.form-notice .btn, .btn.btn-notice {
-        background: #0ba6d3;
-}
-
-.form-notice .btn:hover, .btn.btn-notice:hover {
-        background: #0ba6d3;
-}
-
-.form-notice .form-control {
-    
-
-}
-
-.form-notice .form-control:focus {
-    border-color: #0ba6d3;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-        0 0 8px rgba(11, 166, 211, 0.6);
-}
-
-.form-notice .uploader .action {
-    background-color: #0ba6d3;
-}
-.form-notice .radio-box {
-    height: auto;
-}
-
-.form-notice .radio-box label {
-    font-weight: normal;
-}
 
 /*event*/
 .form-evt .btn, .btn.btn-evt {
@@ -1540,6 +1362,13 @@ form input[disabled] {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
 }
-
-
 /*------ END UI DEFAULTS ------*/
+
+/*To be sorted */
+.btn-icon:hover {
+    cursor: pointer;
+}
+.form.inline {
+    display: inline;
+}
+
