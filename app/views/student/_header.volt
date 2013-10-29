@@ -1,12 +1,10 @@
-<a class="schoolbag-brand" href="#">
-    {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
-</a>
+<a class="schoolbag-brand" href="#"> {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }} </a>
 <div class="user-profile">
     <div class="tb-user">
         {% if user.photo %}
-            {{ image("download/photo", "alt":"", "width":"67", "height":"62") }}
+        {{ image("download/photo", "alt":"", "width":"67", "height":"62") }}
         {% else %}
-            {{ image("#") }}
+        {{ image("#") }}
         {% endif %}
 
     </div>
@@ -17,11 +15,8 @@
     </p>
     <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> My Profile</a>
     <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
-
-    <form class="form-search" role="search">
-        <input type="text" class="form-control" placeholder="Search">
-        <button type="submit" class="btn-search icon-search">
-            
-        </button>
-    </form>
+    <button type="button" class="icon-caret-down"></button>
+    <button type="button" class="navbar-toggle icon-reorder" data-toggle="collapse" data-target=".nav-collapse">
+        
+    </button>
 </div>

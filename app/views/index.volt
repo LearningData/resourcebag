@@ -9,7 +9,7 @@
         {{ stylesheet_link("css/summernote.css") }}
         {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}
-        {{ stylesheet_link("css/mobile.css") }}
+        {{ stylesheet_link("css/media.css") }}
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}
     </head>
@@ -21,11 +21,6 @@
         <div class="row">
         -->
        <div class="sidebar col-sm-3 col-md-3 col-lg-3">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             {% if user is defined %}
             <header>
                 {% set header = user.getController()~"/_header" %}

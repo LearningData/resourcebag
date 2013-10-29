@@ -1,0 +1,56 @@
+/*      Small devices Tablets (≥768px).
+ -----------------------------------------------------------------*/
+
+@media only screen and (min-width: 768px) {
+    .sidebar {
+        display: block;
+        background: #E6E7E8;
+    }
+    .collapse {
+        display: block;
+    }
+    .navbar-toggle {
+        display: none;
+    }
+    .navbar-nav, .navbar-nav > li, .navbar-brand {
+        float: none;
+    }
+}
+
+/*      Extra small devices Phones (<768px).
+ ---------------------------------------------*/
+
+@media only screen and (max-width: 767px) {
+    .schoolbag-brand {
+        width: 100%;
+        padding: 10px 0;
+    }
+    .schoolbag-brand img {
+        width: 35%;
+    }
+    .user-profile {
+        width: 100%;
+        padding: 10px 5%;
+        background-color: #ececec;
+    }
+    .user-profile img {
+        max-width: 90%;
+        height: auto;
+    }
+    .navbar-toggle {
+    }
+    .navbar-toggle {
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        border-radius: 0;
+        float: right;
+        margin: 0;
+        padding:0;
+        position: relative;
+        font-size: 20px;
+    }
+    .collapse {
+        /*display: block;*/
+    }
+
+}
