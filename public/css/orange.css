@@ -24,3 +24,12 @@
 .orange .modal-title {
     border-left-color: #ff9e19
 }
+.orange.homework .nav ul li a {
+    background-color: #ff9e19;
+}
+.orange.homework .table [class*="btn-"] {
+    display: none;
+    background-color: #ff9e19
+}
+
+

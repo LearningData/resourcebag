@@ -1,6 +1,6 @@
 <div class="homework orange">
     <h1 class="header">Homework</h1>
-    <nav class="status{{ status }} nav-homework">
+    <nav class="status{{ status }} nav">
         <ul>
             <li class="bt-new">
                 <a href="/schoolbag/student/homework/new"><span class="custom-icon-new-homework"></span> Add New</a>
