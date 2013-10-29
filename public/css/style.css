@@ -809,169 +809,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     float: right;
 }
 
-/*//////TIMETABLE//////*/
-/**DASH**/
-.header-timetable {
-    background-color: #dc3b42;
-}
-.header-navigation {
-    background-color: #e27176;
-    padding: 10px;
-    position: relative;
-}
-.header-navigation h3 {
-    font-size: 14px;
-    margin: 0;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 400;
-}
 
-/*//////TIMETABLE PAGE//////*/
-.table.table-timetable {
-    table-layout: fixed;
-}
-
-.table.table-timetable th {
-    font-size: 16px;
-    color: #fff;
-    font-weight: 100;
-    text-align: center;
-    background-color: #e27176;
-    vertical-align: middle;
-    padding: 10px;
-    border-right: #fb7f84 1px solid;
-    height: 50px;
-    cursor: pointer;
-}
-.nav-timetable {
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0;
-    background-color: #e5242d;
-    position: relative;
-    height: 60px;
-    padding: 20px 0 0;
-    text-align: center;
-}
-.nav-timetable-btn-prev span, .nav-timetable-btn-next span {
-    background: none;
-    cursor: pointer;
-    height: 30px;
-    left: 15px;
-    position: absolute;
-    width: 40px;
-    font-size: 36px;
-    color: #fff;
-    margin: -6px 0 0;
-}
-.nav-timetable-btn-next span {
-    left: 100%;
-    margin-left: -50px;
-    background-position: -530px -520px;
-}
-.nav-timetable-title  h2 {
-    font-size: 24px;
-    font-weight: 100;
-    color: #fff;
-    margin: 0;
-}
-
-.table.table-timetable.day {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    padding: 0;
-    border: #d1d3d4 solid 1px;
-    border-top: 0;
-    font-size: 12px;
-}
-.table.table-timetable.day > tbody > tr.active > td, .table.table-timetable.day tr.active, .table tr.active td {
-    background-color: #e6e7e8;
-}
-.table.table-timetable.day > tbody > tr.active td:first-child {
-    border: #d1d3d4 solid;
-    border-width: 2px 1px 2px 2px
-}
-.table.table-timetable.day > tbody > tr.active td:last-child {
-    border: #d1d3d4 solid;
-    border-width: 2px 2px 2px 0;
-}
-.table.table-timetable.day td:first-child {
-    border-right: solid 1px #dcddde;
-    font-weight: bold;
-    text-align: center;
-}
-.table.table-timetable.day tr:hover {
-    background-color: #f0f2f2;
-}
-
-.table.table-timetable td span {
-    display: block;
-    text-align: center;
-}
-
-.table.table-timetable td span:nth-child(1) {
-    
-}
-
-.table.table-timetable td span:nth-child(2) {
-    font-size: 12px;
-}
-
-.table.table-timetable td span:nth-child(3) {
-    font-size: 10px;
-}
-
-/**TABLE TIMETABLE**/
-
-.teacher .table.table-timetable.week tr:hover{
-    background-color: transparent;
-}
-
-.teacher .table.table-timetable.week td:hover{
-    background-color: #f0f2f2;
-}
-
-.teacher .table.table-timetable.week td .subject {
-    color: blue;
-    cursor: pointer;
-    margin: 3%;
-}
-
-.table.table-timetable td {
-    position: relative;
-}
-
-.table.table-timetable.edit td span.cell-icon, .table.table-timetable td.edit span.cell-icon {
-    display: inline;
-}
-
-.table.table-timetable td span.cell-icon {
-    display: none;
-    line-height: 21px;
-    background: red;
-    float: right;
-    position: absolute;
-    top: 20px;
-    right: 10px;
-}
-
-.table.table-timetable.table-condensed th {
-    background-color: #e5242d;
-    cursor: default;
-}
-
-
-.table.table-timetable.none {
-    text-align: center;
-    font-size: large;
-}
-
-
-/*------END TIMETABLE------*/
 
 
 /*//////DATEPICKER//////*/
@@ -1082,28 +920,15 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border-radius: 0 0 5px 5px;
 }
 
-.box-child {
+.ld-box-child {
     width: auto;
     height: 100%
 }
 
-.box-notices .box-child, .box-homework .box-child {
+.box-notices .ld-box-child {
     height: 335px;
     overflow-y: auto;
 }
-
-.box-homework .box-child ul {
-    padding-bottom: 0px;
-}
-
-#dashboard-timetable .table-timetable {
-    max-height: 400px;
-    border-radius: 0;
-}
-#dashboard-timetable .table-timetable td {
-    padding: 11px 15px;
-}
-
 
     /*events*/
 #dashboard-events .table-events {

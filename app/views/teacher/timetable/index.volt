@@ -1,18 +1,20 @@
-<h1 class="timetable-header">Timetable</h1>
-{{ link_to("teacher/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}
-<button class="btn btn-tmtbl btn-timetable-edit mbottom-20">Edit</button>
-<div class="nav-timetable">
-    <a title="Prev" class="nav-timetable-btn-prev"><span class="icon-chevron-sign-left"></span></a>
-    <a title="Next" class="nav-timetable-btn-next"><span class="icon-chevron-sign-right"></span></a>
-    <div class="nav-timetable-title"><h2></h2></div>
-</div>
+<div class="timetable red">
+    <h1 class="header">Timetable</h1>
+    {{ link_to("teacher/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}
+    <button class="btn btn-edit mbottom-20">Edit</button>
+    <div class="nav">
+        <a title="Prev" class="btn-prev"><span class="icon-chevron-sign-left"></span></a>
+        <a title="Next" class="btn-next"><span class="icon-chevron-sign-right"></span></a>
+        <div class="title"><h2></h2></div>
+    </div>
 
-<table class="table table-timetable week">
-    <thead class="table-head">
-        <tr>
-            {% for day in period %}
-            <th class="timetable-day" data-day="{{ day.format('N') }}">{{ day.format("l") }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-</table>
+    <table class="table week">
+        <thead class="head">
+            <tr>
+                {% for day in period %}
+                <th class="day-of-week" data-day="{{ day.format('N') }}">{{ day.format("l") }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+    </table>
+</div>

@@ -6,7 +6,7 @@
     background-color:#0ba6d3;
 }
 
-.blue.ld-box .parent .title {
+.blue.ld-box .ld-box-head .title {
     background-color: #0ba6d3;
 }
 
@@ -34,5 +34,7 @@
 .blue.homework .table [class*="btn-"] {
     background-color: #0ba6d3;
 }
-
+.blue.timetable .header-navigation {
+    background-color: #e27176; //TODO change color
+}
 

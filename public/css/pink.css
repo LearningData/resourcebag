@@ -1,0 +1,40 @@
+.pink .btn-icon, .pink .btn {
+    background-color: #ff0097;
+}
+
+.pink.btn-icon:hover, .pink .btn:hover {
+    background-color: #ff0097;
+}
+
+.pink.ld-box .ld-box-head .title {
+    background-color: #ff0097;
+}
+
+.pink .header:hover {
+    background-color: #ff0097;
+}
+
+.pink .form-control:focus {
+    border-color: #ff0097;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
+}
+
+.pink .modal-title {
+    border-left-color: #ff0097;
+}
+
+.pink .uploader .action {
+    background-color: #ff0097;
+}
+
+.pink.homework .nav ul li a {
+    background-color: #ff0097;
+}
+.pink.homework .table [class*="btn-"] {
+    background-color: #ff0097;
+}
+.pink.timetable .header-navigation {
+    background-color: #e27176; //TODO change color
+}
+

@@ -3,53 +3,49 @@ var timetablePage = (function() {
     //init
     var displayDate = new Date()
     var init = function() {
-        if ( $( ".timetable-header" ).length > 0 ) {
+        if ( $( ".timetable .header" ).length > 0 ) {
             getWeekView( displayDate )
             //events
-            $( ".timetable-header" ).click( function( event ) {
+            $( ".timetable .header" ).click( function( event ) {
                 window.location.href = urlBase + "/" + getUser() + "/timetable"
             })
-            $( ".timetable-day" ).click( function( event ) {
+            $( ".timetable .day-of-week" ).click( function( event ) {
                 getTimetableData( $ ( this ).data().day )
-                $( ".timetable-day" ).removeClass( "active" )
+                $( ".timetable .day-of-week" ).removeClass( "active" )
                 $( this ).addClass( "active" )
             })
-            $( ".nav-timetable-title" ).click( function( event ) {
+            $( ".timetable .nav .title" ).click( function( event ) {
                 getWeekView( displayDate )
                 $( ".timetable-day" ).removeClass( "active" )
             })
-            $( ".nav-timetable-btn-prev").click( function() {
+            $( ".timetable .nav .btn-prev").click( function() {
                 displayDate.setUTCDate(displayDate.getUTCDate() - 7)
                 getWeekView( displayDate )
                 $( ".timetable-day" ).removeClass( "active" )
             })
-            $( ".nav-timetable-btn-next").click( function() {
+            $( ".timetable .nav .btn-next").click( function() {
                 displayDate.setUTCDate(displayDate.getUTCDate() + 7)
                 getWeekView( displayDate )
-                $( ".timetable-day" ).removeClass( "active" )
+                $( ".day-of-week" ).removeClass( "active" )
             })
-            $( ".teacher .btn-timetable-edit").click( function() {
-                $( ".teacher .table-timetable" ).toggleClass( "edit" )
+            $( ".teacher .timetable .btn-edit").click( function() {
+                $( ".teacher .timetable .table" ).toggleClass( "edit" )
             })
         }
-        $( ".btn-tmtbl.btn-return" ).click( function( event ) {
-            window.history.go( -1 )
-        })
-       
     }
 
     var getTimetableData = function( day ) {
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
-            var tableHead = $( ".table.table-timetable .table-head" )
+            var tableHead = $( ".timetable .table .head" )
             data = response.week[day]
             if ( data == undefined ) {
                 return
             }
-            var timetable = $( "<table class=\"table table-timetable day\">")
+            var timetable = $( "<table class=\"table day\">")
             var tableRows = []
             for ( var i = 0; i < data.length; i++ ) {
-                var rowStr = "<tr><td>" + data[i].time + "</td>"
+                var rowStr = "<tr><td>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
                 rowStr += "<td colSpan=5>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                 tableRows.push(rowStr)
             }
@@ -57,25 +53,25 @@ var timetablePage = (function() {
             tableBody.append( tableRows.join("") )
             timetable.append( tableBody )
             timetable.prepend(tableHead)
-            $( ".table.table-timetable" ).replaceWith( timetable )
+            $( ".timetable .table" ).replaceWith( timetable )
         })
     }
 
     var setMainTableHeader = function ( week, firstDay ) {
         var lastDay = new Date()
         lastDay.setDate(firstDay.getUTCDate() + Object.keys(week).length)
-        var header = $( ".nav-timetable-title h2" )
+        var header = $( ".timetable .nav .title h2" )
         header.empty()
         header.append(prettyDate(firstDay) + " - " + prettyDate(lastDay) )
         
     }
 
     var setWeekTableHead = function( firstDay ) {
-        var tableHead = $( ".table.table-timetable .table-head" )
-        var headRows = tableHead.find( ".timetable-day")
+        var tableHead = $( ".timetable .table .head" )
+        var headRows = tableHead.find( ".day-of-week")
             for (var i = 0; i < headRows.length; i++ ) {
                 var thisDay = new Date( firstDay )
-                thisDay.setDate(firstDay.getUTCDate() + parseInt(headRows[i].getAttribute("data-day")))
+                thisDay.setDate(thisDay.getDate() + i)
                 headRows[i].textContent = dayOfWeek(thisDay)
        }
        return tableHead
@@ -114,14 +110,14 @@ var timetablePage = (function() {
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
             var firstDay = new Date( date )
-            firstDay.setDate(date.getUTCDate() - date.getUTCDay())
+            firstDay.setDate(date.getDate() - date.getDay() + 1)
             setMainTableHeader( response.week, firstDay )
             var tableHead = setWeekTableHead( firstDay )
-            var timetable = $( "<table class=\"table table-timetable week\">")
+            var timetable = $( "<table class=\"table week\">")
             timetable.append( getWeekRows( response.week ) )
             timetable.prepend(tableHead)
-            $( ".table.table-timetable" ).replaceWith( timetable )
-            $( ".teacher .table.table-timetable.week td .cell-icon").click(function( event ) {
+            $( ".timetable .table" ).replaceWith( timetable )
+            $( ".teacher .timetable .table.week td .cell-icon").click(function( event ) {
                 event.stopPropagation()
                 if ($( event.target ).hasClass("icon-remove") ) { 
                     removeSubjectClass(event.target.parentElement, event.target)
@@ -130,15 +126,13 @@ var timetablePage = (function() {
                     addSubjectClass(event.target.parentElement, event.target)
                 }
             })
-            $( ".teacher .table.table-timetable.week td .subject").click(function( event ) {
+            $( ".teacher .timetable .table.week td .subject").click(function( event ) {
                 event.preventDefault()
                 event.stopPropagation()
                 window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
             })
-            $( ".teacher .table.table-timetable.week td").click(function( event ) {
-                console.log(event.currentTarget)
-                console.log(event.target)
-                $( ".teacher .table.table-timetable.week td").removeClass( "edit" )
+            $( ".teacher .timetable .table.week td").click(function( event ) {
+                $( ".teacher .timetable .table.week td").removeClass( "edit" )
                 event.currentTarget.classList.add( "edit" )
             })
         })
@@ -194,4 +188,3 @@ var timetablePage = (function() {
         init: init
     }
 })()
-

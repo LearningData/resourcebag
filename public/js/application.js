@@ -6,7 +6,6 @@ $(document).ready(function() {
     var y = date.getFullYear();
     
     $( ".nav.navbar-nav li" ).removeClass( "active" )
-    timetablePage.init()
     if ( window.location.pathname.indexOf("dashboard") != -1 ) {
         dashboard.init()
         $( ".nav.navbar-nav li.dashboard" ).addClass( "active" )
@@ -25,9 +24,6 @@ $(document).ready(function() {
     else if ( window.location.pathname.indexOf("calendar") != -1 ) {
         calendarPage.init()
         $( ".nav.navbar-nav li.events" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("timetable") != -1 ) {
-        $( ".nav.navbar-nav li.timetable" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("Ebooks") != -1 ) {
         $( ".nav.navbar-nav li.ebooks" ).addClass( "active" )
@@ -48,6 +44,10 @@ $(document).ready(function() {
     else if ($( "div.homework" ).length  > 0) {
         homeworkPage.init()
         $( ".nav.navbar-nav li.homework" ).addClass( "active" )
+    }
+    else if ($( "div.timetable" ).length  > 0) {
+        timetablePage.init()
+        $( ".nav.navbar-nav li.timetable" ).addClass( "active" )
     }
 
     $(".alert").alert();
@@ -72,9 +72,17 @@ $(document).ready(function() {
     $( "#start-date" ).datepicker( "widget" ).addClass( "event-page" )
     $( "#end-date" ).datepicker( "widget" ).addClass( "event-page" )
     $( "#notice-note-date" ).datepicker( "widget" ).addClass( "datepicker-note" )
+    setUpEvents()
 });
 var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file]").uniform();
+
+function setUpEvents() {
+    $( ".btn.btn-return" ).click( function( event ) {
+            window.history.go( -1 )
+    })
+}
+
 
 function getUser() {
     var body = $ ( "body" )
@@ -170,7 +178,7 @@ function showTimes(date) {
 
 function dayOfWeek( date ) {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
-    return days[date.getUTCDay()]
+    return days[date.getDay()]
 }
 
 function prettyDay( date ) {

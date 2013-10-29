@@ -1,6 +1,7 @@
+<div class="classes pink">
 <h1>New Class</h1>
 
-{{ form("teacher/createClass", "method":"post", "class":"form-tmtbl form-inline") }}
+{{ form("teacher/createClass", "method":"post", "class":"form-inline") }}
     <p class="col-md-6">
         <label for="subject-id">Subject</label>
         {{ select('subject-id', subjects, 'using': ['id', 'name'],
@@ -19,7 +20,7 @@
     </p>
 
     <h2>Slots</h2>
-    <table class="table table-condensed table-timetable">
+    <table class="table table-condensed">
         <thead>
             <tr>
                 <th>Monday</th>
@@ -49,4 +50,5 @@
     </table>
     <input type="submit" class="btn">
 </form>
-<button class="btn btn-tmtbl btn-return">Cancel</button>
+<button class="btn btn-return">Cancel</button>
+</div>

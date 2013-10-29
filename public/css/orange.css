@@ -6,7 +6,7 @@
     background-color: #f47920;
 }
 
-.orange.ld-box .parent .title {
+.orange.ld-box .ld-box-head .title {
     background-color: #ff9e19;
 }
 
@@ -30,5 +30,7 @@
 .orange.homework .table [class*="btn-"] {
     background-color: #ff9e19
 }
-
+.orange.timetable .header-navigation {
+    background-color: #e27176; //TODO change color
+}
 
