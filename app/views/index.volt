@@ -9,6 +9,7 @@
         {{ stylesheet_link("css/summernote.css") }}
         {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}
+        {{ stylesheet_link("css/application.css") }}
         {{ stylesheet_link("css/media.css") }}
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}

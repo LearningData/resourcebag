@@ -58,8 +58,8 @@ var timetablePage = (function() {
     }
 
     var setMainTableHeader = function ( week, firstDay ) {
-        var lastDay = new Date()
-        lastDay.setDate(firstDay.getUTCDate() + Object.keys(week).length)
+        var lastDay = new Date(firstDay)
+        lastDay.setDate(lastDay.getDate() + Object.keys(week).length)
         var header = $( ".timetable .nav .title h2" )
         header.empty()
         header.append(prettyDate(firstDay) + " - " + prettyDate(lastDay) )
