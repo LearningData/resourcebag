@@ -1,3 +1,20 @@
+/*      Extra small devices Phones (<768px) and Small devices Tablets (≥768px).
+ -----------------------------------------------------------------*/
+.user-profile-actions {
+    display: none;
+}
+.collapse {
+    /*display: block;*/
+    display: block;
+}
+.sidebar {
+    background: #E6E7E8;
+    padding: 0 0 20px;
+}
+.custom-icon-dash-top:before {
+    margin-left: -11px;
+}
+
 /*      Small devices Tablets (≥768px).
  -----------------------------------------------------------------*/
 
@@ -37,20 +54,96 @@
         max-width: 90%;
         height: auto;
     }
-    .navbar-toggle {
+
+    .navbar-nav {
+        margin: 0;
     }
     .navbar-toggle {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: #e5e7e8;;
         border: none;
         border-radius: 0;
         float: right;
         margin: 0;
-        padding:0;
+        padding: 0;
         position: relative;
         font-size: 20px;
     }
-    .collapse {
-        /*display: block;*/
+    .form-search input {
+        margin: 20px auto;
+    }
+    .navbar-nav > li {
+        width: 30%;
+        float: left;
+        margin-bottom: 3%;
+    }
+    .navbar-nav > li:nth-child(3n+2) {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    .navbar-nav > li:nth-child(3n+1) {
+        margin-left: 2.5%;
+    }
+    .navbar-nav > li a, .navbar-nav > li a:hover {
+        color: #fff;
+        border: none;
+        min-height: 75px;
+        text-align: center;
+        font-size: 12px;
+    }
+    .navbar-nav > li a, .navbar-nav > li a:hover, .navbar-nav > li a.active {
+        padding: 20px 0;
+    }
+    .navbar-nav > li a span {
+        font-size: 18px;
+        width: 100%;
+        display: block;
+        color: #FFFFFF !important;
+        float: none;
+    }
+    .navbar-nav > li a:hover span, .navbar-nav > li.active span {
+        color: #FFFFFF !important;
+    }
+    .navbar-nav > li.dashboard a {
+        position: relative;
+    }
+    .navbar-nav > li.dashboard a, .navbar-nav > li.dashboard.active a {
+        background-color: #fff;
+        color: #414042;
+        border: none;
+        padding: 20px 0;
+    }
+    .navbar-nav > li.homework a {
+        background-color: #ff9e19;
+    }
+    .navbar-nav > li.messages a {
+        background-color: #10a236;
+    }
+    .navbar-nav > li.notices a {
+        background-color: #0ba6d3;
+    }
+    .navbar-nav > li.events a {
+        background-color: #9752a3;
+    }
+    .navbar-nav > li.timetable a {
+        background-color: #dc3b42;
+    }
+    .navbar-nav > li.classes a {
+        background-color: #ff0097;
+    }
+    .navbar-nav > li.ebooks a {
+        background-color: #898c27;
+    }
+    .navbar-nav > li.journal a {
+        background-color: #731a12;
+    }
+    .navbar-nav > li.copies a {
+        background-color: #9299ce;
+    }
+    .navbar-nav > li.resources a {
+        background-color: #438c76;
+    }
+    .navbar-nav > li.policies a {
+        background-color: #939598;
     }
 
 }

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
-        {{ stylesheet_link("css/font-custom.css") }}        
+        {{ stylesheet_link("css/font-custom.css") }}
         {{ stylesheet_link("css/summernote.css") }}
         {{ stylesheet_link("css/summernote-bootstrap.css") }}
         {{ stylesheet_link("css/style.css") }}
@@ -21,13 +21,13 @@
         <!div class="container">
         <div class="row">
         -->
-       <div class="sidebar col-sm-3 col-md-3 col-lg-3">
+        <div class="sidebar col-sm-3 col-md-3 col-lg-3">
             {% if user is defined %}
-            <header>
-                {% set header = user.getController()~"/_header" %}
-                {{ partial(header)}}
-                {{ partial(user.getController()~"/_sidebar") }}
-            </header>
+
+            {% set header = user.getController()~"/_header" %}
+            {{ partial(header)}}
+            {{ partial(user.getController()~"/_sidebar") }}
+
             {% endif %}
         </div>
         <div class="col-sm-9 col-md-9 col-lg-9">
