@@ -3,32 +3,37 @@ var timetablePage = (function() {
     //init
     var displayDate = new Date()
     var init = function() {
-        getWeekView( displayDate )
-        //events
-        $( ".timetable-header" ).click( function( event ) {
-            window.location.href = urlBase + "/" + getUser() + "/timetable"
-        })
-        $( ".timetable-day" ).click( function( event ) {
-            getTimetableData( $ ( this ).data().day )
-            $( ".timetable-day" ).removeClass( "active" )
-            $( this ).addClass( "active" )
-        })
-        $( ".nav-timetable-title" ).click( function( event ) {
+        if ( $( ".timetable-header" ).length > 0 ) {
             getWeekView( displayDate )
-            $( ".timetable-day" ).removeClass( "active" )
-        })
-        $( ".nav-timetable-btn-prev").click( function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() - 7)
-            getWeekView( displayDate )
-            $( ".timetable-day" ).removeClass( "active" )
-        })
-        $( ".nav-timetable-btn-next").click( function() {
-            displayDate.setUTCDate(displayDate.getUTCDate() + 7)
-            getWeekView( displayDate )
-            $( ".timetable-day" ).removeClass( "active" )
-        })
-        $( ".teacher .btn-timetable-edit").click( function() {
-            $( ".teacher .table-timetable" ).toggleClass( "edit" )
+            //events
+            $( ".timetable-header" ).click( function( event ) {
+                window.location.href = urlBase + "/" + getUser() + "/timetable"
+            })
+            $( ".timetable-day" ).click( function( event ) {
+                getTimetableData( $ ( this ).data().day )
+                $( ".timetable-day" ).removeClass( "active" )
+                $( this ).addClass( "active" )
+            })
+            $( ".nav-timetable-title" ).click( function( event ) {
+                getWeekView( displayDate )
+                $( ".timetable-day" ).removeClass( "active" )
+            })
+            $( ".nav-timetable-btn-prev").click( function() {
+                displayDate.setUTCDate(displayDate.getUTCDate() - 7)
+                getWeekView( displayDate )
+                $( ".timetable-day" ).removeClass( "active" )
+            })
+            $( ".nav-timetable-btn-next").click( function() {
+                displayDate.setUTCDate(displayDate.getUTCDate() + 7)
+                getWeekView( displayDate )
+                $( ".timetable-day" ).removeClass( "active" )
+            })
+            $( ".teacher .btn-timetable-edit").click( function() {
+                $( ".teacher .table-timetable" ).toggleClass( "edit" )
+            })
+        }
+        $( ".btn-tmtbl.btn-return" ).click( function( event ) {
+            window.history.go( -1 )
         })
        
     }
@@ -184,105 +189,6 @@ var timetablePage = (function() {
         cell.append( icon )
         cell.removeClass("edit")
     }
-
-    var createNewClassModalDialog = function( classes ) {
-        var modal = $( "<div class=\"modal timetable fade\" id=\"newClassModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">New Class</h2></div>")
-        var modalBody = $ ( "<div class=\"modal-body\"></div>" )
-
-/*        //select subjects
-        <label for="subject-id">Subject</label>
-        {{ select('subject-id', subjects, 'using': ['id', 'name'],
-                'emptyText': 'Please, choose one subject') }}
-        var options= ["<option value=\"\" disabled=\"disabled\"> Class:</option>"]
-        for ( var i = 0; i < classes.length; i++ ) {
-            options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
-        }
-        var selectClass = $( "<select>", {
-            name: "classList-id",
-            id: "classList-id",
-            "class": "form-control customSelect",
-            required: "required",
-            onchange: "return getEnableDays(this)"
-        })
-        selectClass.append( options.join("") )
-        modalBody.append( selectClass )
-
-*/
-        var yearInput = $ ( "<input>", {
-            type: "text",
-            "class": "form-control",
-            placeholder: "Year:",
-            name: "year",
-            id: "year",
-            required: "required"
-        })
-        modalBody.append( yearInput )
-        var roomInput = $ ( "<input>", {
-            type: "text",
-            "class": "form-control",
-            placeholder: "Room:",
-            name: "room",
-            id: "room",
-            required: "required"
-        })
-        modalBody.append( roomInput )
-        var extraInput = $ ( "<input>", {
-            type: "text",
-            "class": "form-control",
-            placeholder: "Extra-Ref:",
-            name: "extra-ref",
-            required: "required"
-        })
-        modalBody.append( extraInput )
-        var hiddenInput = $ ( "<input>", {
-            type: "hidden",
-            name: "schyear",
-            value: "2014" //TODO get year
-        })
-        modalBody.append( extraInput )
-
-       var hiddenInput = $ ( "<input>", {
-            style: "display: none",
-            type: "checkbox",
-            name: "day/name",
-            value: "TimeSlotId" //TODO get year
-        })
-
-        //buttons
-        var send = $( "<input>", {
-            "class": "btn",
-            type: "submit",
-            value: "save"
-        })
-        var cancel = $( "<button>", {
-            type: "button",
-            "class": "btn",
-            "data-dismiss": "modal",
-            html: "Cancel"
-        })
-
-        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
-        modalFooter.append( send )
-        modalFooter.append( cancel )
-
-        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
-
-        var modalContent = $ ( "<div class=\"modal-timetable modal-content\"></div>" )
-        modalContent.append( modalHeader )
-        modalContent.append( modalBody )
-        modalContent.append( modalFooter )
-
-        var form = $( "<form class=\"form-timetable\">", {
-            method: "post",
-            action: urlBase + "/teacher/createClass"
-        })
-        modalContent.appendTo( form )
-        form.appendTo( modalDialog )
-        modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
-    }
-
 
     return {
         init: init

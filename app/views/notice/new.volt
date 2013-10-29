@@ -5,11 +5,11 @@
     {{ text_area("notice", "placeholder":"Notice", "class":"form-control") }}
 </p>
 <p class="col-md-6">
-    {{ text_field("date", "placeholder":"Date", "id":"notice-note-date") }}
+    {{ text_field("date", "placeholder":"Date", "id":"notice-note-date", "class":"form-control") }}
 </p>
 <div class="clearfix"></div>
 <span class="col-md-6">
-        <div class="radio-box">
+        <div class="radio-box form-control">
             <div><label><input type="radio" name="type" value="A"> Teachers/Students</label></div>
             <div><label><input type="radio" name="type" value="T"> Teachers</label></div>
             <div><label><input type="radio" name="type" value="P"> Students</label></div>
@@ -24,4 +24,4 @@
 <div class="clearfix"></div>
 {{ submit_button("Save", "class":"btn btn-notice") }}
 </form>
-<button class="btn btn-notice btn-return">Back</button>
+<button class="btn btn-notice btn-return">Cancel</button>

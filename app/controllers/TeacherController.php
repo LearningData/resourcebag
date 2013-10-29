@@ -20,7 +20,7 @@ class TeacherController extends UsersController {
     public function newClassAction() {
         $user = $this->getUserBySession();
         $this->view->subjects = Subject::find();
-        $this->view->cohorts = Cohort::find("schoolId=" . $user->schoolId);
+        $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
 
         $slots = array();
         for($i = 1; $i <=6; $i++) {

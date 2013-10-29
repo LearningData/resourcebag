@@ -25,22 +25,27 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public static function getStudentNotices($user) {
         $classIdParams = ClassListService::classesToIds($user->classes);
 
-        $notices = NoticeBoard::find("schoolId = " . $user->schoolId .
-            " and classId in (" . $classIdParams . ")" .
-            " and (userType = 'P' or userType = 'A') order by date desc");
+        $query = "schoolId = ?1 and classId in ( ?2 ) and " .
+                 "(userType = 'P' or userType = 'A') order by date desc";
 
-        return $notices;
+        $values = array(1 => $user->schoolId, 2 => $classIdParams);
+        $params = array($query, "bind" => $values);
+
+        return NoticeBoard::find($params);
     }
 
     public static function getTeacherNotices($user) {
-        $classes = ClassList::getClassesByTeacherId($user->id);
+        $classes = ClassList::findByTeacherId($user->id);
         $classIdParams = ClassListService::classesToIds($classes);
 
-        $notices = NoticeBoard::find("schoolId = " . $user->schoolId .
-            " and classId in (" . $classIdParams . ")" .
-            " and (userType = 'T' or userType = 'A') order by date desc");
+        $query = "schoolId = ?1 and classId in ( ?2 ) and " .
+                 "(userType = 'T' or userType = 'A') order by date desc";
 
-        return $notices;
+        $values = array(1 => $user->schoolId, 2 => $classIdParams);
+        $params = array($query, "bind" => $values);
+
+
+        return NoticeBoard::find($params);
     }
 
     public function columnMap() {

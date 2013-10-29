@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
-
+.classList {
+    display: inline;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    border: 1px solid #FF0097;
+}
 .label {
     color: black;
 }
@@ -447,12 +452,12 @@ table > tbody > tr.active td:last-child {
 }
 
 /*//////DEFAULT LIST HOME//////*/
-.box-messages .box-child ul li, .box-homework .box-child ul li {
+.box-messages .box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
     padding: 10px 10px 10px 45px;
     font-size: 12px;
 }
-.box-messages .box-child ul li:last-child, .box-homework .box-child ul li:last-child {
+.box-messages .box-child ul li:last-child {
     border: none;
 }
 .notice-home ul li.star {
@@ -737,19 +742,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border-color: #f2f2f2;
 }
 
-/*//////HOMEWORK//////*/
-.header-homework {
-    background-color: #FF9E19;
-}
-
-.homework-home ul li {
-    position: relative;
-    padding-left: 45px;
-}
-.homework-home  ul li p {
-    margin: 0;
-}
-
 /*//////HOMEWORK PAGE//////*/
 /*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
 .cl-hwk {
@@ -763,36 +755,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .bdr-hwk {
     border-color: #ff9e19/*border color*/
-}
-/*Homework-dashboard*/
-
-#dashboard-homework > ul li {
-    padding-left: 5px;
-}
-
-#dashboard-homework > ul li > p {
-    margin: 0px;
-    display: inline;
-    margin-left: 5px;
-}
-
-#dashboard-homework > ul li > a{
-    display: inline-block;
-    line-height: 20px;
-}
-
-.homeworkList li.overdue {
-    color: #FF0000;
-}
-
-
-.homeworkList li span.icon-warning-sign {
-    display: none
-}
-
-.homeworkList li.overdue span.icon-warning-sign {
-    display: inline;
-    color: #FF0000;
 }
 
 .nav-homework ul li a {
@@ -1246,15 +1208,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*///////////////DASHBOARD/////////////*/
-.box {
-    position: relative;
-/* background-color: #f6f6f6;
- border-radius: 0 0 5px 5px;
- -moz-border-radius: 0 0 5px 5px;
- */ float: left;
-    overflow: hidden;
-    height: 375px
-}
 
 
 .box-home {
@@ -1277,54 +1230,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .box-homework .box-child ul {
     padding-bottom: 0px;
 }
-
-@media screen and (max-width: 767px) {
-    .box {
-        width: 99%;
-        margin-bottom: 15px;
-        height: auto;
-    }
-    .box:nth-child(1) {
-        height: 500px;
-    }
-}
-@media screen and (min-width: 768px) {
-    .box:nth-child(1) {
-        width: 66%;
-        height: 500px;
-        margin: 0 5px 0px 0;
-    }
-    
-    .box:nth-child(2) {
-        width: 33%;
-        height: 375px;
-        margin-bottom: 15px;
-    }
-
-    .box:nth-child(3) {
-        width: 33%;
-        height: 500px;
-    }
-
-    .box:nth-child(4) {
-        width: 32.9%;
-        margin-top: -374px;
-        height: auto;
-    }
-
-    .box:nth-child(5) {
-        width: 32.5%;
-        margin: 0px 5px 5px 5px;
-        margin-top: -374px;
-        height: auto;
-    }
-}
-
-/* @media screen and (min-width: 992px) {
-}
-@media screen and (min-width: 1200px) {
-}*/
-
 
 #dashboard-timetable .table-timetable {
     max-height: 400px;
@@ -1471,9 +1376,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 /*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
 /*****DASHBOARD*********/
-.dash-brd-hv:hover {
-    background-color: #f0f2f2;
-}
+
 
 /*//////EVENTS PAGE//////*/
 /*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
@@ -1534,12 +1437,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
 }
-.form-event .form-control:focus {
-    border-color: #9752a3;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9752a3;
-}
 
 div.uploader {
     margin: 15px 0 !important;
@@ -1576,6 +1473,13 @@ form input[disabled] {
 .form-tmtbl .btn:focus:hover, .btn.btn-tmtbl:hover {
     background-color: #da3940;
 }
+
+.form-tmtbl .form-control:focus {
+    border-color: #e5242d;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
+}
+
 /*homework*/
 .form-hwk .btn, .btn.btn-hwk {
     background-color: #ff9e19;
@@ -1593,16 +1497,23 @@ form input[disabled] {
 .form-notice .btn:hover, .btn.btn-notice:hover {
         background: #0ba6d3;
 }
+
+.form-notice .form-control {
+    
+
+}
+
+.form-notice .form-control:focus {
+    border-color: #0ba6d3;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 8px rgba(11, 166, 211, 0.6);
+}
+
 .form-notice .uploader .action {
     background-color: #0ba6d3;
 }
 .form-notice .radio-box {
-    width: 95%;
-    margin: 20px 0 0;
-    border-radius: 0;
-    box-shadow: none;
-    color: #A2A2A2;
-    border: solid 1px #F2F2F2;
+    height: auto;
 }
 
 .form-notice .radio-box label {
@@ -1618,6 +1529,11 @@ form input[disabled] {
     background-color: #5a2a60;
 }
 
+.form-evt .form-control:focus {
+    border-color: #9752a3;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
+}
 
 
 /*------ END UI DEFAULTS ------*/

@@ -14,7 +14,8 @@ class StudentController extends UsersController {
     }
 
     public function listClassesAction() {
-        $group = $this->view->user->getGroups("year=2014")->getFirst();
+        $param = "year = " . Config::schoolYear();
+        $group = $this->view->user->getGroups($param)->getFirst();
         $this->view->classes = ClassListService::getClassesByGroup($group);
     }
 
@@ -30,7 +31,7 @@ class StudentController extends UsersController {
             $classListUser->classId = $classId;
 
             if ($classListUser->save()) {
-                $slots = TimetableSlot::find("classId = $classId");
+                $slots = TimetableSlot::findByClassId($classId);
 
                 foreach ($slots as $slot) {
                     $timetableChange = new TimetableChange();

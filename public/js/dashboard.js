@@ -119,7 +119,7 @@ var dashboard = (function() {
                     continue
             }
             var overdue = new Date(item["due-date"]) < Date.now() ? "overdue" : ""
-            homeworkItems.push("<li class=\"dash-brd-hv " + overdue + "\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-warning-sign\" title=\"overdue\"></span></p></li>")
+            homeworkItems.push("<li class=\"" + overdue + "\"><a class=\"btn-icon " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"overdue\"></span></p></li>")
         }
         return homeworkItems
     }
@@ -142,7 +142,7 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li class=\"dash-brd-hv\"><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacherstudent/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacherstudent/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
         }
         return homeworkItems
     }
@@ -150,12 +150,14 @@ var dashboard = (function() {
     var populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
-            console.log(getUser())
             var homeworkItems = getUser() == "student" ? studentHomeworkList(response.homeworks) : teacherHomeworkList(response.homeworks)
-            var homeworkList = $( "<ul class=\"homeworkList\">")
+            var homeworkList = $( "<ul>")
             homeworkList.append( homeworkItems.join("") )
-            $( "#dashboard-homework" ).append( homeworkList )
-            $ (".box-homework .box-child").slimScroll({height:"335px"})
+            $( "#dashboard-homework-contents" ).append( homeworkList )
+            $ (".dashboard-homework .box .child").slimScroll({height:"335px"})
+            $( ".dashboard .homework .icon-exclamation-sign" ).tooltip( {title: "Overdue"})
+            $( ".dashboard .homework .icon-caret-right" ).tooltip( {title: "Start homework"})
+            $( ".dashboard .homework .icon-pencil" ).tooltip( {title: "Edit howework"} )
         })
     }
 
@@ -201,7 +203,7 @@ var dashboard = (function() {
             var items = []
             for ( var i = 0; i < response.messages.length; i++ ) {
                 var msg = response.messages[i]
-                var classStr = "class=" + ((msg.status == 0) ? "\"msg-unread dash-brd-hv\"" : "\"dash-brd-hv\"")
+                var classStr = "class=" + ((msg.status == 0) ? "\"msg-unread\"" : "")
                 items.push("<li " + classStr + "><div class=msg-label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
             }
             var list = $( "<ul>")

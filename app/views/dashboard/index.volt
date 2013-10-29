@@ -1,6 +1,6 @@
-<div class="dashboard-page container- gridster">
+<div class="dashboard">
     <ul>
-        <li id="dashboard-timetable-box" class="box box-timetable">
+        <li id="dashboard-timetable-box" class="ld-box box-timetable">
             <div class="box-header">
                 <div id="dashboard-timetable-head" class="header-title header-timetable"> 
                     <h2><span class="custom-icon-timetable"></span>Timetable</h2>
@@ -16,18 +16,18 @@
                 </div>
             </div>
         </li>
-        <li id="dashboard-homework-box" class="box box-homework">
-            <div class="box-header">
-                <div id="dashboard-homework-head" class="header-title header-homework"> 
+        <li id="dashboard-homework-box" class="ld-box homework orange">
+            <div class="header">
+                <div id="dashboard-homework-head" class="title"> 
                     <h2><span class="custom-icon-homework"></span>Homework</h2>
                 </div>
             </div>
-            <div class="box-child">
-                <div id="dashboard-homework">
+            <div class="child">
+                <div id="dashboard-homework-contents">
                 </div>
             </div>
         </li>
-        <li id="dashboard-events-box" class="box box-events">
+        <li id="dashboard-events-box" class="ld-box box-events">
             <div class="box-header">
                 <div id="dashboard-events-head" class="header-title header-events"> 
                 </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </li>
-        <li id="dashboard-messages-box" class="box box-messages">
+        <li id="dashboard-messages-box" class="ld-box box-messages">
             <div class="box-header">
                 <div id="dashboard-messages-head "class="header-title header-messages">
                     <h2><span class="icon-envelope"></span>Messages</h2>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </li>
-        <li id="dashboard-notices-box" class="box box-notices">
+        <li id="dashboard-notices-box" class="ld-box box-notices">
             <div class="box-header">
                 <div id="dashboard-notices-head" class="header-title header-notices">
                     <h2><span class="custom-icon-notices"></span>School Notices</h2>

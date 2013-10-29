@@ -1,4 +1,4 @@
-    <p><label>School Year: {{ year.value }}</label></p>
+    <p><label>School Year: {{ year }}</label></p>
     <p>
         <label>Stage:</label>
         {{ text_field("stage", "value":cohort.stage) }}

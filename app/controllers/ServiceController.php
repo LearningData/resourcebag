@@ -23,7 +23,7 @@ class ServiceController extends ControllerBase {
     }
 
     public function daysByClassAction($classId) {
-        $slots = TimetableSlot::find("classId = " . $classId);
+        $slots = TimetableSlot::findByClassId($classId);
         $weekDays = "";
 
         foreach ($slots as $slot) { $weekDays .= $slot->day . ","; }
@@ -34,9 +34,11 @@ class ServiceController extends ControllerBase {
     }
 
     public function getClassTimesAction($classId, $day) {
-        $query = "classId = $classId and day = $day";
+        $query = "classId = ?1 and day = ?2";
+        $params = array($query, "bind" => array(1 => $classId, 2 => $day));
+
         $times = array();
-        $slots = TimetableSlot::find($query);
+        $slots = TimetableSlot::find($params);
 
         foreach ($slots as $slot) { array_push($times, $slot->timeSlotId); }
 

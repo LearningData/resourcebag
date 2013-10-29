@@ -2,6 +2,11 @@
 require "../app/services/HomeworkService.php";
 
 class HomeworkController extends ControllerBase {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+        if(!$user) { return $this->response->redirect("index"); }
+    }
+
     public function indexAction() {
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
@@ -11,37 +16,31 @@ class HomeworkController extends ControllerBase {
         if ($user->isStudent()) {
             $homeworks = $user->getHomeworkByStatus($status);
         } else {
-            if ($status != "") {
-                $homeworks = Homework::find("teacherId = " .$user->id . " and status = $status");
-            } else {
-                $homeworks = Homework::find("teacherId = " .$user->id . " and status >= 2");
-            }
+            $homeworks = Homework::findByTeacherAndStatus($user->id, $status);
         }
 
         $this->view->user = $user;
         $this->view->status = $status;
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
-        $this->view->links = HomeworkService::getPaginateLinks($user->getController(),
-            $totalPages, $status);
+        $this->view->links = HomeworkService::getPaginateLinks(
+            $user->getController(),
+            $totalPages, $status
+        );
 
         $this->view->pick($template);
     }
 
     public function listByClassAction($classId) {
+        if(!$this->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
         $status = $this->request->get("filter");
 
-        if(!$user->isTeacher()) {
-            $this->response->redirect($user->getController());
-        }
-
-        if ($status != "") {
-            $homeworks = Homework::find("classId = $classId and status = $status");
-        } else {
-            $homeworks = Homework::find("classId = $classId and status >= 2");
-        }
+        $homeworks = Homework::findByClassAndStatus($classId, $status);
 
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
@@ -75,6 +74,10 @@ class HomeworkController extends ControllerBase {
     }
 
     public function editAction($homeworkId) {
+        if(!Authenticate::getUser()->isStudent()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();
 
@@ -101,6 +104,10 @@ class HomeworkController extends ControllerBase {
     }
 
     public function reviewAction($homeworkId) {
+        if(!$this->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();
 
@@ -109,12 +116,20 @@ class HomeworkController extends ControllerBase {
     }
 
     public function reviewedAction($homeworkId) {
+        if(!$this->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $this->reviewHomework($homeworkId);
         $uri = "teacher/homework";
         return $this->response->redirect($uri);
     }
 
     public function reviewManyHomeworksAction() {
+        if(!$this->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $ids = $this->request->getPost("ids");
 
         foreach ($ids as $id) {
@@ -202,6 +217,10 @@ class HomeworkController extends ControllerBase {
     }
 
     private function reviewHomework($homeworkId) {
+        if(!$this->isTeacher()) {
+            return $this->response->redirect("dashboard");
+        }
+
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();
         $homework->reviewedDate = date("Y-m-d");
@@ -214,5 +233,13 @@ class HomeworkController extends ControllerBase {
         }
 
         return $homework;
+    }
+
+    private function isTeacher() {
+        if (Authenticate::getUser()->isTeacher()) {
+            return true;
+        }
+
+        return false;
     }
 }

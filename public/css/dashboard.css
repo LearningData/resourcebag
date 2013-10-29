@@ -1,0 +1,131 @@
+.dashboard .ld-box {
+    position: relative;
+/* background-color: #f6f6f6;
+ border-radius: 0 0 5px 5px;
+ -moz-border-radius: 0 0 5px 5px;
+ */ float: left;
+    overflow: hidden;
+    height: 375px
+}
+
+@media screen and (max-width: 767px) {
+    .dashboard .ld-box {
+        width: 99%;
+        margin-bottom: 15px;
+        height: auto;
+    }
+    .dashboard .ld-box:nth-child(1) {
+        height: 500px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .dashboard .ld-box:nth-child(1) {
+        width: 66%;
+        height: 500px;
+        margin: 0 5px 0px 0;
+    }
+    
+    .dashboard .ld-box:nth-child(2) {
+        width: 33%;
+        height: 375px;
+        margin-bottom: 15px;
+    }
+
+    .dashboard .ld-box:nth-child(3) {
+        width: 33%;
+        height: 500px;
+    }
+
+    .dashboard .ld-box:nth-child(4) {
+        width: 32.9%;
+        margin-top: -374px;
+        height: auto;
+    }
+
+    .dashboard .ld-box:nth-child(5) {
+        width: 32.5%;
+        margin: 0px 5px 5px 5px;
+        margin-top: -374px;
+        height: auto;
+    }
+}
+
+.dashboard .ld-box .header .title {
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+
+    padding: 15px;
+}
+
+.dashboard .ld-box .header .title span  {
+    margin-right: 15px;
+}
+
+.dashboard .ld-box .header .title h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.dashboard .ld-box .child ul li {
+    border-bottom: #d1d3d4 solid 1px;
+    padding: 10px 10px 10px 45px;
+    font-size: 12px;
+}
+.dashboard .ld-box ul li:last-child {
+    border: none;
+}
+.dashboard .ld-box ul li:hover {
+    background-color: #f0f2f2;
+}
+
+
+
+
+/*homework*/
+
+.dashboard .homework.ld-box .child ul li {
+    padding-left: 5px;
+}
+
+.dashboard .homework.ld-box .child ul li > p {
+    margin: 0px;
+    display: inline;
+    margin-left: 5px;
+}
+
+.dashboard .homework.ld-box .child ul li > a {
+    display: inline-block;
+    line-height: 20px;
+}
+
+
+.dashboard .homework.ld-box .child ul li.overdue {
+    color: #FF0000;
+}
+
+.dashboard .homework.ld-box .child ul li span.icon-exclamation-sign {
+    display: none
+}
+
+.dashboard .homework.ld-box .child ul li.overdue span.icon-exclamation-sign {
+    display: inline;
+    float: right;
+    color: #FF0000;
+}
+
+
+.dashboard-homework .tooltip-inner {
+    background-color: #ff9e19;
+    margin-right: 5px;
+}
+
+.dashboard-homework .tooltip.top .tooltip-arrow {
+    border-top-color: #ff9e19;
+}
+
+
+
+
+

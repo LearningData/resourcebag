@@ -2,6 +2,16 @@
 use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
 
 class AdminController extends UsersController {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user) { return $this->response->redirect("index"); }
+
+        if(!$user->isAdmin()) {
+            return $this->response->redirect("dashboard");
+        }
+    }
+
     public function indexAction() {
         $user = Authenticate::getUser();
 
