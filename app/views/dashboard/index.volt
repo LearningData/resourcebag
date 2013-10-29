@@ -37,14 +37,14 @@
                 </div>
             </div>
         </li>
-        <li id="dashboard-messages-box" class="ld-box box-messages">
-            <div class="box-header">
-                <div id="dashboard-messages-head "class="header-title header-messages">
+        <li id="dashboard-messages-box" class="ld-box messages green">
+            <div class="ld-box-head">
+                <div id="dashboard-messages-head "class="title">
                     <h2><span class="icon-envelope"></span>Messages</h2>
                 </div>
             </div>
             <div class="ld-box-child">
-                <div id="dashboard-messages">
+                <div id="dashboard-messages-contents">
                 </div>
             </div>
         </li>

@@ -519,53 +519,6 @@ table > tbody > tr.active td:last-child {
     width: auto;
 }
 
-/*//////MESSAGES HOME//////*/
-.header-messages {
-    background-color: #10a236;
-}
-
-.box-child {
-    background-color: #f6f6f6;
-}
-
-.box-messages .box-child ul li {
-    position: relative;
-    padding-left: 65px;
-}
-.box-messages .box-child ul li p {
-    margin: 0;
-}
-.box-messages .box-child .badge {
-    background: #fff;
-    color: #10a236;
-    font-size: 14px;
-    padding: 7px 4px;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    margin-top: 2px;
-    width: 25px;
-    height: 25px;
-}
-
-.msg-label {
-    width: 35px;
-    height: 35px;
-    float: left;
-    text-align: center;
-    background: #939598;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    margin-top: -18px;
-    padding-top: 9px;
-}
-
-.msg-unread {
-    font-weight: bold;
-}
 
 /*//////EVENTS HOME//////*/
 #datepicker {
@@ -632,52 +585,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .table-events td:last-child {
     vertical-align: middle;
 }
-
-/*//////MESSAGES HOME//////*/
-.header-messages {
-    background-color: #10a236;
-}
-
-.messages-home ul li {
-    position: relative;
-    padding-left: 65px;
-}
-.messages-home ul li p {
-    margin: 0;
-}
-.messages-home .badge {
-    background: #fff;
-    color: #10a236;
-    font-size: 14px;
-    padding: 7px 4px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    margin-top: 2px;
-    width: 25px;
-    height: 25px;
-}
-
-.label-message {
-    width: 35px;
-    height: 35px;
-    float: left;
-    text-align: center;
-    background: #939598;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    margin-top: -18px;
-    padding-top: 9px;
-}
-
-.msg-unread {
-    font-weight: bold;
-}
-
 
 /*//////USER PROFILE//////*/
 .user-profile {

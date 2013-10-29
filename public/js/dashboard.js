@@ -138,7 +138,7 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacherstudent/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
         }
         return homeworkItems
     }
@@ -199,13 +199,13 @@ var dashboard = (function() {
             var items = []
             for ( var i = 0; i < response.messages.length; i++ ) {
                 var msg = response.messages[i]
-                var classStr = "class=" + ((msg.status == 0) ? "\"msg-unread\"" : "")
-                items.push("<li " + classStr + "><div class=msg-label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
+                var classStr = "class=" + ((msg.status == 0) ? "\"unread\"" : "")
+                items.push("<li " + classStr + "><div class=label>" + msg.sender + "</div><p>" + msg.text + "</p></li>")
             }
             var list = $( "<ul>")
             list.append( items.join("") )
-            $( "#dashboard-messages" ).append( list )
-            $ (".box-messages .box-child").slimScroll({height:"335px"})
+            $( "#dashboard-messages-contents" ).append( list )
+            $ (".dashboard .messages .ld-box-child").slimScroll({height:"335px"})
         //})
 
     }
