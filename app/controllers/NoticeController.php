@@ -122,8 +122,10 @@ class NoticeController extends ControllerBase {
         }
 
         if($user->isSchool()) {
-            return NoticeBoard::find("schoolId = " . $user->schoolId .
-                " order by date desc");
+            $query = "schoolId = ?1 order by date desc";
+            $params = array($query, "bind" => array(1 => $user->schoolId));
+
+            return NoticeBoard::find($params);
         }
 
         if($user->isTeacher()) {

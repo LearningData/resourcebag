@@ -1,4 +1,8 @@
 <div class="nav-collapse collapse">
+    <form class="form-search" role="search">
+        <input type="text" class="form-control" placeholder="Search">
+        <button type="submit" class="btn-search icon-search"></button>
+    </form>
     <nav class="nav navbar-nav">
         <li class="dashboard active">
             <a href="/schoolbag/dashboard"><span class="custom-icon-dash-top"></span><span class="custom-icon-dash"></span>Dashboard</a>
@@ -28,10 +32,10 @@
             <a href="#"><span class="custom-icon-ebooks"></span>Ebooks</a>
         </li>
         <!--<li class="journal">
-            {{ link_to("student/subjects/", "Journal") }}
+        {{ link_to("student/subjects/", "Journal") }}
         </li>
         <li class="copies">
-            <a href="#">Copies</a>
+        <a href="#">Copies</a>
         </li>-->
         <li class="resources">
             <a href="#"> <span class="icon-wrench"></span> Resources</a>

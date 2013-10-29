@@ -16,7 +16,7 @@ class SchoolController extends UsersController {
         $this->view->hours = Timetable::hours();
         $this->view->minutes = Timetable::minutes();
         $this->view->weekDays = Timetable::weekDays();
-        $this->view->year = Config::findFirst("name = 'schoolYear'")->value;
+        $this->view->year = Config::schoolYear();
 
         $this->view->slots = $slots;
     }
@@ -24,7 +24,7 @@ class SchoolController extends UsersController {
     public function listUsersAction() {
         $user = Authenticate::getUser();
 
-        $users = User::find("schoolId = " . $user->schoolId);
+        $users = User::findBySchoolId($user->schoolId);
         $this->view->users = $users;
     }
 
