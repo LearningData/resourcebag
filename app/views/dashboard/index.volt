@@ -17,7 +17,7 @@
             </div>
         </li>
         <li id="dashboard-homework-box" class="ld-box homework orange">
-            <div class="header">
+            <div class="parent">
                 <div id="dashboard-homework-head" class="title"> 
                     <h2><span class="custom-icon-homework"></span>Homework</h2>
                 </div>

@@ -9,6 +9,9 @@ var homeworkPage = (function() {
     $( ".btn-review" ).tooltip( {title: "Review Homework"} )
 
     //events
+    $( ".homework .header" ).click( function( event ) {
+        window.location.href = urlBase + "/" + getUser() + "/homework"
+    })
     $( ".bt-new a" ).click(function( event ) {
         event.preventDefault()
         $( "#newHomeworkModal" ).modal( "show" )
@@ -52,17 +55,14 @@ var homeworkPage = (function() {
         submitHomeworkDialog( $ ( this ).data() )
         $( "#submitHomeworkModal" ).modal( "show" )
     })
-    $( ".homework-header" ).click( function( event ) {
-        window.location.href = urlBase + "/" + getUser() + "/homework"
-    })
-    $( ".homework-view .bt-return" ).click( function( event ) {
+    $( ".homework-view .btn.return" ).click( function( event ) {
         if ( document.referrer.indexOf("homework") != -1 ) {
             window.history.go( -1 )
         } else {
             window.location.href = urlBase + "/" + getUser() + "/homework"
         }
     })
-    $( ".homework-collapse" ).click( function( event ){
+    $( ".homework .table .collapse-toggle" ).click( function( event ){
         var element = event.target
         var target = element.getAttribute("data-target")
         var iconTarget = element.getAttribute("data-icon")
@@ -82,7 +82,7 @@ var homeworkPage = (function() {
 
     var createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Set New Homework</h24></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h24></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var titleInput = $ ( "<input>", {
@@ -145,14 +145,14 @@ var homeworkPage = (function() {
         modalBody.append(classId)
         //buttons
         var send = $( "<input>", {
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             type: "submit",
             value: "save"
         })
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -163,7 +163,7 @@ var homeworkPage = (function() {
 
         var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
 
-        var modalContent = $ ( "<div class=\"modal-homework modal-content\"></div>" )
+        var modalContent = $ ( "<div class=\"homework orange modal-content\"></div>" )
         modalContent.append( modalHeader )
         modalContent.append( modalBody )
         modalContent.append( modalFooter )
@@ -183,7 +183,7 @@ var homeworkPage = (function() {
 
     var uploadHomeworkFileDialog = function( homeworkId ) {
         var modal = $( "<div class=\"modal fade\" id=\"uploadHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Upload Homework File</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Upload Homework File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var fileInput = $ ( "<input>", {
@@ -212,14 +212,14 @@ var homeworkPage = (function() {
         modalBody.append(homeworkId)
         //buttons
         var send = $( "<input>", {
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             type: "submit",
             value: "save"
         })
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -249,18 +249,18 @@ var homeworkPage = (function() {
 
     removeHomeworkFileDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"removeHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">Remove File</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Remove File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to remove the file " + data.name +" </p></div>" )
 
         //buttons
         var send = $( "<a>", {
             href: urlBase + "/homework/removeFile/" + data.fileId,
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             html: "Yes"
         })
 
         var cancel = $( "<button>", {
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -282,18 +282,18 @@ var homeworkPage = (function() {
 
     var submitHomeworkDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title bdr-hwk\">Submit Homework</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Submit Homework</h4></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework " + data.title +" </p></div>" )
 
         //buttons
         var send = $( "<a>", {
             href: urlBase + "/student/homework/submit/" + data.homeworkId,
-            "class": "btn bg-hwk bg-hwk-hv",
+            "class": "btn",
             html: "Yes"
         })
 
         var cancel = $( "<button>", {
-            "class": "btn bg-hwk bg-hwk-hv˙",
+            "class": "btn",
             "data-dismiss": "modal",
             html: "Cancel"
         })

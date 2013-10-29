@@ -154,7 +154,7 @@ var dashboard = (function() {
             var homeworkList = $( "<ul>")
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework-contents" ).append( homeworkList )
-            $ (".dashboard-homework .box .child").slimScroll({height:"335px"})
+            $ (".dashboard .homework.ld-box .child").slimScroll({height:"335px"})
             $( ".dashboard .homework .icon-exclamation-sign" ).tooltip( {title: "Overdue"})
             $( ".dashboard .homework .icon-caret-right" ).tooltip( {title: "Start homework"})
             $( ".dashboard .homework .icon-pencil" ).tooltip( {title: "Edit howework"} )

@@ -1,7 +1,26 @@
-.orange .btn-icon {
+.orange .btn-icon, .orange .btn {
     background-color: #ff9e19;
 }
 
-.orange.ld-box .header .title {
+.orange.btn-icon:hover, .orange .btn:hover {
+    background-color: #f47920;
+}
+
+.orange.ld-box .parent .title {
     background-color: #ff9e19;
+}
+
+.orange .header:hover {
+   background-color: #FF9E19;
+}
+
+.orange .form-control:focus {
+    border-color: #f7941e;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
+}
+
+.orange .modal-title {
+    border-left-color: #ff9e19
 }

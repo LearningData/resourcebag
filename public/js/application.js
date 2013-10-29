@@ -11,11 +11,11 @@ $(document).ready(function() {
         dashboard.init()
         $( ".nav.navbar-nav li.dashboard" ).addClass( "active" )
     }
-    else if ( window.location.pathname.indexOf("homework") != -1 ) {
+/*    else if ( window.location.pathname.indexOf("homework") != -1 ) {
         homeworkPage.init()
         $( ".nav.navbar-nav li.homework" ).addClass( "active" )
     }
-    else if ( window.location.pathname.indexOf("messages") != -1 ) {
+*/    else if ( window.location.pathname.indexOf("messages") != -1 ) {
         $( ".nav.navbar-nav li.nessages" ).addClass( "active" )
     }
     else if ( window.location.pathname.indexOf("noticeboard") != -1 ) {
@@ -44,6 +44,10 @@ $(document).ready(function() {
     }
     else if ( window.location.pathname.indexOf("subject") != -1 ) {
         $( ".nav.navbar-nav li.classes" ).addClass( "active" )
+    }
+    else if ($( "div.homework" )  > 0) {
+        homeworkPage.init()
+        $( ".nav.navbar-nav li.homework" ).addClass( "active" )
     }
 
     $(".alert").alert();
