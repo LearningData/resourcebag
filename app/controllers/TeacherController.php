@@ -24,7 +24,7 @@ class TeacherController extends UsersController {
 
         $slots = array();
         for($i = 1; $i <=6; $i++) {
-            $slots[$i] = Timetable::getEmptySlotsByDay($this->view->user, $i);
+            $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
         }
         $this->view->slots = $slots;
     }

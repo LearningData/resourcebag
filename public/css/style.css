@@ -316,6 +316,8 @@ table > tbody > tr.active td:last-child {
     border-radius: 0 0 5px 5px;
 }
 
+
+
 .navbar-nav li a {
     color: #3a3a3a;
     padding-top: 18px;
@@ -327,7 +329,9 @@ table > tbody > tr.active td:last-child {
     display: block;
     float: left;
 }
-
+.navbar-nav > li a span[class*="custom-icon-"] {
+    font-size: 18px;
+}
 .navbar-nav > li a:hover, .navbar-nav > li.active a {
     color: #fff;
     border-left: solid 5px;
@@ -420,7 +424,6 @@ table > tbody > tr.active td:last-child {
 .navbar-nav > li.policies a:hover, .navbar-nav > li.policies.active a {
     background-color: #939598;
     border-color: #575a5b;
-    background-position: 13px -1081px;
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
@@ -1106,6 +1109,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 /*/////FORMS & FORM CONTROLS/////*/
 .form-search {
     position: relative;
+}
+.form-search input  {
+    border: solid 1px #525353!important;
 }
 .form-control, input[type='text'], form textarea {
     width: 95%;
