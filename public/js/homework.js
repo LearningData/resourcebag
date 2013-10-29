@@ -1,77 +1,5 @@
 var homeworkPage = (function() {
 
-    //init
-    var urlBase = window.location.origin + "/schoolbag"
-
-    $( ".btn-remove" ).tooltip( {title: "Remove File"} )
-    $( ".btn-submit" ).tooltip( {title: "Submit Homework"} )
-    $( ".btn-pending" ).tooltip( {title: "Start Homework"} )
-    $( ".btn-review" ).tooltip( {title: "Review Homework"} )
-
-    //events
-    $( ".homework .header" ).click( function( event ) {
-        window.location.href = urlBase + "/" + getUser() + "/homework"
-    })
-    $( ".bt-new a" ).click(function( event ) {
-        event.preventDefault()
-        $( "#newHomeworkModal" ).modal( "show" )
-    })
-    $( "#upload-homework-file" ).click(function( event ) {
-        event.preventDefault()
-        uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
-        $( "#uploadHomeworkModal" ).modal( "show" )
-    })
-    $( "#add-homework-text" ).click(function( event ) {
-        event.preventDefault()
-        $("#save-homework-text").show()
-        $( "#summernote" ).summernote({
-            height: 300,
-            focus: true,
-            toolbar: [
-                [ "style", [ "bold", "italic", "underline" ] ],
-                //['fontsize', ["fontsize"]],
-                ['para', ['ul', 'ol', 'paragraph']],
-                //['insert', ['picture', 'link']], // no insert buttons
-            ]
-        })
-    })
-
-    $( "#save-homework-text" ).click(function( event ) {
-        event.preventDefault()
-        $('textarea[name="content-homework"]').val($('#summernote').code())[0]
-        $("#text-form").submit()
-    })
-
-    $( ".btn-remove" ).click(function( event ) {
-        event.preventDefault()
-        removeHomeworkFileDialog( $ ( this ).data() )
-        $( "#removeHomeworkModal" ).modal( "show" )
-    })
-    $( ".btn-submit" ).click(function( event ) {
-        event.preventDefault()
-        if ($( event.currentTarget ).hasClass("btn-inactive")) {
-            return
-        }
-        submitHomeworkDialog( $ ( this ).data() )
-        $( "#submitHomeworkModal" ).modal( "show" )
-    })
-    $( ".homework-view .btn.return" ).click( function( event ) {
-        if ( document.referrer.indexOf("homework") != -1 ) {
-            window.history.go( -1 )
-        } else {
-            window.location.href = urlBase + "/" + getUser() + "/homework"
-        }
-    })
-    $( ".homework .table .collapse-toggle" ).click( function( event ){
-        var element = event.target
-        var target = element.getAttribute("data-target")
-        var iconTarget = element.getAttribute("data-icon")
-        $( target ).collapse( "toggle" )
-        $( iconTarget )[0].classList.toggle("icon-chevron-right")
-        $( iconTarget )[0].classList.toggle("icon-chevron-down")
-        
-    })
-
     var getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/";
         $.get( url, function(response) {
@@ -345,6 +273,76 @@ var homeworkPage = (function() {
         dfdDialog.done(createNewHomeworkDialog)
         getClasses( dfdDialog )
         stylePaginator()
+
+        $( ".btn-remove" ).tooltip( {title: "Remove File"} )
+        $( ".btn-submit" ).tooltip( {title: "Submit Homework"} )
+        $( ".btn-edit" ).tooltip( {title: "Edit Homework"} )
+        $( ".btn-pending" ).tooltip( {title: "Start Homework"} )
+        $( ".btn-review" ).tooltip( {title: "Review Homework"} )
+
+        //events
+        $( ".homework .header" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/homework"
+        })
+        $( ".bt-new a" ).click(function( event ) {
+            event.preventDefault()
+            $( "#newHomeworkModal" ).modal( "show" )
+        })
+        $( "#upload-homework-file" ).click(function( event ) {
+            event.preventDefault()
+            uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
+            $( "#uploadHomeworkModal" ).modal( "show" )
+        })
+        $( "#add-homework-text" ).click(function( event ) {
+            event.preventDefault()
+            $("#save-homework-text").show()
+            $( "#summernote" ).summernote({
+                height: 300,
+                focus: true,
+                toolbar: [
+                    [ "style", [ "bold", "italic", "underline" ] ],
+                    //['fontsize', ["fontsize"]],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    //['insert', ['picture', 'link']], // no insert buttons
+                ]
+            })
+        })
+
+        $( "#save-homework-text" ).click(function( event ) {
+            event.preventDefault()
+            $('textarea[name="content-homework"]').val($('#summernote').code())[0]
+            $("#text-form").submit()
+        })
+
+        $( ".btn-remove" ).click(function( event ) {
+            event.preventDefault()
+            removeHomeworkFileDialog( $ ( this ).data() )
+            $( "#removeHomeworkModal" ).modal( "show" )
+        })
+        $( ".btn-submit" ).click(function( event ) {
+            event.preventDefault()
+            if ($( event.currentTarget ).hasClass("btn-inactive")) {
+                return
+            }
+            submitHomeworkDialog( $ ( this ).data() )
+            $( "#submitHomeworkModal" ).modal( "show" )
+        })
+        $( ".homework-view .btn.return" ).click( function( event ) {
+            if ( document.referrer.indexOf("homework") != -1 ) {
+                window.history.go( -1 )
+            } else {
+                window.location.href = urlBase + "/" + getUser() + "/homework"
+            }
+        })
+        $( ".homework .table .collapse-toggle" ).click( function( event ){
+            var element = event.target
+            var target = element.getAttribute("data-target")
+            var iconTarget = element.getAttribute("data-icon")
+            $( target ).collapse( "toggle" )
+            $( iconTarget )[0].classList.toggle("icon-chevron-right")
+            $( iconTarget )[0].classList.toggle("icon-chevron-down")
+            
+        })
     }
 
     return {

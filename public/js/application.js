@@ -45,7 +45,7 @@ $(document).ready(function() {
     else if ( window.location.pathname.indexOf("subject") != -1 ) {
         $( ".nav.navbar-nav li.classes" ).addClass( "active" )
     }
-    else if ($( "div.homework" )  > 0) {
+    else if ($( "div.homework" ).length  > 0) {
         homeworkPage.init()
         $( ".nav.navbar-nav li.homework" ).addClass( "active" )
     }

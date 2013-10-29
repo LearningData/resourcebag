@@ -135,10 +135,6 @@ var dashboard = (function() {
                     icon = "icon-pencil"
                     urlSegment = "show"
                 break
-                case "3" :
-                    icon = "icon-eye-open"
-                    urlSegment = "review"
-                break
                 default: 
                     continue
             }
