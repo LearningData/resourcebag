@@ -29,6 +29,10 @@ class ControllerBase extends Controller {
         $this->view->csrf_params = array("name" => $tokenKey, "value" => $token);
     }
 
+    protected function isValidPost() {
+        return ($this->request->isPost() && $this->security->checkToken());
+    }
+
     protected function appendErrorMessages($messages) {
         foreach ($messages as $message) {
             $this->flash->error($message);

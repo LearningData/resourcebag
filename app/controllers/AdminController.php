@@ -180,10 +180,6 @@ class AdminController extends UsersController {
         ));
     }
 
-    private function isValidPost() {
-        return ($this->request->isPost() && $this->security->checkToken());
-    }
-
     private function populeSchool() {
         $school = new School();
         $school->id = $this->request->getPost("schoolID");
