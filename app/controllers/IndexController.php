@@ -13,4 +13,3 @@ class IndexController extends Phalcon\Mvc\Controller {
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
     }
 }
-

@@ -29,11 +29,12 @@ class AdminController extends UsersController {
     }
 
     public function newSchoolAction() {
+        $this->setTokenValues();
         $this->view->render('admin/schools', 'new');
     }
 
     public function createSchoolAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) { return $this->toIndex(); }
 
         $school = $this->populeSchool();
 
@@ -53,7 +54,7 @@ class AdminController extends UsersController {
     }
 
     public function deleteSchoolAction($schoolID) {
-        $school = School::findFirstByschoolID($schoolID);
+        $school = School::findFirstById($schoolID);
 
         if (!$school) {
             $this->flash->error("school was not found");
@@ -89,13 +90,14 @@ class AdminController extends UsersController {
             $this->tag->setDefault("AccessCode", $school->accessCode);
             $this->tag->setDefault("TeacherAccessCode", $school->teacherAccessCode);
             $this->tag->setDefault("allTY", $school->allTY);
+            $this->setTokenValues();
 
             $this->view->render("admin/schools", "edit");
         }
     }
 
     public function updateSchoolAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) { return $this->toIndex(); }
 
         $schoolID = $this->request->getPost("schoolID");
 
@@ -130,11 +132,14 @@ class AdminController extends UsersController {
     }
 
     public function newConfigAction() {
+        $this->setTokenValues();
         $this->view->render("admin/configs", "new");
     }
 
     public function createConfigAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) {
+            return $this->toIndex();
+        }
 
         $config = new Config();
 
@@ -173,6 +178,10 @@ class AdminController extends UsersController {
             "controller" => "admin",
             "action" => "index"
         ));
+    }
+
+    private function isValidPost() {
+        return ($this->request->isPost() && $this->security->checkToken());
     }
 
     private function populeSchool() {

@@ -18,8 +18,15 @@ class ControllerBase extends Controller {
         //     return false;
         // }
     }
+
     protected function getUserBySession() {
         return Authenticate::getUser();
+    }
+
+    protected function setTokenValues() {
+        $tokenKey = $this->security->getTokenKey();
+        $token = $this->security->getToken();
+        $this->view->csrf_params = array("name" => $tokenKey, "value" => $token);
     }
 
     protected function appendErrorMessages($messages) {
