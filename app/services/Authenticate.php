@@ -18,10 +18,6 @@ class Authenticate extends Component {
         return false;
     }
 
-    public function getTokenKey() {
-        return $this->getDi()->getSecurity()->getTokenKey();
-    }
-
     public function checkPassword($password, $hashedPassword) {
         return $this->security->checkHash($password, $hashedPassword);
     }

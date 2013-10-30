@@ -6,7 +6,7 @@
     <label for="value">Value</label>
     <input type="text" name="value">
 </p>
-
+{{ securityTag.csrf(csrf_params) }}
 <p>
     <input type="submit">
 </p>
