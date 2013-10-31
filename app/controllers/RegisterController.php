@@ -3,12 +3,21 @@ use Phalcon\Mvc\View;
 
 class RegisterController extends Phalcon\Mvc\Controller {
     public function indexAction() {
+        $tokenKey = $this->security->getTokenKey();
+        $token = $this->security->getToken();
+
+        $this->view->csrf_params = array("name" => $tokenKey,
+            "value" => $token);
+
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         $this->view->schools = School::find();
     }
 
     public function createAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->request->isPost() || !$this->security->checkToken()) {
+            return $this->toIndex();
+        }
+
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
 
         $password = $this->request->getPost("password");

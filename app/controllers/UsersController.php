@@ -7,6 +7,7 @@ class UsersController extends ControllerBase {
     public function indexAction() {}
 
     public function newAction() {
+        $this->setTokenValues();
         $types = array("T" => "Teacher",
             "P" => "Student", "S" => "School Admin");
 
@@ -16,10 +17,12 @@ class UsersController extends ControllerBase {
         $this->view->types = $types;
     }
 
-    public function editAction() {}
+    public function editAction() {
+        $this->setTokenValues();
+    }
 
     public function createAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) { return $this->toIndex(); }
         $admin = $this->getUserBySession();
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
@@ -56,7 +59,7 @@ class UsersController extends ControllerBase {
     }
 
     public function updateAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) { return $this->toIndex(); }
 
         $userID = $this->request->getPost("userID");
 
@@ -101,10 +104,12 @@ class UsersController extends ControllerBase {
         );
     }
 
-    public function changePasswordAction() {}
+    public function changePasswordAction() {
+        $this->setTokenValues();
+    }
 
     public function updatePasswordAction() {
-        if (!$this->request->isPost()) { return $this->toIndex(); }
+        if (!$this->isValidPost()) { return $this->toIndex(); }
         $user = $this->view->user;
         $oldPassword = $this->request->getPost("old-password");
         $newPassword = $this->request->getPost("new-password");

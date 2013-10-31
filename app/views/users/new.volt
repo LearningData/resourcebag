@@ -1,6 +1,7 @@
 <h1>Create User</h1>
 
 {{ form("users/create", "method":"post", "enctype":"multipart/form-data") }}
+{{ securityTag.csrf(csrf_params) }}
 <p>
     <label>Name</label>
     {{ text_field("name") }}

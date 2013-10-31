@@ -13,6 +13,7 @@
         {{ stylesheet_link("css/media.css") }}
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/fullcalendar.css") }}
+        {{ stylesheet_link("css/media.css") }}
     </head>
     <body class="{{ user.getController() }}">
 
