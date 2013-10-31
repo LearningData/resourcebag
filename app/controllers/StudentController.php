@@ -6,7 +6,13 @@ class StudentController extends UsersController {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
 
-        if(!$user) { return $this->response->redirect("index"); }
+        if(!$user) {
+            $this->dispatcher->forward(array(
+                "controller" => "index",
+                "action" => "index"
+            ));
+            return false;
+        }
 
         if(!$user->isStudent()) {
             return $this->response->redirect("dashboard");
@@ -20,44 +26,46 @@ class StudentController extends UsersController {
     }
 
     public function joinClassAction() {
-        $classId = $this->request->getPost("class-id");
+        if ($this->isValidPost()) {
+            $classId = $this->request->getPost("class-id");
 
-        if ($classId) {
-            $user = $this->view->user;
-            $classList = ClassList::findFirstById($classId);
-            $classListUser = new ClassListUser();
-            $classListUser->schoolId = $user->schoolId;
-            $classListUser->studentId = $user->id;
-            $classListUser->classId = $classId;
+            if ($classId) {
+                $user = $this->view->user;
+                $classList = ClassList::findFirstById($classId);
+                $classListUser = new ClassListUser();
+                $classListUser->schoolId = $user->schoolId;
+                $classListUser->studentId = $user->id;
+                $classListUser->classId = $classId;
 
-            if ($classListUser->save()) {
-                $slots = TimetableSlot::findByClassId($classId);
+                if ($classListUser->save()) {
+                    $slots = TimetableSlot::findByClassId($classId);
 
-                foreach ($slots as $slot) {
-                    $timetableChange = new TimetableChange();
-                    $timetableChange->schoolId = $slot->schoolId;
-                    $timetableChange->day = $slot->day;
-                    $timetableChange->studentId = $user->id;
-                    $timetableChange->timeSlotId = $slot->timeSlotId;
-                    $timetableChange->room = $slot->room;
-                    $timetableChange->subjectId = $classList->subject->id;
+                    foreach ($slots as $slot) {
+                        $timetableChange = new TimetableChange();
+                        $timetableChange->schoolId = $slot->schoolId;
+                        $timetableChange->day = $slot->day;
+                        $timetableChange->studentId = $user->id;
+                        $timetableChange->timeSlotId = $slot->timeSlotId;
+                        $timetableChange->room = $slot->room;
+                        $timetableChange->subjectId = $classList->subject->id;
 
-                    if (!$timetableChange->save()) {
-                        $classListUser->delete();
-                        $this->flash->error("was not possible join in class");
-                        $this->dispatcher->forward(array("action" => "index"));
+                        if (!$timetableChange->save()) {
+                            $classListUser->delete();
+                            $this->flash->error("was not possible join in class");
+                            $this->dispatcher->forward(array("action" => "index"));
+                        }
                     }
+
+                    $this->flash->success("joined in class");
+                } else {
+                    $this->flash->error("error to save");
                 }
-
-                $this->flash->success("joined in class");
             } else {
-                $this->flash->error("error to save");
+                $this->flash->error("classId is null");
             }
-        } else {
-            $this->flash->error("classId is null");
-        }
 
-        $this->dispatcher->forward(array("action" => "index"));
+            $this->dispatcher->forward(array("action" => "index"));
+        }
     }
 
     public function subjectsAction() {}

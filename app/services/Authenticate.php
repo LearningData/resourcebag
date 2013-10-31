@@ -28,16 +28,16 @@ class Authenticate extends Component {
     }
 
     public function getUser() {
-        $session = $this->session->get($this->request->getServerAddress());
+        if($this->session->has($this->request->getServerAddress())) {
+            $session = $this->session->get($this->request->getServerAddress());
 
-        if(isset($session["id"])) {
-            $user = User::findFirstById($session["id"]);
-            if ($user) {
-                $this->view->user = $user;
-                return $user;
+            if(isset($session["id"])) {
+                $user = User::findFirstById($session["id"]);
+                if($user) {
+                    $this->view->user = $user;
+                    return $user;
+                }
             }
-
-            return false;
         }
 
         return false;

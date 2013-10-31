@@ -5,7 +5,13 @@ class AdminController extends UsersController {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
 
-        if(!$user) { return $this->response->redirect("index"); }
+        if(!$user) {
+            $this->dispatcher->forward(array(
+                "controller" => "index",
+                "action" => "index"
+            ));
+            return false;
+        }
 
         if(!$user->isAdmin()) {
             return $this->response->redirect("dashboard");
@@ -22,7 +28,8 @@ class AdminController extends UsersController {
         $numberPage = $this->request->getQuery("page", "int");
         $school = School::find();
 
-        $paginator = new Paginator(array("data" => $school, "limit"=> 10,"page" => $numberPage));
+        $paginator = new Paginator(array("data" => $school,
+            "limit"=> 10,"page" => $numberPage));
         $this->view->page = $paginator->getPaginate();
 
         $this->view->user = $user;
