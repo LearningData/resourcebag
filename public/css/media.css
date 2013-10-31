@@ -1,33 +1,44 @@
-/*      Small devices Tablets (≥768px).
- -----------------------------------------------------------------*/
+/*@media only screen and (min-device-width : 1024px) {
+ .sidebar {
+ display: block;
+ background: #E6E7E8;
+ }
+ .collapse {
+ display: block;
+ }
+ .navbar-toggle {
+ display: none;
+ }
+ .navbar-nav, .navbar-nav > li, .navbar-brand {
+ float: none;
+ }
+ }
+ */
 
-@media only screen and (min-width: 768px) {
-    .sidebar {
-        display: block;
-        background: #E6E7E8;
-    }
-    .collapse {
-        display: block;
-    }
-    .navbar-toggle {
-        display: none;
-    }
-    .navbar-nav, .navbar-nav > li, .navbar-brand {
-        float: none;
-    }
-}
-
-/*      Extra small devices Phones (<768px).
- ---------------------------------------------*/
-
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
+    
+    /*HEAER*/
     .collapse {
         /*display: block;*/
     }
+
     .sidebar {
         background: #E6E7E8;
-        padding: 0 0 20px;
+        padding: 10px 0 20px;
     }
+    
+    .user-profile {
+        width: 40%;
+        padding: 10px 2.5%;
+        margin:0 0 0 57.5%;
+        background-color: none;
+        position: relative;
+    }
+    .user-profile img {
+        max-width: 70%;
+        height: auto;
+    }
+
     .tb-user {
         margin-right: -10px;
     }
@@ -46,27 +57,29 @@
     .btn-profile-actions {
         font-size: 18px;
         margin-left: 10px;
+        background: none;
     }
     .schoolbag-brand {
-        width: 100%;
+        width:20%;
         padding: 10px 0;
+        margin: 0 0 0 2.5%;
+        float:left;
     }
     .schoolbag-brand img {
-        width: 35%;
-    }
-    .user-profile {
         width: 100%;
-        padding: 10px 5%;
-        background-color: #ececec;
-        position: relative;
     }
-    .user-profile img {
-        max-width: 70%;
-        height: auto;
-    }
+    
+
+    /*NAVBAR - MEGAMENU*/
+        
+        /*INPUT SEARCH*/
+        .form-search input {
+            margin: 20px auto;
+        }
 
     .navbar-nav {
         margin: 0;
+        float: none;
     }
     .navbar-toggle {
         background-color: #e5e7e8;;
@@ -78,37 +91,34 @@
         position: static;
         font-size: 24px;
     }
-    .form-search input {
-        margin: 20px auto;
-    }
     .navbar-nav > li {
-        width: 30%;
+        width: 21.8%;
         float: left;
         margin-bottom: 3%;
-    }
-    .navbar-nav > li:nth-child(3n+2) {
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-    }
-    .navbar-nav > li:nth-child(3n+1) {
         margin-left: 2.5%;
     }
     .navbar-nav > li a, .navbar-nav > li a:hover {
+        padding: 20px 0;
         color: #fff;
         border: none;
-        min-height: 75px;
+        min-height: 100px;
         text-align: center;
-        font-size: 12px;
+        font-size: 16px;
     }
-    .navbar-nav > li a, .navbar-nav > li a:hover, .navbar-nav > li a.active {
-        padding: 20px 0;
+    .navbar-nav > li.active a   {
+        border: none;
+        padding-left: 0;
     }
     .navbar-nav > li a span {
-        font-size: 18px;
+        font-size: 32px;
         width: 100%;
         display: block;
         color: #FFFFFF !important;
         float: none;
+        margin-bottom: 20px;
+    }
+    .navbar-nav > li a span[class*="custom-icon-"] {
+        font-size: 34px;
     }
     .navbar-nav > li a:hover span, .navbar-nav > li.active span {
         color: #FFFFFF !important;
@@ -122,8 +132,11 @@
         border: none;
         padding: 20px 0;
     }
+
+    /*BUTTONS COLORS*/
     .dashboard .custom-icon-dash-top {
-        margin-left: -11px;
+        margin-left: -20px;
+        margin-bottom:0;
     }
     .navbar-nav > li.homework a {
         background-color: #ff9e19;
@@ -157,6 +170,115 @@
     }
     .navbar-nav > li.policies a {
         background-color: #939598;
+    }
+
+}
+
+/*      Small devices Tablets (≥768px).
+ -----------------------------------------------------------------*/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+}
+
+/*      Extra small devices Phones (<768px).
+ ---------------------------------------------*/
+
+@media only screen and (max-width: 767px) {
+    
+    
+/*HEADER*/
+    .sidebar    {
+        padding-top: 0;
+    }
+    .user-profile {
+        width: 100%;
+        padding: 10px 2.5%;
+        margin:0;
+        background-color: #ececec;
+        position: relative;
+    }
+    .user-profile img {
+        max-width: 70%;
+        height: auto;
+    }
+
+    .tb-user {
+        margin-right: -10px;
+    }
+    .name-school {
+        font-size: 12px;
+    }
+    .user-profile-actions {
+        display: none;
+        margin: 20px 0 0;
+        position: absolute;
+        z-index: 1;
+        margin: 0 0 0 55px;
+        padding: 30px;
+        background: #ECECEC;
+    }
+    .btn-profile-actions {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+    
+    
+    .schoolbag-brand {
+        width: 100%;
+        padding: 10px 0;
+        margin:0;
+        display: block;
+        text-align: center;
+        float: none;
+    }
+    .schoolbag-brand img {
+        width: 35%;
+    }
+
+
+    .user-profile {
+        width: 100%;
+        padding: 10px 5%;
+        background-color: #ececec;
+        position: relative;
+    }
+    .user-profile img {
+        max-width: 70%;
+        height: auto;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .navbar-toggle {
+        font-size: 24px;
+    }
+
+
+    .navbar-nav > li {
+        width: 30%;
+        margin-bottom: 3%;
+    }
+    .navbar-nav > li:nth-child(3n+2) {
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+    .navbar-nav > li:nth-child(3n+1) {
+        margin-left: 2.5%;
+    }
+    .navbar-nav > li a, .navbar-nav > li a:hover {
+        min-height: 75px;
+        font-size: 12px;
+    }
+    .navbar-nav > li a span {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .navbar-nav > li a span[class*="custom-icon-"] {
+        font-size: 18px;
+    }
+
+    .dashboard .custom-icon-dash-top {
+        margin-left: -11px;
     }
 
 }

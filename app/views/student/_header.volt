@@ -16,7 +16,7 @@
             <strong>{{ user.school.name }}</strong> <button type="button" class="icon-caret-down btn-profile-actions"></button> </span>
 
         <div class="user-profile-actions">
-            <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> My Profile</a>
+            <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> Profile</a>
             <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
         </div>
 
