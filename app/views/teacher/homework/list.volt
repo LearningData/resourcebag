@@ -1,23 +1,50 @@
 <div class="homework orange">
-    <h2>Homeworks</h2>
-    <nav class="status{{ status }} nav">
-        <ul>
-            <li class="bt-new">
-                {{ link_to("teacher/homework/new", "Add New")}}
-            </li>
-            <!--<li class="btn-all">
-                {{ link_to("teacher/homework", "All") }}
-            </li>-->
-            <li class="bt-complete">
-                {{ link_to("teacher/homework?filter=2", "Submitted") }}
-            </li>
-            <li class="btn-reviewed">
-                {{ link_to("teacher/homework?filter=3", "Reviewed") }}
-            </li>
-        </ul>
-    </nav>
+    <h2>Homework</h2>
+    {% if classes %}
 
-    {{ form("homework/reviewManyHomeworks", "method":"post", "class":"form") }}
+    <table class="table table-hover fixed">
+        <thead>
+            <tr>
+                <th colspan=7 rowspan=2>Class</th>
+                <th rowspan=2></th>
+                <th colspan=1 rowspan=2>Year</th>
+                <th colspan=1 rowspan=2>Students</th>
+                <th colspan=2>Status</th>
+                <th colspan=1 rowspan=2>Actions</th>
+                
+            </tr>
+            <tr>
+                <th>In Progress</th>
+                <th>Submitted</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for classList in classes %}
+            <tr>
+                <td colspan=7>{{ classList.subject.name~"("~classList.extraRef~")" }}
+                </td>
+                <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
+                <td>{{ classList.cohort.stage }}</td>
+                <td>{{ classList.users.count() }}</td>
+                <td>{{ classList.getPendingHomework().count() }}</td>
+                <td>{{ classList.getSubmittedHomework().count() }}</td>
+                <td>
+                    {% if !classList.getSubmittedHomework().count() %}
+                        <span data-title="{{ homework.title }}" class="btn-inactive btn-edit btn-icon icon-pencil" title="No pending homework"></span>
+                    {% else %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", "class":"btn-icon btn-edit icon-pencil", "title":"Review") }}
+                    {% endif %}
+
+                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=3", "class":"btn-review btn-icon icon-eye-open", "title":"View archive") }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% else %}
+
+    {{ form("homework/reviewManyHomeworks", "method":"post", "class":"form inline") }}
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +52,7 @@
                     <th>Homework</th>
                     <th>Assigned Date</th>
                     <th>Due Date</th>
-                    <th>Status</th>
+                    <th>Action</th>
                     <th>Review</th>
                 </tr>
             </thead>
@@ -38,7 +65,7 @@
                     <td>{{ homework.dueDate }}</td>
                     {% if homework.isSubmitted() %}
                         <td>
-                            {{ link_to("teacher/homework/review/"~homework.id, "Submitted") }}
+                            {{ link_to("teacher/homework/review/"~homework.id, "Review") }}
                         </td>
                         <td>
                             <input type="checkbox"
@@ -47,12 +74,12 @@
                     {% else %}
                         <td>
                         {% if homework.isReviewed() %}
-                            {{ link_to("teacher/homework/show/"~homework.id, "Reviewed") }}
+                            {{ link_to("teacher/homework/show/"~homework.id, "View") }}
                         {% else %}
                             {{ homework.getStatus() }}
                         {% endif %}
                         </td>
-                        <td></td>
+                        </td></td>
                     {% endif %}
                 </tr>
             {% endfor %}
@@ -68,4 +95,6 @@
         </ul>
         <input type="submit" class="btn btn-left">
     </form>
+    <button class="btn btn-return">Cancel</button>
+    {% endif %}
 </div>

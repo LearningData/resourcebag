@@ -90,7 +90,7 @@
     padding: 0px;
 }
 
-.homework .table th[colspan="3"], .homework .table th[colspan="7"] {
+.homework .table th[colspan="2"], .homework .table th[colspan="7"] {
     text-align: center;
 }
 
