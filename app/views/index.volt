@@ -22,7 +22,7 @@
         <!div class="container">
         <div class="row">
         -->
-        <div class="sidebar col-sm-3 col-md-3 col-lg-3">
+        <div class="sidebar col-md-3 col-lg-3">
             {% if user is defined %}
 
             {% set header = user.getController()~"/_header" %}
@@ -31,7 +31,7 @@
 
             {% endif %}
         </div>
-        <div class="col-sm-9 col-md-9 col-lg-9">
+        <div class="col-md-9 col-lg-9">
             {% for type, messages in flash.getMessages() %}
             {% for message in messages %}
             <div class="alert alert-warning fade in">
