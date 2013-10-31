@@ -91,39 +91,39 @@
 
 
 /*homework*/
-.dashboard .homework.ld-box .ld-box-child {
+.dashboard .ld-homework.ld-box .ld-box-child {
     height: 335px;
     overflow-y: auto;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul {
+.dashboard .ld-homework.ld-box .ld-box-child ul {
     padding-bottom: 0px;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li {
+.dashboard .ld-homework.ld-box .ld-box-child ul li {
     padding-left: 5px;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li > p {
+.dashboard .ld-homework.ld-box .ld-box-child ul li > p {
     margin: 0px;
     display: inline;
     margin-left: 5px;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li > a {
+.dashboard .ld-homework.ld-box .ld-box-child ul li > a {
     display: inline-block;
     line-height: 20px;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li.overdue {
+.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue {
     color: #FF0000;
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li span.icon-exclamation-sign {
+.dashboard .ld-homework.ld-box .ld-box-child ul li span.icon-exclamation-sign {
     display: none
 }
 
-.dashboard .homework.ld-box .ld-box-child ul li.overdue span.icon-exclamation-sign {
+.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue span.icon-exclamation-sign {
     display: inline;
     float: right;
     color: #FF0000;

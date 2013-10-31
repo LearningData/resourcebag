@@ -28,10 +28,9 @@
     background-color: #10a236;
 }
 
-.green.homework .nav ul li a {
-    background-color: #10a236;
-}
-.green.homework .table [class*="btn-"] {
+.green.ld-homework .nav ul li a,
+.green.ld-homework .table [class*="btn-"],
+.teacher .green.ld-homework .table th {
     background-color: #10a236;
 }
 .green.timetable .header-navigation {

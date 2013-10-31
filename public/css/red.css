@@ -25,10 +25,9 @@
     border-left-color: #dc3b42;
 }
 
-.red.homework .nav ul li a {
-    background-color: #dc3b42;
-}
-.red.homework .table [class*="btn-"] {
+.red.ld-homework .nav ul li a,
+.red.ld-homework .table [class*="btn-"],
+.teacher .red.ld-homework .table th {
     background-color: #dc3b42;
 }
 .red.timetable .header-navigation {

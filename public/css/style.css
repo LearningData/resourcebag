@@ -647,24 +647,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border-color: #f2f2f2;
 }
 
-/*//////HOMEWORK PAGE//////*/
-/*/DEFAULT COLORS AND BACKGROUND // HOMEWORK/*/
-.cl-hwk {
-    color: #ff9e19; /*text color*/
-}
-.bdr-hwk {
-    border-color: #ff9e19/*border color*/
-}
-
-
 /**TABLE HOMEWORK**/
 
-.homework-subheader {
-    font-weight: 100;
-    padding: 10px 0 10px 0;
-    font-size: 20px;
-    margin: 0;
-}
 
 .note-editor {
     border: 2px solid #eceded;

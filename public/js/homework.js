@@ -104,7 +104,7 @@ var homeworkPage = (function() {
         modalContent.appendTo( form )
         form.appendTo( modalDialog )
         modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
+        modal.appendTo( "div.ld-homework" )
 
         //Events
     }
@@ -171,7 +171,7 @@ var homeworkPage = (function() {
         modalContent.appendTo( form )
         form.appendTo( modalDialog )
         modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
+        modal.appendTo( "div.ld-homework" )
         $( fileInput ).uniform();
     }
 
@@ -205,7 +205,7 @@ var homeworkPage = (function() {
 
         modalContent.appendTo( modalDialog )
         modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
+        modal.appendTo( "div.ld-homework" )
     }
 
     var submitHomeworkDialog = function( data ) {
@@ -238,7 +238,7 @@ var homeworkPage = (function() {
 
         modalContent.appendTo( modalDialog )
         modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
+        modal.appendTo( "div.ld-homework" )
     }
 
     var stylePaginator = function() {
@@ -281,7 +281,7 @@ var homeworkPage = (function() {
         $( ".btn-review" ).tooltip( {title: "Review Homework"} )
 
         //events
-        $( ".homework .header" ).click( function( event ) {
+        $( ".ld-homework .header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/homework"
         })
         $( ".bt-new a" ).click(function( event ) {
@@ -334,7 +334,7 @@ var homeworkPage = (function() {
                 window.location.href = urlBase + "/" + getUser() + "/homework"
             }
         })
-        $( ".homework .table .collapse-toggle" ).click( function( event ){
+        $( ".ld-homework .table .collapse-toggle" ).click( function( event ){
             var element = event.target
             var target = element.getAttribute("data-target")
             var iconTarget = element.getAttribute("data-icon")

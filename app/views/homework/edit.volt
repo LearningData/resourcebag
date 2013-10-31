@@ -1,7 +1,7 @@
-<div class="homework orange">
+<div class="ld-homework orange">
     <h1 id="header" class="header">Homework</h2>
-    <h2 class="homework-subheader">{{ homework.title }}</h2>
-    <h3 class="homework-description">{{ homework.text }}</h3>
+    <h2 class="subheader">{{ homework.title }}</h2>
+    <h3 class="description">{{ homework.text }}</h3>
 
     <section class="homework-view">
          <button id="add-homework-text" class="btn mtop-20" data-homework-id="{{ homework.id }}">Add Text Input</button>

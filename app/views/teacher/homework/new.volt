@@ -1,4 +1,4 @@
-<div class="homework orange">
+<div class="ld-homework orange">
     <h2>New homework </h2>
 
     {{ form("teacher/createHomework", "method":"post", "class":"form inline") }}

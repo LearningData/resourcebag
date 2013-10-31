@@ -24,13 +24,9 @@
 .orange .modal-title {
     border-left-color: #ff9e19;
 }
-.orange.homework .nav ul li a {
-    background-color: #ff9e19;
-}
-.orange.homework .table [class*="btn-"] {
-    background-color: #ff9e19;
-}
-.teacher .orange.homework .table th {
+.orange.ld-homework .nav ul li a,
+.orange.ld-homework .table [class*="btn-"],
+.teacher .orange.ld-homework .table th {
     background-color: #ff9e19;
 }
 .orange.timetable .header-navigation {

@@ -26,7 +26,7 @@ $(document).ready(function() {
         $(".nav.navbar-nav li.resources").addClass("active")
     } else if (window.location.pathname.indexOf("policies") != -1) {
         $(".nav.navbar-nav li.policies").addClass("active")
-    } else if ($("div.homework").length > 0) {
+    } else if ($("div.ld-homework").length > 0) {
         homeworkPage.init()
         $(".nav.navbar-nav li.homework").addClass("active")
     } else if ($("div.ld-classes").length > 0) {

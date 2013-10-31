@@ -102,7 +102,6 @@ var dashboard = (function() {
             if (a["due-date"] > b["due-date"] ) return 1
             return 0
         })
-        console.log(homework)
         var homeworkItems = []
         var length = homework.length
         for ( var i = 0; i < length; i++ ) {
@@ -150,10 +149,10 @@ var dashboard = (function() {
             var homeworkList = $( "<ul>")
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework-contents" ).append( homeworkList )
-            $ (".dashboard .homework.ld-box .child").slimScroll({height:"335px"})
-            $( ".dashboard .homework .icon-exclamation-sign" ).tooltip( {title: "Overdue"})
-            $( ".dashboard .homework .icon-caret-right" ).tooltip( {title: "Start homework"})
-            $( ".dashboard .homework .icon-pencil" ).tooltip( {title: "Edit howework"} )
+            $ (".dashboard .ld-homework.ld-box .ld-box-child").slimScroll({height:"335px"})
+            $( ".dashboard .ld-homework .icon-exclamation-sign" ).tooltip( {title: "Overdue"})
+            $( ".dashboard .ld-homework .icon-caret-right" ).tooltip( {title: "Start homework"})
+            $( ".dashboard .ld-homework .icon-pencil" ).tooltip( {title: "Edit howework"} )
         })
     }
 

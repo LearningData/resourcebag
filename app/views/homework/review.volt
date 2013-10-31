@@ -1,4 +1,4 @@
-<div class="homework orange">
+<div class="ld-homework orange">
     <h1>{{ homework.title }} ({{ homework.student.name }})</h1>
 
     <section class="homework-view">

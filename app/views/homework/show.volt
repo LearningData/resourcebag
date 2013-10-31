@@ -1,11 +1,11 @@
-<div class="homework orange">
+<div class="ld-homework orange">
     <h1 class="header">Homework</h1>
-    <h2 class="homework-subheader">{{ homework.title }}</h2>
-    <h3 class="homework-description">{{ homework.text }}</h3>
+    <h2 class="subheader">{{ homework.title }}</h2>
+    <h3 class="description">{{ homework.text }}</h3>
 
     <section class="homework-view">
         <hr class="div">
-        <div class="homework-subheader">{{ homework.textEditor }}</div>
+        <div class="subheader">{{ homework.textEditor }}</div>
         <h4>Files uploaded:</h4>
         <table class="table">
             <thead>

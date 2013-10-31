@@ -1,5 +1,5 @@
-<div class="homework orange">
-    <h2>Homework</h2>
+<div class="ld-homework orange">
+    <h1 class="header">Homework</h1>
     {% if classes %}
 
     <table class="table table-hover fixed">

@@ -1,4 +1,4 @@
-<div class="homework orange">
+<div class="ld-homework orange">
     <h1 class="header">Homework</h1>
     <nav class="status{{ status }} nav">
         <ul>

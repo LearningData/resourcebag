@@ -28,10 +28,9 @@
     background-color: #ff0097;
 }
 
-.pink.homework .nav ul li a {
-    background-color: #ff0097;
-}
-.pink.homework .table [class*="btn-"] {
+.pink.ld-homework .nav ul li a,
+.pink.ld-homework .table [class*="btn-"],
+.teacher .pink.ld-homework .table th {
     background-color: #ff0097;
 }
 .pink.timetable .header-navigation {
