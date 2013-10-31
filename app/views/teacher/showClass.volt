@@ -1,5 +1,5 @@
 <div class="ld-classes pink">
-    <h1>{{ classList.subject.name }}</h1>
+    <h1 class="header">{{ classList.subject.name }}</h1>
         <p class="col-md-6">
             <span class="label">Teacher</span>
             {{ classList.user.name }}   {{ classList.user.lastName }}
@@ -27,5 +27,6 @@
         <p class="col-xs-3">{{ student.name }} {{ student.lastName }}</p>
     {% endfor %}
     </div>
+    <div class="clearfix"></div>
     <button class="btn btn-return">Return to classes </button>
 </div>

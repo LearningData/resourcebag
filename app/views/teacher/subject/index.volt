@@ -1,5 +1,5 @@
 <div class="ld-classes pink">
-    <h1>Classes</h1>
+    <h1 class="header">Classes</h1>
     {{ link_to("teacher/newClass", "Create a New Class", "class":"btn") }}
     <table class="table table-hover">
         <thead>

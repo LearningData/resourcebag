@@ -1096,11 +1096,6 @@ form input[disabled] {
 }
 /*------ END UI DEFAULTS ------*/
 
-/* link style */
-.link {
-    color: #428bca;
-}
-
 
 /*To be sorted */
 .btn-icon:hover {
@@ -1112,8 +1107,10 @@ form input[disabled] {
 .form.fixed {
     table-layout: fixed;
 }
-h2 .filter {
-    width: 45px;
-    float: right;
- } 
+/****************** Common styles across the application***************/
+/* for non anchor elements that act link a link */
+.link {
+    color: #428bca;
+    cursor: pointer;
+}
 
