@@ -2,6 +2,7 @@
     <h1>New Notice</h1>
 
     {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form-notice form-inline") }}
+    {{ securityTag.csrf(csrf_params) }}
     <p class="col-md-6">
         {{ text_area("notice", "placeholder":"Notice", "class":"form-control") }}
     </p>

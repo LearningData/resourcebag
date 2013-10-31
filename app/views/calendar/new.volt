@@ -1,5 +1,6 @@
 <h1>New Event</h1>
 {{ form("calendar/create", "method":"post", "class":"form-evt form-inline") }}
+    {{ securityTag.csrf(csrf_params) }}
     <p class="col-md-6">
         {{ text_field("title", "placeholder":"Title", "class":"form-control") }}
     </p>

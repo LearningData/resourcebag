@@ -17,6 +17,7 @@ class HomeworkController extends ControllerBase {
             $homeworks = $user->getHomeworkByStatus($status);
         } else {
             $homeworks = Homework::findByTeacherAndStatus($user->id, $status);
+            $this->view->classes = ClassList::findByteacherId($user->id);
         }
 
         $this->view->user = $user;
