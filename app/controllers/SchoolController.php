@@ -4,7 +4,13 @@ class SchoolController extends UsersController {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
 
-        if(!$user) { return $this->response->redirect("index"); }
+        if(!$user) {
+            $this->dispatcher->forward(array(
+                "controller" => "index",
+                "action" => "index"
+            ));
+            return false;
+        }
 
         if(!$user->isSchool()) {
             return $this->response->redirect("dashboard");

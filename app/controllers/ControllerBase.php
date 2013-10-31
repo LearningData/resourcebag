@@ -5,18 +5,15 @@ class ControllerBase extends Controller {
     public function beforeExecuteRoute($dispatcher){
         $user = $this->getUserBySession();
 
-        if (!$user) {
-            $this->response->redirect("index");
+        if(!$user) {
+            $this->dispatcher->forward(array(
+                "controller" => "index",
+                "action" => "index"
+            ));
             return false;
         }
 
         $this->view->user = $user;
-        // $cname = $dispatcher->getControllerName();
-
-        // if ($cname != $user->getController()) {
-        //     $this->response->redirect($user->getController());
-        //     return false;
-        // }
     }
 
     protected function getUserBySession() {
