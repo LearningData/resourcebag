@@ -1,99 +1,95 @@
 $(document).ready(function() {
 
+    $('.btn-profile-actions').click(function() {
+        $('.user-profile-actions').toggle('fast');
+        return false;
+    });
+
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
-    
-    $( ".nav.navbar-nav li" ).removeClass( "active" )
+
+    $(".nav.navbar-nav li").removeClass("active")
     timetablePage.init()
-    if ( window.location.pathname.indexOf("dashboard") != -1 ) {
+    if (window.location.pathname.indexOf("dashboard") != -1) {
         dashboard.init()
-        $( ".nav.navbar-nav li.dashboard" ).addClass( "active" )
+        $(".nav.navbar-nav li.dashboard").addClass("active")
     }
-/*    else if ( window.location.pathname.indexOf("homework") != -1 ) {
-        homeworkPage.init()
-        $( ".nav.navbar-nav li.homework" ).addClass( "active" )
-    }
-*/    else if ( window.location.pathname.indexOf("messages") != -1 ) {
-        $( ".nav.navbar-nav li.nessages" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("noticeboard") != -1 ) {
+    /* else if ( window.location.pathname.indexOf("homework") != -1 ) {
+     homeworkPage.init()
+     $( ".nav.navbar-nav li.homework" ).addClass( "active" )
+     }
+     */    else if (window.location.pathname.indexOf("messages") != -1) {
+        $(".nav.navbar-nav li.nessages").addClass("active")
+    } else if (window.location.pathname.indexOf("noticeboard") != -1) {
         noticesPage.init()
-        $( ".nav.navbar-nav li.notices" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("calendar") != -1 ) {
+        $(".nav.navbar-nav li.notices").addClass("active")
+    } else if (window.location.pathname.indexOf("calendar") != -1) {
         calendarPage.init()
-        $( ".nav.navbar-nav li.events" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("timetable") != -1 ) {
-        $( ".nav.navbar-nav li.timetable" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("Ebooks") != -1 ) {
-        $( ".nav.navbar-nav li.ebooks" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("resources") != -1 ) {
-        $( ".nav.navbar-nav li.resources" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("policies") != -1 ) {
-        $( ".nav.navbar-nav li.policies" ).addClass( "active" )
+        $(".nav.navbar-nav li.events").addClass("active")
+    } else if (window.location.pathname.indexOf("timetable") != -1) {
+        $(".nav.navbar-nav li.timetable").addClass("active")
+    } else if (window.location.pathname.indexOf("Ebooks") != -1) {
+        $(".nav.navbar-nav li.ebooks").addClass("active")
+    } else if (window.location.pathname.indexOf("resources") != -1) {
+        $(".nav.navbar-nav li.resources").addClass("active")
+    } else if (window.location.pathname.indexOf("policies") != -1) {
+        $(".nav.navbar-nav li.policies").addClass("active")
     }
     //TODO improve navigation search, the classes/subject selection is unreliable
-    else if ( window.location.pathname.indexOf("Class") != -1 ) {
-        $( ".nav.navbar-nav li.classes" ).addClass( "active" )
-    }
-    else if ( window.location.pathname.indexOf("subject") != -1 ) {
-        $( ".nav.navbar-nav li.classes" ).addClass( "active" )
-    }
-    else if ($( "div.homework" ).length  > 0) {
+    else if (window.location.pathname.indexOf("Class") != -1) {
+        $(".nav.navbar-nav li.classes").addClass("active")
+    } else if (window.location.pathname.indexOf("subject") != -1) {
+        $(".nav.navbar-nav li.classes").addClass("active")
+    } else if ($("div.homework").length > 0) {
         homeworkPage.init()
-        $( ".nav.navbar-nav li.homework" ).addClass( "active" )
+        $(".nav.navbar-nav li.homework").addClass("active")
     }
 
     $(".alert").alert();
-    $( "#teacher-due-date" ).datepicker({
+    $("#teacher-due-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 1,
         beforeShowDay : enableDays,
         onSelect : showTimes
     })
-    $( "#start-date" ).datepicker({
+    $("#start-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
-    $( "#end-date" ).datepicker({
+    $("#end-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
-    $( "#notice-note-date" ).datepicker({
+    $("#notice-note-date").datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate: 0
+        minDate : 0
     })
-    $( "#start-date" ).datepicker( "widget" ).addClass( "event-page" )
-    $( "#end-date" ).datepicker( "widget" ).addClass( "event-page" )
-    $( "#notice-note-date" ).datepicker( "widget" ).addClass( "datepicker-note" )
+    $("#start-date").datepicker("widget").addClass("event-page")
+    $("#end-date").datepicker("widget").addClass("event-page")
+    $("#notice-note-date").datepicker("widget").addClass("datepicker-note")
 });
 var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file]").uniform();
 
 function getUser() {
-    var body = $ ( "body" )
-    if ( body.hasClass( "teacher" ) ) {
+    var body = $("body")
+    if (body.hasClass("teacher")) {
         return "teacher"
-    } else if ( body.hasClass( "student") ) {
+    } else if (body.hasClass("student")) {
         return "student"
-    } else if ( body.hasClass( "school" ) ) {
+    } else if (body.hasClass("school")) {
         return "school"
-    } else if ( body.hasClass( "administrator" ) ) {
+    } else if (body.hasClass("administrator")) {
         return "administrator"
     }
     return ""
 }
 
-
-function enableDatePicker( id ) {
-    $( id ).removeAttr("disabled")
-    $( id ).datepicker({
+function enableDatePicker(id) {
+    $(id).removeAttr("disabled")
+    $(id).datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 1,
         beforeShowDay : enableDays,
@@ -112,8 +108,8 @@ function populeStudentsAndDays(classId) {
         var students = response.students;
         for (var i = students.length - 1; i >= 0; i--) {
             var student = students[i];
-            var input = "<p name='student'><input  type='checkbox' name='students[]' value='" + student.id + "'>" + student.name+ "</p>";
-             $("#students").append(input);
+            var input = "<p name='student'><input  type='checkbox' name='students[]' value='" + student.id + "'>" + student.name + "</p>";
+            $("#students").append(input);
         };
     });
 
@@ -133,7 +129,7 @@ function getEnableDays(classId) {
     if ($("[name='pdue-time']").length > 0) {
         $("[name='pdue-time']").remove();
     }
-    enableDatePicker( "#due-date" )
+    enableDatePicker("#due-date")
 }
 
 function enableDays(date) {
@@ -161,33 +157,33 @@ function showTimes(date) {
         for (var i = times.length - 1; i >= 0; i--) {
             console.log(times)
             var time = times[i];
-            var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + time.substring(0,2) + ":" + time.substring(2)+ '</p>';
+            var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + time.substring(0, 2) + ":" + time.substring(2) + '</p>';
             input = jQuery(field);
             $("#due-times").append(input);
         };
     });
 }
 
-function dayOfWeek( date ) {
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+function dayOfWeek(date) {
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return days[date.getUTCDay()]
 }
 
-function prettyDay( date ) {
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ]
+function prettyDay(date) {
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return days[date.getUTCDay()] + " " + date.getUTCDate()
 }
-function prettyDate( date ) {
+
+function prettyDate(date) {
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return date.getUTCDate() + " " + months[date.getUTCMonth()]
 }
 
-function prettyHour( date ) {
-    var hours = ( date.getUTCHours() < 10) ? "0" + date.getUTCHours() :  date.getUTCHours()
-    var mins = ( date.getUTCMinutes() < 10) ? "0" + date.getUTCMinutes() :  date.getUTCMinutes()
+function prettyHour(date) {
+    var hours = (date.getUTCHours() < 10) ? "0" + date.getUTCHours() : date.getUTCHours()
+    var mins = (date.getUTCMinutes() < 10) ? "0" + date.getUTCMinutes() : date.getUTCMinutes()
     return hours + ":" + mins
 }
-
 
 function hiddenRadioElements() {
     $(":radio").each(function(index, element) {

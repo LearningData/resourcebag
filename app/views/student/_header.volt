@@ -10,17 +10,15 @@
             {% endif %}
 
         </div>
-        <p class="name-school">
-            {{ user.name }}
+
+        <span class="name-school"> {{ user.name }}
             <br />
-            <strong>{{ user.school.name }}</strong>
-        </p>
-        
+            <strong>{{ user.school.name }}</strong> <button type="button" class="icon-caret-down btn-profile-actions"></button> </span>
+
         <div class="user-profile-actions">
             <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> My Profile</a>
             <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
         </div>
-        <button type="button" class="icon-caret-down"></button>
-        
+
     </div>
 </header>

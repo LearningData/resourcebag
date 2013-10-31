@@ -219,10 +219,10 @@ var dashboard = (function() {
                 items.push( "<div class=\"note\"><h3>" + notices[0].text + "</h3><span>" + notices[0].text + "</span></div>" )
             }
             if ( notices[1] != undefined ) {
-                items.push( "<div class=\"note\"><h3>" + notices[1].text + "</h3><span>" + notices[1].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h4>" + notices[1].text + "</h4><span>" + notices[1].text + "</span></div>" )
             }
             if ( notices[2] != undefined ) {
-                items.push( "<div class=\"note\"><h3>" + notices[2].text + "</h3><span>" + notices[2].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h4>" + notices[2].text + "</h4><span>" + notices[2].text + "</span></div>" )
             }
             var noticeElement = $( "<div class=\"notice-home\">")
             noticeElement.append( items.join( "" ) )

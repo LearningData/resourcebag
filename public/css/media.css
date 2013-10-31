@@ -28,12 +28,24 @@
         background: #E6E7E8;
         padding: 0 0 20px;
     }
-
-    
-    
-    
+    .tb-user {
+        margin-right: -10px;
+    }
+    .name-school {
+        font-size: 12px;
+    }
     .user-profile-actions {
-        display: block;
+        display: none;
+        margin: 20px 0 0;
+        position: absolute;
+        z-index: 1;
+        margin: 0 0 0 55px;
+        padding: 30px;
+        background: #ECECEC;
+    }
+    .btn-profile-actions {
+        font-size: 18px;
+        margin-left: 10px;
     }
     .schoolbag-brand {
         width: 100%;
@@ -46,9 +58,10 @@
         width: 100%;
         padding: 10px 5%;
         background-color: #ececec;
+        position: relative;
     }
     .user-profile img {
-        max-width: 90%;
+        max-width: 70%;
         height: auto;
     }
 
@@ -60,10 +73,10 @@
         border: none;
         border-radius: 0;
         float: right;
-        margin: 0;
+        margin: 10px 0 0;
         padding: 0;
-        position: relative;
-        font-size: 20px;
+        position: static;
+        font-size: 24px;
     }
     .form-search input {
         margin: 20px auto;
