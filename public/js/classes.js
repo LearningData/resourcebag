@@ -37,9 +37,16 @@ var classesPage = (function() {
     var init = function() {
         $( ".ld-classes .remove-class" ).click(function( event ) {
             event.preventDefault()
-            console.log(this, $(this).data())
             removeClassDialog( $ ( this ).data() )
             $( "#removeClassModal" ).modal( "show" )
+        })
+        $( ".ld-classes button.join-class" ).click(function( event ) {
+            event.preventDefault()
+            $( ".ld-classes form.join-class" ).removeClass( "hidden" )
+        })
+        $( ".ld-classes .btn-cancel" ).click(function( event ) {
+            event.preventDefault()
+            $( ".ld-classes form.join-class" ).addClass( "hidden" )
         })
         $( ".ld-classes .filter" ).keyup(function(){
             

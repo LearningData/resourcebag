@@ -27,4 +27,5 @@
         <p class="col-xs-3">{{ student.name }} {{ student.lastName }}</p>
     {% endfor %}
     </div>
+    <button class="btn btn-return">Return to classes </button>
 </div>

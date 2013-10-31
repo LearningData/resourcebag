@@ -1,16 +1,19 @@
-<h1>My Classes</h1>
-{% for classList in user.classes %}
-    <p>{{ classList.subject.name }}</p>
-{% endfor %}
+<div class="ld-classes pink">
+    <h1>Classes</h1>
+    {% for classList in user.classes %}
+        <p class="col-xs-3">{{ classList.subject.name }}</p>
+    {% endfor %}
+    <div class="clearfix"></div>
+    <button class="btn join-class">Join Class</button>
 
-<h1>Classes</h1>
-
-{{ form("student/joinClass", "method":"post") }}
-    <p>
-        {{ select('class-id', classes, 'using': ['id', 'name'],
-            'emptyText': 'Please, choose one class')}}
-    </p>
-    <p>
-        <input type="submit">
-    </p>
-</form>
+    {{ form("student/joinClass", "method":"post", "class":"join-class hidden") }}
+        <p>
+            {{ select('class-id', classes, 'using': ['id', 'name'],
+                'emptyText': 'Please, choose one class')}}
+        </p>
+        <p>
+            <input type="submit" class="btn">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+        </p>
+    </form>
+</div>
