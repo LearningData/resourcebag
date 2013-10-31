@@ -18,6 +18,14 @@ class Event extends \Phalcon\Mvc\Model {
         $this->belongsTo("userId", "User", "id");
     }
 
+    public function beforeSave() {
+        $http = substr($this->link, 0, strlen("http://"));
+        $https = substr($this->link, 0, strlen("https://"));
+         if(strcmp($http, "http://") === 1 && strcmp($https, "https://") === 1) {
+            $this->link = "http://" . $this->link;
+         }
+    }
+
     public function getSource() {
         return "events";
     }
