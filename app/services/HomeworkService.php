@@ -8,7 +8,7 @@ class HomeworkService {
         if ($user->isStudent()) {
             $homeworks = $user->homeworks;
         } else {
-            $homeworks = Homework::find("teacherId = " .$user->id);
+            $homeworks = Homework::findByTeacherId($user->id);
         }
 
         foreach($homeworks as $homework) {

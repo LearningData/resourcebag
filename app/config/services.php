@@ -95,6 +95,11 @@ $di->set('flash', function(){
     ));
 });
 
+$di->set('securityTag', function(){
+    require "../app/helpers/SecurityTag.php";
+
+    return new SecurityTag();
+});
 
 $di->set('dispatcher', function() {
     $eventsManager = new Phalcon\Events\Manager();

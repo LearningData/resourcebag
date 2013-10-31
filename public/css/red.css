@@ -1,34 +1,36 @@
 .red .btn-icon, .red .btn {
-    background-color: #e5242d;
+    background-color: #dc3b42;
 }
 
 .red.btn-icon:hover, .red .btn:hover {
-    background-color:#da3940;
+    background-color: #da3940;
 }
 
-.red.ld-box .parent .title {
-    background-color: #e5242d;
+.red.ld-box .ld-box-head .title {
+    background-color: #dc3b42;
 }
 
 .red .header:hover {
-   background-color: #da3940;
+   background-color: #dc3b42;
 }
 
 .red .form-control:focus {
-    border-color: #e5242d;
+    border-color: #dc3b42;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
 }
 
 .red .modal-title {
-    border-left-color: #e5242d
+    border-left-color: #dc3b42;
 }
 
 .red.homework .nav ul li a {
-    background-color: #e5242d;
+    background-color: #dc3b42;
 }
 .red.homework .table [class*="btn-"] {
-    background-color: #e5242d;
+    background-color: #dc3b42;
 }
-
+.red.timetable .header-navigation {
+    background-color: #e27176;
+}

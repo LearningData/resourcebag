@@ -20,12 +20,12 @@ var dashboard = (function() {
             window.location.href = urlBase + "/" + getUser() + "/calendar"
         }
     })
-    $( "#dashboard-timetable .header-navigation a.default-prev").click(
+    $( "#dashboard-timetable-contents .header-navigation a.default-prev").click(
         function() {
             displayDate.setDate(displayDate.getDate() - 1)
             populateTimetable( displayDate )
     })
-    $( "#dashboard-timetable .header-navigation a.default-next").click(
+    $( "#dashboard-timetable-contents .header-navigation a.default-next").click(
         function() {
             displayDate.setDate(displayDate.getDate() + 1)
             populateTimetable( displayDate )
@@ -158,7 +158,7 @@ var dashboard = (function() {
     }
 
     var populateTimetable = function( date ) {
-        var header = $( "#dashboard-timetable .header-navigation h3")
+        var header = $( "#dashboard-timetable-contents .header-navigation h3")
         header.empty()
         header.append(prettyDay(date))
         var url = urlBase + "/service/timetable/" //TODO add dates
@@ -169,12 +169,12 @@ var dashboard = (function() {
                 timetable.remove()
             }
             if ( data == undefined || data.length == 0 ) {
-                timetable = $( "<div class=\"table table-timetable none\"> No Classes Today</div>")
+                timetable = $( "<div class=\"table none\"> No Classes Today</div>")
             } else {
-                timetable = $( "<table class=\"table table-timetable day\">")
+                timetable = $( "<table class=\"table day\">")
                 var tableRows = []
                 for ( var i = 0; i < data.length; i++ ) {
-                    var rowStr = "<tr><td>" + data[i].time + "</td>"
+                    var rowStr = "<tr><td>" + data[i].time.substr(0,5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
                     rowStr += "<td colSpan=3>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                     tableRows.push(rowStr)
                 }
@@ -182,7 +182,7 @@ var dashboard = (function() {
                 tableBody.append( tableRows.join("") )
                 timetable.append( tableBody )
             }
-            $( "#dashboard-timetable" ).append( timetable )
+            $( "#dashboard-timetable-contents" ).append( timetable )
         })
     }
     

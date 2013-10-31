@@ -1,14 +1,5 @@
 <?php
     class Timetable {
-        public static function getSlotsByDay($user, $day) {
-            $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
-            $classesList = ClassList::find("teacherId = " . $user->id);
-            $classes = Timetable::populeClasses($classesList, $day);
-            $slots = Timetable::populeSlots($classes, $configs);
-
-            return $slots;
-        }
-
         public static function populeClasses($classesList, $day) {
             $classes = array();
 
@@ -29,25 +20,25 @@
             $studentClasses = array();
 
             foreach ($user->classes as $classList) {
-                $query = "classId = " . $classList->id . " and day = $dayOfWeek";
-                $slot = TimetableSlot::findFirst($query);
-                if (!$slot) { continue; }
+                $slots = TimetableSlot::findByClassAndDay($classList->id,
+                    $dayOfWeek);
 
-                $homeworkQuery = "studentId = " . $user->id .
-                    " and classId = " . $classList->id .
-                    " and dueDate = '" . $day->format("Y-m-d") . "'" .
-                    " and status >= " . Homework::$SUBMITTED;
+                if (!$slots) { continue; }
 
-                $homeworks = Homework::find($homeworkQuery);
-                //$content = $classList->subject->name . " / " . count($homeworks);
-                $content = array(
-                    "subject" => $classList->subject->name,
-                    "room" => $slot->room,
-                    "homeworks" => count($homeworks),
-                    "teacher" => $classList->user->name .
-                        " " . $classList->user->lastName
-                );
-                $studentClasses[$slot->timeSlotId] = $content;
+                foreach ($slots as $slot) {
+                    $homeworkQuery = "studentId = " . $user->id .
+                        " and classId = " . $classList->id .
+                        " and dueDate = '" . $day->format("Y-m-d") . "'" .
+                        " and status >= " . Homework::$SUBMITTED;
+
+                    $content = array(
+                        "subject" => $classList->subject->name,
+                        "room" => $slot->room,
+                        "homeworks" => Homework::count($homeworkQuery),
+                        "teacher" => $classList->user->completeName()
+                    );
+                    $studentClasses[$slot->timeSlotId] = $content;
+                }
             }
 
             $slots = Timetable::populeSlots($studentClasses, $configs);
@@ -60,11 +51,12 @@
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $dayOfWeek);
             $teacherClasses = array();
 
-            $classes = ClassList::find("teacherId = " . $user->id);
+            $classes = ClassList::findByTeacherId($user->id);
 
             foreach ($classes as $classList) {
-                $query = "classId = " . $classList->id . " and day = $dayOfWeek";
-                $slots = TimetableSlot::find($query);
+                $slots = TimetableSlot::findByClassAndDay($classList->id,
+                    $dayOfWeek);
+
                 if (!$slots) { continue; }
 
                 foreach ($slots as $slot) {
@@ -105,7 +97,7 @@
 
         public static function getEmptySlotsByDay($user, $day) {
             $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
-            $classesList = ClassList::find("teacherId = " . $user->id);
+            $classesList = ClassList::findByTeacherId($user->id);
             $classes = Timetable::populeClasses($classesList, $day);
             $slots = array();
 

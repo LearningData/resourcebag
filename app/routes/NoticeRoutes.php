@@ -61,6 +61,18 @@ class NoticeRoutes extends Phalcon\Mvc\Router\Group {
                 "action"     => "new"
             )
         );
+        $this->add("/school/noticeboard/edit/{noticeId}",
+            array(
+                "controller" => "notice",
+                "action"     => "edit"
+            )
+        );
+        $this->add("/school/noticeboard/show/{noticeId}",
+            array(
+                "controller" => "notice",
+                "action"     => "show"
+            )
+        );
     }
 }
 ?>

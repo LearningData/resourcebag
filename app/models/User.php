@@ -61,8 +61,9 @@ class User extends \Phalcon\Mvc\Model {
         if ($status != "") {
             $homeworks = Homework::findHomeworksByStatus($this->id, $status);
         } else {
-            $query = "studentId = " .$this->id . "order by status";
-            $homeworks = Homework::find($query);
+            $query = "studentId = ?1 order by status";
+            $params = array($query, "bind" => array(1 => $this->id));
+            $homeworks = Homework::find($params);
         }
 
         return $homeworks;
@@ -100,6 +101,10 @@ class User extends \Phalcon\Mvc\Model {
 
     public function isAdmin() {
         return $this->type == User::getTypeAdmin();
+    }
+
+    public function completeName() {
+        return $this->name . " " . $this->lastName;
     }
 
     public function validation() {

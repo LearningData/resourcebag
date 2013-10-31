@@ -50,18 +50,18 @@
     }
 }
 
-.dashboard .ld-box .parent .title {
+.dashboard .ld-box .ld-box-head .title {
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
 
     padding: 15px;
 }
 
-.dashboard .ld-box .parent .title span  {
+.dashboard .ld-box .ld-box-head .title span  {
     margin-right: 15px;
 }
 
-.dashboard .ld-box .parent .title h2 {
+.dashboard .ld-box .ld-box-head .title h2 {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
@@ -81,27 +81,36 @@
 }
 
 
+/*------dashboard------*/
+
 
 
 /*homework*/
+.dashboard .homework.ld-box .ld-box-child {
+    height: 335px;
+    overflow-y: auto;
+}
 
-.dashboard .homework.ld-box .child ul li {
+.dashboard .homework.ld-box .ld-box-child ul {
+    padding-bottom: 0px;
+}
+
+.dashboard .homework.ld-box .ld-box-child ul li {
     padding-left: 5px;
 }
 
-.dashboard .homework.ld-box .child ul li > p {
+.dashboard .homework.ld-box .ld-box-child ul li > p {
     margin: 0px;
     display: inline;
     margin-left: 5px;
 }
 
-.dashboard .homework.ld-box .child ul li > a {
+.dashboard .homework.ld-box .ld-box-child ul li > a {
     display: inline-block;
     line-height: 20px;
 }
 
-
-.dashboard .homework.ld-box .child ul li.overdue {
+.dashboard .homework.ld-box .ld-box-child ul li.overdue {
     color: #FF0000;
 }
 

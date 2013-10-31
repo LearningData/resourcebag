@@ -66,5 +66,10 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->user->type = User::getTypeStudent();
         $this->assertTrue($this->user->isStudent());
     }
+
+    function testCompleteName() {
+        $this->assertEquals($this->user->name . " " . $this->user->lastName,
+            $this->user->completeName());
+    }
 }
  ?>

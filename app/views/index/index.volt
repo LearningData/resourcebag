@@ -51,7 +51,7 @@
                     <div class="alert">
                         {{ message }}
                     </div>
-                    {% endfor%}
+                    {% endfor %}
                     {% endfor %}
                     {{ content() }}
                     <div class="col-login">
@@ -60,6 +60,8 @@
                             <input name="email" type="email", placeholder="Email", class="form-control" autofocus/>
                         </p>
                         {{ password_field("password","placeholder":"Password", "class":"form-control" ) }}
+
+                        {{ securityTag.csrf(csrf_params) }}
 
                         {{ submit_button("Login","class":"btn btn-login") }}
                         {{ link_to("register", "Sign Up","class":"btn btn-login") }}

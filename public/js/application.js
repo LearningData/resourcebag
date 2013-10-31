@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-    $('.btn-profile-actions').click(function() {
-        $('.user-profile-actions').toggle('fast');
-        return false;
-    });
-
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();

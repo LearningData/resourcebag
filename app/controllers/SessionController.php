@@ -3,7 +3,9 @@ require '../app/services/Authenticate.php';
 
 class SessionController extends Phalcon\Mvc\Controller {
     public function loginAction() {
-        if (!$this->request->isPost()) { return $this->response->redirect(""); }
+        if (!$this->request->isPost() || !$this->security->checkToken()) {
+            return $this->response->redirect("");
+        }
 
         $email = $this->request->getPost("email");
         $password = $this->request->getPost("password");

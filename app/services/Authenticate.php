@@ -23,7 +23,7 @@ class Authenticate extends Component {
     }
 
     public function destroySession() {
-        $this->session->remove("schoolbag");
+        $this->session->remove($this->request->getServerAddress());
         $this->session->destroy();
     }
 

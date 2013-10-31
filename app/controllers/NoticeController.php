@@ -30,6 +30,8 @@ class NoticeController extends ControllerBase {
 
     public function newAction() {
         $user = $this->getUserBySession();
+        $this->setTokenValues();
+
         if ($user->isStudent()) { $this->response->redirect("notice/index"); }
 
         $classes = ClassListService::getClassesByUser($user);
@@ -38,6 +40,8 @@ class NoticeController extends ControllerBase {
 
     public function editAction($noticeId) {
         $user = $this->getUserBySession();
+        $this->setTokenValues();
+
         if ($user->isStudent()) { $this->response->redirect("student/noticeboard"); }
 
 
@@ -55,63 +59,67 @@ class NoticeController extends ControllerBase {
     }
 
     public function updateAction() {
-        $user = $this->getUserBySession();
-        $noticeId = $this->request->getPost("notice-id");
-        $notice = NoticeBoard::findFirstById($noticeId);
+        if($this->isValidPost()) {
+            $user = $this->getUserBySession();
+            $noticeId = $this->request->getPost("notice-id");
+            $notice = NoticeBoard::findFirstById($noticeId);
 
-        $notice->text = $this->request->getPost("notice");
-        $notice->userType = $this->request->getPost("type");
-        $notice->classId = $this->request->getPost("class-id");
+            $notice->text = $this->request->getPost("notice");
+            $notice->userType = $this->request->getPost("type");
+            $notice->classId = $this->request->getPost("class-id");
 
-        if($notice->save()) {
-            $this->flash->success("Notice was updated.");
-        } else {
-            $this->appendErrorMessages($notice->getMessages());
+            if($notice->save()) {
+                $this->flash->success("Notice was updated.");
+            } else {
+                $this->appendErrorMessages($notice->getMessages());
+            }
+
+            $this->response->redirect($user->getController() . "/noticeboard");
         }
-
-        $this->response->redirect($user->getController() . "/noticeboard");
     }
 
     public function createAction() {
-        $user = $this->getUserBySession();
+        if($this->isValidPost()){
+            $user = $this->getUserBySession();
 
-        $notice = new NoticeBoard();
-        $notice->date = $this->request->getPost("date");
-        $notice->text = $this->request->getPost("notice");
-        $notice->userType = $this->request->getPost("type");
-        $notice->schoolId = $user->schoolId;
-        $notice->uploadedBy = $user->id;
+            $notice = new NoticeBoard();
+            $notice->date = $this->request->getPost("date");
+            $notice->text = $this->request->getPost("notice");
+            $notice->userType = $this->request->getPost("type");
+            $notice->schoolId = $user->schoolId;
+            $notice->uploadedBy = $user->id;
 
-        if($this->request->getPost("class-id") != "") {
-            $notice->classId = $this->request->getPost("class-id");
-        }
+            if($this->request->getPost("class-id") != "") {
+                $notice->classId = $this->request->getPost("class-id");
+            }
 
-        if($notice->save()) {
-            foreach ($this->request->getUploadedFiles() as $file){
-                $noticeFile = new NoticeBoardFile();
-                $noticeFile->originalName = $file->getName();
-                $noticeFile->name = $file->getName();
-                $noticeFile->size = $file->getSize();
-                $noticeFile->type = $file->getType();
-                $noticeFile->file = file_get_contents($file->getTempName());
-                $noticeFile->noticeId = $notice->id;
+            if($notice->save()) {
+                foreach ($this->request->getUploadedFiles() as $file){
+                    $noticeFile = new NoticeBoardFile();
+                    $noticeFile->originalName = $file->getName();
+                    $noticeFile->name = $file->getName();
+                    $noticeFile->size = $file->getSize();
+                    $noticeFile->type = $file->getType();
+                    $noticeFile->file = file_get_contents($file->getTempName());
+                    $noticeFile->noticeId = $notice->id;
 
-                if ($noticeFile->save()) {
-                    $this->flash->success("The file was uploaded.");
-                } else {
-                    $this->flash->error("The file was not uploaded.");
-                    foreach ($noticeFile->getMessages() as $message) {
-                        $this->flash->error($message);
+                    if ($noticeFile->save()) {
+                        $this->flash->success("The file was uploaded.");
+                    } else {
+                        $this->flash->error("The file was not uploaded.");
+                        foreach ($noticeFile->getMessages() as $message) {
+                            $this->flash->error($message);
+                        }
                     }
                 }
+            } else {
+                foreach ($notice->getMessages() as $message) {
+                    $this->flash->error($message);
+                }
             }
-        } else {
-            foreach ($notice->getMessages() as $message) {
-                $this->flash->error($message);
-            }
-        }
 
-        return $this->dispatcher->forward(array("action" => "new"));
+            return $this->dispatcher->forward(array("action" => "new"));
+        }
     }
 
     private function getNotices() {

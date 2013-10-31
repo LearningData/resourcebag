@@ -16,11 +16,13 @@ class CohortController extends ControllerBase {
     }
 
     public function newAction() {
+        $this->setTokenValues();
         $this->view->cohort = new Cohort();
         $this->view->year = Config::schoolYear();
     }
 
     public function editAction($cohortId) {
+        $this->setTokenValues();
         $this->view->cohort = Cohort::findFirstById($cohortId);
         $this->view->year = Config::schoolYear();
     }
@@ -53,20 +55,22 @@ class CohortController extends ControllerBase {
     }
 
     public function createAction() {
-        $user = $this->getUserBySession();
+        if($this->isValidPost()) {
+            $user = $this->getUserBySession();
 
-        $cohort = new Cohort();
-        $cohort->schoolYear = Config::schoolYear();
-        $cohort->stage = $this->request->getPost("stage");
-        $cohort->courseId = 0;
-        $cohort->schoolId = $user->schoolId;
+            $cohort = new Cohort();
+            $cohort->schoolYear = Config::schoolYear();
+            $cohort->stage = $this->request->getPost("stage");
+            $cohort->courseId = 0;
+            $cohort->schoolId = $user->schoolId;
 
-        if ($cohort->save()) {
-            $this->flash->success("Cohort was saved.");
-        } else {
-            $this->appendErrorMessages($cohort->getMessages());
+            if ($cohort->save()) {
+                $this->flash->success("Cohort was saved.");
+            } else {
+                $this->appendErrorMessages($cohort->getMessages());
+            }
+
+            return $this->response->redirect("cohort/new");
         }
-
-        return $this->response->redirect("cohort/new");
     }
 }
