@@ -60,6 +60,7 @@
         {{ javascript_include("js/calendar.js") }}
         {{ javascript_include("js/timetable.js") }}
         {{ javascript_include("js/homework.js") }}
+        {{ javascript_include("js/classes.js") }}
         {{ javascript_include("js/notices.js") }}
         {{ javascript_include("js/application.js") }}
     </body>

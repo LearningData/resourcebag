@@ -1,4 +1,4 @@
-<div class="classes pink">
+<div class="ld-classes pink">
     <h1>{{ classList.subject.name }}</h1>
         <p class="col-md-6">
             <span class="label">Teacher</span>
@@ -20,8 +20,11 @@
     <h2>Times</h2>
     <h2>Resources</h2>
     <p>Here is where you can add/find links to material and web services of use in the class.</p>
-    <h2>Students <input class="filter" type="text" placeholder="Filter"></h2>
+    <div class= "student-list">
+    <h2>Students</h2>
+    <input class="filter" type="text" placeholder="Filter student list">
     {% for student in classList.users %}
         <p class="col-xs-3">{{ student.name }} {{ student.lastName }}</p>
     {% endfor %}
+    </div>
 </div>
