@@ -10,5 +10,5 @@
     <label for="confirm-new-password">Confirm New Password</label>
     <input type="password" name="confirm-new-password">
 </p>
-
+{{ securityTag.csrf(csrf_params) }}
 <input type="submit">

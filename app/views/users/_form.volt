@@ -81,6 +81,7 @@
         </td>
     </tr>
     {{ hidden_field("userID", "type" : "numeric") }}
+    {{ securityTag.csrf(csrf_params) }}
     <tr>
         <td></td>
         <td>{{ submit_button("Save") }}</td>

@@ -15,6 +15,7 @@
     {{ file_field("photo") }}
 </p>
 {{ hidden_field("userID", "type" : "numeric", "value" : user.id) }}
+{{ securityTag.csrf(csrf_params) }}
 <p>
     {{ submit_button("Save") }}
 </p>

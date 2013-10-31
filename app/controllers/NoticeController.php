@@ -118,7 +118,7 @@ class NoticeController extends ControllerBase {
                 }
             }
 
-            return $this->dispatcher->forward(array("action" => "new"));
+            return $this->dispatcher->forward(array("action" => "index"));
         }
     }
 
