@@ -450,12 +450,12 @@ table > tbody > tr.active td:last-child {
 }
 
 /*//////DEFAULT LIST HOME//////*/
-.box-messages .box-child ul li {
+.box-messages .ld-box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
     padding: 10px 10px 10px 45px;
     font-size: 12px;
 }
-.box-messages .box-child ul li:last-child {
+.box-messages .ld-box-child ul li:last-child {
     border: none;
 }
 .notice-home ul li.star {
@@ -1103,4 +1103,11 @@ form input[disabled] {
 .form.inline {
     display: inline;
 }
+.form.fixed {
+    table-layout: fixed;
+}
+h2 .filter {
+    width: 45px;
+    float: right;
+ } 
 

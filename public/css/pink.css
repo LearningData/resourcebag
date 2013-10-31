@@ -2,6 +2,10 @@
     background-color: #ff0097;
 }
 
+.pink h2 {
+    border-bottom: 1px solid #ff0097;
+}
+
 .pink.btn-icon:hover, .pink .btn:hover {
     background-color: #ff0097;
 }

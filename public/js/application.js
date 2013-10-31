@@ -167,9 +167,8 @@ function showTimes(date) {
     $.get(url, function(response) {
         var times = response.times;
         for (var i = times.length - 1; i >= 0; i--) {
-            console.log(times)
             var time = times[i];
-            var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + time.substring(0,2) + ":" + time.substring(2)+ '</p>';
+            var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + parseInt(time/100) + ":" + time % 100 + '</p>';
             input = jQuery(field);
             $("#due-times").append(input);
         };

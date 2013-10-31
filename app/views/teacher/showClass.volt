@@ -18,10 +18,10 @@
         </p>
     <hr/>
     <h2>Times</h2>
-    <hr/>
-    <h2>Students</h2>
-
+    <h2>Resources</h2>
+    <p>Here is where you can add/find links to material and web services of use in the class.</p>
+    <h2>Students <input class="filter" type="text" placeholder="Filter"></h2>
     {% for student in classList.users %}
-        <p>{{ student.name }} {{ student.lastName }}</p>
+        <p class="col-xs-3">{{ student.name }} {{ student.lastName }}</p>
     {% endfor %}
 </div>

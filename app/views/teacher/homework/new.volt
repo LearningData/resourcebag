@@ -1,7 +1,7 @@
 <div class="homework orange">
     <h2>New homework </h2>
 
-    {{ form("teacher/createHomework", "method":"post", "class":"form") }}
+    {{ form("teacher/createHomework", "method":"post", "class":"form inline") }}
         <p class="col-md-6">
             <input type="text" name="title" placeholder="Title:">
         </p>
@@ -23,11 +23,13 @@
         <div id="students">
             <p>{{ check_field("all", "value": true) }} All</p>
             {% for user in classList.users %}
-                <p>{{ check_field("students[]", "value": user.id) }}
+                <p class="col-xs-3">{{ check_field("students[]", "value": user.id) }}
                     {{ user.name }} {{ user.lastName }}</p>
             {% endfor %}
         </div>
-        <p><input class="btn btn-homework" type="submit" value="save"></p>
+        <div class="clearfix"></div>
+        <input class="btn" type="submit" value="save">
 
     </form>
+    <button class="btn btn-return">Cancel</button>
 </div>

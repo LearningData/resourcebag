@@ -88,10 +88,17 @@
     vertical-align: bottom;
     background-color: #eceded;
     padding: 0px;
+}
+
+.homework .table th[colspan="3"], .homework .table th[colspan="7"] {
     text-align: center;
 }
 
-.homework .table .to-do .btn-pending, .homework .table .in-progress .btn-edit, .homework .table .in-progress .btn-submit, .homework .table .complete .btn-review, .homework .table .reviewed .btn-review {
+.homework .table th[rowspan="2"] {
+    vertical-align: middle;
+}
+
+.homework .table .to-do .btn-pending, .homework .table .in-progress .btn-edit, .homework .table .in-progress .btn-submit, .homework .table .complete .btn-review, .homework .table .reviewed .btn-review, .teacher .homework .btn-edit, .teacher .homework .btn-review {
     display: inherit;
 }
 .homework .table .tooltip-inner {
