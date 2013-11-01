@@ -21,9 +21,9 @@ class Event extends \Phalcon\Mvc\Model {
     public function beforeSave() {
         $http = substr($this->link, 0, strlen("http://"));
         $https = substr($this->link, 0, strlen("https://"));
-         if(strcmp($http, "http://") === 1 && strcmp($https, "https://") === 1) {
+        if(strcmp($http, "http://") === 1 && strcmp($https, "https://") === 1){
             $this->link = "http://" . $this->link;
-         }
+        }
     }
 
     public function getSource() {

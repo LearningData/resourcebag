@@ -31,14 +31,15 @@ class EventTest extends PHPUnit_Framework_TestCase {
         $link = "www.test.com";
         $this->event->link = $link;
         $this->event->title = "test";
-        $this->event->startDate = date("Y-m-d");
-        $this->event->endDate = date("Y-m-d");
-        $this->createdAt = date("Y-m-d");
-        $this->userId = 1;
+        $this->event->start = date("Y-m-d");
+        $this->event->end = date("Y-m-d");
+        $this->event->createdAt = date("Y-m-d");
+        $this->event->userId = 1;
+        $this->event->id = 1;
 
         $this->event->save();
-        // $this->assertEquals("http://" . $link, $this->event->link);
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $this->assertEquals("http://" . $link, $this->event->link);
+        $this->event->delete();
     }
 }
 ?>
