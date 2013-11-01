@@ -16,6 +16,8 @@ class TeacherController extends UsersController {
         if(!$user->isTeacher()) {
             return $this->response->redirect("dashboard");
         }
+
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
     public function listTeachersAction() {
@@ -131,7 +133,7 @@ class TeacherController extends UsersController {
         $this->view->pick("teacher/timetable/index");
     }
 
-    public function subjectsAction() {
+    public function classesAction() {
         $teacherId = $this->view->user->id;
         $this->view->classes = ClassList::find("teacherId = $teacherId");
         $this->view->pick("teacher/subject/index");

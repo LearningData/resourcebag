@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\View;
+require "../app/services/Translation.php";
 
 class IndexController extends Phalcon\Mvc\Controller {
     public function indexAction() {
@@ -11,5 +12,6 @@ class IndexController extends Phalcon\Mvc\Controller {
 
         $this->view->csrf_params = array("name" => $tokenKey, "value" => $token);
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 }
