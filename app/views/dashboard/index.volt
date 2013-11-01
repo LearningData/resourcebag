@@ -1,6 +1,6 @@
 <div class="dashboard">
     <ul>
-        <li id="dashboard-timetable-box" class="ld-box timetable red">
+        <li id="dashboard-timetable-box" class="ld-box ld-timetable red">
             <div class="ld-box-head">
                 <div id="dashboard-timetable-head" class="title"> 
                     <h2><span class="custom-icon-timetable"></span>Timetable</h2>

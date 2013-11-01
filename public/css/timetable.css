@@ -1,8 +1,27 @@
-.timetable .header-navigation {
+@media screen and (max-width: 767px) {
+    .ld-timetable .ld-responsive-sm {
+        display: block;
+    }
+    .ld-timetable .ld-responsive-sm {
+        display: none;
+    }
+
+}
+@media screen and (min-width: 768px) {
+    .ld-timetable .ld-responsive-xs {
+        display: none;
+    }
+    .ld-timetable .ld-responsive-sm {
+        display: block;
+    }
+}
+
+
+.ld-timetable .header-navigation {
     padding: 12px;
     position: relative;
 }
-.timetable .header-navigation h3 {
+.ld-timetable .header-navigation h3 {
     font-size: 14px;
     margin: 0;
     color: #fff;
@@ -11,7 +30,7 @@
     font-weight: 400;
 }
 
-.timetable .nav {
+.ld-timetable .nav {
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
@@ -21,7 +40,7 @@
     padding: 20px 0 0;
     text-align: center;
 }
-.timetable .nav .btn-prev span, .timetable .nav .btn-next span {
+.ld-timetable .nav .btn-prev span, .ld-timetable .nav .btn-next span {
     background: none;
     cursor: pointer;
     height: 30px;
@@ -32,22 +51,22 @@
     color: #fff;
     margin: -6px 0 0;
 }
-.timetable .nav .btn-next span {
+.ld-timetable .nav .btn-next span {
     left: 100%;
     margin-left: -50px;
     background-position: -530px -520px;
 }
-.timetable .nav .title  h2 {
+.ld-timetable .nav .title  h2 {
     font-size: 24px;
     color: #fff;
     margin: 0;
 }
 
-.timetable .table {
+.ld-timetable .table {
     table-layout: fixed;
 }
 
-.timetable .table th {
+.ld-timetable .table th {
     font-size: 16px;
     color: #fff;
     font-weight: 100;
@@ -68,7 +87,7 @@
     padding: 11px 15px;
 }
 
-.timetable .table.day {
+.ld-timetable .table.day {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 0 0 5px 5px;
@@ -78,53 +97,56 @@
     border-top: 0;
     font-size: 12px;
 }
-.timetable .table.day > tbody > tr.active > td, .timetable .table.day tr.active, .table tr.active td {
+.ld-timetable .table.day > tbody > tr.active > td, .ld-timetable .table.day tr.active, .table tr.active td {
     background-color: #e6e7e8;
 }
-.timetable .table.day > tbody > tr.active td:first-child {
+.ld-timetable .table.day > tbody > tr.active td:first-child {
     border: #d1d3d4 solid;
     border-width: 2px 1px 2px 2px
 }
-.timetable .table.day > tbody > tr.active td:last-child {
+.ld-timetable .table.day > tbody > tr.active td:last-child {
     border: #d1d3d4 solid;
     border-width: 2px 2px 2px 0;
 }
-.timetable .table.day td:first-child {
+.ld-timetable .table.day td:first-child {
     border-right: solid 1px #dcddde;
     font-weight: bold;
     text-align: center;
+    white-space: nowrap;
 }
-.timetable .table.day tr:hover {
+.ld-timetable .table.day tr:hover {
     background-color: #f0f2f2;
 }
 
-.timetable .table td span {
+.ld-timetable .table td span {
     display: block;
     text-align: center;
 }
 
-.timetable .table td span:nth-child(1) {
+.ld-timetable .table td span:nth-child(1) {
     
 }
 
-.timetable .table td span:nth-child(2) {
+.ld-timetable .table td span:nth-child(2) {
     font-size: 12px;
 }
 
-.timetable .table td span:nth-child(3) {
+.ld-timetable .table td span:nth-child(3) {
     font-size: 10px;
 }
 
 
-.timetable .table td {
+.ld-timetable .table td {
     position: relative;
+    padding: 8px;
+    height: 50px;
 }
 
-.timetable .table.edit td span.cell-icon, .timetable .table td.edit span.cell-icon {
+.ld-timetable .table.edit td span.cell-icon, .ld-timetable .table td.edit span.cell-icon {
     display: inline;
 }
 
-.timetable .table span.cell-icon {
+.ld-timetable .table span.cell-icon {
     display: none;
     line-height: 21px;
     background: red;
@@ -134,25 +156,25 @@
     right: 10px;
 }
 
-.timetable .table.table-condensed th {
+.ld-timetable .table.table-condensed th {
     background-color: #e5242d;
     cursor: default;
 }
 
-.timetable .table.none {
+.ld-timetable .table.none {
     text-align: center;
     font-size: large;
 }
 
-.teacher .timetable .table.week tr:hover{
+.teacher .ld-timetable .table.week tr:hover{
     background-color: transparent;
 }
 
-.teacher .timetable .table.week td:hover{
+.teacher .ld-timetable .table.week td:hover{
     background-color: #f0f2f2;
 }
 
-.teacher .timetable .table.week td .subject {
+.teacher .ld-timetable .table.week td .subject {
     color: blue;
     cursor: pointer;
     margin: 3%;

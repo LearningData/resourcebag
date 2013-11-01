@@ -1,20 +1,30 @@
-<div class="timetable red">
+<div class="ld-timetable red">
     <h1 class="header">Timetable</h1>
-    {{ link_to("teacher/newClass","class":"btn btn-tmtbl mbottom-20","New Class") }}
+    {{ link_to("teacher/newClass","class":"btn mbottom-20","New Class") }}
     <button class="btn btn-edit mbottom-20">Edit</button>
-    <div class="nav">
-        <a title="Prev" class="btn-prev"><span class="icon-chevron-sign-left"></span></a>
-        <a title="Next" class="btn-next"><span class="icon-chevron-sign-right"></span></a>
-        <div class="title"><h2></h2></div>
+    <div class="ld-responsive-sm">
+        <div class="nav">
+            <a title="Prev" class="btn-prev"><span class="icon-chevron-sign-left"></span></a>
+            <a title="Next" class="btn-next"><span class="icon-chevron-sign-right"></span></a>
+            <div class="title"><h2></h2></div>
+        </div>
+        <table class="table week">
+            <thead class="head">
+                <tr>
+                    {% for day in period %}
+                    <th class="day-of-week" data-day="{{ day.format('N') }}">{{ day.format("l") }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+        </table>
     </div>
-
-    <table class="table week">
-        <thead class="head">
-            <tr>
-                {% for day in period %}
-                <th class="day-of-week" data-day="{{ day.format('N') }}">{{ day.format("l") }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-    </table>
+    <div class="ld-responsive-xs">
+        <div class="nav">
+            <a title="Prev" class="btn-prev"><span class="icon-chevron-sign-left"></span></a>
+            <a title="Next" class="btn-next"><span class="icon-chevron-sign-right"></span></a>
+            <div class="title"><h2></h2></div>
+        </div>
+        <table class="table">
+        </table>
+    </div>
 </div>

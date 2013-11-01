@@ -1,43 +1,60 @@
 var timetablePage = (function() {
-
-    //init
     var displayDate = new Date()
+    var displayDay = displayDate.getDay()
     var init = function() {
-        if ( $( ".timetable .header" ).length > 0 ) {
-            getWeekView( displayDate )
-            //events
-            $( ".timetable .header" ).click( function( event ) {
-                window.location.href = urlBase + "/" + getUser() + "/timetable"
-            })
-            $( ".timetable .day-of-week" ).click( function( event ) {
-                getTimetableData( $ ( this ).data().day )
-                $( ".timetable .day-of-week" ).removeClass( "active" )
-                $( this ).addClass( "active" )
-            })
-            $( ".timetable .nav .title" ).click( function( event ) {
-                getWeekView( displayDate )
-                $( ".timetable-day" ).removeClass( "active" )
-            })
-            $( ".timetable .nav .btn-prev").click( function() {
+        refreshTables()
+        //events
+        $( ".ld-timetable .header" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/timetable"
+        })
+        $( ".ld-timetable .day-of-week" ).click( function( event ) {
+            getSingleDayData( $ ( this ).data().day )
+            $( ".ld-timetable .day-of-week" ).removeClass( "active" )
+            $( this ).addClass( "active" )
+        })
+        $( ".ld-timetable .ld-responsive-sm .nav .title" ).click( function( event ) {
+            refreshTables()
+            $( ".ld-timetable .day-of-week" ).removeClass( "active" )
+        })
+        $( ".ld-timetable .ld-responsive-sm .nav .btn-prev" ).click( function() {
+            displayDate.setUTCDate(displayDate.getUTCDate() - 7)
+            refreshTables()
+            $( ".ld-timetable .day-of-week" ).removeClass( "active" )
+        })
+        $( ".ld-timetable .ld-responsive-sm .nav .btn-next" ).click( function() {
+            displayDate.setUTCDate(displayDate.getUTCDate() + 7)
+            refreshTables()
+            $( ".day-of-week" ).removeClass( "active" )
+        })
+        $( ".ld-timetable .ld-responsive-xs .nav .btn-prev" ).click( function() {
+            displayDay -= 1
+            if (displayDay < 0) {
                 displayDate.setUTCDate(displayDate.getUTCDate() - 7)
-                getWeekView( displayDate )
-                $( ".timetable-day" ).removeClass( "active" )
-            })
-            $( ".timetable .nav .btn-next").click( function() {
+                displayDay = 6
+            }
+            refreshTables()
+        })
+        $( ".ld-timetable .ld-responsive-xs .nav .btn-next" ).click( function() {
+            displayDay += 1
+            if (displayDay > 6) {
                 displayDate.setUTCDate(displayDate.getUTCDate() + 7)
-                getWeekView( displayDate )
-                $( ".day-of-week" ).removeClass( "active" )
-            })
-            $( ".teacher .timetable .btn-edit").click( function() {
-                $( ".teacher .timetable .table" ).toggleClass( "edit" )
-            })
-        }
+                displayDay = 1
+            }
+            refreshTables()
+        })
+        $( ".teacher .ld-timetable .btn-edit").click( function() {
+            $( ".teacher .ld-timetable .table" ).toggleClass( "edit" )
+        })
     }
 
-    var getTimetableData = function( day ) {
+    var refreshTables = function() {
+        getWeekView(displayDate)
+        getSingleDayData(displayDay, true)
+    }
+
+    var getSingleDayData = function( day, hidden ) {
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
-            var tableHead = $( ".timetable .table .head" )
             data = response.week[day]
             if ( data == undefined ) {
                 return
@@ -45,29 +62,41 @@ var timetablePage = (function() {
             var timetable = $( "<table class=\"table day\">")
             var tableRows = []
             for ( var i = 0; i < data.length; i++ ) {
-                var rowStr = "<tr><td>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
-                rowStr += "<td colSpan=5>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
+                var rowStr = "<tr><td colspan=2>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
+                rowStr += "<td colspan=4>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                 tableRows.push(rowStr)
             }
             var tableBody = $( "<tbody>" )
             tableBody.append( tableRows.join("") )
             timetable.append( tableBody )
-            timetable.prepend(tableHead)
-            $( ".timetable .table" ).replaceWith( timetable )
+            if (hidden) {
+                var header = $( ".ld-timetable .ld-responsive-xs .nav .title h2" )
+                var date = new Date(displayDate)
+                date.setDate(date.getDate() - date.getDay() + day)
+                header.empty()
+                header.append(prettyDay(date))
+
+                timetable.append( tableBody )
+                $( ".ld-timetable .ld-responsive-xs .table" ).replaceWith( timetable )
+            } else {
+                var tableHead = $( ".ld-timetable .table .head" )
+                timetable.prepend(tableHead)
+                $( ".ld-timetable .ld-responsive-sm .table" ).replaceWith( timetable )
+            }
         })
     }
 
     var setMainTableHeader = function ( week, firstDay ) {
         var lastDay = new Date(firstDay)
         lastDay.setDate(lastDay.getDate() + Object.keys(week).length)
-        var header = $( ".timetable .nav .title h2" )
+        var header = $( ".ld-timetable .ld-responsive-sm .nav .title h2" )
         header.empty()
         header.append(prettyDate(firstDay) + " - " + prettyDate(lastDay) )
         
     }
 
     var setWeekTableHead = function( firstDay ) {
-        var tableHead = $( ".timetable .table .head" )
+        var tableHead = $( ".ld-timetable .table .head" )
         var headRows = tableHead.find( ".day-of-week")
             for (var i = 0; i < headRows.length; i++ ) {
                 var thisDay = new Date( firstDay )
@@ -116,8 +145,8 @@ var timetablePage = (function() {
             var timetable = $( "<table class=\"table week\">")
             timetable.append( getWeekRows( response.week ) )
             timetable.prepend(tableHead)
-            $( ".timetable .table" ).replaceWith( timetable )
-            $( ".teacher .timetable .table.week td .cell-icon").click(function( event ) {
+            $( ".ld-timetable .ld-responsive-sm .table" ).replaceWith( timetable )
+            $( ".teacher .ld-timetable .table.week td .cell-icon" ).click(function( event ) {
                 event.stopPropagation()
                 if ($( event.target ).hasClass("icon-remove") ) { 
                     removeSubjectClass(event.target.parentElement, event.target)
@@ -126,13 +155,13 @@ var timetablePage = (function() {
                     addSubjectClass(event.target.parentElement, event.target)
                 }
             })
-            $( ".teacher .timetable .table.week td .subject").click(function( event ) {
+            $( ".teacher .ld-timetable .table.week td .subject").click(function( event ) {
                 event.preventDefault()
                 event.stopPropagation()
                 window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
             })
-            $( ".teacher .timetable .table.week td").click(function( event ) {
-                $( ".teacher .timetable .table.week td").removeClass( "edit" )
+            $( ".teacher .ld-timetable .table.week td").click(function( event ) {
+                $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
                 event.currentTarget.classList.add( "edit" )
             })
         })

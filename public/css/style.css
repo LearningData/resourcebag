@@ -991,12 +991,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 /********************************************************************
 *******************UI Default styles*********************************
 *********************************************************************/
-/*//////MODAL//////*/
-
-.modal-timetable .modal-title {
-    border-left-color: #e5242d;
-}
-
 /*/////FORMS & FORM CONTROLS/////*/
 .form-search {
     position: relative;

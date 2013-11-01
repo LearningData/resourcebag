@@ -6,7 +6,6 @@ $(document).ready(function() {
     var y = date.getFullYear();
 
     $(".nav.navbar-nav li").removeClass("active")
-    timetablePage.init()
     if (window.location.pathname.indexOf("dashboard") != -1) {
         dashboard.init()
         $(".nav.navbar-nav li.dashboard").addClass("active")
@@ -18,18 +17,19 @@ $(document).ready(function() {
     } else if (window.location.pathname.indexOf("calendar") != -1) {
         calendarPage.init()
         $(".nav.navbar-nav li.events").addClass("active")
-    } else if (window.location.pathname.indexOf("timetable") != -1) {
-        $(".nav.navbar-nav li.timetable").addClass("active")
     } else if (window.location.pathname.indexOf("Ebooks") != -1) {
         $(".nav.navbar-nav li.ebooks").addClass("active")
     } else if (window.location.pathname.indexOf("resources") != -1) {
         $(".nav.navbar-nav li.resources").addClass("active")
     } else if (window.location.pathname.indexOf("policies") != -1) {
         $(".nav.navbar-nav li.policies").addClass("active")
-    } else if ($("div.ld-homework").length > 0) {
+    } else if ($( "div.ld-timetable" ).length > 0) {
+        timetablePage.init()
+        $(".nav.navbar-nav li.timetable").addClass("active")
+    } else if ($( "div.ld-homework" ).length > 0) {
         homeworkPage.init()
         $(".nav.navbar-nav li.homework").addClass("active")
-    } else if ($("div.ld-classes").length > 0) {
+    } else if ($( "div.ld-classes" ).length > 0) {
         classesPage.init()
         $(".nav.navbar-nav li.classes").addClass("active")
     }
