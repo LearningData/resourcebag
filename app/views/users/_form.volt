@@ -1,7 +1,7 @@
 <table>
     <tr>
         <td align="right">
-            <label for="Type">Type</label>
+            <label for="Type">{{ t._("type")}}</label>
         </td>
         <td align="left">
             <select name="Type">
@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="FirstName">FirstName</label>
+            <label for="FirstName">{{ t._("name") }}</label>
         </td>
         <td align="left">
             {{ text_field("FirstName", "size" : 30) }}
@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="LastName">LastName</label>
+            <label for="LastName">{{ t._("lastname") }}</label>
         </td>
         <td align="left">
             {{ text_field("LastName", "size" : 30) }}
@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="email">Email</label>
+            <label for="email">{{ t._("email") }}</label>
         </td>
         <td align="left">
             {{ text_field("email", "size" : 30) }}
@@ -35,7 +35,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="confirm-email">Confirm Email</label>
+            <label for="confirm-email">Confirm {{ t._("email") }}</label>
         </td>
         <td align="left">
             {{ text_field("confirm-email", "size" : 30) }}
@@ -43,7 +43,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="password">Password</label>
+            <label for="password">{{ t._("password") }}</label>
         </td>
         <td align="left">
             {{ password_field("password", "size" : 30) }}
@@ -51,7 +51,7 @@
     </tr>
     <tr>
         <td align="right">
-            <label for="confirm-password">Confirm Password</label>
+            <label for="confirm-password">Confirm {{ t._("password") }}</label>
         </td>
         <td align="left">
             {{ password_field("confirm-password", "size" : 30) }}
