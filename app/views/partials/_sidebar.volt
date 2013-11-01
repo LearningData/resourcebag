@@ -8,30 +8,30 @@
             <a href="#">Messages</a>
         </li>
         <li class="notices">
-            {{ link_to(user.getController()~"/noticeboard", "School Notices") }}
+            {{ link_to(user.getController()~"/noticeboard", t._("notices")) }}
             <span class="badge">14</span>
         </li>
         <li class="events">
-            {{ link_to(user.getController()~"/calendar", "Calendar") }}
+            {{ link_to(user.getController()~"/calendar", t._("calendar")) }}
             <span class="badge">7</span>
         </li>
         <li class="timetable">
-            {{ link_to(user.getController()~"/timetable", "Timetable") }}
+            {{ link_to(user.getController()~"/timetable", t._("timetable")) }}
         </li>
         <li class="homework">
-            {{ link_to(user.getController()~"/homework?filter=2", "Homework") }}
+            {{ link_to(user.getController()~"/homework?filter=2", t._("homework")) }}
         </li>
         <li class="classes">
-            {{ link_to(user.getController()~"/classes", "Classes") }}
+            {{ link_to(user.getController()~"/classes", t._("classes")) }}
         </li>
         <li class="ebooks">
-            <a href="#">Ebooks</a>
+            <a href="#">{{ t._("ebooks") }}</a>
         </li>
         <li class="resources">
-            <a href="#">Resources</a>
+            <a href="#">{{ t._("resources") }}</a>
         </li>
         <li class="policies">
-            {{ link_to(user.getController()~"/policies", "School Policies") }}
+            {{ link_to(user.getController()~"/policies", t._("policies")) }}
         </li>
     </nav>
 </div>
