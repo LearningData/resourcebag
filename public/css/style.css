@@ -32,10 +32,6 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
-.notice-home ul li {
-    background-image: url('../img/sprite.png');
-    background-repeat: no-repeat;
-}
 
 html, body {
     height: 100%;
@@ -52,9 +48,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 h1, .h1 {
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 100;
     margin: 30px 0;
-    border-bottom: 5px solid #000000;
+    border-bottom: 3px solid #000000;
+    padding: 0 0 10px;
 }
 
 h2, .h2 {
@@ -73,15 +70,14 @@ h4, .h4 {
 .btn-icon {
     width: 21px;
     height: 21px;
-    display: inline-block;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
     color: #fff;
     font-size: 14px;
+    padding-top: 3px;
     text-align: center;
-    display: inherit;
-    vertical-align: middle;
+    margin-right: 5px;
 }
 
 .btn-icon.btn-inactive, .btn.btn-inactive {
@@ -97,7 +93,8 @@ h4, .h4 {
 }
 .icon-caret-right {
     font-size: 20px;
-    padding-left: 3px;
+    padding-top: 0;
+    padding-left: 2px;
 }
 
 span.btn-icon {
@@ -309,14 +306,14 @@ table > tbody > tr.active td:last-child {
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
-    padding-left:0;
+    padding-left: 0;
     padding-right: 0;
 }
 
 .collapse {
     display: block;
 }
-.navbar-toggle  {
+.navbar-toggle {
     display: none;
 }
 .navbar-nav {
@@ -1017,10 +1014,10 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 .form-search input {
     border: solid 1px #525353 !important;
 }
-.form-control, input[type='text'], form textarea {
+.form-control, input[type='text'], input[type='password'], form textarea {
     width: 95%;
     height: 45px;
-    margin: 20px 0;
+    margin: 5px 0 20px;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -1036,7 +1033,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 div.uploader {
-    margin: 15px 0 !important;
+    margin: 5px 0 !important;
 }
 
 form select {
