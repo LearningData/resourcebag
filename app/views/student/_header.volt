@@ -1,5 +1,5 @@
 <header>
-    <a class="schoolbag-brand" href="#"> {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }} </a>
+    <a class="schoolbag-brand" href="/schoolbag/dashboard"> {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }} </a>
     <div class="user-profile">
         <button type="button" class="navbar-toggle icon-reorder" data-toggle="collapse" data-target=".nav-collapse"></button>
         <div class="tb-user">

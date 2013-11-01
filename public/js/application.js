@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    $(".btn-profile-actions").click(function() {
+        $(".user-profile-actions").slideToggle("fast");
+    });
+
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -62,7 +66,7 @@ var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file]").uniform();
 
 function setUpEvents() {
-    $(".btn.btn-return").click(function(a){
+    $(".btn.btn-return").click(function(a) {
         window.history.go(-1)
     })
 }
@@ -150,10 +154,10 @@ function showTimes(date) {
         var times = response.times;
         for (var i = times.length - 1; i >= 0; i--) {
             var time = times[i];
-            var hour = parseInt(time/100)
-            hour = ( hour < 10 ) ? "0" + hour : hour
+            var hour = parseInt(time / 100)
+            hour = (hour < 10 ) ? "0" + hour : hour
             var mins = time % 100
-            mins = ( mins < 10 ) ? "0" + mins : mins
+            mins = (mins < 10 ) ? "0" + mins : mins
             var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + hour + ":" + mins + '</p>';
             input = jQuery(field);
             $("#due-times").append(input);

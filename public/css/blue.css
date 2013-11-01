@@ -3,7 +3,7 @@
 }
 
 .blue.btn-icon:hover, .blue .btn:hover {
-    background-color:#0ba6d3;
+    background-color: #0ba6d3;
 }
 
 .blue.ld-box .ld-box-head .title {
@@ -11,7 +11,7 @@
 }
 
 .blue .header:hover {
-   background-color: #0ba6d3;
+    background-color: #0ba6d3;
 }
 
 .blue .form-control:focus {
@@ -36,4 +36,3 @@
 .blue.ld-timetable .header-navigation {
     background-color: #e27176; //TODO change color
 }
-
