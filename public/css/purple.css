@@ -1,0 +1,17 @@
+.purple .btn-icon, .purple .btn {
+    background-color: #9752a3;
+}
+
+.purple.btn-icon:hover, .purple .btn:hover {
+    background-color: #5a2a60;
+}
+
+.purple .form-control:focus {
+    border-color: #9752a3;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
+}
+ 
+.purple h1 {
+    border-color: #9752a3;
+}
