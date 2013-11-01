@@ -27,7 +27,7 @@
 
             {% set header = user.getController()~"/_header" %}
             {{ partial(header)}}
-            {{ partial(user.getController()~"/_sidebar") }}
+            {{ partial("partials/_sidebar") }}
 
             {% endif %}
         </div>
