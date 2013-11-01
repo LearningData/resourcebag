@@ -1,36 +1,19 @@
-/*@media only screen and (min-device-width : 1024px) {
- .sidebar {
- display: block;
- background: #E6E7E8;
- }
- .collapse {
- display: block;
- }
- .navbar-toggle {
- display: none;
- }
- .navbar-nav, .navbar-nav > li, .navbar-brand {
- float: none;
- }
- }
- */
+@media only screen and (max-width: 1023px) {
 
-@media only screen and (max-width: 1024px) {
-    
-    /*HEAER*/
+    /*HEADER*/
     .collapse {
-        /*display: block;*/
+        display: none;
     }
 
     .sidebar {
         background: #E6E7E8;
         padding: 10px 0 20px;
     }
-    
+
     .user-profile {
         width: 40%;
         padding: 10px 2.5%;
-        margin:0 0 0 57.5%;
+        margin: 0 0 0 57.5%;
         background-color: none;
         position: relative;
     }
@@ -60,22 +43,21 @@
         background: none;
     }
     .schoolbag-brand {
-        width:20%;
+        width: 20%;
         padding: 10px 0;
         margin: 0 0 0 2.5%;
-        float:left;
+        float: left;
     }
     .schoolbag-brand img {
         width: 100%;
     }
-    
 
     /*NAVBAR - MEGAMENU*/
-        
-        /*INPUT SEARCH*/
-        .form-search input {
-            margin: 20px auto;
-        }
+
+    /*INPUT SEARCH*/
+    .form-search input {
+        margin: 20px auto;
+    }
 
     .navbar-nav {
         margin: 0;
@@ -90,6 +72,7 @@
         padding: 0;
         position: static;
         font-size: 24px;
+        display: block;
     }
     .navbar-nav > li {
         width: 21.8%;
@@ -105,7 +88,7 @@
         text-align: center;
         font-size: 16px;
     }
-    .navbar-nav > li.active a   {
+    .navbar-nav > li.active a {
         border: none;
         padding-left: 0;
     }
@@ -136,7 +119,7 @@
     /*BUTTONS COLORS*/
     .dashboard .custom-icon-dash-top {
         margin-left: -20px;
-        margin-bottom:0;
+        margin-bottom: 0;
     }
     .navbar-nav > li.homework a {
         background-color: #ff9e19;
@@ -172,6 +155,12 @@
         background-color: #939598;
     }
 
+    /*FORMs / INPUT*/
+    .form-control, input[type='text'], form textarea {
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
 }
 
 /*      Small devices Tablets (≥768px).
@@ -184,16 +173,15 @@
  ---------------------------------------------*/
 
 @media only screen and (max-width: 767px) {
-    
-    
-/*HEADER*/
-    .sidebar    {
+
+    /*HEADER*/
+    .sidebar {
         padding-top: 0;
     }
     .user-profile {
         width: 100%;
         padding: 10px 2.5%;
-        margin:0;
+        margin: 0;
         background-color: #ececec;
         position: relative;
     }
@@ -221,12 +209,11 @@
         font-size: 18px;
         margin-left: 10px;
     }
-    
-    
+
     .schoolbag-brand {
         width: 100%;
         padding: 10px 0;
-        margin:0;
+        margin: 0;
         display: block;
         text-align: center;
         float: none;
@@ -234,7 +221,6 @@
     .schoolbag-brand img {
         width: 35%;
     }
-
 
     .user-profile {
         width: 100%;
@@ -252,7 +238,6 @@
     .navbar-toggle {
         font-size: 24px;
     }
-
 
     .navbar-nav > li {
         width: 30%;

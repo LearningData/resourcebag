@@ -1,14 +1,14 @@
 <p>
     <label for="FirstName">First Name</label>
-    {{ text_field("FirstName", "size" : 30, "value" : user.name) }}
+    {{ text_field("FirstName", "value" : user.name) }}
 </p>
 <p>
     <label for="LastName">Last Name</label>
-    {{ text_field("LastName", "size" : 30, "value" : user.lastName) }}
+    {{ text_field("LastName", "value" : user.lastName) }}
 </p>
 <p>
     <label for="email">Email</label>
-    {{ text_field("email", "size" : 30, "value" : user.email) }}
+    {{ text_field("email", "value" : user.email) }}
 </p>
 <p>
     <label for="photo">Photo</label>
