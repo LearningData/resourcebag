@@ -80,7 +80,7 @@ var homeworkPage = (function() {
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn",
+            "class": "btn btn-cancel",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -147,7 +147,7 @@ var homeworkPage = (function() {
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn",
+            "class": "btn btn-cancel",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -188,7 +188,7 @@ var homeworkPage = (function() {
         })
 
         var cancel = $( "<button>", {
-            "class": "btn",
+            "class": "btn btn-cancel",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -221,7 +221,7 @@ var homeworkPage = (function() {
         })
 
         var cancel = $( "<button>", {
-            "class": "btn",
+            "class": "btn btn-cancel",
             "data-dismiss": "modal",
             html: "Cancel"
         })

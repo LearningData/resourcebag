@@ -17,7 +17,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7 ">
+                <div class="hidden-xs col-sm-5 col-md-6 col-lg-7 ">
                     <div class="col-block-images">
                         <div class="block1">
                             <img src="img/artwork/art-work-01.jpg" width="160" height="180" class="img-responsive" />
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
+                <div class="col-sm-7 col-md-6 col-lg-5">
                     {% for type, messages in flash.getMessages() %}
                     {% for message in messages %}
                     <div class="alert">

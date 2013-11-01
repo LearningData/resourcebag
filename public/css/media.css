@@ -16,6 +16,7 @@
         margin: 0 0 0 57.5%;
         background-color: none;
         position: relative;
+        overflow: visible;
     }
     .user-profile img {
         max-width: 70%;

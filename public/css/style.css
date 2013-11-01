@@ -609,6 +609,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-size: 12px;
     color: #4d4d4f;
     margin-right: 10px;
+    margin-bottom:10px;
     display: block;
 }
 .icon-user, .icon-off {

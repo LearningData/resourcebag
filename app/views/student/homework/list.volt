@@ -5,7 +5,6 @@
             <li class="bt-new">
                 <a href="/schoolbag/student/homework/new"><span class="custom-icon-new-homework"></span> Add New</a>
             </li>
-            <!--li>{{ link_to("student/homework", "All") }}</li-->
             <li class="bt-to-do">
                 {{ link_to("student/homework?filter=0", "To Do") }}
             </li>
