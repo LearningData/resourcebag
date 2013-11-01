@@ -56,7 +56,8 @@
 
     /*INPUT SEARCH*/
     .form-search input {
-        margin: 20px auto;
+        margin: 20px auto!important;
+        width: 95%!important;
     }
 
     .navbar-nav {
@@ -196,15 +197,7 @@
     .name-school {
         font-size: 12px;
     }
-    .user-profile-actions {
-        display: none;
-        margin: 20px 0 0;
-        position: absolute;
-        z-index: 1;
-        margin: 0 0 0 55px;
-        padding: 30px;
-        background: #ECECEC;
-    }
+
     .btn-profile-actions {
         font-size: 18px;
         margin-left: 10px;

@@ -18,6 +18,6 @@
 {{ securityTag.csrf(csrf_params) }}
 <p>
     {{ submit_button("Save", "class":"btn") }}
-    {{ link_to("student/changePassword/", "Change Password", "class":"btn") }}
+    <button class="btn btn-cancel">Cancel</button>
 </p>
 </form>

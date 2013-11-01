@@ -12,3 +12,6 @@
 </p>
 {{ securityTag.csrf(csrf_params) }}
 <input type="submit" value="save" class="btn">
+<button class="btn btn-cancel">
+    Cancel
+</button>

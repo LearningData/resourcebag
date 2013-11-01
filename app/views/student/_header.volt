@@ -17,6 +17,7 @@
 
         <div class="user-profile-actions">
             <a href="/schoolbag/student/edit/" class="btn-profile"><span class="icon-user"></span> Profile</a>
+            <a href="/schoolbag/student/changePassword/" class="btn-logout"><span class="icon-lock"></span> Change Password</a>
             <a href="/schoolbag/session/logout/" class="btn-logout"><span class="icon-off"></span> Logout</a>
         </div>
 
