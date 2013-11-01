@@ -26,5 +26,5 @@
     <div class="clearfix"></div>
     {{ submit_button("Save", "class":"btn btn-notice") }}
     </form>
-    <button class="btn btn-notice btn-return">Cancel</button>
+    <button class="btn btn-cancel btn-notice btn-return">Cancel</button>
 </div>

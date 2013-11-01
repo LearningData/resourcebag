@@ -2,7 +2,7 @@
     <h1>School Notice Board</h1>
 
     {% if not user.isStudent() %}
-    {{ link_to(user.getController()~"/noticeboard/new", "New") }}
+    {{ link_to(user.getController()~"/noticeboard/new", "New", "class":"btn") }}
     {% for notice in notices %}
     <p>
         <strong>Message: </strong>{{ notice.text }}
