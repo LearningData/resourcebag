@@ -1,6 +1,7 @@
 <header>
     <a class="schoolbag-brand" href="/schoolbag/dashboard">
-        {{ image("img/logo.png", "alt":"Schoolbag", "width":"153", "heigth":"46") }}
+        {{ image("img/logo.png", "alt":"Schoolbag",
+            "width":"153", "heigth":"46") }}
     </a>
     <div class="user-profile">
         <button type="button" class="navbar-toggle icon-reorder"
@@ -24,13 +25,14 @@
         <div class="user-profile-actions">
             <a href="/schoolbag/{{ user.getController() }}/edit/"
                     class="btn-profile">
-                <span class="icon-user"></span> Profile
+                <span class="icon-user"></span> {{ t._("global.profile") }}
             </a>
-            <a href="/schoolbag/{{ user.getController() }}/changePassword/" class="btn-logout">
-                <span class="icon-lock"></span> Change Password
+            <a href="/schoolbag/{{ user.getController() }}/changePassword/"
+                class="btn-logout">
+                <span class="icon-lock"></span> {{ t._("global.change-password") }}
             </a>
             <a href="/schoolbag/session/logout/" class="btn-logout">
-                <span class="icon-off"></span> Logout
+                <span class="icon-off"></span> {{ t._("global.logout") }}
             </a>
         </div>
     </div>
