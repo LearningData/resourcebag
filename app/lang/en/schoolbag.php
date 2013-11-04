@@ -15,6 +15,7 @@ $messages = array(
     "logout" => "Logout",
     "save" => "save",
     "cancel" => "cancel",
-    "choose-file" => "Choose File"
+    "choose-file" => "Choose File",
+    "School" => "School"
 );
 ?>
