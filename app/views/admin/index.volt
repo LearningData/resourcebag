@@ -1,4 +1,9 @@
-
+<nav>
+    {{ link_to("admin/newSchool", "New School") }}
+    {{ link_to("admin", "View Schools") }}
+    {{ link_to("admin/listConfigs", "View Configurations") }}
+    {{ link_to("admin/newConfig", "New Configuration") }}
+</nav>
 <center><h1>Listing school</h1></center>
 <table class="browse" align="center">
     <thead>

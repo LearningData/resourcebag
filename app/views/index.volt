@@ -24,11 +24,8 @@
         -->
         <div class="sidebar col-md-3 col-lg-3">
             {% if user is defined %}
-
-            {% set header = user.getController()~"/_header" %}
-            {{ partial(header)}}
-            {{ partial("partials/_sidebar") }}
-
+                {{ partial("partials/_header") }}
+                {{ partial("partials/_sidebar") }}
             {% endif %}
         </div>
         <div class="col-md-9 col-lg-9">
