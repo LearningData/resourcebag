@@ -1,8 +1,8 @@
 <?php
 $messages = array(
     "user.user" => "User",
-    "user.name" => "Name",
-    "user.lastname" => "Last Name",
+    "user.name" => "First",
+    "user.lastname" => "Last",
     "user.type" => "Type",
     "user.email" => "Email",
     "user.password" => "Password",
