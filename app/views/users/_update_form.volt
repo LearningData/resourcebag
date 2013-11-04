@@ -16,8 +16,8 @@
 </p>
 {{ hidden_field("userID", "type" : "numeric", "value" : user.id) }}
 {{ securityTag.csrf(csrf_params) }}
+</form>
 <p>
     {{ submit_button("Save", "class":"btn") }}
     <button class="btn btn-cancel">Cancel</button>
 </p>
-</form>
