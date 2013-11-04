@@ -16,10 +16,8 @@
 </p>
 {{ hidden_field("userID", "type" : "numeric", "value" : user.id) }}
 {{ securityTag.csrf(csrf_params) }}
-<p class="col-sm-6">
+<p>
     {{ submit_button("Save", "class":"btn") }}
-</p>
-<p class="col-sm-6">
-    {{ link_to("student/changePassword/", "Change Password", "class":"btn col-sm-6") }}
+    <button class="btn btn-cancel">Cancel</button>
 </p>
 </form>

@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\Controller;
+require "../app/services/Translation.php";
 
 class ControllerBase extends Controller {
     public function beforeExecuteRoute($dispatcher){
@@ -14,6 +15,7 @@ class ControllerBase extends Controller {
         }
 
         $this->view->user = $user;
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
     protected function getUserBySession() {

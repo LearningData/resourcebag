@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\View;
+require "../app/services/Translation.php";
 
 class RegisterController extends Phalcon\Mvc\Controller {
     public function indexAction() {
@@ -11,6 +12,8 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         $this->view->schools = School::find();
+
+        $this->view->t = Translation::get("en", "user");
     }
 
     public function createAction() {

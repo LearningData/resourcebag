@@ -15,6 +15,8 @@ class SchoolController extends UsersController {
         if(!$user->isSchool()) {
             return $this->response->redirect("dashboard");
         }
+
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
     public function timetableAction() {

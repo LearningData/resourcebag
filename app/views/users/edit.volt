@@ -1,12 +1,6 @@
-<table width="100%">
-    <tr>
-        <td align="left">{{ link_to("users", "Go Back") }}</td>
-    <tr>
-</table>
-
-<div align="center">
-    <h1>Edit users</h1>
+<div class="orange">
+    <h1>Profile</h1>
+    {{ form(user.getController()~"/update", "method":"post",
+        "enctype":"multipart/form-data") }}
+    {% include "users/_update_form.volt" %}
 </div>
-
-{{ form("users/update", "method":"post") }}
-{% include "users/_form.volt" %}

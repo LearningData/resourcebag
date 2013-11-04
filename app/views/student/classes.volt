@@ -15,7 +15,7 @@
                 'emptyText': 'Please, choose one class')}}
         </p>
         <p>
-            <input type="submit" class="btn">
+            <input type="submit" class="btn" value="Submit">
             <button type="button" class="btn btn-cancel">Cancel</button>
         </p>
     </form>

@@ -17,9 +17,11 @@ class StudentController extends UsersController {
         if(!$user->isStudent()) {
             return $this->response->redirect("dashboard");
         }
+
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
-    public function listClassesAction() {
+    public function classesAction() {
         $param = "year = " . Config::schoolYear();
         $group = $this->view->user->getGroups($param)->getFirst();
         $this->view->classes = ClassListService::getClassesByGroup($group);

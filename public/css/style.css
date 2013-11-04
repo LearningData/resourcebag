@@ -116,7 +116,7 @@ span.btn-icon:hover {
     margin-bottom: 20px;
 }
 
-.btn {
+.btn, .btn.btn-cancel {
     min-width: 180px;
     padding: 8px 12px;
     font-size: 16px;
@@ -134,6 +134,14 @@ span.btn-icon:hover {
     outline: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+.btn.btn-cancel {
+    color: #a7a9ac;
+    background-color: #d9d9d9 !important;
+}
+.btn.btn-cancel:hover {
+    background-color: #c5c5c5 !important;
 }
 
 .form-control:-moz-placeholder {
@@ -463,15 +471,6 @@ table > tbody > tr.active td:last-child {
 .box-messages .ld-box-child ul li:last-child {
     border: none;
 }
-.notice-home ul li.star {
-    background-position: -485px -90px;
-}
-.notice-home ul li.flag {
-    background-position: -485px -28px;
-}
-.notice-home ul li.comment {
-    background-position: -485px -145px;
-}
 
 /*//////NOTICES HOME//////*/
 #dashboard-notices, .header-notices, .notice-home {
@@ -592,8 +591,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 /*//////USER PROFILE//////*/
 .user-profile {
-    width: 80%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 0 auto 15px;
+    overflow: hidden;
 }
 .tb-user {
     float: left;
@@ -603,13 +603,14 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border: #d5d5d5 solid 1px;
 }
 .name-school {
-    font-size: 11px;
-    margin-bottom: 13px;
+    font-size: 14px;
 }
 .btn-profile, .btn-logout {
     font-size: 12px;
     color: #4d4d4f;
     margin-right: 10px;
+    margin-bottom:10px;
+    display: block;
 }
 .icon-user, .icon-off {
     margin-right: 1px;
@@ -619,6 +620,21 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .icon-off {
     color: #dc3b42;
+}
+
+.user-profile-actions {
+    display: none;
+    margin: 20px 0 0;
+    position: absolute;
+    z-index: 1;
+    margin: 0 0 0 55px;
+    padding: 30px;
+    background: #ECECEC;
+}
+.btn-profile-actions {
+    font-size: 18px;
+    background: none;
+    margin-left: 5px;
 }
 
 /*//////SEARCH//////*/
@@ -778,7 +794,9 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .ui-state-highlight span, .ui-state-highlight a, .ui-datepicker-today span, .ui-datepicker-today a {
     border-radius: 50px;
     -moz-border-radius: 50px;
-    padding: 2px 5px;
+    display: block;
+    width: 27px;
+    height: 27px;
     color: #fff;
 }
 
@@ -908,7 +926,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*Login Page*/
-#login {
+#login,
+#signup {
     background: #f3f5f8;
 }
 .jumbotron {
@@ -990,9 +1009,12 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 /*/////FORMS & FORM CONTROLS/////*/
 .form-search {
     position: relative;
+    margin-bottom: 15px;
 }
 .form-search input {
     border: solid 1px #525353 !important;
+    clear: both;
+    margin: 0 auto !important;
 }
 .form-control, input[type='text'], input[type='password'], form textarea {
     width: 95%;
@@ -1015,7 +1037,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 div.uploader {
     margin: 5px 0 !important;
 }
-
 form select {
     width: 85%;
     height: 45px;
@@ -1052,20 +1073,6 @@ form input[disabled] {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
 }
 
-/*event*/
-.form-evt .btn, .btn.btn-evt {
-    background: #9752a3;
-}
-
-.form-evt .btn:hover, .btn.btn-evt:hover {
-    background-color: #5a2a60;
-}
-
-.form-evt .form-control:focus {
-    border-color: #9752a3;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
-}
 /*------ END UI DEFAULTS ------*/
 
 /*To be sorted */

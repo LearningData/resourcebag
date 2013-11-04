@@ -5,6 +5,7 @@ class HomeworkController extends ControllerBase {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
         if(!$user) { return $this->response->redirect("index"); }
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
     public function indexAction() {

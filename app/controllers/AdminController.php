@@ -16,6 +16,8 @@ class AdminController extends UsersController {
         if(!$user->isAdmin()) {
             return $this->response->redirect("dashboard");
         }
+
+        $this->view->t = Translation::get("en", "schoolbag");
     }
 
     public function indexAction() {

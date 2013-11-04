@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Schoolbag</title>
+        <title>{{ t._("title") }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
@@ -24,11 +24,8 @@
         -->
         <div class="sidebar col-md-3 col-lg-3">
             {% if user is defined %}
-
-            {% set header = user.getController()~"/_header" %}
-            {{ partial(header)}}
-            {{ partial(user.getController()~"/_sidebar") }}
-
+                {{ partial("partials/_header") }}
+                {{ partial("partials/_sidebar") }}
             {% endif %}
         </div>
         <div class="col-md-9 col-lg-9">

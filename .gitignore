@@ -7,3 +7,7 @@ coverage
 *.swp
 app/controllers/TestController.php
 public/files
+
+app/views/calendar/new.volt
+
+.pydevproject

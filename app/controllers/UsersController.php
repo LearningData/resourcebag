@@ -19,6 +19,7 @@ class UsersController extends ControllerBase {
 
     public function editAction() {
         $this->setTokenValues();
+        $this->view->pick("users/edit");
     }
 
     public function createAction() {
@@ -106,6 +107,7 @@ class UsersController extends ControllerBase {
 
     public function changePasswordAction() {
         $this->setTokenValues();
+        $this->view->pick("users/changePassword");
     }
 
     public function updatePasswordAction() {
