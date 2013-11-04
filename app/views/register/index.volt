@@ -6,6 +6,9 @@
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
         {{ stylesheet_link("css/style.css") }}
+        {{ stylesheet_link("css/uniform.default.css") }}
+        {{ stylesheet_link("css/orange.css") }}
+
     </head>
     <body id="signup">
         <div class="jumbotron">
@@ -16,17 +19,14 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="">
-                    <h1>Your Info</h1>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
-                    {{ form("register/create", "method":"post") }}
-                    {% include "users/_form.volt" %}
-
-                </div>
-            </div>
+                <h1>Lorem ipsum dolor si</h1>
+                <h2 class="page-header">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                {{ form("register/create", "method":"post") }}
+                {% include "users/_form.volt" %}
+        </div>
             {{ javascript_include("js/jquery-1.9.1.js") }}
             {{ javascript_include("js/bootstrap.min.js") }}
+            {{ javascript_include("js/jquery.uniform.min.js") }}
             {{ javascript_include("js/application.js") }}
     </body>
 </html>

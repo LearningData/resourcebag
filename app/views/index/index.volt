@@ -6,6 +6,7 @@
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
         {{ stylesheet_link("css/style.css") }}
+        {{ stylesheet_link("css/media.css") }}
     </head>
     <body id="login">
         <div class="jumbotron">

@@ -1,9 +1,12 @@
 <?php
 $messages = array(
-    "name" => "name",
-    "lastname" => "last name",
-    "type" => "type",
-    "email" => "email",
-    "password" => "password"
+    "name" => "Name",
+    "firstname" => "First",
+    "lastname" => "Last",
+    "type" => "Type",
+    "email" => "Email",
+    "confirmemail" => "Confirm Email",
+    "password" => "Password",
+    "confirmpassword" => "Confirm Password",
 );
 ?>

@@ -13,7 +13,7 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-.row .row {
+.row {
     margin-left: -10px;
     margin-right: -10px;
 }
@@ -483,44 +483,32 @@ table > tbody > tr.active td:last-child {
 
 .notice-home {
     border: #d1d3d4 solid 1px;
-    height: 100%;
-    padding: 5px;
 }
 
 .notice-home .note {
-    padding: 0px 5px;
-    float: none;
-    border: solid 1px #cad3e2;
-    height: 49%;
+    padding:15px;
+    border-bottom: solid 1px #cad3e2;
+}
+.notice-home .note:last-child {
+    border-bottom: none;
 }
 
-.notice-home .note:nth-child(1) {
-    margin-bottom: 5px;
-}
-
-.notice-home .note:nth-child(2) {
-    float: left;
-    width: 48%;
-}
-
-.notice-home .note:nth-child(3) {
-    float: right;
-    width: 48%;
-}
-
-.notice-home .note h3 {
+.notice-home .note h3,
+.notice-home .note h4 {
     color: #0ba6d3;
-    padding: 10px;
-    margin-top: 0px;
+    margin-top: 0;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 18px;
 }
-
-.notice-home.missing-child .note:nth-child(2) {
-    float: none;
-    width: auto;
+.notice-home .note h4   {
+    font-size: 14px;
+}
+.notice-home .note p{
+    margin: 0;
+    font-size: 12px;
 }
 
 /*//////EVENTS HOME//////*/
@@ -794,7 +782,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .ui-state-highlight span, .ui-state-highlight a, .ui-datepicker-today span, .ui-datepicker-today a {
     border-radius: 50px;
     -moz-border-radius: 50px;
-    display: block;
+    display: inline-block;
     width: 27px;
     height: 27px;
     color: #fff;
@@ -925,16 +913,35 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     cursor: default;
 }
 
-/*Login Page*/
+/* Login Page - SignUp Page */
 #login,
 #signup {
     background: #f3f5f8;
 }
-.jumbotron {
+
+#signup h1  {
+    border:none;
+    margin-bottom: 0;
+}
+#signup h2.page-header  {
+    margin: 0 0 30px;
+    padding: 0 0 40px;
+    border-bottom: solid 1px #fff;
+}
+
+#signup h1, #signup h2, #signup h3  {
+    font-weight: 100;
+}
+
+#login .jumbotron,
+#signup .jumbotron  {
     height: 100px;
     padding: 0;
     background-color: #fff;
     margin-bottom: 55px;
+}
+#signup .jumbotron  {
+    margin-bottom:0;
 }
 .schoolbag-brand-login {
     margin: 25px 0 0 30px;
@@ -1017,7 +1024,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin: 0 auto !important;
 }
 .form-control, input[type='text'], input[type='password'], form textarea {
-    width: 95%;
+    width: 100%;
     height: 45px;
     margin: 5px 0 20px;
     border: none;

@@ -16,8 +16,8 @@ div.selector, div.selector span, div.checker span, div.radio span, div.button, d
     -webkit-font-smoothing: antialiased;
 }
 div.selector, div.checker, div.button, div.radio, div.uploader {
-    display: -moz-inline-box;
-    display: inline-block;
+    /*display: -moz-inline-box;
+    display: inline-block;*/
     *display: inline;
     zoom: 1;
     vertical-align: middle;
@@ -62,8 +62,11 @@ div.selector {
     position: relative;
     overflow: hidden;
     border: solid 1px #f2f2f2;
-    margin: 20px 0;
+    margin: 5px 0 20px;
     color: #cdcdcd;
+    background-color: #fff;
+    background-image: none;
+    width: 100%!important;
 }
 div.selector span {
     text-overflow: ellipsis;
@@ -72,10 +75,10 @@ div.selector span {
     white-space: nowrap;
     background-position: right 20px;
     height: 45px;
-    line-height: 41px;
+    line-height: 45px;
     padding-right: 25px;
     cursor: pointer;
-    width: 100%;
+    width: 100%!important;
     display: block;
 }
 div.selector.fixedWidth {
@@ -91,10 +94,11 @@ div.selector select {
     border: none;
     background: none;
     position: absolute;
-    height: 22px;
+    height: 40px;
     top: 2px;
     left: 0px;
     width: 100%;
+    cursor: pointer;
 }
 div.selector.active {
     background-position: 0 -156px;
@@ -104,10 +108,10 @@ div.selector.active span {
 }
 
 div.selector.hover span, div.selector.focus span {
-    background-position: right 16px;
+    background-position: right 20px;
 }
 div.selector.hover.active span, div.selector.focus.active span {
-    background-position: right 16px;
+    background-position: right 20px;
 }
 div.selector.disabled span, div.selector.disabled.active span {
     background-position: right -104px;
