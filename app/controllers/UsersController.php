@@ -20,6 +20,7 @@ class UsersController extends ControllerBase {
     public function editAction() {
         $this->setTokenValues();
         $this->view->pick("users/edit");
+        $this->view->t = Translation::get("en", "user");
     }
 
     public function createAction() {
@@ -107,6 +108,7 @@ class UsersController extends ControllerBase {
 
     public function changePasswordAction() {
         $this->setTokenValues();
+        $this->view->t = Translation::get("en", "user");
         $this->view->pick("users/changePassword");
     }
 

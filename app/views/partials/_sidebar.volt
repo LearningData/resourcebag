@@ -7,49 +7,55 @@
         <li class="dashboard active">
             <a href="/schoolbag/dashboard">
                 <span class="custom-icon-dash-top"></span>
-                <span class="custom-icon-dash"></span>Dashboard
+                <span class="custom-icon-dash"></span>{{ t._("dashboard") }}
             </a>
         </li>
         <li class="homework">
             <a href="/schoolbag/{{ user.getController() }}/homework?filter=0">
-                <span class="custom-icon-homework"></span>Homework
+                <span class="custom-icon-homework"></span>{{ t._("homework") }}
             </a>
         </li>
         <li class="messages">
             <!--span class="badge">21</span-->
-            <a href="#"><span class="icon-envelope"></span> Messages</a>
+            <a href="#">
+                <span class="icon-envelope"></span> {{ t._("messages") }}
+            </a>
         </li>
         <li class="notices">
             <a href="/schoolbag/{{ user.getController() }}/noticeboard">
-                <span class="custom-icon-notices"></span>School Notices
+                <span class="custom-icon-notices"></span>{{ t._("notices") }}
             </a>
             <span class="badge">5</span>
         </li>
         <li class="events">
             <a href="/schoolbag/{{ user.getController() }}/calendar">
-                <span class="custom-icon-events"></span>Events
+                <span class="custom-icon-events"></span>{{ t._("events") }}
             </a>
             <span class="badge">7</span>
         </li>
         <li class="timetable">
             <a href="/schoolbag/{{ user.getController() }}/timetable">
-                <span class="custom-icon-timetable"></span>Timetable
+                <span class="custom-icon-timetable"></span>{{ t._("timetable") }}
             </a>
         </li>
         <li class="classes">
             <a href="/schoolbag/{{ user.getController() }}/classes">
-                <span class="icon-group"></span>Classes
+                <span class="icon-group"></span>{{ t._("classes") }}
             </a>
         </li>
         <li class="ebooks">
-            <a href="#"><span class="custom-icon-ebooks"></span>Ebooks</a>
+            <a href="#"><span class="custom-icon-ebooks"></span>
+                {{ t._("ebooks") }}
+            </a>
         </li>
         <li class="resources">
-            <a href="#"> <span class="icon-wrench"></span> Resources</a>
+            <a href="#"> <span class="icon-wrench"></span>
+                {{ t._("resources") }}
+            </a>
         </li>
         <li class="policies">
             <a href="/schoolbag/{{ user.getController() }}/policies">
-                <span class="icon-lock"></span>School Policies
+                <span class="icon-lock"></span>{{ t._("policies") }}
             </a>
         </li>
     </nav>
