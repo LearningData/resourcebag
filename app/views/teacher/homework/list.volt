@@ -10,8 +10,6 @@
                 <th colspan=1 rowspan=2>Year</th>
                 <th colspan=1 rowspan=2>Students</th>
                 <th colspan=2>Status</th>
-                <th colspan=1 rowspan=2>Actions</th>
-                
             </tr>
             <tr>
                 <th>In Progress</th>
@@ -21,21 +19,17 @@
         <tbody>
         {% for classList in classes %}
             <tr>
-                <td colspan=7>{{ classList.subject.name~"("~classList.extraRef~")" }}
+                <td colspan=7>{{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.subject.name~"("~classList.extraRef~")") }}
                 </td>
                 <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
                 <td>{{ classList.cohort.stage }}</td>
-                <td>{{ classList.users.count() }}</td>
+                <td>{{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.users.count()) }}</td>
                 <td>{{ classList.getPendingHomework().count() }}</td>
-                <td>{{ classList.getSubmittedHomework().count() }}</td>
-                <td>
-                    {% if !classList.getSubmittedHomework().count() %}
-                        <span data-title="{{ homework.title }}" class="btn-inactive btn-edit btn-icon icon-pencil" title="No pending homework"></span>
+                <td>{% if !classList.getSubmittedHomework().count() %}
+                        {{ classList.getSubmittedHomework().count() }}
                     {% else %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", "class":"btn-icon btn-edit icon-pencil", "title":"Review") }}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.getSubmittedHomework().count()) }}
                     {% endif %}
-
-                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=3", "class":"btn-review btn-icon icon-eye-open", "title":"View archive") }}
                 </td>
             </tr>
         {% endfor %}

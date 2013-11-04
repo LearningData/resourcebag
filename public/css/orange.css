@@ -26,6 +26,10 @@
 .orange h1 {
     border-color: #ff9e19;
 }
+.orange .tooltip.top .tooltip-arrow {
+    border-top-color: #ff9e19;
+}
+.orange .tooltip-inner,
 .orange.ld-homework .nav ul li a,
 .orange.ld-homework .table [class*="btn-"],
 .teacher .orange.ld-homework .table th {

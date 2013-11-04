@@ -103,17 +103,13 @@
 .ld-homework .table th[rowspan="2"] {
     vertical-align: middle;
 }
-.ld-homework .table .btn-remove, .ld-homework .table .to-do .btn-pending, .ld-homework .table .in-progress .btn-edit, .ld-homework .table .in-progress .btn-submit, .ld-homework .table .complete .btn-review, .ld-homework .table .reviewed .btn-review, .teacher .ld-homework .btn-edit, .teacher .ld-homework .btn-review {
+.ld-homework .table .btn-remove, .ld-homework .table .to-do .btn-pending, .ld-homework .table .in-progress .btn-edit, .ld-homework .table .in-progress .btn-submit, .ld-homework .table .complete .btn-review, .ld-homework .table .reviewed .btn-review, .teacher .ld-homework .btn-edit, .teacher .ld-homework .btn-review, .teacher .ld-homework .btn-download {
     display: block;
     float: left;
 }
 .ld-homework .table .tooltip-inner {
     background-color: #ff9e19;
     margin-right: 5px;
-}
-
-.ld-homework .table .tooltip.top .tooltip-arrow, .ld-homework .table .btn-download {
-    border-top-color: #ff9e19;
 }
 
 .ld-homework .table .collapse td, .ld-homework .table .collapsing td, .ld-homework .table .in td {

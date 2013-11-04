@@ -48,7 +48,7 @@
             </tr>
         </tbody>
     </table>
-    <input type="submit" class="btn">
+    {{ submit_button("Save","class":"btn") }}
 </form>
 <button class="btn btn-return">Cancel</button>
 </div>

@@ -15,7 +15,7 @@
             </thead>
             {% for file in homework.files %}
                 <tr>
-                    <td>{{ file.originalName }}</td>
+                    <td>{{ link_to("download/homework/"~file.id, file.originalName) }}</td>
                     <td>{{ file.description }}</td>
                     <td>{{ link_to("download/homework/"~file.id, "class":"btn-icon btn-download icon-download") }}</td>
                 </tr>
