@@ -3,7 +3,8 @@ $(document).ready(function() {
     $(".btn-profile-actions").click(function() {
         $(".user-profile-actions").slideToggle("fast");
     });
-
+    $("select").uniform();
+    
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();

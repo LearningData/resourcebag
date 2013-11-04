@@ -80,7 +80,7 @@ var dashboard = (function() {
             calendarEvents = response
             $( "#dashboard-events-head" ).datepicker({
                 inline: true,
-                firstDay: 0,
+                firstDay: 1,
                 onSelect: fillDaysEvents,
                 beforeShowDay: findCurrentEvents,
                 showOtherMonths: true,
@@ -215,13 +215,13 @@ var dashboard = (function() {
             var notices = response.notices
             var items = []
             if (notices[0] != undefined) {
-                items.push( "<div class=\"note\"><h3>" + notices[0].text + "</h3><span>" + notices[0].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h3>" + notices[0].text + "</h3><p>" + notices[0].text + "</p></div>" )
             }
             if ( notices[1] != undefined ) {
-                items.push( "<div class=\"note\"><h4>" + notices[1].text + "</h4><span>" + notices[1].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h4>" + notices[1].text + "</h4><p>" + notices[1].text + "</p></div>" )
             }
             if ( notices[2] != undefined ) {
-                items.push( "<div class=\"note\"><h4>" + notices[2].text + "</h4><span>" + notices[2].text + "</span></div>" )
+                items.push( "<div class=\"note\"><h4>" + notices[2].text + "</h4><p>" + notices[2].text + "</p></div>" )
             }
             var noticeElement = $( "<div class=\"notice-home\">")
             noticeElement.append( items.join( "" ) )

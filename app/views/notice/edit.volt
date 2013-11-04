@@ -9,7 +9,6 @@
         <span class="col-md-6">
         <div class="radio-box form-control">
         {% for name, value in types %}
-
             {% if name == notice.userType %}
                 <div><label>
                     {{ radio_field("type", "checked": "true", "value": name) }} {{ value }}
@@ -21,7 +20,7 @@
             {% endif %}
         {% endfor %}
         <p>
-            {{ select('class-id', classes, 'using': ['id', 'name']) }}
+            {{ select('class-id', classes) }}
         </p>
         {{ hidden_field("notice-id") }}
         <input type="submit" class="btn">

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ t._("title") }}</title>
+        <title>{{ t._("global.title") }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
         {{ stylesheet_link("css/style.css") }}
+        {{ stylesheet_link("css/media.css") }}
     </head>
     <body id="login">
         <div class="jumbotron">

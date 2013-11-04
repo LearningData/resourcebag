@@ -884,6 +884,24 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #fff;
     margin-bottom: 55px;
 }
+#signup .jumbotron  {
+    margin-bottom: 0;
+}
+#signup h1, h2, h3  {
+    font-weight: 100;
+}
+#signup h1  {
+    margin-bottom: 0;
+    border: none
+}
+    
+#signup h2.page-header  {
+    border-bottom: solid 1px #fff;
+    margin-bottom: 40px;
+    margin-top:0;
+    padding-bottom: 40px;
+}    
+    
 .schoolbag-brand-login {
     margin: 25px 0 0 30px;
     display: block;
@@ -963,9 +981,10 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border: solid 1px #525353 !important;
     clear: both;
     margin: 0 auto !important;
+    width: 95%!important;
 }
 .form-control, input[type='text'], input[type='password'], form textarea {
-    width: 95%;
+    width: 100%;
     height: 45px;
     margin: 5px 0 20px;
     border: none;

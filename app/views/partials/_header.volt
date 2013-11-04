@@ -25,14 +25,14 @@
         <div class="user-profile-actions">
             <a href="/schoolbag/{{ user.getController() }}/edit/"
                     class="btn-profile">
-                <span class="icon-user"></span> {{ t._("global.profile") }}
+                <span class="icon-user"></span> {{ t._("profile") }}
             </a>
             <a href="/schoolbag/{{ user.getController() }}/changePassword/"
                 class="btn-logout">
-                <span class="icon-lock"></span> {{ t._("global.change-password") }}
+                <span class="icon-lock"></span> {{ t._("change-password") }}
             </a>
             <a href="/schoolbag/session/logout/" class="btn-logout">
-                <span class="icon-off"></span> {{ t._("global.logout") }}
+                <span class="icon-off"></span> {{ t._("logout") }}
             </a>
         </div>
     </div>

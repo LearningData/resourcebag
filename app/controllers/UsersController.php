@@ -20,17 +20,19 @@ class UsersController extends ControllerBase {
     public function editAction() {
         $this->setTokenValues();
         $this->view->pick("users/edit");
+        $this->view->t = Translation::get("en", "user");
     }
 
     public function createAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
+        $t = Translation::get("en", "user");
         $admin = $this->getUserBySession();
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
         $password = $this->security->hash($password);
 
         if(!Authenticate::checkPassword($confirmPassword, $password)) {
-            $this->flash->error("You need confirm the password");
+            $this->flash->error($t->_("You need to confirm the password"));
             return $this->dispatcher->forward(array("action" => "new"));
         }
 
@@ -55,12 +57,13 @@ class UsersController extends ControllerBase {
             $this->uploadPhoto($file, $user->id);
         }
 
-        $this->flash->success("user was updated successfully");
+        $this->flash->success($t->_("user was created successfully"));
         return $this->toIndex();
     }
 
     public function updateAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
+        $t = Translation::get("en", "user");
 
         $userID = $this->request->getPost("userID");
 
@@ -85,19 +88,20 @@ class UsersController extends ControllerBase {
             $this->uploadPhoto($file, $user->id);
         }
 
-        $this->flash->success("user was updated successfully");
+        $this->flash->success($t->_("user was updated successfully"));
         return $this->toIndex();
     }
 
     public function removeAction($userId) {
         $admin = $this->getUserBySession();
         if (!$admin->isSchool()) { $this->toIndex(); }
+        $t = Translation::get("en", "user");
 
         $user = User::findFirstById($userId);
         if($user->delete()) {
-            $this->flash->success("User was deleted");
+            $this->flash->success($t->_("User was deleted"));
         } else {
-            $this->flash->error("Was not possible remove the user.");
+            $this->flash->error($t->_("Was not possible remove the user."));
         }
 
         return $this->dispatcher->forward(
@@ -107,11 +111,13 @@ class UsersController extends ControllerBase {
 
     public function changePasswordAction() {
         $this->setTokenValues();
+        $this->view->t = Translation::get("en", "user");
         $this->view->pick("users/changePassword");
     }
 
     public function updatePasswordAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
+        $t = Translation::get("en", "user");
         $user = $this->view->user;
         $oldPassword = $this->request->getPost("old-password");
         $newPassword = $this->request->getPost("new-password");
@@ -120,22 +126,22 @@ class UsersController extends ControllerBase {
         $newPassword = $this->security->hash($newPassword);
 
         if(!Authenticate::checkPassword($oldPassword, $user->password)) {
-            $this->flash->error("invalid password");
+            $this->flash->error($t->_("invalid password"));
             return $this->toIndex();
         }
 
         if (Authenticate::checkPassword($confirmPassword, $newPassword)) {
             $user->password = $newPassword;
         } else {
-            $this->flash->error("confirm your password");
+            $this->flash->error($t->_("confirm your password"));
             return $this->toIndex();
         }
 
         if(!$user->save()) {
-            $this->flash->error("was not possible to change your password");
+            $this->flash->error($t->_("was not possible to change your password"));
         }
 
-        $this->flash->success("password was updated successfully");
+        $this->flash->success($t->_("password was updated successfully"));
         return $this->toIndex();
     }
 
@@ -146,6 +152,7 @@ class UsersController extends ControllerBase {
     }
 
     private function uploadPhoto($file, $userId) {
+        $t = Translation::get("en", "user");
         $photo = UserPhoto::findFirst("userId = " . $userId);
 
         if (!$photo) {
@@ -160,9 +167,9 @@ class UsersController extends ControllerBase {
         $photo->file = file_get_contents($file->getTempName());
 
         if ($photo->save()) {
-            $this->flash->success("The file was uploaded.");
+            $this->flash->success($t->_("The photo was uploaded."));
         } else {
-            $this->flash->error("The file was not uploaded.");
+            $this->flash->error($t->_("The photo was not uploaded."));
             foreach ($photo->getMessages() as $message) {
                 $this->flash->error($message);
             }

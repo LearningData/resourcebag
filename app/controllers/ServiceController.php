@@ -10,6 +10,22 @@ class ServiceController extends ControllerBase {
         return $this->setContent($content);
     }
 
+    public function subjectsAndClassesAction() {
+        $user = $this->getUserBySession();
+        $subjects = Subject::find();
+        $response = array();
+
+        foreach ($subjects as $subject) {
+            $classes = $subject->getClasses("schoolId=".$user->schoolId);
+            if(count($classes) > 0) {
+                $response[$subject->id] = array("name" => $subject->name,
+                    "classes" => $classes->toArray());
+            }
+        }
+
+        return $this->setContent($response);
+    }
+
     public function classesAction() {
         $user = $this->getUserBySession();
         $json = array();

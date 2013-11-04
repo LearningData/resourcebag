@@ -7,6 +7,7 @@ class CalendarController extends ControllerBase {
     }
 
     public function indexAction() {
+        $this->setTokenValues();
         $this->getUserBySession();
     }
 
