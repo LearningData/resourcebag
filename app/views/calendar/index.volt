@@ -1,5 +1,5 @@
-<div class="purple">
+<div class="ld-calendar purple">
     <h1>Calendar</h1>
-    {{ link_to(user.getController()~"/calendar/new","class":"btn bg-event bg-event-hv mbottom-20","New Event") }}
+    {{ link_to(user.getController()~"/calendar/new","class":"btn mbottom-20", t._("New Event")) }}
     <div id="calendar"></div>
 </div>

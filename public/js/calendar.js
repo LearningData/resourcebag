@@ -15,27 +15,30 @@ var calendarPage = (function() {
                     alert('Clicked on the slot: ' + date);
                 }
             },
+            eventClick: function(data, jsEvent, view) {
+                    console.log(data)
+                createEditEventDialog( data )
+                $( "#createEditEventModal" ).modal( "show" )
+                return false
+            },
             editable : false,
             firstDay : 1,
             center : 'prevYear',
             events : urlBase + "/service/calendar"
-        })
-        $( ".btn-evt.btn-return" ).click( function( event ) {
-            window.location.href = urlBase + "/" + getUser() + "/calendar"
         })
     }
 
     createNewEventDialog = function( date ) {
         $( "#createNewEventModal" ).remove()
         var modal = $( "<div class=\"modal fade\" id=\"createNewEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title bdr-hwk\">New Event " + date.toDateString() + "</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">New Event " + date.toDateString() + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var titleInput = $ ( "<input>", {
             type: "text",
             name: "title",
             id: "title",
-            "class": "form-control bdr-evt",
+            "class": "form-control ",
             placeholder: "Title:",
             required: "required"
         })
@@ -45,7 +48,7 @@ var calendarPage = (function() {
             type: "text",
             name: "link",
             id: "link",
-            "class": "form-control bdr-evt",
+            "class": "form-control",
             placeholder: "Link:"
         })
         modalBody.append( linkInput )
@@ -54,7 +57,7 @@ var calendarPage = (function() {
             type: "text",
             name: "location",
             id: "location",
-            "class": "form-control bdr-evt",
+            "class": "form-control",
             placeholder: "Location:"
         })
         modalBody.append( locationInput )
@@ -63,7 +66,7 @@ var calendarPage = (function() {
             type: "text",
             name: "contact",
             id: "contact",
-            "class": "form-control bdr-evt",
+            "class": "form-control",
             placeholder: "Contact:"
         })
         modalBody.append( contactInput )
@@ -71,7 +74,7 @@ var calendarPage = (function() {
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
-            "class": "form-control bdr-evt",
+            "class": "form-control",
             placeholder: "Description:"
         })
         modalBody.append( descriptionInput )
@@ -131,7 +134,51 @@ var calendarPage = (function() {
         modalContent.appendTo( form )
         form.appendTo( modalDialog )
         modalDialog.appendTo( modal )
-        modal.appendTo( "body" )
+        modal.appendTo( "div.ld-calendar" )
+    }
+
+    createEditEventDialog = function( data ) {
+        $( "#createEditEventModal" ).remove()
+        var modal = $( "<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">" + data.title + "</h2></div>")
+        var modalBody = $ ( "<div class=\"modal-body\"></div>" )
+
+        modalBody.append( "<span class=\"label\">When:</span>" ) 
+        if (data.end != null && data.end.getDate() != data.start.getDate()) {
+            modalBody.append( "<span>" + prettyDate(data.start) + "-" + prettyDate(data.end) + "</span>" ) 
+        } else { 
+            modalBody.append( "<span>" + prettyDate(data.start) + "</span>" ) 
+        }
+
+        if (data.url != null) {
+            modalBody.append( "<br><span class=\"label\">Url:</span>" ) 
+            modalBody.append( "<a href=" + data.url + ">" + data.url + "</a>" ) 
+        }
+
+        var remove = $( "<button>", {
+            "class": "btn",
+            html: "Delete"
+        })
+
+        var edit = $( "<button>", {
+            type: "button",
+            "class": "btn",
+            html: "Edit"
+        })
+        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
+        modalFooter.append(remove)
+        modalFooter.append(edit)
+
+        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
+
+        var modalContent = $ ( "<div class=\"modal-calendar modal-content\"></div>" )
+        modalContent.append( modalHeader )
+        modalContent.append( modalBody )
+        modalContent.append( modalFooter )
+        
+        modalContent.appendTo( modalDialog )
+        modalDialog.appendTo( modal )
+        modal.appendTo( "div.ld-calendar" )
     }
 
     return {

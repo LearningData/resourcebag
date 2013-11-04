@@ -70,6 +70,8 @@
 
 .dashboard .ld-box .ld-box-child {
     background-color: #f6f6f6;
+    width: auto;
+    height: 100%
 }
 
 
@@ -188,5 +190,13 @@
     font-weight: bold;
 }
 
+/* events */
+.dashboard .ld-box.ld-events .ld-box-head .title {
+    padding: 0px;
+}
 
-
+/***** notices *****/
+.box-notices .ld-box-child {
+    height: 335px;
+    overflow-y: auto;
+}

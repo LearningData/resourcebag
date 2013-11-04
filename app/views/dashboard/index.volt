@@ -27,9 +27,9 @@
                 </div>
             </div>
         </li>
-        <li id="dashboard-events-box" class="ld-box box-events">
-            <div class="box-header">
-                <div id="dashboard-events-head" class="header-title header-events"> 
+        <li id="dashboard-events-box" class="ld-box ld-events purple">
+            <div class="ld-box-head">
+                <div id="dashboard-events-head" class="title"> 
                 </div>
             </div>
             <div class="ld-box-child">

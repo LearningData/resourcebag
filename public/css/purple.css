@@ -1,4 +1,4 @@
-.purple .btn-icon, .purple .btn {
+.purple .btn-icon, .purple .btn, .purple .header:hover {
     background-color: #9752a3;
 }
 
@@ -6,12 +6,34 @@
     background-color: #5a2a60;
 }
 
+
+.purple.ld-box .ld-box-head .title {
+    background-color: #9752a3;
+}
+
+
 .purple .form-control:focus {
     border-color: #9752a3;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(151, 82, 163, 0.075);
 }
  
+.purple .modal-title,
+.purple .header, 
 .purple h1 {
     border-color: #9752a3;
 }
+
+.purple .tooltip.top .tooltip-arrow {
+    border-top-color: #9752a3;
+}
+.purple .tooltip-inner,
+.purple.ld-homework .nav ul li a,
+.purple.ld-homework .table [class*="btn-"],
+.teacher .purple.ld-homework .table th {
+    background-color: #9752a3;
+}
+.purple.ld-timetable .header-navigation {
+    background-color: #e27176; //TODO change color
+}
+
