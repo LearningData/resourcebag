@@ -17,7 +17,8 @@ class NoticeController extends ControllerBase {
 
         foreach ($notices as $notice) {
             $json []= array("id" => $notice->id, "date" => $notice->date,
-                "text" => $notice->text);
+                "text" => $notice->text, "title" => $notice->title,
+                "category" => $notice->category);
         }
 
         header('Content-Type: application/json');
@@ -35,6 +36,7 @@ class NoticeController extends ControllerBase {
         if ($user->isStudent()) { $this->response->redirect("notice/index"); }
 
         $classes = ClassListService::getClassesByUser($user);
+        $this->view->categories = NoticeBoard::getCategories();
         $this->view->classes = $classes;
     }
 
@@ -47,6 +49,7 @@ class NoticeController extends ControllerBase {
 
         $classes = ClassListService::getClassesByUser($user);
         $this->view->classes = $classes;
+        $this->view->categories = NoticeBoard::getCategories();
         $this->view->types = array("A" => "Teachers/Students",
              "P" => "Students", "T" => "Teachers");
 
@@ -54,6 +57,8 @@ class NoticeController extends ControllerBase {
         $this->view->notice = $notice;
 
         $this->tag->setDefault("notice", $notice->text);
+        $this->tag->setDefault("title", $notice->title);
+        $this->tag->setDefault("category", $notice->category);
         $this->tag->setDefault("class-id", $notice->classId);
         $this->tag->setDefault("notice-id", $notice->id);
     }
@@ -66,6 +71,8 @@ class NoticeController extends ControllerBase {
 
             $notice->text = $this->request->getPost("notice");
             $notice->userType = $this->request->getPost("type");
+            $notice->title = $this->request->getPost("title");
+            $notice->category = $this->request->getPost("category");
             $notice->classId = $this->request->getPost("class-id");
 
             if($notice->save()) {
@@ -86,6 +93,8 @@ class NoticeController extends ControllerBase {
             $notice->date = $this->request->getPost("date");
             $notice->text = $this->request->getPost("notice");
             $notice->userType = $this->request->getPost("type");
+            $notice->title = $this->request->getPost("title");
+            $notice->category = $this->request->getPost("category");
             $notice->schoolId = $user->schoolId;
             $notice->uploadedBy = $user->id;
 

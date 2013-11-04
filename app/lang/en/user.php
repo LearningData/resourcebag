@@ -7,6 +7,6 @@ $messages = array(
     "email" => "Email",
     "confirmemail" => "Confirm Email",
     "password" => "Password",
-    "confirmpassword" => "Confirm Password",
+    "confirmpassword" => "Confirm Password"
 );
 ?>

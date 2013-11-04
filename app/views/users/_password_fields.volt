@@ -11,7 +11,12 @@
     <input type="password" name="confirm-new-password">
 </p>
 {{ securityTag.csrf(csrf_params) }}
+<p>
 <input type="submit" value="save" class="btn">
+</p>
+</form>
+<p>
 <button class="btn btn-cancel">
     Cancel
 </button>
+</p>

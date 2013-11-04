@@ -4,6 +4,8 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public $schoolID;
     public $date;
     public $text;
+    public $title;
+    public $category;
     public $userType;
     public $uploadedBy;
     public $classID;
@@ -16,6 +18,17 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
 
     public function getSource() {
         return "noticeboard";
+    }
+
+    public static function getCategories() {
+        return array("Meeting" => "Meeting",
+            "Sport" => "Sport",
+            "After School" => "After School",
+            "Announcements" => "Announcements",
+            "Celebration / Congratulations" => "Celebration / Congratulations",
+            "Thanks" => "Thanks",
+            "Notice" => "Notice"
+        );
     }
 
     public function getDate() {
@@ -53,6 +66,8 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
             'schoolID' => 'schoolId',
             'date' => 'date',
             'text' => 'text',
+            'title' => 'title',
+            'category' => 'category',
             'userType' => 'userType',
             'uploadedBy' => 'uploadedBy',
             'classID' => 'classId',

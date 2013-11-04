@@ -16,8 +16,8 @@
 </p>
 {{ hidden_field("userID", "type" : "numeric", "value" : user.id) }}
 {{ securityTag.csrf(csrf_params) }}
-<p>
-    {{ submit_button("Save", "class":"btn") }}
-    <button class="btn btn-cancel">Cancel</button>
-</p>
 </form>
+<p>
+    {{ submit_button(t._("global.save"), "class":"btn") }}
+    <button class="btn btn-cancel">{{ t._("global.cancel") }}</button>
+</p>
