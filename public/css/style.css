@@ -926,7 +926,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*Login Page*/
-#login {
+#login,
+#signup {
     background: #f3f5f8;
 }
 .jumbotron {
