@@ -4,6 +4,9 @@
     {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form-notice form-inline") }}
     {{ securityTag.csrf(csrf_params) }}
     <p class="col-md-6">
+        {{ text_field("title", "placeholder": "Title") }}
+    </p>
+    <p class="col-md-6">
         {{ text_area("notice", "placeholder":"Notice", "class":"form-control") }}
     </p>
     <p class="col-md-6">
@@ -19,6 +22,9 @@
     </span>
     <p class="col-md-6">
         {{ select('class-id', classes, 'using': ['id', 'name'], "class":"form-control") }}
+    </p>
+    <p class="col-md-6">
+        {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
     </p>
     <p class="col-md-6">
         <input type="file" name="file">

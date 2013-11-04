@@ -15,7 +15,11 @@ class ClassListService {
         }
 
         foreach ($classesList as $classList) {
-            $classes[$classList->id] = $classList->subject->name;
+            $classInfo = $classList->extraRef . " " .
+                        $classList->subject->name . " " .
+                        $classList->cohort->stage;
+
+            $classes[$classList->id] = $classInfo;
         }
 
         return $classes;
