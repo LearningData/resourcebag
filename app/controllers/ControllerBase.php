@@ -1,6 +1,5 @@
 <?php
 use Phalcon\Mvc\Controller;
-require "../app/services/Translation.php";
 
 class ControllerBase extends Controller {
     public function beforeExecuteRoute($dispatcher){
