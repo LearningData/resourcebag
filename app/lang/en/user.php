@@ -1,9 +1,10 @@
 <?php
 $messages = array(
-    "name" => "name",
-    "lastname" => "last name",
-    "type" => "type",
-    "email" => "email",
-    "password" => "password"
+    "user.user" => "user",
+    "user.name" => "name",
+    "user.lastname" => "last name",
+    "user.type" => "type",
+    "user.email" => "email",
+    "user.password" => "password"
 );
 ?>
