@@ -1,9 +1,10 @@
-<p class="col-sm-6 col-md-6">
+<p class="col-sm-12">
     <label for="FirstName">First Name</label>
+</p>
+<p class="col-sm-6 col-md-6">
     {{ text_field("FirstName", "value" : user.name) }}
 </p>
 <p class="col-sm-6 col-md-6">
-    <label for="LastName">Last Name</label>
     {{ text_field("LastName", "value" : user.lastName) }}
 </p>
 <p class="col-sm-6 col-md-6">
@@ -19,5 +20,7 @@
 </form>
 <p>
     {{ submit_button(t._("global.save"), "class":"btn") }}
-    <button class="btn btn-cancel">{{ t._("global.cancel") }}</button>
+    <button class="btn btn-cancel">
+        {{ t._("global.cancel") }}
+    </button>
 </p>
