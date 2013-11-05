@@ -685,8 +685,8 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 .ui-datepicker-header h2 {
     font-size: 16px;
+    width: 100%;
     position: absolute;
-    left: 50%;
     top: 5px;
     margin-left: -26px;
     font-weight: bold;
