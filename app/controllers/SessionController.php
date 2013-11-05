@@ -20,7 +20,7 @@ class SessionController extends Phalcon\Mvc\Controller {
     }
 
     public function logoutAction() {
-        Authenticate::destroySession();
+        SessionService::destroySession();
         return $this->response->redirect("");
     }
 }

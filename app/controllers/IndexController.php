@@ -12,6 +12,8 @@ class IndexController extends Phalcon\Mvc\Controller {
 
         $this->view->csrf_params = array("name" => $tokenKey, "value" => $token);
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
-        $this->view->t = Translation::get("en", "schoolbag");
+        $language = $this->request->getBestLanguage();
+        Language::setInitialLanguage($language);
+        $this->view->t = Translation::get(Language::get(), "schoolbag");
     }
 }
