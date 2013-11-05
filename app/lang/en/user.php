@@ -3,10 +3,11 @@
 $messages = array(
     "user" => "User",
     "name" => "Name",
-    "first" => "Fist",
+    "first" => "First",
     "lastname" => "Last",
     "type" => "Type",
     "email" => "Email",
+    "Confirm Email" => "Confirm Email",
     "password" => "Password",
     "photo" => "Photo",
     "Confirm Password" => "Confirm Password",
