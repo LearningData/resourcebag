@@ -90,6 +90,7 @@ h4, .h4 {
 }
 .icon-download {
     font-size: 18px;
+    padding-top: 1px;
 }
 .icon-caret-right {
     font-size: 20px;
@@ -123,7 +124,7 @@ span.btn-icon:hover {
     font-weight: 600;
     border-radius: 0;
     text-transform: uppercase;
-    color: #fff;
+    color: #fff!important;
     margin-right: 5px;
 }
 .btn:hover, .btn:focus {
