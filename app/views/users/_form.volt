@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<div class="col-sm-6">
+<div class="col-sm-6 orange">
 
     <h2>Your's School Information</h2>
 
@@ -38,12 +38,12 @@
     {{ select('schoolID', schools, 'using': ['id', 'name'],
     'emptyText': 'Please, choose one school') }}
 
-    <label for="accessCode">Access Code</label>
-    {{ text_field("accessCode") }}
+    <label for="accessCode">{{ t._("Access Code") }}</label>
+    {{ text_field("accessCode", "placeholder":t._("Access Code")) }}
 
     {{ hidden_field("userID", "type" : "numeric") }}
     {{ securityTag.csrf(csrf_params) }}
 
-    {{ submit_button("Save") }}
+    {{ submit_button("Create Account", "class":"btn") }}
     </form>
 </div>
