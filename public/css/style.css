@@ -145,17 +145,22 @@ span.btn-icon:hover {
     background-color: #c5c5c5 !important;
 }
 
+.btn-group-xs > .btn    {
+    border-radius: 0;
+    min-width: 100px;
+}
+
 .form-control:-moz-placeholder {
-    color: #a2a2a2
+    color: #000!important;
 }
 .form-control::-moz-placeholder {
-    color: #a2a2a2
+    color: #000!important;
 }
 .form-control:-ms-input-placeholder {
-    color: #a2a2a2
+    color: #000!important;
 }
 .form-control::-webkit-input-placeholder {
-    color: #a2a2a2
+    color: #000!important;
 }
 
 span.customSelect {
@@ -991,7 +996,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    color: #a2a2a2;
+    color: #000;
     border: solid 1px #f2f2f2;
     padding: 0 0 0 5px;
 }
