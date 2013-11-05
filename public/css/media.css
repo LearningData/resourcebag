@@ -213,6 +213,12 @@
         width: 35%;
     }
 
+    .schoolbag-brand-login {
+        display: block;
+        margin: 25px auto 0;
+        text-align: center;
+    }
+
     .user-profile {
         width: 100%;
         padding: 10px 5%;
@@ -256,10 +262,10 @@
     .dashboard .custom-icon-dash-top {
         margin-left: -11px;
     }
-    
-/*Login*/
-.col-login {
-    padding-left: 0;
-}
+
+    /*Login*/
+    .col-login {
+        padding-left: 0;
+    }
 
 }
