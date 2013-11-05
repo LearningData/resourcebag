@@ -2,7 +2,8 @@
 
 $messages = array(
     "user" => "User",
-    "name" => "First",
+    "name" => "Name",
+    "first" => "Fist",
     "lastname" => "Last",
     "type" => "Type",
     "email" => "Email",
