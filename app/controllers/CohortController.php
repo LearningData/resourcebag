@@ -8,6 +8,7 @@ class CohortController extends ControllerBase {
         if(!$user->isSchool()) {
             return $this->response->redirect("dashboard");
         }
+        $this->view->t = Translation::get(Language::get(), "cohort");
     }
 
     public function indexAction(){
@@ -31,9 +32,9 @@ class CohortController extends ControllerBase {
         $cohort = Cohort::findFirstById($cohortId);
 
         if($cohort->delete()) {
-            $this->flash->success("Cohort was removed.");
+            $this->flash->success($this->view->t->_("cohort-removed"));
         } else {
-            $this->flash->success("Cohort was not removed.");
+            $this->flash->success($this->view->t->_("cohort-not-removed"));
         }
 
         return $this->response->redirect("cohort");
@@ -41,12 +42,11 @@ class CohortController extends ControllerBase {
 
     public function updateAction() {
         $cohortId = $this->request->getPost("cohort-id");
-
         $cohort = Cohort::findFirstById($cohortId);
         $cohort->stage = $this->request->getPost("stage");
 
         if ($cohort->save()) {
-            $this->flash->success("Cohort was saved.");
+            $this->flash->success($this->view->t->_("cohort-updated"));
         } else {
             $this->appendErrorMessages($cohort->getMessages());
         }
@@ -65,7 +65,7 @@ class CohortController extends ControllerBase {
             $cohort->schoolId = $user->schoolId;
 
             if ($cohort->save()) {
-                $this->flash->success("Cohort was saved.");
+                $this->flash->success($this->view->t->_("cohort-created"));
             } else {
                 $this->appendErrorMessages($cohort->getMessages());
             }
