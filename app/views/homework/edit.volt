@@ -21,7 +21,7 @@
         </form>
         <hr class="div">
         {% if homework.files.count() != 0 %}
-        <h4>Files uploaded:</h4>
+        <h4>Files uploaded</h4>
         <table class="table">
             <thead>
                 <th>File Name</th>
@@ -34,6 +34,7 @@
                 <td>{{ file.originalName }}</td>
                 <td>{{ file.description }}</td>
                 <td><span data-name="{{ file.originalName }}" data-file-id="{{ file.id }}" class="btn-remove btn-icon icon-remove" title="Remove"></span></td>
+                <td></td>
             </tr>
             {% endfor %}
         </table>

@@ -20,6 +20,11 @@ $messages = array(
     "save" => "save",
     "cancel" => "cancel",
     "choose-file" => "Choose File",
-    "School" => "School"
+    "School" => "School",
+    "title-label" => "Title",
+    "description" => "Description",
+    "subject" => "Subject",
+    "due-date" => "Due Date",
+    "title-label" => "Title"
 );
 ?>

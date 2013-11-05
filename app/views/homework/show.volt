@@ -6,7 +6,7 @@
     <section class="homework-view">
         <hr class="div">
         <div class="subheader">{{ homework.textEditor }}</div>
-        <h4>Files uploaded:</h4>
+        <h4>Files uploaded</h4>
         <table class="table">
             <thead>
                 <th>File Name</th>

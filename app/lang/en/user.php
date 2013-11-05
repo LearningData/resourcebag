@@ -26,6 +26,9 @@ $messages = array(
     "was not possible to change your password" => "was not possible to change your password",
     "password was updated successfully" => "password was updated successfully",
     "The photo was uploaded." => "The photo was uploaded.",
-    "The photo was not uploaded." => "The photo was not uploaded."
+    "The photo was not uploaded." => "The photo was not uploaded.",
+    "Your Information" => "Your Information",
+    "Yours School Information" => "Your's School Information"
+        
 );
 ?>

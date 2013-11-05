@@ -10,24 +10,30 @@ var homeworkPage = (function() {
 
     var createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h24></div>")
+        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
+
+        var titleTitle = $ ("<label>Title</label>")
+        modalBody.append( titleTitle )
 
         var titleInput = $ ( "<input>", {
             type: "text",
             "class": "form-control",
-            placeholder: "Title:",
+            placeholder: "Title",
             name: "title",
             id: "title",
             required: "required"
         })
         modalBody.append( titleInput )
 
+        var titleDescription = $ ("<label>Description</label>")
+        modalBody.append( titleDescription )
+        
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
             "class": "form-control",
-            placeholder: "Description:",
+            placeholder: "Description",
             required: "required"
         })
         modalBody.append( descriptionInput )
@@ -35,6 +41,10 @@ var homeworkPage = (function() {
         for ( var i = 0; i < classes.length; i++ ) {
             options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
         }
+        
+        var titleSubject = $ ("<label>Subject</label>")
+        modalBody.append( titleSubject )
+        
         var selectClass = $( "<select>", {
             name: "classList-id",
             id: "classList-id",
@@ -44,16 +54,20 @@ var homeworkPage = (function() {
         })
         selectClass.append( options.join("") )
         modalBody.append( selectClass )
+        
+        var titleDuedate = $ ("<label>Due Date</label>")
+        modalBody.append( titleDuedate )
+        
         var dueDateInput = $( "<input>", {
             type: "text",
             name: "due-date",
             "class": "form-control",
-            placeholder: "Due Date:",
+            placeholder: "Due Date",
             id: "due-date",
             disabled: "disabled",
             required: "required"
         })
-
+        
         modalBody.append( dueDateInput )
         var dueTimes = $( "<div>", {
           id: "due-times"
@@ -114,6 +128,10 @@ var homeworkPage = (function() {
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Upload Homework File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
+        
+        var titleFile = $ ("<label>Choose File</label>")
+        modalBody.append( titleFile )
+        
         var fileInput = $ ( "<input>", {
             type: "file",
             name: "file",
@@ -123,11 +141,14 @@ var homeworkPage = (function() {
         })
         modalBody.append( fileInput )
 
+        var titleDescription = $ ("<label>Description</label>")
+        modalBody.append( titleDescription )
+        
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
             "class": "form-control",
-            placeholder: "Description:"
+            placeholder: "Description"
         })
         modalBody.append( descriptionInput )
 

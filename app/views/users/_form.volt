@@ -1,5 +1,5 @@
 <div class="col-sm-6">
-    <h2>Your's Information</h2>
+    <h2>{{ t._("Your Information") }}</h2>
     <label for="Type">{{ t._("type")}}</label>
     <select name="Type">
         <option value="T" selected="true">Teacher</option>
@@ -32,8 +32,7 @@
 
 <div class="col-sm-6 orange">
 
-    <h2>Your's School Information</h2>
-
+    <h2>{{ t._("Yours School Information") }}</h2>
     <label for="schoolID">{{ t._("School") }}</label>
     {{ select('schoolID', schools, 'using': ['id', 'name'],
     'emptyText': 'Please, choose one school') }}

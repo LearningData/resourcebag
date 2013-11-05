@@ -34,48 +34,66 @@ var calendarPage = (function() {
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">New Event " + date.toDateString() + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
+        var titleTitle = $ ("<label>Title</label>")
+        modalBody.append( titleTitle )
+        
         var titleInput = $ ( "<input>", {
             type: "text",
             name: "title",
             id: "title",
             "class": "form-control ",
-            placeholder: "Title:",
+            placeholder: "Title",
             required: "required"
         })
         modalBody.append( titleInput )
 
+        var titleLink = $ ("<label>Link</label>")
+        modalBody.append( titleLink )
+        
         var linkInput = $ ( "<input>", {
             type: "text",
             name: "link",
             id: "link",
             "class": "form-control",
-            placeholder: "Link:"
+            placeholder: "Link"
         })
         modalBody.append( linkInput )
 
+        var titleLocation = $ ("<label>Location</label>")
+        modalBody.append( titleLocation )
+        
         var locationInput = $ ( "<input>", {
             type: "text",
             name: "location",
             id: "location",
             "class": "form-control",
-            placeholder: "Location:"
+            placeholder: "Location"
         })
         modalBody.append( locationInput )
 
+        var titleContact = $ ("<label>Contact</label>")
+        modalBody.append( titleContact )
+        
         var contactInput = $ ( "<input>", {
             type: "text",
             name: "contact",
             id: "contact",
             "class": "form-control",
-            placeholder: "Contact:"
+            placeholder: "Contact"
         })
         modalBody.append( contactInput )
 
+        var titleContact = $ ("<label>Contact</label>")
+        modalBody.append( titleContact )
+        
+        var titleDescription = $ ("<label>Description</label>")
+        modalBody.append( titleDescription )
+        
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
             "class": "form-control",
-            placeholder: "Description:"
+            placeholder: "Description"
         })
         modalBody.append( descriptionInput )
         dateStr = "" + date.getFullYear() + "-"
