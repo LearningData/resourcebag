@@ -82,9 +82,6 @@ var calendarPage = (function() {
             placeholder: "Contact"
         })
         modalBody.append( contactInput )
-
-        var titleContact = $ ("<label>Contact</label>")
-        modalBody.append( titleContact )
         
         var titleDescription = $ ("<label>Description</label>")
         modalBody.append( titleDescription )

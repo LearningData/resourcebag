@@ -1,5 +1,5 @@
 <div class="ld-homework orange">
-    <h2 class="modal-title">{{ t._("newHome")}}</h2>
+    <h2 class="modal-title">{{ t._("newTitle")}}</h2>
 
     {{ form("teacher/createHomework", "method":"post", "class":"form inline") }}
         <div class="col-sm-9">

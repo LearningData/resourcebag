@@ -18,13 +18,20 @@ $messages = array(
     "login" => "Login",
     "sign-up" => "Sign Up",
     "save" => "save",
-    "cancel" => "cancel",
+    "cancel" => "Cancel",
     "choose-file" => "Choose File",
     "School" => "School",
     "title-label" => "Title",
     "description" => "Description",
     "subject" => "Subject",
     "due-date" => "Due Date",
-    "title-label" => "Title"
+    "link" => "Link",
+    "location" => "Location",
+    "contact" => "Contact",
+    "choose" => "Choose",
+    "startDate" => "Start Date",
+    "endDate" => "End Date"
+    
+    
 );
 ?>
