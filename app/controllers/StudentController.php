@@ -22,6 +22,7 @@ class StudentController extends UsersController {
     }
 
     public function classesAction() {
+        $this->view->t = Translation::get(Language::get(), "classes");
         $param = "year = " . Config::schoolYear();
         $group = $this->view->user->getGroups($param)->getFirst();
         $this->view->classes = ClassListService::getClassesByGroup($group);
@@ -30,6 +31,7 @@ class StudentController extends UsersController {
     public function joinClassAction() {
         if ($this->isValidPost()) {
             $classId = $this->request->getPost("class-id");
+            $t = Translation::get(Language::get(), "classes");
 
             if ($classId) {
                 $user = $this->view->user;
@@ -53,17 +55,17 @@ class StudentController extends UsersController {
 
                         if (!$timetableChange->save()) {
                             $classListUser->delete();
-                            $this->flash->error("was not possible join in class");
+                            $this->flash->error($t->_("not-joined"));
                             $this->dispatcher->forward(array("action" => "index"));
                         }
                     }
 
-                    $this->flash->success("joined in class");
+                    $this->flash->success($t->_("joined-class"));
                 } else {
-                    $this->flash->error("error to save");
+                    $this->flash->error($t->_("not-joined"));
                 }
             } else {
-                $this->flash->error("classId is null");
+                $this->flash->error($t->_("not-joined"));
             }
 
             $this->dispatcher->forward(array("action" => "index"));
@@ -72,7 +74,8 @@ class StudentController extends UsersController {
 
     public function subjectsAction() {}
     public function calendarAction() {
-      return $this->view->pick("student/calendar/index");
+        $this->view->t = Translation::get(Language::get(), "calendar");
+        return $this->view->pick("student/calendar/index");
     }
 
     public function listTeachersAction() {
@@ -85,6 +88,7 @@ class StudentController extends UsersController {
     }
 
     public function timetableAction() {
+        $this->view->t = Translation::get(Language::get(), "timetable");
         $user = $this->view->user;
         $slots = array();
 
