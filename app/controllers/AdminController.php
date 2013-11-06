@@ -38,11 +38,13 @@ class AdminController extends UsersController {
     }
 
     public function newSchoolAction() {
+        $this->view->t = Translation::get(Language::get(), "school");
         $this->setTokenValues();
         $this->view->render('admin/schools', 'new');
     }
 
     public function createSchoolAction() {
+        $t = Translation::get(Language::get(), "school");
         if (!$this->isValidPost()) { return $this->toIndex(); }
 
         $school = $this->populeSchool();
@@ -58,15 +60,16 @@ class AdminController extends UsersController {
             ));
         }
 
-        $this->flash->success("school was created successfully");
+        $this->flash->success($t->_("school-created"));
         return $this->toIndex();
     }
 
     public function deleteSchoolAction($schoolID) {
+        $t = Translation::get(Language::get(), "school");
         $school = School::findFirstById($schoolID);
 
         if (!$school) {
-            $this->flash->error("school was not found");
+            $this->flash->error($t->_("school-not-found"));
             return $this->toIndex();
         }
 
@@ -78,15 +81,16 @@ class AdminController extends UsersController {
             return $this->toIndex();
         }
 
-        $this->flash->success("school was deleted successfully");
+        $this->flash->success($t->_("school-deleted"));
         return $this->toIndex();
     }
 
     public function editSchoolAction($schoolID) {
+        $this->view->t = Translation::get(Language::get(), "school");
         if (!$this->request->isPost()) {
             $school = School::findFirstById($schoolID);
             if (!$school) {
-                $this->flash->error("school was not found");
+                $this->flash->error($this->view->t->_("school-not-found"));
                 return $this->toIndex();
             }
 
@@ -107,13 +111,14 @@ class AdminController extends UsersController {
 
     public function updateSchoolAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
+        $t = Translation::get(Language::get(), "school");
 
         $schoolID = $this->request->getPost("schoolID");
 
         $school = School::findFirstById($schoolID);
 
         if (!$school) {
-            $this->flash->error("school does not exist " . $schoolID);
+            $this->flash->error($t->_("school-not-found"));
             return $this->toIndex();
         }
 
@@ -131,21 +136,24 @@ class AdminController extends UsersController {
             ));
         }
 
-        $this->flash->success("school was updated successfully");
+        $this->flash->success($t->_("school-updated"));
         return $this->toIndex();
     }
 
     public function listConfigsAction() {
+        $this->view->t = Translation::get(Language::get(), "config");
         $this->view->configs = Config::find();
         $this->view->render("admin/configs", "index");
     }
 
     public function newConfigAction() {
+        $this->view->t = Translation::get(Language::get(), "config");
         $this->setTokenValues();
         $this->view->render("admin/configs", "new");
     }
 
     public function createConfigAction() {
+        $this->view->t = Translation::get(Language::get(), "config");
         if (!$this->isValidPost()) {
             return $this->toIndex();
         }
@@ -156,9 +164,9 @@ class AdminController extends UsersController {
         $config->value = $this->request->getPost("value");
 
         if($config->save()) {
-            $this->flash->success("config was created");
+            $this->flash->success($this->view->t->_("config-created"));
         } else {
-            $this->flash->error("config was not created");
+            $this->flash->error($this->view->t->_("config-not-created"));
         }
 
         return $this->dispatcher->forward(
@@ -168,12 +176,13 @@ class AdminController extends UsersController {
 
     public function deleteConfigAction($configId) {
         $config = Config::findFirstById($configId);
+        $this->view->t = Translation::get(Language::get(), "config");
 
         if($config) {
             if($config->delete()) {
-                $this->flash->success("config was deleted");
+                $this->flash->success($this->view->t->_("config-deleted"));
             } else {
-                $this->flash->error("config was not deleted");
+                $this->flash->error($this->view->t->_("config-not-deleted"));
             }
         }
 
