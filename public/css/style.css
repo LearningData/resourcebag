@@ -1,3 +1,40 @@
+/*!
+ * Copyright 2013 Learning Data.
+ *
+ * Licensed under the Creative Commons Attribution 3.0 Unported License. For
+ * details, see http://creativecommons.org/licenses/by/3.0/.
+ */
+
+/*
+ * School Bag Documentation
+ * Default style - For each section see diferents css files.
+ *
+ * Table of contents:
+ *
+ * Fonts
+ * Reset
+ * Buttons
+ * Icons / General
+ * Default Margin / Padding
+ * Modal
+ * Table
+ * Navigation Arrows
+ * Main Menu / Sidebar
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+/* Fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
 .classList {
     display: inline;
@@ -5,8 +42,44 @@
     padding: 10px 10px;
     border: 1px solid #FF0097;
 }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+h1, .h1 {
+    font-size: 30px;
+    font-weight: 100;
+    margin: 30px 0;
+    border-bottom: 3px solid #000000;
+    padding: 0 0 10px;
+}
+
+h2, .h2 {
+    font-size: 24px;
+}
+
+h3, .h3 {
+    font-size: 20px;
+}
+
+h4, .h4 {
+    font-size: 16px;
+}
 .label {
     color: black;
+    font-weight: normal;
+}
+
+/* Reset */
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #414042;
 }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
@@ -33,50 +106,57 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
-html, body {
-    height: 100%;
-}
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: #414042;
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    line-height: 1.1;
-}
-h1, .h1 {
-    font-size: 30px;
-    font-weight: 100;
-    margin: 30px 0;
-    border-bottom: 3px solid #000000;
-    padding: 0 0 10px;
-}
-
-h2, .h2 {
-    font-size: 24px;
-}
-
-h3, .h3 {
-    font-size: 20px;
-}
-
-h4, .h4 {
+/* Buttons */
+.btn, .btn.btn-cancel {
+    min-width: 180px;
+    padding: 8px 12px;
     font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+    text-transform: uppercase;
+    color: #fff !important;
+    margin-right: 5px;
 }
-label {
-    font-weight: normal;
+.btn:hover, .btn:focus {
+    color: #fff;
+}
+.btn:active, .btn.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
-/* ICONS - DEFAULT */
+.btn.btn-cancel {
+    color: #a7a9ac;
+    background-color: #d9d9d9 !important;
+}
+.btn.btn-cancel:hover {
+    background-color: #c5c5c5 !important;
+}
+
+.btn-group-xs > .btn {
+    border-radius: 0;
+    min-width: 100px;
+}
+
+.btn-toolbar {
+    background-color: gray
+}
+
+.btn-toolbar .btn {
+    min-width: auto;
+    color: black;
+}
+
+/* Icons */
 .btn-icon {
     width: 21px;
     height: 21px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    color: #fff!important;
+    color: #fff !important;
     font-size: 14px;
     padding-top: 3px;
     text-align: center;
@@ -120,39 +200,6 @@ span.btn-icon:hover {
     margin-bottom: 20px;
 }
 
-.btn, .btn.btn-cancel {
-    min-width: 180px;
-    padding: 8px 12px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 0;
-    text-transform: uppercase;
-    color: #fff!important;
-    margin-right: 5px;
-}
-.btn:hover, .btn:focus {
-    color: #fff;
-}
-.btn:active, .btn.active {
-    background-image: none;
-    outline: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.btn.btn-cancel {
-    color: #a7a9ac;
-    background-color: #d9d9d9 !important;
-}
-.btn.btn-cancel:hover {
-    background-color: #c5c5c5 !important;
-}
-
-.btn-group-xs > .btn    {
-    border-radius: 0;
-    min-width: 100px;
-}
-
 span.customSelect {
     font-size: 14px;
     background: #fff url(http://i48.tinypic.com/2u7rpec.png) right center no-repeat;
@@ -179,17 +226,7 @@ span.customSelect {
     z-index: 1;
 }
 
-.btn-toolbar {
-    background-color: gray
-}
-
-.btn-toolbar .btn {
-    min-width: auto;
-    color: black;
-}
-
-/*//////MODAL//////*/
-
+/* Modal */
 .modal-header {
     border-bottom: none;
     padding: 30px 0 0 5%;
@@ -215,14 +252,13 @@ span.customSelect {
 }
 .modal-title {
     padding-left: 15px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     border-left: 3px black solid;
     font-size: 20px;
     font-weight: 100;
 }
 
-
-/*//////DEFAULT TABLE//////*/
+/* Table */
 .table {
     border-collapse: separate;
     border-spacing: 0;
@@ -274,7 +310,7 @@ table > tbody > tr.active td:last-child {
     color: #676a74;
 }
 
-/*//////DEFAULT NAVIGATION ARROWS//////*/
+/* Navigation Arrows */
 .default-prev, .default-next, .ui-datepicker-prev, .ui-datepicker-next {
     position: absolute;
     display: block;
@@ -297,7 +333,8 @@ table > tbody > tr.active td:last-child {
     top: 17px
 }
 
-/*//////SIDEBAR / MAIN MENU//////*/
+
+/* Main Menu / Sidebar */
 .schoolbag-brand {
     text-align: center;
     display: block;
@@ -436,7 +473,6 @@ table > tbody > tr.active td:last-child {
     border-radius: 0 0 5px 5px;
 }
 
-
 /*//////DEFAULT LIST HOME//////*/
 .box-messages .ld-box-child ul li {
     border-bottom: #d1d3d4 solid 1px;
@@ -445,57 +481,6 @@ table > tbody > tr.active td:last-child {
 }
 .box-messages .ld-box-child ul li:last-child {
     border: none;
-}
-
-/*//////NOTICES HOME//////*/
-#dashboard-notices, .header-notices, .notice-home {
-    height: 100%;
-    overflow: hidden;
-}
-.header-notices {
-    background-color: #0ba6d3;
-}
-
-.notice-home {
-    border: #d1d3d4 solid 1px;
-    height: 100%;
-    padding: 5px;
-}
-
-.notice-home .note {
-    padding: 0px 5px;
-    float: none;
-    border: solid 1px #cad3e2;
-    height: 49%;
-}
-
-.notice-home .note:nth-child(1) {
-    margin-bottom: 5px;
-}
-
-.notice-home .note:nth-child(2) {
-    float: left;
-    width: 48%;
-}
-
-.notice-home .note:nth-child(3) {
-    float: right;
-    width: 48%;
-}
-
-.notice-home .note h3 {
-    color: #0ba6d3;
-    padding: 10px;
-    margin-top: 0px;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.notice-home.missing-child .note:nth-child(2) {
-    float: none;
-    width: auto;
 }
 
 /*//////EVENTS HOME//////*/
@@ -569,7 +554,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-size: 12px;
     color: #4d4d4f;
     margin-right: 10px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     display: block;
 }
 .icon-user, .icon-off {
@@ -609,7 +594,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /**TABLE HOMEWORK**/
-
 
 .note-editor {
     border: 2px solid #eceded;
@@ -696,7 +680,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin: 0;
 }
 
-
 .purple .ui-datepicker-header {
     background-color: #9752a3;
 }
@@ -743,7 +726,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 }
 
 .ui-state-default {
-   border-radius: 50px;
+    border-radius: 50px;
     -moz-border-radius: 50px;
     display: block;
     padding: 0 px;
@@ -871,8 +854,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /*Login Page*/
-#login,
-#signup {
+#login, #signup {
     background: #f3f5f8;
 }
 .jumbotron {
@@ -881,24 +863,24 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #fff;
     margin-bottom: 55px;
 }
-#signup .jumbotron  {
+#signup .jumbotron {
     margin-bottom: 0;
 }
-#signup h1, h2, h3  {
+#signup h1, h2, h3 {
     font-weight: 100;
 }
-#signup h1  {
+#signup h1 {
     margin-bottom: 0;
     border: none
 }
-    
-#signup h2.page-header  {
+
+#signup h2.page-header {
     border-bottom: solid 1px #fff;
     margin-bottom: 40px;
-    margin-top:0;
+    margin-top: 0;
     padding-bottom: 40px;
-}    
-    
+}
+
 .schoolbag-brand-login {
     margin: 25px 0 0 30px;
     display: block;
@@ -966,9 +948,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 
 /********************************************************************
-<<<<<<< HEAD
-*******************UI Default styles*********************************
-*********************************************************************/
+ <<<<<<< HEAD
+ *******************UI Default styles*********************************
+ *********************************************************************/
 /*/////FORMS & FORM CONTROLS/////*/
 .form-search {
     position: relative;
@@ -978,7 +960,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     border: solid 1px #525353 !important;
     clear: both;
     margin: 0 auto !important;
-    width: 95%!important;
+    width: 95% !important;
 }
 .form-control, input[type='text'], input[type='password'], form textarea {
     width: 100%;
@@ -993,7 +975,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 
 form textarea {
     line-height: 1.2;
-    padding: 10px!important;
+    padding: 10px !important;
     height: auto;
 }
 

@@ -27,13 +27,3 @@
 .green .uploader .action {
     background-color: #10a236;
 }
-
-.green.ld-homework .nav ul li a,
-.green.ld-homework .table [class*="btn-"],
-.teacher .green.ld-homework .table th {
-    background-color: #10a236;
-}
-.green.ld-timetable .header-navigation {
-    background-color: #e27176; //TODO change color
-}
-

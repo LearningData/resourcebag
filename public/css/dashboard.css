@@ -131,7 +131,6 @@
     color: #FF0000;
 }
 
-
 .dashboard-homework .tooltip-inner {
     background-color: #ff9e19;
     margin-right: 5px;
@@ -196,7 +195,7 @@
 }
 
 /***** notices *****/
-.box-notices .ld-box-child {
+.ld-box.notices .ld-box-child {
     height: 335px;
     overflow-y: auto;
 }

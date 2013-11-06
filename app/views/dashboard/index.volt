@@ -2,7 +2,7 @@
     <ul>
         <li id="dashboard-timetable-box" class="ld-box ld-timetable red">
             <div class="ld-box-head">
-                <div id="dashboard-timetable-head" class="title"> 
+                <div id="dashboard-timetable-head" class="title">
                     <h2><span class="custom-icon-timetable"></span>Timetable</h2>
                 </div>
             </div>
@@ -18,23 +18,20 @@
         </li>
         <li id="dashboard-homework-box" class="ld-box ld-homework orange">
             <div class="ld-box-head">
-                <div id="dashboard-homework-head" class="title"> 
+                <div id="dashboard-homework-head" class="title">
                     <h2><span class="custom-icon-homework"></span>Homework</h2>
                 </div>
             </div>
             <div class="ld-box-child">
-                <div id="dashboard-homework-contents">
-                </div>
+                <div id="dashboard-homework-contents"></div>
             </div>
         </li>
         <li id="dashboard-events-box" class="ld-box ld-events purple">
             <div class="ld-box-head">
-                <div id="dashboard-events-head" class="title"> 
-                </div>
+                <div id="dashboard-events-head" class="title"></div>
             </div>
             <div class="ld-box-child">
-                <div id="dashboard-events">
-                </div>
+                <div id="dashboard-events"></div>
             </div>
         </li>
         <li id="dashboard-messages-box" class="ld-box messages green">
@@ -44,19 +41,17 @@
                 </div>
             </div>
             <div class="ld-box-child">
-                <div id="dashboard-messages-contents">
-                </div>
+                <div id="dashboard-messages-contents"></div>
             </div>
         </li>
-        <li id="dashboard-notices-box" class="ld-box box-notices">
-            <div class="box-header">
-                <div id="dashboard-notices-head" class="header-title header-notices">
+        <li id="dashboard-notices-box" class="ld-box notices blue">
+            <div class="ld-box-head">
+                <div id="dashboard-notices-head" class="title">
                     <h2><span class="custom-icon-notices"></span>School Notices</h2>
                 </div>
             </div>
             <div class="ld-box-child">
-                <div id="dashboard-notices">
-                </div>
+                <div id="dashboard-notices"></div>
             </div>
         </li>
     </ul>

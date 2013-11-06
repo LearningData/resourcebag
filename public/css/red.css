@@ -10,7 +10,6 @@
     background-color: #dc3b42;
 }
 
-
 .red .form-control:focus {
     border-color: #dc3b42;
     outline: 0;
@@ -18,16 +17,6 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
 }
 
-.red .modal-title,
-.red h1 {
+.red .modal-title, .red h1 {
     border-color: #dc3b42;
-}
-
-.red.ld-homework .nav ul li a,
-.red.ld-homework .table [class*="btn-"],
-.teacher .red.ld-homework .table th {
-    background-color: #dc3b42;
-}
-.red.ld-timetable .header-navigation {
-    background-color: #e27176;
 }

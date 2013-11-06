@@ -24,9 +24,3 @@
 .pink .uploader .action {
     background-color: #ff0097;
 }
-.pink.ld-homework .nav ul li a, .pink.ld-homework .table [class*="btn-"] {
-    background-color: #ff0097;
-}
-.pink.ld-timetable .header-navigation {
-    background-color: #e27176;//TODO change color
-}
