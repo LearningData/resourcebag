@@ -1,5 +1,4 @@
 var calendarPage = (function() {
-    var urlBase = window.location.origin + "/schoolbag"
     init = function() {
         $('#calendar').fullCalendar({
             header : {

@@ -52,6 +52,7 @@
     -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
     padding: 15px;
+    cursor: pointer;
 }
 
 .dashboard .ld-box .ld-box-head .title span  {
