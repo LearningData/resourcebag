@@ -1,32 +1,29 @@
 <div class="ld-homework orange">
-    <h1 class="header">{{ t._("homework") }}
-       
-        
-        </h1>
+    <h1 class="header">{{ t._("homework") }}</h1>
     <nav class="status{{ status }} nav">
         <ul>
             <li class="bt-new">
-                <a href="/schoolbag/student/homework/new"><span class="custom-icon-new-homework"></span> Add New</a>
+                <a href="/schoolbag/student/homework/new"><span class="custom-icon-new-homework"></span>{{ t._("add-new") }}</a>
             </li>
             <li class="bt-to-do">
-                {{ link_to("student/homework?filter=0", "To Do") }}
+                {{ link_to("student/homework?filter=0", t._("to-do")) }}
             </li>
             <li class="bt-in-progress">
-                {{ link_to("student/homework?filter=1", "In Progress") }}
+                {{ link_to("student/homework?filter=1", t._("in-progress")) }}
             </li>
             <li class="bt-complete">
-                {{ link_to("student/homework?filter=2", "Complete") }}
+                {{ link_to("student/homework?filter=2", t._("complete")) }}
             </li>
         </ul>
     </nav>
     <table class="accordion table">
         <thead>
             <tr>
-                <th>Homework</th>
-                <th>Subject</th>
-                <th>Teacher</th>
-                <th>Due Date</th>
-                <th>Action</th>
+                <th>{{ t._("homework") }}</th>
+                <th>{{ t._("subject") }}</th>
+                <th>{{ t._("teacher") }}</th>
+                <th>{{ t._("due-date") }}</th>
+                <th>{{ t._("action") }}</th>
             </tr>
         </thead>
         <tbody>

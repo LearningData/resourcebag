@@ -63,7 +63,7 @@ $(document).ready(function() {
     $("#notice-note-date").datepicker("widget").addClass("datepicker-note")
     setUpEvents()
 });
-var urlBase = window.location.origin + "/schoolbag"
+var urlBase = window.location.protocol + "//" + window.location.host + "/schoolbag"
 $("input[type=file]").uniform();
 
 function getUser() {
@@ -192,6 +192,11 @@ function setUpEvents() {
     $(".btn.btn-return").click(function(a) {
         window.history.go(-1)
     })
+    window.setTimeout(function() {
+        $(".alert-warning").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 5000);
     if ($(".ld-tree").length > 0) setTreeEvents()
 }
 
