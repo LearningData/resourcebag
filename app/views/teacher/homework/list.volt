@@ -1,37 +1,31 @@
 <div class="ld-homework orange">
-    <h1 class="header">Homework</h1>
+    <h1 class="header">{{ t._("homework") }}</h1>
     {% if classes %}
 
     <table class="table table-hover fixed">
         <thead>
             <tr>
-                <th colspan=7 rowspan=2>Class</th>
-                <th rowspan=2></th>
-                <th colspan=1 rowspan=2>Year</th>
-                <th colspan=1 rowspan=2>Students</th>
-                <th colspan=2>Status</th>
-            </tr>
-            <tr>
-                <th>In Progress</th>
-                <th>Submitted</th>
+                <th colspan=7>{{ t._("class") }}</th>
+                <th></th>
+                <th>{{ t._("students") }}</th>
+                <th>{{ t._("in progress") }}</th>
+                <th>{{ t._("submitted") }}</th>
             </tr>
         </thead>
         <tbody>
         {% for classList in classes %}
             <tr>
                 <td colspan=7>
-                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.subject.name~"("~classList.extraRef~")") }}
+                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
                 </td>
-                <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
-                <td>{{ classList.cohort.stage }}</td>
-                <td>{{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.users.count()) }}</td>
-                <td>{{ classList.getPendingHomework().count() }}</td>
-                <td>{% if !classList.getSubmittedHomework().count() %}
-                        {{ classList.getSubmittedHomework().count() }}
-                    {% else %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.getSubmittedHomework().count()) }}
+                <td>{{ link_to("teacher/homework/new/"~classList.id, t._("new")) }}
+                    {% if classList.getSubmittedHomework().count() %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", "   "~t._("correct")) }}
                     {% endif %}
                 </td>
+                <td>{{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.users.count()) }}</td>
+                <td>{{ classList.getPendingHomework().count() }}</td>
+                <td>{{ classList.getSubmittedHomework().count() }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -43,12 +37,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Student</th>
-                    <th>Homework</th>
-                    <th>Assigned Date</th>
-                    <th>Due Date</th>
-                    <th>Action</th>
-                    <th>Review</th>
+                    <th>{{ t._("student") }}</th>
+                    <th>{{ t._("homework") }}</th>
+                    <th>{{ t._("assigned date") }}</th>
+                    <th>{{ t._("due date") }}</th>
+                    <th>{{ t._("action") }}</th>
+                    <th>{{ t._("review") }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,8 +82,8 @@
             <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
         </li>
         </ul>
-        <input type="submit" value="Submit" class="btn btn-left">
+        <input type="submit" value="{{ t._('save') }}" class="btn btn-left">
     </form>
-    <button class="btn btn-return">Cancel</button>
+    <button class="btn btn-return">{{ t._("cancel") }}</button>
     {% endif %}
 </div>
