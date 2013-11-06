@@ -1,7 +1,6 @@
 .ld-notices .form .radio-box {
     height: auto;
 }
-
 .ld-notices .form .radio-box label {
     font-weight: normal;
 }
@@ -27,35 +26,53 @@
 }
 
 /* Notices Page */
-.notice-page .note div {
-    border: solid 1px #cad3e2;
-    padding: 20px;
-    margin: 0 0 10px;
-    color: #6d6e71;
-    min-height: 230px;
-}
-.notice-page .note .message {
-    color: #6d6e71;
-    font-weight: 100;
-}
-.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
-    min-height: 460px;
-}
 .notice-page .note div img {
     max-width: 90%;
     height: auto;
     margin: 10% auto 0;
     display: block;
 }
-
-.notice-page h2, .notice-page h3, .notice-page h4 {
+.notice-page {
+    margin: 0 0 10px;
+    padding: 20px 20px 0 0 ;
+    color: #6d6e71;
+    min-height: 190px;
+    width: 33.3333%;
+    float: left;
+}
+.notice-page .note{
+    min-height: 230px;
+}
+.notice-page-show   {
+    width: 100%!important
+}
+.note {
+    padding:20px;
+    border: solid 1px #cad3e2;
+}
+.notice-page:nth-child(2) {
+    width: 66.66666%;
+}
+.notice-page:nth-child(2) .note,
+.notice-page:nth-child(3) .note {
+    min-height: 420px;
+}   
+.notice-page .date, .notice-page .author {
+    font-size: 14px;
+    color: #6d6e71;
+    font-weight: 100;
+}
+.notice-page .message {
+    margin-top: 20px;
+}
+.notice-page p:first-line {
+    font-size: 24px;
     color: #0ba6d3;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-weight: 600;
+    clear: both;
 }
 
-.notice-page .author {
-    float: right;
+
+.btn-group  {
+
 }
