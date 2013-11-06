@@ -206,7 +206,6 @@ var dashboard = (function() {
             $( "#dashboard-messages-contents" ).append( list )
             $ (".dashboard .messages .ld-box-child").slimScroll({height:"335px"})
         //})
-
     }
 
     var populateNotices = function( date ) {
@@ -215,13 +214,13 @@ var dashboard = (function() {
             var notices = response.notices
             var items = []
             if (notices[0] != undefined) {
-                items.push( "<div class=\"note\"><h3>" + notices[0].text + "</h3><p>" + notices[0].text + "</p></div>" )
+                items.push( "<div class=\"note\"><span class=\"icon-file-text\"></span><p>" + notices[0].text + "</p></div>" )
             }
             if ( notices[1] != undefined ) {
-                items.push( "<div class=\"note\"><h4>" + notices[1].text + "</h4><p>" + notices[1].text + "</p></div>" )
+                items.push( "<div class=\"note\"><span class=\"icon-comments\"></span><p>" + notices[1].text + "</p></div>" )
             }
             if ( notices[2] != undefined ) {
-                items.push( "<div class=\"note\"><h4>" + notices[2].text + "</h4><p>" + notices[2].text + "</p></div>" )
+                items.push( "<div class=\"note\"><span class=\"icon-file-text\"></span><p>" + notices[2].text + "</p></div>" )
             }
             var noticeElement = $( "<div class=\"notice-home\">")
             noticeElement.append( items.join( "" ) )

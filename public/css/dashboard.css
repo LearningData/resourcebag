@@ -1,9 +1,6 @@
 .dashboard .ld-box {
     position: relative;
-/* background-color: #f6f6f6;
- border-radius: 0 0 5px 5px;
- -moz-border-radius: 0 0 5px 5px;
- */ float: left;
+    float: left;
     overflow: hidden;
     height: 375px
 }
@@ -89,9 +86,6 @@
 
 
 /*------dashboard------*/
-
-
-
 /*homework*/
 .dashboard .ld-homework.ld-box .ld-box-child {
     height: 335px;
@@ -194,8 +188,38 @@
     padding: 0px;
 }
 
-/***** notices *****/
-.ld-box.notices .ld-box-child {
+/* notices */
+.dashboard .ld-notices .ld-box-child {
     height: 335px;
     overflow-y: auto;
 }
+
+.dashboard .note  {
+    padding: 15px;
+    padding-bottom: 0;
+}
+
+.dashboard .note p {
+    font-size: 12px;
+    margin-top: 0;
+}
+.dashboard .note p:first-line {
+    font-size: 14px;
+    color: #0ba6d3;
+    font-weight: 600;
+    clear: both;
+}
+.dashboard .note:first-child p:first-line {
+    font-size: 20px;
+    font-weight: bold;
+}
+.dashboard .note span {
+    font-size: 26px;
+    color: #0ba6d3;
+    display: block;
+    float: left;
+    margin: 5px 10px 0 0;
+}
+
+
+
