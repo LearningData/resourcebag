@@ -1,5 +1,6 @@
 <div class="ld-homework orange">
-    <h2 class="modal-title">{{ t._("newTitle")}}</h2>
+    <h1 class="header">{{ t._("homework")}}</h1>
+    <h2 class="subheader">{{ t._("newTitle")}}</h2>
 
     {{ form("teacher/createHomework", "method":"post", "class":"form inline") }}
         <div class="col-sm-9">
@@ -23,11 +24,11 @@
         <input type="hidden" name="week-days" id="week-days" value="{{ weekDays }}">
         <input type="hidden" name="class-id" id="class-id"
             value="{{ classList.id }}">
-        <h3>Assign students</h3>
-        <div id="students">
-            <p>{{ check_field("all", "value": true) }} All</p>
+        <h3>{{ t._("assign-students") }}</h3>
+        <div id="students" class="ld-tree">
+            <p>{{ check_field("all", "value": true, "class":"parent-node", "data-target":".ld-homework .student-node", "checked":"checked") }} {{ t._("all") }}</p>
             {% for user in classList.users %}
-                <p class="col-  -3">{{ check_field("students[]", "value": user.id) }}
+                <p class="col-xs-3">{{ check_field("students[]", "value": user.id, "checked":"checked", "class":"student-node child-node", "data-source":".ld-homework .parent-node" ) }}
                     {{ user.name }} {{ user.lastName }}</p>
             {% endfor %}
         </div>
@@ -35,5 +36,5 @@
         <input class="btn" type="submit" value={{ t._("save")}}>
 
     </form>
-    <button class="btn btn-return">{{ t._("cancel")}}</button>
+    <button class="btn btn-return btn-cancel">{{ t._("cancel")}}</button>
 </div>

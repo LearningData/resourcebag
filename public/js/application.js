@@ -66,12 +66,6 @@ $(document).ready(function() {
 var urlBase = window.location.origin + "/schoolbag"
 $("input[type=file]").uniform();
 
-function setUpEvents() {
-    $(".btn.btn-return").click(function(a) {
-        window.history.go(-1)
-    })
-}
-
 function getUser() {
     var body = $("body")
     if (body.hasClass("teacher")) {
@@ -192,3 +186,48 @@ function hiddenRadioElements() {
         element.hidden = true;
     });
 }
+
+function setUpEvents() {
+    //buttone events
+    $(".btn.btn-return").click(function(a) {
+        window.history.go(-1)
+    })
+    if ($(".ld-tree").length > 0) setTreeEvents()
+}
+
+/****************************************
+                UI Events
+******************************************/
+var setTreeEvents = function() {
+    //set child node when change parent
+    $(".ld-tree .parent-node").change(function(event) {
+        $( $( event.target ).data().target ).each(function() {
+            this.checked = (event.target.checked) ? "checked" : ""
+            $( this ).change()
+        })
+    })
+    //set state of parent when click on child
+    $(".ld-tree .child-node").click(function(event) {
+        var source = $( $( event.target ).data().source )
+        var all = 0, checkCount = 0
+        $( source.data().target ).each(function() {
+            all++
+            if (this.checked) {
+               checkCount++
+            }
+        })
+        if (checkCount == 0) {
+            source[0].checked = ""
+            source[0].indeterminate = false
+        } else if (checkCount == all) {
+            source[0].checked = "checked"
+            source[0].indeterminate = false
+        } else {
+            source[0].checked = ""
+            source[0].indeterminate = true
+        }
+    })
+}
+
+
+

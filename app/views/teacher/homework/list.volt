@@ -38,7 +38,7 @@
             <thead>
                 <tr>
                     <th>{{ t._("student") }}</th>
-                    <th>{{ t._("homework") }}</th>
+                    <th>{{ t._("homework title") }}</th>
                     <th>{{ t._("assigned date") }}</th>
                     <th>{{ t._("due date") }}</th>
                     <th>{{ t._("action") }}</th>
@@ -84,6 +84,6 @@
         </ul>
         <input type="submit" value="{{ t._('save') }}" class="btn btn-left">
     </form>
-    <button class="btn btn-return">{{ t._("cancel") }}</button>
+    <button class="btn btn-return btn-cancel">{{ t._("cancel") }}</button>
     {% endif %}
 </div>

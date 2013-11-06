@@ -1,5 +1,6 @@
 <?php
 $messages = array(
+    "all" => "All",
     "title" => "Schoolbag",
     "dashboard" => "Dashboard",
     "notices" => "School Notices",
@@ -7,6 +8,7 @@ $messages = array(
     "timetable" => "Timetable",
     "homework" => "Homework",
     "messages" => "Messages",
+    "class" => "Class",
     "classes" => "Classes",
     "ebooks" => "Ebooks",
     "messages" => "Messages",

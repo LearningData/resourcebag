@@ -93,7 +93,8 @@ var noticesPage = (function() {
                 branch.append( "<label><input class=\"node new-event-classLevel " + branchId +"\" data-source=\".node.topLevel\" data-target=\".new-event-itemLevel." + branchId +"\" type=\"checkbox\"></input>" + branchData.name + "</label>" )
                 var items = []
                 for (var j = 0; j < branchData.classes.length; j++) {
-                    items.push("<label><input name=\"class-id\" value=\"" +branchData.classes[j].id + "\" class=\"node new-event-itemLevel " + branchId +"\" data-source=\".new-event-classLevel." + branchId +"\" type=\"checkbox\"/>" + branchData.classes[j].extraRef + "</label>")
+                    var input = "<input name=\"class-id[]\" value=\"" +branchData.classes[j].id + "\" class=\"node new-event-itemLevel " + branchId +"\" data-source=\".new-event-classLevel." + branchId +"\" type=\"checkbox\"/>"
+                    items.push("<label>" + input + branchData.classes[j].extraRef + "</label>")
                 }
                 var span = $("<span id=\"ne" + branchId + "\" class=\"ld-leaf collapse\">")
                 span.append(items.join(""))
