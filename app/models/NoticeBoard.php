@@ -51,7 +51,7 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
         $classes = ClassList::findByTeacherId($user->id);
         $classIdParams = ClassListService::classesToIds($classes);
 
-        $query = "schoolId = ?1 and classId in ( ?2 ) and " .
+        $query = "schoolId = ?1 and (classId in ( ?2 ) or classId is null) and " .
                  "(userType = 'T' or userType = 'A') order by date desc";
 
         $values = array(1 => $user->schoolId, 2 => $classIdParams);

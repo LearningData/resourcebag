@@ -47,7 +47,7 @@
         <li id="dashboard-notices-box" class="ld-box ld-notices blue">
             <div class="ld-box-head">
                 <div id="dashboard-notices-head" class="title">
-                    <h2><span classs="custom-icon-notices"></span>{{ t._("notices") }}</h2>
+                    <h2><span class="custom-icon-notices"></span>{{ t._("notices") }}</h2>
                 </div>
             </div>
             <div class="ld-box-child">

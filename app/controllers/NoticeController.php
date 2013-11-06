@@ -2,10 +2,12 @@
 
 class NoticeController extends ControllerBase {
     public function indexAction(){
+        $this->view->t = Translation::get(Language::get(), "notice");
         $this->view->notices = $this->getNotices();
     }
 
     public function showAction($noticeId) {
+        $this->view->t = Translation::get(Language::get(), "notice");
         $notice = NoticeBoard::findFirstById($noticeId);
 
         $this->view->notice = $notice;
@@ -30,6 +32,7 @@ class NoticeController extends ControllerBase {
     }
 
     public function newAction() {
+        $this->view->t = Translation::get(Language::get(), "notice");
         $user = $this->getUserBySession();
         $this->setTokenValues();
 
@@ -41,6 +44,7 @@ class NoticeController extends ControllerBase {
     }
 
     public function editAction($noticeId) {
+        $this->view->t = Translation::get(Language::get(), "notice");
         $user = $this->getUserBySession();
         $this->setTokenValues();
 
@@ -68,6 +72,7 @@ class NoticeController extends ControllerBase {
             $user = $this->getUserBySession();
             $noticeId = $this->request->getPost("notice-id");
             $notice = NoticeBoard::findFirstById($noticeId);
+            $this->view->t = Translation::get(Language::get(), "notice");
 
             $notice->text = $this->request->getPost("notice");
             $notice->userType = $this->request->getPost("type");
@@ -76,7 +81,7 @@ class NoticeController extends ControllerBase {
             $notice->classId = $this->request->getPost("class-id");
 
             if($notice->save()) {
-                $this->flash->success("Notice was updated.");
+                $this->flash->success($this->view->t->_("notice-updated"));
             } else {
                 $this->appendErrorMessages($notice->getMessages());
             }
@@ -97,6 +102,7 @@ class NoticeController extends ControllerBase {
             $notice->category = $this->request->getPost("category");
             $notice->schoolId = $user->schoolId;
             $notice->uploadedBy = $user->id;
+            $t = Translation::get(Language::get(), "notice");
 
             if($this->request->getPost("class-id") != "") {
                 $notice->classId = $this->request->getPost("class-id");
@@ -112,23 +118,30 @@ class NoticeController extends ControllerBase {
                     $noticeFile->file = file_get_contents($file->getTempName());
                     $noticeFile->noticeId = $notice->id;
 
-                    if ($noticeFile->save()) {
-                        $this->flash->success("The file was uploaded.");
-                    } else {
-                        $this->flash->error("The file was not uploaded.");
-                        foreach ($noticeFile->getMessages() as $message) {
-                            $this->flash->error($message);
-                        }
-                    }
+                    $this->uploadFile($notice->id, $file);
                 }
             } else {
                 foreach ($notice->getMessages() as $message) {
                     $this->flash->error($message);
                 }
+                return $this->dispatcher->forward(array("action" => "index"));
             }
 
+            $this->flash->success($t->_("notice-created"));
             return $this->dispatcher->forward(array("action" => "index"));
         }
+    }
+
+    private function uploadFile($noticeId, $file) {
+        $noticeFile = new NoticeBoardFile();
+        $noticeFile->originalName = $file->getName();
+        $noticeFile->name = $file->getName();
+        $noticeFile->size = $file->getSize();
+        $noticeFile->type = $file->getType();
+        $noticeFile->file = file_get_contents($file->getTempName());
+        $noticeFile->noticeId = $noticeId;
+
+        return $noticeFile->save();
     }
 
     private function getNotices() {
