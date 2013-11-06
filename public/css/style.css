@@ -12,7 +12,7 @@
  * Table of contents:
  *
  * Fonts
- * Reset
+ * Reset Bootstrap
  * Buttons
  * Icons / General
  * Default Margin / Padding
@@ -73,7 +73,7 @@ h4, .h4 {
     font-weight: normal;
 }
 
-/* Reset */
+/* Reset Bootstrap */
 html, body {
     height: 100%;
 }
