@@ -1,5 +1,3 @@
-{% include "admin/_header.volt" %}
-
 <h1>Listing Configurations</h1>
 
 {% for config in configs %}
