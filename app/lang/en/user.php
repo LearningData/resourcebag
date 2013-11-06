@@ -16,19 +16,18 @@ $messages = array(
     "Old Password" => "Old Password",
     "New Password" => "New Password",
     "Confirm New Password" => "Confirm New Password",
-    "You need to confirm the password" => "You need to confirm the password",
-    "user was created successfully" => "user was created successfully",
-    "user was updated successfully" => "user was updated successfully",
-    "User was deleted" => "User was deleted",
-    "Was not possible remove the user." => "Was not possible remove the user.",
-    "invalid password" => "invalid password",
-    "confirm your password" => "confirm your password",
-    "was not possible to change your password" => "was not possible to change your password",
-    "password was updated successfully" => "password was updated successfully",
-    "The photo was uploaded." => "The photo was uploaded.",
-    "The photo was not uploaded." => "The photo was not uploaded.",
+    "user-updated" => "user was updated successfully",
+    "user-deleted" => "User was deleted",
+    "user-not-deleted" => "Was not possible remove the user.",
+    "invalid-password" => "invalid password",
+    "password-not-changed" => "was not possible to change your password",
+    "password-updated" => "password was updated successfully",
+    "photo-uploaded" => "The photo was uploaded.",
+    "photo-not-uploaded" => "The photo was not uploaded.",
     "Your Information" => "Your Information",
-    "Yours School Information" => "Your's School Information"
-        
+    "Yours School Information" => "Your's School Information",
+    "need-confirm-password" => "You need confirm the password",
+    "need-confirm-email" => "You need confirm the email",
+    "user-created" => "user was created successfully"
 );
 ?>

@@ -20,6 +20,7 @@ class SchoolController extends UsersController {
     }
 
     public function timetableAction() {
+        $this->view->t = Translation::get(Language::get(), "timetable");
         $slots = TimetableConfig::findBySchoolId($this->view->user->schoolId);
         $this->view->hours = Timetable::hours();
         $this->view->minutes = Timetable::minutes();
@@ -30,6 +31,7 @@ class SchoolController extends UsersController {
     }
 
     public function listUsersAction() {
+        $this->view->t = Translation::get(Language::get(), "user");
         $user = Authenticate::getUser();
 
         $users = User::findBySchoolId($user->schoolId);
@@ -37,12 +39,14 @@ class SchoolController extends UsersController {
     }
 
     public function editUserAction($userId) {
+        $this->view->t = Translation::get(Language::get(), "user");
         $user = User::findFirstById($userId);
         $this->view->schoolUser = $user;
     }
 
     public function createSlotAction() {
         if($this->request->isPost()) {
+            $t = Translation::get(Language::get(), "slot");
             $schoolId = $this->view->user->schoolId;
 
             $req = $this->request;
@@ -61,7 +65,7 @@ class SchoolController extends UsersController {
             $timeTableConfig->year = $year;
 
             if ($timeTableConfig->save()) {
-                $this->flash->success("user was created successfully");
+                $this->flash->success($t->_("slot-created"));
             } else {
                 foreach ($timeTableConfig->getMessages() as $message) {
                     $this->flash->error($message);
@@ -73,12 +77,13 @@ class SchoolController extends UsersController {
     }
 
     public function deleteSlotAction($slotId) {
+        $t = Translation::get(Language::get(), "slot");
         $slot = TimetableConfig::findFirstById($slotId);
 
         if($slot->delete()) {
-            $this->flash->success("Slot was deleted");
+            $this->flash->success($t->_("slot-deleted"));
         } else {
-            $this->flash->error("Slot was not deleted");
+            $this->flash->error($t->_("slot-not-deleted"));
         }
 
         return $this->dispatcher->forward(array("action" => "timetable"));

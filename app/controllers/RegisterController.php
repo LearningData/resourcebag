@@ -17,6 +17,8 @@ class RegisterController extends Phalcon\Mvc\Controller {
     }
 
     public function createAction() {
+        $t = Translation::get(Language::get(), "user");
+
         if (!$this->request->isPost() || !$this->security->checkToken()) {
             return $this->toIndex();
         }
@@ -29,12 +31,12 @@ class RegisterController extends Phalcon\Mvc\Controller {
         $email = $this->request->getPost("email");
 
         if(!Authenticate::checkPassword($confirmPassword, $password)) {
-            $this->flash->error("You need confirm the password");
+            $this->flash->error($t->_("need-confirm-password"));
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
         if($email != $this->request->getPost("confirm-email")) {
-            $this->flash->error("You need confirm the email");
+            $this->flash->error($t->_("need-confirm-email"));
             return $this->dispatcher->forward(array("action" => "index"));
         }
 
@@ -58,7 +60,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
             ));
         }
 
-        $this->flash->success("user was created successfully");
+        $this->flash->success($t->_("user-created"));
         return $this->toIndex();
     }
 

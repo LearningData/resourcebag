@@ -32,7 +32,7 @@ class UsersController extends ControllerBase {
         $password = $this->security->hash($password);
 
         if(!Authenticate::checkPassword($confirmPassword, $password)) {
-            $this->flash->error($t->_("You need to confirm the password"));
+            $this->flash->error($t->_("need-confirm-password"));
             return $this->dispatcher->forward(array("action" => "new"));
         }
 
@@ -57,7 +57,7 @@ class UsersController extends ControllerBase {
             $this->uploadPhoto($file, $user->id);
         }
 
-        $this->flash->success($t->_("user was created successfully"));
+        $this->flash->success($t->_("user-created"));
         return $this->toIndex();
     }
 
@@ -88,7 +88,7 @@ class UsersController extends ControllerBase {
             $this->uploadPhoto($file, $user->id);
         }
 
-        $this->flash->success($t->_("user was updated successfully"));
+        $this->flash->success($t->_("user-updated"));
         return $this->toIndex();
     }
 
@@ -99,9 +99,9 @@ class UsersController extends ControllerBase {
 
         $user = User::findFirstById($userId);
         if($user->delete()) {
-            $this->flash->success($t->_("User was deleted"));
+            $this->flash->success($t->_("user-deleted"));
         } else {
-            $this->flash->error($t->_("Was not possible remove the user."));
+            $this->flash->error($t->_("user-not-deleted."));
         }
 
         return $this->dispatcher->forward(
@@ -126,22 +126,22 @@ class UsersController extends ControllerBase {
         $newPassword = $this->security->hash($newPassword);
 
         if(!Authenticate::checkPassword($oldPassword, $user->password)) {
-            $this->flash->error($t->_("invalid password"));
+            $this->flash->error($t->_("invalid-password"));
             return $this->toIndex();
         }
 
         if (Authenticate::checkPassword($confirmPassword, $newPassword)) {
             $user->password = $newPassword;
         } else {
-            $this->flash->error($t->_("confirm your password"));
+            $this->flash->error($t->_("need-confirm-password"));
             return $this->toIndex();
         }
 
         if(!$user->save()) {
-            $this->flash->error($t->_("was not possible to change your password"));
+            $this->flash->error($t->_("password-not-changed"));
         }
 
-        $this->flash->success($t->_("password was updated successfully"));
+        $this->flash->success($t->_("password-updated"));
         return $this->toIndex();
     }
 
@@ -167,9 +167,9 @@ class UsersController extends ControllerBase {
         $photo->file = file_get_contents($file->getTempName());
 
         if ($photo->save()) {
-            $this->flash->success($t->_("The photo was uploaded."));
+            $this->flash->success($t->_("photo-uploaded"));
         } else {
-            $this->flash->error($t->_("The photo was not uploaded."));
+            $this->flash->error($t->_("photo-not-uploaded"));
             foreach ($photo->getMessages() as $message) {
                 $this->flash->error($message);
             }
