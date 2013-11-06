@@ -13,7 +13,7 @@
                     <tr>
                         <td>{{ file.originalName }}</td>
                         <td>{{ file.description }}</td>
-                        <td>{{ link_to("download/homework/"~file.id,"class":"btn-icon btn-download icon-download", "Download") }}</td>
+                        <td>{{ link_to("download/homework/"~file.id,"class":"btn-icon btn-download icon-download") }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

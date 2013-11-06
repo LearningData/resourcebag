@@ -1,6 +1,15 @@
 <?php
 class CalendarController extends ControllerBase {
+    public function beforeExecuteRoute($dispatcher){
+        $user = Authenticate::getUser();
+
+        if(!$user) { return $this->response->redirect("index"); }
+
+        $this->view->t = Translation::get(Language::get(), "calendar");
+    }
+
     public function newAction(){
+        $this->view->t = Translation::get(Language::get(), "event");
         $this->getUserBySession();
         $this->setTokenValues();
         $this->view->options = array(false => "False", true => "True");
@@ -28,7 +37,7 @@ class CalendarController extends ControllerBase {
             $event->createdAt = date("Y-m-d H:i:s", time());
 
             if($event->save()) {
-                $this->flash->success("Event was created.");
+                $this->flash->success($this->view->t->_("event-created-message"));
             } else {
                 $this->appendErrorMessages($event->getMessages());
             }

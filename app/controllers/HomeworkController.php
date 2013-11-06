@@ -5,7 +5,7 @@ class HomeworkController extends ControllerBase {
     public function beforeExecuteRoute($dispatcher){
         $user = Authenticate::getUser();
         if(!$user) { return $this->response->redirect("index"); }
-        $this->view->t = Translation::get("en", "schoolbag");
+        $this->view->t = Translation::get(Language::get(), "homework");
     }
 
     public function indexAction() {
@@ -71,6 +71,7 @@ class HomeworkController extends ControllerBase {
         $user = $this->getUserBySession();
         $template = $user->getController() . "/homework/new";
 
+        $this->view->t = Translation::get(Language::get(), "homework");
         $this->view->classes = ClassListService::getClassesByUser($user);
         $this->view->pick($template);
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ t._("global.title") }}</title>
+        <title>{{ t._("title") }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
@@ -64,8 +64,8 @@
 
                         {{ securityTag.csrf(csrf_params) }}
 
-                        {{ submit_button("Login","class":"btn btn-login") }}
-                        {{ link_to("register", "Sign Up","class":"btn btn-login") }}
+                        {{ submit_button(t._("login"),"class":"btn btn-login") }}
+                        {{ link_to("register", t._("sign-up"),"class":"btn btn-login") }}
                         </form>
                     </div>
                 </div>

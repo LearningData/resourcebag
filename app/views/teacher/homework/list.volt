@@ -19,7 +19,8 @@
         <tbody>
         {% for classList in classes %}
             <tr>
-                <td colspan=7>{{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.subject.name~"("~classList.extraRef~")") }}
+                <td colspan=7>
+                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=3", classList.subject.name~"("~classList.extraRef~")") }}
                 </td>
                 <td>{{ link_to("teacher/homework/new/"~classList.id, "New") }}</td>
                 <td>{{ classList.cohort.stage }}</td>
@@ -87,7 +88,7 @@
             <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
         </li>
         </ul>
-        <input type="submit" class="btn btn-left">
+        <input type="submit" value="Submit" class="btn btn-left">
     </form>
     <button class="btn btn-return">Cancel</button>
     {% endif %}

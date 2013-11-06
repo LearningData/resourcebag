@@ -4,29 +4,30 @@
     {% if not user.isStudent() %}
     {{ link_to(user.getController()~"/noticeboard/new", "New", "class":"btn") }}
     {% for notice in notices %}
-    <p>
-        <strong>Message: </strong>{{ notice.text }}
-    </p>
-    <p>
-        <strong>Author: </strong>
-        {{ notice.author.name }} {{ notice.author.lastName }}
-    </p>
-    {% for file in notice.files %}
-    <p>
-        {{ link_to("download/noticeboard/"~file.id, "Download") }}
-    </p>
-    {% endfor %}
-    <p>
-        {% if user.id == notice.author.id %}
-        {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "Edit") }}
-        {% endif %}
-    </p>
-    <p>
-        {{ link_to(user.getController()~"/noticeboard/show/"~notice.id, "Show")}}
-    </p>
-    <p>
-        {{ notice.getDate() }}
-    </p>
+    <div class="">
+        <p class="">
+            {{ notice.getDate() }}
+            <br />
+            {{ notice.author.name }} {{ notice.author.lastName }}
+        </p>
+        <p>
+            <strong>Message: </strong>
+            <br />
+            {{ notice.text }}
+        </p>
+
+        {% for file in notice.files %}
+        <p>
+            {{ link_to("download/noticeboard/"~file.id, "Download") }}
+        </p>
+        {% endfor %}
+        <div class="btn-group btn-group-xs">
+            {% if user.id == notice.author.id %}
+            {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "Edit", "class":"btn") }}
+            {% endif %}
+            {{ link_to(user.getController()~"/noticeboard/show/"~notice.id, "Read More", "class":"btn btn-group-sm")}}
+        </div>
+    </div>
     {% endfor %}
     {% else %}
     <div class="student notice-page">

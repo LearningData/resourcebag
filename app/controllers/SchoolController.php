@@ -16,7 +16,7 @@ class SchoolController extends UsersController {
             return $this->response->redirect("dashboard");
         }
 
-        $this->view->t = Translation::get("en", "schoolbag");
+        $this->view->t = Translation::get(Language::get(), "schoolbag");
     }
 
     public function timetableAction() {

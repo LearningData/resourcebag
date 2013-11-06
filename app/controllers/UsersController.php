@@ -20,12 +20,12 @@ class UsersController extends ControllerBase {
     public function editAction() {
         $this->setTokenValues();
         $this->view->pick("users/edit");
-        $this->view->t = Translation::get("en", "user");
+        $this->view->t = Translation::get(Language::get(), "user");
     }
 
     public function createAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
-        $t = Translation::get("en", "user");
+        $t = Translation::get(Language::get(), "user");
         $admin = $this->getUserBySession();
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
@@ -63,7 +63,7 @@ class UsersController extends ControllerBase {
 
     public function updateAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
-        $t = Translation::get("en", "user");
+        $t = Translation::get(Language::get(), "user");
 
         $userID = $this->request->getPost("userID");
 
@@ -95,7 +95,7 @@ class UsersController extends ControllerBase {
     public function removeAction($userId) {
         $admin = $this->getUserBySession();
         if (!$admin->isSchool()) { $this->toIndex(); }
-        $t = Translation::get("en", "user");
+        $t = Translation::get(Language::get(), "user");
 
         $user = User::findFirstById($userId);
         if($user->delete()) {
@@ -111,13 +111,13 @@ class UsersController extends ControllerBase {
 
     public function changePasswordAction() {
         $this->setTokenValues();
-        $this->view->t = Translation::get("en", "user");
+        $this->view->t = Translation::get(Language::get(), "user");
         $this->view->pick("users/changePassword");
     }
 
     public function updatePasswordAction() {
         if (!$this->isValidPost()) { return $this->toIndex(); }
-        $t = Translation::get("en", "user");
+        $t = Translation::get(Language::get(), "user");
         $user = $this->view->user;
         $oldPassword = $this->request->getPost("old-password");
         $newPassword = $this->request->getPost("new-password");
@@ -152,7 +152,7 @@ class UsersController extends ControllerBase {
     }
 
     private function uploadPhoto($file, $userId) {
-        $t = Translation::get("en", "user");
+        $t = Translation::get(Language::get(), "user");
         $photo = UserPhoto::findFirst("userId = " . $userId);
 
         if (!$photo) {

@@ -6,6 +6,7 @@
         {{ stylesheet_link("css/bootstrap.min.css") }}
         {{ stylesheet_link("css/font-awesome.min.css") }}
         {{ stylesheet_link("css/style.css") }}
+        {{ stylesheet_link("css/media.css") }}        
         {{ stylesheet_link("css/uniform.default.css") }}
         {{ stylesheet_link("css/orange.css") }}
 

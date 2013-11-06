@@ -17,7 +17,7 @@ div.selector, div.selector span, div.checker span, div.radio span, div.button, d
 }
 div.selector, div.checker, div.button, div.radio, div.uploader {
     /*display: -moz-inline-box;
-    display: inline-block;*/
+     display: inline-block;*/
     *display: inline;
     zoom: 1;
     vertical-align: middle;
@@ -63,10 +63,11 @@ div.selector {
     overflow: hidden;
     border: solid 1px #f2f2f2;
     margin: 5px 0 20px;
-    color: #cdcdcd;
+    color: #999;
     background-color: #fff;
     background-image: none;
-    width: 100%!important;
+    width: 100% !important;
+    font-family: 'Open Sans', sans-serif;
 }
 div.selector span {
     text-overflow: ellipsis;
@@ -78,7 +79,7 @@ div.selector span {
     line-height: 45px;
     padding-right: 25px;
     cursor: pointer;
-    width: 100%!important;
+    width: 100% !important;
     display: block;
 }
 div.selector.fixedWidth {
@@ -354,7 +355,7 @@ div.button.disabled span, div.button.disabled.active span {
 /* INPUT & TEXTAREA */
 input.uniform-input, select.uniform-multiselect, textarea.uniform {
     font-size: 12px;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #777;
     border-top: solid 1px #aaaaaa;
@@ -376,7 +377,7 @@ input.uniform-input.hover, input.uniform-input.focus, select.uniform-multiselect
 /* Buttons */
 div.button span {
     font-weight: bold;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -416,7 +417,7 @@ div.radio {
 div.uploader span.action, div.uploader span.filename {
     font-size: 14px;
     padding-top: 10px;
-    padding-left:10px;
+    padding-left: 10px;
     border: 1px solid #F2F2F2;
 }
 

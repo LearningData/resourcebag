@@ -1,20 +1,24 @@
 <div class="ld-homework orange">
-    <h2>New homework </h2>
+    <h2 class="modal-title">{{ t._("newTitle")}}</h2>
 
     {{ form("teacher/createHomework", "method":"post", "class":"form inline") }}
-        <p class="col-md-6">
-            <input type="text" name="title" placeholder="Title:">
-        </p>
-        <p class="col-md-6">
-            <textarea rows="2" cols="300" name="description" placeholder="Description:"></textarea>
-        </p>
+        <div class="col-sm-9">
+            <label for="title">{{ t._("title-label")}}</label>
+            <input type="text" name="title" placeholder={{ t._("title-label")}}>
+        </div>
         <div class="clearfix"></div>
-        <p class="col-md-6">
+        <div class="col-sm-12">
+            <label for="description">{{ t._("description")}}</label>
+            <textarea rows="2" name="description" placeholder={{ t._("description")}}></textarea>
+        </div>
+        <div class="col-sm-6">
+            <label for="class">{{ t._("subject")}}</label>
             <input type="text" name="class" disabled="disabled" value="{{ classList.subject.name }}">
-        </p>
-        <p class="col-md-6">
-            <input type="text" name="due-date" id="teacher-due-date" placeholder="Due Date">
-        </p>
+        </div>
+        <div class="col-sm-6">
+            <label for="due-date">{{ t._("due-date")}}</label>
+            <input type="text" name="due-date" id="teacher-due-date" placeholder={{t._("due-date")}}>
+        </div>
         <div id="due-times"></div>
         <input type="hidden" name="week-days" id="week-days" value="{{ weekDays }}">
         <input type="hidden" name="class-id" id="class-id"
@@ -23,13 +27,13 @@
         <div id="students">
             <p>{{ check_field("all", "value": true) }} All</p>
             {% for user in classList.users %}
-                <p class="col-xs-3">{{ check_field("students[]", "value": user.id) }}
+                <p class="col-  -3">{{ check_field("students[]", "value": user.id) }}
                     {{ user.name }} {{ user.lastName }}</p>
             {% endfor %}
         </div>
         <div class="clearfix"></div>
-        <input class="btn" type="submit" value="save">
+        <input class="btn" type="submit" value={{ t._("save")}}>
 
     </form>
-    <button class="btn btn-return">Cancel</button>
+    <button class="btn btn-return">{{ t._("cancel")}}</button>
 </div>

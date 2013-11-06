@@ -9,14 +9,30 @@ $messages = array(
     "messages" => "Messages",
     "classes" => "Classes",
     "ebooks" => "Ebooks",
+    "messages" => "Messages",
+    "events" => "Events",
     "resources" => "Resources",
     "policies" => "Policies",
     "profile" => "Profile",
     "change-password" => "Change Password",
     "logout" => "Logout",
+    "login" => "Login",
+    "sign-up" => "Sign Up",
     "save" => "save",
-    "cancel" => "cancel",
+    "cancel" => "Cancel",
     "choose-file" => "Choose File",
-    "School" => "School"
+    "School" => "School",
+    "title-label" => "Title",
+    "description" => "Description",
+    "subject" => "Subject",
+    "due-date" => "Due Date",
+    "link" => "Link",
+    "location" => "Location",
+    "contact" => "Contact",
+    "choose" => "Choose",
+    "startDate" => "Start Date",
+    "endDate" => "End Date"
+    
+    
 );
 ?>

@@ -14,7 +14,7 @@ class ControllerBase extends Controller {
         }
 
         $this->view->user = $user;
-        $this->view->t = Translation::get("en", "schoolbag");
+        $this->view->t = Translation::get(Language::get(), "schoolbag");
     }
 
     protected function getUserBySession() {

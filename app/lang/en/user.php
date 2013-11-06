@@ -3,11 +3,14 @@
 $messages = array(
     "user" => "User",
     "name" => "Name",
-    "lastname" => "Last Name",
+    "first" => "First",
+    "lastname" => "Last",
     "type" => "Type",
     "email" => "Email",
+    "Confirm Email" => "Confirm Email",
     "password" => "Password",
     "photo" => "Photo",
+    "Access Code" => "Access Code",
     "Confirm Password" => "Confirm Password",
     "Change your password" => "Change your password",
     "Old Password" => "Old Password",
@@ -23,6 +26,9 @@ $messages = array(
     "was not possible to change your password" => "was not possible to change your password",
     "password was updated successfully" => "password was updated successfully",
     "The photo was uploaded." => "The photo was uploaded.",
-    "The photo was not uploaded." => "The photo was not uploaded."
+    "The photo was not uploaded." => "The photo was not uploaded.",
+    "Your Information" => "Your Information",
+    "Yours School Information" => "Your's School Information"
+        
 );
 ?>

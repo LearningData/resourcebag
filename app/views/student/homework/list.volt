@@ -1,5 +1,8 @@
 <div class="ld-homework orange">
-    <h1 class="header">Homework</h1>
+    <h1 class="header">{{ t._("homework") }}
+       
+        
+        </h1>
     <nav class="status{{ status }} nav">
         <ul>
             <li class="bt-new">

@@ -13,7 +13,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         $this->view->schools = School::find();
 
-        $this->view->t = Translation::get("en", "user");
+        $this->view->t = Translation::get(Language::get(), "user");
     }
 
     public function createAction() {

@@ -17,7 +17,7 @@ class TeacherController extends UsersController {
             return $this->response->redirect("dashboard");
         }
 
-        $this->view->t = Translation::get("en", "schoolbag");
+        $this->view->t = Translation::get(Language::get(), "schoolbag");
     }
 
     public function listTeachersAction() {
@@ -107,6 +107,7 @@ class TeacherController extends UsersController {
     }
 
     public function newHomeworkAction($classId) {
+        $this->view->t = Translation::get(Language::get(), "homework");
         $this->view->classList = ClassList::findFirstById($classId);
         $slots = TimetableSlot::find("classId = " . $classId);
         $weekDays = "";

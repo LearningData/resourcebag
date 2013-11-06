@@ -89,7 +89,6 @@
     display: none;
 }
 
-
 .ld-homework .table thead > tr > th {
     border-bottom: none;
     vertical-align: bottom;
@@ -117,8 +116,14 @@
     background-color: #FFF9F0;
     padding: 10px 50px 10px 220px;
 }
-
+.ld-homework .table .collapse-toggle    {
+    cursor:pointer;
+}
 .ld-homework .table .collapse-toggle span.collapse-icon {
     padding-right: 5px;
     color: #414042;
+}
+
+.ld-homework .homework-subheader    {
+    margin: 30px 0;
 }

@@ -1,5 +1,6 @@
 <?php
 use Phalcon\Mvc\User\Component;
+require "SessionService.php";
 
 class Authenticate extends Component {
     public function authentication($email, $password) {
@@ -7,7 +8,7 @@ class Authenticate extends Component {
 
         if($user) {
             if(Authenticate::checkPassword($password, $user->password)) {
-                Authenticate::createSession($user);
+                SessionService::createSession($user);
                 Authenticate::saveSuccess($user);
                 return $user;
             }
@@ -20,11 +21,6 @@ class Authenticate extends Component {
 
     public function checkPassword($password, $hashedPassword) {
         return $this->security->checkHash($password, $hashedPassword);
-    }
-
-    public function destroySession() {
-        $this->session->remove($this->request->getServerAddress());
-        $this->session->destroy();
     }
 
     public function getUser() {
@@ -57,14 +53,7 @@ class Authenticate extends Component {
         }
     }
 
-    private function createSession($user) {
-        $this->session->set($this->request->getServerAddress(),
-            array("id" => $user->id, "name" => $user->name));
-    }
-
     private function saveSuccess($user) {
-
-
         $successLogin = new SuccessLogin();
         $successLogin->userId = $user->id;
         $successLogin->ipAddress = $this->request->getClientAddress();

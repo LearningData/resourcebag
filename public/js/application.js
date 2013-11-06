@@ -159,7 +159,7 @@ function showTimes(date) {
             hour = (hour < 10 ) ? "0" + hour : hour
             var mins = time % 100
             mins = (mins < 10 ) ? "0" + mins : mins
-            var field = '<p name="pdue-time"><input type="radio" required name="due-time" value="' + time + '">' + hour + ":" + mins + '</p>';
+            var field = '<p name="pdue-time"><lable for="due-time">Due Time </label><br /><input type="radio" required name="due-time" value="' + time + '">' + hour + ":" + mins + '</p>';
             input = jQuery(field);
             $("#due-times").append(input);
         };
