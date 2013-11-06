@@ -1,6 +1,5 @@
 <div class="blue">
     <h1>School Notice Board</h1>
-
     {% if not user.isStudent() %}
     {{ link_to(user.getController()~"/noticeboard/new", "New", "class":"btn") }}
     {% for notice in notices %}
@@ -33,18 +32,10 @@
     <div class="student notice-page">
         <ul>
             <li id = "ntebrd1" class="note note-lvl1 col-md-8"></li>
-            <li id = "ntebrd2" class="note note-lvl2 col-md-4">
-
-            </li>
-            <li id = "ntebrd3" class="note note-lvl3 col-md-4">
-
-            </li>
-            <li id = "ntebrd4" class="note note-lvl3 col-md-4">
-
-            </li>
-            <li id = "ntebrd5" class="note note-lvl3 col-md-4">
-
-            </li>
+            <li id = "ntebrd2" class="note note-lvl2 col-md-4"></li>
+            <li id = "ntebrd3" class="note note-lvl3 col-md-4"></li>
+            <li id = "ntebrd4" class="note note-lvl3 col-md-4"></li>
+            <li id = "ntebrd5" class="note note-lvl3 col-md-4"></li>
         </ul>
     </div>
     {% endif %}

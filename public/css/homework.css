@@ -127,3 +127,15 @@
 .ld-homework .homework-subheader    {
     margin: 30px 0;
 }
+
+
+
+/* Paginator */
+.paginator.homework a {
+    color: #ff9e19;
+}
+.paginator.homework .this-page a {
+    color: #fff;
+    background-color: #a30c00;
+    cursor: default;
+}

@@ -187,6 +187,22 @@
 .dashboard .ld-box.ld-events .ld-box-head .title {
     padding: 0px;
 }
+#dashboard-events .table-events {
+    border-width: 1px 0 0;
+    table-layout: fixed;
+}
+#dashboard-events .table-events td {
+    padding: 13px 15px !important;
+}
+#dashboard-events .table-events td:first-child {
+    font-weight: normal;
+    text-align: left;
+    border-right: 1px solid #D1D3D4;
+}
+#dashboard-events .table-events td:last-child {
+    vertical-align: middle;
+    font-weight: bold;
+}
 
 /* notices */
 .dashboard .ld-notices .ld-box-child {

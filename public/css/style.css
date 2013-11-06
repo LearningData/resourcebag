@@ -26,9 +26,9 @@
  *
  *
  *
- *
- *
- *
+ * User Profile
+ * Datepicker
+ * Paginator
  *
  *
  *
@@ -333,7 +333,6 @@ table > tbody > tr.active td:last-child {
     top: 17px
 }
 
-
 /* Main Menu / Sidebar */
 .schoolbag-brand {
     text-align: center;
@@ -483,7 +482,7 @@ table > tbody > tr.active td:last-child {
     border: none;
 }
 
-/*//////EVENTS HOME//////*/
+/* Events Dashboard */
 #datepicker {
     min-height: 300px;
 }
@@ -534,7 +533,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     vertical-align: middle;
 }
 
-/*//////USER PROFILE//////*/
+/* User Profile */
 .user-profile {
     width: 95%;
     margin: 0 auto 15px;
@@ -582,7 +581,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     margin-left: 5px;
 }
 
-/*//////SEARCH//////*/
+/* Search */
 .btn-search {
     position: absolute;
     width: 20px;
@@ -611,43 +610,10 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #fff;
 }
 
-/*------END HOMEWORK------*/
 
-/*//////NOTICES PAGE//////*/
-.notice-page .note div {
-    border: solid 1px #cad3e2;
-    padding: 20px;
-    margin: 0 0 10px;
-    color: #6d6e71;
-    min-height: 230px;
-}
-.notice-page .note .message {
-    color: #6d6e71;
-    font-weight: 100;
-}
-.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
-    min-height: 460px;
-}
-.notice-page .note div img {
-    max-width: 90%;
-    height: auto;
-    margin: 10% auto 0;
-    display: block;
-}
 
-.notice-page h2, .notice-page h3, .notice-page h4 {
-    color: #0ba6d3;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
 
-.notice-page .author {
-    float: right;
-}
-
-/*//////DATEPICKER//////*/
+/* Datepicker */
 #datepicker {
     min-height: 300px;
 }
@@ -668,7 +634,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-size: 16px;
     width: 100%;
     position: absolute;
-    top: 5px;
+    top: 8px;
     margin-left: -26px;
     font-weight: bold;
     color: #fff;
@@ -677,7 +643,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 .ui-datepicker-header span {
     text-transform: uppercase;
-    margin: 0;
+    margin: 0 !important;
 }
 
 .purple .ui-datepicker-header {
@@ -691,6 +657,9 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 #ui-datepicker-div.datepicker-note .ui-datepicker-header {
     background-color: #0ba6d3;
+}
+.ui-datepicker-title {
+    margin: 7px 0 0;
 }
 
 table.ui-datepicker-calendar {
@@ -766,27 +735,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     color: #fff;
 }
 
-/*///////////////DASHBOARD/////////////*/
-
-/*events*/
-#dashboard-events .table-events {
-    border-width: 1px 0 0;
-    table-layout: fixed;
-}
-#dashboard-events .table-events td {
-    padding: 13px 15px !important;
-}
-#dashboard-events .table-events td:first-child {
-    font-weight: normal;
-    text-align: left;
-    border-right: 1px solid #D1D3D4;
-}
-#dashboard-events .table-events td:last-child {
-    vertical-align: middle;
-    font-weight: bold;
-}
-
-/*Paginator - Defatul - Pls change color for any section*/
+/* Paginator */
 .paginator {
     padding-top: 10px;
     margin-left: auto;
@@ -843,15 +792,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     vertical-align: top;
 }
 
-/*Homework section*/
-.paginator.homework a {
-    color: #ff9e19;
-}
-.paginator.homework .this-page a {
-    color: #fff;
-    background-color: #a30c00;
-    cursor: default;
-}
 
 /*Login Page*/
 #login, #signup {

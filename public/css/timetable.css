@@ -20,6 +20,7 @@
 .ld-timetable .header-navigation {
     padding: 12px;
     position: relative;
+    background-color: #e27176
 }
 .ld-timetable .header-navigation h3 {
     font-size: 14px;

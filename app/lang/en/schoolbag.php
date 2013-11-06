@@ -7,6 +7,7 @@ $messages = array(
     "timetable" => "Timetable",
     "homework" => "Homework",
     "messages" => "Messages",
+    "message" => "Message",
     "classes" => "Classes",
     "ebooks" => "Ebooks",
     "messages" => "Messages",
@@ -25,13 +26,15 @@ $messages = array(
     "title-label" => "Title",
     "description" => "Description",
     "subject" => "Subject",
-    "due-date" => "Due Date",
     "link" => "Link",
     "location" => "Location",
     "contact" => "Contact",
     "choose" => "Choose",
     "startDate" => "Start Date",
-    "endDate" => "End Date"
+    "endDate" => "End Date",
+    "due-date" => "Due Date",
+    "date" => "Date",
+    "add-file" => "Add File"
     
     
 );

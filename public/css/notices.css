@@ -25,3 +25,37 @@
     margin-left: 15px;
     display: block;
 }
+
+/* Notices Page */
+.notice-page .note div {
+    border: solid 1px #cad3e2;
+    padding: 20px;
+    margin: 0 0 10px;
+    color: #6d6e71;
+    min-height: 230px;
+}
+.notice-page .note .message {
+    color: #6d6e71;
+    font-weight: 100;
+}
+.notice-page .note-lvl1 div, .notice-page .note-lvl2 div {
+    min-height: 460px;
+}
+.notice-page .note div img {
+    max-width: 90%;
+    height: auto;
+    margin: 10% auto 0;
+    display: block;
+}
+
+.notice-page h2, .notice-page h3, .notice-page h4 {
+    color: #0ba6d3;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notice-page .author {
+    float: right;
+}
