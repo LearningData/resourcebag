@@ -1,6 +1,8 @@
 <?php
 $messages = array(
     "all" => "All",
+    "class" => "Class",
+    "classes" => "Classes",
     "title" => "Schoolbag",
     "dashboard" => "Dashboard",
     "notices" => "School Notices",
@@ -8,10 +10,8 @@ $messages = array(
     "timetable" => "Timetable",
     "homework" => "Homework",
     "messages" => "Messages",
-    "class" => "Class",
-    "classes" => "Classes",
+    "message" => "Message",
     "ebooks" => "Ebooks",
-    "messages" => "Messages",
     "events" => "Events",
     "resources" => "Resources",
     "policies" => "Policies",
@@ -27,14 +27,14 @@ $messages = array(
     "title-label" => "Title",
     "description" => "Description",
     "subject" => "Subject",
-    "due-date" => "Due Date",
     "link" => "Link",
     "location" => "Location",
     "contact" => "Contact",
     "choose" => "Choose",
     "startDate" => "Start Date",
-    "endDate" => "End Date"
-    
-    
+    "endDate" => "End Date",
+    "due-date" => "Due Date",
+    "date" => "Date",
+    "add-file" => "Add File"
 );
 ?>

@@ -6,6 +6,7 @@ class PoliciesController extends ControllerBase {
     public function indexAction() {
         $this->getUserBySession();
         $files = FileService::listFiles($this->getDir());
+        $this->view->t = Translation::get(Language::get(), "policies");
 
         $filesAndExtensions = array();
 
@@ -28,14 +29,16 @@ class PoliciesController extends ControllerBase {
 
     public function uploadAction() {
         if ($this->request->hasFiles() == true) {
+            $t = Translation::get(Language::get(), "file");
+
             foreach ($this->request->getUploadedFiles() as $file) {
                 $wasMoved = move_uploaded_file($file->getTempName(),
                     $this->getDir() . $file->getName());
 
                 if($wasMoved) {
-                    $this->flash->success($file->getName() . " was uploaded");
+                    $this->flash->success($t->_("uploaded"));
                 } else {
-                    $this->flash->error($file->getName() . " was not uploaded");
+                    $this->flash->error($t->_("upload-error"));
                 }
             }
 
