@@ -2,8 +2,8 @@
     <ul>
         <li id="dashboard-timetable-box" class="ld-box ld-timetable red">
             <div class="ld-box-head">
-                <div id="dashboard-timetable-head" class="title">
-                    <h2><span class="custom-icon-timetable"></span>Timetable</h2>
+                <div id="dashboard-timetable-head" class="title"> 
+                    <h2><span class="custom-icon-timetable"></span>{{ t._("timetable") }}</h2>
                 </div>
             </div>
             <div class="ld-box-child">
@@ -18,8 +18,8 @@
         </li>
         <li id="dashboard-homework-box" class="ld-box ld-homework orange">
             <div class="ld-box-head">
-                <div id="dashboard-homework-head" class="title">
-                    <h2><span class="custom-icon-homework"></span>Homework</h2>
+                <div id="dashboard-homework-head" class="title"> 
+                    <h2><span class="custom-icon-homework"></span>{{ t._("homework") }}</h2>
                 </div>
             </div>
             <div class="ld-box-child">
@@ -37,17 +37,17 @@
         <li id="dashboard-messages-box" class="ld-box messages green">
             <div class="ld-box-head">
                 <div id="dashboard-messages-head "class="title">
-                    <h2><span class="icon-envelope"></span>Messages</h2>
+                    <h2><span class="icon-envelope"></span>{{ t._("messages") }}</h2>
                 </div>
             </div>
             <div class="ld-box-child">
                 <div id="dashboard-messages-contents"></div>
             </div>
         </li>
-        <li id="dashboard-notices-box" class="ld-box notices blue">
+        <li id="dashboard-notices-box" class="ld-box ld-notices blue">
             <div class="ld-box-head">
                 <div id="dashboard-notices-head" class="title">
-                    <h2><span class="custom-icon-notices"></span>School Notices</h2>
+                    <h2><span classs="custom-icon-notices"></span>{{ t._("notices") }}</h2>
                 </div>
             </div>
             <div class="ld-box-child">

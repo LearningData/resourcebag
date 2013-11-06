@@ -1,36 +1,37 @@
-<div class="notices blue">
-    <h1>New Notice</h1>
-
-    {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form-notice form-inline") }}
+<div class="ld-notices blue">
+    <h1 class="header">New Notice</h1>
+    {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form") }}
     {{ securityTag.csrf(csrf_params) }}
-    <p class="col-md-6">
-        {{ text_field("title", "placeholder": "Title") }}
+    <p class="col-md-6 ">
+        <label>{{ t._("create notice for") }}</label>
+        <span class="radio-box form-control">
+            <label><input type="radio" name="type" value="T" class="ld-teachers-only" checked="checked">{{ t._("teachers only") }}</label>
+            <label><input type="radio" name="type" value="A" class="ld-include-students">{{ t._("teachers and students") }}</label>
+        </span>
     </p>
-    <p class="col-md-6">
+    <p class="col-md-6 ld-classes-tree">
+        <label>{{ t._("restrict to") }}</label>
+        <input type="text" value="{{ t._('all teachers') }}" id="class-id" name="classes" class="form-control ld-no-tree" disabled="disabled"></input>
+    </p>
+    <div class="clearfix"></div>
+    <p class="col-md-12">
+        <label>{{ t._("message") }}</label>
         {{ text_area("notice", "placeholder":"Notice", "class":"form-control") }}
     </p>
     <p class="col-md-6">
+        {{ t._("notice date") }}
         {{ text_field("date", "placeholder":"Date", "id":"notice-note-date", "class":"form-control") }}
     </p>
-    <div class="clearfix"></div>
-    <span class="col-md-6">
-            <div class="radio-box form-control">
-                <div><label><input type="radio" name="type" value="A"> Teachers/Students</label></div>
-                <div><label><input type="radio" name="type" value="T"> Teachers</label></div>
-                <div><label><input type="radio" name="type" value="P"> Students</label></div>
-            </div>
-    </span>
     <p class="col-md-6">
-        {{ select('class-id', classes, 'using': ['id', 'name'], "class":"form-control") }}
-    </p>
-    <p class="col-md-6">
-        {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
-    </p>
-    <p class="col-md-6">
+        {{ t._("add a file") }}
         <input type="file" name="file">
     </p>
+    <p class="col-md-6">
+        <label>{{ t._("notice category") }}</label>
+        {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
+    </p>
     <div class="clearfix"></div>
-    {{ submit_button("Save", "class":"btn btn-notice") }}
+    {{ submit_button("Save", "class":"btn") }}
+    <button class="btn btn-cancel btn-return" type="button">Cancel</button>
     </form>
-    <button class="btn btn-cancel btn-notice btn-return">Cancel</button>
 </div>

@@ -107,6 +107,7 @@ class TeacherController extends UsersController {
     }
 
     public function newHomeworkAction($classId) {
+        $this->view->t = Translation::get(Language::get(), "homework");
         $this->view->classList = ClassList::findFirstById($classId);
         $slots = TimetableSlot::find("classId = " . $classId);
         $weekDays = "";

@@ -6,6 +6,7 @@ $messages = array(
     "calendar" => "Calendar",
     "timetable" => "Timetable",
     "homework" => "Homework",
+    "messages" => "Messages",
     "classes" => "Classes",
     "ebooks" => "Ebooks",
     "messages" => "Messages",
