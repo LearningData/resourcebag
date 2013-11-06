@@ -20,8 +20,9 @@ class DownloadController extends ControllerBase {
     }
 
     private function setContent($file) {
+        $t = Translation::get(Language::get(), "config");
         if (!$file) {
-            $this->flash->error("Error to download file.");
+            $this->flash->error($t->_("download-error"));
         }
 
         header("Content-length: " . $file->size);
