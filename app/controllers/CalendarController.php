@@ -9,6 +9,7 @@ class CalendarController extends ControllerBase {
     }
 
     public function newAction(){
+        $this->view->t = Translation::get(Language::get(), "event");
         $this->getUserBySession();
         $this->setTokenValues();
         $this->view->options = array(false => "False", true => "True");
