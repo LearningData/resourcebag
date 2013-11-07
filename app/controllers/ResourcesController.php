@@ -1,0 +1,79 @@
+<?php
+require "../app/services/FileService.php";
+use \Phalcon\Config\Adapter\Ini as Config;
+
+class ResourcesController extends ControllerBase {
+    public function indexAction() {
+        $user = Authenticate::getUser();
+        $classes = ClassList::findByTeacherId($user->id);
+        $resources = array();
+
+        foreach ($classes as $classList) {
+            $resources[$classList->id] = array(
+                "name" => $classList->subject->name,
+                "resources" => Resource::findBySubjectId($classList->subject->id)
+            );
+        }
+
+        $this->view->classes = $resources;
+    }
+
+    public function newAction() {
+        $user = Authenticate::getUser();
+        $this->view->classes = ClassListService::getSubjectsByUser($user);
+        $this->view->t = Translation::get(Language::get(), "resources");
+    }
+
+    public function uploadAction() {
+        $user = Authenticate::getUser();
+        if ($this->request->hasFiles() == true) {
+            $t = Translation::get(Language::get(), "file");
+
+            $resource = new Resource();
+            $resource->description = $this->request->getPost("description");
+            $resource->date = date("Y-m-d");
+            $resource->teacherId = $user->id;
+            $resource->subjectId = $this->request->getPost("subject-id");
+
+            foreach ($this->request->getUploadedFiles() as $file) {
+                if (!file_exists($this->getDir($resource->subjectId))) {
+                    mkdir($this->getDir($resource->subjectId));
+                }
+
+                $wasMoved = move_uploaded_file($file->getTempName(),
+                    $this->getDir($resource->subjectId) . $file->getName());
+
+                if($wasMoved) {
+                    $resource->fileName = $file->getName();
+                    if ($resource->save()) {
+                        $this->flash->success($t->_("uploaded"));
+                    } else {
+                        $this->flash->error($t->_("upload-error"));
+                    }
+                } else {
+                    $this->flash->error($t->_("upload-error"));
+                }
+            }
+
+        }
+
+        return $this->response->redirect("resources");
+    }
+
+    public function downloadAction($resourceId) {
+        $resource = Resource::findFirstById($resourceId);
+        $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+        header('Content-Disposition: attachment; filename="'.$resource->fileName.'"');
+        readfile($this->getDir($resource->subjectId) . $resource->fileName);
+    }
+
+    private function getDir($classId) {
+        $config = new Config("../app/config/files-config.ini");
+        $user = $this->getUserBySession();
+        $dir = $config->files->dir . $user->schoolId . "/resources/$classId/";
+
+        return $dir;
+    }
+}
+
+?>
