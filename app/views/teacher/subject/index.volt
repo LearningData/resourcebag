@@ -1,12 +1,12 @@
 <div class="ld-classes pink">
-    <h1 class="header">Classes</h1>
-    {{ link_to("teacher/newClass", "Create a New Class", "class":"btn") }}
+    <h1 class="header">{{ t._("classes") }}</h1>
+    {{ link_to("teacher/newClass", t._("create-new-class"), "class":"btn") }}
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Class</th>
-                <th>Year</th>
-                <th>Students</th>
+                <th>{{ t._("class") }}</th>
+                <th>{{ t._("cohort") }}</th>
+                <th>{{ t._("students") }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
                     <td>{{ classList.users.count() }}</td>
                 {% endif %}
                 <td>
-                    <span class="link remove-class" data-class-id="{{ classList.id }}">Remove this class</span>
+                    <span class="link remove-class" data-class-id="{{ classList.id }}">{{ t._("remove-class") }}</span>
                 </td>
             </tr>
         {% endfor %}

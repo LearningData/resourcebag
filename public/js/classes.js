@@ -35,6 +35,9 @@ var classesPage = (function() {
 
     //init
     var init = function() {
+        $( ".ld-classes .header" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/classes"
+        })
         $( ".ld-classes .remove-class" ).click(function( event ) {
             event.preventDefault()
             removeClassDialog( $ ( this ).data() )
@@ -64,6 +67,10 @@ var classesPage = (function() {
                 })
             }
         })
+        //hide homework sections if empty
+        if ($( ".ld-classes .homework h3").length == 0) {
+           $( ".ld-classes .homework").append("You have no homework!")
+        }
     }
 
     return {

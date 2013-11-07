@@ -1,34 +1,38 @@
 <div class="classes pink">
-<h1>New Class</h1>
+<h1 class="header">{{ t._("classes") }}</h1>
+<h2 class="subheader">{{ t._("new-class") }}</h1>
 
 {{ form("teacher/createClass", "method":"post", "class":"form-inline") }}
     <p class="col-md-6">
-        <label for="subject-id">Subject</label>
+        <label for="subject-id">{{ t._("subject") }}</label>
         {{ select('subject-id', subjects, 'using': ['id', 'name'],
                 'emptyText': 'Please, choose one subject', "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        <label for="cohort-id">Cohort</label>
+        <label for="cohort-id">{{ t._("cohort") }}</label>
         {{ select('cohort-id', cohorts, 'using': ['id', 'stage'],
                 'emptyText': 'Please, choose one cohort', "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        <input placeholder="Room" type="text" name="room" class="form-control">
+        <label>{{ t._("room") }}
+            <input placeholder={{ t._("room") }} type="text" name="room" class="form-control">
+        </label>
     </p>
     <p class="col-md-6">
+        <label for="extra-ref">{{ t._("extra-ref") }}</label>
         <input placeholder="Extra Ref" type="text" name="extra-ref" class="form-control">
     </p>
 
-    <h2>Slots</h2>
+    <h2>{{ t._("slots") }}</h2>
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
+                <th>{{ t._("monday") }}</th>
+                <th>{{ t._("tuesday") }}</th>
+                <th>{{ t._("wednesday") }}</th>
+                <th>{{ t._("thursday") }}</th>
+                <th>{{ t._("friday") }}</th>
+                <th>{{ t._("saturday") }}</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +52,7 @@
             </tr>
         </tbody>
     </table>
-    {{ submit_button("Save","class":"btn") }}
+    {{ submit_button(t._("save"),"class":"btn") }}
 </form>
-<button class="btn btn-return">Cancel</button>
+<button class="btn btn-return btn-cancel">{{ t._("cancel") }}</button>
 </div>

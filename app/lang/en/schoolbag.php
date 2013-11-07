@@ -3,16 +3,20 @@ $messages = array(
     "all" => "All",
     "class" => "Class",
     "classes" => "Classes",
+    "cohort" => "Cohort",
     "title" => "Schoolbag",
     "dashboard" => "Dashboard",
+    "extra-ref" => "Class Code",
     "file-name" => "File Name",
     "files-uploaded" => "Files Uploaded",
+    "friday" => "Friday",
     "notices" => "School Notices",
     "calendar" => "Calendar",
     "timetable" => "Timetable",
     "homework" => "Homework",
     "messages" => "Messages",
     "message" => "Message",
+    "monday" => "Monday",
     "ebooks" => "Ebooks",
     "events" => "Events",
     "resources" => "Resources",
@@ -22,8 +26,14 @@ $messages = array(
     "logout" => "Logout",
     "login" => "Login",
     "no-files-uploaded" => "No Files Uploaded",
+    "room" => "Room",
     "sign-up" => "Sign Up",
+    "saturday" => "Saturday",
     "save" => "save",
+    "students" => "Students",
+    "teacher" => "Teacher",
+    "thursday" => "Thursday",
+    "tuesday" => "Tuesday",
     "cancel" => "Cancel",
     "choose-file" => "Choose File",
     "School" => "School",
@@ -39,6 +49,9 @@ $messages = array(
     "endDate" => "End Date",
     "due-date" => "Due Date",
     "date" => "Date",
-    "add-file" => "Add File"
+    "add-file" => "Add File",
+    "wednesday" => "wednesday"
 );
 ?>
+
+
