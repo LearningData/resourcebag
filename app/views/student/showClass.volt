@@ -29,7 +29,7 @@
             {% for homework in homeworks if homework.status == 0 %}
             <li class="item">
                 <span class="date">{{ homework.getDueDate() }}</span>
-                <span class="title">{{ link_to("student/homework/edit/"~homework.id, homework.title)  }}</span>
+                <span class="title">{{ link_to("student/homework/start/"~homework.id, homework.title)  }}</span>
                 <span class="description">{{ homework.text }}</span>
             </li>
             {% endfor %}
