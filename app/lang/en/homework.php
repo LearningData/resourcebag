@@ -14,6 +14,7 @@ $messages = array(
     "student" => "Student",
     "students" => "Students",
     "submit-homework" => "Submit Homework",
-    "submitted" => "Submitted"
+    "submitted" => "Submitted",
+    "teacher" => "Teacher",
 );
 ?>

@@ -41,7 +41,7 @@
     float: left;
 }
 .notice-page .note{
-    min-height: 230px;
+    min-height: 190px;
 }
 .notice-page-show   {
     width: 100%!important
@@ -49,13 +49,14 @@
 .note {
     padding:20px;
     border: solid 1px #cad3e2;
+    position: relative;
 }
 .notice-page:nth-child(2) {
     width: 66.66666%;
 }
 .notice-page:nth-child(2) .note,
 .notice-page:nth-child(3) .note {
-    min-height: 420px;
+    min-height: 380px;
 }   
 .notice-page .date, .notice-page .author {
     font-size: 14px;
@@ -72,7 +73,8 @@
     clear: both;
 }
 
-
 .btn-group  {
-
+    position: absolute;
+    bottom: 20px;
+    right:20px;
 }

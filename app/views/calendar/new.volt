@@ -8,7 +8,7 @@
     </p>
     <p class="col-sm-6 col-md-6">
         <label for="title">{{ t._("link")}}</label>
-        {{ text_field("link", "placeholder":t._("link"), "class":"form-control") }}
+        {{ text_field("link", "placeholder":t._("address"), "class":"form-control") }}
     </p>
     <p class="col-sm-6 col-md-6">
         <label for="title">{{ t._("location")}}</label>
@@ -23,7 +23,7 @@
         {{ text_area("description", "placeholder":t._("description"), "class":"form-control") }}
     </p>
     <p class="col-sm-6 col-md-6">
-        <label for="title">{{ t._("choose")}}</label>
+        <label for="title">{{ t._("all-day")}}</label>
         {{ select_static("allDay", options, "class":"form-control")}}
     </p>
     <div class="clearfix"></div>
