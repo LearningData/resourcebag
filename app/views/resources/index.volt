@@ -11,6 +11,9 @@
     {% for resource in classList["resources"] %}
         <p>{{ image("img/icons/icon-file-generic.png") }}
             {{ link_to("resources/download/"~resource.id, resource.fileName) }}
+            {% for resourceTag in resource.properties %}
+                / {{ resourceTag.type }}
+            {% endfor %}
         </p>
     {% endfor %}
 {% endfor %}

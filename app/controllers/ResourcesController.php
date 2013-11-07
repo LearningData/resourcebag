@@ -21,7 +21,19 @@ class ResourcesController extends ControllerBase {
     public function newAction() {
         $user = Authenticate::getUser();
         $this->view->classes = ClassListService::getSubjectsByUser($user);
+        $this->view->properties = ResourceProperty::find();
         $this->view->t = Translation::get(Language::get(), "resources");
+    }
+
+    public function newTagAction() {}
+
+    public function createTagAction() {
+        $property = new ResourceProperty();
+        $property->name = $this->request->getPost("name");
+        $property->type = $this->request->getPost("name");
+
+        $property->save();
+        return $this->response->redirect("resources/new");
     }
 
     public function uploadAction() {
@@ -46,6 +58,15 @@ class ResourcesController extends ControllerBase {
                 if($wasMoved) {
                     $resource->fileName = $file->getName();
                     if ($resource->save()) {
+                        $ids = $this->request->getPost("tags");
+
+                        foreach ($ids as $id) {
+                            $property = new ResourcesProperties();
+                            $property->resourceId = $resource->id;
+                            $property->propertyId = $id;
+                            $property->save();
+                        }
+
                         $this->flash->success($t->_("uploaded"));
                     } else {
                         $this->flash->error($t->_("upload-error"));
