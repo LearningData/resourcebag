@@ -103,5 +103,10 @@ class StudentController extends UsersController {
         $this->view->slots = $slots;
         $this->view->pick("student/timetable/index");
     }
+
+    public function showClassAction($classId) {
+        $this->view->classList = ClassList::findFirstById($classId);
+        $this->view->homeworks = $this->view->user->getHomeworks("classId=" . $classId);
+    }
 }
 ?>
