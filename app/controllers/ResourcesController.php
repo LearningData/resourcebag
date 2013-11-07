@@ -91,6 +91,18 @@ class ResourcesController extends ControllerBase {
     private function getDir($classId) {
         $config = new Config("../app/config/files-config.ini");
         $user = $this->getUserBySession();
+        if (!file_exists($config->files->dir)) {
+            mkdir($config->files->dir);
+        }
+
+        if (!file_exists($config->files->dir . $user->schoolId)) {
+            mkdir($config->files->dir . $user->schoolId);
+        }
+
+        if (!file_exists($config->files->dir . $user->schoolId . "/resources")) {
+            mkdir($config->files->dir . $user->schoolId . "/resources");
+        }
+
         $dir = $config->files->dir . $user->schoolId . "/resources/$classId/";
 
         return $dir;
