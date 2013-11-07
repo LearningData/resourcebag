@@ -26,13 +26,14 @@
 }
 
 /* Notices Page */
-.notice-page .note div img {
+/*.notice-space .note div img {
     max-width: 90%;
     height: auto;
     margin: 10% auto 0;
     display: block;
 }
-.notice-page {
+*/
+.notice-space {
     margin: 0 0 10px;
     padding: 20px 20px 0 0 ;
     color: #6d6e71;
@@ -40,10 +41,10 @@
     width: 33.3333%;
     float: left;
 }
-.notice-page .note{
-    min-height: 190px;
+.notice-space .note{
+    min-height: 200px;
 }
-.notice-page-show   {
+.notice-space-show   {
     width: 100%!important
 }
 .note {
@@ -51,30 +52,43 @@
     border: solid 1px #cad3e2;
     position: relative;
 }
-.notice-page:nth-child(2) {
-    width: 66.66666%;
+.notice-space:first-of-type    {
+    width: 66.6667%;
 }
-.notice-page:nth-child(2) .note,
-.notice-page:nth-child(3) .note {
-    min-height: 380px;
+
+.notice-space:first-of-type .note,
+.notice-space:nth-child(2) .note {
+    min-height: 300px;
 }   
-.notice-page .date, .notice-page .author {
+.notice-space .date, .notice-space .author {
     font-size: 14px;
     color: #6d6e71;
     font-weight: 100;
 }
-.notice-page .message {
-    margin-top: 20px;
+.notice-space .message {
+    margin-top: 5px;
+    font-size: 12px;
 }
-.notice-page p:first-line {
-    font-size: 24px;
-    color: #0ba6d3;
-    font-weight: 600;
+.notice-space p:first-line {
+    font-size: 16px;
+    font-weight: bold;
     clear: both;
+    line-height: 24px;
+}
+.notice-space:first-of-type p:first-line {
+    font-size: 24px;
+    line-height: 45px;
+}
+.notice-space:first-of-type .message {
+    margin: 5px 0 20px;
 }
 
 .btn-group  {
     position: absolute;
-    bottom: 20px;
-    right:20px;
+    bottom: 10px;
+    right:10px;
+}
+.notice-space a  {
+    display: block;
+    float: left;
 }

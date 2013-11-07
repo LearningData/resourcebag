@@ -25,6 +25,26 @@ class ClassListService {
         return $classes;
     }
 
+    public static function getSubjectsByUser($user) {
+        $subjects = array();
+
+        if ($user->isStudent()) {
+            $classesList = $user->classes;
+        } else {
+            if ($user->isTeacher()) {
+                $classesList = ClassList::findByTeacherId($user->id);
+            } else {
+                $classesList = ClassList::findBySchoolId($user->schoolId);
+            }
+        }
+
+        foreach ($classesList as $classList) {
+            $subjects[$classList->subject->id] = $classList->subject->name;
+        }
+
+        return $subjects;
+    }
+
     public static function classesToIds($classes) {
         $classIdParams = "";
 
