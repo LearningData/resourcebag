@@ -1,0 +1,11 @@
+.ld-classes .homework .item {
+    margin: 3px;
+    box-sizing: border-box;
+}
+.ld-classes .homework .item .title {
+    display: block;
+}
+
+.ld-classes .homework .item .date {
+    float: right;
+}
