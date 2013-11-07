@@ -49,7 +49,7 @@
             </a>
         </li>
         <li class="resources">
-            <a href="#"> <span class="icon-wrench"></span>
+            <a href="/schoolbag/resources"> <span class="icon-wrench"></span>
                 {{ t._("resources") }}
             </a>
         </li>
