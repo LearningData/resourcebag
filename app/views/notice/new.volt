@@ -24,11 +24,11 @@
         {{ text_area("notice", "placeholder":t._("notice"), "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        {{ t._("notice date") }}
+        {{ t._("notice-date") }}
         {{ text_field("date", "placeholder":t._("date"), "id":"notice-note-date", "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        {{ t._("add a file") }}
+        {{ t._("add-file") }}
         <input type="file" name="file">
     </p>
     <p class="col-md-6">
