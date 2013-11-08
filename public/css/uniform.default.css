@@ -10,12 +10,12 @@
 
  */
 /* General settings */
-div.selector, div.selector span, div.checker span, div.radio span, div.button, div.button span, div.ld-CheckClass span {
+div.selector, div.selector span, div.checker span, div.radio span, div.button, div.button span, div.ld-CheckClass span, div.ld-RadioClass span {
     background-image: url("../img/sprite-uniform.png");
     background-repeat: no-repeat;
     -webkit-font-smoothing: antialiased;
 }
-div.selector, div.checker, div.button, div.radio, div.uploader, div.ld-CheckClass {
+div.selector, div.checker, div.button, div.radio, div.uploader, div.ld-CheckClass, div.ld-RadioClass {
     /*display: -moz-inline-box;
      display: inline-block;*/
     *display: inline;
@@ -23,10 +23,10 @@ div.selector, div.checker, div.button, div.radio, div.uploader, div.ld-CheckClas
     vertical-align: middle;
     /* Keeping this as :focus to remove browser styles */
 }
-div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus, div.ld-CheckClass:focus {
+div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus, div.ld-CheckClass:focus, div.ld-RadioClass:focus {
     outline: 0;
 }
-div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button *, div.ld-CheckClass, div.ld-CheckClass * {
+div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button *, div.ld-CheckClass, div.ld-CheckClass *, div.ld-RadioClass, div.ld-RadioClass * {
     margin: 0;
     padding: 0;
 }
@@ -155,8 +155,8 @@ div.checker.active span {
 div.checker.active span.checked {
     background-position: -95px -260px;
 }
-div.checker.hover span, div.checker.focus span {
-    background-position: -38px -260px;
+div.checker.hover span, div.checker.focus span, div.ld-CheckClass.hover span, div.ld-CheckClass.focus span {
+    background-position: -60px 0;
 }
 div.checker.hover span.checked, div.checker.focus span.checked {
     background-position: -114px -260px;
@@ -175,25 +175,29 @@ div.checker.disabled span.checked, div.checker.disabled.active span.checked {
 }
 
 /* Radio */
-div.radio {
+div.radio, div.ld-RadioClass {
     position: relative;
 }
-div.radio, div.radio span, div.radio input {
-    width: 18px;
-    height: 18px;
+div.radio, div.radio span, div.radio input,
+div.ld-RadioClass, div.ld-RadioClass span, div.ld-RadioClass input {
+    width: 20px;
+    height: 20px;
 }
-div.radio span {
+div.radio span,
+div.ld-RadioClass span {
     display: -moz-inline-box;
     display: inline-block;
     *display: inline;
     zoom: 1;
     text-align: center;
-    background-position: 0 -279px;
+    background-position: 0 -90px;
 }
-div.radio span.checked {
-    background-position: -72px -279px;
+div.radio span.checked,
+div.ld-RadioClass span.checked {
+    background-position: -30px -90px;
 }
-div.radio input {
+div.radio input, 
+div.ld-RadioClass input {
     opacity: 0;
     filter: alpha(opacity=0);
     -moz-opacity: 0;
@@ -211,11 +215,11 @@ div.radio.active span {
 div.radio.active span.checked {
     background-position: -90px -279px;
 }
-div.radio.hover span, div.radio.focus span {
-    background-position: -36px -36px -279px;
+div.radio.hover span, div.radio.focus span, div.ld-RadioClass.hover span, div.ld-RadioClass.focus span {
+    background-position: -60px -90px ;
 }
-div.radio.hover span.checked, div.radio.focus span.checked {
-    background-position: -108px -279px;
+div.radio.hover span.checked, div.radio.focus span.checked, div.ld-RadioClass.hover span.checked, div.ld-RadioClass.focus span.checked {
+    background-position: -30px -90px;
 }
 div.radio.hover.active span, div.radio.focus.active span {
     background-position: -54px -279px;

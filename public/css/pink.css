@@ -1,7 +1,7 @@
 .pink a {
     color: #ff0097;
 }
-.pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action {
+.pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action, .pink header {
     background-color: #ff0097;
 }
 .pink.btn-icon:hover, .pink .btn:hover {

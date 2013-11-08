@@ -1,22 +1,15 @@
-.red .btn-icon, .red .btn {
+.red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header {
     background-color: #dc3b42;
 }
-
 .red.btn-icon:hover, .red .btn:hover {
-    background-color: #da3940;
+    background-color: #c62433;
 }
-
-.red.ld-box .ld-box-head .title {
-    background-color: #dc3b42;
-}
-
 .red .form-control:focus {
     border-color: #dc3b42;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(229,36,45, 0.075);
 }
-
-.red .modal-title, .red h1 {
+.red .modal-title {
     border-color: #dc3b42;
 }

@@ -50,12 +50,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1, .h1 {
-    color:#fff;
-    font-size: 36px;
-    font-weight: 100;
-    margin: 30px 0;
-    padding: 15px;
-    border-radius: 5px 5px 0 0;
 }
 
 h2, .h2 {
@@ -348,7 +342,10 @@ table > tbody > tr.active td:last-child {
     padding-left: 0;
     padding-right: 0;
 }
-
+.sidebar header {
+    margin: 0;
+    padding: 0;
+}
 .collapse {
     display: block;
 }
@@ -473,21 +470,27 @@ table > tbody > tr.active td:last-child {
     border-radius: 0 0 5px 5px;
 }
 
-
 /*.Headers */
-header h1 {
-    display:inline-block;
+header {
+    margin: 0 0 30px;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
+}
+header h1,
+header h2 {
+    color: #fff;
+    display: inline-block;
     margin: 0;
-    border: none;
+    font-size: 36px;
+    font-weight: 100;
 }
 
 header h2 {
-    padding-top: 4px;
-    display:inline-block;
-    margin: 0;
     float: right;
+    font-size:24px;
+    text-transform: lowercase;
+    line-height: 40px;
 }
-
 
 /*//////DEFAULT LIST HOME//////*/
 .box-messages .ld-box-child ul li {

@@ -5,6 +5,7 @@ $(document).ready(function() {
     });
     $("select").uniform();
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
+    $(":radio").uniform({radioClass: 'ld-RadioClass'});
     
     var date = new Date();
     var d = date.getDate();

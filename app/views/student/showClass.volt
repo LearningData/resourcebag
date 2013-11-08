@@ -1,31 +1,33 @@
 <div class="ld-classes pink">
-    <h1 class="header" data-target="ld-classes">{{ t._("classes") }}</h1>
-    <section class="col-md-12"> 
+    <header>
+        <h1 data-target="ld-classes">{{ t._("classes") }}</h1>
+    </header>
+    <section class="col-md-12">
         <h2 class="subheader">{{ classList.subject.name }}</h2>
-            <p class="col-md-6">
-                <span class="label">{{ t._("teacher") }}</span>
-                {{ classList.user.name }}   {{ classList.user.lastName }}
-            </p>
-            <p class="col-md-6">
-                <span class="label">{{ t._("cohort") }}</span>
-                {{ classList.cohort.stage }}
-            </p>
-            <p class="col-md-6">
-                <span class="label">{{ t._("room") }}</span>
-                {{ classList.room }}
-            </p>
-            <p class="col-md-6">
-                <span class="label">{{ t._("extra-ref") }}</span>
-                {{ classList.extraRef }}
-            </p>
+        <p class="col-md-6">
+            <span class="label">{{ t._("teacher") }}</span>
+            {{ classList.user.name }}   {{ classList.user.lastName }}
+        </p>
+        <p class="col-md-6">
+            <span class="label">{{ t._("cohort") }}</span>
+            {{ classList.cohort.stage }}
+        </p>
+        <p class="col-md-6">
+            <span class="label">{{ t._("room") }}</span>
+            {{ classList.room }}
+        </p>
+        <p class="col-md-6">
+            <span class="label">{{ t._("extra-ref") }}</span>
+            {{ classList.extraRef }}
+        </p>
         <hr/>
     </section>
-    <section class="homework col-md-6"> 
-    <h2>{{ t._("homework") }}</h2>
-    <!--<h3>{{ t._("overdue") }}</h3>-->
-    {% for homework in homeworks if homework.status == 0 %}
+    <section class="homework col-md-6">
+        <h2>{{ t._("homework") }}</h2>
+        <!--<h3>{{ t._("overdue") }}</h3>-->
+        {% for homework in homeworks if homework.status == 0 %}
         <h3 class="pending">{{ t._("pending") }}</h3>
-        <ul class="pending">        
+        <ul class="pending">
             {% for homework in homeworks if homework.status == 0 %}
             <li class="item">
                 <span class="date">{{ homework.getDueDate() }}</span>
@@ -35,9 +37,9 @@
             {% endfor %}
         </ul>
         {% break %}
-    {% endfor %}
+        {% endfor %}
 
-    {% for homework in homeworks if homework.status == 1 %}
+        {% for homework in homeworks if homework.status == 1 %}
         <h3 class="in-progress">{{ t._("in-progress") }}</h3>
         <ul  class="in-progress">
             {% for homework in homeworks if homework.status == 1 %}
@@ -49,6 +51,6 @@
             {% endfor %}
         </ul>
         {% break %}
-    {% endfor %}
+        {% endfor %}
     </section>
 </div>

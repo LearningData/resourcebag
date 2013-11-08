@@ -1,5 +1,7 @@
 <div class="ld-classes pink">
-    <h1 class="header">{{ t._("classes") }}</h1>
+    <header>
+        <h1>{{ t._("classes") }}</h1>
+    </header>
     {{ link_to("teacher/newClass", t._("create-new-class"), "class":"btn") }}
     <table class="table table-hover">
         <thead>
@@ -11,29 +13,19 @@
             </tr>
         </thead>
         <tbody>
-        {% for classList in classes %}
+            {% for classList in classes %}
             <tr>
-                <td>
-                    {{ link_to("teacher/showClass/"~classList.id,
-                        classList.subject.name~"("~classList.extraRef~")") }}
-
-                </td>
+                <td> {{ link_to("teacher/showClass/"~classList.id,
+                classList.subject.name~"("~classList.extraRef~")") }} </td>
                 <td>{{ classList.cohort.stage }}</td>
                 {% if classList.users.count() %}
-                    <td>
-                        <a data-toggle="modal" href="#modal{{ classList.id }}">
-                            {{ classList.users.count() }}
-                        </a>
-                        {% include "teacher/modal_users.volt" %}
-                    </td>
+                <td><a data-toggle="modal" href="#modal{{ classList.id }}"> {{ classList.users.count() }} </a> {% include "teacher/modal_users.volt" %} </td>
                 {% else %}
-                    <td>{{ classList.users.count() }}</td>
+                <td>{{ classList.users.count() }}</td>
                 {% endif %}
-                <td>
-                    <span class="link remove-class" data-class-id="{{ classList.id }}">{{ t._("remove-class") }}</span>
-                </td>
+                <td><span class="link remove-class" data-class-id="{{ classList.id }}">{{ t._("remove-class") }}</span></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 </div>

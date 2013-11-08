@@ -1,5 +1,7 @@
 <div class="ld-homework orange">
-    <h1 class="header">{{ t._("homework") }}</h1>
+    <header>
+        <h1>{{ t._("homework") }}</h1>
+    </header>
     {% if classes %}
 
     <table class="table table-hover fixed">
