@@ -1,7 +1,6 @@
-.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner {
+.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header {
     background-color: #9752a3;
 }
-
 .purple.btn-icon:hover, .purple .btn:hover {
     background-color: #7f3f98;
 }
