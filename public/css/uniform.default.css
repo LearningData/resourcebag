@@ -10,6 +10,10 @@
 
  */
 /* General settings */
+div.ld-CheckClass, div.ld-RadioClass    {
+    float: left;
+    margin-right: 10px;
+}
 div.selector, div.selector span, div.checker span, div.radio span, div.button, div.button span, div.ld-CheckClass span, div.ld-RadioClass span {
     background-image: url("../img/sprite-uniform.png");
     background-repeat: no-repeat;
@@ -26,7 +30,7 @@ div.selector, div.checker, div.button, div.radio, div.uploader, div.ld-CheckClas
 div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus, div.ld-CheckClass:focus, div.ld-RadioClass:focus {
     outline: 0;
 }
-div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button *, div.ld-CheckClass, div.ld-CheckClass *, div.ld-RadioClass, div.ld-RadioClass * {
+div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
     margin: 0;
     padding: 0;
 }
