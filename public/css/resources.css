@@ -1,0 +1,9 @@
+.ld-resources .collapse-icon-open:before {
+    font-family: font-awesome;
+    content: "\f07b";
+}
+.ld-resources .collapse-icon-close:before {
+    font-family: font-awesome;
+    content: "\f07c";
+}
+
