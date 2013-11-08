@@ -1,6 +1,6 @@
 <div class="blue">
     <header>
-        <h1>School Notice Board</h1>
+        <h1>{{ t._("notices") }}</h1>
     </header>
 
     {% if not user.isStudent() %}

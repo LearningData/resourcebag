@@ -1,5 +1,9 @@
 <div class="event purple">
-    <h1>{{ t._("newTitle")}}</h1>
+    <header>
+        <h1>{{ t._("calendar") }}</h1>
+        <h2>{{ t._("newTitle")}}</h2>
+    </header>
+
     {{ form("calendar/create", "method":"post", "class":"form-inline") }}
     {{ securityTag.csrf(csrf_params) }}
     <p class="col-sm-6 col-md-6">

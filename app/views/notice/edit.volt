@@ -1,6 +1,8 @@
 <div class="notices blue">
-    <h2>Edit Notice</h2>
-
+    <header>
+        <h1>{{ t._("notices") }}</h1>
+        <h2>{{ t._("edit-notice") }}</h2>
+    </header>
     {{ form("notice/update", "method":"post", "class":"inline")}}
         {{ securityTag.csrf(csrf_params) }}
         <p class="col-md-6">
@@ -19,11 +21,10 @@
                 </label></div>
             {% endif %}
         {% endfor %}
-        <p>
-            {{ select('class-id', classes) }}
+        <p>             {{ select('class-id', classes) }}
         </p>
         {{ hidden_field("notice-id") }}
         <input type="submit" class="btn">
     </form>
-    <button class="btn btn-return">Cancel</button>
+    <button class="btn btn-return">{{ t._("cancel") }}</button>
 </div>
