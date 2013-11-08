@@ -1,7 +1,8 @@
 <div class="ld-notices blue">
-    <h1 class="header">{{ t._("notices-title") }}</h1>
-    <h2 class="header">{{ t._("new-notice") }}</h2>
-   
+    <header>
+        <h1>{{ t._("notices-title") }}</h1>
+        <h2>{{ t._("new-notice") }}</h2>
+    </header>
     {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form") }}
     {{ securityTag.csrf(csrf_params) }}
     <p class="col-md-6 ">
@@ -9,8 +10,8 @@
         <span class="radio-box form-control"> <span>
                 <input type="radio" name="type" value="T" class="ld-teachers-only" checked="checked">
                 {{ t._("teachers-only") }}</label> <label>
-                <input type="radio" name="type" value="A" class="ld-include-students">
-                {{ t._("teachers-students") }}</label> </span>
+                    <input type="radio" name="type" value="A" class="ld-include-students">
+                    {{ t._("teachers-students") }}</label> </span>
     </p>
     <p class="col-md-6 ld-classes-tree">
         <label>{{ t._("restrict-to") }}</label>
@@ -23,7 +24,7 @@
         {{ text_area("notice", "placeholder":t._("notice"), "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        {{ t._("notice date") }} 
+        {{ t._("notice date") }}
         {{ text_field("date", "placeholder":t._("date"), "id":"notice-note-date", "class":"form-control") }}
     </p>
     <p class="col-md-6">

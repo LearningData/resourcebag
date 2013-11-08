@@ -1,5 +1,7 @@
 <div class="blue">
-    <h1>School Notice Board</h1>
+    <header>
+        <h1>School Notice Board</h1>
+    </header>
 
     {% if not user.isStudent() %}
     <p>
@@ -10,20 +12,18 @@
         {% for notice in notices %}
         <div class="notice-space">
             <div class="note">
-                <span class="date">{{ notice.getDate() }}</span>  | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
+                <span class="date">{{ notice.getDate() }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
                 <p class="message">
                     {{ notice.text }}
                 </p>
                 <div class="btn-group btn-group-xs">
                     {% if user.id == notice.author.id %}
-                        {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "class":"btn-icon icon-pencil") }}
+                    {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "class":"btn-icon icon-pencil") }}
                     {% endif %}
-                    
+
                     {% for file in notice.files %}
-                        {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download") }}
+                    {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download") }}
                     {% endfor %}
-                    
-                    
 
                 </div>
                 {{ link_to(user.getController()~"/noticeboard/show/"~notice.id, "Read More")}}

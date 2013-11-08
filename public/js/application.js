@@ -4,6 +4,7 @@ $(document).ready(function() {
         $(".user-profile-actions").slideToggle("fast");
     });
     $("select").uniform();
+    $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     
     var date = new Date();
     var d = date.getDate();
@@ -207,7 +208,8 @@ var setTreeEvents = function() {
     //set child node when change parent
     $(".ld-tree .parent-node").change(function(event) {
         $( $( event.target ).data().target ).each(function() {
-            this.checked = (event.target.checked) ? "checked" : ""
+            //this.checked = (event.target.checked) ? "checked" : ""
+            this.parentElement.className = (event.target.checked) ? "checked" : ""
             $( this ).change()
         })
     })
