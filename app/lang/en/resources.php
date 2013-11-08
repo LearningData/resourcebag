@@ -4,6 +4,7 @@ $messages = array(
     "description" => "Description",
     "date" => "Date",
     "subject" => "Subject",
+    "tag" => "Tag",
     "resource-upload" => "Upload File"
 );
 ?>

@@ -8,6 +8,18 @@ class Resource extends \Phalcon\Mvc\Model {
     public $teacherId;
     public $fileName;
 
+    public function initialize() {
+        $this->hasManyToMany(
+            "id",
+            "ResourcesProperties",
+            "resourceId",
+            "propertyId",
+            "ResourceProperty",
+            "id",
+            array("alias" => "Properties")
+        );
+    }
+
     public function getSource() {
         return "resources";
     }

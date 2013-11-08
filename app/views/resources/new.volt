@@ -8,6 +8,12 @@
     <p>
         {{ select("subject-id", classes, 'using': ['id', 'value']) }}
     </p>
+    <p>{{ t._("group") }} {{ link_to("resources/newTag", "New") }}</p>
+    <p>
+        {% for property in properties %}
+            {{ check_field("tags[]", "value": property.id) }} {{ property.name }}
+        {% endfor %}
+    </p>
     <p>{{ t._("file") }}</p>
     <input type="file" name="file">
     {{ submit_button("Upload") }}
