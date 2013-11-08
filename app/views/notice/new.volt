@@ -1,6 +1,6 @@
 <div class="ld-notices blue">
     <header>
-        <h1>{{ t._("notices-title") }}</h1>
+        <h1>{{ t._("notices") }}</h1>
         <h2>{{ t._("new-notice") }}</h2>
     </header>
     {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form") }}
