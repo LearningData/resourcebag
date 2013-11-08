@@ -152,9 +152,6 @@
     line-height: 21px;
     background: red;
     float: right;
-    position: absolute;
-    top: 20px;
-    right: 10px;
 }
 
 .ld-timetable .table.table-condensed th {
