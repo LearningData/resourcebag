@@ -5,14 +5,22 @@ use \Phalcon\Config\Adapter\Ini as Config;
 class ResourcesController extends ControllerBase {
     public function indexAction() {
         $user = Authenticate::getUser();
-        $classes = ClassList::findByTeacherId($user->id);
+        if($user->isStudent()) {
+            $classes = $user->classes;
+        } else {
+            $classes = ClassList::findByTeacherId($user->id);
+        }
+
         $resources = array();
 
         foreach ($classes as $classList) {
-            $resources[$classList->id] = array(
-                "name" => $classList->subject->name,
-                "resources" => Resource::findBySubjectId($classList->subject->id)
-            );
+            $files = Resource::findBySubjectId($classList->subject->id);
+            if(count($files) > 0) {
+                $resources[$classList->id] = array(
+                    "name" => $classList->subject->name,
+                    "resources" => $files
+                );
+            }
         }
 
         $this->view->classes = $resources;
