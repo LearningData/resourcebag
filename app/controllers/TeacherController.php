@@ -136,6 +136,7 @@ class TeacherController extends UsersController {
 
     public function classesAction() {
         $teacherId = $this->view->user->id;
+        $this->view->t = Translation::get(Language::get(), "classes");
         $this->view->classes = ClassList::find("teacherId = $teacherId");
         $this->view->pick("teacher/subject/index");
     }
@@ -178,6 +179,7 @@ class TeacherController extends UsersController {
     }
 
     public function showClassAction($classId) {
+        $this->view->t = Translation::get(Language::get(), "classes");
         $this->view->classList = ClassList::findFirstById($classId);
     }
 }

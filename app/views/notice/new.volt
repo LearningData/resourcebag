@@ -1,6 +1,6 @@
 <div class="ld-notices blue">
     <h1 class="header">{{ t._("notices-title") }}</h1>
-    <h2 class="header">{{ t._("new-notice-title") }}</h2>
+    <h2 class="header">{{ t._("new-notice") }}</h2>
    
     {{ form("notice/create", "method":"post", "enctype":"multipart/form-data", "class":"form") }}
     {{ securityTag.csrf(csrf_params) }}
