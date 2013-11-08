@@ -50,11 +50,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1, .h1 {
-    font-size: 30px;
+    color:#fff;
+    font-size: 36px;
     font-weight: 100;
     margin: 30px 0;
-    border-bottom: 3px solid #000000;
-    padding: 0 0 10px;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
 }
 
 h2, .h2 {
@@ -68,9 +69,9 @@ h3, .h3 {
 h4, .h4 {
     font-size: 16px;
 }
-.label {
-    color: black;
+label {
     font-weight: normal;
+    margin-bottom: 0;
 }
 
 /* Reset Bootstrap */
@@ -610,9 +611,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     background-color: #fff;
 }
 
-
-
-
 /* Datepicker */
 #datepicker {
     min-height: 300px;
@@ -791,7 +789,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     font-weight: bold;
     vertical-align: top;
 }
-
 
 /*Login Page*/
 #login, #signup {
