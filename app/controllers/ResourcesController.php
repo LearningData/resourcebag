@@ -6,8 +6,8 @@ class ResourcesController extends ControllerBase {
     public function indexAction() {
         $user = Authenticate::getUser();
         $classes = ClassList::findByTeacherId($user->id);
+        $this->view->t = Translation::get(Language::get(), "resources");
         $resources = array();
-
         foreach ($classes as $classList) {
             $resources[$classList->id] = array(
                 "name" => $classList->subject->name,

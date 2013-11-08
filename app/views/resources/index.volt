@@ -1,19 +1,29 @@
-<h1>{{ t._("resources") }}</h1>
-{% if not user.isStudent() %}
-    {{ link_to("resources/new", "New",
-    "class":"btn bg-event bg-event-hv mbottom-20",
-    "style":"background-color: #939598;") }}
-{% endif %}
-<h2>Files:</h2>
-{% for key, classList in classes %}
-    <h3>{{ classList["name"] }}</h3>
-
-    {% for resource in classList["resources"] %}
-        <p>{{ image("img/icons/icon-file-generic.png") }}
-            {{ link_to("resources/download/"~resource.id, resource.fileName) }}
-            {% for resourceTag in resource.properties %}
-                / {{ resourceTag.type }}
-            {% endfor %}
-        </p>
-    {% endfor %}
-{% endfor %}
+<div class="ld-resources viridian">
+    <header>
+        <h1>{{ t._("resources") }}</h1>
+    </header>
+    {% if not user.isStudent() %}
+        {{ link_to("resources/new", t._("add-resource"),
+        "class":"btn bg-event bg-event-hv mbottom-20",
+        "style":"background-color: #939598;") }}
+    {% endif %}
+    <section>
+        <h2>{{ t._("my-resources") }}</h2>
+        <ul>
+        {% for key, classList in classes %}
+            <li><span class="collapse-toggle" data-icon="#icon{{ key }}" data-target="#resrc{{ key }}"><span id="icon{{ key }}"class="icon-folder-close collapse-icon-close-fix">{{ classList["name"] }}
+                <span id="resrc{{ key }}" class="collapse">
+                {% for resource in classList["resources"] %}
+                    <p>{{ image("img/icons/icon-file-generic.png") }}
+                        {{ link_to("resources/download/"~resource.id, resource.fileName) }}
+                        {% for resourceTag in resource.properties %}
+                            / {{ resourceTag.type }}
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                </span>
+            </li>
+        {% endfor %}
+        </ul>
+    </section>
+</div>

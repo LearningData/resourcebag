@@ -346,7 +346,7 @@ table > tbody > tr.active td:last-child {
     margin: 0;
     padding: 0;
 }
-.collapse {
+.sidebar .collapse {
     display: block;
 }
 .navbar-toggle {

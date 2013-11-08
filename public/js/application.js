@@ -194,6 +194,18 @@ function setUpEvents() {
     $(".btn.btn-return").click(function(a) {
         window.history.go(-1)
     })
+    //general collapse event
+    $( ".collapse-toggle" ).click( function( event ){
+        var element = event.currentTarget
+        var target = element.getAttribute("data-target")
+        $( target ).collapse( "toggle" )
+        var iconTarget = element.getAttribute("data-icon")
+        console.log(iconTarget)
+        $(iconTarget).classList.toggle("collapse-icon-open")
+        $(iconTarget).classList.toggle("collapse-icon-close")
+        
+    })
+
     window.setTimeout(function() {
         $(".alert-warning").fadeTo(500, 0).slideUp(500, function(){
             $(this).remove(); 
