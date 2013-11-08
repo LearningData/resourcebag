@@ -20,7 +20,7 @@
  * Table
  * Navigation Arrows
  * Main Menu / Sidebar
- *
+ *.Headers
  *
  *
  *
@@ -471,6 +471,22 @@ table > tbody > tr.active td:last-child {
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
 }
+
+
+/*.Headers */
+header h1 {
+    display:inline-block;
+    margin: 0;
+    border: none;
+}
+
+header h2 {
+    padding-top: 4px;
+    display:inline-block;
+    margin: 0;
+    float: right;
+}
+
 
 /*//////DEFAULT LIST HOME//////*/
 .box-messages .ld-box-child ul li {
