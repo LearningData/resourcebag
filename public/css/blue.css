@@ -1,4 +1,5 @@
-.blue a {
+.blue a,
+.blue .icon-bookmark {
     color: #0ba6d3;
 }
 .blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action, .blue header {
@@ -17,4 +18,32 @@
 
 .blue .modal-title, .blue h1 {
     border-color: #0ba6d3;
+}
+
+/* Checkbox */
+.blue div.ld-CheckClass span {
+    background-position: 0 -90px;
+}
+.blue div.ld-CheckClass span.checked {
+    background-position: -30px -90px;
+}
+.blue div.ld-CheckClass.hover span, .blue div.ld-CheckClass.focus span {
+    background-position: -60px -90px;
+}
+.blue div.ld-CheckClass.hover.hover span.checked, .blue div.ld-CheckClass.focus.hover span.checked {
+    background-position: -30px -90px;
+}
+
+/* Radio */
+.blue div.ld-RadioClass span {
+    background-position: 0 -90px;
+}
+.blue div.ld-RadioClass span.checked {
+    background-position: -30px -90px;
+}
+.blue div.ld-RadioClass.hover span, .blue div.ld-RadioClass.focus span {
+    background-position: -60px -90px;
+}
+.blue div.ld-RadioClass.hover span.checked, .blue div.ld-RadioClass.focus span.checked {
+    background-position: -30px -30px;
 }

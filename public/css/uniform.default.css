@@ -131,7 +131,7 @@ div.ld-CheckClass, div.ld-CheckClass span, div.ld-CheckClass input {
     width: 20px;
     height: 20px;
 }
-div.checker span, div.ld-CheckClass span {
+div.checker span    {
     display: -moz-inline-box;
     display: inline-block;
     *display: inline;
@@ -139,7 +139,14 @@ div.checker span, div.ld-CheckClass span {
     text-align: center;
     background-position: 0 0;
 }
-div.checker span.checked, div.ld-CheckClass span.checked {
+div.ld-CheckClass span {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    text-align: center;
+ }
+div.checker span.checked {
     background-position: -30px 0;
 }
 div.checker input, div.ld-CheckClass input {
@@ -159,7 +166,7 @@ div.checker.active span {
 div.checker.active span.checked {
     background-position: -95px -260px;
 }
-div.checker.hover span, div.checker.focus span, div.ld-CheckClass.hover span, div.ld-CheckClass.focus span {
+div.checker.hover span, div.checker.focus span {
     background-position: -60px 0;
 }
 div.checker.hover span.checked, div.checker.focus span.checked {
@@ -187,8 +194,7 @@ div.ld-RadioClass, div.ld-RadioClass span, div.ld-RadioClass input {
     width: 20px;
     height: 20px;
 }
-div.radio span,
-div.ld-RadioClass span {
+div.radio span  {
     display: -moz-inline-box;
     display: inline-block;
     *display: inline;
@@ -196,8 +202,14 @@ div.ld-RadioClass span {
     text-align: center;
     background-position: 0 -90px;
 }
-div.radio span.checked,
-div.ld-RadioClass span.checked {
+div.ld-RadioClass span {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    text-align: center;
+}
+div.radio span.checked {
     background-position: -30px -90px;
 }
 div.radio input, 
@@ -219,10 +231,10 @@ div.radio.active span {
 div.radio.active span.checked {
     background-position: -90px -279px;
 }
-div.radio.hover span, div.radio.focus span, div.ld-RadioClass.hover span, div.ld-RadioClass.focus span {
+div.radio.hover span, div.radio.focus span {
     background-position: -60px -90px ;
 }
-div.radio.hover span.checked, div.radio.focus span.checked, div.ld-RadioClass.hover span.checked, div.ld-RadioClass.focus span.checked {
+div.radio.hover span.checked, div.radio.focus span.checked {
     background-position: -30px -90px;
 }
 div.radio.hover.active span, div.radio.focus.active span {
