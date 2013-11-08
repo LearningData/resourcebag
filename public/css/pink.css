@@ -1,26 +1,18 @@
 .pink a {
     color: #ff0097;
 }
-.pink .btn-icon, .pink .btn {
+.pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action {
     background-color: #ff0097;
 }
 .pink.btn-icon:hover, .pink .btn:hover {
-    background-color: #ff0097;
+    background-color: #ed037c;
 }
-.pink.ld-box .ld-box-head .title {
-    background-color: #ff0097;
-}
-.pink .header:hover {
-    background-color: #ff0097;
-}
+
 .pink .form-control:focus {
     border-color: #ff0097;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
 }
-.pink .modal-title, .pink h1 {
+.pink .modal-title {
     border-color: #ff0097;
-}
-.pink .uploader .action {
-    background-color: #ff0097;
-}
+} 

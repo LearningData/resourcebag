@@ -1,17 +1,12 @@
-.blue .btn-icon, .blue .btn {
+.blue a {
+    color: #0ba6d3;
+}
+.blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action {
     background-color: #0ba6d3;
 }
 
 .blue.btn-icon:hover, .blue .btn:hover {
-    background-color: #0ba6d3;
-}
-
-.blue.ld-box .ld-box-head .title {
-    background-color: #0ba6d3;
-}
-
-.blue .header:hover {
-    background-color: #0ba6d3;
+    background-color: #008CC4;
 }
 
 .blue .form-control:focus, .blue input:focus {
@@ -22,8 +17,4 @@
 
 .blue .modal-title, .blue h1 {
     border-color: #0ba6d3;
-}
-
-.blue .uploader .action {
-    background-color: #0ba6d3;
 }

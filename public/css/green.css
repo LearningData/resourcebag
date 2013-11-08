@@ -1,17 +1,12 @@
-.green .btn-icon, .green .btn {
+.green a {
+    color: #10a236;
+}
+.green .btn-icon, .green .btn, .green.ld-box .ld-box-head .title, .green .uploader .action {
     background-color: #10a236;
 }
 
 .green.btn-icon:hover, .green .btn:hover {
-    background-color: #10a236;
-}
-
-.green.ld-box .ld-box-head .title {
-    background-color: #10a236;
-}
-
-.green .header:hover {
-   background-color: #10a236;
+    background-color: #008e48;
 }
 
 .green .form-control:focus {
@@ -22,8 +17,4 @@
 
 .green .modal-title {
     border-left-color: #10a236;
-}
-
-.green .uploader .action {
-    background-color: #10a236;
 }

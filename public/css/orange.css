@@ -1,17 +1,11 @@
 .orange a {
     color: #ff9e19;
 }
-.orange .btn-icon, .orange .btn {
+.orange .btn-icon, .orange .btn, .orange h1, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class*="btn-"], .orange.ld-box .ld-box-head .title {
     background-color: #ff9e19;
 }
 .orange.btn-icon:hover, .orange .btn:hover {
     background-color: #f47920;
-}
-.orange.ld-box .ld-box-head .title {
-    background-color: #ff9e19;
-}
-.orange .header:hover {
-    background-color: #FF9E19;
 }
 .orange .form-control:focus, .orange input:focus {
     border-color: #f7941e;
@@ -19,16 +13,13 @@
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
 }
-.orange .modal-title, .orange .header, .orange h1 {
+.orange .modal-title, .orange .header {
     border-color: #ff9e19;
 }
 .orange .tooltip.top .tooltip-arrow {
     border-top-color: #ff9e19;
 }
-.orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class*="btn-"]/*,
- .teacher .orange.ld-homework .table th*/ {
-    background-color: #ff9e19;
-}
+
 .orange.ld-timetable .header-navigation {
-    background-color: #e27176;//TODO change color
+    background-color: #e27176;
 }

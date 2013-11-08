@@ -1,13 +1,9 @@
-.purple .btn-icon, .purple .btn, .purple .header:hover {
+.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner {
     background-color: #9752a3;
 }
 
 .purple.btn-icon:hover, .purple .btn:hover {
-    background-color: #5a2a60;
-}
-
-.purple.ld-box .ld-box-head .title {
-    background-color: #9752a3;
+    background-color: #7f3f98;
 }
 
 .purple .form-control:focus {
@@ -22,7 +18,4 @@
 
 .purple .tooltip.top .tooltip-arrow {
     border-top-color: #9752a3;
-}
-.purple .tooltip-inner {
-    background-color: #9752a3;
 }
