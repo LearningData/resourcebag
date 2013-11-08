@@ -28,7 +28,7 @@ class Homework extends \Phalcon\Mvc\Model {
     }
 
     public function getDueDate() {
-        return date("d-m-Y", strtotime($this->dueDate));
+        return date("D jS M Y", strtotime($this->dueDate));
     }
 
     public function getStatus() {
