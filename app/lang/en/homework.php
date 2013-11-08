@@ -5,11 +5,12 @@ $messages = array(
     "assign-students" => "Assign Students",
     "assigned date" => "Assigned Date",
     "correct" => "Correct",
+    "complete" => "Complete",
     "completed" => "Completed",
     "due date" => "Due Date",
     "homework-exit" => "Back",
     "homework title" => "Homework Title",
-    "in progress" => "In Progress",
+    "in-progress" => "In Progress",
     "newTitle" => "New Homework",
     "new" => "New",
     "review" => "Review",
@@ -21,5 +22,6 @@ $messages = array(
     "submit-homework" => "Submit Homework",
     "submitted" => "Submitted",
     "teacher" => "Teacher",
+    "to-do" => "To Do"
 );
 ?>

@@ -1,5 +1,7 @@
 <?php
 $messages = array(
+    "add-file" => "Add File",
+    "add-new" => "Add New",
     "all" => "All",
     "class" => "Class",
     "classes" => "Classes",
@@ -49,7 +51,6 @@ $messages = array(
     "endDate" => "End Date",
     "due-date" => "Due Date",
     "date" => "Date",
-    "add-file" => "Add File",
     "wednesday" => "wednesday"
 );
 ?>
