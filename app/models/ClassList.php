@@ -32,6 +32,10 @@ class ClassList extends \Phalcon\Mvc\Model {
         return "classlist";
     }
 
+    public function getStartedHomework() {
+        return $this->getHomeworks("status =" . Homework::$STARTED);
+    }
+
     public function getPendingHomework() {
         return $this->getHomeworks("status = " . Homework::$PENDING);
     }
