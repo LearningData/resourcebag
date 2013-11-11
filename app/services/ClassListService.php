@@ -58,10 +58,11 @@ class ClassListService {
 
     public function getClassesByGroup($group) {
         $classes = array();
-
-        foreach ($group->cohorts as $cohort) {
-            foreach ($cohort->classes as $classList) {
-                $classes [$classList->id]= $classList->subject->name;
+        if($group && count($group->cohorts) > 0) {
+            foreach ($group->cohorts as $cohort) {
+                foreach ($cohort->classes as $classList) {
+                    $classes [$classList->id]= $classList->subject->name;
+                }
             }
         }
 

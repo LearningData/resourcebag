@@ -22,6 +22,7 @@ class StudentController extends UsersController {
     }
 
     public function classesAction() {
+        $this->setTokenValues();
         $this->view->t = Translation::get(Language::get(), "classes");
         $param = "year = " . Config::schoolYear();
         $group = $this->view->user->getGroups($param)->getFirst();
