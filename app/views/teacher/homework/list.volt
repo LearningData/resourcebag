@@ -114,8 +114,8 @@
             <tr>
                 <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
                 <td>{{ homework.title }}</td>
-                <td>{{ homework.setDate }}</td>
-                <td>{{ homework.dueDate }}</td>
+                <td>{{ homework.getSetDate(t._("dateformat")) }}</td>
+                <td>{{ homework.getDueDate(t._("dateformat")) }}</td>
                 <td>
                     {{ homework.getStatus() }}
                 </td>
