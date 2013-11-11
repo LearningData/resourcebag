@@ -24,6 +24,7 @@ $messages = array(
     "resources" => "Resources",
     "policies" => "Policies",
     "profile" => "Profile",
+    "create-user" => "Create User",
     "change-password" => "Change Password",
     "logout" => "Logout",
     "login" => "Login",

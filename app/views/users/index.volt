@@ -17,10 +17,10 @@
         </tr>
     </thead>
     <tbody>
-    {% if page.items is defined %}
+        {% if page.items is defined %}
         {% for user in page.items %}
-            <tr>
-                            <td>{{ user.userID }}</td>
+        <tr>
+            <td>{{ user.userID }}</td>
             <td>{{ user.schoolID }}</td>
             <td>{{ user.FirstName }}</td>
             <td>{{ user.LastName }}</td>
@@ -28,25 +28,24 @@
             <td>{{ user.email }}</td>
             <td>{{ user.password }}</td>
 
-                <td>{{ link_to("users/edit/"~user.userID, "Edit") }}</td>
-                <td>{{ link_to("users/delete/"~user.userID, "Delete") }}</td>
-            </tr>
+            <td>{{ link_to("users/edit/"~user.userID, "Edit") }}</td>
+            <td>{{ link_to("users/delete/"~user.userID, "Delete") }}</td>
+        </tr>
         {% endfor %}
-    {% endif %}
+        {% endif %}
     </tbody>
     <tbody>
         <tr>
             <td colspan="2" align="right">
-                <table align="center">
-                    <tr>
-                        <td>{{ link_to("users/", "First") }}</td>
-                        <td>{{ link_to("users/?page="~page.before, "Previous") }}</td>
-                        <td>{{ link_to("users/?page="~page.next, "Next") }}</td>
-                        <td>{{ link_to("users/?page="~page.last, "Last") }}</td>
-                        <td>{{ page.current~"/"~page.total_pages }}</td>
-                    </tr>
-                </table>
-            </td>
+            <table align="center">
+                <tr>
+                    <td>{{ link_to("users/", "First") }}</td>
+                    <td>{{ link_to("users/?page="~page.before, "Previous") }}</td>
+                    <td>{{ link_to("users/?page="~page.next, "Next") }}</td>
+                    <td>{{ link_to("users/?page="~page.last, "Last") }}</td>
+                    <td>{{ page.current~"/"~page.total_pages }}</td>
+                </tr>
+            </table></td>
         </tr>
     <tbody>
 </table>

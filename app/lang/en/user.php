@@ -10,6 +10,7 @@ $messages = array(
     "Confirm Email" => "Confirm Email",
     "password" => "Password",
     "photo" => "Photo",
+    "create" => "Create",
     "Access Code" => "Access Code",
     "Confirm Password" => "Confirm Password",
     "Change your password" => "Change your password",

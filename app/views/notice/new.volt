@@ -7,11 +7,10 @@
     {{ securityTag.csrf(csrf_params) }}
     <p class="col-md-6 ">
         <label>{{ t._("create-notice") }}</label>
-        <span class="radio-box form-control"> <span>
                 <input type="radio" name="type" value="T" class="ld-teachers-only" checked="checked">
                 {{ t._("teachers-only") }}</label> <label>
                     <input type="radio" name="type" value="A" class="ld-include-students">
-                    {{ t._("teachers-students") }}</label> </span>
+                    {{ t._("teachers-students") }}</label>
     </p>
     <p class="col-md-6 ld-classes-tree">
         <label>{{ t._("restrict-to") }}</label>
