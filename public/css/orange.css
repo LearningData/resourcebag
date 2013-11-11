@@ -22,16 +22,16 @@
 
 
 /* Checkbox */
-.orange div.ld-CheckClass span {
+div.ld-CheckClass span {
     background-position: 0 0;
-}
-.orange div.ld-CheckClass span.checked {
+ }
+div.ld-CheckClass span.checked {
     background-position: -30px 0;
 }
-.orange div.ld-CheckClass.hover span, .orange div.ld-CheckClass.focus span {
+div.ld-CheckClass.hover span {
     background-position: -60px 0;
 }
-.orange div.ld-CheckClass.hover.hover span.checked, .orange div.ld-CheckClass.focus.hover span.checked {
+div.ld-CheckClass.hover span.checked {
     background-position: -30px 0;
 }
 
@@ -42,9 +42,9 @@
 .orange div.ld-RadioClass span.checked {
     background-position: -30px -30px;
 }
-.orange div.ld-RadioClass.hover span, .orange div.ld-RadioClass.focus span {
+.orange div.ld-RadioClass.hover span {
     background-position: -60px -30px;
 }
-.orange div.ld-RadioClass.hover span.checked, .orange div.ld-RadioClass.focus span.checked {
+.orange div.ld-RadioClass.hover span.checked {
     background-position: -30px -30px;
 }
