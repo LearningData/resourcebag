@@ -25,7 +25,7 @@
                         {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
                     {% endif %}
                 </td>
-                <td>{{ link_to("teacher/homework/new/"~classList.id, t._("new")) }}
+                <td><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class="custom-icon-new-homework"></span>{{ t._("new") }} </a>
                     {% if classList.getSubmittedHomework().count() %}
                         {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", "   "~t._("correct")) }}
                     {% endif %}
