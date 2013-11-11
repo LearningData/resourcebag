@@ -27,7 +27,7 @@
                 </td>
                 <td><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class="custom-icon-new-homework"></span>{{ t._("new") }} </a>
                     {% if classList.getSubmittedHomework().count() %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", "   "~t._("correct")) }}
+                        <a href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span class="icon-ok-circle"></span>{{ t._("correct") }} </a>
                     {% endif %}
                 </td>
                 <td>
