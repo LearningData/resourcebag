@@ -128,7 +128,7 @@
         {% for link in links %}
             <li>{{ link_to(link['url'], link['page']) }}</li>
         {% endfor %}
-        <li>{{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
+        <li>{{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}</li>
     </li>
     </ul>
     {% endif %}

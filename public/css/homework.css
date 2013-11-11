@@ -32,6 +32,9 @@
     border-bottom: #760900 solid 5px;
     background-color: #760900;
 }
+.ld-homework .nav ul li.bt-new .custom-icon-new-homework    {
+    margin-right: 10px;
+}
 
 .ld-homework .nav.status .btn-all a {
     border-bottom: #a30c00 solid 5px;
