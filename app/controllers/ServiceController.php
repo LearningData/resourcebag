@@ -31,8 +31,10 @@ class ServiceController extends ControllerBase {
         $json = array();
 
         foreach ($user->classes as $classList) {
-            $json []= array("id" => $classList->id,
-                "subject" => $classList->subject->name);
+            if($classList->subject) {
+                $json []= array("id" => $classList->id,
+                    "subject" => $classList->subject->name);
+            }
         }
 
         return $this->setContent(array("classes" => $json));
