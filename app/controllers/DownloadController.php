@@ -15,6 +15,7 @@ class DownloadController extends ControllerBase {
         $user = $this->getUserBySession();
         $photo = UserPhoto::findFirstByUserId($user->id);
         header("Content-type: " . $photo->type);
+        ob_clean();
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
         $this->response->setContent($photo->file)->send();
     }
@@ -28,6 +29,7 @@ class DownloadController extends ControllerBase {
         header("Content-length: " . $file->size);
         header("Content-type: " . $file->type);
         header("Content-Disposition: attachment; filename=" . $file->name);
+        ob_clean();
 
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
         $this->response->setContent($file->file)->send();
