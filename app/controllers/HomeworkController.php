@@ -40,16 +40,18 @@ class HomeworkController extends ControllerBase {
 
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
-        $status = $this->request->get("filter");
+        $this->view->status = $this->request->get("filter");
 
-        $homeworks = Homework::findByClassAndStatus($classId, $status);
+        $homeworks = Homework::findByClassAndStatus($classId, $this->view->status);
 
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
-        $this->view->links = HomeworkService::getPaginateLinks(
+        $this->view->links = HomeworkService::getLinksByClass(
             $user->getController(),
-            $totalPages, $status
+            $classId,
+            $totalPages, $this->view->status
         );
+        $this->view->classId = $classId;
 
         $this->view->pick("teacher/homework/list");
     }

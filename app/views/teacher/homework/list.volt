@@ -2,7 +2,7 @@
     <header>
         <h1>{{ t._("homework") }}</h1>
     </header>
-    {% if classes %}
+    {% if classes is defined %}
 
     <table class="table table-hover fixed">
         <thead>
@@ -18,18 +18,25 @@
         <tbody>
             {% for classList in classes %}
             <tr>
-
-                <td colspan=7> {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
-                {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
-                {% else %}
-                {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
-                {% endif %} </td>
-                <td><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class="custom-icon-new-homework"></span>{{ t._("new") }} </a> {% if classList.getSubmittedHomework().count() %} <a href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span class="icon-ok-circle"></span>{{ t._("correct") }} </a> {% endif %} </td>
-                <td> {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
-                {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.users.count()) }}
-                {% else %}
-                {{ classList.users.count() }}
-                {% endif %} </td>
+                <td colspan=7>
+                    {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
+                    {% else %}
+                        {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
+                    {% endif %}
+                </td>
+                <td><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class="custom-icon-new-homework"></span>{{ t._("new") }} </a>
+                    {% if classList.getSubmittedHomework().count() %}
+                        <a href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span class="icon-ok-circle"></span>{{ t._("correct") }} </a>
+                    {% endif %}
+                </td>
+                <td>
+            {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.users.count()) }}
+                    {% else %}
+                        {{ classList.users.count() }}
+                    {% endif %}
+                </td>
                 <td>{{ classList.getPendingHomework().count() }}</td>
                 <td>{{ classList.getStartedHomework().count() }}</td>
                 <td>{{ classList.getSubmittedHomework().count() }}</td>
@@ -86,7 +93,7 @@
         </li>
         {% endfor %}
         <li>
-            {{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
+            {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
         </li>
         </li>
     </ul>
@@ -119,25 +126,17 @@
         </tbody>
     </table>
     <ul class="paginator homework">
-        <li>
-            {{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}
-        </li>
+        <li>{{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&filter="~status,
+        "class":"icon-chevron-left Prev") }}</li>
         {% for link in links %}
         <li>
             {{ link_to(link['url'], link['page']) }}
         </li>
         {% endfor %}
-        <<<<<<< HEAD
         <li>
-            {{ link_to("teacherhomework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
+            {{ link_to("teacher/homework/class/"~classId~"?page="~page.next~"&filter="~status,
+                "class":"icon-chevron-right Next") }}</li>
         </li>
-        </li>
-        =======
-        <li>
-            {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
-        </li>
-        </li>
-        >>>>>>> 9e01fbcb3da2c8648d6ffe29ebda733c165a8b28
     </ul>
     {% endif %}
 </div>
