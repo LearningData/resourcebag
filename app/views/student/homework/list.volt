@@ -37,7 +37,7 @@
                 {{ homework.classList.user.name }}
                 {{ homework.classList.user.lastName}}
                 </td>
-                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.getDueDate() }}</td>
+                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.getDueDate(t._("dateformat")) }}</td>
                 <td data-target="--">
                 {% if homework.isPending() %}
                 {{ link_to("student/homework/start/"~homework.id,
