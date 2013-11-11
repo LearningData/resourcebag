@@ -100,6 +100,16 @@ a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
 }
+.label {
+    border-radius: 0;
+    color: #414042;
+    display: inline;
+    font-size: 60%;
+    font-weight: normal;
+    line-height: 1;
+    padding: 0;
+    white-space: nowrap;
+}
 
 /* Buttons */
 .btn, .btn.btn-cancel {
@@ -476,8 +486,7 @@ header {
     padding: 15px;
     border-radius: 5px 5px 0 0;
 }
-header h1,
-header h2 {
+header h1, header h2 {
     color: #fff;
     display: inline-block;
     margin: 0;
@@ -487,7 +496,7 @@ header h2 {
 
 header h2 {
     float: right;
-    font-size:24px;
+    font-size: 24px;
     text-transform: lowercase;
     line-height: 40px;
 }

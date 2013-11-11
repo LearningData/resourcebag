@@ -1,9 +1,9 @@
 <div class="ld-homework orange">
     <header>
         <h1 id="header">{{ t._("homework") }}</h1>
-        <h2><span class="label">{{ t._("title-label") }}</span>{{ homework.title }}</h2>
     </header>
-    <h3 class="description"><span class="label">{{ t._("description")}}</span>{{ homework.text }}</h3>
+    <h2><span class="label">Homework {{ t._("title-label") }}:</span><br/>{{ homework.title }}</h2>
+    <h3 class="description"><span class="label">{{ t._("description")}}:</span><br/>{{ homework.text }}</h3>
     <section class="homework-view">
         <button id="add-homework-text" class="btn mtop-20" data-homework-id="{{ homework.id }}">
             {{ t._("add-text-input") }}
