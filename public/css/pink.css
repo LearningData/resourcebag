@@ -15,4 +15,32 @@
 }
 .pink .modal-title {
     border-color: #ff0097;
-} 
+}
+
+/* Checkbox */
+.pink .ld-CheckClass span {
+    background-position: 0 -120px;
+}
+.pink div.ld-CheckClass span.checked {
+    background-position: -30px -120px;
+}
+.pink div.ld-CheckClass.hover span, .pink div.ld-CheckClass.focus span {
+    background-position: -60px -120px;
+}
+.pink div.ld-CheckClass.hover.hover span.checked, .pink div.ld-CheckClass.focus.hover span.checked {
+    background-position: -30px -120px;
+}
+
+/* Radio */
+.pink div.ld-RadioClass span {
+    background-position: 0 -150px;
+}
+.pink div.ld-RadioClass span.checked {
+    background-position: -30px -150px;
+}
+.pink div.ld-RadioClass.hover span, .pink div.ld-RadioClass.focus span {
+    background-position: -60px -150px;
+}
+.pink div.ld-RadioClass.hover span.checked, .pink div.ld-RadioClass.focus span.checked {
+    background-position: -30px -150px;
+}

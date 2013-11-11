@@ -14,6 +14,7 @@
             <div class="note">
                 <span class="date">{{ notice.getDate() }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
                 <p class="message">
+                    <span class="icon-bookmark"></span>
                     {{ notice.text }}
                 </p>
                 <div class="btn-group btn-group-xs">
