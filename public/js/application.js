@@ -149,17 +149,23 @@ function showTimes(date) {
 
     $.get(url, function(response) {
         var times = response.times;
-        for (var i = times.length - 1; i >= 0; i--) {
-            var time = times[i];
-            var hour = parseInt(time / 100)
-            hour = (hour < 10 ) ? "0" + hour : hour
-            var mins = time % 100
-            mins = (mins < 10 ) ? "0" + mins : mins
-            var field = '<p name="pdue-time"><lable for="due-time">Due Time </label><br /><input type="radio" required name="due-time" value="' + time + '">' + hour + ":" + mins + '</p>';
-            input = jQuery(field);
-            $("#due-times").append(input);
-        };
-    });
+         $("#due-times").empty()
+        if (times.length > 0) {
+            dueTimes = $( "<p name=\"pdue-time\">Due Time<br/></p>" )
+            for (var i = 0; i < times.length; i++) {
+                var time = times[i]
+                var hour = parseInt(time / 100)
+                hour = (hour < 10 ) ? "0" + hour : hour
+                var mins = time % 100
+                mins = (mins < 10 ) ? "0" + mins : mins
+                var checked = (i == 0) ? "checked=\"checked\"" : ""
+                var field = '<label><input type="radio" required name="due-time" value="' + time + '"' + checked + ' >' + hour + ":" + mins + '</label>';
+                input = jQuery(field)
+                dueTimes.append(input)
+            }
+            $("#due-times").append(dueTimes)
+        }
+    })
 }
 
 function dayOfWeek(date) {
