@@ -104,7 +104,7 @@ a:hover, a:focus {
     border-radius: 0;
     color: #414042;
     display: inline;
-    font-size: 60%;
+    font-size: 70%;
     font-weight: normal;
     line-height: 1;
     padding: 0;
@@ -122,6 +122,12 @@ a:hover, a:focus {
     color: #fff !important;
     margin-right: 5px;
 }
+.btn-sm, .btn-xs {
+    min-width: 110px;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
 .btn:hover, .btn:focus {
     color: #fff;
 }
@@ -497,7 +503,7 @@ header h1, header h2 {
 header h2 {
     float: right;
     font-size: 24px;
-    text-transform: lowercase;
+    text-transform: capitalize;
     line-height: 40px;
 }
 

@@ -7,6 +7,7 @@ $messages = array(
     "classes" => "Classes",
     "cohort" => "Cohort",
     "title" => "Schoolbag",
+    "edit" => "Edit",
     "dashboard" => "Dashboard",
     "extra-ref" => "Class Code",
     "file-name" => "File Name",
