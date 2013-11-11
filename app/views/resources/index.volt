@@ -4,8 +4,7 @@
     </header>
     {% if not user.isStudent() %}
         {{ link_to("resources/new", t._("add-resource"),
-        "class":"btn bg-event bg-event-hv mbottom-20",
-        "style":"background-color: #939598;") }}
+        "class":"btn") }}
     {% endif %}
     <section>
         <h2>{{ t._("my-resources") }}</h2>
