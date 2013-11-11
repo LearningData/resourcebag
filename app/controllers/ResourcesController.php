@@ -91,9 +91,24 @@ class ResourcesController extends ControllerBase {
 
     public function downloadAction($resourceId) {
         $resource = Resource::findFirstById($resourceId);
+
+        $file = $this->getDir($resource->subjectId) . $resource->fileName;
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-        header('Content-Disposition: attachment; filename="'.$resource->fileName.'"');
-        readfile($this->getDir($resource->subjectId) . $resource->fileName);
+
+        if (file_exists($file)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename='.basename($file));
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            ob_clean();
+            flush();
+            readfile($file);
+            exit;
+        }
     }
 
     private function getDir($classId) {
@@ -107,7 +122,7 @@ class ResourcesController extends ControllerBase {
             mkdir($config->files->dir . $user->schoolId);
         }
 
-        if (!file_exists($config->files->dir . $user->schoolId . "/resources")) {
+        if (!file_exists($config->files->dir . $user->schoolId . "/resources")){
             mkdir($config->files->dir . $user->schoolId . "/resources");
         }
 
