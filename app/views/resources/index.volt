@@ -11,7 +11,7 @@
         <h2>{{ t._("my-resources") }}</h2>
         <ul>
         {% for key, classList in classes %}
-            <li><span class="collapse-toggle" data-icon="#icon{{ key }}" data-target="#resrc{{ key }}"><span id="icon{{ key }}"class="icon-folder-close collapse-icon-close-fix">{{ classList["name"] }}
+            <li><span class="collapse-toggle" data-icon="#icon{{ key }}" data-target="#resrc{{ key }}"><span id="icon{{ key }}"class="collapse-icon-close">{{ classList["name"] }}
                 <span id="resrc{{ key }}" class="collapse">
                 {% for resource in classList["resources"] %}
                     <p>{{ image("img/icons/icon-file-generic.png") }}

@@ -201,8 +201,8 @@ function setUpEvents() {
         $( target ).collapse( "toggle" )
         var iconTarget = element.getAttribute("data-icon")
         console.log(iconTarget)
-        $(iconTarget).classList.toggle("collapse-icon-open")
-        $(iconTarget).classList.toggle("collapse-icon-close")
+        $(iconTarget).toggleClass("collapse-icon-open")
+        $(iconTarget).toggleClass("collapse-icon-close")
         
     })
 
