@@ -15,7 +15,7 @@
         <div class="jumbotron">
             <div class="container">
                 <header>
-                    <a href="/" class="schoolbag-brand-login"> <img width="153" heigth="46" src="img/logo-login.png" alt="Schoolbag"></a>
+                    <a href="/schoolbag" class="schoolbag-brand-login"> <img width="153" heigth="46" src="img/logo-login.png" alt="Schoolbag"></a>
                 </header>
             </div>
         </div>
