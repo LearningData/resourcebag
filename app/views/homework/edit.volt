@@ -3,12 +3,11 @@
         <h1 id="header">{{ t._("homework") }}</h1>
         <h2>{{ t._("edit") }}</h1>
     </header>
-    <h3><span class="label">Homework {{ t._("title-label") }}:</span>
+    <h3><span class="label">{{ t._("homework") }}:</span>
     <br/>
     {{ homework.title }}</h3>
-    <h3 class="description"><span class="label">{{ t._("description")}}:</span>
-    <br/>
-    {{ homework.text }}</h3>
+    <h3><span class="label">{{ t._("description")}}:</span></h3>
+    <p>{{ homework.text }}</p>
     <section class="homework-view">
         <button id="add-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("add-text-input") }}
@@ -16,7 +15,7 @@
         <button id="upload-homework-file" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("upload-file") }}
         </button>
-        <button id="save-homework-text" class="btn mtop-20" data-homework-id="{{ homework.id }}" style="display:none">
+        <button id="save-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}" style="display:none">
             {{ t._("save-text") }}
         </button>
         {{ form("homework/update", "id": "text-form", "method":"post", "enctype":"multipart/form-data") }}
