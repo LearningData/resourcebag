@@ -18,9 +18,9 @@
     </p>
     <div class="clearfix"></div>
     <div class="row">
-        <div class="col-md-6 ld-classes-tree mtop-20">
+        <div class="col-md-12 ld-classes-tree mtop-20">
         <label>{{ t._("restrict-to") }}</label>
-        <input type="text" value="{{ t._('all-teachers') }}" id="class-id" name="classes" class="form-control ld-no-tree" disabled="disabled">
+        <input type="text" value="{{ t._('all-teachers') }}" id="class-id" name="classes" class="form-control ld-no-tree col-md-6" disabled="disabled">
         </input>
     </div>
     <div class="col-md-9">
