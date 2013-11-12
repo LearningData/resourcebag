@@ -224,18 +224,8 @@ function setUpEvents() {
                 UI Events
 ******************************************/
 var setTreeEvents = function() {
-    //set child node when change parent
-    $(".ld-tree .parent-node").change(function(event) {
-        $( $( event.target ).data().target ).each(function() {
-            //this.checked = (event.target.checked) ? "checked" : ""
-            this.parentElement.className = (event.target.checked) ? "checked" : ""
-            $( this ).change()
-        })
-    })
-    //set state of parent when click on child
-    $(".ld-tree .child-node").click(function(event) {
-        var source = $( $( event.target ).data().source )
-        var all = 0, checkCount = 0
+    var checkUpwards = function(source) {
+        var all = 0, checkCount = 0 
         $( source.data().target ).each(function() {
             all++
             if (this.checked) {
@@ -252,8 +242,25 @@ var setTreeEvents = function() {
             source[0].checked = ""
             source[0].indeterminate = true
         }
+        $.uniform.update( source )
+        if (source.data().source)
+            checkUpwards($( source.data().source ))
+    }
+
+    //set child node when change parent
+    $(".ld-tree .parent-node").change(function(event) {
+        $( $( event.target ).data().target ).each(function() {
+            this.checked = (event.target.checked) ? "checked" : ""
+            $.uniform.update( $( event.target ).data().target ) 
+            $( this ).change()
+        })
+    })
+    //set state of parent when click on child
+    $(".ld-tree .child-node").click(function(event){
+        checkUpwards( $( $( event.target ).data().source ) )
     })
 }
+
 
 
 
