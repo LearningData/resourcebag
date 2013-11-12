@@ -6,13 +6,13 @@
     {{ form("teacher/createClass", "method":"post", "class":"form-inline") }}
     <p class="col-md-6">
         <label for="subject-id">{{ t._("subject") }}</label>
-        {{ select('subject-id', subjects, 'using': ['id', 'name'],
-        'emptyText': 'Please, choose one subject', "class":"form-control") }}
+        {{ select('subject-id', subjects, 'using': ['id', 'name'], "useEmpty":true,
+        'emptyText': t._('choose-subject'), "class":"form-control") }}
     </p>
     <p class="col-md-6">
         <label for="cohort-id">{{ t._("cohort") }}</label>
-        {{ select('cohort-id', cohorts, 'using': ['id', 'stage'],
-        'emptyText': 'Please, choose one cohort', "class":"form-control") }}
+        {{ select('cohort-id', cohorts, 'using': ['id', 'stage'], "useEmpty":true,
+        'emptyText': t._('choose-cohort'), "class":"form-control") }}
     </p>
     <p class="col-md-6">
         <label>{{ t._("room") }}

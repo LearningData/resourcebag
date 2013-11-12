@@ -29,7 +29,7 @@ class TeacherController extends UsersController {
         $user = $this->getUserBySession();
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
-
+        $this->view->t = Translation::get(Language::get(), "classes");
         $slots = array();
         for($i = 1; $i <=6; $i++) {
             $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
