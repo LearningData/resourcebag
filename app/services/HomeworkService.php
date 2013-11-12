@@ -86,7 +86,7 @@ class HomeworkService {
 
     public static function getPage($homeworks, $currentPage) {
         $params = array("data" => $homeworks,
-            "limit"=> 3, "page" => $currentPage
+            "limit"=> 10, "page" => $currentPage
         );
 
         $paginator = new Paginator($params);

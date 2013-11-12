@@ -1,4 +1,4 @@
-.red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header {
+.red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header, .red .uploader .action {
     background-color: #dc3b42;
 }
 .red.btn-icon:hover, .red .btn:hover {
@@ -12,4 +12,32 @@
 }
 .red .modal-title {
     border-color: #dc3b42;
+}
+
+/* Checkbox */
+.red div.ld-CheckClass span {
+    background-position: 0 -350px;
+}
+.red div.ld-CheckClass span.checked {
+    background-position: -30px -350px;
+}
+.red div.ld-CheckClass.hover span {
+    background-position: -60px -350px;
+}
+.red div.ld-CheckClass.hover span.checked {
+    background-position: -30px -350px;
+}
+
+/* Radio */
+.red div.ld-RadioClass span {
+    background-position: 0 -380px;
+}
+.red div.ld-RadioClass span.checked {
+    background-position: -30px -380px;
+}
+.red div.ld-RadioClass.hover span {
+    background-position: -60px -380px;
+}
+.red div.ld-RadioClass.hover span.checked {
+    background-position: 0 -380px;
 }

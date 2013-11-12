@@ -1,4 +1,4 @@
-.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header {
+.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header, .purple .uploader .action {
     background-color: #9752a3;
 }
 .purple.btn-icon:hover, .purple .btn:hover {
@@ -17,4 +17,32 @@
 
 .purple .tooltip.top .tooltip-arrow {
     border-top-color: #9752a3;
+}
+
+/* Checkbox */
+.purple div.ld-CheckClass span {
+    background-position: 0 -290px;
+}
+.purple div.ld-CheckClass span.checked {
+    background-position: -30px -290px;
+}
+.purple div.ld-CheckClass.hover span {
+    background-position: -60px -290px;
+}
+.purple div.ld-CheckClass.hover span.checked {
+    background-position: -30px -290px;
+}
+
+/* Radio */
+.purple div.ld-RadioClass span {
+    background-position: 0 -320px;
+}
+.purple div.ld-RadioClass span.checked {
+    background-position: -30px -320px;
+}
+.purple div.ld-RadioClass.hover span {
+    background-position: -60px -320px;
+}
+.purple div.ld-RadioClass.hover span.checked {
+    background-position: 0 -320px;
 }

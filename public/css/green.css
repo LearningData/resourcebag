@@ -18,3 +18,31 @@
 .green .modal-title {
     border-left-color: #10a236;
 }
+
+/* Checkbox */
+.green div.ld-CheckClass span {
+    background-position: 0 -230px;
+}
+.green div.ld-CheckClass span.checked {
+    background-position: -30px -230px;
+}
+.green div.ld-CheckClass.hover span {
+    background-position: -60px -230px;
+}
+.green div.ld-CheckClass.hover span.checked {
+    background-position: -30px -230px;
+}
+
+/* Radio */
+.green div.ld-RadioClass span {
+    background-position: 0 -260px;
+}
+.green div.ld-RadioClass span.checked {
+    background-position: -30px -260px;
+}
+.green div.ld-RadioClass.hover span {
+    background-position: -60px -260px;
+}
+.green div.ld-RadioClass.hover span.checked {
+    background-position: 0 -260px;
+}

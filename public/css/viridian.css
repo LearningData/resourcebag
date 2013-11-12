@@ -20,3 +20,31 @@
 .viridian .tooltip.top .tooltip-arrow {
     border-top-color: #438c76;
 }
+
+/* Checkbox */
+.viridian div.ld-CheckClass span {
+    background-position: 0 -470px;
+}
+.viridian div.ld-CheckClass span.checked {
+    background-position: -30px -470px;
+}
+.viridian div.ld-CheckClass.hover span {
+    background-position: -60px -470px;
+}
+.viridian div.ld-CheckClass.hover span.checked {
+    background-position: -30px -470px;
+}
+
+/* Radio */
+.viridian div.ld-RadioClass span {
+    background-position: 0 -500px;
+}
+.viridian div.ld-RadioClass span.checked {
+    background-position: -30px -500px;
+}
+.viridian div.ld-RadioClass.hover span {
+    background-position: -60px -500px;
+}
+.viridian div.ld-RadioClass.hover span.checked {
+    background-position: 0 -500px;
+}
