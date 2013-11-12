@@ -3,11 +3,29 @@
         <h1 id="header">{{ t._("homework") }}</h1>
         <h2>{{ t._("edit") }}</h1>
     </header>
-    <h3><span class="label">{{ t._("homework") }}:</span>
-    <br/>
-    {{ homework.title }}</h3>
-    <h3><span class="label">{{ t._("description")}}:</span></h3>
-    <p>{{ homework.text }}</p>
+    <div class="row">
+        <span class="col-md-3">
+            <h3><span class="label">{{ t._("homework") }}:</span></br>
+            {{ homework.title }}</h3>
+        </span>
+        <span class="col-md-3">
+            <h3><span class="label">{{ t._("teacher") }}:</span><br/>
+            {{ t._(homework.classList.user.name) }} {{ homework.classList.user.lastName}}</h3>
+        </span>
+        <span class="col-md-3">
+            <h3><span class="label">{{ t._("class") }}:</span><br/>
+            {{ homework.classList.subject.name }} ({{ homework.classList.extraRef }})</h3>
+        </span>
+        <span class="col-md-3">
+            <h3><span class="label">{{ t._("due-date") }}:</span><br/>
+            {{ homework.dueDate }}</h3>
+        </span>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <h3><span class="label">{{ t._("description") }}:</span><br/>
+            {{ homework.text }}</h3>
+        </div>
+    </div>
     <section class="homework-view">
         <button id="add-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("add-text-input") }}
