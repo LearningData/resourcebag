@@ -20,18 +20,17 @@
     border-top-color: #ff9e19;
 }
 
-
 /* Checkbox */
-div.ld-CheckClass span {
+.orange div.ld-CheckClass span {
     background-position: 0 -50px;
  }
-div.ld-CheckClass span.checked {
+.orange div.ld-CheckClass span.checked {
     background-position: -30px -50px;
 }
-div.ld-CheckClass.hover span {
+.orange div.ld-CheckClass.hover span {
     background-position: -60px -50px;
 }
-div.ld-CheckClass.hover span.checked {
+.orange div.ld-CheckClass.hover span.checked {
     background-position: -30px -50px;
 }
 

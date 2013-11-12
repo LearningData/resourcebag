@@ -54,14 +54,7 @@
     display: block;
 }
 
-/* Notices Page */
-/*.notice-space .note div img {
-    max-width: 90%;
-    height: auto;
-    margin: 10% auto 0;
-    display: block;
-}
-*/
+/* List page - all 5 notices */
 .notice-space {
     margin: 0 0 10px;
     padding: 20px 20px 0 0 ;
@@ -71,7 +64,8 @@
     float: left;
 }
 .notice-space .note{
-    min-height: 200px;
+    height: 200px;
+    overflow: hidden;
 }
 .notice-space-show   {
     width: 100%!important
@@ -87,7 +81,7 @@
 
 .notice-space:first-of-type .note,
 .notice-space:nth-child(2) .note {
-    min-height: 300px;
+    height: 300px;
 }   
 .notice-space .date, .notice-space .author {
     font-size: 14px;
@@ -97,6 +91,7 @@
 .notice-space .message {
     margin-top: 5px;
     font-size: 12px;
+    white-space: pre-line;
 }
 .notice-space p:first-line {
     font-size: 16px;
@@ -122,15 +117,17 @@
     float: left;
 }
 
+/* Rules for icons and categorys*/
 .message span   {
     float: left;
-    margin: 7px 15px 0 0;
+    margin: 0 15px 0 0;
     font-size: 48px;
     text-shadow: -1px 1px 5px #878787;
     filter: dropshadow(color=#878787, offx=-1, offy=1);
 }
 .notice-space:first-of-type .message span   {
     font-size: 100px;
+    line-height: 100px;
 }
 .notice-space:nth-child(2)  .message span   {
     font-size: 60px;

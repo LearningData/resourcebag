@@ -1,7 +1,8 @@
 <?php
 $messages = array(
     "all-teachers" => "All Teachers",
-    "create-notice" => "Create Notice For",
+    "notice-for" => "Notice For",
+    "create-notice" => "Create New Notice",
     "new-notice" => "New Notice",
     "edit-notice" => "Edit Notice",
     "notice-category" => "Notice Category",
