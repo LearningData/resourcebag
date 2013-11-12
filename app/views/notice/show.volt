@@ -4,7 +4,7 @@
         <h2>{{ t._("notice") }}</h2>
     </header>
     <div class="notice-space notice-page-show">
-        <span class="date">{{ notice.getDate() }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
+        <span class="date">{{ notice.getDate(t._("dateformat")) }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
         <p>
             {{ notice.text }}
         </p>

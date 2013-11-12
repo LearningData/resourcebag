@@ -31,8 +31,8 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
         );
     }
 
-    public function getDate() {
-        return date("d-m-Y", strtotime($this->date));
+    public function getDate($format="D jS M Y") {
+        return date($format, strtotime($this->date));
     }
 
     public static function getStudentNotices($user) {

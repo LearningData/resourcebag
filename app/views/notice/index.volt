@@ -12,7 +12,9 @@
         {% for notice in notices %}
         <div class="notice-space">
             <div class="note {{ notice.category }}">
-                <span class="date">{{ notice.getDate() }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
+                <span class="date">{{ notice.getDate(t._("dateformat")) }}
+                </span> | <span class="author">{{ notice.author.name }}
+                {{ notice.author.lastName }}</span>
                 <p class="message">
                     <span class="ld-notice-icon"></span>
                     {{ notice.text }}
