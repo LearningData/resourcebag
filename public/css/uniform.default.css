@@ -12,7 +12,7 @@
 /* General settings */
 div.ld-CheckClass, div.ld-RadioClass    {
     float: left;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 div.selector, div.selector span, div.checker span, div.radio span, div.button, div.button span, div.ld-CheckClass span, div.ld-RadioClass span {
     background-image: url("../img/sprite-uniform.png");

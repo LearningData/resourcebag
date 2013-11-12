@@ -10,7 +10,7 @@
         </p>
         {% for file in notice.files %}
         <p>
-            {{ link_to("download/noticeboard/"~file.id, "Download") }}
+            {{ link_to("download/noticeboard/"~file.id, "class":"icon-download") }}
         </p>
 
         {% endfor %}
