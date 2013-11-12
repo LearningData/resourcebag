@@ -23,28 +23,28 @@
 
 /* Checkbox */
 div.ld-CheckClass span {
-    background-position: 0 -20px;
+    background-position: 0 -50px;
  }
 div.ld-CheckClass span.checked {
-    background-position: -30px -20px;
+    background-position: -30px -50px;
 }
 div.ld-CheckClass.hover span {
-    background-position: -60px -20px;
+    background-position: -60px -50px;
 }
 div.ld-CheckClass.hover span.checked {
-    background-position: -30px -20px;
+    background-position: -30px -50px;
 }
 
 /* Radio */
 .orange div.ld-RadioClass span {
-    background-position: 0 -50px;
+    background-position: 0 -80px;
 }
 .orange div.ld-RadioClass span.checked {
-    background-position: -30px -50px;
+    background-position: -30px -80px;
 }
 .orange div.ld-RadioClass.hover span {
-    background-position: -60px -50px;
+    background-position: -60px -80px;
 }
 .orange div.ld-RadioClass.hover span.checked {
-    background-position: -30px -50px;
+    background-position: -30px -80px;
 }
