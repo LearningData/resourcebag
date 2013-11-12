@@ -2,28 +2,28 @@
     <header>
         <h1>{{ t._("classes")  }}</h1>
     </header>
+    <section class="ld-subsection first">
+        <h2>{{ t._("my-classes") }}</h2>
     {% for classList in user.classes %}
     <p class="col-xs-3">
         {{ link_to("student/showClass/"~classList.id,
         classList.subject.name) }}({{ classList.extraRef }})
     </p>
     {% endfor %}
-    <div class="clearfix"></div>
-    <button class="btn join-class">
-        {{ t._("join-class") }}
-    </button>
+    </section>
+    <section class="ld-subsection">
+        <h2>{{ t._("join-class") }}</h2>
 
-    {{ form("student/joinClass", "method":"post", "class":"join-class hidden") }}
-    {{ securityTag.csrf(csrf_params) }}
-    <p>
-        {{ select('class-id', classes, 'using': ['id', 'name'],
-        'emptyText': 'Please, choose one class')}}
-    </p>
-    <p>
-        <input type="submit" class="btn" value={{ t._("join") }}>
-        <button type="button" class="btn btn-cancel">
-            {{ t._("cancel") }}
-        </button>
-    </p>
-    </form>
+        {{ form("student/joinClass", "method":"post", "class":"join-class") }}
+        {{ securityTag.csrf(csrf_params) }}
+        <p class="col-sm-6">
+            {{ select('class-id', classes, 'using': ['id', 'name'],
+            'useEmpty': true,
+            'emptyText': t._("choose-class"))}}
+        </p>
+        <p class="col-sm-6">
+            <input type="submit" class="btn" value={{ t._("join") }}>
+        </p>
+        </form>
+    </section>
 </div>
