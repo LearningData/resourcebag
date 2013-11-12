@@ -7,13 +7,13 @@
 .orange.btn-icon:hover, .orange .btn:hover {
     background-color: #f47920;
 }
-.orange .form-control:focus, .orange input:focus {
+.orange .form-control:focus, .orange input:focus, .orange textarea:focus {
     border-color: #f7941e;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 30, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247, 148, 40, 0.6);
 }
-.orange .modal-title    {
+.orange .modal-title {
     border-color: #ff9e19;
 }
 .orange .tooltip.top .tooltip-arrow {
@@ -23,7 +23,7 @@
 /* Checkbox */
 .orange div.ld-CheckClass span {
     background-position: 0 -50px;
- }
+}
 .orange div.ld-CheckClass span.checked {
     background-position: -30px -50px;
 }
