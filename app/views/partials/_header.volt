@@ -15,7 +15,7 @@
 
         </div>
 
-        <span class="name-school"> {{ user.name }}
+        <span class="name-school"> {{ user.name }} {{ user.lastName }}
             <br />
             <strong>{{ user.school.name }}</strong>
                 <button type="button"
