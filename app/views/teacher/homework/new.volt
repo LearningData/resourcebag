@@ -34,20 +34,22 @@
         value="{{ classList.id }}">
     </div>
     <h3>{{ t._("assign-students") }}</h3>
-    <div id="students" class="ld-tree">
-        <p>
-            <!--{{ check_field("all", "value": true, "class":"parent-node", "data-target":".ld-homework .student-node", "checked":"checked") }} {{ t._("all") }}-->
-            {{ check_field("all", "value": true, "checked":"checked") }} {{ t._("all") }}
-        </p>
-        {% for user in classList.users %}
-        <p class="col-xs-3">
-            <!--{{ check_field("students[]", "value": user.id, "checked":"checked", "class":"student-node child-node", "data-source":".ld-homework .parent-node" ) }}-->
-            {{ check_field("students[]", "value": user.id, "checked":"checked") }}
-            {{ user.name }} {{ user.lastName }}
-        </p>
-        {% endfor %}
+    <div class="div-block-grey">
+        <div id="students" class="ld-tree">
+            <p>
+                <!--{{ check_field("all", "value": true, "class":"parent-node", "data-target":".ld-homework .student-node", "checked":"checked") }} {{ t._("all") }}-->
+                {{ check_field("all", "value": true, "checked":"checked") }} {{ t._("all") }}
+            </p>
+            {% for user in classList.users %}
+            <p class="col-xs-3">
+                <!--{{ check_field("students[]", "value": user.id, "checked":"checked", "class":"student-node child-node", "data-source":".ld-homework .parent-node" ) }}-->
+                {{ check_field("students[]", "value": user.id, "checked":"checked") }}
+                {{ user.name }} {{ user.lastName }}
+            </p>
+            {% endfor %}
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
     <input class="btn mtop-20" type="submit" value={{ t._("save")}}>
 
     </form>

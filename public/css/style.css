@@ -21,7 +21,7 @@
  * Navigation Arrows
  * Main Menu / Sidebar
  *.Headers
- *
+ * Datepicker
  *
  *
  *
@@ -29,7 +29,7 @@
  * User Profile
  * Datepicker
  * Paginator
- *
+ * Dividers
  *
  *
  */
@@ -523,7 +523,7 @@ header h2 {
     border: none;
 }
 
-/* Events Dashboard */
+/* Datepicker */
 #datepicker {
     min-height: 300px;
 }
@@ -1016,3 +1016,17 @@ form input[disabled] {
     cursor: pointer;
 }
 
+
+
+
+
+
+
+
+
+
+/* Dividers */
+.div-block-grey {
+    background-color: #F1F1F1;
+    padding: 10px;
+}
