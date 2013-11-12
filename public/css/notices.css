@@ -4,6 +4,35 @@
 .ld-notices .form .radio-box label {
     font-weight: normal;
 }
+.ld-notices .note .ld-notice-icon:before, .ld-notices .note.general .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f02e";
+}
+.ld-notices .note.Thanks .ld-notice-icon:before, .ld-notices .note.thanks .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f164";
+}
+.ld-notices .note.Meeting .ld-notice-icon:before, .ld-notices .note.meting .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f0b1";
+}
+.ld-notices .note.Sport .ld-notice-icon:before, .ld-notices .note.sport .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f11e";
+}
+.ld-notices .note.Announcements .ld-notice-icon:before, .ld-notices .note.announcements .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f0a1";
+}
+.ld-notices .note.celebration .ld-notice-icon:before, .ld-notices .note.Celebration .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f091";
+}
+.ld-notices .note.After .ld-notice-icon:before, .ld-notices .note.after .ld-notice-icon:before {
+    font-family: FontAwesome;
+    content: "\f186";
+}
+/*create notice*/
 .ld-notices .ld-tree span.collapse {
     display: none;
 }

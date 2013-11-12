@@ -72,9 +72,21 @@ class HomeworkService {
         return $links;
     }
 
+    public static function getLinksByclass($controller,$classId, $pages, $status) {
+        $links = array();
+        foreach (range(1, $pages) as $page) {
+            $url = "$controller/homework/class/$classId?page=$page&filter=$status";
+            $links []= array("url"=> $url,
+                "page" => $page
+            );
+        }
+
+        return $links;
+    }
+
     public static function getPage($homeworks, $currentPage) {
         $params = array("data" => $homeworks,
-            "limit"=> 10, "page" => $currentPage
+            "limit"=> 3, "page" => $currentPage
         );
 
         $paginator = new Paginator($params);

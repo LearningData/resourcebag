@@ -1,20 +1,20 @@
-<div class="blue">
+<div class="ld-notices blue">
     <header>
         <h1>{{ t._("notices") }}</h1>
     </header>
 
     {% if not user.isStudent() %}
     <p>
-        {{ link_to(user.getController()~"/noticeboard/new", "New", "class":"btn") }}
+        {{ link_to(user.getController()~"/noticeboard/new", t._("new"), "class":"btn") }}
     </p>
     {% endif %}
     <div class="notice-page">
         {% for notice in notices %}
         <div class="notice-space">
-            <div class="note">
+            <div class="note {{ notice.category }}">
                 <span class="date">{{ notice.getDate() }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
                 <p class="message">
-                    <span class="icon-bookmark"></span>
+                    <span class="ld-notice-icon"></span>
                     {{ notice.text }}
                 </p>
                 <div class="btn-group btn-group-xs">
