@@ -14,7 +14,7 @@
         </p>
         <p class="col-md-6">
             <span class="label">{{ t._("room") }}</span>
-            {{ classList.room }}
+            {{ classList.getRooms() }}
         </p>
         <p class="col-md-6">
             <span class="label">{{ t._("extra-ref") }}</span>

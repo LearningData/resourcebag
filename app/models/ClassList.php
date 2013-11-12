@@ -26,10 +26,26 @@ class ClassList extends \Phalcon\Mvc\Model {
         );
 
         $this->hasMany("id", "Homework", "classId", array("alias" => "Homeworks"));
+        $this->hasMany("id", "TimetableSlot", "classId", array("alias" => "Slots"));
     }
 
     public function getSource() {
         return "classlist";
+    }
+
+    public function getRooms() {
+        $rooms = array();
+        foreach ($this->slots as $slot) {
+            if(!in_array($slot->room, $rooms)) {
+                array_push($rooms, $slot->room);
+            }
+        }
+        $response = "";
+        foreach ($rooms as $room) {
+            $response .= "$room ";
+        }
+
+        return $response;
     }
 
     public function getStartedHomework() {
