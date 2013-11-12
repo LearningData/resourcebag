@@ -61,7 +61,11 @@ class ClassListService {
         if($group && count($group->cohorts) > 0) {
             foreach ($group->cohorts as $cohort) {
                 foreach ($cohort->classes as $classList) {
-                    $classes [$classList->id]= $classList->subject->name;
+                    $classInfo = $classList->extraRef . " " .
+                                $classList->subject->name . " " .
+                                $classList->cohort->stage;
+
+                    $classes[$classList->id] = $classInfo;
                 }
             }
         }
