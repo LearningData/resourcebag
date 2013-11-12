@@ -191,8 +191,8 @@ div.radio, div.ld-RadioClass {
 }
 div.radio, div.radio span, div.radio input,
 div.ld-RadioClass, div.ld-RadioClass span, div.ld-RadioClass input {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 div.radio span  {
     display: -moz-inline-box;

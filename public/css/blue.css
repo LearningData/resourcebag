@@ -2,7 +2,7 @@
 .blue .ld-notice-icon {
     color: #0ba6d3;
 }
-.blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action, .blue header {
+.blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action, .blue header, .blue .uploader .action {
     background-color: #0ba6d3;
 }
 
