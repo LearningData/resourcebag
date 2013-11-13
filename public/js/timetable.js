@@ -62,6 +62,15 @@ var timetablePage = (function() {
             var timetable = $( "<table class=\"table day\">")
             var tableRows = []
             for ( var i = 0; i < data.length; i++ ) {
+                if (data[i].time == "11:00:00") {
+                    var rowStr = "<tr class=\"break\"><td colSpan=2> 10:45 - 11:00 </td>"
+                    rowStr += "<td colSpan=4> Break </td></tr>"
+                    tableRows.push(rowStr)
+                } else if (data[i].time == "12:40:00") {
+                    var rowStr = "<tr class=\"break\"><td colSpan=2> 12:20 - 12:40 </td>"
+                    rowStr += "<td colSpan=4> Lunch </td></tr>"
+                    tableRows.push(rowStr)
+                }
                 var rowStr = "<tr><td colspan=2>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
                 rowStr += "<td colspan=4>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                 tableRows.push(rowStr)

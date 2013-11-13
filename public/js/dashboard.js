@@ -173,6 +173,15 @@ var dashboard = (function() {
                 timetable = $( "<table class=\"table day\">")
                 var tableRows = []
                 for ( var i = 0; i < data.length; i++ ) {
+                    if (data[i].time == "11:00:00") {
+                        var rowStr = "<tr class=\"break\"><td> 10:45 - 11:00 </td>"
+                        rowStr += "<td colSpan=3> Break </td></tr>"
+                        tableRows.push(rowStr)
+                    } else if (data[i].time == "12:40:00") {
+                        var rowStr = "<tr class=\"break\"><td> 12:20 - 12:40 </td>"
+                        rowStr += "<td colSpan=3> Lunch </td></tr>"
+                        tableRows.push(rowStr)
+                    }
                     var rowStr = "<tr><td>" + data[i].time.substr(0,5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
                     rowStr += "<td colSpan=3>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                     tableRows.push(rowStr)
