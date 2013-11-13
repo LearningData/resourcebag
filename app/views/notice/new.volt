@@ -23,9 +23,9 @@
         <input type="text" value="{{ t._('all-teachers') }}" id="class-id" name="classes" class="form-control ld-no-tree col-md-6" disabled="disabled">
         </input>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
         <label>{{ t._("message") }}</label>
-        {{ text_area("notice", "placeholder":t._("notice"), "class":"form-control") }}
+        {{ text_area("notice", "placeholder":t._("notice"), "class":"form-control", "rows":"5") }}
     </div>
     <p class="col-md-6">
         {{ t._("notice-date") }}
