@@ -42,7 +42,7 @@ var dashboard = (function() {
                eventDate.getMonth() == month ) {
                 console.log('in')
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
-                eventStr += "<td>" + getDisplayDate(eventDate, "D jS") + "<br/>"
+                eventStr += "<td colSpan=2>" + getDisplayDate(eventDate, "D jS") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "All Day"
                 } else {
@@ -58,15 +58,16 @@ var dashboard = (function() {
         table.append( tableBody )
         $( "#dashboard-events" ).append( table )
     }
-    fillDaysEvents = function( selectEvent ) {
+    fillDaysEvents = function( dateStr ) {
+        var selectDate = new Date(dateStr)
         var items = []
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
             var dateValues = calendarEvents[i].start.split(/[-\s]/)
             eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
-            if ( eventDate.getFullYear() == selectEvent.selectedYear &&
-               eventDate.getMonth() == selectEvent.selectedMonth &&
-               eventDate.getDate() == selectEvent.selectedDay ) {
+            if ( eventDate.getFullYear() == selectDate.getFullYear() &&
+               eventDate.getMonth() ==  selectDate.getMonth() &&
+               eventDate.getDate() == selectDate.getDate() ) {
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "<td> All Day </td></tr>"
@@ -77,7 +78,9 @@ var dashboard = (function() {
             }
         }
         var tableBody = $( "<tbody></tbody>")
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4> " + getDisplayDate(eventDate, "D jS") + " " + prettyDateMonth(eventDate) + " " + eventDate.getFullYear() + " </td></tr>" )
         tableBody.append( items.join("") )
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4><a class=\"btn\" href=\"" + urlBase + "/" + getUser() + "/calendar/new\">New Event</a></td></tr>" )
         var table = $ ( "<table class=\"table table-events\"></table>" )
         table.append( tableBody )
         $( "#dashboard-events" ).append( table )

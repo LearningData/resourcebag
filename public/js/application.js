@@ -185,19 +185,23 @@ function dayOfWeek(date) {
 
 function getDisplayDate(date, format) {
     var dateStr = date.getDate()
-     switch (date) {
+     switch (dateStr) {
      case 1:
      case 21:
      case 31:
-        dateStr += 'st';
+        dateStr += 'st'
+        break
      case 2:
      case 22:
-        dateStr += 'nd';
+        dateStr += 'nd'
+        break
      case 3:
      case 23:
-        dateStr += 'rd';
+        dateStr += 'rd'
+        break
      default:
-        dateStr += 'th';
+        dateStr += 'th'
+        break
    }
     return days[date.getDay()] + " " + dateStr
 }
@@ -210,6 +214,10 @@ function prettyDay(date) {
 function prettyDate(date) {
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return date.getUTCDate() + " " + months[date.getMonth()]
+}
+function prettyDateMonth(date) {
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    return months[date.getMonth()]
 }
 
 function prettyHour(date) {

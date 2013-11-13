@@ -52,7 +52,7 @@
     </table>
     <div class="mtop-20">
         {{ submit_button(t._("save"),"class":"btn") }}
-        <button class="btn btn-return btn-cancel">
+        <button type="button" class="btn btn-return btn-cancel">
             {{ t._("cancel") }}
         </button>
     </div>

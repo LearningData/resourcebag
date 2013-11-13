@@ -200,6 +200,10 @@
     text-align: left;
     border-right: 1px solid #D1D3D4;
 }
+#dashboard-events .table-events td.single-date-cell {
+    text-align: center;
+    border-right:none;
+}
 #dashboard-events .table-events td:last-child {
     vertical-align: middle;
     font-weight: bold;

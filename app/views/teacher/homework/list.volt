@@ -19,8 +19,8 @@
             {% for classList in classes %}
             <tr>
                 <td colspan=7>
-                    {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
+                    {% if classList.getSubmittedHomework().count() %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
                     {% else %}
                         {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
                     {% endif %}
@@ -31,8 +31,8 @@
                     {% endif %}
                 </td>
                 <td class="ld-student-status">
-            {% if classList.getPendingHomework().count() + classList.getStartedHomework().count() + classList.getSubmittedHomework().count() %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=0", classList.users.count()) }}
+            {% if classList.getSubmittedHomework().count() %}
+                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
                     {% else %}
                         {{ classList.users.count() }}
                     {% endif %}
