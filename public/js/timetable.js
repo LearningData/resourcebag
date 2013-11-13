@@ -43,7 +43,7 @@ var timetablePage = (function() {
             refreshTables()
         })
         $( ".teacher .ld-timetable .btn-edit").click( function() {
-            $( ".teacher .ld-timetable .table" ).toggleClass( "edit" )
+        //    $( ".teacher .ld-timetable .table" ).toggleClass( "edit" )
         })
     }
 
@@ -170,8 +170,8 @@ var timetablePage = (function() {
                 window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
             })
             $( ".teacher .ld-timetable .table.week td").click(function( event ) {
-                $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
-                event.currentTarget.classList.add( "edit" )
+            //    $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
+            //    event.currentTarget.classList.add( "edit" )
             })
         })
     }
