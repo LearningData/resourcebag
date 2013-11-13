@@ -22,6 +22,7 @@ $messages = array(
     "submit-homework" => "Submit Homework",
     "submitted" => "Submitted",
     "teacher" => "Teacher",
-    "to-do" => "To Do"
+    "to-do" => "To Do",
+    "need-upload-or-text" => "You need to upload a file or to use text editor"
 );
 ?>

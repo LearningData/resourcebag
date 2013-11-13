@@ -148,8 +148,8 @@ class HomeworkController extends ControllerBase {
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();
 
-        if (!$homework->files->count()) {
-            $this->flash->error("Please upload a file before submit the homework");
+        if (!$homework->textEditor || !$homework->files->count()) {
+            $this->flash->error($this->view->t->_("need-upload-or-text"));
             return $this->response->redirect("student/homework");
         }
 
