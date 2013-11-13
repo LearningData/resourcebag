@@ -3,9 +3,9 @@
         <h1>{{ t._("timetable")}}</h1>
     </header>
     {{ link_to("teacher/newClass","class":"btn mbottom-20","New Class") }}
-    <button class="btn btn-edit mbottom-20">
+    <!--<button class="btn btn-edit mbottom-20">
         Edit
-    </button>
+    </button>-->
     <div class="ld-responsive-sm">
         <div class="nav">
             <a title="Prev" class="btn-prev"><span class="icon-chevron-sign-left"></span></a>
