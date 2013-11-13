@@ -73,7 +73,7 @@
         {% else %}
         <h6>{{ t._("no-files-uploaded") }}.</h6>
 	{% endif %}
-	{% if !homework.files.count() and !homework.textEditor|trim|length %}
+	{% if homework.files.count() == 0 and homework.textEditor|striptags|trim|length == 0 %}
             <button class="btn mtop-20 btn-inactive">
                 {{ t._("submit-homework") }}
             </button>
