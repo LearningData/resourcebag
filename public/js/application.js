@@ -167,10 +167,33 @@ function showTimes(date) {
         }
     })
 }
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
 function dayOfWeek(date) {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return days[date.getUTCDay()]
+}
+
+
+
+function getDisplayDate(date, format) {
+    var dateStr = date.getDate()
+     switch (date) {
+     case 1:
+     case 21:
+     case 31:
+        dateStr += 'st';
+     case 2:
+     case 22:
+        dateStr += 'nd';
+     case 3:
+     case 23:
+        dateStr += 'rd';
+     default:
+        dateStr += 'th';
+   }
+    return days[date.getDay()] + " " + dateStr
 }
 
 function prettyDay(date) {
@@ -180,7 +203,7 @@ function prettyDay(date) {
 
 function prettyDate(date) {
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    return date.getUTCDate() + " " + months[date.getUTCMonth()]
+    return date.getUTCDate() + " " + months[date.getMonth()]
 }
 
 function prettyHour(date) {
@@ -206,7 +229,6 @@ function setUpEvents() {
         var target = element.getAttribute("data-target")
         $( target ).collapse( "toggle" )
         var iconTarget = element.getAttribute("data-icon")
-        console.log(iconTarget)
         $(iconTarget).toggleClass("collapse-icon-open")
         $(iconTarget).toggleClass("collapse-icon-close")
         
@@ -261,7 +283,6 @@ var setTreeEvents = function() {
     })
 }
 var cutText = function(parent, element) {
-    console.log(element)
     if (element == undefined)
         return
     var height = parent.clientHeight

@@ -30,7 +30,35 @@ var dashboard = (function() {
             displayDate.setDate(displayDate.getDate() + 1)
             populateTimetable( displayDate )
     })
-    fillDaysEvents = function( dateStr, selectEvent ) {
+    fillMonthEvents = function( year, month ) {
+        var items = []
+        $( "#dashboard-events" ).empty( )
+        for ( var i = 0; i < calendarEvents.length; i++ ) {
+                console.log( eventDate.getFullYear(),year)
+ console.log( eventDate.getMonth(),month )
+            var dateValues = calendarEvents[i].start.split(/[-\s]/)
+            eventDate = new Date(dateValues[0], dateValues[1], dateValues[2])
+            if ( eventDate.getFullYear() == year &&
+               eventDate.getMonth() == month ) {
+                console.log('in')
+                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
+                eventStr += "<td>" + getDisplayDate(eventDate, "D jS") + "<br/>"
+                if ( calendarEvents[i].allDay == 0 ) {
+                    eventStr += "All Day"
+                } else {
+                    eventStr += prettyHour(eventDate)
+                }
+                eventStr += "</td></tr>"
+                items.push(eventStr)
+            }
+        }
+        var tableBody = $( "<tbody></tbody>")
+        tableBody.append( items.join("") )
+        var table = $ ( "<table class=\"table table-events\"></table>" )
+        table.append( tableBody )
+        $( "#dashboard-events" ).append( table )
+    }
+    fillDaysEvents = function( selectEvent ) {
         var items = []
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
@@ -56,8 +84,8 @@ var dashboard = (function() {
     }
 
     findCurrentEvents = function( date ) {
-        if (date < new Date().setHours(0,0,0,0))
-            return [false]
+       // if (date < new Date().setHours(0,0,0,0))
+       //     return [false]
         for ( var i = 0; i < calendarEvents.length; i++ ) {
             var dateValues = calendarEvents[i].start.split(/[-\s]/)
             eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
@@ -82,13 +110,13 @@ var dashboard = (function() {
                 inline: true,
                 firstDay: 1,
                 onSelect: fillDaysEvents,
+                onChangeMonthYear: fillMonthEvents,
                 beforeShowDay: findCurrentEvents,
                 showOtherMonths: true,
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
                 yearSuffix: " <h2>Events</h2>"
             })
-            fillDaysEvents("", { selectedYear: displayDate.getFullYear(),
-                selectedMonth: displayDate.getMonth() ,selectedDay: displayDate.getDate() })
+            fillMonthEvents(displayDate.getFullYear(), displayDate.getMonth()+1)
         })
 
         
@@ -233,7 +261,6 @@ var dashboard = (function() {
             }
             $( "#dashboard-notices" ).append( items.join( "" ) )
             $( "#dashboard-notices .note" ).each(function(index, item) {
-                console.log(item)
                 cutText(item, $( item ).find( "p")[0])
             })
         })
