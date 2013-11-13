@@ -98,9 +98,9 @@ class HomeworkController extends ControllerBase {
         $homework->textEditor = $this->request->getPost("content-homework");
         if($homework->textEditor) {
             if ($homework->save()) {
-                $this->flash->success("Homework updated.");
+                $this->flash->success($this->view->t->_("homework-updated"));
             } else {
-                $this->flash->error("Homework was not updated.");
+                $this->flash->error($this->view->t->_("homework-not-updated"));
             }
         }
 
@@ -148,7 +148,7 @@ class HomeworkController extends ControllerBase {
         $homework = Homework::findFirstById($homeworkId);
         $this->getUserBySession();
 
-        if (!$homework->textEditor || !$homework->files->count()) {
+        if (!$homework->textEditor && !$homework->files->count()) {
             $this->flash->error($this->view->t->_("need-upload-or-text"));
             return $this->response->redirect("student/homework");
         }
@@ -157,9 +157,9 @@ class HomeworkController extends ControllerBase {
         $homework->status = Homework::$SUBMITTED;
 
         if($homework->save()) {
-            $this->flash->success("The homework was submitted.");
+            $this->flash->success($this->view->t->_("homework-submitted"));
         } else {
-            $this->flash->error("The homework was not submitted.");
+            $this->flash->error($this->view->t->_("homework-not-submitted"));
             $this->appendErrorMessages($homework->getMessages());
         }
 
@@ -174,10 +174,10 @@ class HomeworkController extends ControllerBase {
             $classList, $this->request->getPost());
 
         if (!$homework->save()) {
-            $this->flash->error("Was not possible to create the homework");
+            $this->flash->error($this->view->t->_("homework-not-created"));
             $this->appendErrorMessages($homework->getMessages());
         } else {
-            $this->flash->success("The homework was created");
+            $this->flash->success($this->view->t->_("homework-created"));
         }
 
         return $this->response->redirect("student/homework?filter=0");
@@ -186,6 +186,7 @@ class HomeworkController extends ControllerBase {
     public function uploadFileAction() {
         $homeworkId = $this->request->getPost("homework-id");
         $description = $this->request->getPost("description");
+        $t = Translation::get(Language::get(), "file");
 
         if ($this->request->hasFiles() == true) {
             foreach ($this->request->getUploadedFiles() as $file){
@@ -193,9 +194,9 @@ class HomeworkController extends ControllerBase {
                     $file, $description);
 
                 if ($homeworkFile->save()) {
-                    $this->flash->success("The file was uploaded.");
+                    $this->flash->success($t->_("uploaded"));
                 } else {
-                    $this->flash->error("The file was not uploaded.");
+                    $this->flash->error($t->_("upload-error"));
                     foreach ($homeworkFile->getMessages() as $message) {
                         $this->flash->error($message);
                     }
@@ -210,11 +211,12 @@ class HomeworkController extends ControllerBase {
     public function removeFileAction($fileId) {
         $file = HomeworkFile::findFirstById($fileId);
         $homeworkId = $file->homeworkId;
+        $t = Translation::get(Language::get(), "file");
 
         if ($file->delete()) {
-            $this->flash->success("File was removed");
+            $this->flash->success($t->_("removed"));
         } else {
-            $this->flash->error("File was not removed");
+            $this->flash->error($t->_("not-removed"));
         }
 
         return $this->dispatcher->forward(array("action" => "edit",
@@ -232,9 +234,9 @@ class HomeworkController extends ControllerBase {
         $homework->status = Homework::$REVIEWED;
 
         if (!$homework->save()) {
-            $this->flash->error("Error to review the homework");
+            $this->flash->error($this->view->t->_("homework-not-reviewed"));
         } else {
-            $this->flash->success("Homework was reviewed.");
+            $this->flash->success($this->view->t->_("homework-reviewed"));
         }
 
         return $homework;

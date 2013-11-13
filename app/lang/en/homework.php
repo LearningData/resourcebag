@@ -23,6 +23,13 @@ $messages = array(
     "submitted" => "Submitted",
     "teacher" => "Teacher",
     "to-do" => "To Do",
-    "need-upload-or-text" => "You need to upload a file or to use text editor"
+    "need-upload-or-text" => "You need to upload a file or to use text editor",
+    "homework-submitted" => "The homework was submitted.",
+    "homework-not-submitted" => "The homework was not submitted.",
+    "homework-updated" => "The homework was updated.",
+    "homework-not-updated" => "The homework was not updated.",
+    "homework-created" => "The homework was created.",
+    "homework-reviewed" => "The homework was reviewed.",
+    "homework-not-reviewed" => "The homework was not reviewed.",
 );
 ?>
