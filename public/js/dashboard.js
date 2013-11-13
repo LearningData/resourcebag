@@ -143,7 +143,7 @@ var dashboard = (function() {
                 break
                 case "1" :
                     icon = "icon-pencil",
-                    titleTip = "Edit howework"
+                    titleTip = "Edit Howework"
                 break
                 default: 
                     continue
