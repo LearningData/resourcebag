@@ -69,12 +69,16 @@
             </tr>
             {% endfor %}
         </table>
-        {{ link_to("student/homework/submit/"~homework.id, "class":"btn mtop-20", t._("submit-homework")) }}
+        
         {% else %}
         <h6>{{ t._("no-files-uploaded") }}.</h6>
-        <button class="btn mtop-20 btn-inactive">
-            {{ t._("submit-homework") }}
-        </button>
+	{% endif %}
+	{% if !homework.files.count() and !homework.textEditor|trim|length %}
+            <button class="btn mtop-20 btn-inactive">
+                {{ t._("submit-homework") }}
+            </button>
+        {% else %}
+		{{ link_to("student/homework/submit/"~homework.id, "class":"btn mtop-20", t._("submit-homework")) }}
         {% endif %}
         <button class="btn mtop-20 btn-cancel return">
             {{ t._("homework-exit") }}

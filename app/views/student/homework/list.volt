@@ -46,7 +46,7 @@
 
                 {{ link_to("student/homework/edit/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
-                {% if !homework.Files.count() %}
+                {% if !homework.Files.count() and !homework.textEditor|trim|length %}
                 <span data-title="{{ homework.title }}" class="btn-submit btn-inactive btn-icon icon-ok" title="Please upload a file"></span>
                 {% else %}
                 <span data-count="{{ homework.Files.count() }}" data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
