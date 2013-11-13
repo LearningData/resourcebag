@@ -4,8 +4,7 @@ $(document).ready(function() {
     $('.ld-tooltip').tooltip({
       selector: "[data-toggle=tooltip]",
       container: ".ld-tooltip"
-    })    
-    
+    })
 
     $(".btn-profile-actions").click(function() {
         $(".user-profile-actions").slideToggle("fast");
