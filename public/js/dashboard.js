@@ -163,12 +163,13 @@ var dashboard = (function() {
             switch ( item.status ) {
                 case "2" :
                     icon = "icon-pencil"
+                    titleTip = "View howework"
                     urlSegment = "show"
                 break
                 default: 
                     continue
             }
-            homeworkItems.push("<li class='ld-tooltip'><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + " data-placement='right auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            homeworkItems.push("<li class='ld-tooltip'><a title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + " data-placement='left auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
         }
         return homeworkItems
     }
@@ -180,6 +181,7 @@ var dashboard = (function() {
             var homeworkList = $( "<ul>")
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework-contents" ).append( homeworkList )
+            $('.ld-tooltip').tooltip({selector: "[data-toggle=tooltip]", container: ".ld-tooltip"})
             $ (".dashboard .ld-homework.ld-box .ld-box-child").slimScroll({height:"335px"})
         })
     }
