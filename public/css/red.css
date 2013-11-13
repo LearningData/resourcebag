@@ -1,3 +1,7 @@
+.red a, .teacher .ld-timetable .table.week td .subject{
+    color: #DC3B42 
+}
+
 .red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header, .red .uploader .action {
     background-color: #dc3b42;
 }

@@ -642,7 +642,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     position: relative;
     margin-bottom: 15px;
     clear: both;
-    margin: 0 auto !important;
+    margin: 0 auto 15px !important;
     width: 95% !important;
 }
 .form-search input {
@@ -758,6 +758,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     width: 27px;
     height: 27px;
     margin-left: 7px;
+    margin-right: 0!important;
 }
 
 .ui-state-highlight span, .ui-state-highlight a, .ui-datepicker-today span, .ui-datepicker-today a {

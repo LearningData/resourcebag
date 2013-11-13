@@ -186,7 +186,7 @@
 
 /* events */
 .dashboard .ld-box.ld-events .ld-box-head .title {
-    padding: 0px;
+    padding: 0;
 }
 #dashboard-events .table-events {
     border-width: 1px 0 0;
@@ -203,6 +203,10 @@
 #dashboard-events .table-events td:last-child {
     vertical-align: middle;
     font-weight: bold;
+}
+#dashboard-events .table-events td span{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* notices */

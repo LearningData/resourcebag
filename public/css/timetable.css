@@ -15,8 +15,6 @@
         display: block;
     }
 }
-
-
 .ld-timetable .header-navigation {
     padding: 12px;
     position: relative;
@@ -35,7 +33,7 @@
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
-    background-color: #e5242d;
+    background-color: #DC3B42;
     position: relative;
     height: 60px;
     padding: 20px 0 0;
@@ -142,6 +140,7 @@
     position: relative;
     padding: 8px;
     height: 50px;
+    border-right: solid 1px #DCDDDE;
 }
 
 .ld-timetable .table.edit td span.cell-icon, .ld-timetable .table td.edit span.cell-icon {
@@ -151,7 +150,6 @@
 .ld-timetable .table span.cell-icon {
     display: none;
     line-height: 21px;
-    background: red;
     float: right;
 }
 
@@ -174,7 +172,6 @@
 }
 
 .teacher .ld-timetable .table.week td .subject {
-    color: blue;
     cursor: pointer;
     margin: 3%;
 }

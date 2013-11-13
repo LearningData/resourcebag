@@ -103,7 +103,6 @@
     margin-top: 5px;
     font-size: 12px;
     height: 95px;
-    overflow: auto;
 }
 .notice-space p:first-line {
     font-size: 16px;
