@@ -5,9 +5,9 @@
     <section class="ld-subsection first">
         <h2>{{ t._("my-classes") }}</h2>
     {% for classList in user.classes %}
-    <p class="col-xs-3">
+    <p class="col-xs-3 class">
         {{ link_to("student/showClass/"~classList.id,
-        classList.subject.name) }}({{ classList.extraRef }})
+        classList.subject.name) }}
     </p>
     {% endfor %}
     </section>
