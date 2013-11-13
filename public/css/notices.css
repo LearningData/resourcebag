@@ -102,7 +102,7 @@
 .notice-space .message {
     margin-top: 5px;
     font-size: 12px;
-    height: 115px;
+    height: 95px;
     overflow: auto;
 }
 .notice-space p:first-line {
