@@ -116,6 +116,13 @@ var calendarPage = (function() {
         modalBody.append( hiddenStart )
         modalBody.append( hiddenEnd )
         modalBody.append( allDay )
+        var hiddenElement = $( "input:hidden" )[0]
+        var hiddenTag = $( "<input>", {
+            type: "hidden",
+            name: hiddenElement.name,
+            value: hiddenElement.value
+        })
+        modalBody.append( hiddenTag )
         //buttons
         var send = $( "<input>", {
             "class": "btn bg-evt",
