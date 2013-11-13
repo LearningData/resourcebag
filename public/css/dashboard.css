@@ -211,11 +211,18 @@
     overflow-y: auto;
 }
 
+#dashboard-notices {
+    height: 100%;
+}
 .dashboard .note  {
     padding: 15px;
     padding-bottom: 0;
+    height: 30%;
+    overflow: auto;
 }
-
+.dashboard .note:first-child {
+    height: 40%
+}
 .dashboard .note p {
     font-size: 12px;
     margin-top: 0;

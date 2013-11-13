@@ -260,6 +260,17 @@ var setTreeEvents = function() {
         checkUpwards( $( $( event.target ).data().source ) )
     })
 }
+var cutText = function(parent, element) {
+    console.log(element)
+    if (element == undefined)
+        return
+    var height = parent.clientHeight
+    while ( parent.scrollHeight > height ) {
+        $( element ).text(function (index, text) {
+            return text.replace(/\W*\s(\S)*$/, "");
+        })
+    }
+}
 
 
 

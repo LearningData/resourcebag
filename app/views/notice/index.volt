@@ -17,7 +17,7 @@
                 {{ notice.author.lastName }}</span>
                 <p class="message">
                     <span class="ld-notice-icon"></span>
-                    {{ notice.text }}
+                    <span class="text">{{ notice.text }}</span>
                 </p>
                 <div class="btn-group btn-group-xs">
                     {% if user.id == notice.author.id %}

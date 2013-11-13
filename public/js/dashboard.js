@@ -231,12 +231,11 @@ var dashboard = (function() {
             if ( notices[2] != undefined ) {
                 items.push( "<div class=\"note\"><span class=\"icon-file-text\"></span><p>" + notices[2].text + "</p></div>" )
             }
-            var noticeElement = $( "<div class=\"notice-home\">")
-            noticeElement.append( items.join( "" ) )
-            $( "#dashboard-notices" ).append( noticeElement )
-            if ( noticeElement[0].children.length == 2) {
-                noticeElement.addClass( "missing-child" )
-            }
+            $( "#dashboard-notices" ).append( items.join( "" ) )
+            $( "#dashboard-notices .note" ).each(function(index, item) {
+                console.log(item)
+                cutText(item, $( item ).find( "p")[0])
+            })
         })
     }
 

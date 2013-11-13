@@ -101,7 +101,7 @@
     margin-top: 5px;
     font-size: 12px;
     height: 115px;
-    overflow: hidden;
+    overflow: auto;
 }
 .notice-space p:first-line {
     font-size: 16px;
@@ -120,7 +120,6 @@
 .notice-space:first-of-type .message,
 .notice-space:nth-child(2) .message {
     height: 185px;
-    overflow: hidden;
 }
 
 .notice-space .btn-group  {
@@ -134,18 +133,18 @@
 }
 
 /* Rules for icons and categorys */
-.message span   {
+.message span:first-of-type   {
     float: left;
     margin: 0 15px 0 0;
     font-size: 48px;
     text-shadow: -1px 1px 3px #878787;
     filter: dropshadow(color=#dedede, offx=-1, offy=1);
 }
-.notice-space:first-of-type .message span   {
+.notice-space:first-of-type .message span:first-of-type   {
     font-size: 100px;
     line-height: 100px;
 }
-.notice-space:nth-child(2)  .message span   {
+.notice-space:nth-child(2)  .message span:first-of-type   {
     font-size: 60px;
     margin-top: 3px;
 }
