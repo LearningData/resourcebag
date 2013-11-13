@@ -127,30 +127,28 @@
     
 }
 
-.ld-timetable .table td span:nth-child(2) {
+.ld-timetable .table td span:nth-child(2),
+.ld-timetable .table td span:nth-child(3) {
     font-size: 12px;
 }
-
 .ld-timetable .table td span:nth-child(3) {
-    font-size: 10px;
+    margin-bottom: 5px;
 }
-
-
 .ld-timetable .table td {
     position: relative;
     padding: 8px;
     height: 50px;
     border-right: solid 1px #DCDDDE;
+    vertical-align: middle;
 }
 
 .ld-timetable .table.edit td span.cell-icon, .ld-timetable .table td.edit span.cell-icon {
-    display: inline;
+    display: block;
+    margin: 0 auto;
 }
 
 .ld-timetable .table span.cell-icon {
     display: none;
-    line-height: 21px;
-    float: right;
 }
 
 .ld-timetable .table.table-condensed th {

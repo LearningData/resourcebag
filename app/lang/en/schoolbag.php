@@ -17,6 +17,7 @@ $messages = array(
     "calendar" => "Calendar",
     "timetable" => "Timetable",
     "homework" => "Homework",
+    "school-policies" => "School Policies",
     "messages" => "Messages",
     "message" => "Message",
     "monday" => "Monday",
