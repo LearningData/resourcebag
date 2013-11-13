@@ -15,8 +15,6 @@
         display: block;
     }
 }
-
-
 .ld-timetable .header-navigation {
     padding: 12px;
     position: relative;
@@ -35,7 +33,7 @@
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
-    background-color: #e5242d;
+    background-color: #DC3B42;
     position: relative;
     height: 60px;
     padding: 20px 0 0;
@@ -86,6 +84,7 @@
 }
 #dashboard-timetable-contents .table td {
     padding: 11px 15px;
+    vertical-align: middle;
 }
 
 .ld-timetable .table.day {
@@ -128,30 +127,28 @@
     
 }
 
-.ld-timetable .table td span:nth-child(2) {
+.ld-timetable .table td span:nth-child(2),
+.ld-timetable .table td span:nth-child(3) {
     font-size: 12px;
 }
-
 .ld-timetable .table td span:nth-child(3) {
-    font-size: 10px;
+    margin-bottom: 5px;
 }
-
-
 .ld-timetable .table td {
     position: relative;
     padding: 8px;
     height: 50px;
+    border-right: solid 1px #DCDDDE;
+    vertical-align: middle;
 }
 
 .ld-timetable .table.edit td span.cell-icon, .ld-timetable .table td.edit span.cell-icon {
-    display: inline;
+    display: block;
+    margin: 0 auto;
 }
 
 .ld-timetable .table span.cell-icon {
     display: none;
-    line-height: 21px;
-    background: red;
-    float: right;
 }
 
 .ld-timetable .table.table-condensed th {
@@ -173,10 +170,22 @@
 }
 
 .teacher .ld-timetable .table.week td .subject {
-    color: blue;
     cursor: pointer;
     margin: 3%;
 }
 
-
-
+/* break time */
+.ld-timetable .break td{
+    background-color: #E6E7E8;
+    border-style: solid;
+    border-color: #D1D3D4;
+    height: 30px!important;
+    padding-top:5px!important;
+    padding-bottom:5px!important;
+}
+.ld-timetable .break td:first-child {
+    border-width: 2px 1px 2px 2px;
+}
+.ld-timetable .break td:last-child {
+    border-width: 2px 2px 2px 0;
+}

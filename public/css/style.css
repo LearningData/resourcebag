@@ -29,7 +29,7 @@
  * User Profile
  * Datepicker
  * Paginator
- * Dividers
+ * Section
  *
  *
  */
@@ -642,7 +642,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     position: relative;
     margin-bottom: 15px;
     clear: both;
-    margin: 0 auto !important;
+    margin: 0 auto 15px !important;
     width: 95% !important;
 }
 .form-search input {
@@ -758,6 +758,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     width: 27px;
     height: 27px;
     margin-left: 7px;
+    margin-right: 0!important;
 }
 
 .ui-state-highlight span, .ui-state-highlight a, .ui-datepicker-today span, .ui-datepicker-today a {
@@ -1022,4 +1023,28 @@ form input[disabled] {
 .link {
     color: #428bca;
     cursor: pointer;
+}
+
+
+/* Section */
+.ld-subsection {
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    margin: 20px 0;
+
+}
+.ld-subsection .class{
+    padding-left: 15px;
+}
+.ld-subsection.first {
+    margin: 0;
+    
+}
+.ld-subsection:nth-child(odd) {
+    background: #F1F1F1;
+    padding: 20px;
+}
+.ld-subsection h2, .ld-subsection h3 {
+    margin-top:0;
 }

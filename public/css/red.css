@@ -1,9 +1,16 @@
+.red a, .teacher .ld-timetable .table.week td .subject{
+    color: #DC3B42 
+}
+
 .red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header, .red .uploader .action {
     background-color: #dc3b42;
 }
-.red.btn-icon:hover, .red .btn:hover {
+
+/* hover background */
+.red .btn-icon:hover, .red .btn:hover {
     background-color: #c62433;
 }
+
 .red .form-control:focus {
     border-color: #dc3b42;
     outline: 0;

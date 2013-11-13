@@ -3,7 +3,7 @@
         <h1>{{ t._("classes")  }}</h1>
     </header>
     <section class="ld-subsection first">
-        <h2>{{ t._("my-classes") }}</h2>
+        <h3>{{ t._("my-classes") }}</h3>
     {% for classList in user.classes %}
     <p class="col-xs-3 class">
         {{ link_to("student/showClass/"~classList.id,
@@ -12,7 +12,7 @@
     {% endfor %}
     </section>
     <section class="ld-subsection">
-        <h2>{{ t._("join-class") }}</h2>
+        <h3>{{ t._("join-class") }}</h3>
 
         {{ form("student/joinClass", "method":"post", "class":"join-class") }}
         {{ securityTag.csrf(csrf_params) }}

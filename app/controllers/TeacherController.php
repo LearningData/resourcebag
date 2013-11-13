@@ -55,7 +55,7 @@ class TeacherController extends UsersController {
 
         $this->flash->success("Class was deleted successfully");
 
-        return $this->response->redirect("teacher/subjects");
+        return $this->response->redirect("teacher/classes");
     }
 
     public function createClassAction() {
@@ -103,7 +103,7 @@ class TeacherController extends UsersController {
         }
 
         $this->flash->success("Class was created successfully");
-        return $this->response->redirect("teacher/subjects");
+        return $this->response->redirect("teacher/classes");
     }
 
     public function newHomeworkAction($classId) {
@@ -170,7 +170,7 @@ class TeacherController extends UsersController {
                     $this->flash->error($message);
                 }
 
-                return $this->response->redirect("teacher/subjects");
+                return $this->response->redirect("teacher/classes");
             }
         }
 
