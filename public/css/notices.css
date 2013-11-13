@@ -11,22 +11,27 @@
 .ld-notices .note.Thanks .ld-notice-icon:before, .ld-notices .note.thanks .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f164";
+    color: #FF9E19;
 }
 .ld-notices .note.Meeting .ld-notice-icon:before, .ld-notices .note.meting .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0b1";
+    color: #10A236;
 }
 .ld-notices .note.Sport .ld-notice-icon:before, .ld-notices .note.sport .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f11e";
+    color: #9752A3;
 }
 .ld-notices .note.Announcements .ld-notice-icon:before, .ld-notices .note.announcements .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0a1";
+    color: #DC3B42;
 }
 .ld-notices .note.celebration .ld-notice-icon:before, .ld-notices .note.Celebration .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f091";
+    color: #FF0097
 }
 .ld-notices .note.After .ld-notice-icon:before, .ld-notices .note.after .ld-notice-icon:before {
     font-family: FontAwesome;
@@ -133,8 +138,8 @@
     float: left;
     margin: 0 15px 0 0;
     font-size: 48px;
-    text-shadow: -1px 1px 5px #878787;
-    filter: dropshadow(color=#878787, offx=-1, offy=1);
+    text-shadow: -1px 1px 3px #878787;
+    filter: dropshadow(color=#dedede, offx=-1, offy=1);
 }
 .notice-space:first-of-type .message span   {
     font-size: 100px;
