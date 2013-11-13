@@ -25,6 +25,16 @@ class ClassList extends \Phalcon\Mvc\Model {
             array("alias" => "Users")
         );
 
+        $this->hasManyToMany(
+            "id",
+            "NoticeBoardClasses",
+            "classId",
+            "noticeId",
+            "NoticeBoard",
+            "id",
+            array("alias" => "Notices")
+        );
+
         $this->hasMany("id", "Homework", "classId", array("alias" => "Homeworks"));
         $this->hasMany("id", "TimetableSlot", "classId", array("alias" => "Slots"));
     }

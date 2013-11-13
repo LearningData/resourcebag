@@ -14,6 +14,16 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public function initialize() {
         $this->hasMany("id", "NoticeBoardFile", "noticeId", array("alias" => "Files"));
         $this->belongsTo("uploadedBy", "User", "id", array("alias" =>"Author"));
+
+        $this->hasManyToMany(
+            "id",
+            "NoticeBoardClasses",
+            "noticeId",
+            "classId",
+            "ClassList",
+            "id",
+            array("alias" => "Classes")
+        );
     }
 
     public function getSource() {
@@ -36,29 +46,16 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     }
 
     public static function getStudentNotices($user) {
-        $classIdParams = ClassListService::classesToIds($user->classes);
+        $query = "userType = 'P' or userType = 'A' order by date desc";
 
-        $query = "schoolId = ?1 and classId in ( ?2 ) and " .
-                 "(userType = 'P' or userType = 'A') order by date desc";
-
-        $values = array(1 => $user->schoolId, 2 => $classIdParams);
-        $params = array($query, "bind" => $values);
-
-        return NoticeBoard::find($params);
+        return NoticeBoard::noticesByClassesAndQuery($user->classes, $query);
     }
 
     public static function getTeacherNotices($user) {
         $classes = ClassList::findByTeacherId($user->id);
-        $classIdParams = ClassListService::classesToIds($classes);
+        $query = "userType = 'T' or userType = 'A' order by date desc";
 
-        $query = "schoolId = ?1 and (classId in ( ?2 ) or classId is null) and " .
-                 "(userType = 'T' or userType = 'A') order by date desc";
-
-        $values = array(1 => $user->schoolId, 2 => $classIdParams);
-        $params = array($query, "bind" => $values);
-
-
-        return NoticeBoard::find($params);
+        return NoticeBoard::noticesByClassesAndQuery($classes, $query, $user);
     }
 
     public function columnMap() {
@@ -74,5 +71,37 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
             'fileAttached' => 'fileAttached',
             'id' => 'id'
         );
+    }
+
+
+
+    private function noticesByClassesAndQuery($classes, $query, $user=null) {
+        $notices = array();
+
+        foreach ($classes as $classList) {
+            foreach ($classList->getNotices($query) as $notice) {
+                if(!in_array($notice, $notices)) {
+                    array_push($notices, $notice);
+                }
+            }
+        }
+
+        if(!$user) { return $notices; }
+
+        $result = NoticeBoard::find("userType = 'T' and schoolId = " .
+            $user->schoolId);
+
+        foreach ($result as $notice) {
+            if(!in_array($notice, $notices)) {
+                array_push($notices, $notice);
+            }
+        }
+
+        function comparator($d1, $d2) {
+            return strtotime($d1->date) < strtotime($d2->date);
+        }
+
+        usort($notices, 'comparator');
+        return $notices;
     }
 }

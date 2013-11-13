@@ -104,11 +104,16 @@ class NoticeController extends ControllerBase {
             $notice->uploadedBy = $user->id;
             $t = Translation::get(Language::get(), "notice");
 
-            if($this->request->getPost("class-id") != "") {
-                $notice->classId = $this->request->getPost("class-id");
-            }
 
             if($notice->save()) {
+                foreach ($this->request->getPost("class-id") as $classId) {
+                    $noticeClass = new NoticeBoardClasses();
+                    $noticeClass->classId = $classId;
+                    $noticeClass->noticeId = $notice->id;
+                    $noticeClass->schoolId = $user->schoolId;
+                    $noticeClass->save();
+                }
+
                 foreach ($this->request->getUploadedFiles() as $file){
                     $noticeFile = new NoticeBoardFile();
                     $noticeFile->originalName = $file->getName();
