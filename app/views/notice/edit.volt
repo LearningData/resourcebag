@@ -24,10 +24,14 @@
         <div class="col-md-6">
             {{ select('class-id', classes) }}
         </div>
-        <div class="clearfix"></div> 
+        <div class="clearfix"></div>
         <div class="col-md-12">
             {{ text_area('notice', "rows":"15") }}
         </div>
+        <p class="col-md-6">
+            <label>{{ t._("notice-category") }}</label>
+            {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
+        </p>
         {{ hidden_field("notice-id") }}
     </div>
 
