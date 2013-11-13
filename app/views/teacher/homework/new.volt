@@ -34,7 +34,7 @@
         value="{{ classList.id }}">
     </div>
     <h3>{{ t._("assign-students") }}</h3>
-    <div class="div-block-grey">
+    <section class="ld-subsection"></>
         <div id="students" class="ld-tree">
             <p>
                 <!--{{ check_field("all", "value": true, "class":"parent-node", "data-target":".ld-homework .student-node", "checked":"checked") }} {{ t._("all") }}-->

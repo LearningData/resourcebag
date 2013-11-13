@@ -1,10 +1,10 @@
 .pink a {
     color: #ff0097;
 }
-.pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action, .pink header {
+.pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action, .pink header, .pink .tooltip-inner, .pink .ld-student-status a {
     background-color: #ff0097;
 }
-.pink.btn-icon:hover, .pink .btn:hover {
+.pink .btn-icon:hover, .pink .btn:hover {
     background-color: #ed037c;
 }
 
@@ -13,9 +13,15 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 151, 0.6);
 }
-.pink .modal-title {
+.pink .modal-title  {
     border-color: #ff0097;
 }
+
+/* tooltip border arrow */
+.pink .tooltip.top .tooltip-arrow {
+  border-top-color: #ff0097;
+}
+
 
 /* Checkbox */
 .pink div.ld-CheckClass span {

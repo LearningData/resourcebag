@@ -135,18 +135,21 @@ var dashboard = (function() {
         for ( var i = 0; i < length; i++ ) {
             var item = homework[i]
             var icon
+            var titleTip
             switch ( item.status ) {
                 case "0" :
-                    icon = "icon-caret-right"
+                    icon = "icon-caret-right",
+                    titleTip = "Start homework"
                 break
                 case "1" :
-                    icon = "icon-pencil"
+                    icon = "icon-pencil",
+                    titleTip = "Edit howework"
                 break
                 default: 
                     continue
             }
             var overdue = new Date(item["due-date"]) < Date.now() ? "overdue" : ""
-            homeworkItems.push("<li class=\"" + overdue + "\"><a class=\"btn-icon " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"overdue\"></span></p></li>")
+            homeworkItems.push("<li class=\"ld-tooltip " + overdue + "\"><a title=\"" + titleTip + "\" class=\"btn-icon " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + " data-placement='left auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"Overdue\" data-placement='left auto' data-toggle='tooltip'></span></p></li>")
         }
         return homeworkItems
     }
@@ -165,7 +168,7 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            homeworkItems.push("<li class='ld-tooltip'><a class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + " data-placement='right auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
         }
         return homeworkItems
     }
@@ -178,9 +181,6 @@ var dashboard = (function() {
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework-contents" ).append( homeworkList )
             $ (".dashboard .ld-homework.ld-box .ld-box-child").slimScroll({height:"335px"})
-            $( ".dashboard .ld-homework .icon-exclamation-sign" ).tooltip( {title: "Overdue"})
-            $( ".dashboard .ld-homework .icon-caret-right" ).tooltip( {title: "Start homework"})
-            $( ".dashboard .ld-homework .icon-pencil" ).tooltip( {title: "Edit howework"} )
         })
     }
 

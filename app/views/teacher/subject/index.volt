@@ -3,7 +3,7 @@
         <h1>{{ t._("classes") }}</h1>
     </header>
     {{ link_to("teacher/newClass", t._("create-new-class"), "class":"btn") }}
-    <table class="table table-hover">
+    <table class="table table-hover mtop-20">
         <thead>
             <tr>
                 <th>{{ t._("class") }}</th>
@@ -19,11 +19,11 @@
                 classList.subject.name~"("~classList.extraRef~")") }} </td>
                 <td>{{ classList.cohort.stage }}</td>
                 {% if classList.users.count() %}
-                <td><a data-toggle="modal" href="#modal{{ classList.id }}"> {{ classList.users.count() }} </a> {% include "teacher/modal_users.volt" %} </td>
+                <td class="ld-student-status"><a data-toggle="modal" href="#modal{{ classList.id }}"> {{ classList.users.count() }} </a> {% include "teacher/modal_users.volt" %} </td>
                 {% else %}
-                <td>{{ classList.users.count() }}</td>
+                <td class="ld-student-status">{{ classList.users.count() }}</td>
                 {% endif %}
-                <td><span class="link remove-class" data-class-id="{{ classList.id }}">{{ t._("remove-class") }}</span></td>
+                <td class="ld-tooltip"><span class="link remove-class btn-icon icon-remove" data-class-id="{{ classList.id }}" data-toggle="tooltip" title="{{ t._("remove-class") }}"></span></td>
             </tr>
             {% endfor %}
         </tbody>

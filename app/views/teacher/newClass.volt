@@ -15,9 +15,8 @@
         'emptyText': t._('choose-cohort'), "class":"form-control") }}
     </p>
     <p class="col-md-6">
-        <label>{{ t._("room") }}
-            <input placeholder={{ t._("room") }} type="text" name="room" class="form-control">
-        </label>
+        <label>{{ t._("room") }}</label>
+        <input placeholder={{ t._("room") }} type="text" name="room" class="form-control">
     </p>
     <p class="col-md-6">
         <label for="extra-ref">{{ t._("extra-ref") }}</label>
@@ -51,9 +50,12 @@
             </tr>
         </tbody>
     </table>
-    {{ submit_button(t._("save"),"class":"btn") }}
+    <div class="mtop-20">
+        {{ submit_button(t._("save"),"class":"btn") }}
+        <button class="btn btn-return btn-cancel">
+            {{ t._("cancel") }}
+        </button>
+    </div>
     </form>
-    <button class="btn btn-return btn-cancel">
-        {{ t._("cancel") }}
-    </button>
+
 </div>
