@@ -1,7 +1,11 @@
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 991px) {
     /*HEADER*/
-    .collapse {
+    .sidebar .collapse {
         display: none;
+    }
+    .nav-collapse, .nav-collapse.in {
+        clear: both;
+        overflow: hidden;
     }
     .sidebar {
         background: #E6E7E8;
@@ -53,7 +57,7 @@
     /*NAVBAR - MEGAMENU*/
 
     /*INPUT SEARCH*/
-    .form-search input {
+    .form-search {
         margin: 20px auto !important;
         width: 95% !important;
     }
@@ -267,5 +271,4 @@
     .col-login {
         padding-left: 0;
     }
-
 }
