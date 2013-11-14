@@ -35,7 +35,7 @@ var classesPage = (function() {
 
     //init
     var init = function() {
-        $( ".ld-classes .header" ).click( function( event ) {
+        $( ".ld-classes header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/classes"
         })
         $( ".ld-classes .remove-class" ).click(function( event ) {

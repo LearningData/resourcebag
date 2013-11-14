@@ -302,7 +302,7 @@ var homeworkPage = (function() {
         $( ".btn-review" ).tooltip( {title: "Review Homework"} )
 
         //events
-        $( ".ld-homework .header" ).click( function( event ) {
+        $( ".ld-homework header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/homework"
         })
         $( ".bt-new a" ).click(function( event ) {

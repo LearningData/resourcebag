@@ -1,5 +1,8 @@
 var calendarPage = (function() {
     init = function() {
+        $( ".ld-calendar header" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/calendar"
+        })
         $('#calendar').fullCalendar({
             header : {
                 left : 'prev,next ',

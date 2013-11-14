@@ -4,7 +4,7 @@ var timetablePage = (function() {
     var init = function() {
         refreshTables()
         //events
-        $( ".ld-timetable .header" ).click( function( event ) {
+        $( ".ld-timetable header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/timetable"
         })
         $( ".ld-timetable .day-of-week" ).click( function( event ) {

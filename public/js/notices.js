@@ -4,6 +4,9 @@ var noticesPage = (function() {
     var notes = [], noteIndex = 0
     var init = function() {
         var url = urlBase + "/notice/jsonNotices/"
+        $( ".ld-notices header" ).click( function( event ) {
+            window.location.href = urlBase + "/" + getUser() + "/noticeboard"
+        })
         $( ".btn-notice.btn-return" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/noticeboard"
         })
