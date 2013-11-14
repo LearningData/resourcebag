@@ -11,6 +11,7 @@ class User extends \Phalcon\Mvc\Model {
     public $Type;
     public $email;
     public $password;
+    public $title;
 
     public function initialize() {
         $this->belongsTo("schoolId", "School", "id");
@@ -126,7 +127,8 @@ class User extends \Phalcon\Mvc\Model {
             'LastName' => 'lastName',
             'Type' => 'type',
             'email' => 'email',
-            'password' => 'password'
+            'password' => 'password',
+            'title' => 'title'
         );
     }
 }
