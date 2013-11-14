@@ -5,7 +5,11 @@
 
     {{ form("users/create", "method":"post", "enctype":"multipart/form-data") }}
     {{ securityTag.csrf(csrf_params) }}
-
+    <div class="col-sm-6">
+        <label>{{ t._("teacher-title") }}</label>
+        {{ select('title', titles, 'using': ['id', 'name'],
+        'emptyText': 'Please, choose one type') }}
+    </div>
     <label>{{ t._("name") }}</label>
     <div class="row">
         <div class="col-sm-6">

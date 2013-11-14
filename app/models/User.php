@@ -108,6 +108,13 @@ class User extends \Phalcon\Mvc\Model {
         return $this->name . " " . $this->lastName;
     }
 
+    public function getTitles() {
+        $t = Translation::get(Language::get(), "user");
+        return array("mr" => $t->_("mr"),
+            "mrs" => $t->_("mrs"), "ms" => $t->_("ms")
+        );
+    }
+
     public function validation() {
         $this->validate(new EmailValidator(array("field" => "email")));
 

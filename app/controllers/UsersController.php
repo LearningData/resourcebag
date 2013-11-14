@@ -13,14 +13,24 @@ class UsersController extends ControllerBase {
 
         $cohorts = Cohort::find("schoolId = " . $this->view->user->schoolId);
 
+        $this->view->titles = User::getTitles();
         $this->view->cohorts = $cohorts;
         $this->view->types = $types;
     }
 
     public function editAction() {
-        $this->setTokenValues();
-        $this->view->pick("users/edit");
         $this->view->t = Translation::get(Language::get(), "user");
+        $this->setTokenValues();
+
+        $user = $this->getUserBySession();
+
+        if($user->isTeacher()) {
+            $this->view->titles = User::getTitles();
+        }
+
+        $this->tag->setDefault("title", $user->title);
+        $this->view->pick("users/edit");
+
     }
 
     public function createAction() {
@@ -44,6 +54,10 @@ class UsersController extends ControllerBase {
         $user->type = $this->request->getPost("type");
         $user->groupId = $this->request->getPost("group-id");
         $user->email = $this->request->getPost("email");
+
+        if($user->isTeacher()) {
+            $user->title = $this->request->getPost("title");
+        }
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {
@@ -71,7 +85,11 @@ class UsersController extends ControllerBase {
 
         $user->name = $this->request->getPost("FirstName");
         $user->lastName = $this->request->getPost("LastName");
-        $user->email = $this->request->getPost("email", "email");
+        $user->email = $this->request->getPost("email");
+
+        if($user->isTeacher()) {
+            $user->title = $this->request->getPost("title");
+        }
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {

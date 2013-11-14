@@ -29,6 +29,7 @@ $messages = array(
     "Yours School Information" => "Your's School Information",
     "need-confirm-password" => "You need confirm the password",
     "need-confirm-email" => "You need confirm the email",
-    "user-created" => "user was created successfully"
+    "user-created" => "user was created successfully",
+    "teacher-title" => "Title"
 );
 ?>
