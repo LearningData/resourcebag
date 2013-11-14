@@ -45,5 +45,18 @@ class CalendarController extends ControllerBase {
             $this->response->redirect($user->getController() . "/calendar");
         }
     }
+
+    public function removeAction($eventId) {
+        $event = Event::findFirstById($eventId);
+        if($event && $event->delete()) {
+            $this->flash->success($this->view->t->_("event-deleted"));
+        } else {
+            $this->flash->error($this->view->t->_("event-not-deleted"));
+        }
+
+        return $this->dispatcher->forward(
+            array("controller" => "calendar", "action" => "index")
+        );
+    }
 }
 ?>
