@@ -152,7 +152,7 @@ var dashboard = (function() {
                     continue
             }
             var overdue = new Date(item["due-date"]) < Date.now() ? "overdue" : ""
-            homeworkItems.push("<li class=\"ld-tooltip " + overdue + "\"><a title=\"" + titleTip + "\" class=\"btn-icon " + icon + "\" href=" + urlBase + "/student/homework/edit/" + homework[i].id + " data-placement='left auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"Overdue\" data-placement='left auto' data-toggle='tooltip'></span></p></li>")
+            homeworkItems.push("<li class=\"ld-tooltip " + overdue + "\"><a  href=\"" + urlBase + "/student/homework/edit/" + homework[i].id + "\"><span title=\"" + titleTip + "\" class=\"btn-icon " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"Overdue\" data-placement='left auto' data-toggle='tooltip'></span></p></a></li>")
         }
         return homeworkItems
     }
@@ -172,7 +172,7 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li class='ld-tooltip'><a title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + " data-placement='left auto' data-toggle='tooltip'></a><p>" + homework[i].description + " (" + homework[i].subject + ")</p></li>")
+            homeworkItems.push("<li class='ld-tooltip'><a href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "><span title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].description + " (" + homework[i].subject + ")</p></a></li>")
         }
         return homeworkItems
     }

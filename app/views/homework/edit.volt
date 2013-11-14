@@ -18,7 +18,7 @@
         </span>
         <span class="col-sm-3">
             <h3><span class="label">{{ t._("due-date") }}:</span><br/>
-            {{ homework.dueDate }}</h3>
+            {{ homework.getDueDate(t._("dateformat")) }}</h3>
         </span>
         <div class="clearfix"></div>
         <div class="col-sm-12">

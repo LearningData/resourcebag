@@ -101,18 +101,18 @@
     padding: 10px;
 }
 
-.dashboard .ld-homework.ld-box .ld-box-child ul li > p {
+.dashboard .ld-homework.ld-box .ld-box-child ul li p {
     margin: 0px;
     display: inline;
     margin-left: 5px;
 }
 
-.dashboard .ld-homework.ld-box .ld-box-child ul li > a {
+.dashboard .ld-homework.ld-box .ld-box-child ul li .btn-icon {
     display: inline-block;
     line-height: 15px;
 }
 
-.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue {
+.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue p {
     color: #FF0000;
 }
 
