@@ -106,7 +106,7 @@
 .notice-space:nth-child(2) .note {
     height: 300px;
 }   
-.notice-space .date, .notice-space .author {
+.notice-space .date, .notice-space .author, .notice-page-show .date, .notice-page-show .author {
     font-size: 14px;
     color: #6d6e71;
     font-weight: 100;
@@ -153,8 +153,6 @@
     float: left;
     margin: 0 15px 0 0;
     font-size: 48px;
-    text-shadow: -1px 1px 3px #878787;
-    filter: dropshadow(color=#dedede, offx=-1, offy=1);
 }
 .notice-space:first-of-type .message span:first-of-type   {
     font-size: 100px;
@@ -173,5 +171,15 @@
 .notice-space.notice-page-show .icon-download  {
     font-size: 40px;
 }
-
+.notice-page-show   {
+    border: none;
+}
+.notice-page-show .message   {
+    margin-top: 20px;
+    line-height: 24px;
+}
+.notice-page-show .message span:first-child   {
+    font-size: 75px;
+    line-height: 75px;
+}
 
