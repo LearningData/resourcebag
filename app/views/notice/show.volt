@@ -7,7 +7,7 @@
         <span class="date">{{ notice.getDate(t._("dateformat")) }}</span> | <span class="author">{{ notice.author.name }} {{ notice.author.lastName }}</span>
         <p class="message">
                     <span class="ld-notice-icon"></span>
-                    <span class="text">{{ notice.text }}</span>
+                    <p class="text">{{ notice.text }}</p>
                 </p>
         {% for file in notice.files %}
         <p>
