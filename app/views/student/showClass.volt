@@ -1,9 +1,10 @@
 <div class="ld-classes pink">
     <header>
         <h1 data-target="ld-classes">{{ t._("classes") }}</h1>
+        <h2 class="subheader">{{ classList.subject.name }}</h2>
     </header>
     <section class="col-md-12">
-        <h2 class="subheader">{{ classList.subject.name }}</h2>
+        
         <p class="col-md-6">
             <span class="label">{{ t._("teacher") }}</span>
             {{ classList.user.name }}   {{ classList.user.lastName }}
@@ -23,7 +24,7 @@
         <hr/>
     </section>
     <section class="homework col-md-6">
-        <h2>{{ t._("homework") }}</h2>
+        <h3>{{ t._("homework") }}</h3>
         <!--<h3>{{ t._("overdue") }}</h3>-->
         {% for homework in homeworks if homework.status == 0 %}
         <h3 class="pending">{{ t._("pending") }}</h3>
