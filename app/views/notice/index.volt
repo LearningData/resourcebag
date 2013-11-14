@@ -13,7 +13,7 @@
         <div class="notice-space">
             <div class="note {{ notice.category }}">
                 <span class="date">{{ notice.getDate(t._("dateformat")) }}
-                </span> | <span class="author">{{ notice.author.name }}
+                </span> | <span class="author">{{ t._(notice.author.title) }}
                 {{ notice.author.lastName }}</span>
                 <p class="message">
                     <span class="ld-notice-icon"></span>

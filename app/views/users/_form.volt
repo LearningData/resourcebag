@@ -4,6 +4,11 @@
     <select name="Type">
         <option value="T" selected="true">Teacher</option>
     </select>
+    <div class="col-sm-6">
+        <label>{{ t._("teacher-title") }}</label>
+        {{ select('title', titles, 'using': ['id', 'name'],
+        'emptyText': 'Please, choose one type') }}
+    </div>
     <label for="FirstName">{{ t._("name") }}</label>
     <div class="row">
         <div class="col-sm-6">

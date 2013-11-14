@@ -12,6 +12,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
         $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
         $this->view->schools = School::find();
+        $this->view->titles = User::getTitles();
 
         $this->view->t = Translation::get(Language::get(), "user");
     }
@@ -48,6 +49,10 @@ class RegisterController extends Phalcon\Mvc\Controller {
         $user->type = $this->request->getPost("Type");
         $user->email = $email;
         $user->password = $password;
+
+        if($user->isTeacher()) {
+            $user->title = $this->request->getPost("title");
+        }
 
         if (!$user->save()) {
             foreach ($user->getMessages() as $message) {

@@ -1,3 +1,11 @@
+{% if user.isTeacher() %}
+<div class="col-sm-6">
+    <label>{{ t._("teacher-title") }}</label>
+    {{ select('title', titles, 'using': ['id', 'name'],
+    'emptyText': 'Please, choose one type') }}
+</div>
+{% endif %}
+
 <p class="col-sm-6 col-md-6">
     <label for="FirstName">{{ t._("name") }}</label>
     {{ text_field("FirstName", "value" : user.name) }}

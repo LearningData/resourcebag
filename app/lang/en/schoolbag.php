@@ -57,7 +57,10 @@ $messages = array(
     "due-date" => "Due Date",
     "date" => "Date",
     "wednesday" => "wednesday",
-    "dateformat" => "D jS M Y"
+    "dateformat" => "D jS M Y",
+    "mr" => "Mr.",
+    "mrs" => "Mrs.",
+    "ms" => "Ms."
 );
 ?>
 

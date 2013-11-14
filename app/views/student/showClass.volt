@@ -7,7 +7,7 @@
         
         <p class="col-md-6">
             <span class="label">{{ t._("teacher") }}</span>
-            {{ classList.user.name }}   {{ classList.user.lastName }}
+            {{ t._(classList.user.title) }}  {{ classList.user.lastName }}
         </p>
         <p class="col-md-6">
             <span class="label">{{ t._("cohort") }}</span>
