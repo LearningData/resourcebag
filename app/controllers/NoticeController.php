@@ -17,10 +17,12 @@ class NoticeController extends ControllerBase {
         $notices = $this->getNotices();
         $json = array();
 
-        foreach ($notices as $notice) {
-            $json []= array("id" => $notice->id, "date" => $notice->date,
-                "text" => $notice->text, "title" => $notice->title,
-                "category" => $notice->category);
+        if($notices) {
+            foreach($notices as $notice) {
+                $json []= array("id" => $notice->id, "date" => $notice->date,
+                    "text" => $notice->text, "title" => $notice->title,
+                    "category" => $notice->category);
+            }
         }
 
         header('Content-Type: application/json');

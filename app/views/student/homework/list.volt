@@ -34,8 +34,8 @@
                 <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"><span id="hwicon{{ homework.id }}" class="collapse-icon icon-chevron-right"></span>{{ homework.title }}</td>
                 <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"">{{ homework.classList.subject.name }}</td>
                 <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">
-                {{ homework.classList.user.name }}
-                {{ homework.classList.user.lastName}}
+                {{ t._(homework.classList.user.title) }}
+                 {{ homework.classList.user.lastName}}
                 </td>
                 <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.getDueDate(t._("dateformat")) }}</td>
                 <td data-target="--">
