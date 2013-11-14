@@ -256,13 +256,13 @@ var dashboard = (function() {
             var notices = response.notices
             var items = []
             if (notices[0] != undefined) {
-                items.push( "<div class=\"note\"><span class=\"icon-file-text\"></span><p>" + notices[0].text + "</p></div>" )
+                items.push( "<div class=\"note " + (notices[0].category || "general") + "\"><span class=\"ld-notice-icon\"></span><p>" + notices[0].text + "</p></div>" )
             }
             if ( notices[1] != undefined ) {
-                items.push( "<div class=\"note\"><span class=\"icon-comments\"></span><p>" + notices[1].text + "</p></div>" )
+                items.push( "<div class=\"note " + (notices[1].category || "general") + "\"><span class=\"ld-notice-icon\"></span><p>" + notices[1].text + "</p></div>" )
             }
             if ( notices[2] != undefined ) {
-                items.push( "<div class=\"note\"><span class=\"icon-file-text\"></span><p>" + notices[2].text + "</p></div>" )
+                items.push( "<div class=\"note " + (notices[2].category || "general") + "\"><span class=\"ld-notice-icon\"></span><p>" + notices[2].text + "</p></div>" )
             }
             $( "#dashboard-notices" ).append( items.join( "" ) )
             $( "#dashboard-notices .note" ).each(function(index, item) {

@@ -11,34 +11,46 @@
 .ld-notices .note.Thanks .ld-notice-icon:before, .ld-notices .note.thanks .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f164";
+}
+.ld-notices .note.Thanks .message .ld-notice-icon, .ld-notices .note.thanks .message.ld-notice-icon {
     color: #898C27;
 }
 .ld-notices .note.Meeting .ld-notice-icon:before, .ld-notices .note.meting .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0b1";
+}
+.ld-notices .note.Meeting .message .ld-notice-icon, .ld-notices .note.meting .message .ld-notice-icon {
     color: #10A236;
 }
 .ld-notices .note.Sport .ld-notice-icon:before, .ld-notices .note.sport .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f11e";
+}
+.ld-notices .note.Sport .message .ld-notice-icon, .ld-notices .note.sport .message .ld-notice-icon {
     color: #9752A3;
 }
 .ld-notices .note.Announcements .ld-notice-icon:before, .ld-notices .note.announcements .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0a1";
+}
+.ld-notices .note.Announcements .message .ld-notice-icon, .ld-notices .note.announcements .message .ld-notice-icon {
     color: #DC3B42;
 }
 .ld-notices .note.celebration .ld-notice-icon:before, .ld-notices .note.Celebration .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f091";
+}
+.ld-notices .note.celebration .message .ld-notice-icon, .ld-notices .note.Celebration .message .ld-notice-icon {
     color: #FF0097
 }
 .ld-notices .note.After .ld-notice-icon:before, .ld-notices .note.after .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f186";
-    color: #FF9E19;
-
 }
+.ld-notices .note.After .message .ld-notice-icon, .ld-notices .note.after .message .ld-notice-icon {
+    color: #FF9E19;
+}
+
 /*create notice*/
 .ld-notices .ld-tree span.collapse {
     display: none;
@@ -103,6 +115,9 @@
     margin-top: 5px;
     font-size: 12px;
     height: 95px;
+}
+.note .message .text {
+    white-space: pre-line;
 }
 .notice-space p:first-line {
     font-size: 16px;
