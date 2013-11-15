@@ -19,6 +19,14 @@ class CalendarRoutes extends Phalcon\Mvc\Router\Group {
         );
 
         $this->add(
+            "/student/calendar/edit/{eventId}",
+            array(
+                "controller" => "calendar",
+                "action" => "edit"
+            )
+        );
+
+        $this->add(
             "/teacher/calendar",
             array(
                 "controller" => "calendar",
@@ -31,6 +39,13 @@ class CalendarRoutes extends Phalcon\Mvc\Router\Group {
             array(
                 "controller" => "calendar",
                 "action" => "new"
+            )
+        );
+        $this->add(
+            "/teacher/calendar/edit/{eventId}",
+            array(
+                "controller" => "calendar",
+                "action" => "edit"
             )
         );
     }
