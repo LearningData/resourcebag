@@ -62,7 +62,10 @@ $messages = array(
     "dateformat" => "D jS M Y",
     "mr" => "Mr.",
     "mrs" => "Mrs.",
-    "ms" => "Ms."
+    "ms" => "Ms.",
+    "show" => "show",
+    "showing" => "showing",
+    "with" => "with"
 );
 ?>
 
