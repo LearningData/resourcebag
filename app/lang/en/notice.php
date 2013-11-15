@@ -7,6 +7,7 @@ $messages = array(
     "edit-notice" => "Edit Notice",
     "notice-category" => "Notice Category",
     "notice-date" => "Notice Date",
+    "expiry-date" => "Expiry Date",
     "restrict-to" => "Restrict to",
     "teachers-students" => "Teachers and Students",
     "teachers-only" => "Teachers only",
