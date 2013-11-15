@@ -2,7 +2,7 @@
     <header>
         <h1>{{ t._("calendar") }}</h1>
     </header>
-    {{ link_to(user.getController()~"/calendar/new","class":"btn mbottom-20", t._("New Event")) }}
+    {{ link_to(user.getController()~"/calendar/new","class":"btn mbottom-20", t._("new-event")) }}
     {{ securityTag.csrf(csrf_params) }}
     <div id="calendar"></div>
 </div>

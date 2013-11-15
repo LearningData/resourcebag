@@ -1,0 +1,15 @@
+.ld-calendar {
+}
+.ld-calendar .modal .content-block {
+    display: inline-block;
+}
+.ld-calendar .modal .modal-label {
+    width: 30%;
+}
+.ld-calendar .modal .modal-value {
+    width: 70%;
+}
+.ld-calendar .modal hr {
+    border-top-color: #b4b4b4;
+}
+
