@@ -39,6 +39,12 @@
         <label>{{ t._("notice-category") }}</label>
         {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
     </p>
+    <p class="col-md-6">
+        {{ t._("expiry-date") }}
+        {{ text_field("expiryDate", "placeholder":t._("expiry-date"),
+            "id":"notice-note-date", "class":"form-control",
+            "value": expiryDate) }}
+    </p>
     </div>
     <div class="clearfix"></div>
     {{ submit_button(t._("save"), "class":"btn") }}

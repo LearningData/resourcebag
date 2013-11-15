@@ -5,27 +5,12 @@
     </header>
 
     <section>
-        <h3>{{ homework.title }} </h3>
-        <div class="col-sm-4">
-            <h6>{{ t._("teacher") }}:</h6>
-            <p>
-                {{ t._(homework.classList.user.name) }} {{ homework.classList.user.lastName}}
-            </p>
-        </div>
-        <div class="col-sm-4">
-            <h6>{{ t._("class") }}:</h6>
-            <p>
-                {{ homework.classList.subject.name }} ({{ homework.classList.extraRef }})
-            </p>
-        </div>
-        <div class="col-sm-4">
-            <h6>{{ t._("due-date") }}:</h6>
-            <p>
-                {{ homework.getDueDate(t._("dateformat")) }}
-            </p>
+        <h3>{{ homework.title }} {{ homework.getDueDate(t._("dateformat")) }}</h3>
+        <div class="col-sm-12">
+            <h4>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.name) }} {{ homework.classList.user.lastName}}</h4>
         </div>
         <div class="col-sm-12">
-            <h6>{{ t._("description") }}:</h6>
+            <h6>{{ t._("description") }}</h6>
             <p>
                 {{ homework.text }}
             </p>

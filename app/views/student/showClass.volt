@@ -5,7 +5,7 @@
     </header>
 
     <section>
-        <h3>{{ classList.subject.name }}  <span class="h3"> with </span>Mr. {{ t._(classList.user.title) }}  {{ classList.user.lastName }} {{ classList.room }}</h3>
+        <h3>{{ classList.subject.name }}  <span class="h3"> {{ t._("with") }} </span>{{ t._(classList.user.title) }}  {{ classList.user.lastName }} {{ classList.room }}</h3>
     </section>
 
     <section>
@@ -52,7 +52,7 @@
         </table>
 
         {% for homework in homeworks if homework.status == 1 %}
-        <h6>{{ t._("in-progress") }}</h6>
+        <h6>{{ t._("to-do") }}</h6>
         <table>
             <tr>
                 <th class="col-sm-3">Title</th>

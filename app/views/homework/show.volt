@@ -1,28 +1,22 @@
 <div class="ld-homework orange">
     <header>
         <h1 id="header">{{ t._("homework") }}</h1>
-        <h2>{{ t._("show") }}</h1>
+        <h2>{{ t._("showing") }}</h1>
     </header>
-    <div class="row">
-        <span class="col-sm-4">
-            <h3><span class="label">{{ t._("homework") }}:</span></br>
-            {{ homework.title }}</h3>
-        </span>
-        <span class="col-sm-4">
-            <h3><span class="label">{{ t._("teacher") }}:</span><br/>
-            {{ homework.classList.user.name }} {{ homework.classList.user.lastName}}</h3>
-        </span>
-        <span class="col-sm-4">
-            <h3><span class="label">{{ t._("class") }}:</span><br/>
-            {{ homework.classList.subject.name }} ({{ homework.classList.extraRef }})</h3>
-        </span>
-        <div class="clearfix"></div>
+    <section>
         <div class="col-sm-12">
-            <h3><span class="label">{{ t._("description") }}:</span><br/>
-            {{ homework.text }}</h3>
+            <h3>{{ homework.title }}</h3>
         </div>
-    </div>
-    <hr/>
+        <div class="col-sm-12">
+            <h4> {{ homework.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.classList.user.name }} {{ homework.classList.user.lastName}}</h4>
+        </div>
+        <div class="col-sm-12">
+            <h6>{{ t._("description") }}</h6>
+            <p>
+                {{ homework.text }}
+            </p>
+        </div>
+    </section>
     <section class="homework-view">
         <div id="text-inputs">
             <div class="homework-subheader">
