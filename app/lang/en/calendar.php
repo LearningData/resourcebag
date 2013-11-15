@@ -1,11 +1,13 @@
 <?php
 $messages = array(
-    "all-day" => "All Day?",
     "calendar" => "Calendar",
     "event-created-message" => "Event was created.",
+    "all-day" => "All Day?",
+    "event-deleted" => "Event was deleted.",
+    "event-not-deleted" => "Event was not deleted.",
+    "event-updated" => "Event was updated.",
     "new-event" => "New Event",
     "please-enter-url" => "Please enter web link",
     "url" => "Web Link",
-
+    "edit-title" => "Edit Event"
 );
-?>

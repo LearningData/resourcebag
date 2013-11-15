@@ -5,7 +5,9 @@
 .ld-classes .homework .item .title {
     display: block;
 }
-
 .ld-classes .homework .item .date {
     float: right;
+}
+.ld-classes-timetable th, .ld-classes-timetable td{
+    text-align: center;
 }
