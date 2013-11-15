@@ -10,6 +10,7 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public $uploadedBy;
     public $classID;
     public $fileAttached;
+    public $expiryDate;
 
     public function initialize() {
         $this->hasMany("id", "NoticeBoardFile", "noticeId", array("alias" => "Files"));
@@ -46,14 +47,18 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     }
 
     public static function getStudentNotices($user) {
-        $query = "userType = 'P' or userType = 'A' order by date desc";
+        $today = date("Y-m-d");
+        $query = "(userType = 'P' or userType = 'A') and " .
+        "'$today' >= date and '$today' <= expiryDate order by date desc";
 
         return NoticeBoard::noticesByClassesAndQuery($user->classes, $query);
     }
 
     public static function getTeacherNotices($user) {
         $classes = ClassList::findByTeacherId($user->id);
-        $query = "userType = 'T' or userType = 'A' order by date desc";
+        $today = date("Y-m-d");
+        $query = "(userType = 'T' or userType = 'A') and " .
+            "'$today' >= date and '$today' <= expiryDate order by date desc";
 
         return NoticeBoard::noticesByClassesAndQuery($classes, $query, $user);
     }
@@ -62,6 +67,7 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
         return array(
             'schoolID' => 'schoolId',
             'date' => 'date',
+            'expiryDate' => 'expiryDate',
             'text' => 'text',
             'title' => 'title',
             'category' => 'category',
@@ -87,9 +93,8 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
         }
 
         if(!$user) { return $notices; }
-
-        $result = NoticeBoard::find("userType = 'T' and schoolId = " .
-            $user->schoolId);
+        $today = date("Y-m-d");
+        $result = NoticeBoard::find("schoolId = " . $user->schoolId . " and " . $query);
 
         foreach ($result as $notice) {
             if(!in_array($notice, $notices)) {

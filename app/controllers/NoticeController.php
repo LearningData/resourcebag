@@ -43,6 +43,7 @@ class NoticeController extends ControllerBase {
         $classes = ClassListService::getClassesByUser($user);
         $this->view->categories = NoticeBoard::getCategories();
         $this->view->classes = $classes;
+        $this->view->expiryDate = date('Y-m-d', strtotime("+2 month"));
     }
 
     public function editAction($noticeId) {
@@ -104,6 +105,13 @@ class NoticeController extends ControllerBase {
             $notice->category = $this->request->getPost("category");
             $notice->schoolId = $user->schoolId;
             $notice->uploadedBy = $user->id;
+
+            if($this->request->getPost("expiryDate")) {
+                $notice->expiryDate = $this->request->getPost("expiryDate");
+            } else {
+                $notice->expiryDate = date('Y-m-d', strtotime("+2 month"));
+            }
+
             $t = Translation::get(Language::get(), "notice");
 
 
