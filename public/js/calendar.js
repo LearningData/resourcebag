@@ -3,6 +3,38 @@ var calendarPage = (function() {
         $( ".ld-calendar header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/calendar"
         })
+        $( ".ld-calendar #all-day" ).click( function( event ) {
+            console.log("here")
+            $( ".ld-calendar .all-day-block").toggleClass("hidden")
+        })
+        $( ".ld-calendar #start-time, .ld-calendar #start-date" ).change( function( event ) {
+            var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
+            var val = new Date($( ".ld-calendar #start-date").datepicker( "getDate" ))
+            val.setTime(val.getTime() + millsecs)
+            dateStr = "" + val.getFullYear() + "-"
+            dateStr +=  (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
+            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + " "
+            dateStr += (val.getHours() < 10) ? "0" + val.getHours() : val.getHours() + ":"
+            dateStr += (val.getMinutes() < 10) ? "0" + val.getMinutes() : val.getMinutes()
+            dateStr += ":00"
+            $( ".ld-calendar #hidden-start-date")[0].value = dateStr
+        })
+        $( ".ld-calendar #end-time, .ld-calendar #end-date" ).change( function( event ) {
+            var millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
+            var val = new Date($( ".ld-calendar #end-date").datepicker( "getDate" ))
+            val.setTime(val.getTime() + millsecs)
+            dateStr = "" + val.getFullYear() + "-"
+            dateStr +=  (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
+            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + "-"
+            dateStr += (val.getHours() < 10) ? "0" + val.getHours() : val.getHours() + "-"
+            dateStr += (val.getMinutes() < 10) ? "0" + val.getMinutes() : val.getMinutes()
+            dateStr += ":00"
+            $( ".ld-calendar #hidden-end-date")[0].value = dateStr
+        })
+         var url = urlBase + "/service/calendar"
+        $.get(url, function(response) {
+            console.log(response)
+        })
         $('#calendar').fullCalendar({
             header : {
                 left : 'prev,next ',
@@ -26,7 +58,8 @@ var calendarPage = (function() {
             editable : false,
             firstDay : 1,
             center : 'prevYear',
-            events : urlBase + "/service/calendar"
+            events : urlBase + "/service/calendar",
+            timeFormat: 'H(:mm)'
         })
     }
 
@@ -166,18 +199,21 @@ var calendarPage = (function() {
         var modal = $( "<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">" + data.title + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
-
-        modalBody.append( "<span class=\"label\">When:</span>" ) 
-        if (data.end != null && data.end.getDate() != data.start.getDate()) {
-            modalBody.append( "<span>" + prettyDate(data.start) + "-" + prettyDate(data.end) + "</span>" ) 
-        } else { 
-            modalBody.append( "<span>" + prettyDate(data.start) + "</span>" ) 
-        }
-
-        if (data.url != null) {
-            modalBody.append( "<br><span class=\"label\">Url:</span>" ) 
-            modalBody.append( "<a href=" + data.url + ">" + data.url + "</a>" ) 
-        }
+        modalBody.append("<div><span class=\"modal-label\">" + _t("start-time") + 
+            "</span><span class=\"modal-value\">" + 
+            moment(data.start).format("dddd, MMMM Do YYYY [at] h:mm:ss a") + 
+            "</span><div>")
+        modalBody.append("<div><span class=\"modal-label\">" + _t("end-time") + 
+            "</span><span class=\"modal-value\">" + data.end + "</span></div>")
+        modalBody.append("<div><span class=\"modal-label\">" + _t("location") + 
+            "</span><span class=\"modal-value\">" + data.location + "</span></div>")
+        modalBody.append("<div><span class=\"modal-label\">" + _t("contact") + 
+            "</span><span class=\"modal-value\">" + data.contact + "</span</div>")
+        modalBody.append("<div><span class=\"modal-label\">" + _t("url") + 
+            "</span><span class=\"modal-value\">" + data.url + "</span></div>")
+        modalBody.append("<hr/>")
+        modalBody.append("<div class=\"h2\">" + _t("description") + "</div>")
+        modalBody.append("<div class=\"value\">" + data.description + "</div>")
 
         var remove = $( "<button>", {
             "class": "btn",
@@ -203,6 +239,13 @@ var calendarPage = (function() {
         modalContent.appendTo( modalDialog )
         modalDialog.appendTo( modal )
         modal.appendTo( "div.ld-calendar" )
+        remove.click( function() {
+            window.location.href = urlBase + "/calendar/remove/" + data.id
+        })
+        edit.click( function() {
+            window.location.href = urlBase + "/" + getUser() + "/calendar/edit/" + data.id
+        })
+
     }
 
     return {

@@ -46,7 +46,6 @@ $(document).ready(function() {
         classesPage.init()
         $(".nav.navbar-nav li.classes").addClass("active")
     }
-
     $(".alert").alert();
     $("#teacher-due-date").datepicker({
         dateFormat : 'yy-mm-dd',
@@ -54,14 +53,16 @@ $(document).ready(function() {
         beforeShowDay : enableDays,
         onSelect : showTimes
     })
-    $("#start-date").datepicker({
+    $(".ld-calendar #start-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
-    $("#end-date").datepicker({
+    $(".ld-calendar #end-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
+    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true })
+    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true })
     $("#notice-note-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0
@@ -255,7 +256,12 @@ function setUpEvents() {
     }, 5000);
     if ($(".ld-tree").length > 0) setTreeEvents()
 }
-
+/****************************************
+                translate //First attempt at translating js
+******************************************/
+function _t(str) {
+        return translate[str]
+}
 /****************************************
                 UI Events
 ******************************************/

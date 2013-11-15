@@ -5,7 +5,7 @@ class CalendarController extends ControllerBase {
 
         if(!$user) { return $this->response->redirect("index"); }
 
-        $this->view->t = Translation::get(Language::get(), "calendar");
+        $this->view->t = Translation::get(Language::get(), "event");
     }
 
     public function newAction(){
