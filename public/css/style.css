@@ -11,8 +11,10 @@
  *
  * Table of contents:
  *
- * Fonts
  * Reset Bootstrap
+ * Fonts
+ * Section
+ *
  * Buttons
  * Icons / General
  * Default Margin / Padding
@@ -29,51 +31,10 @@
  * User Profile
  * Datepicker
  * Paginator
- * Section
+ *
  *
  *
  */
-
-/* Fonts */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
-.classList {
-    display: inline;
-    margin: 20px 20px;
-    padding: 10px 10px;
-    border: 1px solid #FF0097;
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    line-height: 1.1;
-}
-
-h1, .h1 {
-    font-size: 36px;
-}
-
-h2, .h2 {
-    font-size: 30px;
-}
-
-h3, .h3 {
-    font-size: 24px;
-}
-
-h4, .h4 {
-    font-size: 21px;
-}
-h5, .h5 {
-    font-size: 18px;
-}
-h6, .h6 {
-    font-size: 16px;
-}
-label {
-    font-weight: normal;
-    margin-bottom: 0;
-}
 
 /* Reset Bootstrap */
 html, body {
@@ -81,7 +42,7 @@ html, body {
 }
 body {
     font-family: 'Open Sans', sans-serif;
-    color: #414042;
+    color: #4d4d4f;
 }
 
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
@@ -118,6 +79,96 @@ a:hover, a:focus {
     white-space: nowrap;
 }
 
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+.classList {
+    display: inline;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    border: 1px solid #FF0097;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-weight: 300;
+}
+
+h1, .h1 {
+    font-size: 36px;
+}
+
+h2, .h2 {
+    font-size: 30px;
+}
+
+h3, .h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+.h3 {
+    font-weight: normal;
+}
+
+h4, .h4 {
+    font-size: 21px;
+}
+h5, .h5 {
+    font-size: 18px;
+}
+h6, .h6 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.h6 {
+    font-weight: normal;
+}
+label {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+/* Section */
+section {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 30px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: #ededee solid 1px;
+    box-shadow: 0 1px 1px rgba(50, 50, 50, 0.25);
+}
+section:last-child {
+    border: none;
+}
+section [class*="col-md-"], section [class*="col-sm-"] {
+    padding-left: 0;
+}
+section table th {
+    margin-bottom: 10px;
+}
+section table td {
+    padding: 10px 0;
+    overflow: hidden;
+}
+section table tr {
+    font-size: 12px;
+    border-bottom: #e6e6e6 solid 1px;
+}
+section table tr:first-child, section table tr:last-child {
+    border-bottom: none;
+}
+/*section table td  {
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ max-width: 50%;
+ }*/
+
 /* Buttons */
 .btn, .btn.btn-cancel {
     min-width: 180px;
@@ -146,7 +197,7 @@ a:hover, a:focus {
 }
 
 .btn.btn-cancel {
-    color: #a7a9ac!important;
+    color: #a7a9ac !important;
     background-color: #d9d9d9 !important;
 }
 .btn.btn-cancel:hover {
@@ -507,8 +558,8 @@ table > tbody > tr.active td:last-child {
 
 /*.Headers */
 header {
-    margin: 0 0 30px;
-    padding: 15px;
+    margin: 0 0 40px;
+    padding: 15px 10px;
     border-radius: 5px 5px 0 0;
     cursor: pointer;
 }
@@ -517,7 +568,6 @@ header h1, header h2 {
     display: inline-block;
     margin: 0;
     font-size: 36px;
-    font-weight: 100;
 }
 
 header h2 {
@@ -525,16 +575,6 @@ header h2 {
     font-size: 24px;
     text-transform: capitalize;
     line-height: 40px;
-}
-
-/*//////DEFAULT LIST HOME//////*/
-.box-messages .ld-box-child ul li {
-    border-bottom: #d1d3d4 solid 1px;
-    padding: 10px 10px 10px 45px;
-    font-size: 12px;
-}
-.box-messages .ld-box-child ul li:last-child {
-    border: none;
 }
 
 /* Datepicker */
@@ -766,7 +806,7 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     width: 27px;
     height: 27px;
     margin-left: 7px;
-    margin-right: 0!important;
+    margin-right: 0 !important;
 }
 
 .ui-state-highlight span, .ui-state-highlight a, .ui-datepicker-today span, .ui-datepicker-today a {
@@ -869,9 +909,6 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
 }
 #signup .jumbotron {
     margin-bottom: 0;
-}
-#signup h1, h2, h3 {
-    font-weight: 100;
 }
 #signup h1 {
     margin-bottom: 0;
@@ -1033,26 +1070,3 @@ form input[disabled] {
     cursor: pointer;
 }
 
-
-/* Section */
-.ld-subsection {
-    display: inline-block;
-    width: 100%;
-    border-radius: 5px 5px 0 0;
-    margin: 20px 0;
-
-}
-.ld-subsection .class{
-    padding-left: 15px;
-}
-.ld-subsection.first {
-    margin: 0;
-    
-}
-.ld-subsection:nth-child(odd) {
-    background: #F1F1F1;
-    padding: 20px;
-}
-.ld-subsection h2, .ld-subsection h3 {
-    margin-top:0;
-}
