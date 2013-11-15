@@ -1,4 +1,4 @@
-<div class="event purple">
+<div class="ld-calendar purple">
     <header>
         <h1>{{ t._("calendar") }}</h1>
         <h2>{{ t._("edit-title")}}</h2>

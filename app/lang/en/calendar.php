@@ -11,3 +11,4 @@ $messages = array(
     "url" => "Web Link",
     "edit-title" => "Edit Event"
 );
+?>

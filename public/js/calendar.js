@@ -31,10 +31,16 @@ var calendarPage = (function() {
             dateStr += ":00"
             $( ".ld-calendar #hidden-end-date")[0].value = dateStr
         })
-         var url = urlBase + "/service/calendar"
-        $.get(url, function(response) {
-            console.log(response)
-        })
+        if ($( ".ld-calendar #hidden-start-date")[0] ) {
+            var val = $( ".ld-calendar #hidden-start-date")[0].value.split(" ")
+            if (val[0]) $( ".ld-calendar #start-date" )[0].value = val[0]
+            if (val[1]) $( ".ld-calendar #start-time" )[0].value = val[1]
+        }
+        if ($( ".ld-calendar #hidden-end-date")[0] ) {
+            var val = $( ".ld-calendar #hidden-end-date")[0].value.split(" ")
+            if (val[0]) $( ".ld-calendar #end-date" )[0].value = val[0]
+            if (val[1]) $( ".ld-calendar #end-time" )[0].value = val[1]
+        }
         $('#calendar').fullCalendar({
             header : {
                 left : 'prev,next ',
@@ -168,7 +174,7 @@ var calendarPage = (function() {
 
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn bg-evt",
+            "class": "btn btn-cancel",
             "data-dismiss": "modal",
             html: "Cancel"
         })
@@ -201,10 +207,11 @@ var calendarPage = (function() {
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
         modalBody.append("<div><span class=\"modal-label\">" + _t("start-time") + 
             "</span><span class=\"modal-value\">" + 
-            moment(data.start).format("dddd, MMMM Do YYYY [at] h:mm:ss a") + 
+            moment(data.start).format("ddd, MMM Do YYYY [at] h:mm a") + 
             "</span><div>")
         modalBody.append("<div><span class=\"modal-label\">" + _t("end-time") + 
-            "</span><span class=\"modal-value\">" + data.end + "</span></div>")
+            "</span><span class=\"modal-value\">" + 
+            moment(data.end).format("ddd, MMM Do YYYY [at] h:mm a") + "</span></div>")
         modalBody.append("<div><span class=\"modal-label\">" + _t("location") + 
             "</span><span class=\"modal-value\">" + data.location + "</span></div>")
         modalBody.append("<div><span class=\"modal-label\">" + _t("contact") + 
@@ -216,7 +223,7 @@ var calendarPage = (function() {
         modalBody.append("<div class=\"value\">" + data.description + "</div>")
 
         var remove = $( "<button>", {
-            "class": "btn",
+            "class": "btn-icon icon-trash",
             html: "Delete"
         })
 
@@ -225,10 +232,16 @@ var calendarPage = (function() {
             "class": "btn",
             html: "Edit"
         })
+        var dismiss = $( "<button>", {
+            type: "button",
+            "class": "btn btn-cancel",
+            "data-dismiss": "modal",
+            html: "Cancel"
+        })
         var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
         modalFooter.append(remove)
         modalFooter.append(edit)
-
+        modalFooter.append(dismiss)
         var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
 
         var modalContent = $ ( "<div class=\"modal-calendar modal-content\"></div>" )

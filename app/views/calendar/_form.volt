@@ -22,30 +22,37 @@
 <div class="clearfix"></div>
 <p class="col-sm-12 col-md-12">
     <label for="title">{{ t._("description")}}</label>
-    {{ text_area("description", "placeholder":t._("description"), "class":"form-control") }}
+    {{ text_area("description", "placeholder":t._("description"),
+        "class":"form-control", "value": event.description) }}
 </p>
 <div class="clearfix"></div>
 <p class="col-sm-6 col-md-6">
     <label for="title">{{ t._("start-date")}}</label>
-    <input type="text" id="start-date" class="form-control" placeholder="{{ t._("start-date")}}" >
-    <input type="hidden" id="hidden-start-date" name="start">
+    <input type="text" id="start-date" class="form-control" 
+        placeholder="{{ t._("start-date")}}">
+    <input type="hidden" id="hidden-start-date" 
+        name="start" value="{{ event.start }}">
 </p>
 <p class="col-sm-6 col-md-6">
     <label for="title">{{ t._("end-date")}}</label>
-    <input type="text" id="end-date" placeholder="{{ t._("end-date")}}" class="form-control">
-    <input type="hidden" id="hidden-end-date" name="end">
+    <input type="text" id="end-date" placeholder="{{ t._("end-date")}}"
+        class="form-control">
+    <input type="hidden" id="hidden-end-date" name="end" value="{{ event.end }}">
 </p>
 <div class="clearfix"></div>
-<P class="col-sm-12">  {{ check_field("allDay", "id":"all-day") }} {{ t._("all-day")}}</P>
+<P class="col-sm-12">  {{ check_field("allDay", "id":"all-day") }}
+    {{ t._("all-day")}}</P>
 <span class="all-day-block">
 <p class="col-sm-6 col-md-6">
     <label for="time">{{ t._("start-time")}}</label>
-    <input type="text" id="start-time" class="form-control" placeholder="{{ t._("start-time")}}" >
+    <input type="text" id="start-time" class="form-control"
+        placeholder="{{ t._("start-time")}}" >
     <input type="hidden" name="start-time">
 </p>
 <p class="col-sm-6 col-md-6">
     <label for="title">{{ t._("end-time")}}</label>
-    <input type="text" id="end-time" placeholder="{{ t._("end-time")}}" class="form-control">
+    <input type="text" id="end-time" placeholder="{{ t._("end-time")}}"
+        class="form-control">
 </p>
 </span>
 <input type="hidden" name="user-id" value="{{ event.userId }}">

@@ -1,5 +1,10 @@
 .ld-calendar {
 }
+.ld-calendar .modal .icon-trash {
+    position: absolute;
+    top: 32px;
+    right: 25px;
+}
 .ld-calendar .modal .content-block {
     display: inline-block;
 }
@@ -8,6 +13,7 @@
 }
 .ld-calendar .modal .modal-value {
     width: 70%;
+    float: right;
 }
 .ld-calendar .modal hr {
     border-top-color: #b4b4b4;
