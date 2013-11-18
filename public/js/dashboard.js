@@ -38,8 +38,8 @@ var dashboard = (function() {
             eventDate = new Date(dateValues[0], dateValues[1], dateValues[2])
             if ( eventDate.getFullYear() == year &&
                eventDate.getMonth() == month ) {
-                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
-                eventStr += "<td colSpan=2>" + getDisplayDate(eventDate, "D jS") + "<br/>"
+                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
+                eventStr += "<td colSpan=2>" + moment(eventDate).format("ddd Do") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "All Day"
                 } else {
@@ -65,7 +65,7 @@ var dashboard = (function() {
             if ( eventDate.getFullYear() == selectDate.getFullYear() &&
                eventDate.getMonth() ==  selectDate.getMonth() &&
                eventDate.getDate() == selectDate.getDate() ) {
-                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
+                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "<td> All Day </td></tr>"
                 } else {
@@ -75,7 +75,8 @@ var dashboard = (function() {
             }
         }
         var tableBody = $( "<tbody></tbody>")
-        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4> " + getDisplayDate(eventDate, "D jS") + " " + prettyDateMonth(eventDate) + " " + eventDate.getFullYear() + " </td></tr>" )
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4> " + 
+            moment(selectDate).format("ddd MMM Do YYYY")  + " </td></tr>" )
         tableBody.append( items.join("") )
         tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4><a class=\"btn\" href=\"" + urlBase + "/" + getUser() + "/calendar/new\">New Event</a></td></tr>" )
         var table = $ ( "<table class=\"table table-events\"></table>" )
