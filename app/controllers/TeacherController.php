@@ -63,7 +63,7 @@ class TeacherController extends UsersController {
         $t = Translation::get(Language::get(), "classes");
 
         if (!$classList) {
-            $this->flash->error("school was not found");
+            $this->flash->error($t->_("class-not-found"));
             return $this->toIndex();
         }
 
@@ -107,6 +107,7 @@ class TeacherController extends UsersController {
 
     public function createClassAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
+        $t = Translation::get(Language::get(), "classes");
 
         $classList = new ClassList();
         $classList->subjectId = $this->request->getPost("subject-id");
@@ -139,7 +140,7 @@ class TeacherController extends UsersController {
                 $slot->room = $this->request->getPost("room");
 
                 if (!$slot->save()) {
-                    $this->flash->error("Was not possible to create the slots");
+                    $this->flash->error($t->_("slot-not-saved"));
 
                     return $this->dispatcher->forward(array(
                         "controller" => "teacher",
@@ -149,7 +150,7 @@ class TeacherController extends UsersController {
             }
         }
 
-        $this->flash->success("Class was created successfully");
+        $this->flash->success($t->_("class-created"));
         return $this->response->redirect("teacher/classes");
     }
 

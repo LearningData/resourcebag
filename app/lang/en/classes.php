@@ -18,6 +18,9 @@ $messages = array(
     "slots" => "Slots",
     "times" => "Times",
     "class-updated" => "Class was updated.",
+    "class-created" => "Class was created.",
     "class-deleted" => "Class was deleted successfully",
+    "class-not-found" => "Class was not found",
+    "slot-not-saved" => "Slot was not saved."
 );
 ?>
