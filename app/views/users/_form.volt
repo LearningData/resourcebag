@@ -1,13 +1,16 @@
-<div class="col-sm-6">
+<div class="col-sm-6 orange">
     <h2>{{ t._("Your Information") }}</h2>
-    <label for="Type">{{ t._("type")}}</label>
-    <select name="Type">
-        <option value="T" selected="true">Teacher</option>
-    </select>
-    <div class="col-sm-6">
-        <label>{{ t._("teacher-title") }}</label>
-        {{ select('title', titles, 'using': ['id', 'name'],
-        'emptyText': 'Please, choose one type') }}
+    <div class="row">
+        <div class="col-sm-6">
+            <label for="Type">{{ t._("type")}}</label>
+            <select name="Type">
+                <option value="T" selected="true">{{ t._("teacher")}}</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label>{{ t._("teacher-title") }}</label>
+            {{ select('title', titles, 'using': ['id', 'name'],'emptyText': 'Please, choose one type') }}
+        </div>
     </div>
     <label for="FirstName">{{ t._("name") }}</label>
     <div class="row">
@@ -34,9 +37,7 @@
         </div>
     </div>
 </div>
-
 <div class="col-sm-6 orange">
-
     <h2>{{ t._("Yours School Information") }}</h2>
     <label for="schoolID">{{ t._("School") }}</label>
     {{ select('schoolID', schools, 'using': ['id', 'name'],

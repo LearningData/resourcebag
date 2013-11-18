@@ -1,6 +1,7 @@
-.orange a {
+/*.orange a,*/ .ld-new-buttons a, .ld-new-buttons .custom-icon-new-homework {
     color: #ff9e19;
 }
+
 /* default background */
 .orange header, .orange .btn-icon, .orange .btn, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class*="btn-"], .orange.ld-box .ld-box-head .title, .orange .ld-student-status a {
     background-color: #ff9e19;

@@ -1,6 +1,7 @@
-.pink a {
+/*.pink a {
     color: #ff0097;
 }
+*/
 .pink h1, .pink .btn-icon, .pink .btn, .pink.ld-box .ld-box-head .title, .pink .uploader .action, .pink header, .pink .tooltip-inner, .pink .ld-student-status a {
     background-color: #ff0097;
 }
