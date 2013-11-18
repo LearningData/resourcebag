@@ -8,13 +8,10 @@
 /*
  * School Bag Documentation
  * Default style - For each section see diferents css files.
- *
  * Table of contents:
- *
  * Reset Bootstrap
  * Fonts
  * Section
- *
  * Buttons
  * Icons / General
  * Default Margin / Padding
@@ -24,15 +21,9 @@
  * Main Menu / Sidebar
  *.Headers
  * Datepicker
- *
- *
- *
- *
  * User Profile
  * Datepicker
  * Paginator
- *
- *
  *
  */
 
@@ -63,10 +54,12 @@ ul {
     margin: 0;
     padding: 0;
     border: none;
+    color: #4d4d4f;
 }
 a:hover, a:focus {
     color: #2A6496;
     text-decoration: none;
+    color: #000000;
 }
 .label {
     border-radius: 0;
@@ -1036,6 +1029,7 @@ form select {
 
 form input[disabled] {
     background-color: #f1f1f1;
+    color: #c8c8cd;
 }
 
 /*timetable*/

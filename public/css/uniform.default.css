@@ -85,6 +85,7 @@ div.selector span {
     cursor: pointer;
     width: 100% !important;
     display: block;
+    color: #c8c8cd;
 }
 div.selector.fixedWidth {
     width: 190px;

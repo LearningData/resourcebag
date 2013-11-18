@@ -1,6 +1,7 @@
-.grey a {
+/*.grey a {
     color: #939598;
 }
+*/
 .grey h1, .grey .btn-icon, .grey .btn, .grey.ld-box .ld-box-head .title, .grey .uploader .action, .grey header, .grey .tooltip-inner, .grey .ld-student-status a {
     background-color: #939598;
 }
