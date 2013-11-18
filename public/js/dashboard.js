@@ -34,13 +34,10 @@ var dashboard = (function() {
         var items = []
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
-                console.log( eventDate.getFullYear(),year)
- console.log( eventDate.getMonth(),month )
             var dateValues = calendarEvents[i].start.split(/[-\s]/)
             eventDate = new Date(dateValues[0], dateValues[1], dateValues[2])
             if ( eventDate.getFullYear() == year &&
                eventDate.getMonth() == month ) {
-                console.log('in')
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].description + "</td>"
                 eventStr += "<td colSpan=2>" + getDisplayDate(eventDate, "D jS") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
@@ -151,8 +148,23 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            var overdue = new Date(item["due-date"]) < Date.now() ? "overdue" : ""
-            homeworkItems.push("<li class=\"ld-tooltip " + overdue + "\"><a  href=\"" + urlBase + "/student/homework/edit/" + homework[i].id + "\"><span title=\"" + titleTip + "\" class=\"btn-icon " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].description + " (" + homework[i].subject + ")<span class=\"icon-exclamation-sign\" title=\"Overdue\" data-placement='left auto' data-toggle='tooltip'></span></p></a></li>")
+            
+            var dueDate = new Date(item["due-date"])
+            var btnIcon = "<span title=\"" + titleTip + "\" class=\"btn-icon " 
+                + icon + 
+                "\" data-placement='left auto' data-toggle='tooltip'></span>"
+            var overdue = dueDate < Date.now() ? "overdue" : ""
+            var due = "<p class=\"due-date " + overdue + "\">" + 
+                "<span class=\"due-date-icon\" title=\"Overdue\"" + 
+                "data-placement='left auto' data-toggle='tooltip'>" + 
+                "</span>    " + moment(dueDate).fromNow() + 
+                "</p>"
+            homeworkItems.push("<li class=\"ld-tooltip\">" + 
+                "<a  href=\"" + urlBase + "/student/homework/edit/" + 
+                homework[i].id + "\">" + btnIcon + "<p>" + 
+                homework[i].description + " (" + homework[i].subject + 
+                ")</p>" + due + "</a></li>"
+            )
         }
         return homeworkItems
     }

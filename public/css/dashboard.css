@@ -105,6 +105,7 @@
     margin: 0px;
     display: inline;
     margin-left: 5px;
+    color: #4d4d4f;
 }
 
 .dashboard .ld-homework.ld-box .ld-box-child ul li .btn-icon {
@@ -112,18 +113,22 @@
     line-height: 15px;
 }
 
-.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue p {
-    color: #FF0000;
+.dashboard .ld-homework.ld-box .ld-box-child ul li .due-date {
+    color: #dadada;
+    display: block;
+    text-align: right;
 }
 
-.dashboard .ld-homework.ld-box .ld-box-child ul li span.icon-exclamation-sign {
-    display: none
+.dashboard .ld-homework.ld-box .ld-box-child ul li .due-date.overdue {
+    color: #ff9e19;
 }
-
-.dashboard .ld-homework.ld-box .ld-box-child ul li.overdue span.icon-exclamation-sign {
-    display: inline;
-    float: right;
-    color: #FF0000;
+.dashboard .ld-homework.ld-box .ld-box-child ul li .due-date-icon:before {
+    font-family: FontAwesome;
+    content: "\f017";
+}
+.dashboard .ld-homework.ld-box .ld-box-child ul li .due-date.overdue .due-date-icon:before {
+    font-family: FontAwesome;
+    content: "\f071";
 }
 
 .dashboard-homework .tooltip-inner {
