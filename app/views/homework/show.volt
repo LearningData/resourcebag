@@ -1,7 +1,7 @@
 <div class="ld-homework orange">
     <header>
         <h1 id="header">{{ t._("homework") }}</h1>
-        <h2>{{ t._("showing") }}</h1>
+        <h2>{{ t._("showing") }} - {{ homework.title }}</h1>
     </header>
     <section>
         <div class="col-sm-12">
@@ -42,9 +42,10 @@
         {% else %}
         <h6>{{ t._("no-files-uploaded") }}.</h6>
         {% endif %}
-        <button class="btn mtop-20 return">
+        
+    </section>
+    <button class="btn mtop-20 return">
             Back
         </button>
-    </section>
 </div>
 
