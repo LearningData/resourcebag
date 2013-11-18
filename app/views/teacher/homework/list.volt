@@ -11,7 +11,7 @@
                 <th></th>
                 <th>{{ t._("students") }}</th>
                 <th>{{ t._("set") }}</th>
-                <th>{{ t._("in progress") }}</th>
+                <th>{{ t._("in-progress") }}</th>
                 <th>{{ t._("completed") }}</th>
             </tr>
         </thead>

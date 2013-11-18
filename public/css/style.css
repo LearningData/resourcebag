@@ -314,12 +314,10 @@ span.customSelect {
 /* Modal */
 .modal-header {
     border-bottom: none;
-    padding: 30px 0 0 5%;
+    padding: 30px 3% 0 5%;
 }
 .modal-body {
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 5%;
+    padding: 0 5% 30px;
 }
 .modal-body p {
     margin-top: 15px;

@@ -7,7 +7,7 @@
         "class":"btn") }}
     {% endif %}
     <section>
-        <h2>{{ t._("my-resources") }}</h2>
+        <h3>{{ t._("my-resources") }}</h3>
         <ul>
         {% for key, classList in classes %}
             <li><span class="collapse-toggle" data-icon="#icon{{ key }}" data-target="#resrc{{ key }}"><span id="icon{{ key }}"class="collapse-icon-close">{{ classList["name"] }}

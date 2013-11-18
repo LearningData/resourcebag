@@ -16,15 +16,13 @@
                 <label for="description">{{ t._("description")}}</label>
                 <textarea rows="5" name="description" placeholder={{ t._("description")}}></textarea>
             </div>
-
-            <div class="col-sm-6">
-                <label for="class">{{ t._("subject")}}</label>
-                <input type="text" name="class" disabled="disabled" value="{{ classList.subject.name }}">
-            </div>
-
             <div class="col-sm-6">
                 <label for="due-date">{{ t._("due-date")}}</label>
                 <input type="text" name="due-date" id="teacher-due-date" placeholder={{t._("due-date")}}>
+            </div>
+            <div class="col-sm-6">
+                <label for="class">{{ t._("subject")}}</label>
+                <input type="text" name="class" disabled="disabled" value="{{ classList.subject.name }}">
             </div>
             <div class="col-sm-12">
                 <div id="due-times"></div>
