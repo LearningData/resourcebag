@@ -23,7 +23,7 @@
     </table>
     {{ form("homework/reviewed/"~homework.id, "method":"post", "class":"form inline") }}
     <input type="submit" class="btn mtop-20" value="{{ t._("submit") }}">
-    <button class="btn btn-cancel return mtop-20">
+    <button type="button" class="btn btn-cancel return mtop-20">
         {{ t._("back") }}
     </button>
     </form>
