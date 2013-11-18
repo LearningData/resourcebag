@@ -24,6 +24,9 @@
                 <td class="ld-student-status">{{ classList.users.count() }}</td>
                 {% endif %}
                 <td class="ld-tooltip"><span class="link remove-class btn-icon icon-remove" data-class-id="{{ classList.id }}" data-toggle="tooltip" title="{{ t._("remove-class") }}"></span></td>
+                <td>
+                    {{ link_to("teacher/editClass/"~classList.id,"Edit")}}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

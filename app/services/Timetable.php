@@ -87,11 +87,13 @@ class Timetable {
                     $content = $classes[$config->timeSlotId];
                     $content["time"] = $config->startTime;
                     $content["endTime"] = $config->endTime;
+                    $content["checked"] = true;
                     $slots []= $content;
                 } else {
                     $slots []= array("time" => $config->startTime,
                         "subject" => $config->preset,
-                        "endTime" => $config->endTime);
+                        "endTime" => $config->endTime,
+                        "checked" => false);
                 }
             }
         }
@@ -108,6 +110,25 @@ class Timetable {
         foreach ($configs as $config) {
             if (!array_key_exists($config->timeSlotId, $classes)) {
                 $slots[$config->timeSlotId] = $config;
+            }
+        }
+
+        return $slots;
+    }
+
+    public function getTeacherTimetable($user, $day) {
+        $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
+        $classesList = ClassList::findByTeacherId($user->id);
+        $classes = Timetable::populeClasses($classesList, $day);
+        $slots = array();
+
+        foreach ($configs as $config) {
+            if (array_key_exists($config->timeSlotId, $classes)) {
+                $slots[$config->timeSlotId] = array("checked" => true,
+                    "config" => $config);
+            } else {
+                $slots[$config->timeSlotId] = array("checked" => false,
+                    "config" => $config);
             }
         }
 
