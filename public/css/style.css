@@ -54,10 +54,11 @@ ul {
     margin: 0;
     padding: 0;
     border: none;
+}
+a   {
     color: #4d4d4f;
 }
 a:hover, a:focus {
-    color: #2A6496;
     text-decoration: none;
     color: #000000;
 }

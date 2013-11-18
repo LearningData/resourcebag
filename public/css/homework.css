@@ -20,8 +20,8 @@
 }
 .ld-homework .nav ul li a:hover {
     text-decoration: none;
-    border-bottom: #a30c00 solid 5px;
-    background-color: #a30c00;
+    border-bottom: #760900 solid 5px;
+    background-color: #760900;
 }
 .ld-homework .nav ul li.bt-new a {
     border-bottom: #a30c00 solid 5px;
@@ -36,42 +36,18 @@
     margin-right: 10px;
 }
 
-.ld-homework .nav.status .btn-all a {
+.ld-homework .nav.status .btn-all a,
+.ld-homework .nav.status0 .bt-to-do a,
+.ld-homework .nav.status1 .bt-in-progress a,
+.ld-homework .nav.status2 .bt-complete a,
+.ld-homework .nav.status3 .btn-reviewed a{
     border-bottom: #a30c00 solid 5px;
 }
 
-.ld-homework .nav.status .btn-all :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.ld-homework .nav.status0 .bt-to-do a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.ld-homework .nav.status0 .bt-to-do :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.ld-homework .nav.status1 .bt-in-progress a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.ld-homework .nav.status1 .bt-in-progress :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.ld-homework .nav.status2 .bt-complete a {
-    border-bottom: #a30c00 solid 5px;
-}
-
-.ld-homework .nav.status2 .bt-complete :hover {
-    border-bottom: #760900 solid 5px;
-}
-
-.ld-homework .nav.status3 .btn-reviewed a {
-    border-bottom: #a30c00 solid 5px;
-}
-
+.ld-homework .nav.status .btn-all :hover,
+.ld-homework .nav.status0 .bt-to-do :hover,
+.ld-homework .nav.status1 .bt-in-progress :hover,
+.ld-homework .nav.status2 .bt-complete :hover,
 .ld-homework .nav.status3 .btn-reviewed :hover {
     border-bottom: #760900 solid 5px;
 }
