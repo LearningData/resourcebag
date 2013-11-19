@@ -51,7 +51,7 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
         $this->view->classList = $classList;
-        $this->view->action = "edit";
+        $this->view->room = $classList->slots[0]->room;
 
         $slots = array();
 
@@ -89,10 +89,12 @@ class TeacherController extends UsersController {
         $t = Translation::get(Language::get(), "classes");
 
         $classList = ClassList::findFirstById($this->request->getPost("class-id"));
-
-        $classList->subjectId = $this->request->getPost("subject-id");
-        $classList->cohortId = $this->request->getPost("cohort-id");
         $classList->extraRef = $this->request->getPost("extra-ref");
+        $room = $this->request->getPost("room");
+
+        if(!$room) {
+            $room = $classList->slots[0]->room;
+        }
 
         if(!$classList->save()) {
             foreach ($classList->getMessages() as $message) {
@@ -105,6 +107,34 @@ class TeacherController extends UsersController {
             ));
         }
 
+        for($day=1; $day <= 6; $day++){
+            foreach ($classList->getSlots("day = $day") as $slot) {
+                $slotIds = $this->request->getPost("day$day");
+
+                if(!in_array($slot->timeSlotId, $slotIds)) {
+                    $slot->delete();
+                } else {
+                    $slot->room = $room;
+                    $slot->save();
+                }
+            }
+
+            $ids = $classList->getSlotIdsByDay($day);
+            $slots = $this->request->getPost("day$day");
+            if (!$slots) { continue; }
+
+            foreach($slots as $slotId) {
+                if(in_array($slotId, $ids)) { continue; }
+
+                $slot = new TimetableSlot();
+                $slot->timeSlotId = $slotId;
+                $slot->schoolId = $this->view->user->schoolId;
+                $slot->day = $day;
+                $slot->classId = $classList->id;
+                $slot->room = $room;
+                $slot->save();
+            }
+        }
         $this->flash->success($t->_("class-updated"));
         return $this->response->redirect("teacher/classes");
     }

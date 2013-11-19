@@ -6,6 +6,7 @@ class TimetableSlot extends \Phalcon\Mvc\Model {
     public $timeslotID;
     public $classID;
     public $Room;
+    public $id;
 
     public function initialize() {
         $this->belongsTo("classId", "ClassList", "id");
@@ -28,7 +29,8 @@ class TimetableSlot extends \Phalcon\Mvc\Model {
             'Day' => 'day',
             'timeslotID' => 'timeSlotId',
             'classID' => 'classId',
-            'Room' => 'room'
+            'Room' => 'room',
+            'id' => 'id'
         );
     }
 }
