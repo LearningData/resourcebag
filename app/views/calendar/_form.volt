@@ -2,7 +2,9 @@
 <p class="col-sm-6 col-md-6">
     <label for="title">{{ t._("title-label")}}</label>
     {{ text_field("title", "placeholder": t._("title-label"),
-        "class":"form-control", "value": event.title ) }}
+        "class":"form-control", "value": event.title,
+         "data-valid-required":true ) }}
+    <span class="validation-error hidden">{{ t._("enter-value") }}</span>
 </p>
 <p class="col-sm-6 col-md-6">
     <label for="title">{{ t._("location")}}</label>

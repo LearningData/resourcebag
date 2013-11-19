@@ -71,6 +71,7 @@ $(document).ready(function() {
     $("#end-date").datepicker("widget").addClass("event-page")
     $("#notice-note-date").datepicker("widget").addClass("datepicker-note")
     setUpEvents()
+    validationEvents()
 });
 var urlBase = window.location.protocol + "//" + window.location.host + "/schoolbag"
 $("input[type=file]").uniform();
@@ -182,31 +183,6 @@ function dayOfWeek(date) {
     return days[date.getUTCDay()]
 }
 
-
-
-function getDisplayDate(date, format) {
-    var dateStr = date.getDate()
-     switch (dateStr) {
-     case 1:
-     case 21:
-     case 31:
-        dateStr += 'st'
-        break
-     case 2:
-     case 22:
-        dateStr += 'nd'
-        break
-     case 3:
-     case 23:
-        dateStr += 'rd'
-        break
-     default:
-        dateStr += 'th'
-        break
-   }
-    return days[date.getDay()] + " " + dateStr
-}
-
 function prettyDay(date) {
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     return days[date.getUTCDay()] + " " + date.getUTCDate()
@@ -235,7 +211,7 @@ function hiddenRadioElements() {
 
 function setUpEvents() {
     //buttone events
-    $(".btn.btn-return").click(function(a) {
+    $(".btn.btn-cancel").click(function(a) {
         window.history.go(-1)
     })
     //general collapse event
@@ -311,6 +287,18 @@ var cutText = function(parent, element) {
             return text.replace(/\W*\s(\S)*$/, "");
         })
     }
+}
+//validation
+
+var validationEvents = function() {
+    var isValid = function(element) {
+        if (element.getAttribute("data-valid-required") == true && element.value.trim() == "") {
+            console.log('invalid')
+        }
+    }
+    $("input").blur(function(event) {
+        isValid(event.target)
+    })
 }
 
 

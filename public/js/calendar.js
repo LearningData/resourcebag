@@ -7,6 +7,18 @@ var calendarPage = (function() {
             console.log("here")
             $( ".ld-calendar .all-day-block").toggleClass("hidden")
         })
+        
+        $( ".ld-calendar .btn:submit").click( function( event ) {
+//            alert('stop')
+            event.preventDefault()
+            var form = $( ".ld-calendar form")
+            if (validForm(form)) {
+                form.submit()
+            } else {
+                console.log('hi')
+            }
+        })
+        //Set times for mysql format
         $( ".ld-calendar #start-time, .ld-calendar #start-date" ).change( function( event ) {
             var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
             var val = new Date($( ".ld-calendar #start-date").datepicker( "getDate" ))
