@@ -13,51 +13,54 @@ var homeworkPage = (function() {
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
-        var titleTitle = $ ("<label>Title</label>")
-        modalBody.append( titleTitle )
-
+        var block = $("<div id='tmtbl-frm-title'></div>")
         var titleInput = $ ( "<input>", {
             type: "text",
             "class": "form-control",
-            placeholder: "Title",
+            placeholder: _t("title"),
             name: "title",
-            id: "title",
-            required: "required"
+            "data-required-key": "true",
+            "data-target": "#tmtbl-frm-title"
         })
-        modalBody.append( titleInput )
+        block.append($ ("<label>" + _t("title") + "*</label>"))
+        block.append( titleInput )
+        block.append($("<span class='validation-error'>" + _t("cant-leave-empty") + "</span>"))
+        modalBody.append(block)
 
-        var titleDescription = $ ("<label>Description</label>")
-        modalBody.append( titleDescription )
-        
+        block = $("<div id='tmtbl-frm-desc'></div>")
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
             "class": "form-control",
-            placeholder: "Description",
-            required: "required"
+            placeholder: _t("description"),
+            "data-required-key": "true",
+            "data-target": "#tmtbl-frm-desc"
         })
-        modalBody.append( descriptionInput )
-        var options= ["<option value=\"\" disabled=\"disabled\"> Class:</option>"]
+        block.append($ ("<label>" + _t("description") + "*</label>"))
+        block.append( descriptionInput )
+        block.append($("<span class='validation-error'>" + _t("cant-leave-empty") + "</span>"))
+        modalBody.append(block)
+
+        block = $("<div id='tmtbl-frm-subject'></div>")
+        var options= ["<option value=\"\" selected='selected' disabled=\"disabled\">" + _t("subject") + "</option>"]
         for ( var i = 0; i < classes.length; i++ ) {
             options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
         }
-        
-        var titleSubject = $ ("<label>Subject</label>")
-        modalBody.append( titleSubject )
-        
         var selectClass = $( "<select>", {
             name: "classList-id",
             id: "classList-id",
             "class": "form-control customSelect",
-            required: "required",
+            "data-required-key": "true",
+            "data-target": "#tmtbl-frm-subject",
             onchange: "return getEnableDays(this)"
         })
         selectClass.append( options.join("") )
-        modalBody.append( selectClass )
-        
-        var titleDuedate = $ ("<label>Due Date</label>")
-        modalBody.append( titleDuedate )
-        
+        block.append($ ("<label>" + _t("subject") + "*</label>"))
+        block.append( selectClass )
+        block.append($("<span class='validation-error'>" + _t("must-select-one") + "</span>"))
+        modalBody.append(block)
+
+        block = $("<div id='tmtbl-frm-due-date'></div>")
         var dueDateInput = $( "<input>", {
             type: "text",
             name: "due-date",
@@ -65,10 +68,14 @@ var homeworkPage = (function() {
             placeholder: "Due Date",
             id: "due-date",
             disabled: "disabled",
-            required: "required"
+            "data-required-key": "date",
+            "data-target": "#tmtbl-frm-due-date",
         })
-        
-        modalBody.append( dueDateInput )
+        block.append($ ("<label>" + _t("due-date") + "*</label>"))
+        block.append( dueDateInput )
+        block.append($("<span class='validation-error'>" + _t("cant-leave-empty") + "</span>"))
+        modalBody.append(block)
+
         var dueTimes = $( "<div>", {
           id: "due-times"
         })
@@ -119,8 +126,13 @@ var homeworkPage = (function() {
         form.appendTo( modalDialog )
         modalDialog.appendTo( modal )
         modal.appendTo( "div.ld-homework" )
-
-        //Events
+        validationEvents()
+        send.click( function( event ) {
+            event.preventDefault()
+            if (validForm(form)) {
+                form.submit()
+            }
+        })
     }
 
     var uploadHomeworkFileDialog = function( homeworkId ) {

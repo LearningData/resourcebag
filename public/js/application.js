@@ -294,6 +294,12 @@ var validForm = function(form) {
     $( form ).find("input").each(function(index, element){
         if (!isValid(element)) valid = false
     })
+    $( form ).find("textarea").each(function(index, element){
+        if (!isValid(element)) valid = false
+    })
+    $( form ).find("select").each(function(index, element){
+        if (!isValid(element)) valid = false
+    })
     return valid
 }
 var isValid = function(element) {
@@ -335,7 +341,7 @@ var isValid = function(element) {
     return true
 }
 var validationEvents = function() {
-    $("input:not(.hasDatepicker)").blur(function(event) {
+    $("input:not(.hasDatepicker), form textarea").blur(function(event) {
         if (!isValid(event.currentTarget)) {
             $("input").keyup(function(event) {
                 isValid(event.currentTarget)
