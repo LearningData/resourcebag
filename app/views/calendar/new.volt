@@ -1,7 +1,7 @@
 <div class="ld-calendar purple">
     <header>
         <h1>{{ t._("calendar") }}</h1>
-        <h2>{{ t._("new-title")}}</h2>
+        <h2>{{ t._("new-event")}}</h2>
     </header>
 
     {{ form("calendar/create", "method":"post", "class":"form-inline") }}

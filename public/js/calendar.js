@@ -9,13 +9,10 @@ var calendarPage = (function() {
         })
         
         $( ".ld-calendar .btn:submit").click( function( event ) {
-//            alert('stop')
             event.preventDefault()
             var form = $( ".ld-calendar form")
             if (validForm(form)) {
                 form.submit()
-            } else {
-                console.log('hi')
             }
         })
         //Set times for mysql format
@@ -26,10 +23,10 @@ var calendarPage = (function() {
             dateStr = "" + val.getFullYear() + "-"
             dateStr +=  (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
             dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + " "
-            dateStr += (val.getHours() < 10) ? "0" + val.getHours() : val.getHours() + ":"
-            dateStr += (val.getMinutes() < 10) ? "0" + val.getMinutes() : val.getMinutes()
+            dateStr += (val.getHours() < 10 ? "0" + val.getHours() : val.getHours()) 
+            dateStr += ":" + (val.getMinutes() < 10 ? "0" + val.getMinutes() : val.getMinutes())
             dateStr += ":00"
-            $( ".ld-calendar #hidden-start-date")[0].value = dateStr
+            $( ".ld-calendar #hidden-start-date").val(dateStr)
         })
         $( ".ld-calendar #end-time, .ld-calendar #end-date" ).change( function( event ) {
             var millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
@@ -37,9 +34,10 @@ var calendarPage = (function() {
             val.setTime(val.getTime() + millsecs)
             dateStr = "" + val.getFullYear() + "-"
             dateStr +=  (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
-            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + "-"
-            dateStr += (val.getHours() < 10) ? "0" + val.getHours() : val.getHours() + "-"
-            dateStr += (val.getMinutes() < 10) ? "0" + val.getMinutes() : val.getMinutes()
+            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + " "
+            dateStr += (val.getHours() < 10 ? "0" + val.getHours() : val.getHours()) 
+            dateStr += ":" + (val.getMinutes() < 10 ? "0" + val.getMinutes() : val.getMinutes())
+            dateStr += ":00"
             dateStr += ":00"
             $( ".ld-calendar #hidden-end-date")[0].value = dateStr
         })
@@ -77,7 +75,7 @@ var calendarPage = (function() {
             firstDay : 1,
             center : 'prevYear',
             events : urlBase + "/service/calendar",
-            timeFormat: 'H(:mm)'
+            timeFormat: ''
         })
     }
 
