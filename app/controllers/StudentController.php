@@ -69,7 +69,7 @@ class StudentController extends UsersController {
                 $this->flash->error($t->_("not-joined"));
             }
 
-            $this->dispatcher->forward(array("action" => "index"));
+            $this->dispatcher->forward(array("action" => "classes"));
         }
     }
 
