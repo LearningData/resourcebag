@@ -32,6 +32,7 @@ class TeacherController extends UsersController {
         $this->view->t = Translation::get(Language::get(), "classes");
         $this->view->classList = new ClassList();
         $this->view->classList->id = 0;
+        $this->view->action = "new";
 
         $slots = array();
         for($i = 1; $i <=6; $i++) {
@@ -50,11 +51,14 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
         $this->view->classList = $classList;
+        $this->view->action = "edit";
 
         $slots = array();
+
         for($i = 1; $i <=6; $i++) {
-            $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
+            $slots[$i] = Timetable::getTeacherTimetable($user, $i, $classId);
         }
+
         $this->view->slots = $slots;
     }
 
