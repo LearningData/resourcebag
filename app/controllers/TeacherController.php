@@ -30,6 +30,27 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
         $this->view->t = Translation::get(Language::get(), "classes");
+        $this->view->classList = new ClassList();
+        $this->view->classList->id = 0;
+
+        $slots = array();
+        for($i = 1; $i <=6; $i++) {
+            $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
+        }
+        $this->view->slots = $slots;
+    }
+
+    public function editClassAction($classId) {
+        $this->view->t = Translation::get(Language::get(), "classes");
+        $user = $this->getUserBySession();
+
+        $classList = ClassList::findFirstById($classId);
+        $this->tag->setDefault("subject-id", $classList->subject->id);
+        $this->tag->setDefault("cohort-id", $classList->cohort->id);
+        $this->view->subjects = Subject::find();
+        $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
+        $this->view->classList = $classList;
+
         $slots = array();
         for($i = 1; $i <=6; $i++) {
             $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
@@ -39,9 +60,10 @@ class TeacherController extends UsersController {
 
     public function deleteClassAction($classId) {
         $classList = ClassList::findFirstById($classId);
+        $t = Translation::get(Language::get(), "classes");
 
         if (!$classList) {
-            $this->flash->error("school was not found");
+            $this->flash->error($t->_("class-not-found"));
             return $this->toIndex();
         }
 
@@ -53,13 +75,39 @@ class TeacherController extends UsersController {
             return $this->toIndex();
         }
 
-        $this->flash->success("Class was deleted successfully");
+        $this->flash->success($t->_("class-deleted"));
 
+        return $this->response->redirect("teacher/classes");
+    }
+
+    public function updateClassAction() {
+        if (!$this->request->isPost()) { return $this->toIndex(); }
+        $t = Translation::get(Language::get(), "classes");
+
+        $classList = ClassList::findFirstById($this->request->getPost("class-id"));
+
+        $classList->subjectId = $this->request->getPost("subject-id");
+        $classList->cohortId = $this->request->getPost("cohort-id");
+        $classList->extraRef = $this->request->getPost("extra-ref");
+
+        if(!$classList->save()) {
+            foreach ($classList->getMessages() as $message) {
+                $this->flash->error($message);
+            }
+
+            return $this->dispatcher->forward(array(
+                "controller" => "teacher",
+                "action" => "newClass"
+            ));
+        }
+
+        $this->flash->success($t->_("class-updated"));
         return $this->response->redirect("teacher/classes");
     }
 
     public function createClassAction() {
         if (!$this->request->isPost()) { return $this->toIndex(); }
+        $t = Translation::get(Language::get(), "classes");
 
         $classList = new ClassList();
         $classList->subjectId = $this->request->getPost("subject-id");
@@ -92,7 +140,7 @@ class TeacherController extends UsersController {
                 $slot->room = $this->request->getPost("room");
 
                 if (!$slot->save()) {
-                    $this->flash->error("Was not possible to create the slots");
+                    $this->flash->error($t->_("slot-not-saved"));
 
                     return $this->dispatcher->forward(array(
                         "controller" => "teacher",
@@ -102,7 +150,7 @@ class TeacherController extends UsersController {
             }
         }
 
-        $this->flash->success("Class was created successfully");
+        $this->flash->success($t->_("class-created"));
         return $this->response->redirect("teacher/classes");
     }
 
