@@ -289,14 +289,60 @@ var cutText = function(parent, element) {
     }
 }
 //validation
-
-var validationEvents = function() {
-    var isValid = function(element) {
-        if (element.getAttribute("data-valid-required") == true && element.value.trim() == "") {
-            console.log('invalid')
+var validForm = function(form) {
+    var valid = true
+    $( form ).find("input").each(function(index, element){
+        if (!isValid(element)) valid = false
+    })
+    return valid
+}
+var isValid = function(element) {
+    var required = element.getAttribute("data-required-key")
+    if ( required == "true" && element.value.trim() == "") {
+        $(element.getAttribute("data-target")).addClass('error')
+        return false
+    } else {
+        $(element.getAttribute("data-target")).removeClass('error')
+    }
+    if ( required == "date" && 
+            !moment(element.value, "YYYY-MM-DD", true).isValid()) {
+        $(element.getAttribute("data-target")).addClass('error')
+        return false
+    } else {
+        $(element.getAttribute("data-target")).removeClass('error')
+    }
+    var preDate = element.getAttribute("data-date-after")
+    if (preDate != null ) {
+        if (!moment(preDate).isValid())
+            preDate = $(element.getAttribute("data-date-after")).val()
+        console.log(moment( element.value) < moment(preDate))
+        console.log(moment( element.value), moment(preDate))
+        if ( moment(element.value) < moment(preDate) ) {
+            $(element.getAttribute("data-target")).addClass('error')
+            return false
+        } else {
+            $(element.getAttribute("data-target")).removeClass('error')
         }
     }
-    $("input").blur(function(event) {
+
+    var isBeforeDate = element.getAttribute("data-valid-dat-before")
+    if ( required == "true" && element.value.trim() == "") {
+        $(element.getAttribute("data-target")).addClass('error')
+        return false
+    } else {
+        $(element.getAttribute("data-target")).removeClass('error')
+    }
+    return true
+}
+var validationEvents = function() {
+    $("input:not(.hasDatepicker)").blur(function(event) {
+        if (!isValid(event.currentTarget)) {
+            $("input").keyup(function(event) {
+                isValid(event.currentTarget)
+            })
+        }
+    })
+    $("input.hasDatepicker").change(function(event) {
         isValid(event.target)
     })
 }
