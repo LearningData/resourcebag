@@ -34,16 +34,40 @@
     </thead>
     <tbody>
         <tr>
-            {% for index, daySlots in slots %}
-            {% set name = index %}
-            <td> {% for slot in daySlots %}
-            <p>
-                <input type="checkbox"
-                name="day{{ name }}[]"
-                value="{{ slot.timeSlotId }}">
-                {{ slot.startTime }}
-            </p> {% endfor %} </td>
-            {% endfor %}
+            {% if action == "new" %}
+                {% for index, daySlots in slots %}
+                {% set name = index %}
+                <td>
+                    {% for slot in daySlots %}
+                    <p>
+                        <input type="checkbox" name="day{{ name }}[]"
+                            value="{{ slot.timeSlotId }}">
+                        {{ slot.startTime }}
+                    </p>
+                    {% endfor %}
+                </td>
+                {% endfor %}
+            {% else %}
+                {% for index, daySlots in slots %}
+                {% set name = index %}
+                <td>
+                    {% for slot in daySlots %}
+                    {% set config = slot["config"] %}
+                    <p>
+                        {% if slot["checked"] %}
+                            <input type="checkbox" name="day{{ name }}[]"
+                                value="{{ config.timeSlotId }}" checked="true">
+                            {{ config.startTime }}
+                        {% else %}
+                            <input type="checkbox" name="day{{ name }}[]"
+                                value="{{ config.timeSlotId }}">
+                            {{ config.startTime }}
+                        {% endif %}
+                    </p>
+                    {% endfor %}
+                </td>
+                {% endfor %}
+            {% endif %}
         </tr>
     </tbody>
 </table>

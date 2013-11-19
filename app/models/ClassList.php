@@ -43,6 +43,16 @@ class ClassList extends \Phalcon\Mvc\Model {
         return "classlist";
     }
 
+    public function getSlotIdsByDay($day) {
+        $ids = array();
+
+        foreach ($this->getSlots("day=$day") as $slot) {
+            $ids []= $slot->timeSlotId;
+        }
+
+        return $ids;
+    }
+
     public function getRooms() {
         $rooms = array();
         foreach ($this->slots as $slot) {

@@ -24,6 +24,10 @@ class TimetableConfig extends \Phalcon\Mvc\Model {
         return $configs;
     }
 
+    public function hasPreset() {
+        return $this->preset != "";
+    }
+
     public function columnMap() {
         return array(
             "id" => "id",

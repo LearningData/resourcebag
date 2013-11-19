@@ -108,7 +108,7 @@ class Timetable {
         $slots = array();
 
         foreach ($configs as $config) {
-            if (!array_key_exists($config->timeSlotId, $classes)) {
+            if (!array_key_exists($config->timeSlotId, $classes) && !$config->hasPreset()) {
                 $slots[$config->timeSlotId] = $config;
             }
         }
@@ -116,19 +116,21 @@ class Timetable {
         return $slots;
     }
 
-    public function getTeacherTimetable($user, $day) {
+    public function getTeacherTimetable($user, $day, $classId) {
         $configs = TimetableConfig::findBySchoolAndDay($user->schoolId, $day);
-        $classesList = ClassList::findByTeacherId($user->id);
+        $classesList = ClassList::findById($classId);
         $classes = Timetable::populeClasses($classesList, $day);
         $slots = array();
 
-        foreach ($configs as $config) {
-            if (array_key_exists($config->timeSlotId, $classes)) {
-                $slots[$config->timeSlotId] = array("checked" => true,
-                    "config" => $config);
-            } else {
-                $slots[$config->timeSlotId] = array("checked" => false,
-                    "config" => $config);
+        foreach($configs as $config) {
+            if(!$config->hasPreset()) {
+                if (array_key_exists($config->timeSlotId, $classes)) {
+                    $slots[$config->timeSlotId] = array("checked" => true,
+                        "config" => $config);
+                } else {
+                    $slots[$config->timeSlotId] = array("checked" => false,
+                        "config" => $config);
+                }
             }
         }
 
