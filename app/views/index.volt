@@ -23,13 +23,15 @@
         <!div class="container">
         <div class="row">
         -->
-        <div class="sidebar col-md-3 col-lg-3">
+        <div class="sidebar">
+            <div class="sidebar-scroll">
             {% if user is defined %}
                 {{ partial("partials/_header") }}
                 {{ partial("partials/_sidebar") }}
             {% endif %}
+            </div>
         </div>
-        <div class="col-md-9 col-lg-9">
+        <div class="main-content">
             {% for type, messages in flash.getMessages() %}
             {% for message in messages %}
             <div class="alert alert-warning fade in">

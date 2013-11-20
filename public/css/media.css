@@ -10,6 +10,16 @@
     .sidebar {
         background: #E6E7E8;
         padding: 10px 0 20px;
+        height: auto;
+        width: 100%;
+        display: block;
+        overflow-y: visible;
+        position: static;
+    }
+    .main-content {
+        margin-left: 0;
+        margin-top: 0;
+        min-height: auto;
     }
     .user-profile {
         width: 40%;

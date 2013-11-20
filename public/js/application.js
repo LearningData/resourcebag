@@ -13,6 +13,8 @@ $(document).ready(function() {
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
     
+    $ (".sidebar-scroll").slimScroll({height:"100%"})
+    
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -369,5 +371,4 @@ var validationEvents = function() {
 }
 
 
-
-
+    

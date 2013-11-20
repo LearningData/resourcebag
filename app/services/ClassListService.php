@@ -56,12 +56,18 @@ class ClassListService {
         return $classIdParams;
     }
 
-    public function getClassesByGroup($group) {
+    public function getClassesByGroup($group, $user) {
         $classes = array();
+        $ids = array();
+
+        foreach ($user->classes as $classList) { $ids []= $classList->id; }
+
         if($group && count($group->cohorts) > 0) {
             foreach ($group->cohorts as $cohort) {
                 foreach ($cohort->classes as $classList) {
                     if($classList->subject) {
+                        if(in_array($classList->id, $ids)) { continue; }
+
                         $classInfo = $classList->extraRef . " " .
                                     $classList->subject->name . " " .
                                     $classList->cohort->stage;
