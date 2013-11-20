@@ -2,6 +2,7 @@
 $messages = array(
     "action" => "Action",
     "add-text-input" => "Add Text Input",
+    "add-work" => "Please add your work",
     "assign-students" => "Assign Students",
     "assigned date" => "Assigned Date",
     "correct" => "Correct",
