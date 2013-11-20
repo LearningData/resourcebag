@@ -51,7 +51,8 @@ $(document).ready(function() {
         dateFormat : 'yy-mm-dd',
         minDate : 1,
         beforeShowDay : enableDays,
-        onSelect : showTimes
+        onSelect : showTimes,
+        firstDay: 1
     })
     $(".ld-calendar #start-date").datepicker({
         dateFormat : 'yy-mm-dd',
@@ -65,7 +66,8 @@ $(document).ready(function() {
     $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true })
     $("#notice-note-date").datepicker({
         dateFormat : 'yy-mm-dd',
-        minDate : 0
+        minDate : 0,
+        firstDay: 1
     })
     $("#start-date").datepicker("widget").addClass("event-page")
     $("#end-date").datepicker("widget").addClass("event-page")

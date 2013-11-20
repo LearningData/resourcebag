@@ -662,7 +662,6 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     color: #c4c4c4;
 }
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight, .ui-datepicker-calendar .ui-datepicker-has-event a {
-    background-color: #9752a3;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -874,28 +873,24 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
     padding: 0 px;
     width: 27px;
     height: 27px;
-    color: #fff;
+    color: #FFFFFF
 }
 
 .ui-state-highlight span, .ui-state-highlight a {
     background-color: #9752a3;
 }
 .ui-datepicker-today span, .ui-datepicker-today a {
-    background-color: #ff9e19;
+    background-color: #f7b565;
 }
 .event-page .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today span, #dashboard-events-box .ui-datepicker-today a {
-    background-color: #9752a3;
+    background-color: #b382bb;
 }
-.datepicker-note .ui-datepicker-today span {
-    background-color: #0ba6d3;
+.datepicker-note .ui-datepicker-today span, .datepicker-note  a.ui-state-highlight {
+    background-color: #6abdd5;
 }
 
 #due-times input {
     margin-right: 10px;
-}
-
-table.ui-datepicker-calendar td a.ui-state-highlight {
-    color: #fff;
 }
 
 /* Paginator */
