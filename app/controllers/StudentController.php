@@ -23,10 +23,11 @@ class StudentController extends UsersController {
 
     public function classesAction() {
         $this->setTokenValues();
+        $user = $this->view->user;
         $this->view->t = Translation::get(Language::get(), "classes");
         $param = "year = " . Config::schoolYear();
         $group = $this->view->user->getGroups($param)->getFirst();
-        $this->view->classes = ClassListService::getClassesByGroup($group);
+        $this->view->classes = ClassListService::getClassesByGroup($group, $user);
     }
 
     public function joinClassAction() {
