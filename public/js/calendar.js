@@ -234,7 +234,7 @@ var calendarPage = (function() {
 
         var remove = $( "<button>", {
             "class": "btn-icon icon-trash",
-            html: "Delete"
+            html: ""
         })
 
         var edit = $( "<button>", {
