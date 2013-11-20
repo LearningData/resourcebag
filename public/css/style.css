@@ -629,6 +629,7 @@ header h1, header h2 {
 }
 
 header h2 {
+    display: none;
     float: right;
     font-size: 24px;
     text-transform: capitalize;
