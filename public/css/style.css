@@ -434,7 +434,7 @@ form input[disabled] {
     background-color: #f1f1f1;
     color: #c8c8cd;
 }
-form .error .form-control, form .error input[type='text'], , form .error texxtarea {
+form .error .form-control, form .error input[type='text'], form .error texxtarea {
     border-color: #e26a6a;
 }
 form .validation-error {
