@@ -62,6 +62,8 @@ class User extends \Phalcon\Mvc\Model {
         if ($status != "") {
             $homeworks = Homework::findHomeworksByStatus($this->id, $status);
         } else {
+            // $query = "studentId = ?1 order by status, status >= 2 and dueDate desc, " .
+            //         "status = 1 and dueDate, status = 0 and dueDate";
             $query = "studentId = ?1 order by status, dueDate";
             $params = array($query, "bind" => array(1 => $this->id));
             $homeworks = Homework::find($params);

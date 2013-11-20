@@ -83,7 +83,7 @@ class Homework extends \Phalcon\Mvc\Model {
 
     public static function findByTeacherAndStatus($userId, $status) {
         if ($status != "") {
-            $query = "teacherId =?1 and status = ?2 order by dueDate desc";
+            $query = "teacherId =?1 and status = ?2 order by dueDate";
         } else {
             $query = "teacherId =?1 and status >= ?2 order by status, dueDate desc";
         }
