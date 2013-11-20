@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="homework">
-            <a href="/schoolbag/{{ user.getController() }}/homework?filter=0">
+            <a href="/schoolbag/{{ user.getController() }}/homework">
                 <span class="custom-icon-homework"></span>{{ t._("homework") }}
             </a>
         </li>
