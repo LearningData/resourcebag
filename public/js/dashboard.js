@@ -30,23 +30,22 @@ var dashboard = (function() {
             displayDate.setDate(displayDate.getDate() + 1)
             populateTimetable( displayDate )
     })
-    fillMonthEvents = function( year, month ) {
+    nextThreeEvents = function() {
         var items = []
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
-            var dateValues = calendarEvents[i].start.split(/[-\s]/)
-            eventDate = new Date(dateValues[0], dateValues[1], dateValues[2])
-            if ( eventDate.getFullYear() == year &&
-               eventDate.getMonth() == month ) {
+            var eventDate = moment(calendarEvents[i].start)
+            if ( eventDate >= new Date()) {
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
-                eventStr += "<td colSpan=2>" + moment(eventDate).format("ddd Do") + "<br/>"
+                eventStr += "<td colSpan=2>" + moment(eventDate).format("ddd Do MMM") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "All Day"
                 } else {
-                    eventStr += prettyHour(eventDate)
+                    eventStr += moment(eventDate).format("hh:mm")
                 }
                 eventStr += "</td></tr>"
                 items.push(eventStr)
+                if (items.length == 3) break
             }
         }
         var tableBody = $( "<tbody></tbody>")
@@ -111,13 +110,13 @@ var dashboard = (function() {
                 inline: true,
                 firstDay: 1,
                 onSelect: fillDaysEvents,
-                onChangeMonthYear: fillMonthEvents,
+                onChangeMonthYear: nextThreeEvents,
                 beforeShowDay: findCurrentEvents,
                 showOtherMonths: true,
                 dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
                 yearSuffix: " <h2>Events</h2>"
             })
-            fillMonthEvents(displayDate.getFullYear(), displayDate.getMonth()+1)
+            nextThreeEvents()
         })
 
         
