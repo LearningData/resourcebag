@@ -264,5 +264,28 @@ class TeacherController extends UsersController {
         $this->view->t = Translation::get(Language::get(), "classes");
         $this->view->classList = ClassList::findFirstById($classId);
     }
+
+    public function createSlotAction() {
+        $classId = $this->request->getPost("class-id");
+        $classList = ClassList::findFirstById($classId);
+
+        if($classList) {
+            $day = $this->request->getPost("day");
+            $schoolId = $this->request->getPost("school-id");
+            $timeSlotId = $this->request->getPost("slot-id");
+            $room = $this->request->getPost("room");
+
+            $slot = new TimetableSlot();
+            $slot->timeSlotId = $timeSlotId;
+            $slot->room = $room;
+            $slot->classId = $classList->id;
+            $slot->schoolId = $schoolId;
+            $slot->day = $day;
+
+            $slot->save();
+        }
+
+        return $this->response->redirect("teacher/timetable");
+    }
 }
 ?>
