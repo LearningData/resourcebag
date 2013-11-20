@@ -70,7 +70,12 @@ class Homework extends \Phalcon\Mvc\Model {
     }
 
     public static function findHomeworksByStatus($userId, $status) {
-        $query = "studentId =?1 and status = ?2 order by dueDate desc";
+        if($status < 2) {
+            $query = "studentId =?1 and status = ?2 order by dueDate";
+        } else {
+            $query = "studentId =?1 and status >= ?2 order by dueDate desc";
+        }
+
         $params = array($query, "bind" => array(1 => $userId, 2 => $status));
 
         return Homework::find($params);
