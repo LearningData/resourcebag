@@ -5,7 +5,7 @@
     </header>
 
     <section>
-        <h3>{{ classList.subject.name }}  <span class="h3"> {{ t._("with") }} </span>{{ t._(classList.user.title) }}  {{ classList.user.lastName }} {{ classList.room }}</h3>
+        <h3>{{ classList.subject.name }}  <span class="h3"> {{ t._("with") }} </span>{{ t._(classList.user.title) }}  {{ classList.user.lastName }} {{ classList.getRooms() }}</h3>
     </section>
 
     <section>
