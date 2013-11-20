@@ -13,35 +13,35 @@ var homeworkPage = (function() {
         var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
-        var block = $("<div id='tmtbl-frm-title'></div>")
+        var block = $("<div id='hwk-frm-title'></div>")
         var titleInput = $ ( "<input>", {
             type: "text",
             "class": "form-control",
             placeholder: _t("title"),
             name: "title",
             "data-required-key": "true",
-            "data-target": "#tmtbl-frm-title"
+            "data-target": "#hwk-frm-title"
         })
         block.append($ ("<label>" + _t("title") + "*</label>"))
         block.append( titleInput )
         block.append($("<span class='validation-error'>" + _t("cant-leave-empty") + "</span>"))
         modalBody.append(block)
 
-        block = $("<div id='tmtbl-frm-desc'></div>")
+        block = $("<div id='hwk-frm-desc'></div>")
         var descriptionInput = $( "<textarea>", {
             name: "description",
             rows: "5",
             "class": "form-control",
             placeholder: _t("description"),
             "data-required-key": "true",
-            "data-target": "#tmtbl-frm-desc"
+            "data-target": "#hwk-frm-desc"
         })
         block.append($ ("<label>" + _t("description") + "*</label>"))
         block.append( descriptionInput )
         block.append($("<span class='validation-error'>" + _t("cant-leave-empty") + "</span>"))
         modalBody.append(block)
 
-        block = $("<div id='tmtbl-frm-subject'></div>")
+        block = $("<div id='hwk-frm-subject'></div>")
         var options= ["<option value=\"\" selected='selected' disabled=\"disabled\">" + _t("subject") + "</option>"]
         for ( var i = 0; i < classes.length; i++ ) {
             options.push("<option value=" + classes[i].id + ">" + classes[i].subject + "</option>")
@@ -51,7 +51,7 @@ var homeworkPage = (function() {
             id: "classList-id",
             "class": "form-control customSelect",
             "data-required-key": "true",
-            "data-target": "#tmtbl-frm-subject",
+            "data-target": "#hmw-frm-subject",
             onchange: "return getEnableDays(this)"
         })
         selectClass.append( options.join("") )
@@ -60,7 +60,7 @@ var homeworkPage = (function() {
         block.append($("<span class='validation-error'>" + _t("must-select-one") + "</span>"))
         modalBody.append(block)
 
-        block = $("<div id='tmtbl-frm-due-date'></div>")
+        block = $("<div id='hwk-frm-due-date'></div>")
         var dueDateInput = $( "<input>", {
             type: "text",
             name: "due-date",
@@ -69,7 +69,7 @@ var homeworkPage = (function() {
             id: "due-date",
             disabled: "disabled",
             "data-required-key": "date",
-            "data-target": "#tmtbl-frm-due-date",
+            "data-target": "#hwk-frm-due-date",
         })
         block.append($ ("<label>" + _t("due-date") + "*</label>"))
         block.append( dueDateInput )
@@ -302,9 +302,11 @@ var homeworkPage = (function() {
 
     //init
     var init = function() {
-        var dfdDialog = $.Deferred();
-        dfdDialog.done(createNewHomeworkDialog)
-        getClasses( dfdDialog )
+        if (getUser() == "student") {
+            var dfdDialog = $.Deferred();
+            dfdDialog.done(createNewHomeworkDialog)
+            getClasses( dfdDialog )
+        }
         stylePaginator()
 
         $( ".btn-remove" ).tooltip( {title: "Remove File"} )
@@ -351,6 +353,13 @@ var homeworkPage = (function() {
             event.preventDefault()
             removeHomeworkFileDialog( $ ( this ).data() )
             $( "#removeHomeworkModal" ).modal( "show" )
+        })
+        $( ".ld-homework .btn:submit").click( function( event ) {
+            event.preventDefault()
+            var form = $( ".ld-homework form")
+            if (validForm(form)) {
+                form.submit()
+            }
         })
         $( ".btn-submit" ).click(function( event ) {
             event.preventDefault()

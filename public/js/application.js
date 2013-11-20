@@ -293,9 +293,12 @@ var cutText = function(parent, element) {
 //validation
 var validForm = function(form) {
     var valid = true
-    $( form ).find("input").each(function(index, element){
+    $( form ).find("input:not(:checkbox)").each(function(index, element){
         if (!isValid(element)) valid = false
     })
+    if ($( form ).find("input:checkbox").length >0) {
+        if (!isValidCheckbox(form)) valid = false
+    }
     $( form ).find("textarea").each(function(index, element){
         if (!isValid(element)) valid = false
     })
@@ -323,8 +326,6 @@ var isValid = function(element) {
     if (preDate != null ) {
         if (!moment(preDate).isValid())
             preDate = $(element.getAttribute("data-date-after")).val()
-        console.log(moment( element.value) < moment(preDate))
-        console.log(moment( element.value), moment(preDate))
         if ( moment(element.value) < moment(preDate) ) {
             $(element.getAttribute("data-target")).addClass('error')
             return false
@@ -342,8 +343,20 @@ var isValid = function(element) {
     }
     return true
 }
+var isValidCheckbox = function(form) {
+    var element = $( form ).find("input:checkbox")[0]
+    var required = element.getAttribute("data-required-key")
+    if ( required == "one" ) {
+        var count = $(form).find("input:checkbox:checked").length
+        if (count == 0 ) {
+            $(element.getAttribute("data-target")).addClass('error')
+            return false
+        }
+    }
+    return true
+}
 var validationEvents = function() {
-    $("input:not(.hasDatepicker), form textarea").blur(function(event) {
+    $("input:not('.hasDatepicker'), form textarea").blur(function(event) {
         if (!isValid(event.currentTarget)) {
             $("input").keyup(function(event) {
                 isValid(event.currentTarget)

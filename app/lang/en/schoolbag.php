@@ -41,6 +41,7 @@ $messages = array(
     "sign-up" => "Sign Up",
     "saturday" => "Saturday",
     "save" => "save",
+    "select-least-one" => "Please select at least one option.",
     "students" => "Students",
     "teacher" => "Teacher",
     "thursday" => "Thursday",
