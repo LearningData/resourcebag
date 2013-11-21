@@ -16,9 +16,16 @@ var timetableFunctions = (function() {
     }
 
     var getTextBlock = function( data ) {
-        var text = "<span data-subject-id=\"" + data["class-id"] + "\" class=\"subject\">" + (data.subject || "") + "</span>"
-        text += "<span>" + (data.teacher || "") + "</span>"
-        text += "<span>" + (data.room || "") + "</span>"
+        var text
+        if (data.teacher) {
+            text = "<span data-class-id=\"" + data["class-id"] + "\" class=\"class-code\">" + (data.subject || "") + "</span>"
+            text += "<span>" + (data.teacher || "") + "</span>"
+            text += "<span>" + (data.room || "") + "</span>"
+        } else {
+            text = "<span data-class-id=\"" + data["class-id"] + "\" class=\"class-code\">" + (data.extraRef || "") + "</span>"
+            text += "<span data-class-id=\"" + data["class-id"] + "\" class=\"subject\">" + (data.subject || "") + "</span>"
+            text += "<span>" + (data.room || "") + "</span>"
+        }
         return text
     }
 

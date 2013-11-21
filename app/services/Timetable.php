@@ -66,6 +66,7 @@ class Timetable {
             foreach ($slots as $slot) {
                 $content = array(
                     "class-id" => $classList->id,
+                    "extraRef" => $classList->extraRef,
                     "subject" => $classList->subject->name,
                     "room" => $slot->room,
                 );

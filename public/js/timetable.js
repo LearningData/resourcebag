@@ -167,7 +167,7 @@ var timetablePage = (function() {
             $( ".teacher .ld-timetable .table.week td .subject").click(function( event ) {
                 event.preventDefault()
                 event.stopPropagation()
-                window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-subject-id")
+                window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-class-id")
             })
             $( ".teacher .ld-timetable .table.week td").click(function( event ) {
             //    $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
