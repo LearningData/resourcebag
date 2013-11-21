@@ -1,10 +1,5 @@
 .ld-calendar {
 }
-.ld-calendar .modal .icon-trash {
-    position: absolute;
-    top: 32px;
-    right: 25px;
-}
 .ld-calendar .modal .content-block {
     display: inline-block;
 }

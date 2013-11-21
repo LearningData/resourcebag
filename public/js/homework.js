@@ -10,7 +10,7 @@ var homeworkPage = (function() {
 
     var createNewHomeworkDialog = function( classes ) {
         var modal = $( "<div class=\"modal fade\" id=\"newHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Set New Homework</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">Set New Homework</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var block = $("<div id='hwk-frm-title'></div>")
@@ -137,7 +137,7 @@ var homeworkPage = (function() {
 
     var uploadHomeworkFileDialog = function( homeworkId ) {
         var modal = $( "<div class=\"modal fade\" id=\"uploadHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Upload Homework File</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">Upload Homework File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         
@@ -210,7 +210,7 @@ var homeworkPage = (function() {
 
     removeHomeworkFileDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"removeHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Remove File</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">Remove File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to remove the file " + data.name +" </p></div>" )
 
         //buttons
@@ -243,7 +243,7 @@ var homeworkPage = (function() {
 
     var submitHomeworkDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h4 class=\"modal-title\">Submit Homework</h4></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h4 class=\"modal-title\">Submit Homework</h4></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework " + data.title +" </p></div>" )
 
         //buttons

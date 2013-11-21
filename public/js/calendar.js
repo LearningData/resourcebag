@@ -4,7 +4,6 @@ var calendarPage = (function() {
             window.location.href = urlBase + "/" + getUser() + "/calendar"
         })
         $( ".ld-calendar #all-day" ).click( function( event ) {
-            console.log("here")
             $( ".ld-calendar .all-day-block").toggleClass("hidden")
         })
         
@@ -82,7 +81,7 @@ var calendarPage = (function() {
     createNewEventDialog = function( date ) {
         $( "#createNewEventModal" ).remove()
         var modal = $( "<div class=\"modal fade\" id=\"createNewEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">New Event " + date.toDateString() + "</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">New Event " + date.toDateString() + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
 
         var titleTitle = $ ("<label>Title</label>")
@@ -213,7 +212,7 @@ var calendarPage = (function() {
     createEditEventDialog = function( data ) {
         $( "#createEditEventModal" ).remove()
         var modal = $( "<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">" + data.title + "</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"></div>" )
         modalBody.append("<div><span class=\"modal-label\">" + _t("start-time") + 
             "</span><span class=\"modal-value\">" + 
@@ -232,26 +231,19 @@ var calendarPage = (function() {
         modalBody.append("<div class=\"h2\">" + _t("description") + "</div>")
         modalBody.append("<div class=\"value\">" + data.description + "</div>")
 
-        var remove = $( "<button>", {
-            "class": "btn-icon icon-trash",
-            html: ""
-        })
-
         var edit = $( "<button>", {
             type: "button",
             "class": "btn",
             html: "Edit"
         })
-        var dismiss = $( "<button>", {
+        var cancel = $( "<button>", {
             type: "button",
-            "class": "btn btn-cancel",
-            "data-dismiss": "modal",
-            html: "Cancel"
+            "class": "btn",
+            html: "Delete"
         })
         var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
-        modalFooter.append(remove)
         modalFooter.append(edit)
-        modalFooter.append(dismiss)
+        modalFooter.append(cancel)
         var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
 
         var modalContent = $ ( "<div class=\"modal-calendar modal-content\"></div>" )
@@ -262,9 +254,7 @@ var calendarPage = (function() {
         modalContent.appendTo( modalDialog )
         modalDialog.appendTo( modal )
         modal.appendTo( "div.ld-calendar" )
-        remove.click( function() {
-            window.location.href = urlBase + "/calendar/remove/" + data.id
-        })
+       
         edit.click( function() {
             window.location.href = urlBase + "/" + getUser() + "/calendar/edit/" + data.id
         })

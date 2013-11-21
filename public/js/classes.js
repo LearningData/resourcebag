@@ -2,7 +2,7 @@ var classesPage = (function() {
 
     removeClassDialog = function( data ) {
         var modal = $( "<div class=\"modal fade\" id=\"removeClassModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
-        var modalHeader = $( "<div class=\"modal-header\"> <h2 class=\"modal-title\">Remove File</h2></div>")
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">Remove File</h2></div>")
         var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to remove this class. This action cannot be undone.</p></div>" )
 
         //buttons
