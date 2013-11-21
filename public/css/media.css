@@ -13,8 +13,11 @@
         height: auto;
         width: 100%;
         display: block;
-        overflow-y: visible;
+        overflow: visible;
         position: static;
+    }
+    .sidebar .slimScrollDiv, .sidebar .sidebar-scroll   {
+        overflow: visible!important;
     }
     .main-content {
         margin-left: 0;
