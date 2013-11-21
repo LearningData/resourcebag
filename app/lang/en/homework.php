@@ -1,7 +1,7 @@
 <?php
 $messages = array(
     "action" => "Action",
-    "add-text-input" => "Add Text Input",
+    "add-text" => "Add Text",
     "add-work" => "Please add your work",
     "assign-students" => "Assign Students",
     "assigned date" => "Assigned Date",

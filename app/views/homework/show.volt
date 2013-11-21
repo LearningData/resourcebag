@@ -40,7 +40,7 @@
             {% endfor %}
         </table>
         {% else %}
-        <h6>{{ t._("no-files-uploaded") }}.</h6>
+        <h6>{{ t._("no-files") }}</h6>
         {% endif %}
         
     </section>

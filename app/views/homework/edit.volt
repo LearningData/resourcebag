@@ -7,7 +7,7 @@
     <section>
         <h3>{{ homework.title }} {{ homework.getDueDate(t._("dateformat")) }}</h3>
         <div class="col-sm-12">
-            <h4>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.name) }} {{ homework.classList.user.lastName}}</h4>
+            <h4>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.title) }} {{ homework.classList.user.lastName}}</h4>
         </div>
         <div class="col-sm-12">
             <h6>{{ t._("description") }}</h6>
@@ -17,9 +17,9 @@
         </div>
     </section>
     <section class="homework-view">
-        <h3>{{ t._("add-text-input") }}</h3>
+        <h3>{{ t._("add-text") }}</h3>
         <button id="add-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
-            {{ t._("add-text-input") }}
+            {{ t._("add-text") }}
         </button>
         <button id="save-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}" style="display:none">
             {{ t._("save-text") }}
@@ -62,7 +62,7 @@
         </table>
 
         {% else %}
-        <h3>{{ t._("no-files-uploaded") }}.</h3>
+        <h3>{{ t._("no-files") }}</h3>
         <button id="upload-homework-file" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("upload-file") }}
         </button>
