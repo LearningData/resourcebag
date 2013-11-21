@@ -15,12 +15,12 @@ $messages = array(
     "not-joined" => "Was not possible join in class.",
     "pending" => "Pending",
     "remove-class" => "Remove Class",
-    "slots" => "Slots",
+    "slots" => "Lessons",
     "times" => "Times",
     "class-updated" => "Class was updated.",
     "class-created" => "Class was created.",
     "class-deleted" => "Class was deleted successfully",
     "class-not-found" => "Class was not found",
-    "slot-not-saved" => "Slot was not saved."
+    "slot-not-saved" => "Lesson was not saved."
 );
 ?>
