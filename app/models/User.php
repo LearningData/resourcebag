@@ -59,14 +59,24 @@ class User extends \Phalcon\Mvc\Model {
     }
 
     public function getHomeworkByStatus($status) {
+        $homeworks = array();
+
         if ($status != "") {
-            $homeworks = Homework::findHomeworksByStatus($this->id, $status);
+            $resultset = Homework::findHomeworksByStatus($this->id, $status);
+            foreach ($resultset as $homework) {
+                $homeworks []= $homework;
+            }
         } else {
-            // $query = "studentId = ?1 order by status, status >= 2 and dueDate desc, " .
-            //         "status = 1 and dueDate, status = 0 and dueDate";
-            $query = "studentId = ?1 order by status, dueDate";
+            $query = "studentId = ?1 and status <=1 order by status, dueDate";
             $params = array($query, "bind" => array(1 => $this->id));
-            $homeworks = Homework::find($params);
+            $pending = Homework::find($params);
+
+            $query = "studentId = ?1 and status >=2 order by dueDate desc";
+            $params = array($query, "bind" => array(1 => $this->id));
+            $done = Homework::find($params);
+
+            foreach ($pending as $homework) { $homeworks []= $homework; }
+            foreach ($done as $homework) { $homeworks []= $homework; }
         }
 
         return $homeworks;
