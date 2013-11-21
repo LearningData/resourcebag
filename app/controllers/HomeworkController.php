@@ -10,6 +10,8 @@ class HomeworkController extends ControllerBase {
 
     public function indexAction() {
         $user = $this->getUserBySession();
+        if(!$user) { return $this->response->redirect("index"); }
+
         $currentPage = $this->request->getQuery("page", "int");
         $status = $this->request->get("filter");
         $template = $user->getController() . "/homework/list";
