@@ -1,5 +1,5 @@
 <?php
-use Phalcon\Mvc\Model\Criteria, Phalcon\Paginator\Adapter\Model as Paginator;
+use Phalcon\Paginator\Adapter\NativeArray as Paginator;
 
 class HomeworkService {
     public static function jsonToDashboard($user) {
