@@ -9,5 +9,6 @@ var translate = {
     "start-time": "Start Time",
     "subject": "Subject",
     "title": "Title",
+    "upcoming-events": "Upcoming Events",
     "url": "Web address"
 }

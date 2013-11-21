@@ -35,7 +35,7 @@ var dashboard = (function() {
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
             var eventDate = moment(calendarEvents[i].start)
-            if ( eventDate >= new Date()) {
+            if ( eventDate >= moment()) {
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
                 eventStr += "<td colSpan=2>" + moment(eventDate).format("ddd Do MMM") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
@@ -49,26 +49,26 @@ var dashboard = (function() {
             }
         }
         var tableBody = $( "<tbody></tbody>")
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=5> " + 
+            _t("upcoming-events") )
         tableBody.append( items.join("") )
         var table = $ ( "<table class=\"table table-events\"></table>" )
         table.append( tableBody )
         $( "#dashboard-events" ).append( table )
     }
     fillDaysEvents = function( dateStr ) {
-        var selectDate = new Date(dateStr)
+        var selectDate = moment()
         var items = []
         $( "#dashboard-events" ).empty( )
         for ( var i = 0; i < calendarEvents.length; i++ ) {
-            var dateValues = calendarEvents[i].start.split(/[-\s]/)
-            eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
-            if ( eventDate.getFullYear() == selectDate.getFullYear() &&
-               eventDate.getMonth() ==  selectDate.getMonth() &&
-               eventDate.getDate() == selectDate.getDate() ) {
+            var eventDate = moment(calendarEvents[i].start)
+            console.log(eventDate, selectDate)
+            if ( eventDate.isSame(dateStr, "day") ) {
                 var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "<td> All Day </td></tr>"
                 } else {
-                    eventStr += "<td>" + prettyHour(eventDate) + "</td></tr>"
+                    eventStr += "<td>" + moment(eventDate).format("hh:mm") + "</td></tr>"
                 }
                 items.push(eventStr)
             }
@@ -87,12 +87,8 @@ var dashboard = (function() {
        // if (date < new Date().setHours(0,0,0,0))
        //     return [false]
         for ( var i = 0; i < calendarEvents.length; i++ ) {
-            var dateValues = calendarEvents[i].start.split(/[-\s]/)
-            eventDate = new Date(dateValues[0], dateValues[1] - 1, dateValues[2])
-            if ( eventDate.getFullYear() == date.getFullYear() &&
-                eventDate.getMonth() == date.getMonth() &&
-                eventDate.getDate() == date.getDate()
-            ) {
+            var eventDate = moment(calendarEvents[i].start)
+            if ( eventDate.isSame(date, "day")) {
                 return [true, ""]
             }
         }

@@ -198,7 +198,7 @@
     table-layout: fixed;
 }
 #dashboard-events .table-events td {
-    padding: 13px 15px !important;
+    padding: 11px 15px !important;
 }
 #dashboard-events .table-events td:first-child {
     font-weight: normal;
