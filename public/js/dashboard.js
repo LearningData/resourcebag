@@ -232,6 +232,14 @@ var dashboard = (function() {
                 timetable.append( tableBody )
             }
             $( "#dashboard-timetable-contents" ).append( timetable )
+            //fix table heigh for dashboard
+            var rowCount = tableRows.length -2 //subtract break tables
+            var height = parseInt($( "#dashboard-timetable-box" ).css("height"))
+            height -= parseInt($( "#dashboard-timetable-box .ld-box-head" ).css("height"))
+            height -= parseInt($( "#dashboard-timetable-box .ld-box-child .header-navigation" ).css("height"))
+            height -= (2 * parseInt($( "#dashboard-timetable-box .table tr.break td" ).css("height")))
+            height /= rowCount
+            $( "#dashboard-timetable-box .table tr:not('.break') td" ).css({height: height -1})
         })
     }
     
