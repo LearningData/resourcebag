@@ -238,9 +238,11 @@ var calendarPage = (function() {
         })
         var cancel = $( "<button>", {
             type: "button",
-            "class": "btn",
-            html: "Delete"
+            "class": "btn btn-cancel",
+            "data-dismiss": "modal",
+            html: "Cancel"
         })
+
         var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
         modalFooter.append(edit)
         modalFooter.append(cancel)
