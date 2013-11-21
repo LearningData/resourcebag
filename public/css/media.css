@@ -9,25 +9,32 @@
     }
     .sidebar {
         background: #E6E7E8;
-        padding: 10px 0 20px;
+        padding: 10px 0 0;
         height: auto;
         width: 100%;
         display: block;
-        overflow-y: visible;
+        overflow: visible;
         position: static;
+    }
+    .sidebar .slimScrollDiv, .sidebar .sidebar-scroll {
+        overflow: visible !important;
     }
     .main-content {
         margin-left: 0;
         margin-top: 0;
         min-height: auto;
     }
-    .user-profile {
+    .profile {
         width: 40%;
         padding: 10px 2.5%;
         margin: 0 0 0 57.5%;
+    }
+    .user-profile {
         background-color: none;
         position: relative;
         overflow: visible;
+        width: 85%;
+        display: inline-block;
     }
     .user-profile img {
         max-width: 70%;
@@ -167,6 +174,16 @@
     .navbar-nav > li.policies a {
         background-color: #939598;
     }
+    .navbar-nav > li.school-logo {
+        background-color: #DFDDDD;
+        margin: 0 0 0 2.5% !important;
+        width: 46.1%;
+    }
+    .navbar-nav > li.school-logo img {
+        height: 115px;
+        width: auto;
+        padding: 10px;
+    }
 
     /*FORMs / INPUT*/
     .form-control, input[type='text'], form textarea {
@@ -185,18 +202,25 @@
     .sidebar {
         padding-top: 0;
     }
-    .user-profile {
+    /* Profile */
+    .profile {
         width: 100%;
-        padding: 10px 2.5%;
+        padding: 0;
         margin: 0;
         background-color: #ececec;
+    }
+    .user-profile {
+        width: 60%;
+        padding: 10px 2.5%;
+        margin: 0;
         position: relative;
     }
-    /* Profile */
     .user-profile img {
         max-width: 70%;
         height: auto;
     }
+
+    /* end Profile */
 
     .tb-user {
         margin-right: -10px;
@@ -228,23 +252,13 @@
         text-align: center;
     }
 
-    .user-profile {
-        width: 100%;
-        padding: 10px 5%;
-        background-color: #ececec;
-        position: relative;
-    }
-    .user-profile img {
-        max-width: 70%;
-        height: auto;
-    }
-
     /* Navbar */
     .navbar-nav {
         margin: 0;
     }
     .navbar-toggle {
         font-size: 24px;
+        margin: 20px 3% 0 0;
     }
     .navbar-nav > li {
         width: 30%;
@@ -267,6 +281,16 @@
     }
     .navbar-nav > li a span[class*="custom-icon-"] {
         font-size: 18px;
+    }
+
+    .navbar-nav > li.school-logo {
+        margin: 0 0 0 2.5% !important;
+        width: 65%;
+    }
+    .navbar-nav > li.school-logo img {
+        height: 90px;
+        width: auto;
+        padding: 10px;
     }
 
     .dashboard .custom-icon-dash-top {

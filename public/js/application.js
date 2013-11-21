@@ -6,7 +6,7 @@ $(document).ready(function() {
       container: ".ld-tooltip"
     })
 
-    $(".btn-profile-actions").click(function() {
+    $(".user-profile").click(function() {
         $(".user-profile-actions").slideToggle("fast");
     });
     $("select").uniform();

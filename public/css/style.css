@@ -637,7 +637,6 @@ header {
     margin: 0 0 40px;
     padding: 15px 10px;
     border-radius: 5px 5px 0 0;
-    cursor: pointer;
 }
 header h1, header h2 {
     color: #fff;
@@ -709,6 +708,7 @@ table.ui-datepicker-calendar td a.ui-state-highlight {
     width: 95%;
     margin: 0 auto 15px;
     overflow: hidden;
+    cursor: pointer;
 }
 .tb-user {
     float: left;
