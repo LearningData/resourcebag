@@ -2,7 +2,6 @@
     <header>
         <h1>{{ t._("homework") }}</h1>
         <h2>{{ t._("review") }}</h2>
-        
     </header>
     <h3>{{ homework.title }} ({{ homework.student.name }})</h3>
     <table class="table homework mtop-20">
