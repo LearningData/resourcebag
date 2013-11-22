@@ -8,6 +8,7 @@
         {{ partial("calendar/_form") }}
         <input type="hidden" name="event-id" value="{{ event.id }}">
     </form>
+    <a href="/schoolbag/calendar/remove/{{ event.id }}" class="btn">{{ t._("delete") }}</a>
     <button class="btn btn-cancel btn-return">
         {{ t._("cancel")}}
     </button>
