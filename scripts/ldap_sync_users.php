@@ -1,4 +1,7 @@
 <?php
+class LDAP {
+
+}
 $user = "admin";
 $dc1 = "example";
 $dc2 = "com";
@@ -57,8 +60,8 @@ function listTeachers($ds, $dcs, $filter) {
 $ds = bind($server);
 $conn = connect($ds, $userDomain, $password);
 
-// listStudents($ds, "dc=$dc1,dc=$dc2", "ou=Student");
-listTeachers($ds, "dc=$dc1,dc=$dc2", "ou=Teacher");
-disconnect($ds);
+// // listStudents($ds, "dc=$dc1,dc=$dc2", "ou=Student");
+// listTeachers($ds, "dc=$dc1,dc=$dc2", "ou=Student");
+// disconnect($ds);
 
-?>
+// ?>
