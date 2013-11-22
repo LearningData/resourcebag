@@ -5,13 +5,14 @@
     </header>
 
     <section>
-        <h3>{{ homework.title }} {{ homework.getDueDate(t._("dateformat")) }}</h3>
+        <h3>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.title) }} {{ homework.classList.user.lastName}} {{ homework.getDueDate(t._("dateformat")) }}</h3>
         <div class="col-sm-12">
-            <h4>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.title) }} {{ homework.classList.user.lastName}}</h4>
+            <h4></h4>
         </div>
         <div class="col-sm-12">
             <h6>{{ t._("description") }}</h6>
             <p>
+                <strong>{{ homework.title }}</strong><br />
                 {{ homework.text }}
             </p>
         </div>
