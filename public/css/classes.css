@@ -1,9 +1,21 @@
+.ld-classes .classes .class-item {
+    padding-top: 5px;
+    margin: 2px 10px;
+    text-align: center;
+    height: 70px
+    cursor: pointer;
+}
+.ld-classes .classes .class-item .extra-info {
+    display: block;
+    font-size: 80%
+}
 .ld-classes .homework .item {
     margin: 3px;
     box-sizing: border-box;
 }
 .ld-classes-timetable th, .ld-classes-timetable td{
     text-align: center;
+    vertical-align: top;
 }
 .ld-classes .homework table {
     min-width: 100%

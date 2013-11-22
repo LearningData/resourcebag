@@ -16,6 +16,7 @@ $messages = array(
     "pending" => "Pending",
     "remove-class" => "Remove Class",
     "slots" => "Lessons",
+    "select-a-class" => "Please select a class",
     "times" => "Times",
     "class-updated" => "Class was updated.",
     "class-created" => "Class was created.",

@@ -38,14 +38,21 @@ var classesPage = (function() {
         $( ".ld-classes header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/classes"
         })
+        $( ".ld-classes .classes .class-item" ).click( function( event ) {
+            var id = event.currentTarget.getAttribute("data-class-id")
+            window.location.href = urlBase + "/" + getUser() + "/showClass/" + id
+        })
         $( ".ld-classes .remove-class" ).click(function( event ) {
             event.preventDefault()
             removeClassDialog( $ ( this ).data() )
             $( "#removeClassModal" ).modal( "show" )
         })
-        $( ".ld-classes button.join-class" ).click(function( event ) {
+        $( ".ld-classes .btn:submit").click( function( event ) {
             event.preventDefault()
-            $( ".ld-classes form.join-class" ).removeClass( "hidden" )
+            var form = $( ".ld-classes form")
+            if (validForm(form)) {
+                form.submit()
+            }
         })
         $( ".ld-classes .btn-cancel" ).click(function( event ) {
             event.preventDefault()
@@ -75,6 +82,7 @@ var classesPage = (function() {
 
     return {
         init: init
+        
     };
 })()
 
