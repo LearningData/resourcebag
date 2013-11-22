@@ -9,7 +9,7 @@
                 {% if user.photo %}
                 {{ image("download/photo", "alt":"", "width":"67", "height":"62") }}
                 {% else %}
-                {{ image("#") }}
+                {{ image("img/avatar-default.png", "alt":"", "width":"67", "height":"62") }}
                 {% endif %}
             </div>
             <span class="name-school"> {{ user.name }} {{ user.lastName }}
