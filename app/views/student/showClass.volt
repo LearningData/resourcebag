@@ -20,26 +20,35 @@
                 <th class="col-sm-2">Saturday</th>
             </tr>
             <tr>
-                <td class="col-sm-2">09:00 - 09:25</td>
-                <td class="col-sm-2">--</td>
-                <td class="col-sm-2">09:00 - 09:25</td>
-                <td class="col-sm-2">09:00 - 09:25</td>
-                <td class="col-sm-2">--</td>
-                <td class="col-sm-2">09:00 - 09:25</td>
+            {% for i in 1..6  %}
+                <td class="col-sm-2">
+                {% set day = classList.getSlotIdsByDay(i) %}
+                {% if day|length == 0 %}
+                    --
+                {% else %}
+                    {% for index in 0..day|length %}
+                       {{ day[index] }} <br>
+                    {% endfor %}
+                {% endif %}
+                </td>
+            {% endfor %}
             </tr>
         </table>
     </section>
 
-    <section>
+    <section class="homework">
         <h3>{{ t._("homework") }}</h3>
-        {% for homework in homeworks if homework.status == 0 %}
-        <h6>{{ t._("pending") }}</h6>
+        {% if homeworks|length > 0 %}
         <table>
             <tr>
-                <th class="col-sm-3">Title</th>
-                <th class="col-sm-6">Description</th>
-                <th class="col-sm-3">Overdue</th>
+                <th class="col-sm-3"></th>
+                <th class="col-sm-6">{{ t._("description") }}</th>
+                <th class="col-sm-3">{{ t._("date") }}</th>
             </tr>
+            {% for homework in homeworks if homework.status == 0 %}
+            <tr><td colSpan=3 class="status-header h6">{{ t._("pending") }}</td></tr>
+            {% break %}
+            {% endfor %}
             {% for homework in homeworks if homework.status == 0 %}
             <tr>
                 <td class="col-sm-3">{{ link_to("student/homework/start/"~homework.id, homework.title)  }}</td>
@@ -47,18 +56,10 @@
                 <td class="col-sm-3">{{ homework.getDueDate(t._("dateformat")) }}</td>
             </tr>
             {% endfor %}
+            {% for homework in homeworks if homework.status == 1 %}
+            <tr><td colSpan=3 class="status-header h6">{{ t._("to-do") }}</td></tr>
             {% break %}
             {% endfor %}
-        </table>
-
-        {% for homework in homeworks if homework.status == 1 %}
-        <h6>{{ t._("to-do") }}</h6>
-        <table>
-            <tr>
-                <th class="col-sm-3">Title</th>
-                <th class="col-sm-6">Description</th>
-                <th class="col-sm-3">Overdue</th>
-            </tr>
             {% for homework in homeworks if homework.status == 1 %}
             <tr>
                 <td class="col-sm-3">{{ link_to("student/homework/edit/"~homework.id, homework.title)  }}</td>
@@ -66,9 +67,8 @@
                 <td class="col-sm-3">{{ homework.getDueDate(t._("dateformat")) }}</td>
             </tr>
             {% endfor %}
-            {% break %}
-            {% endfor %}
         </table>
+        {% endif %}
     </section>
 
     <section>

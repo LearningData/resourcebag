@@ -2,12 +2,13 @@
     margin: 3px;
     box-sizing: border-box;
 }
-.ld-classes .homework .item .title {
-    display: block;
-}
-.ld-classes .homework .item .date {
-    float: right;
-}
 .ld-classes-timetable th, .ld-classes-timetable td{
     text-align: center;
 }
+.ld-classes .homework table {
+    min-width: 100%
+}
+.ld-classes .homework .status-header {
+    background: #E6E7E8
+}
+

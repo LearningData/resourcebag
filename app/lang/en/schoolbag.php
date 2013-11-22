@@ -45,6 +45,7 @@ $messages = array(
     "students" => "Students",
     "teacher" => "Teacher",
     "thursday" => "Thursday",
+    "to-do" => "To Do",
     "tuesday" => "Tuesday",
     "cancel" => "Cancel",
     "choose-file" => "Choose File",
