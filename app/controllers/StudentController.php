@@ -109,7 +109,8 @@ class StudentController extends UsersController {
     public function showClassAction($classId) {
         $this->view->t = Translation::get(Language::get(), "classes");
         $this->view->classList = ClassList::findFirstById($classId);
-        $this->view->homeworks = $this->view->user->getHomeworks("classId=" . $classId);
+        $this->view->homeworks = $this->view->user->getHomeworks("classId=" .
+            $classId . " order by status, dueDate");
     }
 }
 ?>
