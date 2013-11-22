@@ -95,7 +95,7 @@
 
 .note {
     padding:20px;
-    border: solid 1px #cad3e2;
+    border-bottom: solid 1px #cad3e2;
     position: relative;
 }
 .notice-space:first-of-type    {

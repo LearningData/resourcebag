@@ -1,5 +1,5 @@
 /*.blue a,*/
-.blue .ld-notice-icon {
+.blue .ld-notice-icon, .blue .note a {
     color: #0ba6d3;
 }
 .blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action, .blue header, .blue .uploader .action {

@@ -73,6 +73,9 @@ a:hover, a:focus {
     padding: 0;
     white-space: nowrap;
 }
+input[type="radio"], input[type="checkbox"] {
+    margin: 0;
+}
 
 /* Fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);

@@ -1,6 +1,4 @@
 <?php
-echo "Starting the script\n";
-
 $user = "admin";
 $dc1 = "example";
 $dc2 = "com";
@@ -9,8 +7,6 @@ $password = "LD46marmita";
 $userDomain='cn='.$user.',dc='.$dc1.',dc='.$dc2;
 
 function connect($ds, $userDomain, $password){
-    print "Connecting\n";
-
     if($ds) {
         $conn=ldap_bind($ds, $userDomain, $password);
         if(!$conn) return false;
@@ -27,15 +23,42 @@ function bind($server) {
     return $ds;
 }
 
-function disconnect($conn) {
-    echo "Disconnecting\n";
-    ldap_close($conn);
+function disconnect($ds) {
+    ldap_close($ds);
 }
+
+function search($ds, $dcs, $filter) {
+    $info = array();
+    $sr=ldap_search($ds, $dcs, $filter, $info);
+    $info = ldap_get_entries($ds, $sr);
+
+    return $info;
+}
+
+function listStudents($ds, $dcs, $filter) {
+    $info = search($ds, $dcs, $filter);
+
+    for ($i=0; $i < $info["count"]; $i++) {
+        echo $info[$i]["uid"][0] . " - " . $info[$i]["cn"][0] . "\n";
+    }
+}
+
+function listTeachers($ds, $dcs, $filter) {
+    $info = search($ds, $dcs, $filter);
+
+    for ($i=0; $i < $info["count"]; $i++) {
+        echo $info[$i]["uid"][0] . " - " .
+             $info[$i]["cn"][0] . " - " .
+             $info[$i]["mail"][0] . "\n";
+    }
+}
+
 
 $ds = bind($server);
 $conn = connect($ds, $userDomain, $password);
-echo "I'm connected\n";
+
+// listStudents($ds, "dc=$dc1,dc=$dc2", "ou=Student");
+listTeachers($ds, "dc=$dc1,dc=$dc2", "ou=Teacher");
 disconnect($ds);
-print "I'm disconnected\n";
 
 ?>
