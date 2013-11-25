@@ -6,7 +6,7 @@ return new \Phalcon\Config(array(
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => 'LD46marmita',
-        'dbname'      => 'schoolbag_new',
+        'dbname'      => 'schoolbag',
     ),
     'application' => array(
         'controllersDir' => __DIR__ . '/../../app/controllers/',
