@@ -18,5 +18,13 @@ return new \Phalcon\Config(array(
         'filesDir'     => __DIR__ . '/../../public/files/',
         'cacheDir'       => '/tmp/cache',
         'baseUri'        => '/schoolbag/',
+    ),
+    'ldap' => array(
+        'server' => 'ldap://127.0.0.1/',
+        'user' => 'admin',
+        'password' => 'LD46marmita',
+        'dc1' => 'example',
+        'dc2' => 'com',
+        'userDomain' => "cn=admin,dc=example,dc=com"
     )
 ));

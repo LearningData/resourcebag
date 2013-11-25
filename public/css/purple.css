@@ -1,7 +1,7 @@
-/*.purple a {
-    color: #ff0097;
+/*.purple a*/.btn-delete, .btn-delete .icon-trash {
+    color: #9752a3;
 }
-*/
+
 .purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header, .purple .uploader .action {
     background-color: #9752a3;
 }
