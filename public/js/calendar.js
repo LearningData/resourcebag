@@ -9,6 +9,17 @@ var calendarPage = (function() {
 
         $(".ld-calendar .btn:submit").click(function(event) {
             event.preventDefault()
+            //set times
+            var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
+            var val = new Date($(".ld-calendar #start-date").datepicker("getDate"))
+            val.setTime(val.getTime() + millsecs)
+            var dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            $( ".ld-calendar #hidden-start-date").val(dateStr)
+            millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
+            val = new Date($(".ld-calendar #end-date").datepicker("getDate"))
+            val.setTime(val.getTime() + millsecs)
+            dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            $( ".ld-calendar #hidden-end-date").val(dateStr)
             var form = $(".ld-calendar form")
             if (validForm(form)) {
                 form.submit()
@@ -140,6 +151,7 @@ var calendarPage = (function() {
             id: "start",
             value: dateStr
         })
+        dateStr = moment(date).add('h', 1).format("YYYY-MM-DD 23:59:00")
         var hiddenEnd = $("<input>", {
             type : "hidden",
             name : "end",
@@ -186,7 +198,7 @@ var calendarPage = (function() {
         modalContent.append(modalBody)
         modalContent.append(modalFooter)
         var form = $("<form>", {
-            method : "post",
+            method: "post",
             action : urlBase + "/calendar/create",
             enctype : "multipart/form-data"
         })
