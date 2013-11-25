@@ -1,7 +1,6 @@
 <?php
 $messages = array(
     "action" => "Action",
-    "add-text" => "Add Text",
     "add-work" => "Please add your work",
     "assign-students" => "Assign Students",
     "assigned date" => "Assigned Date",
@@ -9,6 +8,7 @@ $messages = array(
     "complete" => "Complete",
     "completed" => "Completed",
     "due date" => "Due Date",
+    "enter-homework-text" => "Enter Homework Text",
     "homework-exit" => "Back",
     "homework title" => "Homework Title",
     "in-progress" => "In Progress",
@@ -23,6 +23,7 @@ $messages = array(
     "submit-homework" => "Submit Homework",
     "submitted" => "Submitted",
     "teacher" => "Teacher",
+    "text" => "Text",
     "to-do" => "To Do",
     "need-upload-or-text" => "You need to upload a file or to use text editor",
     "homework-submitted" => "The homework was submitted.",

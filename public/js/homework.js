@@ -328,24 +328,23 @@ var homeworkPage = (function() {
             uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
             $( "#uploadHomeworkModal" ).modal( "show" )
         })
-        $( "#add-homework-text" ).click(function( event ) {
-            event.preventDefault()
-            $("#save-homework-text").show()
-            $( "#summernote" ).summernote({
-                height: 300,
-                focus: true,
-                toolbar: [
-                    [ "style", [ "bold", "italic", "underline" ] ],
-                    //['fontsize', ["fontsize"]],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    //['insert', ['picture', 'link']], // no insert buttons
-                ]
-            })
+        $( "#homework-text-editor" ).summernote({
+            height: 150,
+            focus: true,
+            toolbar: [
+                [ "style", [ "bold", "italic", "underline" ] ],
+                //['fontsize', ["fontsize"]],
+                ['para', ['ul', 'ol', 'paragraph']],
+                //['insert', ['picture', 'link']], // no insert buttons
+            ]
         })
-
+        $( ".ld-homework .homework-text .note-toolbar" ).addClass("hidden")
+        $( ".ld-homework .homework-text .note-editable" ).click(function(event) {
+            $( ".ld-homework .homework-text .note-toolbar" ).removeClass("hidden")
+        })
         $( "#save-homework-text" ).click(function( event ) {
             event.preventDefault()
-            $('textarea[name="content-homework"]').val($('#summernote').code())[0]
+            $('textarea[name="content-homework"]').val($('#homework-text-editor').code())[0]
             $("#text-form").submit()
         })
 
