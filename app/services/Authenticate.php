@@ -20,7 +20,7 @@ class Authenticate extends Component {
     }
 
     public function checkPassword($password, $hashedPassword) {
-        return $this->security->checkHash($password, $hashedPassword);
+        return md5($password) == $hashedPassword;
     }
 
     public function getUser() {
