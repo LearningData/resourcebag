@@ -49,7 +49,7 @@
     <span class="validation-error">{{ t._("invalid-date") }}</span>
 </p>
 <div class="clearfix"></div>
-<P class="col-sm-12">  <input type="checkbox" name="allDay" id="all-day" 
+<P class="col-sm-12"> <input type="checkbox" name="allDay" value="1" id="all-day" 
     {% if event.allDay == 1 %} checked="checked" {% endif %}>
     {{ t._("all-day")}}</P>
 <span class="all-day-block {% if event.allDay == 1 %} hidden {% endif %}">

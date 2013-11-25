@@ -19,3 +19,6 @@
 .btn-delete .icon-trash {
     font-size: 18px;
 }
+.ld-calendar .fc-event {
+    cursor: pointer;
+}

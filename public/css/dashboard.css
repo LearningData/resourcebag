@@ -100,7 +100,9 @@
 .dashboard .ld-homework.ld-box .ld-box-child ul li {
     padding: 10px;
 }
-
+.dashboard .ld-homework.ld-box .ld-box-child ul li a {
+    display: block;
+}
 .dashboard .ld-homework.ld-box .ld-box-child ul li p {
     margin: 0px;
     display: inline;
