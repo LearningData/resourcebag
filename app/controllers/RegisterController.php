@@ -28,7 +28,7 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
-        $password = $this->security->hash($password);
+        $password = md5($password);
         $email = $this->request->getPost("email");
 
         if(!Authenticate::checkPassword($confirmPassword, $password)) {

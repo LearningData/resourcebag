@@ -39,7 +39,7 @@ class UsersController extends ControllerBase {
         $admin = $this->getUserBySession();
         $password = $this->request->getPost("password");
         $confirmPassword = $this->request->getPost("confirm-password");
-        $password = $this->security->hash($password);
+        $password = md5($password);
 
         if(!Authenticate::checkPassword($confirmPassword, $password)) {
             $this->flash->error($t->_("need-confirm-password"));
@@ -141,7 +141,7 @@ class UsersController extends ControllerBase {
         $newPassword = $this->request->getPost("new-password");
         $confirmPassword = $this->request->getPost("confirm-new-password");
 
-        $newPassword = $this->security->hash($newPassword);
+        $newPassword = md5($newPassword);
 
         if(!Authenticate::checkPassword($oldPassword, $user->password)) {
             $this->flash->error($t->_("invalid-password"));
