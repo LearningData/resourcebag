@@ -57,14 +57,15 @@ class mainTask extends \Phalcon\CLI\Task {
             $user->email = $email;
         }
 
-        echo "PASSWD: " . $this->getElement("userPassword", $info) . "\n";
-
         $user->schoolId = 1;
-        $user->password = $this->getElement("userPassword", $info);
+
+        $binary = $this->getElement("userpassword", $info);
+        $binary = substr($binary, 4);
+        $user->password = bin2hex((base64_decode($binary)));
+
         $user->lastName = $this->getElement("sn", $info);
         $user->username = $this->getElement("uid", $info);
-        $name = split(" ",  $this->getElement("cn", $info));
-        $user->name = $name[0];
+        $user->name = $this->getElement("givenname", $info);
         $user->type = $type;
 
         return $user;
