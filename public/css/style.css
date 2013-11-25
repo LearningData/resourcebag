@@ -182,7 +182,7 @@ section table tr:first-child, section table tr:last-child {
     color: #fff !important;
     margin-right: 5px;
 }
-.btn-sm, .btn-xs {
+.btn-sm, .btn.btn-sm, .btn-xs {
     min-width: 110px;
     font-size: 12px;
     padding: 5px 10px;

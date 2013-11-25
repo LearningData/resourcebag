@@ -1,16 +1,21 @@
-.ld-calendar {
-}
 .ld-calendar .modal .content-block {
     display: inline-block;
 }
-.ld-calendar .modal .modal-label {
-    width: 30%;
-}
-.ld-calendar .modal .modal-value {
-    width: 70%;
-    float: right;
+.ld-calendar .modal .value  {
+    display: inline-table;
+    width: 90%;
 }
 .ld-calendar .modal hr {
     border-top-color: #b4b4b4;
 }
-
+.modal-body [class*="icon-"] {
+    color: #b4b4b4;
+    padding: 0 10px 0 20px;
+}
+.btn-delete {
+    float: right;
+    font-size: 14px;
+}
+.btn-delete .icon-trash {
+    font-size: 18px;
+}
