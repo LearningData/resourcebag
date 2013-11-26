@@ -133,7 +133,6 @@ input[type="radio"], input[type="checkbox"] {
 
 
 /* Fonts */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
 .classList {
     display: inline;
     margin: 20px 20px;
@@ -146,7 +145,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: 1.1;
     margin-bottom: 20px;
     margin-top: 0;
-    font-weight: 300;
 }
 
 h1, .h1 {
@@ -159,7 +157,7 @@ h2, .h2 {
 
 h3, .h3 {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .h3 {
     font-weight: normal;
@@ -702,6 +700,7 @@ header h1, header h2 {
     display: inline-block;
     margin: 0;
     font-size: 36px;
+    font-weight: 300;
 }
 
 header h2 {
