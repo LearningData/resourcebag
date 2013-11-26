@@ -25,6 +25,7 @@ return new \Phalcon\Config(array(
         'password' => 'LD46marmita',
         'dc1' => 'example',
         'dc2' => 'com',
-        'userDomain' => "cn=admin,dc=example,dc=com"
+        'userDomain' => "cn=admin,dc=example,dc=com",
+        'pathLog' => "/tmp/ldap_synch.log"
     )
 ));
