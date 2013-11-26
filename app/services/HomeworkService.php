@@ -18,6 +18,7 @@ class HomeworkService {
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
                  "description" => $homework->text,
+                 "title" => $homework->title,
                  "status" => $homework->status,
                  "student" => $name,
                  "due-date" => $homework->dueDate
