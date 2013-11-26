@@ -1,7 +1,9 @@
 <?php
+use Phalcon\Logger\Adapter\File as FileAdapter;
+
 class mainTask extends \Phalcon\CLI\Task {
     public function mainAction() {
-        echo "Synchronizing students\n";
+        echo "Synchronizing users\n";
         $config = include APPLICATION_PATH . '/../app/config/config.php';
 
         $ds = LDAP::bind($config->ldap->server);
@@ -10,16 +12,27 @@ class mainTask extends \Phalcon\CLI\Task {
 
         $dcs = "dc=" . $config->ldap->dc1 . ",dc=" . $config->ldap->dc2;
 
-        $info = LDAP::search($ds, $dcs, "ou=Student");
-        $this->saveUsers($info, User::getTypeStudent());
+        foreach(School::find() as $school) {
+            /*
+            * TODO
+            * CHANGE THE QUERY TO USE THE REAL ATTRIBUTE TO IDENIFY THE SCHOOL
+            * $query = "(&(ou=Student)(schoolid=$school->clientId))";
+            */
 
-        $info = LDAP::search($ds, $dcs, "ou=Teacher");
-        $this->saveUsers($info, User::getTypeTeacher());
+            $info = LDAP::search($ds, $dcs, "(&(ou=Student)(givenname=*))");
+            $this->saveUsers($info, User::getTypeStudent(),
+                $config->ldap->pathLog);
+
+            $info = LDAP::search($ds, $dcs, "(&(ou=Teacher)(givenname=*))");
+            $this->saveUsers($info, User::getTypeTeacher(),
+                $config->ldap->pathLog);
+        }
 
         LDAP::disconnect($ds);
     }
 
-    private function saveUsers($info, $type) {
+    private function saveUsers($info, $type, $pathLog) {
+        $logger = new FileAdapter($pathLog);
         $count = 0;
 
         for ($i=0; $i < $info["count"]; $i++) {
@@ -29,13 +42,22 @@ class mainTask extends \Phalcon\CLI\Task {
                 $count++;
                 echo "Saving: " . $user->username . "\n";
             } else {
+                $errors = "\n";
+
                 foreach ($user->getMessages() as $m) {
-                    echo "Error: $m\n";
+                    $errors .= "$m\n";
                 }
+
+                $logger->error("Error to synchronize: " .
+                    $user->username . $errors);
             }
         }
 
         echo "Finish: " . $count . "\n";
+    }
+
+    private function getConfig() {
+
     }
 
     private function populeUser($info, $type) {

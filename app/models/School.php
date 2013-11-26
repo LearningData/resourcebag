@@ -8,6 +8,7 @@ class School extends \Phalcon\Mvc\Model {
     public $AccessCode;
     public $TeacherAccessCode;
     public $allTY;
+    public $clientId;
 
     public function initialize() {
         $this->hasMany("id", "User", "schoolId", array("alias" => "Users"));
@@ -26,7 +27,8 @@ class School extends \Phalcon\Mvc\Model {
             'SchoolPath' => 'path',
             'AccessCode' => 'accessCode',
             'TeacherAccessCode' => 'teacherAccessCode',
-            'allTY' => 'allTY'
+            'allTY' => 'allTY',
+            'clientId' => 'clientId'
         );
     }
 }
