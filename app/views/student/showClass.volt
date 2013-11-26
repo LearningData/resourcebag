@@ -1,4 +1,4 @@
-<div class="ld-multi-child">
+<div class="ld-classes pink">
     <header>
         <h1 data-target="ld-classes">{{ t._("classes") }}</h1>
         <h2 class="subheader">{{ t._("viewing") }} - {{ classList.subject.name }}</h2>
