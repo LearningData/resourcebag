@@ -9,43 +9,61 @@ $(document).ready(function() {
     $(".user-profile").click(function() {
         $(".user-profile-actions").slideToggle("fast");
     });
+    // jquery libs
     $("select").uniform();
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
     $ (".sidebar-scroll").slimScroll({height:"100%"})
     
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
+    console.log(sessionStorage.location);
+    if ($("div.ld-multi-child").length > 0) {
+        $("div.ld-multi-child").addClass("ld-" + sessionStorage.location +
+         " " + sessionStorage.colour)
+        $("div.ld-multi-child header h1").empty()
+        $("div.ld-multi-child header h1").append(sessionStorage.title)
+    }
     $(".nav.navbar-nav li").removeClass("active")
+    var navigation = sessionStorage.nav || {}
     if (window.location.pathname.indexOf("dashboard") != -1) {
         dashboard.init()
         $(".nav.navbar-nav li.dashboard").addClass("active")
+        navigation.location = "dashboard"
     } else if (window.location.pathname.indexOf("messages") != -1) {
         $(".nav.navbar-nav li.messages").addClass("active")
+        navigation.location = "messages"
     } else if (window.location.pathname.indexOf("noticeboard") != -1) {
         noticesPage.init()
         $(".nav.navbar-nav li.notices").addClass("active")
+        navigation.location = "notices"
     } else if (window.location.pathname.indexOf("calendar") != -1) {
         calendarPage.init()
         $(".nav.navbar-nav li.events").addClass("active")
+        navigation.location = "calendar"
     } else if (window.location.pathname.indexOf("Ebooks") != -1) {
         $(".nav.navbar-nav li.ebooks").addClass("active")
+        place = "ebooks"
     } else if (window.location.pathname.indexOf("resources") != -1) {
         $(".nav.navbar-nav li.resources").addClass("active")
+        navigation.location = "resources"
     } else if (window.location.pathname.indexOf("policies") != -1) {
         $(".nav.navbar-nav li.policies").addClass("active")
+        navigation.location = "policies"
     } else if ($( "div.ld-timetable" ).length > 0) {
         timetablePage.init()
         $(".nav.navbar-nav li.timetable").addClass("active")
+        sessionStorage.colour = $( "div.ld-timetable" ).data().colour
+        sessionStorage.location = "timetable"
+        sessionStorage.title =  $( "div.ld-timetable" ).data().title
     } else if ($( "div.ld-homework" ).length > 0) {
         homeworkPage.init()
         $(".nav.navbar-nav li.homework").addClass("active")
+        navigation.location = "homework"
     } else if ($( "div.ld-classes" ).length > 0) {
         classesPage.init()
         $(".nav.navbar-nav li.classes").addClass("active")
+        sessionStorage.colour = $( "div.ld-classes" ).data().colour
+        sessionStorage.location = "classes"
+        sessionStorage.title =  $( "div.ld-classes" ).data().title
     }
     $(".alert").alert();
     $("#teacher-due-date").datepicker({
@@ -198,12 +216,6 @@ function prettyDate(date) {
 function prettyDateMonth(date) {
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     return months[date.getMonth()]
-}
-
-function prettyHour(date) {
-    var hours = (date.getUTCHours() < 10) ? "0" + date.getUTCHours() : date.getUTCHours()
-    var mins = (date.getUTCMinutes() < 10) ? "0" + date.getUTCMinutes() : date.getUTCMinutes()
-    return hours + ":" + mins
 }
 
 function hiddenRadioElements() {

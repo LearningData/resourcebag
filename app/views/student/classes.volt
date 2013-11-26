@@ -1,4 +1,4 @@
-<div class="ld-classes pink">
+<div class="ld-classes pink" data-colour="pink" data-title="{{ t._("classes")  }}">
     <header>
         <h1>{{ t._("classes")  }}</h1>
     </header>
