@@ -1,5 +1,6 @@
 <?php
-use Phalcon\Paginator\Adapter\NativeArray as Paginator;
+use Phalcon\Paginator\Adapter\Model as ModelPaginator;
+use Phalcon\Paginator\Adapter\NativeArray as ArrayPaginator;
 
 class HomeworkService {
     public static function jsonToDashboard($user) {
@@ -89,7 +90,12 @@ class HomeworkService {
             "limit"=> 10, "page" => $currentPage
         );
 
-        $paginator = new Paginator($params);
+        if(is_array($homeworks)) {
+            $paginator = new ArrayPaginator($params);
+        } else {
+            $paginator = new ModelPaginator($params);
+        }
+
         return $paginator->getPaginate();
     }
 }
