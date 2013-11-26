@@ -264,8 +264,9 @@ html .fc, .fc table {
   cursor: default;
 }
 
-a.fc-event {
+a.fc-event, a.fc-event:hover {
   text-decoration: none;
+  color: #FFFFFF;
 }
 
 a.fc-event, .fc-event-draggable {

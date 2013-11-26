@@ -239,7 +239,6 @@ var calendarPage = (function() {
         var del = $("<button>", {
             type : "button",
             "class" : "btn-delete",
-            "data-dismiss" : "modal",
             html : "<span class=\"icon-trash\"></span> Delete"
         })
 
@@ -261,6 +260,9 @@ var calendarPage = (function() {
 
         edit.click(function() {
             window.location.href = urlBase + "/" + getUser() + "/calendar/edit/" + data.id
+        })
+        del.click(function() {
+            window.location.href = urlBase + "/calendar/remove/" + data.id
         })
     }
 
