@@ -328,16 +328,19 @@ var homeworkPage = (function() {
             uploadHomeworkFileDialog( $ ( this ).data().homeworkId )
             $( "#uploadHomeworkModal" ).modal( "show" )
         })
-        $( "#homework-text-editor" ).summernote({
-            height: 150,
-            focus: true,
-            toolbar: [
-                [ "style", [ "bold", "italic", "underline" ] ],
-                //['fontsize', ["fontsize"]],
-                ['para', ['ul', 'ol', 'paragraph']],
-                //['insert', ['picture', 'link']], // no insert buttons
-            ]
-        })
+        if ($( "#homework-text-editor" ).length > 0) {
+            $( "#homework-text-editor" ).summernote({
+                height: 150,
+                focus: true,
+                toolbar: [
+                    ['style', ['style']],
+                    [ "style", [ "bold", "italic", "underline" ] ],
+                        //['fontsize', ["fontsize"]],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    //['insert', ['picture', 'link']], // no insert buttons
+                ]
+            })
+        }
         $( ".ld-homework .homework-text .note-toolbar" ).addClass("hidden")
         $( ".ld-homework .homework-text .note-editable" ).click(function(event) {
             $( ".ld-homework .homework-text .note-toolbar" ).removeClass("hidden")
@@ -367,13 +370,6 @@ var homeworkPage = (function() {
             }
             submitHomeworkDialog( $ ( this ).data() )
             $( "#submitHomeworkModal" ).modal( "show" )
-        })
-        $( ".homework-view .btn.return" ).click( function( event ) {
-            if ( document.referrer.indexOf("homework") != -1 ) {
-                window.history.go( -1 )
-            } else {
-                window.location.href = urlBase + "/" + getUser() + "/homework"
-            }
         })
         $( ".ld-homework .table .collapse-toggle" ).click( function( event ){
             var element = event.target

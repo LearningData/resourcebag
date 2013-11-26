@@ -67,6 +67,6 @@
     {{ link_to("student/homework/submit/"~homework.id, "class":"btn mtop-20", t._("submit-homework")) }}
     {% endif %}
     <button class="btn mtop-20 btn-cancel return">
-        {{ t._("homework-exit") }}
+        {{ t._("cancel") }}
     </button>
 </div>

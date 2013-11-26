@@ -45,8 +45,5 @@
         {% endif %}
         
     </section>
-    <button class="btn mtop-20 return">
-            Back
-        </button>
 </div>
 

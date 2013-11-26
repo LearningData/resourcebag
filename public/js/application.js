@@ -15,30 +15,19 @@ $(document).ready(function() {
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
     $ (".sidebar-scroll").slimScroll({height:"100%"})
     
-    console.log(sessionStorage.location);
-    if ($("div.ld-multi-child").length > 0) {
-        $("div.ld-multi-child").addClass("ld-" + sessionStorage.location +
-         " " + sessionStorage.colour)
-        $("div.ld-multi-child header h1").empty()
-        $("div.ld-multi-child header h1").append(sessionStorage.title)
-    }
+    sessionStorage.exitRoute = sessionStorage.exitRoute || ""
     $(".nav.navbar-nav li").removeClass("active")
-    var navigation = sessionStorage.nav || {}
     if (window.location.pathname.indexOf("dashboard") != -1) {
         dashboard.init()
         $(".nav.navbar-nav li.dashboard").addClass("active")
-        navigation.location = "dashboard"
     } else if (window.location.pathname.indexOf("messages") != -1) {
         $(".nav.navbar-nav li.messages").addClass("active")
-        navigation.location = "messages"
     } else if (window.location.pathname.indexOf("noticeboard") != -1) {
         noticesPage.init()
         $(".nav.navbar-nav li.notices").addClass("active")
-        navigation.location = "notices"
     } else if (window.location.pathname.indexOf("calendar") != -1) {
         calendarPage.init()
         $(".nav.navbar-nav li.events").addClass("active")
-        navigation.location = "calendar"
     } else if (window.location.pathname.indexOf("Ebooks") != -1) {
         $(".nav.navbar-nav li.ebooks").addClass("active")
         place = "ebooks"
@@ -51,19 +40,25 @@ $(document).ready(function() {
     } else if ($( "div.ld-timetable" ).length > 0) {
         timetablePage.init()
         $(".nav.navbar-nav li.timetable").addClass("active")
-        sessionStorage.colour = $( "div.ld-timetable" ).data().colour
-        sessionStorage.location = "timetable"
-        sessionStorage.title =  $( "div.ld-timetable" ).data().title
     } else if ($( "div.ld-homework" ).length > 0) {
         homeworkPage.init()
         $(".nav.navbar-nav li.homework").addClass("active")
-        navigation.location = "homework"
+        sessionStorage.location += "homework"
+        if ($( "div.ld-homework .btn.return").length > 0) {
+            console.log(sessionStorage, document.referrer)
+             if (!sessionStorage.exitRoute) {
+                sessionStorage.exitRoute = document.referrer
+            }
+            console.log(sessionStorage, document.referrer)
+        } else {
+            sessionStorage.exitRoute = ""
+        }
+        console.log(sessionStorage)
     } else if ($( "div.ld-classes" ).length > 0) {
         classesPage.init()
         $(".nav.navbar-nav li.classes").addClass("active")
-        sessionStorage.colour = $( "div.ld-classes" ).data().colour
         sessionStorage.location = "classes"
-        sessionStorage.title =  $( "div.ld-classes" ).data().title
+        sessionStorage.exitRoute = ""
     }
     $(".alert").alert();
     $("#teacher-due-date").datepicker({
@@ -227,7 +222,11 @@ function hiddenRadioElements() {
 function setUpEvents() {
     //buttone events
     $(".btn.btn-cancel").click(function(a) {
-        window.history.go(-1)
+       if ( sessionStorage.exitRoute ) {
+            window.location.href = sessionStorage.exitRoute
+       } else {
+            window.history.back()
+       }
     })
     //general collapse event
     $( ".collapse-toggle" ).click( function( event ){
