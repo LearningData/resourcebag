@@ -36,7 +36,7 @@
     </div>
 
     <input type="submit" class="btn" value="{{ t._("save") }}">
-    <button class="btn btn-return btn-cancel">
+    <button class="btn btn-return btn-cancel" type="button">
         {{ t._("cancel") }}
     </button>
 

@@ -26,6 +26,6 @@
 {{ securityTag.csrf(csrf_params) }}
 <p>
     {{ submit_button(t._("save"), "class":"btn") }}
-    <button class="btn btn-cancel">{{ t._("cancel") }}</button>
+    <button class="btn btn-cancel" type="button">{{ t._("cancel") }}</button>
 </p>
 </form>

@@ -61,7 +61,7 @@
         </div>
         <div class="clearfix"></div>
         <input class="btn mtop-20" type="submit" value={{ t._("save")}}>
-        <button class="btn btn-return btn-cancel mtop-20">
+        <button type="button" class="btn btn-return btn-cancel mtop-20">
             {{ t._("cancel")}}
         </button>
     </section>

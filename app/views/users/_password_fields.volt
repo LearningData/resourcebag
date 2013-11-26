@@ -16,7 +16,7 @@
 </p>
 </form>
 <p>
-<button class="btn btn-cancel">
+<button type="button" class="btn btn-cancel">
     {{ t._("cancel") }}
 </button>
 </p>
