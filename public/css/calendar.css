@@ -3,7 +3,7 @@
 }
 .ld-calendar .modal .value  {
     display: inline-table;
-    width: 90%;
+    width: 87%;
 }
 .ld-calendar .modal hr {
     border-top-color: #b4b4b4;
@@ -15,10 +15,15 @@
 .btn-delete {
     float: right;
     font-size: 14px;
+    padding-top: 7px;
+    background: none;
 }
 .btn-delete .icon-trash {
     font-size: 18px;
 }
 .ld-calendar .fc-event {
     cursor: pointer;
+}
+.ld-new-buttons a, .ld-new-buttons .custom-icon-new-homework    {
+    font-size: 18px;
 }

@@ -77,6 +77,11 @@ a:hover, a:focus {
 input[type="radio"], input[type="checkbox"] {
     margin: 0;
 }
+/*button close modal*/
+.close  {
+    font-size: 24px;
+}
+
 /* Reset Summernote */
 .note-editor .note-editable {
     overflow: auto;
