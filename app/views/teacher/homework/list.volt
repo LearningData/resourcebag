@@ -66,7 +66,7 @@
                 <td>{{ homework.setDate }}</td>
                 <td>{{ homework.dueDate }}</td>
                 {% if homework.isSubmitted() %}
-                <td> {{ link_to("teacher/homework/review/"~homework.id, "Review") }} </td>
+                <td> {{ link_to("teacher/homework/review/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":t._("review")) }} </td>
                 <td>
                 <input type="checkbox"
                 name="ids[]" value="{{ homework.id }}">

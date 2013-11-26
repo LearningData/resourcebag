@@ -45,15 +45,12 @@ $(document).ready(function() {
         $(".nav.navbar-nav li.homework").addClass("active")
         sessionStorage.location += "homework"
         if ($( "div.ld-homework .btn.return").length > 0) {
-            console.log(sessionStorage, document.referrer)
              if (!sessionStorage.exitRoute) {
                 sessionStorage.exitRoute = document.referrer
             }
-            console.log(sessionStorage, document.referrer)
         } else {
             sessionStorage.exitRoute = ""
         }
-        console.log(sessionStorage)
     } else if ($( "div.ld-classes" ).length > 0) {
         classesPage.init()
         $(".nav.navbar-nav li.classes").addClass("active")

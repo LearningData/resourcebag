@@ -1,4 +1,4 @@
-<div class="ld-timetable red" data-colour="red" data-title="{{ t._("timetable")}}">
+<div class="ld-timetable red">
     <header>
         <h1>{{ t._("timetable")}}</h1>
     </header>

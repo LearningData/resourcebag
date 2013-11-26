@@ -358,6 +358,7 @@ var homeworkPage = (function() {
         })
         $( ".ld-homework .btn:submit").click( function( event ) {
             event.preventDefault()
+            console.log('here')
             var form = $( ".ld-homework form")
             if (validForm(form)) {
                 form.submit()

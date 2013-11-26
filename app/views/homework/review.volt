@@ -3,14 +3,33 @@
         <h1>{{ t._("homework") }}</h1>
         <h2>{{ t._("review") }}</h2>
     </header>
-    <h3>{{ homework.title }} ({{ homework.student.name }})</h3>
-    <table class="table homework mtop-20">
-        <thead>
-            <th>File Name</th>
-            <th>Descritpion</th>
-            <th>Download</th>
-        </thead>
-        <tbody>
+    <section>
+        <h3>{{ homework.classList.subject.name }} - {{ homework.classList.subject.extraRef }} </h3>
+        {{ homework.student.name }} {{ homework.student.lastName }}
+        <div class="col-sm-12">
+            <h4></h4>
+        </div>
+        <div class="col-sm-12">
+            <h6>{{ t._("description") }}</h6>
+            <p>
+                <strong>{{ homework.title }}</strong><br />
+                {{ homework.text }}
+            </p>
+        </div>
+    </section>
+    <section class="homework-text">
+        <h3>{{ t._("work-box") }}</h3>
+        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.textEditor }}</div>
+    </section>
+    <section>
+        <h3>{{ t._("work-files") }}</h3>
+        {% if homework.files.count() != 0 %}
+        <table class="table">
+            <thead>
+                <th>{{ t._("file-name") }}</th>
+                <th>{{ t._("description") }}</th>
+                <th>{{ t._("download") }}</th>
+            </thead>
             {% for file in homework.files %}
             <tr>
                 <td>{{ file.originalName }}</td>
@@ -18,12 +37,23 @@
                 <td class="ld-tooltip">{{ link_to("download/homework/"~file.id,"class":"btn-icon btn-download icon-download", "data-toggle":"tooltip", "title":"Download") }}</td>
             </tr>
             {% endfor %}
-        </tbody>
-    </table>
+        </table>
+
+        {% else %}
+        <h3>{{ t._("no-files") }}</h3>
+        {% endif %}
+
+    </section>
     {{ form("homework/reviewed/"~homework.id, "method":"post", "class":"form inline") }}
-    <input type="submit" class="btn mtop-20" value="{{ t._("submit") }}">
+    <div id="hwk-frm-review">
+        <label><input type="checkbox" class=""
+                 data-target="#hwk-frm-review" data-required-key="one">
+                {{ t._("homework-reviewed") }}</label>
+        <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
+    </div>
+    <input type="submit" class="btn mtop-20" value="{{ t._("save") }}">
     <button type="button" class="btn btn-cancel return mtop-20">
-        {{ t._("back") }}
+        {{ t._("cancel") }}
     </button>
     </form>
 

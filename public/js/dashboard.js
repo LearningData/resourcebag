@@ -1,8 +1,6 @@
 var dashboard = (function() {
 
     var displayDate = new Date()
-    var monthsToInt = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
-
     var timetable
     var calendarEvents
     //events
@@ -172,7 +170,7 @@ var dashboard = (function() {
                 case "2" :
                     icon = "icon-pencil"
                     titleTip = "View howework"
-                    urlSegment = "show"
+                    urlSegment = "review"
                 break
                 default: 
                     continue

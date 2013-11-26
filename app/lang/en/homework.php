@@ -33,5 +33,7 @@ $messages = array(
     "homework-created" => "The homework was created.",
     "homework-reviewed" => "The homework was reviewed.",
     "homework-not-reviewed" => "The homework was not reviewed.",
+    "work-box" => "Work Box",
+    "work-files" => "Work Files"
 );
 ?>

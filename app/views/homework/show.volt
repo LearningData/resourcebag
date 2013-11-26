@@ -5,7 +5,7 @@
     </header>
     <section>
         <div class="col-sm-12">
-            <h3>{{ homework.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.classList.user.name }} {{ homework.classList.user.lastName}}</h3>
+            <h3>{{ homework.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.classList.user.title }} {{ homework.classList.user.lastName}}</h3>
         </div>
         <div class="col-sm-12">
             <h4></h4>
