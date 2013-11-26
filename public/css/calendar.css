@@ -24,3 +24,6 @@
 .ld-calendar .fc-event {
     cursor: pointer;
 }
+.ld-new-buttons a, .ld-new-buttons .custom-icon-new-homework    {
+    font-size: 18px;
+}

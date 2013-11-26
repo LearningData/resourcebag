@@ -63,8 +63,12 @@ html .fc, .fc table {
   margin-top: 0;
   margin-bottom:0;
   white-space: nowrap;
-  color:##9752a3;
+  color: #9752a3;
   font-weight: 100;
+  text-align: center;
+}
+.fc-header-title.agenda h2 {
+    margin-top: 14px;
 }
 
 .fc .fc-header-space {
