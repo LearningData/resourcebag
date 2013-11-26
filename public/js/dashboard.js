@@ -153,7 +153,7 @@ var dashboard = (function() {
             homeworkItems.push("<li class=\"ld-tooltip\">" + 
                 "<a  href=\"" + urlBase + "/student/homework/edit/" + 
                 homework[i].id + "\">" + btnIcon + "<p>" + 
-                homework[i].description + " (" + homework[i].subject + 
+                homework[i].title + " (" + homework[i].subject + 
                 ")</p>" + due + "</a></li>"
             )
         }
@@ -175,7 +175,7 @@ var dashboard = (function() {
                 default: 
                     continue
             }
-            homeworkItems.push("<li class='ld-tooltip'><a href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "><span title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].description + " (" + homework[i].subject + ")</p></a></li>")
+            homeworkItems.push("<li class='ld-tooltip'><a href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "><span title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].title + " (" + homework[i].subject + ")</p></a></li>")
         }
         return homeworkItems
     }
