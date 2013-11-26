@@ -71,6 +71,7 @@ var calendarPage = (function() {
             eventClick : function(data, jsEvent, view) {
                 createEditEventDialog(data)
                 $("#createEditEventModal").modal("show")
+                return false
             },
             editable : false,
             firstDay : 1,
