@@ -97,7 +97,9 @@ var dashboard = (function() {
 
 
     var init = function() {
+        console.log('prehwk')
         populateHomework()
+        console.log('pretmtbl')
         populateTimetable( displayDate )
         var url = urlBase + "/service/calendar/"
         $.get( url, function(response ) {
@@ -114,9 +116,9 @@ var dashboard = (function() {
             })
             nextThreeEvents()
         })
-
-        
+        console.log('premsg')
         populateMessages()
+        console.log('prents')
         populateNotices()
     }
 
@@ -188,12 +190,14 @@ var dashboard = (function() {
     var populateHomework = function() {
         var url = urlBase + "/service/homeworks/"
         $.get(url, function(response) {
+            console.log('fetchhwk')
             var homeworkItems = getUser() == "student" ? studentHomeworkList(response.homeworks) : teacherHomeworkList(response.homeworks)
             var homeworkList = $( "<ul>")
             homeworkList.append( homeworkItems.join("") )
             $( "#dashboard-homework-contents" ).append( homeworkList )
             $('.ld-tooltip').tooltip({selector: "[data-toggle=tooltip]", container: ".ld-tooltip"})
             $ (".dashboard .ld-homework.ld-box .ld-box-child").slimScroll({height:"335px"})
+            console.log('appendhwk')
         })
     }
 
@@ -203,6 +207,7 @@ var dashboard = (function() {
         header.append(prettyDay(date))
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
+            console.log('fetchtmtmbl')
             var day = date.getDay()
             data = response.week[day]
             if ( timetable) {
@@ -240,6 +245,7 @@ var dashboard = (function() {
             height -= (2 * parseInt($( "#dashboard-timetable-box .table tr.break td" ).css("height")))
             height /= rowCount
             $( "#dashboard-timetable-box .table tr:not('.break') td" ).css({height: height -1})
+            console.log('appendtmtbl')
         })
     }
     
@@ -263,12 +269,14 @@ var dashboard = (function() {
             list.append( items.join("") )
             $( "#dashboard-messages-contents" ).append( list )
             $ (".dashboard .messages .ld-box-child").slimScroll({height:"335px"})
+            console.log('appendmsg')
         //})
     }
 
     var populateNotices = function( date ) {
         var url = urlBase + "/notice/jsonNotices/"
         $.get(url, function(response) {
+            console.log('fetchnts')
             var notices = response.notices
             var items = []
             if (notices[0] != undefined) {
@@ -284,6 +292,7 @@ var dashboard = (function() {
             $( "#dashboard-notices .note" ).each(function(index, item) {
                 cutText(item, $( item ).find( "p")[0])
             })
+            console.log('appendnts')
         })
     }
 

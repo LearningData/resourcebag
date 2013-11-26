@@ -169,7 +169,7 @@
     background-color: #f0f2f2;
 }
 
-.teacher .ld-timetable .table.week td .class-code {
+.ld-timetable .table.week td .class-code {
     cursor: pointer;
     margin: 3%;
 }

@@ -22,8 +22,32 @@
         </p>
         <hr/>
     </section>
-    <section class="ld-subsection">
-        <h3>{{ t._("times") }}</h3>
+    <section>
+        <h3>{{ t._("timetable") }}</h3>
+        <table class="col-sm-12 ld-classes-timetable">
+            <tr>
+                <th class="col-sm-2">Monday</th>
+                <th class="col-sm-2">Tuesday</th>
+                <th class="col-sm-2">Wednesday</th>
+                <th class="col-sm-2">Thursday</th>
+                <th class="col-sm-2">Friday</th>
+                <th class="col-sm-2">Saturday</th>
+            </tr>
+            <tr>
+            {% for i in 1..6  %}
+                <td class="col-sm-2">
+                {% set day = classList.getSlotIdsByDay(i) %}
+                {% if day|length == 0 %}
+                    --
+                {% else %}
+                    {% for index in 0..day|length %}
+                       {{ day[index] }} <br>
+                    {% endfor %}
+                {% endif %}
+                </td>
+            {% endfor %}
+            </tr>
+        </table>
     </section>
     <section class="ld-subsection first">
         <h3>{{ t._("resources") }}</h3>

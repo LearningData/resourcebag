@@ -12,6 +12,7 @@ class User extends \Phalcon\Mvc\Model {
     public $email;
     public $password;
     public $title;
+    public $username;
 
     public function initialize() {
         $this->belongsTo("schoolId", "School", "id");
@@ -128,7 +129,7 @@ class User extends \Phalcon\Mvc\Model {
     }
 
     public function validation() {
-        $this->validate(new EmailValidator(array("field" => "email")));
+        // $this->validate(new EmailValidator(array("field" => "email")));
 
         $this->validate(new PresenceOf(array("field" => "name")));
 
@@ -147,7 +148,8 @@ class User extends \Phalcon\Mvc\Model {
             'Type' => 'type',
             'email' => 'email',
             'password' => 'password',
-            'title' => 'title'
+            'title' => 'title',
+            'username' => 'username'
         );
     }
 }

@@ -17,27 +17,15 @@
             </p>
         </div>
     </section>
-    <section class="homework-view">
-        <h3>{{ t._("add-text") }}</h3>
-        <button id="add-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
-            {{ t._("add-text") }}
-        </button>
-        <button id="save-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}" style="display:none">
+    <section class="homework-text">
+       {{ form("homework/update", "id": "text-form", "method":"post", "enctype":"multipart/form-data") }}
+        <h3>{{ t._("text") }}</h3>
+        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.textEditor }}</div>
+        <textarea  name="content-homework" style="display:none;"></textarea>
+        <button id="save-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("save-text") }}
         </button>
-        {{ form("homework/update", "id": "text-form", "method":"post", "enctype":"multipart/form-data") }}
-        <div id="text-inputs">
-            <div class="homework-subheader">
-                {{ homework.textEditor }}
-            </div>
-            <div id="homework-text-editor" spellcheck="true">
-                <input type="hidden" name="homework-id" value="{{ homework.id }}">
-                <textarea id="summernote"
-                    name="content-homework" rows="18" style="display: none;">
-                    {{ homework.textEditor }}
-                </textarea>
-            </div>
-        </div>
+        <input type="hidden" name="homework-id" value="{{ homework.id }}">
         </form>
     </section>
 

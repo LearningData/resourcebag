@@ -9,6 +9,17 @@ var calendarPage = (function() {
 
         $(".ld-calendar .btn:submit").click(function(event) {
             event.preventDefault()
+            //set times
+            var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
+            var val = new Date($(".ld-calendar #start-date").datepicker("getDate"))
+            val.setTime(val.getTime() + millsecs)
+            var dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            $( ".ld-calendar #hidden-start-date").val(dateStr)
+            millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
+            val = new Date($(".ld-calendar #end-date").datepicker("getDate"))
+            val.setTime(val.getTime() + millsecs)
+            dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            $( ".ld-calendar #hidden-end-date").val(dateStr)
             var form = $(".ld-calendar form")
             if (validForm(form)) {
                 form.submit()
@@ -19,25 +30,14 @@ var calendarPage = (function() {
             var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
             var val = new Date($(".ld-calendar #start-date").datepicker("getDate"))
             val.setTime(val.getTime() + millsecs)
-            dateStr = "" + val.getFullYear() + "-"
-            dateStr += (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
-            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + " "
-            dateStr += (val.getHours() < 10 ? "0" + val.getHours() : val.getHours())
-            dateStr += ":" + (val.getMinutes() < 10 ? "0" + val.getMinutes() : val.getMinutes())
-            dateStr += ":00"
-            $(".ld-calendar #hidden-start-date").val(dateStr)
+            var dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            $( ".ld-calendar #hidden-start-date").val(dateStr)
         })
         $(".ld-calendar #end-time, .ld-calendar #end-date").change(function(event) {
             var millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
             var val = new Date($(".ld-calendar #end-date").datepicker("getDate"))
             val.setTime(val.getTime() + millsecs)
-            dateStr = "" + val.getFullYear() + "-"
-            dateStr += (val.getMonth() < 9) ? "0" + (val.getMonth() + 1) : (val.getMonth() + 1) + "-"
-            dateStr += (val.getDate() < 10) ? "0" + val.getDate() : val.getDate() + " "
-            dateStr += (val.getHours() < 10 ? "0" + val.getHours() : val.getHours())
-            dateStr += ":" + (val.getMinutes() < 10 ? "0" + val.getMinutes() : val.getMinutes())
-            dateStr += ":00"
-            dateStr += ":00"
+            var dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
             $( ".ld-calendar #hidden-end-date")[0].value = dateStr
         })
         if ($( ".ld-calendar #hidden-start-date")[0]) {
@@ -69,10 +69,8 @@ var calendarPage = (function() {
                 }
             },
             eventClick : function(data, jsEvent, view) {
-                console.log(data)
                 createEditEventDialog(data)
                 $("#createEditEventModal").modal("show")
-                return false
             },
             editable : false,
             firstDay : 1,
@@ -84,7 +82,7 @@ var calendarPage = (function() {
     createNewEventDialog = function(date) {
         $("#createNewEventModal").remove()
         var modal = $("<div class=\"modal fade\" id=\"createNewEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
-        var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">New Event " + date.toDateString() + "</h2></div>")
+        var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">New Event " + moment(date).format("ddd MMM DD YYYY") + "</h2></div>")
         var modalBody = $("<div class=\"modal-body\"></div>")
 
         var titleTitle = $("<label>Title</label>")
@@ -145,27 +143,26 @@ var calendarPage = (function() {
             "class" : "form-control",
             placeholder : "Description"
         })
-        modalBody.append(descriptionInput)
-        dateStr = "" + date.getFullYear() + "-"
-        dateStr += (date.getMonth() < 9) ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1) + "-"
-        dateStr += (date.getDate() < 10) ? "0" + date.getDate() : date.getDate()
-        var hiddenStart = $("<input>", {
-            type : "hidden",
-            name : "start",
-            id : "start",
-            value : dateStr
+        modalBody.append( descriptionInput )
+        var dateStr = moment(date).format("YYYY-MM-DD")
+        var hiddenStart = $( "<input>", {
+            type: "hidden",
+            name: "start",
+            id: "start",
+            value: dateStr
         })
+        dateStr = moment(date).add('h', 1).format("YYYY-MM-DD 23:59:00")
         var hiddenEnd = $("<input>", {
             type : "hidden",
             name : "end",
             id : "end",
             value : dateStr
         })
-        var allDay = $("<input>", {
-            type : "hidden",
-            name : "allDay",
-            id : "allDay",
-            value : 0
+        var allDay = $( "<input>", {
+            type: "hidden",
+            name: "allDay",
+            id: "allDay",
+            value: 1
         })
         modalBody.append(hiddenStart)
         modalBody.append(hiddenEnd)
@@ -201,7 +198,7 @@ var calendarPage = (function() {
         modalContent.append(modalBody)
         modalContent.append(modalFooter)
         var form = $("<form>", {
-            method : "post",
+            method: "post",
             action : urlBase + "/calendar/create",
             enctype : "multipart/form-data"
         })
@@ -216,6 +213,7 @@ var calendarPage = (function() {
         var modal = $("<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
         var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")
         var modalBody = $("<div class=\"modal-body\"></div>")
+        if (data.end == null) data.end = data.start
         modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY, h:mm a") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY, h:mm a") + "</span>")
         modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")

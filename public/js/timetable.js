@@ -164,10 +164,10 @@ var timetablePage = (function() {
                     addSubjectClass(event.target.parentElement, event.target)
                 }
             })
-            $( ".teacher .ld-timetable .table.week td .subject").click(function( event ) {
+            $( ".ld-timetable .table.week td .class-code").click(function( event ) {
                 event.preventDefault()
                 event.stopPropagation()
-                window.location.href = urlBase + "/teacher/showClass/" + event.target.getAttribute("data-class-id")
+                window.location.href = urlBase + "/" + getUser() + "/showClass/" + event.target.getAttribute("data-class-id")
             })
             $( ".teacher .ld-timetable .table.week td").click(function( event ) {
             //    $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )

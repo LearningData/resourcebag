@@ -12,7 +12,6 @@ $(document).ready(function() {
     $("select").uniform();
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
-    
     $ (".sidebar-scroll").slimScroll({height:"100%"})
     
     var date = new Date();

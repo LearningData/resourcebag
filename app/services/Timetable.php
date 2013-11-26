@@ -35,6 +35,7 @@ class Timetable {
                     " and status >= " . Homework::$SUBMITTED;
 
                 $content = array(
+                    "class-id" => $classList->id,
                     "subject" => $classList->subject->name,
                     "room" => $slot->room,
                     "homeworks" => Homework::count($homeworkQuery),
