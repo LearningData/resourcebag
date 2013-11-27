@@ -6,17 +6,23 @@
     <table class="table table-hover mtop-20">
         <thead>
             <tr>
-                <th>{{ t._("class") }}</th>
+                <th>{{ t._("subject") }}</th>
+                <th>{{ t._("extra-ref") }}</th>
                 <th>{{ t._("cohort") }}</th>
                 <th>{{ t._("students") }}</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+             {% if classes is type('object') %}
+            ahhhah
+            {% endif %}
             {% for classList in classes %}
             <tr>
                 <td> {{ link_to("teacher/showClass/"~classList.id,
-                classList.subject.name~"("~classList.extraRef~")") }} </td>
+                classList.subject.name) }} </td>
+                <td>{{ classList.extraRef }}</td>
                 <td>{{ classList.cohort.stage }}</td>
                 {% if classList.users.count() %}
                 <td class="ld-student-status"><a data-toggle="modal" href="#modal{{ classList.id }}"> {{ classList.users.count() }} </a> {% include "teacher/modal_users.volt" %} </td>

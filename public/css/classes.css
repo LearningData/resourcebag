@@ -1,12 +1,20 @@
 .ld-classes .classes .class-item {
     padding-top: 5px;
-    margin: 2px 10px;
+    margin: 2px 0px;
     text-align: center;
     min-height: 70px;
     cursor: pointer;
+    border: 1px solid;
+}
+.ld-classes .classes .class-item .icon-group {
+    float: left;
+    padding-left: 10px;
+    font-size: 50px;
+}
+.ld-classes .classes .class-item .subject {
+    font-size: 14px;
 }
 .ld-classes .classes .class-item .extra-info {
-    display: block;
     font-size: 80%
 }
 .ld-classes .homework .item {

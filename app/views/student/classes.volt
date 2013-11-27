@@ -7,9 +7,11 @@
     {% for classList in user.classes %}
     <div class="col-xs-4 col-md-3 class">
         <div class="class-item" data-class-id="{{ classList.id }}">
-            {{ classList.subject.name }}
-            <span class="extra-info">{{ classList.user.title }} {{ classList.user.lastName }}</span>
-            <span class="extra-info">{{ classList.extraRef }}</span>
+            <p class="subject">{{ classList.subject.name }}</p>
+            <p class="extra-info">
+                {{ classList.user.title }} {{ classList.user.lastName }}
+                {{ classList.extraRef }}
+            </p>
         </div>
     </div>
     {% endfor %}

@@ -33,10 +33,8 @@ $(document).ready(function() {
         place = "ebooks"
     } else if (window.location.pathname.indexOf("resources") != -1) {
         $(".nav.navbar-nav li.resources").addClass("active")
-        navigation.location = "resources"
     } else if (window.location.pathname.indexOf("policies") != -1) {
         $(".nav.navbar-nav li.policies").addClass("active")
-        navigation.location = "policies"
     } else if ($( "div.ld-timetable" ).length > 0) {
         timetablePage.init()
         $(".nav.navbar-nav li.timetable").addClass("active")
