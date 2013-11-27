@@ -13,6 +13,7 @@
         {{ stylesheet_link("css/fullcalendar.css") }}
         {{ stylesheet_link("css/jquery.timepicker.css") }}
         {{ stylesheet_link("css/media.css") }}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     </head>
     <body class="{{ user.getController() }}">
 
