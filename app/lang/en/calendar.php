@@ -9,6 +9,8 @@ $messages = array(
     "new-event" => "New Event",
     "please-enter-url" => "Please enter web link",
     "url" => "Web Link",
-    "edit-title" => "Edit Event"
+    "edit-title" => "Edit Event",
+    "add-more-details" => "Add more details",
+    "create-event" => "Create Event"
 );
 ?>
