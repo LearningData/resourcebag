@@ -13,30 +13,52 @@ class mainTask extends \Phalcon\CLI\Task {
         $dcs = "dc=" . $config->ldap->dc1 . ",dc=" . $config->ldap->dc2;
 
         foreach(School::find() as $school) {
-            /*
-            * TODO
-            * CHANGE THE QUERY TO USE THE REAL ATTRIBUTE TO IDENIFY THE SCHOOL
-            * $query = "(&(ou=Student)(schoolid=$school->clientId))";
-            */
+            if($school->clientId) {
+                $dn = "ou=$school->clientId,dc=" . $config->ldap->dc1 .
+                       ",dc=" . $config->ldap->dc2;
 
-            $info = LDAP::search($ds, $dcs, "(&(ou=Student)(givenname=*))");
-            $this->saveUsers($info, User::getTypeStudent(),
-                $config->ldap->pathLog);
+                $ldapSchool = LDAP::search($ds, $dn, "cn=users");
+                if($ldapSchool["count"] > 0) {
+                    $users = $ldapSchool[0]["member"];
+                    for($i=0; $i < $users["count"]; $i++) {
+                        if($users[$i]) {
+                            $userId = $this->getUserId($users[$i]);
+                            $type = User::getTypeStudent();
 
-            $info = LDAP::search($ds, $dcs, "(&(ou=Teacher)(givenname=*))");
-            $this->saveUsers($info, User::getTypeTeacher(),
-                $config->ldap->pathLog);
+                            $info = LDAP::search($ds, $dcs,
+                                "(&(ou=Student)(uid=$userId))");
+
+                            if($info["count"] == 0) {
+                                $type = User::getTypeTeacher();
+                                $info = LDAP::search($ds, $dcs,
+                                    "(&(ou=Teacher)(uid=$userId))");
+                            }
+
+                            $this->saveUsers($info, $type, $school->id,
+                                $config->ldap->pathLog);
+                        }
+                    }
+                }
+            }
         }
 
         LDAP::disconnect($ds);
     }
 
-    private function saveUsers($info, $type, $pathLog) {
+    private function getUserId($value) {
+        $splitedValue = split(",", $value);
+        $splitedValue = split("=", $splitedValue[0]);
+
+        return $splitedValue[1];
+    }
+
+    private function saveUsers($info, $type, $schoolId, $pathLog) {
         $logger = new FileAdapter($pathLog);
         $count = 0;
 
         for ($i=0; $i < $info["count"]; $i++) {
             $user = $this->populeUser($info[$i], $type);
+            $user->schoolId = $schoolId;
 
             if($user->save()){
                 $count++;
@@ -54,10 +76,6 @@ class mainTask extends \Phalcon\CLI\Task {
         }
 
         echo "Finish: " . $count . "\n";
-    }
-
-    private function getConfig() {
-
     }
 
     private function populeUser($info, $type) {
