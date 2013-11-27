@@ -22,9 +22,9 @@ class LDAP {
         ldap_close($ds);
     }
 
-    function search($ds, $dcs, $filter) {
+    function search($ds, $dn, $filter) {
         $info = array();
-        $sr=ldap_search($ds, $dcs, $filter, $info);
+        $sr=ldap_search($ds, $dn, $filter, $info);
         $info = ldap_get_entries($ds, $sr);
 
         return $info;
