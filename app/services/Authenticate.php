@@ -4,7 +4,11 @@ require "SessionService.php";
 
 class Authenticate extends Component {
     public function authentication($email, $password) {
-        $user = User::findFirstByEmail($email);
+        if(strstr($email, '@')) {
+            $user = User::findFirstByEmail($email);
+        } else {
+            $user = User::findFirstByUsername($email);
+        }
 
         if($user) {
             if(Authenticate::checkPassword($password, $user->password)) {
