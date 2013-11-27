@@ -34,7 +34,7 @@ var dashboard = (function() {
         for ( var i = 0; i < calendarEvents.length; i++ ) {
             var eventDate = moment(calendarEvents[i].start)
             if ( eventDate >= moment()) {
-                var eventStr = "<tr><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
+                var eventStr = "<tr class='event-details' data-index=" + i + "><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
                 eventStr += "<td colSpan=2>" + moment(eventDate).format("ddd Do MMM") + "<br/>"
                 if ( calendarEvents[i].allDay == 0 ) {
                     eventStr += "All Day"
@@ -53,6 +53,11 @@ var dashboard = (function() {
         var table = $ ( "<table class=\"table table-events\"></table>" )
         table.append( tableBody )
         $( "#dashboard-events" ).append( table )
+        $(".table-events tr.event-details").click(function(event) {
+            console.log(event.currentTarget,$(event.currentTarget).data().index)
+            createEditEventDialog(calendarEvents[$(event.currentTarget).data().index])
+            $("#createEditEventModal").modal("show")
+        })
     }
     fillDaysEvents = function( dateStr ) {
         var selectDate = moment()
@@ -280,6 +285,61 @@ var dashboard = (function() {
                 //cutText(item, $( item ).find( "p")[0])
             })
         })
+    }
+    var createEditEventDialog = function(data) {
+        $("#createEditEventModal").remove()
+        var modal = $("<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
+        var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")
+        var modalBody = $("<div class=\"modal-body\"></div>")
+        if (data.end == null) data.end = data.start
+        modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY, h:mm a") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY, h:mm a") + "</span>")
+        modalBody.append("<hr/>")
+        modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
+        modalBody.append("<hr/>")
+        modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span")
+        modalBody.append("<span class=\"icon-link\"></span><span class=\"modal-value\"> <a href="+ data.url +" target=\"_blank\">" + data.url + "</a></span>")
+        modalBody.append("<hr/>")
+        modalBody.append("<span class=\"icon-align-left\"></span> <p class=\"value\">" + data.description + "</p>")
+
+        /*var edit = $("<button>", {
+            type : "button",
+            "class" : "btn btn-sm",
+            html : "Edit"
+        })
+        var cancel = $("<button>", {
+            type : "button",
+            "class" : "btn btn-cancel btn-sm",
+            "data-dismiss" : "modal",
+            html : "Cancel"
+        })
+        var del = $("<button>", {
+            type : "button",
+            "class" : "btn-delete",
+            html : "<span class=\"icon-trash\"></span> Delete"
+        })*/
+
+        var modalFooter = $("<div class=\"modal-footer\"></div>")
+        /*modalFooter.append("<hr/>")
+        modalFooter.append(edit)
+        modalFooter.append(cancel)
+        modalFooter.append(del)
+        */var modalDialog = $("<div class=\"modal-dialog\"></div>")
+
+        var modalContent = $("<div class=\"modal-calendar modal-content\"></div>")
+        modalContent.append(modalHeader)
+        modalContent.append(modalBody)
+        modalContent.append(modalFooter)
+
+        modalContent.appendTo(modalDialog)
+        modalDialog.appendTo(modal)
+        modal.appendTo("li.ld-events")
+
+        /*edit.click(function() {
+            window.location.href = urlBase + "/" + getUser() + "/calendar/edit/" + data.id
+        })
+        del.click(function() {
+            window.location.href = urlBase + "/calendar/remove/" + data.id
+        })*/
     }
 
     return {
