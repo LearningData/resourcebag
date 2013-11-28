@@ -8,9 +8,13 @@
 .ld-calendar .modal hr {
     border-top-color: #b4b4b4;
 }
-.modal-body [class*="icon-"] {
+.modal-body [class*="icon-"]{
     color: #b4b4b4;
     padding: 0 10px 0 20px;
+}
+.popover-form [class*="icon-"]{
+    color: #b4b4b4;
+    padding: 0 10px 0 0;
 }
 .btn-delete {
     float: right;
@@ -26,4 +30,8 @@
 }
 .ld-new-buttons a, .ld-new-buttons .custom-icon-new-homework    {
     font-size: 18px;
+}
+.popover-form   {
+    width: 370px;
+    padding: 20px;
 }

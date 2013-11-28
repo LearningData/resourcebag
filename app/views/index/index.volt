@@ -67,6 +67,12 @@
                         {{ submit_button(t._("login"),"class":"btn btn-login") }}
                         {{ link_to("register", t._("sign-up"),"class":"btn btn-login") }}
                         </form>
+                        <br>
+                        <p>
+                            <a href="login/microsoft">
+                                <img src="img/microsoft_login.png"
+                                    alt="Login with Microsoft"/></a>
+                        </p>
                     </div>
                 </div>
             </div>

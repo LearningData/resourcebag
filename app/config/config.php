@@ -27,5 +27,14 @@ return new \Phalcon\Config(array(
         'dc2' => 'com',
         'userDomain' => "cn=admin,dc=example,dc=com",
         'pathLog' => "/tmp/ldap_synch.log"
+    ),
+    'microsoft' => array(
+        'server' => 'Microsoft',
+        'debug' => false,
+        'debugHttp' => true,
+        'scope' => 'wl.basic wl.emails',
+        'api' => 'https://apis.live.net/v5.0/me',
+        'clientId' => '000000004010EC5C',
+        'clientSecret' => '1aiidbRFG8BYbHG-qeJwhJ3SAxbgqU2W'
     )
 ));

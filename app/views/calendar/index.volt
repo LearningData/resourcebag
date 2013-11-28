@@ -13,3 +13,21 @@
     </div>
 </div>
 
+<div id="createNewEventPopover">
+    {{ form("calendar/create", "method":"post", "class":"popover-form") }}
+    {{ securityTag.csrf(csrf_params) }}
+<button type="button class="close">&times;</button>
+    <label>{{ t._("what") }}</label>
+    <input type="text" name="title" id="title" class="form-control" placeholder="{{ t._("title-label") }}" required="required">
+
+    <p><span class="icon-calendar"></span><span id="event-date"></span></p>
+
+    <input class="btn btn-sm" type="submit" value="{{ t._("create-event") }}">
+    <button type="button" class="btn btn-sm btn-cancel details">{{ t._("add-more-details") }}</button>
+    
+<input type="hidden" name="start" id="start" value="">
+<input type="hidden" name="end" id="end" value="">
+        
+    </form>
+
+</div>
