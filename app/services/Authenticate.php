@@ -23,13 +23,25 @@ class Authenticate extends Component {
         return false;
     }
 
+    public function authenticationMicrosoft($user) {
+        if($user) {
+            SessionService::createSession($user);
+            Authenticate::saveSuccess($user);
+            return $user;
+        }
+
+        Authenticate::saveLoginFail($user->id);
+        return false;
+    }
+
     public function checkPassword($password, $hashedPassword) {
         return md5($password) == $hashedPassword;
     }
 
     public function getUser() {
-        if($this->session->has($this->request->getServerAddress())) {
-            $session = $this->session->get($this->request->getServerAddress());
+        if($this->session->has("schoolbag_" . $this->request->getServerAddress())) {
+            $session = $this->session->get("schoolbag_" .
+                $this->request->getServerAddress());
 
             if(isset($session["id"])) {
                 $user = User::findFirstById($session["id"]);
