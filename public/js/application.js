@@ -253,7 +253,7 @@ function _t(str) {
 var setTreeEvents = function() {
     var checkUpwards = function(source) {
         var all = 0, checkCount = 0 
-        $( source.data().target ).each(function() {
+        $( source.data().child ).each(function() {
             all++
             if (this.checked) {
                checkCount++
@@ -276,7 +276,7 @@ var setTreeEvents = function() {
 
     //set child node when change parent
     $(".ld-tree .parent-node").change(function(event) {
-        $( $( event.target ).data().target ).each(function() {
+        $( $( event.target ).data().child ).each(function() {
             this.checked = (event.target.checked) ? "checked" : ""
             $.uniform.update( $( event.target ).data().target ) 
             $( this ).change()
@@ -300,11 +300,14 @@ var cutText = function(parent, element) {
 //validation
 var validForm = function(form) {
     var valid = true
-    $( form ).find("input:not(:checkbox)").each(function(index, element){
+    $( form ).find("input:not(:checkbox):not(:radio)").each(function(index, element){
         if (!isValid(element)) valid = false
     })
-    if ($( form ).find("input:checkbox").length >0) {
+    if ($( form ).find("input:checkbox").length > 0 ) {
         if (!isValidCheckbox(form)) valid = false
+    }
+    if ($( form ).find("input:radio").length > 0 ) {
+        if (!isValidRadio(form)) valid = false
     }
     $( form ).find("textarea").each(function(index, element){
         if (!isValid(element)) valid = false
@@ -355,6 +358,18 @@ var isValidCheckbox = function(form) {
     var required = element.getAttribute("data-required-key")
     if ( required == "one" ) {
         var count = $(form).find("input:checkbox:checked").length
+        if (count == 0 ) {
+            $(element.getAttribute("data-target")).addClass('error')
+            return false
+        }
+    }
+    return true
+}
+var isValidRadio = function(form) {
+    var element = $( form ).find("input:radio")[0]
+    var required = element.getAttribute("data-required-key")
+    if ( required == "one" ) {
+        var count = $(form).find("input:radio:checked").length
         if (count == 0 ) {
             $(element.getAttribute("data-target")).addClass('error')
             return false

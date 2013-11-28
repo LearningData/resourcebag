@@ -1,5 +1,6 @@
 <?php
 $messages = array(
+    "all-school" => "All School",
     "all-teachers" => "All Teachers",
     "notice-for" => "Notice For",
     "create-notice" => "Create New Notice",
@@ -8,7 +9,7 @@ $messages = array(
     "notice-category" => "Notice Category",
     "notice-date" => "Notice Date",
     "expiry-date" => "Expiry Date",
-    "restrict-to" => "Restrict to",
+    "share-with" => "Share With",
     "teachers-students" => "Teachers and Students",
     "teachers-only" => "Teachers only",
     "notice" => "Notice",
