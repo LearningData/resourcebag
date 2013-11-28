@@ -95,26 +95,41 @@ var calendarPage = (function() {
     }
     var fillAgenda = function(data) {
         data.sort(function(a, b) {
+            allA = (a["allDay"] || 0) 
+            allB = (b["allDay"] || 0) 
+            if (allA < allB ) return -1
+            if (allA > allB ) return 1
+            return 0
+        })        
+      /*  data.sort(function(a, b) {
             if (a["start"] < b["start"] ) return -1
             if (a["start"] > b["start"] ) return 1
             return 0
-        })
-        agendaItems = []
+        })*/
+        agendaItems = {}
         for (var i = 0; i< data.length; i++) {
             startTime = moment(data[i].start)
             if (startTime.isSame(moment($('#calendar').fullCalendar('getDate')), 'month')) {
-                var timeStr = getAgendaTime(startTime, moment(data[i].end))
-                var item = "<div class='agenda-item'><span>" 
-                    + startTime.format("ddd D MMM YYYY") + "</span>"
-                item += "<span class='time'>" + timeStr + "</span>"
-                item += "<span>" + data[i].title + "</span></div>"
-                agendaItems.push(item)
+                getAgendaElement(data[i], startTime)
             }
         }
         var agenda = $("<div class='agenda-list'></div>")
-        agenda.append(agendaItems.join(""))
+        for (var item in agendaItems) {
+            agenda.append(agendaItems[item])
+        }
         $("#agenda").append(agenda)
         agenda.css("height", $(".fc-content").css("height"))
+    }
+    var getAgendaElement = function (data, startTime) {
+        var timeStr = getAgendaTime(startTime, moment(data.end))
+        agendaItems[startTime.format("DMMMYYYY")] = agendaItems[startTime.format("DMMMYYYY")] ||
+            $("<div class='agenda-item'><span class='day'>" + startTime.format("ddd D MMM YYYY") + "</span></div>")
+        agendaItems[startTime.format("DMMMYYYY")].append($("<span class='time'>" + timeStr + "</span>"))
+        agendaItems[startTime.format("DMMMYYYY")].append($("<span>" + data.title + "</span>"))
+        if (startTime.isBefore(moment(data.end), 'day')) {
+            startTime.add('d', 1)
+            getAgendaElement(data, startTime)
+        }
     }
     var getAgendaTime = function(start, end) {
         var timeStr = _t("all-day")

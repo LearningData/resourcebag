@@ -48,6 +48,9 @@
     font-size: 120%;
     font-weight: bold;
 }
+.ld-calendar .agenda-item .day {
+    font-size: 150%;
+}
 .ld-calendar .agenda-item .time {
     font-weight: normal;
     font-size: 100%;
