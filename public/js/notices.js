@@ -68,6 +68,7 @@ var noticesPage = (function() {
             $( ".ld-notices .ld-classes-tree" ).append("<span class='validation-error'>" + _t("must-select-one") + "</span>")
             $( ".ld-notices .ld-classes-tree :checkbox").uniform({checkboxClass: 'ld-CheckClass'})
             setTreeEvents()
+            studentTree = tree
 
             $( ".ld-notices .ld-tree .collapse-toggle" ).click( function( event ){
                 if ($( event.target ).is( ".ld-branch *" )) return

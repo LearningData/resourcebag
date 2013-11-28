@@ -283,7 +283,7 @@ var setTreeEvents = function() {
     $(".ld-tree .parent-node").change(function(event) {
         $( $( event.target ).data().child ).each(function() {
             this.checked = (event.target.checked) ? "checked" : ""
-            $.uniform.update( $( event.target ).data().target ) 
+            $.uniform.update( $( event.target ).data().child ) 
             $( this ).change()
         })
     })
