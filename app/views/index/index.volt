@@ -69,8 +69,9 @@
                         </form>
                         <br>
                         <p>
-                            {{ link_to("login/microsoft",
-                                "Login with Microsoft", "#")}}
+                            <a href="login/microsoft">
+                                <img src="img/microsoft_login.png"
+                                    alt="Login with Microsoft"/></a>
                         </p>
                     </div>
                 </div>
