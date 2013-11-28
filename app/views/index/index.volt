@@ -67,6 +67,11 @@
                         {{ submit_button(t._("login"),"class":"btn btn-login") }}
                         {{ link_to("register", t._("sign-up"),"class":"btn btn-login") }}
                         </form>
+                        <br>
+                        <p>
+                            {{ link_to("login/microsoft",
+                                "Login with Microsoft", "#")}}
+                        </p>
                     </div>
                 </div>
             </div>
