@@ -13,10 +13,10 @@
     </div>
 </div>
 
-<div id="createNewEventPopover">
+<div id="createNewEventPopover" class="hidden">
     {{ form("calendar/create", "method":"post", "class":"popover-form") }}
     {{ securityTag.csrf(csrf_params) }}
-    <button class="close" type="button">
+    <button class="close" data-dismiss="popover" type="button">
         &times;
     </button>
     <label>{{ t._("what") }}</label>

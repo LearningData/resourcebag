@@ -25,6 +25,7 @@ var calendarPage = (function() {
                 form.submit()
             }
         })
+
         //Set times for mysql format
         $(".ld-calendar #start-time, .ld-calendar #start-date").change(function(event) {
             var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
@@ -54,45 +55,81 @@ var calendarPage = (function() {
             if (val[1])
                 $( ".ld-calendar #end-time" )[0].value = val[1]
         }
-
-        $('#calendar').fullCalendar({
-            header : {
-                left : 'prev,next ',
-                center : 'title',
-                right : ''
-            },
-            dayClick : function(date, allDay, jsEvent, view) {
-                createNewEventDialog(date)
-                $(this).popover({
-                    html : true,
-
-                    container : ".fc-content",
-                    placement : "top auto",
-                    content : function() {
-                        return $('#createNewEventPopover').html();
-                    }
-                });
-            },
-            eventClick : function(data, jsEvent, view) {
-                createEditEventDialog(data)
-                $("#createEditEventModal").modal("show")
-                return false
-            },
-            editable : false,
-            firstDay : 1,
-            center : 'prevYear',
-            events : urlBase + "/service/calendar",
-            timeFormat : ''
+        var url = urlBase + "/service/calendar";
+        $.get( url, function(response) {
+            $('#calendar').fullCalendar({
+                header : {
+                    left : 'prev,next ',
+                    center : 'title',
+                    right : ''
+                },
+                dayClick : function(date, allDay, jsEvent, view) {
+                    updateNewEventDialog(date)
+                    $(".popover").remove()
+                },
+                eventClick : function(data, jsEvent, view) {
+                    createEditEventDialog(data)
+                    $("#createEditEventModal").modal("show")
+                    return false
+                },
+                editable : false,
+                firstDay : 1,
+                center : 'prevYear',
+                events : response,
+                timeFormat : ''
+            })
+            fillAgenda(response)
+        })
+        $("body").popover({
+            html : true,
+            container : ".fc-content",
+            selector: ".fc-day",
+            placement : "top auto",
+            content : function() {
+                return $('#createNewEventPopover').html();
+            }
+        }).parent().on("click", "button.close", function(event) {
+            var dismiss = event.currentTarget.getAttribute("data-dismiss")
+            $( "." + dismiss ).remove()
         })
     }
-    createNewEventDialog = function(date) {
+    var fillAgenda = function(data) {
+        data.sort(function(a, b) {
+            if (a["start"] < b["start"] ) return -1
+            if (a["start"] > b["start"] ) return 1
+            return 0
+        })
+        agendaItems = []
+        for (var i = 0; i< data.length; i++) {
+            startTime = moment(data[i].start)
+            if (startTime.isSame(moment($('#calendar').fullCalendar('getDate')), 'month')) {
+                var timeStr = getAgendaTime(startTime, moment(data[i].end))
+                var item = "<div class='agenda-item'><span>" 
+                    + startTime.format("ddd D MMM YYYY") + "</span>"
+                item += "<span class='time'>" + timeStr + "</span>"
+                item += "<span>" + data[i].title + "</span></div>"
+                agendaItems.push(item)
+            }
+        }
+        var agenda = $("<div class='agenda-list'></div>")
+        agenda.append(agendaItems.join(""))
+        $("#agenda").append(agenda)
+        agenda.css("height", $(".fc-content").css("height"))
+    }
+    var getAgendaTime = function(start, end) {
+        var timeStr = _t("all-day")
+        if (end && end.isSame(start, 'day'))
+            timeStr = startTime.format("hh:mm a") + " - " + end.format("hh:mm a")
+        return timeStr
+    }
+    var updateNewEventDialog = function(date) {
         $('#createNewEventPopover #event-date').empty()
         $('#createNewEventPopover #event-date').append(moment(date).format("dddd MMM DD YYYY"))
         $('#createNewEventPopover #start').val(moment(date).format("YYYY-MM-DD 00:00:00"))
         $('#createNewEventPopover #end').val(moment(date).format("YYYY-MM-DD 23:59:00"))
 
     }
-    createEditEventDialog = function(data) {
+    var createEditEventDialog = function(data) {
         $("#createEditEventModal").remove()
         var modal = $("<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
         var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")

@@ -1,4 +1,5 @@
 var translate = {
+    "all-day": "All Day",
     "cant-leave-empty" : "You cannot leave this field empty.",
     "contact": "Contact",
     "description": "Description",

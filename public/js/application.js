@@ -215,13 +215,18 @@ function hiddenRadioElements() {
 }
 
 function setUpEvents() {
-    //buttone events
+    //button events
     $(".btn.btn-cancel").click(function(a) {
        if ( sessionStorage.exitRoute ) {
             window.location.href = sessionStorage.exitRoute
        } else {
             window.history.back()
        }
+    })
+    $("button.close").click(function(event) {
+        var dismiss = event.currentTarget.getAttribute("data-dismiss")
+        console.log(dismiss)
+        $( dismiss ).remove()
     })
     //general collapse event
     $( ".collapse-toggle" ).click( function( event ){
