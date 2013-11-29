@@ -11,13 +11,15 @@ class mainTask extends \Phalcon\CLI\Task {
             $config->ldap->password);
 
         $dcs = "dc=" . $config->ldap->dc1 . ",dc=" . $config->ldap->dc2;
+        $ldap = new LDAPService($ds);
 
         foreach(School::find() as $school) {
             if($school->clientId) {
                 $dn = "ou=$school->clientId,dc=" . $config->ldap->dc1 .
                        ",dc=" . $config->ldap->dc2;
 
-                $ldapSchool = LDAP::search($ds, $dn, "cn=users");
+                $ldapSchool = $ldap->search($dn, "cn=users");
+
                 if($ldapSchool["count"] > 0) {
                     $users = $ldapSchool[0]["member"];
                     for($i=0; $i < $users["count"]; $i++) {
@@ -25,12 +27,12 @@ class mainTask extends \Phalcon\CLI\Task {
                             $userId = $this->getUserId($users[$i]);
                             $type = User::getTypeStudent();
 
-                            $info = LDAP::search($ds, $dcs,
+                            $info = $ldap->search($dcs,
                                 "(&(ou=Student)(uid=$userId))");
 
                             if($info["count"] == 0) {
                                 $type = User::getTypeTeacher();
-                                $info = LDAP::search($ds, $dcs,
+                                $info = $ldap->search($dcs,
                                     "(&(ou=Teacher)(uid=$userId))");
                             }
 
