@@ -3,7 +3,7 @@
 <span id="nts-frm-who">
     <p class="pull-left mright-10">
         <label>
-            <input type="radio" name="type" value="A" 
+            <input type="radio" name="type" value="A"
                 class="ld-all-school" checked="checked"
                 data-target="#nts-frm-who" data-required-key="one">
             {{ t._("all-school") }}
@@ -11,7 +11,7 @@
     </p>
     <p class="pull-left mright-10">
         <label>
-            <input type="radio" name="type" value="T" 
+            <input type="radio" name="type" value="T"
                 data-target="#nts-frm-who" data-required-key="one"
                 {% if notice.userType == "T" %}
                     checked= "true"
@@ -22,9 +22,9 @@
     </p>
     <p class="pull-left">
         <label>
-            <input type="radio" name="type" value="A" 
+            <input type="radio" name="type" value="P"
                 data-target="#nts-frm-who" data-required-key="one"
-                {% if notice.userType == "A" %}
+                {% if notice.userType == "P" %}
                     checked= "true"
                 {% endif %}
                 class="ld-include-students">
@@ -43,7 +43,7 @@
 </div>
 <div id="nts-frm-msg" class="col-md-12">
     <label>{{ t._("message") }}</label>
-    {{ text_area("notice", "placeholder":t._("notice"), 
+    {{ text_area("notice", "placeholder":t._("notice"),
         "class":"form-control", "rows":"5",
         "data-required-key":"true", "data-target":"#nts-frm-msg") }}
         <span class="validation-error">{{ t._("cant-leave-empty") }}</span>

@@ -49,16 +49,16 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
     public static function getStudentNotices($user) {
         $today = date("Y-m-d");
         $query = "(userType = 'P' or userType = 'A') and " .
-        "'$today' >= date and '$today' <= expiryDate order by date desc";
+            "'$today' >= date and '$today' <= expiryDate order by date desc";
 
-        return NoticeBoard::noticesByClassesAndQuery($user->classes, $query);
+        return NoticeBoard::noticesByClassesAndQuery($user->classes, $query,
+            $user);
     }
 
     public static function getTeacherNotices($user) {
         $classes = ClassList::findByTeacherId($user->id);
         $today = date("Y-m-d");
-        $query = "(userType = 'T' or userType = 'A') and " .
-            "'$today' >= date and '$today' <= expiryDate order by date desc";
+        $query = "'$today' >= date and '$today' <= expiryDate order by date desc";
 
         return NoticeBoard::noticesByClassesAndQuery($classes, $query, $user);
     }
@@ -92,9 +92,13 @@ class NoticeBoard extends \Phalcon\Mvc\Model {
             }
         }
 
-        if(!$user) { return $notices; }
         $today = date("Y-m-d");
-        $result = NoticeBoard::find("schoolId = " . $user->schoolId . " and " . $query);
+
+        $queryForAll = "schoolId = " . $user->schoolId . " and userType = 'A' " .
+            "and '$today' >= date and '$today' <= expiryDate " .
+            "order by date desc";
+
+        $result = NoticeBoard::find($queryForAll);
 
         foreach ($result as $notice) {
             if(!in_array($notice, $notices)) {
