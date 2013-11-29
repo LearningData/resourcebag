@@ -53,17 +53,22 @@
     {% if event.allDay == 1 %} checked="checked" {% endif %}>
     {{ t._("all-day")}}</P>
 <span class="all-day-block {% if event.allDay == 1 %} hidden {% endif %}">
-<p class="col-sm-6 col-md-6">
+<p id="evt-frm-start-time" class="col-sm-6 col-md-6">
     <label for="time">{{ t._("start-time")}}</label>
     <input type="text" id="start-time" class="form-control"
-        value="{{ startTime }}" placeholder="{{ t._("start-time")}}" >
+        value="{{ startTime }}" placeholder="{{ t._("start-time")}}"
+        data-required-key="time" data-target="#evt-frm-start-time" >
     <input type="hidden" name="start-time">
+    <span class="validation-error">{{ t._("invalid-time") }}</span>
 </p>
-<p class="col-sm-6 col-md-6">
+<p id="evt-frm-end-time" class="col-sm-6 col-md-6">
     <label for="title">{{ t._("end-time")}}</label>
     <input type="text" id="end-time" placeholder="{{ t._("end-time")}}"
-        class="form-control" value="{{ endTime }}">
+        class="form-control" value="{{ endTime }}"
+        data-required-key="time" data-target="#evt-frm-end-time" >
+    <span class="validation-error">{{ t._("invalid-time") }}</span>
 </p>
 </span>
+<div class="clearfix"></div>
 <input type="hidden" name="user-id" value="{{ event.userId }}">
 {{ submit_button(t._("save"),"class":"btn") }}

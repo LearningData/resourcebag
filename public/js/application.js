@@ -71,8 +71,8 @@ $(document).ready(function() {
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
-    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true })
-    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true })
+    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "H:i" })
+    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "H:i" })
     $("#notice-note-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0,
@@ -223,11 +223,6 @@ function setUpEvents() {
             window.history.back()
        }
     })
-    $("button.close").click(function(event) {
-        var dismiss = event.currentTarget.getAttribute("data-dismiss")
-        console.log(dismiss)
-        $( dismiss ).remove()
-    })
     //general collapse event
     $( ".collapse-toggle" ).click( function( event ){
         var element = event.currentTarget
@@ -337,6 +332,13 @@ var isValid = function(element) {
     } else {
         $(element.getAttribute("data-target")).removeClass('error')
     }
+    if ( required == "time" && 
+            !moment(element.value, "hh:mm", true).isValid()) {
+        $(element.getAttribute("data-target")).addClass('error')
+        return false
+    } else {
+        $(element.getAttribute("data-target")).removeClass('error')
+    }
     var preDate = element.getAttribute("data-date-after")
     if (preDate != null ) {
         if (!moment(preDate).isValid())
@@ -383,7 +385,7 @@ var isValidRadio = function(form) {
     return true
 }
 var validationEvents = function() {
-    $("input:not('.hasDatepicker'), form textarea").blur(function(event) {
+    $("input:not('.hasDatepicker'):not('.ui-timepicker-input'), form textarea").blur(function(event) {
         if (!isValid(event.currentTarget)) {
             $("input").keyup(function(event) {
                 isValid(event.currentTarget)
@@ -391,6 +393,9 @@ var validationEvents = function() {
         }
     })
     $("input.hasDatepicker").change(function(event) {
+        isValid(event.target)
+    })
+    $("input.ui-timepicker-input").change(function(event) {
         isValid(event.target)
     })
 }

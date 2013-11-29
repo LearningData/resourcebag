@@ -88,7 +88,7 @@ var calendarPage = (function() {
             content : function() {
                 return $('#createNewEventPopover').html();
             }
-        }).parent().on("click", "button.close", function(event) {
+        }).parent().on("click", " .popover button.close", function(event) {
             var dismiss = event.currentTarget.getAttribute("data-dismiss")
             $( "." + dismiss ).remove()
         })
@@ -97,15 +97,15 @@ var calendarPage = (function() {
         data.sort(function(a, b) {
             allA = (a["allDay"] || 0) 
             allB = (b["allDay"] || 0) 
-            if (allA < allB ) return -1
-            if (allA > allB ) return 1
+            if (allA > allB ) return -1
+            if (allA < allB ) return 1
             return 0
         })        
-      /*  data.sort(function(a, b) {
-            if (a["start"] < b["start"] ) return -1
-            if (a["start"] > b["start"] ) return 1
+        data.sort(function(a, b) {
+            if (moment(a["start"]).isBefore(moment(b["start"]), 'day')) return -1
+            if (moment(a["start"]).isAfter(moment(b["start"]), 'day')) return 1
             return 0
-        })*/
+        })
         agendaItems = {}
         for (var i = 0; i< data.length; i++) {
             startTime = moment(data[i].start)
@@ -121,21 +121,26 @@ var calendarPage = (function() {
         agenda.css("height", $(".fc-content").css("height"))
     }
     var getAgendaElement = function (data, startTime) {
-        var timeStr = getAgendaTime(startTime, moment(data.end))
         agendaItems[startTime.format("DMMMYYYY")] = agendaItems[startTime.format("DMMMYYYY")] ||
             $("<div class='agenda-item'><span class='day'>" + startTime.format("ddd D MMM YYYY") + "</span></div>")
-        agendaItems[startTime.format("DMMMYYYY")].append($("<span class='time'>" + timeStr + "</span>"))
-        agendaItems[startTime.format("DMMMYYYY")].append($("<span>" + data.title + "</span>"))
+        var thisElement = agendaItems[startTime.format("DMMMYYYY")]
+        if (moment(data.end) && moment(data.end).isSame(startTime, 'day')) {
+            thisElement.append( $("<span class='time'>" + startTime.format("hh:mm a") + 
+                " - " +  moment(data.end).format("hh:mm a") + "</span>")
+            )
+            thisElement.append(
+                 $("<span>" + data.title + "</span>")
+            )
+        } else {        
+            if(thisElement.find(".all-day").length == 0) {
+                thisElement.append( $("<span class='all-day time'>" + _t("all-day") + "</span>"))
+            }
+            $("<span>" + data.title + "</span>").insertAfter(thisElement.find(".all-day"))
+        }
         if (startTime.isBefore(moment(data.end), 'day')) {
             startTime.add('d', 1)
             getAgendaElement(data, startTime)
         }
-    }
-    var getAgendaTime = function(start, end) {
-        var timeStr = _t("all-day")
-        if (end && end.isSame(start, 'day'))
-            timeStr = startTime.format("hh:mm a") + " - " + end.format("hh:mm a")
-        return timeStr
     }
     var updateNewEventDialog = function(date) {
         $('#createNewEventPopover #event-date').empty()

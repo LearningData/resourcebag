@@ -17,6 +17,7 @@ $messages = array(
     "files-uploaded" => "Files Uploaded",
     "friday" => "Friday",
     "invalid-date" => "Invalid date.",
+    "invalid-time" => "Invalid time.",
     "notices" => "School Notices",
     "calendar" => "Calendar",
     "timetable" => "Timetable",
