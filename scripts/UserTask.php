@@ -1,8 +1,8 @@
 <?php
 use Phalcon\Logger\Adapter\File as FileAdapter;
 
-class mainTask extends \Phalcon\CLI\Task {
-    public function mainAction() {
+class userTask extends \Phalcon\CLI\Task {
+    public function syncAction() {
         echo "Synchronizing users\n";
         $config = include APPLICATION_PATH . '/../app/config/config.php';
 
@@ -45,13 +45,6 @@ class mainTask extends \Phalcon\CLI\Task {
         }
 
         LDAP::disconnect($ds);
-    }
-
-    private function getUserId($value) {
-        $splitedValue = split(",", $value);
-        $splitedValue = split("=", $splitedValue[0]);
-
-        return $splitedValue[1];
     }
 
     private function saveUsers($info, $type, $schoolId, $pathLog) {
@@ -111,6 +104,13 @@ class mainTask extends \Phalcon\CLI\Task {
         $user->type = $type;
 
         return $user;
+    }
+
+    private function getUserId($value) {
+        $splitedValue = split(",", $value);
+        $splitedValue = split("=", $splitedValue[0]);
+
+        return $splitedValue[1];
     }
 
     private function getElement($key, $info) {
