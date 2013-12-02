@@ -4,6 +4,11 @@ class NoticeController extends ControllerBase {
     public function indexAction(){
         $this->view->t = Translation::get(Language::get(), "notice");
         $this->view->notices = $this->getNotices();
+        $user = Authenticate::getUser();
+
+        if(!$user->isStudent()) {
+            $this->view->myNotices = NoticeBoard::findByUploadedBy($user->id);
+        }
     }
 
     public function showAction($noticeId) {

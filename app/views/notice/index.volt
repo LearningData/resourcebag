@@ -6,6 +6,10 @@
     {% if not user.isStudent() %}
     <p>
         {{ link_to(user.getController()~"/noticeboard/new", t._("new"), "class":"btn") }}
+
+        {% for myNotice in myNotices %}
+            <p>{{ myNotice.text }}</p>
+        {% endfor %}
     </p>
     {% endif %}
     <div class="notice-page">
