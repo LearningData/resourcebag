@@ -16,7 +16,6 @@
         </thead>
         <tbody>
              {% if classes is type('object') %}
-            ahhhah
             {% endif %}
             {% for classList in classes %}
             <tr>
