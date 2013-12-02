@@ -22,64 +22,56 @@ class classesTask extends \Phalcon\CLI\Task {
                 ",dc=" . $config->ldap->dc2;
 
             $info = $ldap->search($dn, "cn=*");
-
-            for($i=0; $i < $info["count"]; $i++) {
-                if(in_array($user->username, $info[$i]["memberuid"])) {
-                    $cn =  $info[$i]["cn"][0];
-                    $teacher = $info[0]["memberuid"][0];
-
-                    $splited = split("-", $cn);
-
-                    $stage = substr($splited[1], -3);
-                    $ref = substr($splited[1], 0, -3);
-
-                    $cohort = Cohort::findFirstByStage($stage);
-                    $subject = Subject::findFirstByName($splited[0]);
-
-                    if(!$subject) {
-                        $subject = new Subject();
-                        $subject->name = $splited[0];
-                        $subject->save();
-                    }
-
-                    $classList = ClassList::findFirst("cohortId=" . $cohort->id .
-                        " subjectId=" . $subject->id);
-
-                    if(!$classList) {
-                        $classList = new ClassList();
-                        $classList->teacherId = 1000;
-                        $classList->subjectId = $subject->id;
-                        $classList->schoolId = 2;
-                        $classList->extraRef = $splited[0];
-                        $classList->cohortId = $cohort->id;
-
-                        $classList->save();
-                    }
-
-                    echo "COHORT: " .  $stage . "\n";
-                    echo "SUBJECT: " .  $splited[0] . "\n";
-                    echo "REF: " .  $ref . "\n";
-                    echo "CN: " .  $cn . "\n";
-                    echo "==================================================\n";
-                }
-            }
-
-            // for($i=0; $i < $info["count"]; $i++) {
-            //     $cn =  $info[$i]["cn"][0];
-            //     $teacher = $info[0]["memberuid"][0];
-
-            //     $splited = split("-", $cn);
-
-            //     $year = substr($splited[1], -3);
-            //     $ref = substr($splited[1], 0, -3);
-
-            //     echo "YEAR: " .  $year . "\n";
-            //     echo "SUBJECT: " .  $splited[0] . "\n";
-            //     echo "REF: " .  $ref . "\n";
-            //     echo "CN: " .  $cn . "\n";
-            // }
+            $this->syncStudent($user, $info);
         }
 
         LDAP::disconnect($ds);
+    }
+
+    public function syncStudent($user, $info) {
+        for($i=0; $i < $info["count"]; $i++) {
+            if(in_array($user->username, $info[$i]["memberuid"])) {
+                $cn =  $info[$i]["cn"][0];
+                $teacher = $info[0]["memberuid"][0];
+
+                $splited = split("-", $cn);
+
+                $stage = substr($splited[1], -3);
+                $ref = substr($splited[1], 0, -3);
+
+                $cohort = Cohort::findFirstByStage($stage);
+                $subject = Subject::findFirstByName($splited[0]);
+
+                if(!$subject) {
+                    $subject = new Subject();
+                    $subject->name = $splited[0];
+
+                    $subject->save();
+                }
+
+                $classList = ClassList::findFirst("cohortId = " .
+                    $cohort->id . "and subjectId = " . $subject->id);
+
+                if(!$classList) {
+                    $classList = new ClassList();
+                    $classList->teacherId = 1000;
+                    $classList->subjectId = $subject->id;
+                    $classList->schoolId = 2;
+                    $classList->extraRef = $subject->name;
+                    $classList->cohortId = $cohort->id;
+
+                    $classList->save();
+                }
+
+                $response = StudentService::joinClass($user, $classList);
+
+                echo "COHORT: " .  $stage . "\n";
+                echo "SUBJECT: " .  $splited[0] . "\n";
+                echo "REF: " .  $ref . "\n";
+                echo "CN: " .  $cn . "\n";
+                echo "RES: " . $response . "\n";
+                echo "==================================================\n";
+            }
+        }
     }
 }
