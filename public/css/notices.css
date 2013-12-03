@@ -147,18 +147,38 @@
     display: block;
     float: left;
 }
+/* view user notices  */
+table.user-notices {
+    table-layout: fixed;
+    margin: 0 20px;
+}
+.user-notices tr {
+    border-bottom: 1px solid #d5d5d5;
+}
+.user-notices tr.expired {
+    background-color: #d5d5d5;
+    color: #e3e3e3;
+}
+table.user-notices tbody tr.active td {
+    border: none;
+}
+.user-notices tr.pending {
+    background-color: #999;
+    color: #fff;
+}
+
 
 /* Rules for icons and categorys */
-.message span:first-of-type   {
+.message span:first-of-type {
     float: left;
     margin: 0 15px 0 0;
     font-size: 48px;
 }
-.notice-space:first-of-type .message span:first-of-type   {
+.notice-space:first-of-type .message span:first-of-type {
     font-size: 100px;
     line-height: 100px;
 }
-.notice-space:nth-child(2)  .message span:first-of-type   {
+.notice-space:nth-child(2) .message span:first-of-type {
     font-size: 60px;
     margin-top: 3px;
 }

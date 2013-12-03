@@ -40,6 +40,9 @@ var noticesPage = (function() {
                 form.submit()
             }
         })
+        $( ".ld-notices .btn.view-user-notices").click( function( event ) {
+            $(".user-notices").toggleClass("hidden")
+        })
     }
 
     function generateClassListTree(){

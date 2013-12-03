@@ -6,10 +6,39 @@
     {% if not user.isStudent() %}
     <p>
         {{ link_to(user.getController()~"/noticeboard/new", t._("new"), "class":"btn") }}
-
+        {% if myNotices|length > 0 %}
+            <button class="btn view-user-notices">{{ t._("my-notices") }}</button>
+        {% endif %}
+        <table class="user-notices hidden">
+            <thead>
+            <tr>
+                <th>{{ t._("title-label") }}</th>
+                <th colspan=2>{{ t._("notice")}}</th>
+                <th>{{ t._("audience") }}</th>
+                <th>{{ t._("display-date") }}</th>
+                <th>{{ t._("expiry-date") }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
         {% for myNotice in myNotices %}
-            <p>{{ myNotice.text }}</p>
+            <tr class={% if date('Y-m-d h:i:s') < myNotice.date %}
+                    "pending" 
+                {% elseif date('Y-m-d h:i:s') > myNotice.expiryDate %}
+                    "expired"
+                {% else %}
+                    "active"
+                   {% endif %}>
+                <td>{{ myNotice.category }}</td>
+                <td colspan=2 >{{ myNotice.text }}</td>
+                <td>{{ myNotice.userType }}</td>
+                <td>{{ myNotice.getDate(t._("dateformat")) }}</td>
+                <td>{{ myNotice.expiryDate }}</td>
+                <td>{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil") }}</td>
+            </tr>
         {% endfor %}
+        </tbody>
+        </table>
     </p>
     {% endif %}
     <div class="notice-page">

@@ -13,7 +13,7 @@ $(document).ready(function() {
     $("select").uniform();
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
-    $ (".sidebar-scroll").slimScroll({height:"100%"})
+    $(".sidebar-scroll").slimScroll({height:"100%"})
     
     sessionStorage.exitRoute = sessionStorage.exitRoute || ""
     $(".nav.navbar-nav li").removeClass("active")
