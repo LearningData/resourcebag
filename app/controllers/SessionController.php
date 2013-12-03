@@ -20,13 +20,23 @@ class SessionController extends Phalcon\Mvc\Controller {
     }
 
     public function logoutAction() {
-        SessionService::destroySession();
-        $clientId = "000000004010EC5C";
-        $redirectUri = 'http://'.$_SERVER['HTTP_HOST'] . "/schoolbag";
+        $session = $this->session->get("schoolbag_" .
+            $this->request->getServerAddress());
 
-        return $this->response->redirect("https://login.live.com/" .
-            "oauth20_logout.srf?client_id=$clientId&redirect_uri=$redirectUri",
-            true);
+        if(isset($session["type"])) {
+            if($session["type"] == "microsoft") {
+                SessionService::destroySession();
+                $clientId = "000000004010EC5C";
+                $redirectUri = 'http://'.$_SERVER['HTTP_HOST'] . "/schoolbag";
+
+                return $this->response->redirect("https://login.live.com/" .
+                    "oauth20_logout.srf?client_id=$clientId&redirect_uri=$redirectUri",
+                    true);
+            }
+        }
+
+        SessionService::destroySession();
+        return $this->response->redirect("index");
     }
 }
 ?>

@@ -25,7 +25,7 @@ class Authenticate extends Component {
 
     public function authenticationMicrosoft($user) {
         if($user) {
-            SessionService::createSession($user);
+            SessionService::createSession($user, "microsoft");
             Authenticate::saveSuccess($user);
             return $user;
         }
