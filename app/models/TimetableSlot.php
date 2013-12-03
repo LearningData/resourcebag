@@ -23,6 +23,31 @@ class TimetableSlot extends \Phalcon\Mvc\Model {
         return TimetableSlot::find($params);
     }
 
+    public function createOrUpdateSlots($slotIds, $classList, $day, $room) {
+        foreach ($classList->getSlots("day = $day") as $slot) {
+            if(!in_array($slot->timeSlotId, $slotIds)) {
+                $slot->delete();
+            } else {
+                $slot->room = $room;
+                $slot->save();
+            }
+        }
+
+        $ids = $classList->getSlotIdsByDay($day);
+
+        foreach($slotIds as $slotId) {
+            if(in_array($slotId, $ids)) { continue; }
+
+            $slot = new TimetableSlot();
+            $slot->timeSlotId = $slotId;
+            $slot->schoolId = $classList->schoolId;
+            $slot->day = $day;
+            $slot->classId = $classList->id;
+            $slot->room = $room;
+            $slot->save();
+        }
+    }
+
     public function columnMap() {
         return array(
             'schoolID' => 'schoolId',
