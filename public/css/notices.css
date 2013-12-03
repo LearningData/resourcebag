@@ -12,42 +12,42 @@
     font-family: FontAwesome;
     content: "\f164";
 }
-.ld-notices .note.Thanks .message .ld-notice-icon, .ld-notices .note.thanks .message.ld-notice-icon {
+.ld-notices .note.Thanks .ld-notice-icon, .ld-notices .note.thanks .ld-notice-icon {
     color: #898C27;
 }
 .ld-notices .note.Meeting .ld-notice-icon:before, .ld-notices .note.meting .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0b1";
 }
-.ld-notices .note.Meeting .message .ld-notice-icon, .ld-notices .note.meting .message .ld-notice-icon {
+.ld-notices .note.Meeting .ld-notice-icon, .ld-notices .note.meting .ld-notice-icon {
     color: #10A236;
 }
 .ld-notices .note.Sport .ld-notice-icon:before, .ld-notices .note.sport .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f11e";
 }
-.ld-notices .note.Sport .message .ld-notice-icon, .ld-notices .note.sport .message .ld-notice-icon {
+.ld-notices .note.Sport .ld-notice-icon, .ld-notices .note.sport .ld-notice-icon {
     color: #9752A3;
 }
 .ld-notices .note.Announcements .ld-notice-icon:before, .ld-notices .note.announcements .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f0a1";
 }
-.ld-notices .note.Announcements .message .ld-notice-icon, .ld-notices .note.announcements .message .ld-notice-icon {
+.ld-notices .note.Announcements .ld-notice-icon, .ld-notices .note.announcements .ld-notice-icon {
     color: #DC3B42;
 }
 .ld-notices .note.celebration .ld-notice-icon:before, .ld-notices .note.Celebration .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f091";
 }
-.ld-notices .note.celebration .message .ld-notice-icon, .ld-notices .note.Celebration .message .ld-notice-icon {
+.ld-notices .note.celebration .ld-notice-icon, .ld-notices .note.Celebration .ld-notice-icon {
     color: #FF0097
 }
 .ld-notices .note.After .ld-notice-icon:before, .ld-notices .note.after .ld-notice-icon:before {
     font-family: FontAwesome;
     content: "\f186";
 }
-.ld-notices .note.After .message .ld-notice-icon, .ld-notices .note.after .message .ld-notice-icon {
+.ld-notices .note.After .ld-notice-icon, .ld-notices .note.after .ld-notice-icon {
     color: #FF9E19;
 }
 
@@ -150,6 +150,7 @@
 /* view user notices  */
 table.user-notices {
     table-layout: fixed;
+    width: 95%;
     margin: 0 20px;
 }
 .user-notices tr {
@@ -165,6 +166,14 @@ table.user-notices tbody tr.active td {
 .user-notices tr.pending {
     background-color: #999;
     color: #fff;
+}
+table.user-notices tbody tr td {
+    padding: 0 2px;
+}
+table.user-notices tbody tr td.text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 

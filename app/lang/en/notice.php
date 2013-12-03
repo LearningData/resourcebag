@@ -4,6 +4,7 @@ $messages = array(
     "all-teachers" => "All Teachers",
     "audience" => "Audience",
     "notice-for" => "Notice For",
+    "category" => "Category",
     "create-notice" => "Create New Notice",
     "display-date" => "Display Date",
     "new-notice" => "New Notice",

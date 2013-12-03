@@ -12,11 +12,12 @@
         <table class="user-notices hidden">
             <thead>
             <tr>
-                <th>{{ t._("title-label") }}</th>
-                <th colspan=2>{{ t._("notice")}}</th>
+                <th>{{ t._("category") }}</th>
+                <th colspan=6>{{ t._("notice")}}</th>
                 <th>{{ t._("audience") }}</th>
-                <th>{{ t._("display-date") }}</th>
-                <th>{{ t._("expiry-date") }}</th>
+                <th colspan=2>{{ t._("display-date") }}</th>
+                <th colspan=2>{{ t._("expiry-date") }}</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
@@ -29,12 +30,13 @@
                 {% else %}
                     "active"
                    {% endif %}>
-                <td>{{ myNotice.category }}</td>
-                <td colspan=2 >{{ myNotice.text }}</td>
+                <td class="note {{ myNotice.category }}"><span class="ld-notice-icon"></span></td>
+                <td colspan=6 class="text">{{ myNotice.text }}</td>
                 <td>{{ myNotice.userType }}</td>
-                <td>{{ myNotice.getDate(t._("dateformat")) }}</td>
-                <td>{{ myNotice.expiryDate }}</td>
+                <td colspan=2>{{ myNotice.getDate(t._("dateformat")) }}
+                <td colspan=2>{{ myNotice.expiryDate }}</td>
                 <td>{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil") }}</td>
+                <td>{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-remove") }}</td>
             </tr>
         {% endfor %}
         </tbody>
