@@ -78,6 +78,13 @@ var classesPage = (function() {
         if ($( ".ld-classes .homework h3").length == 0) {
            $( ".ld-classes .homework").append("You have no homework!")
         }
+        $( ".ld-classes .btn:submit").click( function( event ) {
+            event.preventDefault()
+            var form = $( ".ld-classes form")
+            if (validForm(form)) {
+                form.submit()
+            }
+        })
     }
 
     return {

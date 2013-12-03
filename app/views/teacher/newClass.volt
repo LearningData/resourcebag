@@ -1,28 +1,35 @@
-<div class="classes pink">
+<div class="ld-classes pink">
     <header>
         <h1>{{ t._("classes") }}</h1>
         <h2>{{ t._("new-class") }}</h1>
     </header>
     {{ form("teacher/createClass", "method":"post", "class":"form-inline") }}
-        <p class="col-md-6">
+        <p class="col-md-6" id="hwk-cls-subject">
             <label for="subject-id">{{ t._("subject") }}</label>
             {{ select('subject-id', subjects, 'using': ['id', 'name'], "useEmpty":true,
-            'emptyText': t._('choose-subject'), "class":"form-control") }}
+            'emptyText': t._('choose-subject'), "class":"form-control",
+            'data-required-key':'true', 'data-target':'#hwk-cls-subject') }}
+            <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
         </p>
-        <p class="col-md-6">
+        <p class="col-md-6" id="hwk-cls-cohort">
             <label for="cohort-id">{{ t._("cohort") }}</label>
             {{ select('cohort-id', cohorts, 'using': ['id', 'stage'], "useEmpty":true,
-            'emptyText': t._('choose-cohort'), "class":"form-control") }}
+            'emptyText': t._('choose-cohort'), "class":"form-control",
+            'data-required-key':'true', 'data-target':'#hwk-cls-cohort') }}
+            <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
         </p>
+        <div class="clearfix"></div>
         <p class="col-md-6">
             <label>{{ t._("room") }}</label>
             <input placeholder={{ t._("room") }} type="text" name="room"
                 class="form-control">
         </p>
-        <p class="col-md-6">
+        <p class="col-md-6" id="hwk-cls-ref">
             <label for="extra-ref">{{ t._("extra-ref") }}</label>
             <input placeholder="Extra Ref" type="text" name="extra-ref"
-                class="form-control">
+                class="form-control" data-required-key="true"
+                data-target="#hwk-cls-ref">
+            <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
         </p>
         <input type="hidden" name="class-id">
 
