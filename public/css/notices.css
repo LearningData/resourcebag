@@ -80,6 +80,17 @@
     margin: 5px 0 0 10px;
     display: block;
 }
+/* delete notice */
+.ld-notices form .btn-delete {
+    float: right;
+    font-size: 14px;
+    padding-top: 7px;
+    background: none;
+    padding-right: 50px;
+}
+.ld-notices .btn-delete .icon-trash {
+    font-size: 18px;
+}
 /* List page - all 5 notices */
 .notice-space {
     margin: 0 0 10px;

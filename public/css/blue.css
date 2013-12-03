@@ -1,8 +1,9 @@
 /*.blue a,*/
-.blue .ld-notice-icon, .blue .note a {
+.blue .btn-delete, .blue .btn-delete .icon-trash, .blue .ld-notice-icon, .blue .note a {
     color: #0ba6d3;
 }
-.blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .uploader .action, .blue header, .blue .uploader .action {
+/* default background */
+.blue header, .blue .btn-icon, .blue .btn, .blue .tooltip-inner, .blue.ld-homework .nav ul li a, .blue.ld-homework .table [class*="btn-"], .blue.ld-box .ld-box-head .title, .blue .ld-student-status a, .blue .uploader .action, .blue .uploader .action {
     background-color: #0ba6d3;
 }
 
@@ -19,7 +20,13 @@
 .blue .modal-title, .blue h1 {
     border-color: #0ba6d3;
 }
-
+/* tooltip border arrow */
+.blue .tooltip.left .tooltip-arrow {
+  border-left-color: #0ba6d3;
+}
+.blue .tooltip.right .tooltip-arrow {
+  border-right-color: #0ba6d3;
+}
 /* Checkbox */
 .blue div.ld-CheckClass span {
     background-position: 0 -110px;

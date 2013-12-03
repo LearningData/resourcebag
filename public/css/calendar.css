@@ -16,13 +16,13 @@
     color: #b4b4b4;
     padding: 0 10px 0 0;
 }
-.btn-delete {
+.ld-calendar .btn-delete {
     float: right;
     font-size: 14px;
     padding-top: 7px;
     background: none;
 }
-.btn-delete .icon-trash {
+.ld-calendar .btn-delete .icon-trash {
     font-size: 18px;
 }
 .ld-calendar .fc-event {

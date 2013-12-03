@@ -74,5 +74,10 @@
 <button class="btn btn-cancel btn-return" type="button">
     {{ t._("cancel") }}
 </button>
+{% if notice.id %}
+<button type="button" class="btn-delete">
+    <span class="icon-trash"></span>{{ t._("delete") }}
+</button>
+{% endif %}
 {{ hidden_field("notice-id") }}
 

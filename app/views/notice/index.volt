@@ -22,21 +22,24 @@
             </tr>
             </thead>
             <tbody>
-        {% for myNotice in myNotices %}
-            <tr class={% if date('Y-m-d h:i:s') < myNotice.date %}
+        {% for myNotice in myNotices if date('Y-m-d h:i:s') < myNotice.date %}
+            <!--<tr class={% if date('Y-m-d h:i:s') < myNotice.date %}
                     "pending" 
                 {% elseif date('Y-m-d h:i:s') > myNotice.expiryDate %}
                     "expired"
                 {% else %}
                     "active"
-                   {% endif %}>
+                   {% endif %}>-->
+             <tr>
                 <td class="note {{ myNotice.category }}"><span class="ld-notice-icon"></span></td>
                 <td colspan=6 class="text">{{ myNotice.text }}</td>
                 <td>{{ myNotice.userType }}</td>
                 <td colspan=2>{{ myNotice.getDate(t._("dateformat")) }}
                 <td colspan=2>{{ myNotice.expiryDate }}</td>
-                <td>{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil") }}</td>
-                <td>{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-remove") }}</td>
+                <td class="ld-tooltip">{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}</td>
+                <td class="ld-tooltip"><span data-id=myNotice.id data-toggle="tooltip"
+                    data-placement="left auto" title="{{ t._('delete') }}"
+                    class="btn-icon btn-delete icon-remove"></span></td>
             </tr>
         {% endfor %}
         </tbody>
@@ -46,7 +49,7 @@
     <div class="notice-page">
         {% for notice in notices %}
         <div class="notice-space">
-            <div class="note {{ notice.category }}">
+            <div class="note {{ notice.category }}  ld-tooltip">
                 <span class="date">{{ notice.getDate(t._("dateformat")) }}
                 </span> | <span class="author">{{ t._(notice.author.title) }}
                 {{ notice.author.lastName }}</span>
@@ -56,11 +59,11 @@
                 </p>
                 <div class="btn-group btn-group-xs">
                     {% if user.id == notice.author.id %}
-                    {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "class":"btn-icon icon-pencil") }}
+                    {{ link_to(user.getController()~"/noticeboard/edit/"~notice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}
                     {% endif %}
 
                     {% for file in notice.files %}
-                    {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download") }}
+                    {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("download-file")) }}
                     {% endfor %}
 
                 </div>

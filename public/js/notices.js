@@ -43,6 +43,11 @@ var noticesPage = (function() {
         $( ".ld-notices .btn.view-user-notices").click( function( event ) {
             $(".user-notices").toggleClass("hidden")
         })
+        $( ".ld-notices .btn-delete" ).click(function( event ) {
+            event.preventDefault()
+            removeNoticeDialog( $ ( this ).data() )
+            $( "#removeNoticeModal" ).modal( "show" )
+        })
     }
 
     function generateClassListTree(){
@@ -84,6 +89,40 @@ var noticesPage = (function() {
             })
         })
     }
+
+    function removeNoticeDialog( data ) {
+        var modal = $( "<div class=\"modal fade\" id=\"removeNoticeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + _t("remove-file") + "</h2></div>")
+        var modalBody = $ ( "<div class=\"modal-body\"><p>" + _t("confirm-delete-notice") + " </p></div>" )
+
+        //buttons
+        var send = $( "<a>", {
+            href: urlBase + "/notice/remove/" + data.id,
+            "class": "btn",
+            html: "Yes"
+        })
+
+        var cancel = $( "<button>", {
+            "class": "btn btn-cancel",
+            "data-dismiss": "modal",
+            html: "Cancel"
+        })
+        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
+        modalFooter.append( send )
+        modalFooter.append( cancel )
+
+        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
+
+        var modalContent = $ ( "<div class=\"modal-homework modal-content\"></div>" )
+        modalContent.append( modalHeader )
+        modalContent.append( modalBody )
+        modalContent.append( modalFooter )
+
+        modalContent.appendTo( modalDialog )
+        modalDialog.appendTo( modal )
+        modal.appendTo( "div.ld-notices" )
+    }
+
 
     return {
         init: init
