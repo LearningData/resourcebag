@@ -92,7 +92,7 @@ class userTask extends \Phalcon\CLI\Task {
             $user->email = $email;
         }
 
-        $user->schoolId = 1;
+        $user->schoolId = 2;
 
         $binary = $this->getElement("userpassword", $info);
         $binary = substr($binary, 4);

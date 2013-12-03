@@ -15,7 +15,7 @@ class StudentService extends Component {
 
 
         if ($classListUser->save()) {
-            $slots = TimetableSlot::findByClassId($classId);
+            $slots = TimetableSlot::findByClassId($classList->id);
 
             foreach ($slots as $slot) {
                 $timetableChange = new TimetableChange();
