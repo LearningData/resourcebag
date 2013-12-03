@@ -2,9 +2,11 @@
 use Phalcon\Mvc\User\Component;
 
 class SessionService extends Component {
-    public function createSession($user) {
+    public function createSession($user, $type="schoolbag") {
         $this->session->set("schoolbag_" . $this->request->getServerAddress(),
-            array("id" => $user->id, "name" => $user->name));
+            array("id" => $user->id,
+                "name" => $user->name,
+                "type" => $type));
     }
 
     public function destroySession() {
