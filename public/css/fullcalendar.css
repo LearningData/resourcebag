@@ -361,8 +361,11 @@ table.fc-border-separate {
   border-bottom-width: 1px;
 }
 
-.fc-border-separate tbody tr.fc-first td, .fc-border-separate tbody tr.fc-first th {
+.fc-border-separate tbody tr.fc-first td, .fc-border-separate tbody tr.fc-first th  {
   border-top-width: 0;
+}
+.fc-border-separate tbody tr td.fc-first {
+  border-left-width: 0;
 }
 
 /* Month View, Basic Week View, Basic Day View
