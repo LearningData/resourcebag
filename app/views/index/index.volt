@@ -58,7 +58,7 @@
                     <div class="col-login">
                         {{ form("session/login", "method":"post") }}
                         <p>
-                            <input name="email" type="email", placeholder="Email", class="form-control" autofocus/>
+                            <input name="email" type="text", placeholder="Email", class="form-control" autofocus/>
                         </p>
                         {{ password_field("password","placeholder":"Password", "class":"form-control" ) }}
 
