@@ -51,7 +51,10 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
         $this->view->classList = $classList;
-        $this->view->room = $classList->slots[0]->room;
+        if(count($classList->slots) > 0) {
+            $this->view->room = $classList->slots[0]->room;
+        }
+        $this->view->room = "";
 
         $slots = array();
 
