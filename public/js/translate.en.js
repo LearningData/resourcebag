@@ -1,7 +1,9 @@
 var translate = {
     "all-day": "All Day",
+    "confirm-delete-event": "Are you sure you wish to delete the event",
     "cant-leave-empty" : "You cannot leave this field empty.",
     "contact": "Contact",
+    "delete-event": "Delete Event",
     "description": "Description",
     "due-date": "Due Date",
     "end-time": "End Time",

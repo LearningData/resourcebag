@@ -202,8 +202,43 @@ var calendarPage = (function() {
             window.location.href = urlBase + "/" + getUser() + "/calendar/edit/" + data.id
         })
         del.click(function() {
-            window.location.href = urlBase + "/calendar/remove/" + data.id
+            $("#createEditEventModal").modal('hide')
+            createDeleteEventDialog(data)
+            $("#createDeleteEventModal").modal("show")
         })
+    }
+
+    var createDeleteEventDialog = function( data ) {
+        var modal = $( "<div class=\"modal fade\" id=\"createDeleteEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
+        var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h4 class=\"modal-title\">" + _t("delete-event") + "</h4></div>")
+        var modalBody = $ ( "<div class=\"modal-body\"><p>" + _t("confirm-delete-event") + " " +data.title +" </p></div>" )
+
+        //buttons
+        var send = $( "<a>", {
+            href: urlBase + "/calendar/remove/" + data.id,
+            "class": "btn",
+            html: "Yes"
+        })
+
+        var cancel = $( "<button>", {
+            "class": "btn btn-cancel",
+            "data-dismiss": "modal",
+            html: "Cancel"
+        })
+        var modalFooter = $ ( "<div class=\"modal-footer\"></div>" )
+        modalFooter.append( send )
+        modalFooter.append( cancel )
+
+        var modalDialog = $ ( "<div class=\"modal-dialog\"></div>" )
+
+        var modalContent = $ ( "<div class=\"modal-homework modal-content\"></div>" )
+        modalContent.append( modalHeader )
+        modalContent.append( modalBody )
+        modalContent.append( modalFooter )
+
+        modalContent.appendTo( modalDialog )
+        modalDialog.appendTo( modal )
+        modal.appendTo( "div.ld-calendar" )
     }
 
     return {
