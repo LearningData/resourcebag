@@ -1,6 +1,6 @@
 <div class="ld-calendar purple">
     <header>
-        <h1>{{ t._("calendar") }}</h1>
+        <h1>{{ t._("event") }}</h1>
     </header>
     <div class="col-sm-12 ld-new-buttons">
         <a href="/schoolbag/{{ user.getController() }}/calendar/new"><span class="custom-icon-new-homework"></span>{{ t._("new-event") }}</a>
@@ -9,7 +9,7 @@
     </div>
     <div id="calendar" class="col-sm-9"></div>
     <div id="agenda" class="col-sm-3 fc-header fc-header-title agenda">
-        <h2>Agenda</h2>
+        <h2>{{ t._("agenda") }}</h2>
     </div>
 </div>
 

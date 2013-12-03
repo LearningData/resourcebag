@@ -44,15 +44,25 @@
     border-bottom: 1px solid #eee;
 }
 .ld-calendar .agenda-item span {
-    display: block;
-    font-size: 120%;
-    font-weight: bold;
+    display: inline-block;
+    font-size: 12px;
 }
 .ld-calendar .agenda-item .day {
     font-size: 150%;
+    color: #cbcbcb;
+    display: block;
+    border: solid 1px #cbcbcb;
+    border-width: 1px 0;
+    padding: 10px 0;
+    margin: 20px 0;
 }
 .ld-calendar .agenda-item .time {
     font-weight: normal;
-    font-size: 100%;
+    font-size: 10px;
+    color: #FFFFFF;
+    padding: 3px 5px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 

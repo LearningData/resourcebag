@@ -2,7 +2,7 @@
     color: #9752a3;
 }
 
-.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header, .purple .uploader .action {
+.purple .btn-icon, .purple .btn, .purple.ld-box .ld-box-head .title, .purple .tooltip-inner, .purple header, .purple .uploader .action, .purple .agenda-item .time {
     background-color: #9752a3;
 }
 .purple.btn-icon:hover, .purple .btn:hover {
