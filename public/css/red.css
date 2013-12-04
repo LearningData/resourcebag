@@ -1,8 +1,8 @@
-/*.red a,*/ .ld-timetable .table.week td .class-code{
+/*.red a,*/ .ld-timetable .table.week td .class-code, .red .ld-new-buttons a, .red .ld-new-buttons .custom-icon-new-homework {
     color: #DC3B42 
 }
 
-.red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header, .red .uploader .action {
+.red h1, .red .tooltip-inner, .red .ld-student-status a, .red .btn-icon, .red .btn, .red.ld-box .ld-box-head .title, .red header, .red .uploader .action {
     background-color: #dc3b42;
 }
 

@@ -2,7 +2,10 @@
     <header>
         <h1>{{ t._("timetable")}}</h1>
     </header>
-    {{ link_to("teacher/newClass","class":"btn mbottom-20","New Class") }}
+    <div class="col-sm-12 ld-new-buttons">
+        <a href="/schoolbag/teacher/newClass"><span class="custom-icon-new-homework"></span>{{ t._("new-class") }}</a>
+        <hr />
+    </div>
     <!--<button class="btn btn-edit mbottom-20">
         Edit
     </button>-->

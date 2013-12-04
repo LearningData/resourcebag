@@ -29,6 +29,7 @@ $messages = array(
     "message" => "Message",
     "monday" => "Monday",
     "needs-date" => "This must be a valid date.",
+    "new-class" => "New Class",
     "class" => "Class",
     "ebooks" => "Ebooks",
     "events" => "Events",
