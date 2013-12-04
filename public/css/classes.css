@@ -31,4 +31,16 @@
 .ld-classes .homework .status-header {
     background: #E6E7E8
 }
+/* view homework */
+.ld-classes .view-all {
+    color: #ff9e19;
+    float: right;
+    font-size: 14px;
+    padding-top: 7px;
+    background: none;
+    padding-right: 50px;
+}
+.ld-classes .view-all .custon-icon-homework {
+    font-size: 18px;
+}
 

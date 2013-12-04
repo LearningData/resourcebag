@@ -37,7 +37,10 @@
     </section>
 
     <section class="homework">
-        <h3>{{ t._("homework") }}</h3>
+        <h3>{{ t._("homework") }} 
+       <a href="/schoolbag/student/homework/class/{{ classList.id}}" +  class="view-all">
+    <span class="custom-icon-homework"></span>{{ t._("view-all") }}
+    </a></h3>
         {% if homeworks|length > 0 %}
         <table>
             <tr>
