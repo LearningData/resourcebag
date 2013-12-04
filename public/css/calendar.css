@@ -38,31 +38,50 @@
 /* agenda */
 .ld-calendar .agenda-list {
     overflow: auto;
-}
-.ld-calendar .agenda-item {
-    color: #4d4d4f;
-    border-bottom: 1px solid #eee;
+    margin-top: 35px;
 }
 .ld-calendar .agenda-item span {
-    display: inline-block;
-    font-size: 12px;
+    display: block;
+    font-size: 14px;
+    color: #4d4d4f;
 }
-.ld-calendar .agenda-item .day {
-    font-size: 150%;
-    color: #cbcbcb;
+.ld-calendar .agenda-item .day-format {
     display: block;
     border: solid 1px #cbcbcb;
     border-width: 1px 0;
     padding: 10px 0;
     margin: 20px 0;
 }
+.ld-calendar .agenda-item .time-format {
+    border: solid 1px #dfdddd;
+    border-width: 0 0 1px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.ld-calendar .agenda-item .time-format:last-child {
+    border: none;
+}
+.ld-calendar .agenda-item .day-week {
+    font-size: 24px;
+    font-weight: bold;
+    color: #cbcbcb;
+    display: inline-block;
+    margin-right: 10px;
+}
+.ld-calendar .agenda-item .day-month {
+    font-size: 18px;
+    color: #dfdddd;
+    letter-spacing: 1px;
+        display: inline-block;
+
+}
 .ld-calendar .agenda-item .time {
     font-weight: normal;
-    font-size: 10px;
+    font-size: 11px;
     color: #FFFFFF;
     padding: 3px 5px;
     display: inline-block;
     border-radius: 5px;
     margin-right: 5px;
+    float: left;
 }
-
