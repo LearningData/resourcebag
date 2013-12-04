@@ -36,15 +36,22 @@ class HomeworkController extends ControllerBase {
     }
 
     public function listByClassAction($classId) {
-        if(!$this->isTeacher()) {
-            return $this->response->redirect("dashboard");
-        }
-
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
         $this->view->status = $this->request->get("filter");
 
-        $homeworks = Homework::findByClassAndStatus($classId, $this->view->status);
+        $classList = ClassList::findFirstById($classId);
+
+        if($user->isStudent()) {
+            $homeworks = $user->getHomeworks("classId = " . $classId);
+        } else {
+            if($classList && $classList->teacherId == $user->id) {
+                $homeworks = Homework::findByClassAndStatus($classId,
+                    $this->view->status);
+            } else {
+                $homeworks = array();
+            }
+        }
 
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
