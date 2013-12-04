@@ -19,10 +19,10 @@ class HomeworkRoutes extends Phalcon\Mvc\Router\Group {
         );
 
         $this->add(
-            "/student/homework/edit/{homeworkId}",
+            "/student/homework/do/{homeworkId}",
             array(
                 "controller" => "homework",
-                "action"     => "edit"
+                "action"     => "do"
             )
         );
 
@@ -39,6 +39,14 @@ class HomeworkRoutes extends Phalcon\Mvc\Router\Group {
             array(
                 "controller" => "homework",
                 "action"     => "submit"
+            )
+        );
+
+        $this->add(
+            "/student/homework/class/{classId}",
+            array(
+                "controller" => "homework",
+                "action"     => "listByClass"
             )
         );
 

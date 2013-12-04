@@ -62,7 +62,7 @@
             {% endfor %}
             {% for homework in homeworks if homework.status == 1 %}
             <tr>
-                <td class="col-sm-3">{{ link_to("student/homework/edit/"~homework.id, homework.title)  }}</td>
+                <td class="col-sm-3">{{ link_to("student/homework/do/"~homework.id, homework.title)  }}</td>
                 <td class="col-sm-6">{{ homework.text }}</td>
                 <td class="col-sm-3">{{ homework.getDueDate(t._("dateformat")) }}</td>
             </tr>

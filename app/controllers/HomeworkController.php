@@ -36,15 +36,22 @@ class HomeworkController extends ControllerBase {
     }
 
     public function listByClassAction($classId) {
-        if(!$this->isTeacher()) {
-            return $this->response->redirect("dashboard");
-        }
-
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
         $this->view->status = $this->request->get("filter");
 
-        $homeworks = Homework::findByClassAndStatus($classId, $this->view->status);
+        $classList = ClassList::findFirstById($classId);
+
+        if($user->isStudent()) {
+            $homeworks = $user->getHomeworks("classId = " . $classId);
+        } else {
+            if($classList && $classList->teacherId == $user->id) {
+                $homeworks = Homework::findByClassAndStatus($classId,
+                    $this->view->status);
+            } else {
+                $homeworks = array();
+            }
+        }
 
         $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
         $totalPages = $this->view->page->total_pages;
@@ -68,7 +75,7 @@ class HomeworkController extends ControllerBase {
         $homework->status = Homework::$STARTED;
         $homework->save();
 
-        return $this->response->redirect("student/homework/edit/" . $homework->id);
+        return $this->response->redirect("student/homework/do/" . $homework->id);
     }
 
     public function newHomeworkAction() {
@@ -80,7 +87,7 @@ class HomeworkController extends ControllerBase {
         $this->view->pick($template);
     }
 
-    public function editAction($homeworkId) {
+    public function doAction($homeworkId) {
         if(!Authenticate::getUser()->isStudent()) {
             return $this->response->redirect("dashboard");
         }
@@ -107,7 +114,7 @@ class HomeworkController extends ControllerBase {
         }
 
         $this->view->homework = $homework;
-        return $this->response->redirect("student/homework/edit/" . $homework->id);
+        return $this->response->redirect("student/homework/do/" . $homework->id);
     }
 
     public function reviewAction($homeworkId) {
