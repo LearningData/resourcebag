@@ -7,7 +7,7 @@
     {{ form("calendar/create", "method":"post", "class":"form-inline") }}
         {{ partial("calendar/_form") }}
     </form>
-    <button class="btn btn-cancel btn-return">
+    <button type="button" class="btn btn-cancel btn-return">
         {{ t._("cancel")}}
     </button>
 </div>

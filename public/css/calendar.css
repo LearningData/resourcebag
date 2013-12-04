@@ -16,15 +16,6 @@
     color: #b4b4b4;
     padding: 0 10px 0 0;
 }
-.ld-calendar .btn-delete {
-    float: right;
-    font-size: 14px;
-    padding-top: 7px;
-    background: none;
-}
-.ld-calendar .btn-delete .icon-trash {
-    font-size: 18px;
-}
 .ld-calendar .fc-event {
     cursor: pointer;
 }
@@ -84,4 +75,17 @@
     border-radius: 5px;
     margin-right: 5px;
     float: left;
+}
+/* delete event */
+.ld-calendar .btn-delete {
+    float: right;
+    font-size: 14px;
+    padding-top: 7px;
+    background: none;
+}
+.ld-calendar form .btn-delete {
+    padding-right: 50px;
+}
+.ld-calendar .btn-delete .icon-trash {
+    font-size: 18px;
 }

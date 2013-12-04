@@ -16,12 +16,14 @@
 <div id="createNewEventPopover" class="hidden">
     {{ form("calendar/create", "method":"post", "class":"popover-form") }}
     {{ securityTag.csrf(csrf_params) }}
-    <button class="close" data-dismiss="popover" type="button">
+    <button class="close" type="button">
         &times;
     </button>
+    <p id="frm-evt-title">
     <label>{{ t._("what") }}</label>
-    <input type="text" name="title" id="title" class="form-control" placeholder="{{ t._("title-label") }}" required="required">
-
+    <input type="text" name="title" id="title" class="form-control" placeholder="{{ t._("title-label") }}" data-required-key="true" data-target="#frm-evt-title">
+    <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
+    </p>
     <p>
         <span class="icon-calendar"></span><span id="event-date"></span>
     </p>

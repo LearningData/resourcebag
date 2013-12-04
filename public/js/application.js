@@ -71,8 +71,8 @@ $(document).ready(function() {
         dateFormat : 'yy-mm-dd',
         minDate : 0
     })
-    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "H:i" })
-    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "H:i" })
+    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
+    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
     $("#notice-note-date").datepicker({
         dateFormat : 'yy-mm-dd',
         minDate : 0,
@@ -223,6 +223,14 @@ function setUpEvents() {
             window.history.back()
        }
     })
+    // validate forms
+    $( ".btn:submit").click( function( event ) {
+        event.preventDefault()
+        var form = $( "form")
+        if (validForm(form)) {
+            form.submit()
+        }
+    })
     //general collapse event
     $( ".collapse-toggle" ).click( function( event ){
         var element = event.currentTarget
@@ -332,8 +340,9 @@ var isValid = function(element) {
     } else {
         $(element.getAttribute("data-target")).removeClass('error')
     }
+    console.log(element.value)
     if ( required == "time" && 
-            !moment(element.value, "hh:mm", true).isValid()) {
+            !moment(element.value, "h:mma", true).isValid()) {
         $(element.getAttribute("data-target")).addClass('error')
         return false
     } else {

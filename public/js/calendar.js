@@ -13,12 +13,12 @@ var calendarPage = (function() {
             var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
             var val = new Date($(".ld-calendar #start-date").datepicker("getDate"))
             val.setTime(val.getTime() + millsecs)
-            var dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            var dateStr = moment(val).format("YYYY-MM-DD HH:mm:ss")
             $(".ld-calendar #hidden-start-date").val(dateStr)
             millsecs = $(".ld-calendar #end-time").timepicker('getSecondsFromMidnight') * 1000
             val = new Date($(".ld-calendar #end-date").datepicker("getDate"))
             val.setTime(val.getTime() + millsecs)
-            dateStr = moment(val).format("YYYY-MM-DD hh:mm:ss")
+            dateStr = moment(val).format("YYYY-MM-DD HH:mm:ss")
             $(".ld-calendar #hidden-end-date").val(dateStr)
             var form = $(".ld-calendar form")
             if (validForm(form)) {
@@ -79,7 +79,7 @@ var calendarPage = (function() {
             })
             fillAgenda(response)
         })
-        $("body").popover({
+        var parent = $("body").popover({
             html : true,
             container : ".fc-content",
             selector : ".fc-day",
@@ -87,10 +87,23 @@ var calendarPage = (function() {
             content : function() {
                 return $('#createNewEventPopover').html();
             }
-        }).parent().on("click", " .popover button.close", function(event) {
-            var dismiss = event.currentTarget.getAttribute("data-dismiss")
-            $("." + dismiss).remove()
+        }).parent()
+        parent.on("click", ".popover button.close", function(event) {
+            $(".popover").remove()
         })
+        parent.on("click", ".btn:submit", function( event ) {
+            event.preventDefault()
+            var form = $( ".popover form")
+            if (validForm(form)) {
+                form.submit()
+            }
+        })
+         $( ".ld-calendar .btn-delete" ).click(function( event ) {
+            event.preventDefault()
+            createDeleteEventDialog( $ ( this ).data() )
+            $( "#createDeleteEventModal" ).modal( "show" )
+        })
+        
     }
     var fillAgenda = function(data) {
         data.sort(function(a, b) {
@@ -126,9 +139,13 @@ var calendarPage = (function() {
     var getAgendaElement = function(data, startTime) {
         agendaItems[startTime.format("DMMMYYYY")] = agendaItems[startTime.format("DMMMYYYY")] || $("<div class='agenda-item'><div class='day-format'><span class='day-week'>" + startTime.format("dddd") + "</span><span class='day-month'>" + startTime.format(" Do MMM ") + "</span></div></div>")
         var thisElement = agendaItems[startTime.format("DMMMYYYY")]
-        if (moment(data.end) && moment(data.end).isSame(startTime, 'day')) {
-            thisElement.append($("<div class='time-format'><span class='time'>" + startTime.format("hh:mm a") + /*" - " + moment(data.end).format("hh:mm a") + */"</span></div>"))
-            thisElement.append($())
+        if (data.allDay) {
+            if (thisElement.find(".all-day").length == 0) {
+                thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span></div>"))
+            }
+            $("<span>" + data.title + "</span>").insertAfter(thisElement.find(".all-day"))
+        } else if (moment(data.end) && moment(data.end).isSame(startTime, 'day')) {
+            thisElement.append($("<div class='time-format'><span class='time'>" + startTime.format("hh:mm a") + /*" - " + moment(data.end).format("hh:mm a") + */"</span><span>" + data.title + "</span></div>"))
         } else {
             if (thisElement.find(".all-day").length == 0) {
                 thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span></div>"))
@@ -152,10 +169,11 @@ var calendarPage = (function() {
         var modal = $("<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
         var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")
         var modalBody = $("<div class=\"modal-body\"></div>")
-        if (data.end == null)
-            data.end = data.start
+        if (data.allDay) {
+        modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY") + "</span>")
+        } else { 
         modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY, h:mm a") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY, h:mm a") + "</span>")
-        modalBody.append("<hr/>")
+        } modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
         modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span")
