@@ -51,11 +51,12 @@ class TeacherController extends UsersController {
         $this->view->subjects = Subject::find();
         $this->view->cohorts = Cohort::findBySchoolId($user->schoolId);
         $this->view->classList = $classList;
+
         if(count($classList->slots) > 0) {
             $this->view->room = $classList->slots[0]->room;
         }
-        $this->view->room = "";
 
+        $this->view->room = "";
         $slots = array();
 
         for($i = 1; $i <=6; $i++) {
@@ -96,7 +97,11 @@ class TeacherController extends UsersController {
         $room = $this->request->getPost("room");
 
         if(!$room) {
-            $room = $classList->slots[0]->room;
+            if(count($classList->slots) > 0) {
+                $room = $classList->slots[0]->room;
+            } else {
+                $room = "";
+            }
         }
 
         if(!$classList->save()) {
@@ -111,33 +116,28 @@ class TeacherController extends UsersController {
         }
 
         for($day=1; $day <= 6; $day++){
-            foreach ($classList->getSlots("day = $day") as $slot) {
-                $slotIds = $this->request->getPost("day$day");
+            $slotIds = $this->request->getPost("day$day");
 
-                if(!in_array($slot->timeSlotId, $slotIds)) {
-                    $slot->delete();
-                } else {
-                    $slot->room = $room;
-                    $slot->save();
-                }
-            }
+            if (!$slotIds) { continue; }
 
-            $ids = $classList->getSlotIdsByDay($day);
-            $slots = $this->request->getPost("day$day");
-            if (!$slots) { continue; }
+            TimetableSlot::createOrUpdateSlots($slotIds, $classList, $day, $room);
+            TimetableChange::createOrUpdateSlots($slotIds, $classList, $day, $room);
 
-            foreach($slots as $slotId) {
-                if(in_array($slotId, $ids)) { continue; }
+            // foreach($classList->users as $student) {
+            //     $slots = TimetableChange::find("day = $day and studentId = " .
+            //         $student->id . " and subjectId = " . $classList->subject->id);
 
-                $slot = new TimetableSlot();
-                $slot->timeSlotId = $slotId;
-                $slot->schoolId = $this->view->user->schoolId;
-                $slot->day = $day;
-                $slot->classId = $classList->id;
-                $slot->room = $room;
-                $slot->save();
-            }
+            //     foreach($slots as $slotId) {
+            //         if(!in_array($slot->timeSlotId, $slotIds)) {
+            //             $slot->delete();
+            //         } else {
+            //             $slot->room = $room;
+            //             $slot->save();
+            //         }
+            //     }
+            // }
         }
+
         $this->flash->success($t->_("class-updated"));
         return $this->response->redirect("teacher/classes");
     }
