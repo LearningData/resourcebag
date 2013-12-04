@@ -44,7 +44,7 @@
                 "class":"btn-icon btn-pending icon-caret-right", "title":"Start")}}
                 {% endif %}
 
-                {{ link_to("student/homework/edit/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
+                {{ link_to("student/homework/do/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
                 {% if !homework.Files.count() and homework.textEditor|striptags|trim|length == 0 %}
                 <span data-title="{{ homework.title }}" class="btn-submit btn-inactive btn-icon icon-ok {{ homework.textEditor|striptags|trim|length }}" title="{{ t._('add-work') }}"></span>

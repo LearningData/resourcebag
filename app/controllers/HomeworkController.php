@@ -75,7 +75,7 @@ class HomeworkController extends ControllerBase {
         $homework->status = Homework::$STARTED;
         $homework->save();
 
-        return $this->response->redirect("student/homework/edit/" . $homework->id);
+        return $this->response->redirect("student/homework/do/" . $homework->id);
     }
 
     public function newHomeworkAction() {
@@ -87,7 +87,7 @@ class HomeworkController extends ControllerBase {
         $this->view->pick($template);
     }
 
-    public function editAction($homeworkId) {
+    public function doAction($homeworkId) {
         if(!Authenticate::getUser()->isStudent()) {
             return $this->response->redirect("dashboard");
         }
@@ -114,7 +114,7 @@ class HomeworkController extends ControllerBase {
         }
 
         $this->view->homework = $homework;
-        return $this->response->redirect("student/homework/edit/" . $homework->id);
+        return $this->response->redirect("student/homework/do/" . $homework->id);
     }
 
     public function reviewAction($homeworkId) {

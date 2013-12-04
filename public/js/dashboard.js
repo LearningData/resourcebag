@@ -47,7 +47,7 @@ var dashboard = (function() {
             }
         }
         var tableBody = $( "<tbody></tbody>")
-        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=5> " + 
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=5> " +
             _t("upcoming-events") )
         tableBody.append( items.join("") )
         var table = $ ( "<table class=\"table table-events\"></table>" )
@@ -76,7 +76,7 @@ var dashboard = (function() {
             }
         }
         var tableBody = $( "<tbody></tbody>")
-        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4> " + 
+        tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4> " +
             moment(selectDate).format("ddd MMM Do YYYY")  + " </td></tr>" )
         tableBody.append( items.join("") )
         tableBody.append( "<tr><td class=\"single-date-cell\" colSpan=4><a class=\"btn\" href=\"" + urlBase + "/" + getUser() + "/calendar/new\">New Event</a></td></tr>" )
@@ -141,24 +141,24 @@ var dashboard = (function() {
                     icon = "icon-pencil",
                     titleTip = "Edit Homework"
                 break
-                default: 
+                default:
                     continue
             }
-            
+
             var dueDate = new Date(item["due-date"])
-            var btnIcon = "<span title=\"" + titleTip + "\" class=\"btn-icon " 
-                + icon + 
+            var btnIcon = "<span title=\"" + titleTip + "\" class=\"btn-icon "
+                + icon +
                 "\" data-placement='left auto' data-toggle='tooltip'></span>"
             var overdue = dueDate < Date.now() ? "overdue" : ""
-            var due = "<p class=\"due-date " + overdue + "\">" + 
-                "<span class=\"due-date-icon\" title=\"Overdue\"" + 
-                "data-placement='left auto' data-toggle='tooltip'>" + 
-                "</span>    " + moment(dueDate).fromNow() + 
+            var due = "<p class=\"due-date " + overdue + "\">" +
+                "<span class=\"due-date-icon\" title=\"Overdue\"" +
+                "data-placement='left auto' data-toggle='tooltip'>" +
+                "</span>    " + moment(dueDate).fromNow() +
                 "</p>"
-            homeworkItems.push("<li class=\"ld-tooltip\">" + 
-                "<a  href=\"" + urlBase + "/student/homework/edit/" + 
-                homework[i].id + "\">" + btnIcon + "<p>" + 
-                homework[i].title + " (" + homework[i].subject + 
+            homeworkItems.push("<li class=\"ld-tooltip\">" +
+                "<a  href=\"" + urlBase + "/student/homework/do/" +
+                homework[i].id + "\">" + btnIcon + "<p>" +
+                homework[i].title + " (" + homework[i].subject +
                 ")</p>" + due + "</a></li>"
             )
         }
@@ -177,7 +177,7 @@ var dashboard = (function() {
                     titleTip = "View howework"
                     urlSegment = "review"
                 break
-                default: 
+                default:
                     continue
             }
             homeworkItems.push("<li class='ld-tooltip'><a href=" + urlBase + "/teacher/homework/" + urlSegment +"/" + homework[i].id + "><span title=\"" + titleTip + "\" class=\"btn-icon bg-hwk " + icon + "\" data-placement='left auto' data-toggle='tooltip'></span><p>" + homework[i].title + " (" + homework[i].subject + ")</p></a></li>")
@@ -242,16 +242,16 @@ var dashboard = (function() {
             $( "#dashboard-timetable-box .table tr:not('.break') td" ).css({height: height -1})
         })
     }
-    
+
     var populateMessages = function( date ) {
         //var url = urlBase + "/service/events/"
         //$.get(url, function(response) {
-        var response = {messages: [{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+        var response = {messages: [{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
 {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "P", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, {status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
-{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1,sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1,sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
 {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
 {status: 1, sender: "P",text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
-{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}, 
+{status: 1, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},{status: 1, sender: "S", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."},
 {status: 0, sender: "ST", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In risus ipsum."}]}
             var items = []
             for ( var i = 0; i < response.messages.length; i++ ) {
