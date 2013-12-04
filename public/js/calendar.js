@@ -54,30 +54,32 @@ var calendarPage = (function() {
             if (val[1])
                 $( ".ld-calendar #end-time" )[0].value = val[1]
         }
-        var url = urlBase + "/service/calendar";
-        $.get(url, function(response) {
-            $('#calendar').fullCalendar({
-                header : {
-                    left : 'prev,next ',
-                    center : 'title',
-                    right : ''
-                },
-                dayClick : function(date, allDay, jsEvent, view) {
-                    updateNewEventDialog(date)
-                    $(".popover").remove()
-                },
-                eventClick : function(data, jsEvent, view) {
-                    createEditEventDialog(data)
-                    $("#createEditEventModal").modal("show")
-                    return false
-                },
-                editable : false,
-                firstDay : 1,
-                center : 'prevYear',
-                events : response,
-                timeFormat : ''
-            })
-            fillAgenda(response)
+        $('#calendar').fullCalendar({
+            header : {
+                left : 'prev,next ',
+                center : 'title',
+                right : ''
+            },
+            dayClick : function(date, allDay, jsEvent, view) {
+                updateNewEventDialog(date)
+                $(".popover").remove()
+            },
+            eventClick : function(data, jsEvent, view) {
+                createEditEventDialog(data)
+                $("#createEditEventModal").modal("show")
+                return false
+            },
+            editable : false,
+            firstDay : 1,
+            center : 'prevYear',
+            events : function(start, end, callback) {
+                var url = urlBase + "/service/calendar";
+                $.get(url, function(response) {
+                    callback(response)
+                    fillAgenda(response)
+                })
+            },
+            timeFormat : ''
         })
         var parent = $("body").popover({
             html : true,
@@ -106,6 +108,7 @@ var calendarPage = (function() {
         
     }
     var fillAgenda = function(data) {
+        $("#agenda").empty()
         data.sort(function(a, b) {
             allA = (a["allDay"] || 0)
             allB = (b["allDay"] || 0)
