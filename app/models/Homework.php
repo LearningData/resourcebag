@@ -46,7 +46,7 @@ class Homework extends \Phalcon\Mvc\Model {
     public static function findByTeacherAndStatus($userId, $status) {
         $homeworks = array();
 
-        foreach (Homework::find("owner = " . $userId) as $key => $homework) {
+        foreach (Homework::find("teacherId = " . $userId) as $key => $homework) {
             if(!$status) {
                 foreach($homework->getWorks() as $work) {
                     $homeworks []= $work;
