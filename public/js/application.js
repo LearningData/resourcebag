@@ -63,24 +63,6 @@ $(document).ready(function() {
         onSelect : showTimes,
         firstDay: 1
     })
-    $(".ld-calendar #start-date").datepicker({
-        dateFormat : 'yy-mm-dd',
-        minDate : 0
-    })
-    $(".ld-calendar #end-date").datepicker({
-        dateFormat : 'yy-mm-dd',
-        minDate : 0
-    })
-    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
-    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
-    $("#notice-note-date").datepicker({
-        dateFormat : 'yy-mm-dd',
-        minDate : 0,
-        firstDay: 1
-    })
-    $("#start-date").datepicker("widget").addClass("event-page")
-    $("#end-date").datepicker("widget").addClass("event-page")
-    $("#notice-note-date").datepicker("widget").addClass("datepicker-note")
     setUpEvents()
     validationEvents()
 });
@@ -241,7 +223,17 @@ function setUpEvents() {
         $(iconTarget).toggleClass("collapse-icon-close")
         
     })
-
+    //date time pickers
+    $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
+    $(".ld-calendar #end-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
+    $(".ld-calendar #start-date, .ld-calendar #end-date, #notice-start-date, #notice-end-date").datepicker({
+        dateFormat : 'yy-mm-dd',
+        minDate : 0,
+        firstDay: 1
+    })
+    $("#start-date, #end-date").datepicker("widget").addClass("event-page")
+    $("#notice-start-date, #notice-end-date").datepicker("widget").addClass("datepicker-note")
+    //alerts
     window.setTimeout(function() {
         $(".alert-warning").fadeTo(500, 0).slideUp(500, function(){
             $(this).remove(); 

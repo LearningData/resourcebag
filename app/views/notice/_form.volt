@@ -50,7 +50,7 @@
 </div>
 <p id="hwk-nts-display-date" class="col-md-6">
     {{ t._("notice-date") }}
-    {{ text_field("date", "placeholder":t._("date"), "id":"notice-note-date", "class":"form-control",
+    {{ text_field("date", "placeholder":t._("date"), "id":"notice-start-date", "class":"form-control",
         "data-required-key":"date", "data-target":"#hwk-nts-display-date") }}
     <span class="validation-error">{{ t._("needs-date") }}</span>
 </p>
@@ -65,7 +65,7 @@
 <p class="col-md-6">
     {{ t._("expiry-date") }}
     {{ text_field("expiryDate", "placeholder":t._("expiry-date"),
-        "id":"notice-note-date", "class":"form-control",
+        "id":"notice-end-date", "class":"form-control",
         "value": expiryDate) }}
 </p>
 </div>

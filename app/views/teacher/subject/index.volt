@@ -2,7 +2,10 @@
     <header>
         <h1>{{ t._("classes") }}</h1>
     </header>
-    {{ link_to("teacher/newClass", t._("create-new-class"), "class":"btn") }}
+     <div class="col-sm-12 ld-new-buttons">
+        <a href="/schoolbag/teacher/newClass"><span class="custom-icon-new-homework"></span>{{ t._("new-class") }}</a>
+        <hr />
+    </div>
     <table class="table table-hover mtop-20">
         <thead>
             <tr>
