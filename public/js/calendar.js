@@ -62,7 +62,10 @@ var calendarPage = (function() {
             },
             dayClick : function(date, allDay, jsEvent, view) {
                 updateNewEventDialog(date)
-                $(".popover").remove()
+                $("body").popover("show")
+                $(".popover").css('top', jsEvent.currentTarget.offsetTop+jsEvent.currentTarget.clientHeight)
+                $(".popover").css('left', jsEvent.currentTarget.offsetLeft + 
+                    jsEvent.currentTarget.clientWidth/2 - $(".popover")[0].clientWidth/2)
             },
             eventClick : function(data, jsEvent, view) {
                 createEditEventDialog(data)
@@ -85,6 +88,7 @@ var calendarPage = (function() {
             html : true,
             container : ".fc-content",
             selector : ".fc-day",
+            trigger: "manual",
             placement : "top auto",
             content : function() {
                 return $('#createNewEventPopover').html();
@@ -100,7 +104,7 @@ var calendarPage = (function() {
                 form.submit()
             }
         })
-         $( ".ld-calendar .btn-delete" ).click(function( event ) {
+        $( ".ld-calendar .btn-delete" ).click(function( event ) {
             event.preventDefault()
             createDeleteEventDialog( $ ( this ).data() )
             $( "#createDeleteEventModal" ).modal( "show" )
@@ -108,7 +112,7 @@ var calendarPage = (function() {
         
     }
     var fillAgenda = function(data) {
-        $("#agenda").empty()
+        $(".agenda-list").remove()
         data.sort(function(a, b) {
             allA = (a["allDay"] || 0)
             allB = (b["allDay"] || 0)
