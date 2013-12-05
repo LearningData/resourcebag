@@ -5,7 +5,13 @@
     </header>
 
     <section>
-        <h3>{{ homework.classList.subject.name }} <span class="h4"> {{ t._("with") }}</span> {{ t._(homework.classList.user.title) }} {{ homework.classList.user.lastName}} {{ homework.getDueDate(t._("dateformat")) }}</h3>
+        <h3>
+            {{ homework.info.classList.subject.name }}
+            <span class="h4"> {{ t._("with") }}</span>
+            {{ t._(homework.info.classList.user.title) }}
+            {{ homework.info.classList.user.lastName}}
+            {{ homework.info.getDueDate(t._("dateformat")) }}
+        </h3>
         <div class="col-sm-12">
             <h4></h4>
         </div>
@@ -13,14 +19,14 @@
             <h6>{{ t._("description") }}</h6>
             <p>
                 <strong>{{ homework.title }}</strong><br />
-                {{ homework.text }}
+                {{ homework.info.text }}
             </p>
         </div>
     </section>
     <section class="homework-text">
        {{ form("homework/update", "id": "text-form", "method":"post", "enctype":"multipart/form-data") }}
         <h3>{{ t._("text") }}</h3>
-        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.textEditor }}</div>
+        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.text }}</div>
         <textarea  name="content-homework" style="display:none;"></textarea>
         <button id="save-homework-text" class="btn mtop-20 btn-sm" data-homework-id="{{ homework.id }}">
             {{ t._("save-text") }}

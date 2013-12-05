@@ -11,7 +11,7 @@ class HomeworkUser extends \Phalcon\Mvc\Model {
     public $status;
 
     public function initialize() {
-        $this->hasMany("id", "HomeworkUser", "homeworkId",
+        $this->hasMany("id", "HomeworkFile", "homeworkId",
             array("alias" => "Files"));
         $this->belongsTo("studentId", "User", "id", array("alias" =>"Student"));
         $this->belongsTo("homeworkId", "Homework", "id", array("alias" =>"Info"));

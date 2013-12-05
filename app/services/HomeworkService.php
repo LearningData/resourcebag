@@ -13,15 +13,15 @@ class HomeworkService {
         }
 
         foreach($homeworks as $homework) {
-            $subject = $homework->classList->subject->name;
+            $subject = $homework->info->classList->subject->name;
             $name = $homework->student->name . " " . $homework->student->lastName;
             $jsonHomeworks []= array("id" => $homework->id,
                  "subject" => $subject,
-                 "description" => $homework->text,
-                 "title" => $homework->title,
+                 "description" => $homework->info->text,
+                 "title" => $homework->info->title,
                  "status" => $homework->status,
                  "student" => $name,
-                 "due-date" => $homework->dueDate
+                 "due-date" => $homework->info->dueDate
             );
         }
 

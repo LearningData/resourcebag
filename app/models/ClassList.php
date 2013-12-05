@@ -72,7 +72,7 @@ class ClassList extends \Phalcon\Mvc\Model {
         $homeworks = array();
         foreach ($this->homeworks as $key => $homework) {
             foreach($homework->getWorks("status =" . Homework::$STARTED) as $work) {
-                $homework []= $work;
+                $homeworks []= $work;
             }
         }
         return $homeworks;
