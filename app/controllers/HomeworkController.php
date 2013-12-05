@@ -122,7 +122,7 @@ class HomeworkController extends ControllerBase {
             return $this->response->redirect("dashboard");
         }
 
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
@@ -237,7 +237,7 @@ class HomeworkController extends ControllerBase {
             return $this->response->redirect("dashboard");
         }
 
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
         $homework->reviewedDate = date("Y-m-d");
         $homework->status = Homework::$REVIEWED;

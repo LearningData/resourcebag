@@ -19,27 +19,27 @@
             {% for classList in classes %}
             <tr>
                 <td colspan=7>
-                    {% if classList.getSubmittedHomework().count() %}
+                    {% if classList.getSubmittedHomework() %}
                         {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
                     {% else %}
                         {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
                     {% endif %}
                 </td>
                 <td class="ld-new-buttons"><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class=" custom-icon-new-homework"></span>{{ t._("new") }} </a>
-                    {% if classList.getSubmittedHomework().count() %}
+                    {% if classList.getSubmittedHomework() %}
                         <a href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span class="icon-ok-circle"></span>{{ t._("correct") }} </a>
                     {% endif %}
                 </td>
                 <td class="ld-student-status">
-            {% if classList.getSubmittedHomework().count() %}
+            {% if classList.getSubmittedHomework() %}
                         {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
                     {% else %}
                         {{ classList.users.count() }}
                     {% endif %}
                 </td>
-                <td>{{ classList.getPendingHomework().count() }}</td>
-                <td>{{ classList.getStartedHomework().count() }}</td>
-                <td>{{ classList.getSubmittedHomework().count() }}</td>
+                <td>{{ classList.getPendingHomework()|length }}</td>
+                <td>{{ classList.getStartedHomework()|length }}</td>
+                <td>{{ classList.getSubmittedHomework()|length }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -62,9 +62,9 @@
             {% for homework in page.items %}
             <tr>
                 <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
-                <td>{{ homework.title }}</td>
-                <td>{{ homework.setDate }}</td>
-                <td>{{ homework.dueDate }}</td>
+                <td>{{ homework.info.title }}</td>
+                <td>{{ homework.info.setDate }}</td>
+                <td>{{ homework.info.dueDate }}</td>
                 {% if homework.isSubmitted() %}
                 <td> {{ link_to("teacher/homework/review/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":t._("review")) }} </td>
                 <td>
@@ -117,9 +117,9 @@
             {% for homework in page.items %}
             <tr>
                 <td>{{ homework.student.name }} {{ homework.student.lastName }}</td>
-                <td>{{ homework.title }}</td>
-                <td>{{ homework.getSetDate(t._("dateformat")) }}</td>
-                <td>{{ homework.getDueDate(t._("dateformat")) }}</td>
+                <td>{{ homework.info.title }}</td>
+                <td>{{ homework.info.getSetDate(t._("dateformat")) }}</td>
+                <td>{{ homework.info.getDueDate(t._("dateformat")) }}</td>
                 <td> {{ homework.getStatus() }} </td>
             </tr>
             {% endfor %}

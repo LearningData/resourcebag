@@ -1,0 +1,48 @@
+<?php 
+
+use Phalcon\Db\Column;
+use Phalcon\Db\Index;
+use Phalcon\Db\Reference;
+use Phalcon\Mvc\Model\Migration;
+
+class SubjectsMigration_1026 extends Migration
+{
+
+    public function up()
+    {
+        $this->morphTable(
+            'subjects',
+            array(
+            'columns' => array(
+                new Column(
+                    'ID',
+                    array(
+                        'type' => Column::TYPE_INTEGER,
+                        'notNull' => true,
+                        'autoIncrement' => true,
+                        'size' => 2,
+                        'first' => true
+                    )
+                ),
+                new Column(
+                    'subject',
+                    array(
+                        'type' => Column::TYPE_VARCHAR,
+                        'size' => 72,
+                        'after' => 'ID'
+                    )
+                )
+            ),
+            'indexes' => array(
+                new Index('PRIMARY', array('ID'))
+            ),
+            'options' => array(
+                'TABLE_TYPE' => 'BASE TABLE',
+                'AUTO_INCREMENT' => '61',
+                'ENGINE' => 'MyISAM',
+                'TABLE_COLLATION' => 'utf8_general_ci'
+            )
+        )
+        );
+    }
+}

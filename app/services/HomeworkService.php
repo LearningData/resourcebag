@@ -28,25 +28,33 @@ class HomeworkService {
         return $jsonHomeworks;
     }
 
-    public static function create($user, $classList, $params) {
+    public static function create($classList, $params, $owner) {
         $homework = new Homework();
         $homework->text = $params["description"];
         $homework->classId = $classList->id;
         $homework->dueDate = $params["due-date"];
         $homework->title = $params["title"];
-        $homework->schoolId = $user->schoolId;
+        $homework->schoolId = $classList->schoolId;
         $homework->teacherId = $classList->user->id;
-        $homework->studentId = $user->id;
         $homework->setDate = date("Y-m-d");
-        $homework->submittedDate = "0000-00-00";
-        $homework->reviewedDate = "0000-00-00";
-        $homework->status = Homework::$PENDING;
+        $homework->owner = $owner;
 
         if(array_key_exists("due-time", $params)) {
             $homework->timeSlotId = $params["due-time"];
         }
 
         return $homework;
+    }
+
+    public static function createHomeworkUser($homeworkId, $studentId) {
+        $homeworkUser = new HomeworkUser();
+        $homeworkUser->homeworkId = $homeworkId;
+        $homeworkUser->studentId = $studentId;
+        $homeworkUser->submittedDate = "0000-00-00";
+        $homeworkUser->reviewedDate = "0000-00-00";
+        $homeworkUser->status = Homework::$PENDING;
+
+        return $homeworkUser;
     }
 
     public static function createFile($homeworkId, $file, $description) {

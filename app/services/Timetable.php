@@ -110,7 +110,7 @@ class Timetable {
         $slots = array();
 
         foreach ($configs as $config) {
-            if (!array_key_exists($config->timeSlotId, $classes) && !$config->hasPreset()) {
+            if(!array_key_exists($config->timeSlotId, $classes) && !$config->hasPreset()) {
                 $slots[$config->timeSlotId] = $config;
             }
         }
