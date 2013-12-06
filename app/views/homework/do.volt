@@ -1,7 +1,7 @@
 <div class="ld-homework orange">
     <header>
         <h1 id="header">{{ t._("homework") }}</h1>
-        <h2>{{ t._("editing") }} - {{ homework.title }}</h2>
+        <h2>{{ t._("editing") }} - {{ homework.info.title }}</h2>
     </header>
 
     <section>
@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <h6>{{ t._("description") }}</h6>
             <p>
-                <strong>{{ homework.title }}</strong><br />
+                <strong>{{ homework.info.title }}</strong><br />
                 {{ homework.info.text }}
             </p>
         </div>
@@ -65,7 +65,7 @@
         {% endif %}
 
     </section>
-    {% if homework.files.count() == 0 and homework.textEditor|striptags|trim|length == 0 %}
+    {% if homework.files.count() == 0 and homework.text|striptags|trim|length == 0 %}
     <button class="btn mtop-20 btn-inactive">
         {{ t._("submit-homework") }}
     </button>
