@@ -31,13 +31,13 @@
         <tbody>
             {% for homework in page.items %}
             <tr class="{{ (homework.status == 0 ? "to-do" : (homework.status >= 2 ? "complete" : ( homework.status == 1 ? "in-progress" : "reviewed"))) }}">
-                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"><span id="hwicon{{ homework.id }}" class="collapse-icon icon-chevron-right"></span>{{ homework.title }}</td>
-                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"">{{ homework.classList.subject.name }}</td>
+                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"><span id="hwicon{{ homework.id }}" class="collapse-icon icon-chevron-right"></span>{{ homework.info.title }}</td>
+                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}"">{{ homework.info.classList.subject.name }}</td>
                 <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">
-                {{ t._(homework.classList.user.title) }}
-                 {{ homework.classList.user.lastName}}
+                {{ t._(homework.info.classList.user.title) }}
+                 {{ homework.info.classList.user.lastName}}
                 </td>
-                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.getDueDate(t._("dateformat")) }}</td>
+                <td class="collapse-toggle" data-target="#hw{{ homework.id }}" data-icon="#hwicon{{ homework.id }}">{{ homework.info.getDueDate(t._("dateformat")) }}</td>
                 <td data-target="--">
                 {% if homework.isPending() %}
                 {{ link_to("student/homework/start/"~homework.id,
@@ -46,10 +46,10 @@
 
                 {{ link_to("student/homework/do/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
-                {% if !homework.Files.count() and homework.textEditor|striptags|trim|length == 0 %}
-                <span data-title="{{ homework.title }}" class="btn-submit btn-inactive btn-icon icon-ok {{ homework.textEditor|striptags|trim|length }}" title="{{ t._('add-work') }}"></span>
+                {% if !homework.files.count() and homework.info.text|striptags|trim|length == 0 %}
+                <span data-title="{{ homework.info.title }}" class="btn-submit btn-inactive btn-icon icon-ok {{ homework.text|striptags|trim|length }}" title="{{ t._('add-work') }}"></span>
                 {% else %}
-                <span data-count="{{ homework.Files.count() }}" data-title="{{ homework.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
+                <span data-count="{{ homework.Files.count() }}" data-title="{{ homework.info.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
                 {% endif %}
                 </td>
             </tr>

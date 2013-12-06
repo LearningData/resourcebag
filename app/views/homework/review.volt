@@ -4,7 +4,7 @@
         <h2>{{ t._("review") }}</h2>
     </header>
     <section>
-        <h3>{{ homework.classList.subject.name }} - {{ homework.classList.subject.extraRef }} </h3>
+        <h3>{{ homework.info.classList.subject.name }} - {{ homework.info.classList.subject.extraRef }} </h3>
         {{ homework.student.name }} {{ homework.student.lastName }}
         <div class="col-sm-12">
             <h4></h4>
@@ -12,18 +12,18 @@
         <div class="col-sm-12">
             <h6>{{ t._("description") }}</h6>
             <p>
-                <strong>{{ homework.title }}</strong><br />
-                {{ homework.text }}
+                <strong>{{ homework.info.title }}</strong><br />
+                {{ homework.info.text }}
             </p>
         </div>
     </section>
     <section class="homework-text">
         <h3>{{ t._("work-box") }}</h3>
-        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.textEditor }}</div>
+        <div id="homework-text-editor" spellcheck="true" placeholder="{{ t._('enter-homework-text') }}">{{ homework.text }}</div>
     </section>
     <section>
         <h3>{{ t._("work-files") }}</h3>
-        {% if homework.files.count() != 0 %}
+        {% if homework.files|length != 0 %}
         <table class="table">
             <thead>
                 <th>{{ t._("file-name") }}</th>

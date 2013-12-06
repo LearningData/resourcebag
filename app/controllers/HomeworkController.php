@@ -67,11 +67,11 @@ class HomeworkController extends ControllerBase {
 
     public function showAction($homeworkId) {
         $this->getUserBySession();
-        $this->view->homework = Homework::findFirstById($homeworkId);
+        $this->view->homework = HomeworkUser::findFirstById($homeworkId);
     }
 
     public function startAction($homeworkId) {
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $homework->status = Homework::$STARTED;
         $homework->save();
 
@@ -92,7 +92,7 @@ class HomeworkController extends ControllerBase {
             return $this->response->redirect("dashboard");
         }
 
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
@@ -101,11 +101,11 @@ class HomeworkController extends ControllerBase {
 
     public function updateAction() {
         $homeworkId = $this->request->getPost("homework-id");
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         if (!$homework) { echo "error"; }
 
-        $homework->textEditor = $this->request->getPost("content-homework");
-        if($homework->textEditor) {
+        $homework->text = $this->request->getPost("content-homework");
+        if($homework->text) {
             if ($homework->save()) {
                 $this->flash->success($this->view->t->_("homework-updated"));
             } else {
@@ -122,7 +122,7 @@ class HomeworkController extends ControllerBase {
             return $this->response->redirect("dashboard");
         }
 
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
 
         if (!$homework) { echo "error"; }
@@ -154,10 +154,10 @@ class HomeworkController extends ControllerBase {
     }
 
     public function submitAction($homeworkId) {
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
 
-        if (!$homework->textEditor && !$homework->files->count()) {
+        if (!$homework->text && count($homework->files) == 0) {
             $this->flash->error($this->view->t->_("need-upload-or-text"));
             return $this->response->redirect("student/homework");
         }
@@ -213,7 +213,7 @@ class HomeworkController extends ControllerBase {
             }
         }
 
-        return $this->dispatcher->forward(array("action" => "edit",
+        return $this->dispatcher->forward(array("action" => "do",
             "params" => array("homeworkId" => $homeworkId)));
     }
 
@@ -228,7 +228,7 @@ class HomeworkController extends ControllerBase {
             $this->flash->error($t->_("not-removed"));
         }
 
-        return $this->dispatcher->forward(array("action" => "edit",
+        return $this->dispatcher->forward(array("action" => "do",
             "params" => array("homeworkId" => $homeworkId)));
     }
 
@@ -237,7 +237,7 @@ class HomeworkController extends ControllerBase {
             return $this->response->redirect("dashboard");
         }
 
-        $homework = Homework::findFirstById($homeworkId);
+        $homework = HomeworkUser::findFirstById($homeworkId);
         $this->getUserBySession();
         $homework->reviewedDate = date("Y-m-d");
         $homework->status = Homework::$REVIEWED;

@@ -69,15 +69,33 @@ class ClassList extends \Phalcon\Mvc\Model {
     }
 
     public function getStartedHomework() {
-        return $this->getHomeworks("status =" . Homework::$STARTED);
+        $homeworks = array();
+        foreach ($this->homeworks as $key => $homework) {
+            foreach($homework->getWorks("status =" . Homework::$STARTED) as $work) {
+                $homeworks []= $work;
+            }
+        }
+        return $homeworks;
     }
 
     public function getPendingHomework() {
-        return $this->getHomeworks("status = " . Homework::$PENDING);
+        $homeworks = array();
+        foreach ($this->homeworks as $key => $homework) {
+            foreach($homework->getWorks("status =" . Homework::$PENDING) as $work) {
+                $homeworks []= $work;
+            }
+        }
+        return $homeworks;
     }
 
     public function getSubmittedHomework() {
-        return $this->getHomeworks("status = " . Homework::$SUBMITTED);
+        $homeworks = array();
+        foreach ($this->homeworks as $key => $homework) {
+            foreach($homework->getWorks("status =" . Homework::$SUBMITTED) as $work) {
+                $homeworks []= $work;
+            }
+        }
+        return $homeworks;
     }
 
     public function columnMap() {

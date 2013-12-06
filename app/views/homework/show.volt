@@ -5,7 +5,7 @@
     </header>
     <section>
         <div class="col-sm-12">
-            <h3>{{ homework.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.classList.user.title }} {{ homework.classList.user.lastName}}</h3>
+            <h3>{{ homework.info.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.info.classList.user.title }} {{ homework.info.classList.user.lastName}}</h3>
         </div>
         <div class="col-sm-12">
             <h4></h4>
@@ -43,7 +43,7 @@
         {% else %}
         <h6>{{ t._("no-files") }}</h6>
         {% endif %}
-        
+
     </section>
 </div>
 

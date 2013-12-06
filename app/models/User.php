@@ -39,7 +39,8 @@ class User extends \Phalcon\Mvc\Model {
         );
 
         $this->hasMany("id", "Event", "userId", array("alias" => "Events"));
-        $this->hasMany("id", "Homework", "studentId", array("alias" => "Homeworks"));
+        $this->hasMany("id", "HomeworkUser", "studentId",
+            array("alias" => "Homeworks"));
     }
 
     public function getSource() {
@@ -63,18 +64,14 @@ class User extends \Phalcon\Mvc\Model {
         $homeworks = array();
 
         if ($status != "") {
-            $resultset = Homework::findHomeworksByStatus($this->id, $status);
-            foreach ($resultset as $homework) {
+            $resultset = $this->getHomeworks("status=" . $status);
+
+            foreach ($resultset as $homework){
                 $homeworks []= $homework;
             }
         } else {
-            $query = "studentId = ?1 and status <=1 order by status, dueDate";
-            $params = array($query, "bind" => array(1 => $this->id));
-            $pending = Homework::find($params);
-
-            $query = "studentId = ?1 and status >=2 order by dueDate desc";
-            $params = array($query, "bind" => array(1 => $this->id));
-            $done = Homework::find($params);
+            $pending = $this->getHomeworks("status <=1");
+            $done = $this->getHomeworks("status >=2");
 
             foreach ($pending as $homework) { $homeworks []= $homework; }
             foreach ($done as $homework) { $homeworks []= $homework; }
