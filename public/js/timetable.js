@@ -113,21 +113,22 @@ var timetablePage = (function() {
                 headRows[i].textContent = dayOfWeek(thisDay)
        }
        return tableHead
-}
-
-    var getWeekRows = function( week ) {
+    }
+    function getWeekRows(week) {
         var times = createWeekTimes( week )
+        var keys = Object.keys(times)
+        keys.sort()
         var tableRows = []
-        for ( var timeSlot in times ) {
-            var rowStr = "<tr>"
+        for ( var i = 0; i < keys.length; i++) {
+            var rowStr = "<tr class='" + keys[i] + "'>"
             for ( var day in week ) {
                 rowStr += "<td>"
                 var dayData = week[day]
-                for (var i = 0; i < dayData.length; i++ ) {
-                    if ( dayData[i].time == timeSlot ) {
-                        rowStr += timetableFunctions.getTimetableTextBlock( dayData[i] )
+                for (var j = 0; j < dayData.length; j++ ) {
+                    if (dayData[j] && dayData[j].time == keys[i] ) {
+                        rowStr += timetableFunctions.getTimetableTextBlock( dayData[j] )
                         if (getUser() != "teacher") break
-                        if (dayData[i]["class-id"] == undefined) {
+                        if (dayData[j]["class-id"] == undefined) {
                             rowStr += "<span class=\"cell-icon btn-icon icon-plus\"></span>"
                         } else {
                             rowStr += "<span class=\"cell-icon btn-icon icon-remove\"></span>"
