@@ -179,14 +179,22 @@ class HomeworkController extends ControllerBase {
         $user = $this->getUserBySession();
         $classListId = $this->request->getPost("classList-id");
         $classList = ClassList::findFirstById($classListId);
-        $homework = HomeworkService::create($user,
-            $classList, $this->request->getPost());
 
-        if (!$homework->save()) {
+        $homeworkInfo = HomeworkService::create($classList,
+            $this->request->getPost(), $user->id);
+
+        if (!$homeworkInfo->save()) {
             $this->flash->error($this->view->t->_("homework-not-created"));
-            $this->appendErrorMessages($homework->getMessages());
+            $this->appendErrorMessages($homeworkInfo->getMessages());
         } else {
-            $this->flash->success($this->view->t->_("homework-created"));
+            $homework = HomeworkService::createHomeworkUser($homeworkInfo->id,
+                $user->id);
+
+            if($homework->save()) {
+                $this->flash->success($this->view->t->_("homework-created"));
+            } else {
+                $this->appendErrorMessages($homework->getMessages());
+            }
         }
 
         return $this->response->redirect("student/homework?filter=0");
