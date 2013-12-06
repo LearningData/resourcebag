@@ -62,16 +62,12 @@ var timetablePage = (function() {
             var timetable = $( "<table class=\"table day\">")
             var tableRows = []
             for ( var i = 0; i < data.length; i++ ) {
-                if (data[i].time == "11:00:00") {
-                    var rowStr = "<tr class=\"break\"><td colSpan=2> 10:45 - 11:00 </td>"
-                    rowStr += "<td colSpan=4> Break </td></tr>"
-                    tableRows.push(rowStr)
-                } else if (data[i].time == "12:40:00") {
-                    var rowStr = "<tr class=\"break\"><td colSpan=2> 12:20 - 12:40 </td>"
-                    rowStr += "<td colSpan=4> Lunch </td></tr>"
-                    tableRows.push(rowStr)
-                }
-                var rowStr = "<tr><td colspan=2>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
+                var rowStr = "<tr"
+                    if (data[i].subject != "" && data[i].extraRef == undefined) {
+                        rowStr += " class='break' "
+                    }
+                    rowStr += ">"
+                    rowStr += "<td colspan=2>" + data[i].time.substr(0, 5) + " - " + data[i].endTime.substr(0, 5) + "</td>"
                 rowStr += "<td colspan=4>" + timetableFunctions.getTimetableTextInline( data[i] ) + "</td></tr>"
                 tableRows.push(rowStr)
             }
@@ -120,12 +116,15 @@ var timetablePage = (function() {
         keys.sort()
         var tableRows = []
         for ( var i = 0; i < keys.length; i++) {
-            var rowStr = "<tr class='" + keys[i] + "'>"
+            var rowStr = "<tr>"
             for ( var day in week ) {
                 rowStr += "<td>"
                 var dayData = week[day]
                 for (var j = 0; j < dayData.length; j++ ) {
                     if (dayData[j] && dayData[j].time == keys[i] ) {
+                        if (dayData[j].subject != "" && dayData[j].extraRef == undefined) {
+                            rowStr = rowStr.substring(0,  rowStr.length-4) + "<td class='break' >"
+                        }
                         rowStr += timetableFunctions.getTimetableTextBlock( dayData[j] )
                         if (getUser() != "teacher") break
                         if (dayData[j]["class-id"] == undefined) {
