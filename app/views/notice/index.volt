@@ -7,7 +7,7 @@
     <p>
         {{ link_to(user.getController()~"/noticeboard/new", t._("new"), "class":"btn") }}
         {% if myNotices|length > 0 %}
-            <button class="btn view-user-notices">{{ t._("my-notices") }}</button>
+            <button type="button" class="btn view-user-notices">{{ t._("my-notices") }}</button>
         {% endif %}
         <table class="user-notices hidden">
             <thead>
