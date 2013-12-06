@@ -12,17 +12,19 @@ class HomeworkService {
             $homeworks = Homework::findByTeacherId($user->id);
         }
 
-        foreach($homeworks as $homework) {
-            $subject = $homework->info->classList->subject->name;
-            $name = $homework->student->name . " " . $homework->student->lastName;
-            $jsonHomeworks []= array("id" => $homework->id,
-                 "subject" => $subject,
-                 "description" => $homework->info->text,
-                 "title" => $homework->info->title,
-                 "status" => $homework->status,
-                 "student" => $name,
-                 "due-date" => $homework->info->dueDate
-            );
+        foreach($homeworks as $homeworkInfo) {
+            foreach ($homeworkInfo->works as $key => $homework) {
+                $subject = $homework->info->classList->subject->name;
+                $name = $homework->student->name . " " . $homework->student->lastName;
+                $jsonHomeworks []= array("id" => $homework->id,
+                     "subject" => $subject,
+                     "description" => $homework->info->text,
+                     "title" => $homework->info->title,
+                     "status" => $homework->status,
+                     "student" => $name,
+                     "due-date" => $homework->info->dueDate
+                );
+            }
         }
 
         return $jsonHomeworks;
