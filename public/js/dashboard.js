@@ -101,21 +101,7 @@ var dashboard = (function() {
     var init = function() {
         populateHomework()
         populateTimetable( displayDate )
-        var url = urlBase + "/service/calendar/"
-        $.get( url, function(response ) {
-            calendarEvents = response
-            $( "#dashboard-events-head" ).datepicker({
-                inline: true,
-                firstDay: 1,
-                onSelect: fillDaysEvents,
-                onChangeMonthYear: nextThreeEvents,
-                beforeShowDay: findCurrentEvents,
-                showOtherMonths: true,
-                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-                yearSuffix: " <h2>Events</h2>"
-            })
-            nextThreeEvents()
-        })
+        populateEvents()
         populateMessages()
         populateNotices()
     }
@@ -243,6 +229,54 @@ var dashboard = (function() {
         })
     }
 
+    function populateEvents() {
+        var url = urlBase + "/service/calendar/"
+        $.get( url, function(response ) {
+            response.sort(function(a, b) {
+                if (moment(a["start"]).isBefore(moment(b["start"]), 'day'))
+                    return -1
+                if (moment(a["start"]).isAfter(moment(b["start"]), 'day'))
+                    return 1
+                return 0
+            })
+            calendarEvents = response
+            $( "#dashboard-events-head" ).datepicker({
+                inline: true,
+                firstDay: 1,
+                onSelect: fillDaysEvents,
+                beforeShowDay: findCurrentEvents,
+                showOtherMonths: true,
+                dayNamesMin: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+            })
+            $("<h2><span class='custom-icon-events'></span>Events</h2>").prependTo($(".dashboard .ld-box.ld-events .ld-box-head .ui-datepicker-header .ui-datepicker-title"))
+            upcomingEvents()
+        })
+    }
+    upcomingEvents = function() {
+        var items = []
+        $( "#dashboard-events" ).empty( )
+        for ( var i = 0; i < calendarEvents.length; i++ ) {
+            var eventDate = moment(calendarEvents[i].start)
+            if ( eventDate >= moment()) {
+                var eventStr = "<tr class='event-details' data-index=" + i + "><td colSpan=\"3\">" + calendarEvents[i].title + "</td>"
+                eventStr += "<td colSpan=2>" + moment(eventDate).fromNow()
+                eventStr += "</td></tr>"
+                items.push(eventStr)
+            }
+        }
+        var tableBody = $( "<tbody></tbody>")
+        tableBody.append( items.join("") )
+        var table = $ ( "<table class=\"table table-events\"></table>" )
+        table.append( tableBody )
+        $( "#dashboard-events" ).append( table )
+        $(".table-events tr.event-details").click(function(event) {
+            console.log(event.currentTarget,$(event.currentTarget).data().index)
+            createEditEventDialog(calendarEvents[$(event.currentTarget).data().index])
+            $("#createEditEventModal").modal("show")
+        })
+        $("#dashboard-events").slimScroll({height:"200px"})
+    }
+
     var populateMessages = function( date ) {
         //var url = urlBase + "/service/events/"
         //$.get(url, function(response) {
@@ -262,7 +296,7 @@ var dashboard = (function() {
             var list = $( "<ul>")
             list.append( items.join("") )
             $( "#dashboard-messages-contents" ).append( list )
-            $ (".dashboard .messages .ld-box-child").slimScroll({height:"335px"})
+            $(".dashboard .messages .ld-box-child").slimScroll({height:"335px"})
         //})
     }
 

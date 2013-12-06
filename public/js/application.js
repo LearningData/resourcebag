@@ -221,7 +221,6 @@ function setUpEvents() {
         var iconTarget = element.getAttribute("data-icon")
         $(iconTarget).toggleClass("collapse-icon-open")
         $(iconTarget).toggleClass("collapse-icon-close")
-        
     })
     //date time pickers
     $(".ld-calendar #start-time").timepicker({ 'scrollDefaultNow': true, 'timeFormat': "g:ia" })
@@ -332,7 +331,6 @@ var isValid = function(element) {
     } else {
         $(element.getAttribute("data-target")).removeClass('error')
     }
-    console.log(element.value)
     if ( required == "time" && 
             !moment(element.value, "h:mma", true).isValid()) {
         $(element.getAttribute("data-target")).addClass('error')
