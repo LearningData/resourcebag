@@ -39,6 +39,8 @@ class HomeworkController extends ControllerBase {
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");
         $this->view->status = $this->request->get("filter");
+        $group = $this->request->get("group");
+        $template = "teacher/homework/list";
 
         $classList = ClassList::findFirstById($classId);
 
@@ -46,8 +48,15 @@ class HomeworkController extends ControllerBase {
             $homeworks = $user->getHomeworks("classId = " . $classId);
         } else {
             if($classList && $classList->teacherId == $user->id) {
-                $homeworks = Homework::findByClassAndStatus($classId,
-                    $this->view->status);
+                if($group && $group == "date") {
+                    $homeworks = Homework::findByClassAndStatus($classId,
+                        $this->view->status);
+
+                    $template = "teacher/homework/listGrouped";
+                } else {
+                    $homeworks = Homework::findByClassAndStatus($classId,
+                        $this->view->status);
+                }
             } else {
                 $homeworks = array();
             }
@@ -62,7 +71,7 @@ class HomeworkController extends ControllerBase {
         );
         $this->view->classId = $classId;
 
-        $this->view->pick("teacher/homework/list");
+        $this->view->pick($template);
     }
 
     public function showAction($homeworkId) {
