@@ -45,7 +45,7 @@ class HomeworkController extends ControllerBase {
         $classList = ClassList::findFirstById($classId);
 
         if($user->isStudent()) {
-            $homeworks = $user->getHomeworks("classId = " . $classId);
+            $homeworks = HomeworkService::getHomeworkByClass($user, $classId);
         } else {
             if($classList && $classList->teacherId == $user->id) {
                 if($group && $group == "date") {

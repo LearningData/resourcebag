@@ -131,7 +131,7 @@ class HomeworkService {
             ->from("HomeworkUser")
             ->join("Homework")
             ->where("classId = " . $classId)
-            ->where("studentId = " . $user->id)
+            ->andWhere("studentId = " . $user->id)
             ->orderBy("status")
             ->orderBy("dueDate")
             ->getQuery()
