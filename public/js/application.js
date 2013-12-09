@@ -86,11 +86,13 @@ function getUser() {
 function enableDatePicker(id) {
     $(id).removeAttr("disabled")
     $(id).datepicker({
-        dateFormat : 'yy-mm-dd',
-        minDate : 1,
-        beforeShowDay : enableDays,
-        onSelect : showTimes
+        dateFormat: 'yy-mm-dd',
+        minDate: 1,
+        beforeShowDay: enableDays,
+        onSelect: showTimes
     })
+    console.log("aaa")
+    validationEvents()
 }
 
 function populeStudentsAndDays(classId) {
@@ -383,14 +385,16 @@ var isValidRadio = function(form) {
     }
     return true
 }
-var validationEvents = function() {
-    $("input:not('.hasDatepicker'):not('.ui-timepicker-input'), form textarea").blur(function(event) {
-        if (!isValid(event.currentTarget)) {
+function validateOnBlur(event) {
+    if (!isValid(event.currentTarget)) {
             $("input").keyup(function(event) {
                 isValid(event.currentTarget)
             })
         }
-    })
+}
+var validationEvents = function() {
+    $("input").off("blur", validateOnBlur)
+    $("input:not('.hasDatepicker'):not('.ui-timepicker-input'), form textarea").on("blur", validateOnBlur)
     $("input.hasDatepicker").change(function(event) {
         isValid(event.target)
     })
