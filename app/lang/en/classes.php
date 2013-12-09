@@ -22,6 +22,7 @@ $messages = array(
     "class-created" => "Class was created.",
     "class-deleted" => "Class was deleted successfully",
     "class-not-found" => "Class was not found",
-    "slot-not-saved" => "Lesson was not saved."
+    "slot-not-saved" => "Lesson was not saved.",
+    "view-all" => "View All"
 );
 ?>

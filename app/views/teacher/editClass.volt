@@ -4,6 +4,7 @@
         <h2>{{ t._("edit-class") }}</h1>
     </header>
     {{ form("teacher/updateClass", "method":"post", "class":"form-inline") }}
+        <h2>{{ classList.subject.name }}</h2>
         <p class="col-md-6">
             <label>{{ t._("room") }}</label>
             <input placeholder={{ t._("room") }} type="text" name="room"

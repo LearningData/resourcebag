@@ -13,6 +13,7 @@ $messages = array(
     "viewing" => "Viewing",
     "dashboard" => "Dashboard",
     "delete" => "Delete",
+    "download" => "Download",
     "download-file" => "Download File",
     "extra-ref" => "Class Code",
     "file-name" => "File Name",

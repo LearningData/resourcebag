@@ -63,7 +63,7 @@
                     {% endif %}
 
                     {% for file in notice.files %}
-                    {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("download-file")) }}
+                    {{ link_to("download/noticeboard/"~file.id, "class":"btn-icon icon-download", "data-toggle":"tooltip", "data-placement":"auto left", "title":t._("download")) }}
                     {% endfor %}
 
                 </div>
