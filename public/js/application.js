@@ -91,7 +91,6 @@ function enableDatePicker(id) {
         beforeShowDay: enableDays,
         onSelect: showTimes
     })
-    console.log("aaa")
     validationEvents()
 }
 

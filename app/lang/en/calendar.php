@@ -1,6 +1,7 @@
 <?php
 $messages = array(
     "calendar" => "Calendar",
+    "diary" => "Diary",
     "event" => "Event",
     "event-created-message" => "Event was created.",
     "all-day" => "All Day?",
@@ -12,7 +13,6 @@ $messages = array(
     "url" => "Web Link",
     "edit-title" => "Edit Event",
     "add-more-details" => "Add more details",
-    "create-event" => "Create Event",
-    "agenda" => "Agenda"
+    "create-event" => "Create Event"
 );
 ?>

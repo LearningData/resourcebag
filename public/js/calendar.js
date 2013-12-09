@@ -148,16 +148,16 @@ var calendarPage = (function() {
         var thisElement = agendaItems[startTime.format("DMMMYYYY")]
         if (data.allDay) {
             if (thisElement.find(".all-day").length == 0) {
-                thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span></div>"))
+                thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span><span class='all-day-title'></span></div>"))
             }
-            $("<span>" + data.title + "</span>").insertAfter(thisElement.find(".all-day"))
+            thisElement.find(".all-day-title").append( $("<span class='test'>" + data.title + "</span>"))
         } else if (moment(data.end) && moment(data.end).isSame(startTime, 'day')) {
             thisElement.append($("<div class='time-format'><span class='time'>" + startTime.format("hh:mm a") + /*" - " + moment(data.end).format("hh:mm a") + */"</span><span>" + data.title + "</span></div>"))
         } else {
             if (thisElement.find(".all-day").length == 0) {
-                thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span></div>"))
+                thisElement.append($("<div class='time-format'><span class='all-day time'>" + _t("all-day") + "</span><span class='all-day-title'></span></div>"))
             }
-            $("<span>" + data.title + "</span>").insertAfter(thisElement.find(".all-day"))
+            thisElement.find(".all-day-title").append( $("<span class='test'>" + data.title + "</span>"))
         }
         if (startTime.isBefore(moment(data.end), 'day')) {
             startTime.add('d', 1)

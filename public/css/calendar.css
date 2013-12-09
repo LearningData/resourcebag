@@ -76,6 +76,9 @@
     margin-right: 5px;
     float: left;
 }
+.ld-calendar .agenda-item .all-day-title {
+    display: table;
+}
 /* delete event */
 .ld-calendar .btn-delete {
     float: right;

@@ -9,7 +9,7 @@
     </div>
     <div id="calendar" class="col-sm-9"></div>
     <div id="agenda" class="col-sm-3 fc-header fc-header-title agenda">
-        <h2>{{ t._("agenda") }}</h2>
+        <h2>{{ t._("diary") }}</h2>
     </div>
 </div>
 
