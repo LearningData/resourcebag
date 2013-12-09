@@ -54,9 +54,10 @@ class TeacherController extends UsersController {
 
         if(count($classList->slots) > 0) {
             $this->view->room = $classList->slots[0]->room;
+        } else {
+            $this->view->room = "";
         }
 
-        $this->view->room = "";
         $slots = array();
 
         for($i = 1; $i <=6; $i++) {
