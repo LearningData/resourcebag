@@ -37,7 +37,7 @@
     </section>
 
     <section class="homework">
-        <h3>{{ t._("homework") }} 
+        <h3>{{ t._("homework") }}
        <a href="/schoolbag/student/homework/class/{{ classList.id}}" +  class="view-all">
     <span class="custom-icon-homework"></span>{{ t._("view-all") }}
     </a></h3>
@@ -54,9 +54,12 @@
             {% endfor %}
             {% for homework in homeworks if homework.status == 0 %}
             <tr>
-                <td class="col-sm-3">{{ link_to("student/homework/start/"~homework.id, homework.title)  }}</td>
-                <td class="col-sm-6"><span>{{ homework.text }}</span></td>
-                <td class="col-sm-3">{{ homework.getDueDate(t._("dateformat")) }}</td>
+                <td class="col-sm-3">
+                    {{ link_to("student/homework/start/"~homework.id,
+                        homework.info.title)  }}
+                </td>
+                <td class="col-sm-6"><span>{{ homework.info.text }}</span></td>
+                <td class="col-sm-3">{{ homework.info.getDueDate(t._("dateformat")) }}</td>
             </tr>
             {% endfor %}
             {% for homework in homeworks if homework.status == 1 %}
@@ -65,9 +68,12 @@
             {% endfor %}
             {% for homework in homeworks if homework.status == 1 %}
             <tr>
-                <td class="col-sm-3">{{ link_to("student/homework/do/"~homework.id, homework.title)  }}</td>
-                <td class="col-sm-6">{{ homework.text }}</td>
-                <td class="col-sm-3">{{ homework.getDueDate(t._("dateformat")) }}</td>
+                <td class="col-sm-3">
+                    {{ link_to("student/homework/do/"~homework.id,
+                        homework.info.title)  }}
+                </td>
+                <td class="col-sm-6">{{ homework.info.text }}</td>
+                <td class="col-sm-3">{{ homework.info.getDueDate(t._("dateformat")) }}</td>
             </tr>
             {% endfor %}
         </table>
