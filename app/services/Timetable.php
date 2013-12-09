@@ -29,16 +29,22 @@ class Timetable {
             if (!$slots) { continue; }
 
             foreach ($slots as $slot) {
-                $homeworkQuery = "studentId = " . $user->id .
-                    " and classId = " . $classList->id .
-                    " and dueDate = '" . $day->format("Y-m-d") . "'" .
-                    " and status >= " . Homework::$SUBMITTED;
+            $homeworks = $this->modelsManager->createBuilder()
+                ->from("Homework")
+                ->join("HomeworkUser")
+                ->where("classId = " . $classList->id)
+                ->andWhere("studentId = " . $user->id)
+                ->andWhere("dueDate = '" . $day->format("Y-m-d") . "'")
+                ->andWhere("status <= " . Homework::$SUBMITTED)
+                ->getQuery()
+                ->execute()
+                ->count();
 
                 $content = array(
                     "class-id" => $classList->id,
                     "subject" => $classList->subject->name,
                     "room" => $slot->room,
-                    "homeworks" => Homework::count($homeworkQuery),
+                    "homeworks" => $homeworks,
                     "teacher" => $t->_($classList->user->title) . " " .
                         $classList->user->lastName
                 );
