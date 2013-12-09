@@ -32,7 +32,7 @@
     <button type="button" class="btn btn-sm btn-cancel details">
         {{ t._("add-more-details") }}
     </button>
-
+    <input type="hidden" name="allDay" value="1">
     <input type="hidden" name="start" id="start" value="">
     <input type="hidden" name="end" id="end" value="">
 
