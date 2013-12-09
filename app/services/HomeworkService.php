@@ -125,5 +125,19 @@ class HomeworkService {
 
         return $paginator->getPaginate();
     }
+
+    public function getHomeworkByClass($user, $classId) {
+        $homeworks = $this->modelsManager->createBuilder()
+            ->from("HomeworkUser")
+            ->join("Homework")
+            ->where("classId = " . $classId)
+            ->where("studentId = " . $user->id)
+            ->orderBy("status")
+            ->orderBy("dueDate")
+            ->getQuery()
+            ->execute();
+
+        return $homeworks;
+    }
 }
 ?>
