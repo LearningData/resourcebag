@@ -63,7 +63,7 @@ var timetablePage = (function() {
             var tableRows = []
             for ( var i = 0; i < data.length; i++ ) {
                 var rowStr = "<tr"
-                    if (data[i].subject != "" && data[i].extraRef == undefined) {
+                    if (data[i].subject != "" && data[i]['class-id'] == undefined) {
                         rowStr += " class='break' "
                     }
                     rowStr += ">"
@@ -122,7 +122,7 @@ var timetablePage = (function() {
                 var dayData = week[day]
                 for (var j = 0; j < dayData.length; j++ ) {
                     if (dayData[j] && dayData[j].time == keys[i] ) {
-                        if (dayData[j].subject != "" && dayData[j].extraRef == undefined) {
+                        if (dayData[j].subject != "" && dayData[j]['class-id'] == undefined) {
                             rowStr = rowStr.substring(0,  rowStr.length-4) + "<td class='break' >"
                         }
                         rowStr += timetableFunctions.getTimetableTextBlock( dayData[j] )

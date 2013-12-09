@@ -201,7 +201,7 @@ var dashboard = (function() {
                 var tableRows = []
                 for ( var i = 0; i < data.length; i++ ) {
                     var rowStr = "<tr"
-                    if (data[i].subject != "" && data[i].extraRef == undefined) {
+                    if (data[i].subject != "" && data[i]['class-id'] == undefined) {
                         rowStr += " class='break' "
                     }
                     rowStr += ">"
