@@ -55,6 +55,11 @@
 .ld-homework .table [class*="btn-"] {
     display: none;
 }
+.ld-homework .table .btn-review-many {
+    display: inline-block;
+    min-width: 0;
+    padding: 0;
+}
 
 .ld-homework .table thead > tr > th {
     border-bottom: none;

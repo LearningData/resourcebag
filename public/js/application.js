@@ -239,7 +239,7 @@ function setUpEvents() {
             $(this).remove(); 
         });
     }, 5000);
-    if ($(".ld-tree").length > 0) setTreeEvents()
+    if ($(".ld-tree, .ld-check-parent").length > 0) setTreeEvents()
 }
 /****************************************
                 translate //First attempt at translating js
@@ -273,9 +273,8 @@ var setTreeEvents = function() {
         if (source.data().source)
             checkUpwards($( source.data().source ))
     }
-
     //set child node when change parent
-    $(".ld-tree .parent-node").change(function(event) {
+    $(".ld-tree .parent-node, .ld-check-parent").change(function(event) {
         $( $( event.target ).data().child ).each(function() {
             this.checked = (event.target.checked) ? "checked" : ""
             $.uniform.update( $( event.target ).data().child ) 
@@ -283,8 +282,9 @@ var setTreeEvents = function() {
         })
     })
     //set state of parent when click on child
-    $(".ld-tree .child-node").click(function(event){
+    $(".ld-tree .child-node, .ld-check-child").click(function(event){
         checkUpwards( $( $( event.target ).data().source ) )
+        checkUpwards( $( $( event.target ).data().parent ) )
     })
 }
 var cutText = function(parent, element) {

@@ -55,7 +55,8 @@
                 <th>{{ t._("assigned date") }}</th>
                 <th>{{ t._("due date") }}</th>
                 <th>{{ t._("action") }}</th>
-                <th>{{ t._("review") }}</th>
+                <th><input type="checkbox" class="ld-check-parent" data-child=".ld-homework .ld-check-child">
+                <input type="submit" value="{{ t._('review') }}" class="btn btn-review-many btn-left"></th>
             </tr>
         </thead>
         <tbody>
@@ -69,7 +70,7 @@
                 <td> {{ link_to("teacher/homework/review/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":t._("review")) }} </td>
                 <td>
                 <input type="checkbox"
-                name="ids[]" value="{{ homework.id }}">
+                class="ld-check-child" data-parent=".ld-homework .ld-check-parent" name="ids[]" value="{{ homework.id }}">
                 </td>
                 {% else %}
                 <td> {% if homework.isReviewed() %}
@@ -77,10 +78,12 @@
                 {% else %}
                 {{ homework.getStatus() }}
                 {% endif %} </td>
-                </td></td>
+                <td></td>
                 {% endif %}
+                <td></td>
             </tr>
             {% endfor %}
+            
         </tbody>
     </table>
     <ul class="paginator homework">
@@ -97,10 +100,6 @@
         </li>
         </li>
     </ul>
-    <input type="submit" value="{{ t._('save') }}" class="btn btn-left">
-    <button type="button" class="btn btn-return btn-cancel">
-        {{ t._("cancel") }}
-    </button>
     </form>
     {% else %}
     <table class="table">
