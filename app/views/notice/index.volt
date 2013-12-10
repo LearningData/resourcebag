@@ -22,9 +22,9 @@
             </tr>
             </thead>
             <tbody>
-        {% for myNotice in myNotices if date('Y-m-d h:i:s') < myNotice.date %}
+        {% for myNotice in myNotices %}
             <!--<tr class={% if date('Y-m-d h:i:s') < myNotice.date %}
-                    "pending" 
+                    "pending"
                 {% elseif date('Y-m-d h:i:s') > myNotice.expiryDate %}
                     "expired"
                 {% else %}
@@ -37,7 +37,7 @@
                 <td colspan=2>{{ myNotice.getDate(t._("dateformat")) }}
                 <td colspan=2>{{ myNotice.expiryDate }}</td>
                 <td class="ld-tooltip">{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}</td>
-                <td class="ld-tooltip"><span data-id=myNotice.id data-toggle="tooltip"
+                <td class="ld-tooltip"><span data-id={{ myNotice.id }} data-toggle="tooltip"
                     data-placement="left auto" title="{{ t._('delete') }}"
                     class="btn-icon btn-delete icon-remove"></span></td>
             </tr>

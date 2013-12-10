@@ -148,8 +148,22 @@ class NoticeController extends ControllerBase {
             }
 
             $this->flash->success($t->_("notice-created"));
-            return $this->dispatcher->forward(array("action" => "index"));
+            // return $this->dispatcher->forward(array("action" => "index"));
+            $this->response->redirect("teacher/noticeboard");
         }
+    }
+
+    public function removeAction($noticeId) {
+        $user = Authenticate::getUser();
+        $notice = NoticeBoard::findFirstById($noticeId);
+
+        if($notice != null && $user->id == $notice->uploadedBy) {
+            if($notice->delete()) {
+                $this->flash->success($t->_("notice-deleted"));
+            }
+        }
+
+        $this->response->redirect("teacher/noticeboard");
     }
 
     private function uploadFile($noticeId, $file) {

@@ -17,6 +17,7 @@ $messages = array(
     "teachers-students" => "Teachers and Students",
     "teachers-only" => "Teachers only",
     "notice" => "Notice",
-    "notice-created" => "Notice was created."
+    "notice-created" => "Notice was created.",
+    "notice-deleted" => "Notice was deleted."
 );
 ?>
