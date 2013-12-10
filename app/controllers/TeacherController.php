@@ -123,20 +123,6 @@ class TeacherController extends UsersController {
 
             TimetableSlot::createOrUpdateSlots($slotIds, $classList, $day, $room);
             TimetableChange::createOrUpdateSlots($slotIds, $classList, $day, $room);
-
-            // foreach($classList->users as $student) {
-            //     $slots = TimetableChange::find("day = $day and studentId = " .
-            //         $student->id . " and subjectId = " . $classList->subject->id);
-
-            //     foreach($slots as $slotId) {
-            //         if(!in_array($slot->timeSlotId, $slotIds)) {
-            //             $slot->delete();
-            //         } else {
-            //             $slot->room = $room;
-            //             $slot->save();
-            //         }
-            //     }
-            // }
         }
 
         $this->flash->success($t->_("class-updated"));
