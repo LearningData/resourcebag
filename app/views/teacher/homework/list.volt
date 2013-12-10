@@ -19,11 +19,7 @@
             {% for classList in classes %}
             <tr>
                 <td colspan=7>
-                    {% if classList.getSubmittedHomework() %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
-                    {% else %}
-                        {{ classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage }}
-                    {% endif %}
+                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=2&group=date", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
                 </td>
                 <td class="ld-new-buttons"><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class=" custom-icon-new-homework"></span>{{ t._("new") }} </a>
                     {% if classList.getSubmittedHomework() %}

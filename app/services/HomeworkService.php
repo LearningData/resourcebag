@@ -112,9 +112,9 @@ class HomeworkService {
         return $links;
     }
 
-    public static function getPage($homeworks, $currentPage) {
+    public static function getPage($homeworks, $currentPage, $limit = 10) {
         $params = array("data" => $homeworks,
-            "limit"=> 10, "page" => $currentPage
+            "limit"=> $limit, "page" => $currentPage
         );
 
         if(is_array($homeworks)) {
@@ -134,6 +134,19 @@ class HomeworkService {
             ->andWhere("studentId = " . $user->id)
             ->orderBy("status")
             ->orderBy("dueDate")
+            ->getQuery()
+            ->execute();
+
+        return $homeworks;
+    }
+
+    public function getHomeworkByWeek($classId, $firstWeek, $secondWeek) {
+        $homeworks = $this->modelsManager->createBuilder()
+            ->from("HomeworkUser")
+            ->innerJoin("Homework", 'Homework.id = HomeworkUser.homeworkId')
+            ->where("classId = $classId")
+            ->andWhere("dueDate >= '$firstWeek'")
+            ->andWhere("dueDate <= '$secondWeek'")
             ->getQuery()
             ->execute();
 
