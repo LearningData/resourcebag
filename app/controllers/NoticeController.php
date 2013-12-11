@@ -156,6 +156,7 @@ class NoticeController extends ControllerBase {
     public function removeAction($noticeId) {
         $user = Authenticate::getUser();
         $notice = NoticeBoard::findFirstById($noticeId);
+        $t = Translation::get(Language::get(), "notice");
 
         if($notice != null && $user->id == $notice->uploadedBy) {
             if($notice->delete()) {
