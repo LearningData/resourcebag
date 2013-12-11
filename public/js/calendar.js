@@ -166,7 +166,7 @@ var calendarPage = (function() {
     }
     var updateNewEventDialog = function(date) {
         $('#createNewEventPopover #event-date').empty()
-        $('#createNewEventPopover #event-date').append(moment(date).format("dddd MMM DD YYYY"))
+        $('#createNewEventPopover #event-date').append(moment(date).format("dddd Do MMM YYYY"))
         $('#createNewEventPopover #start').val(moment(date).format("YYYY-MM-DD 00:00:00"))
         $('#createNewEventPopover #end').val(moment(date).format("YYYY-MM-DD 23:59:00"))
 
