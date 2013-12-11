@@ -257,6 +257,10 @@ class HomeworkController extends ControllerBase {
             "params" => array("homeworkId" => $homeworkId)));
     }
 
+    public function editAction($homeworkId) {
+        $this->view->t = Translation::get(Language::get(), "homework");
+    }
+
     private function reviewHomework($homeworkId) {
         if(!$this->isTeacher()) {
             return $this->response->redirect("dashboard");
