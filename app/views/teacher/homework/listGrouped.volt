@@ -15,7 +15,7 @@
         <tbody>
         {% for item in page.items %}
             <tr class="week-group">
-                <td class="format-date" data-date-special="week-begins">{{ item["start"] }}"</td>
+                <td class="format-date" data-date-special="week-begins">{{ item["start"] }}</td>
                 <td></td><td></td><td></td><td></td>
             </tr>
             {% for homework in item["homeworks"] %}
