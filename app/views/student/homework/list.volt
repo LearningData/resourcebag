@@ -46,7 +46,7 @@
 
                 {{ link_to("student/homework/do/"~homework.id, "class":"btn-icon btn-edit icon-pencil", "title":"Edit") }}
                 {{ link_to("student/homework/show/"~homework.id, "class":"btn-review btn-icon icon-eye-open", "title":"Show") }}
-                {% if !homework.files.count() and homework.info.text|striptags|trim|length == 0 %}
+                {% if !homework.files.count() and homework.text|striptags|trim|length == 0 %}
                 <span data-title="{{ homework.info.title }}" class="btn-submit btn-inactive btn-icon icon-ok {{ homework.text|striptags|trim|length }}" title="{{ t._('add-work') }}"></span>
                 {% else %}
                 <span data-count="{{ homework.Files.count() }}" data-title="{{ homework.info.title }}" data-homework-id="{{ homework.id }}" class="btn-submit btn-icon icon-ok" title="Submit"></span>
@@ -54,7 +54,7 @@
                 </td>
             </tr>
             <tr  id="hw{{ homework.id }}" class="collapse">
-                <td colspan="5">{{ homework.text }}</td>
+                <td colspan="5">{{ homework.info.text }}</td>
             </tr>
             {% endfor %}
         </tbody>
