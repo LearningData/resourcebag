@@ -1,4 +1,4 @@
-<div class="ld-resources viridian">
+<div class="ld-resources blue">
     <header>
         <h1>{{ t._("resources") }}</h1>
     </header>

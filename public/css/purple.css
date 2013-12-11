@@ -25,16 +25,16 @@
 
 /* Checkbox */
 .purple div.ld-CheckClass span {
-    background-position: 0 -290px;
+    background-position: 0 -288px;
 }
 .purple div.ld-CheckClass span.checked {
-    background-position: -30px -290px;
+    background-position: -30px -288px;
 }
 .purple div.ld-CheckClass.hover span {
-    background-position: -60px -290px;
+    background-position: -60px -288px;
 }
 .purple div.ld-CheckClass.hover span.checked {
-    background-position: -30px -290px;
+    background-position: -30px -288px;
 }
 
 /* Radio */

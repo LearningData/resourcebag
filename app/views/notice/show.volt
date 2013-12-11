@@ -1,4 +1,4 @@
-<div class="ld-notices blue">
+<div class="ld-notices cerulean">
     <header>
         <h1>{{ t._("notices") }}</h1>
         <h2>{{ t._("notice") }}</h2>

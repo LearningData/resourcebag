@@ -33,16 +33,16 @@
 
 /* Checkbox */
 .orange div.ld-CheckClass span {
-    background-position: 0 -50px;
+    background-position: 0 -49px;
 }
 .orange div.ld-CheckClass span.checked {
-    background-position: -30px -50px;
+    background-position: -30px -49px;
 }
 .orange div.ld-CheckClass.hover span {
-    background-position: -60px -50px;
+    background-position: -60px -49px;
 }
 .orange div.ld-CheckClass.hover span.checked {
-    background-position: -30px -50px;
+    background-position: -30px -49px;
 }
 
 /* Radio */
