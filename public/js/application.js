@@ -14,7 +14,6 @@ $(document).ready(function() {
     $(":checkbox").uniform({checkboxClass: 'ld-CheckClass'});
     $(":radio").uniform({radioClass: 'ld-RadioClass'});
     $(".sidebar-scroll").slimScroll({height:"100%"})
-    
     sessionStorage.exitRoute = sessionStorage.exitRoute || ""
     $(".nav.navbar-nav li").removeClass("active")
     if (window.location.pathname.indexOf("dashboard") != -1) {
@@ -63,11 +62,48 @@ $(document).ready(function() {
         onSelect : showTimes,
         firstDay: 1
     })
+    init()
     setUpEvents()
     validationEvents()
 });
 var urlBase = window.location.protocol + "//" + window.location.host + "/schoolbag"
 $("input[type=file]").uniform();
+
+function init() {
+    $(".format-date").each(function(index, element) {
+        var text = element.textContent
+        switch (element.getAttribute("data-date-special")) {
+            case("week-begins"):
+                if(moment(text).week() == moment().week()) {
+                    element.textContent = "This Week"
+                } else {
+                    element.textContent = "Week of " + 
+                    moment(text).format("dddd, Do MMM")
+                }
+            break
+            default:
+                var text = element.textContent
+                if (moment(text).isSame(new Date(),'year')) {
+                    element.textContent = moment(text).format("dddd, Do MMM")
+                } else {
+                    element.textContent = moment(text).format("dddd, Do MMM YYYY")
+                }
+        }
+    })
+    $(".format-date-range").each(function(index, element) {
+        var start = element.getAttribute("data-start")
+        var end = element.getAttribute("data-end")
+        console.log(start, end)
+        if (moment(start).isSame(end,'month')) {
+            element.textContent = moment(start).format("ddd Do") + "-" + 
+moment(end).format("ddd Do, MMM YYYY")
+        } else {
+            element.textContent = moment(start).format("Do MMM YYYY")+ "-" + 
+moment(end).format("Do MMM YYYY")
+        }
+    })
+
+}
 
 function getUser() {
     var body = $("body")
