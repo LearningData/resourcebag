@@ -75,7 +75,7 @@
     {{ t._("cancel") }}
 </button>
 {% if notice.id %}
-<button type="button" class="btn-delete">
+<button type="button" class="btn-delete" data-id="{{ notice.id }}">
     <span class="icon-trash"></span>{{ t._("delete") }}
 </button>
 {% endif %}
