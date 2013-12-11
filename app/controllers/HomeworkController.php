@@ -258,7 +258,33 @@ class HomeworkController extends ControllerBase {
     }
 
     public function editAction($homeworkId) {
+        $user = Authenticate::getUser();
         $this->view->t = Translation::get(Language::get(), "homework");
+        $this->view->homework = Homework::findFirstById($homeworkId);
+        $this->view->classes = ClassListService::getClassesByUser($user);
+
+        $this->tag->setDefault("class-id", $this->view->homework->classId);
+    }
+
+    public function updateHomeworkAction() {
+        $user = Authenticate::getUser();
+
+        if($user->isTeacher()) {
+            $homework = Homework::findFirstById($this->request->getPost("homework-id"));
+            $t = Translation::get(Language::get(), "homework");
+
+            $homework->title = $this->request->getPost("title");
+            $homework->text = $this->request->getPost("description");
+            $homework->dueDate = $this->request->getPost("due-date");
+
+            if($homework->save()) {
+                $this->flash->success($t->_("homework-updated"));
+            } else {
+                $this->flash->error($t->_("homework-not-updated"));
+            }
+
+            return $this->response->redirect("teacher/homework/edit/" . $homework->id);
+        }
     }
 
     private function reviewHomework($homeworkId) {
