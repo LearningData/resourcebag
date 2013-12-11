@@ -241,14 +241,14 @@ var homeworkPage = (function() {
         modal.appendTo( "div.ld-homework" )
     }
 
-    var submitHomeworkDialog = function( data ) {
+    var submitHomeworkDialog = function(text, ref) {
         var modal = $( "<div class=\"modal fade\" id=\"submitHomeworkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">" )
         var modalHeader = $( "<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h4 class=\"modal-title\">Submit Homework</h4></div>")
-        var modalBody = $ ( "<div class=\"modal-body\"><p>Are you sure you want to submit the homework " + data.title +" </p></div>" )
+        var modalBody = $ ( "<div class=\"modal-body\"><p>" + text + " </p></div>" )
 
         //buttons
         var send = $( "<a>", {
-            href: urlBase + "/student/homework/submit/" + data.homeworkId,
+            href: ref,
             "class": "btn",
             html: "Yes"
         })
@@ -368,7 +368,14 @@ var homeworkPage = (function() {
             if ($( event.currentTarget ).hasClass("btn-inactive")) {
                 return
             }
-            submitHomeworkDialog( $ ( this ).data() )
+            var data = $(this).data()
+            submitHomeworkDialog("Are you sure you want to submit the homework " + data.title,  urlBase + "/student/homework/submit/" + data.homeworkId )
+            $( "#submitHomeworkModal" ).modal( "show" )
+        })
+        $( ".btn-submit-review" ).click(function( event ) {
+            event.preventDefault()
+            var data = $(this).data()
+            submitHomeworkDialog("Are you sure you want set the homework " + data.title + " as reviewed",  urlBase + "/homework/reviewed/" + data.homeworkId  )
             $( "#submitHomeworkModal" ).modal( "show" )
         })
         $( ".ld-homework .table .collapse-toggle" ).click( function( event ){

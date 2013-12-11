@@ -56,7 +56,8 @@ class HomeworkController extends ControllerBase {
                     for($week = 1; $week <= 4; $week++) {
                         $next = date('Y-m-d',strtotime("monday +$week week"));
                         $works = HomeworkService::getHomeworkByWeek($classId, $first, $next);
-                        $homeworks []= array("week" => "$first - $next", "homeworks" => $works);
+                        $homeworks []= array("week" => "$first - $next", "homeworks" => $works,
+                                    "start" => $first);
                         $first = $next;
                     }
                     $limit = 2;

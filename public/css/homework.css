@@ -55,6 +55,9 @@
 .ld-homework .table [class*="btn-"] {
     display: none;
 }
+.ld-homework .table .btn-submit-review {
+    display: inline-block
+}
 .ld-homework .table .btn-review-many {
     display: inline-block;
     padding: 4px 12px;
@@ -120,7 +123,33 @@
     color: #FFFFFF;
     font-size: 12px;
 }
-
+/* homework week grouping */
+.ld-homework .week-view tbody tr {
+    color: #bbb;
+}
+.ld-homework .week-view tbody tr.overdue {
+    color: #b22;
+}
+.ld-homework .week-view .in-progress .btn-icon, .ld-homework .week-view .not-started .btn-icon,
+.ld-homework .week-view .reviewed .btn-icon, .ld-homework .week-view .overdue,
+.ld-homework .week-view .reviewed .btn-icon {
+    background-color: #fff;
+} {
+    background-color: #fff;
+}
+.ld-homework .week-view .in-progress .btn-icon:before, .ld-homework .week-view .not-started .btn-icon:before,
+.ld-homework .week-view .reviewed .btn-icon:before {
+    color: #bbb;
+}
+.ld-homework .week-view .overdue .btn-icon:before {
+    color: #b22;
+}
+.ld-homework .week-view tbody tr.to-review {
+    color: #333;
+}
+.ld-homework .week-view tbody tr.week-group {
+    color: #4D4D4F;
+}
 /* Paginator */
 .paginator.homework a {
     color: #ff9e19;
