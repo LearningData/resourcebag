@@ -275,7 +275,7 @@ var homeworkPage = (function() {
     }
 
     var stylePaginator = function() {
-        var paginator = $( ".paginator" )[0]
+        var paginator = $( ".pagination" )[0]
         if ( paginator == undefined )
             return
         var pageNumber = 1
@@ -291,11 +291,11 @@ var homeworkPage = (function() {
         }
         if ( pageNumber == 1) {
             paginator.classList.add("AtStart")
-            $( ".paginator .Prev" ).replaceWith( $( "<span class=\"icon-chevron-left Prev\"></span>" ) )
+            $( ".pagination .Prev" ).replaceWith( $( "<span class=\"icon-chevron-left Prev\"></span>" ) )
         }
         if ( pageNumber == paginator.children.length - 2) {
             paginator.classList.add("AtEnd")
-            $( ".paginator .Next" ).replaceWith( $( "<span class=\"icon-chevron-right Next\"></span>" ) )
+            $( ".pagination .Next" ).replaceWith( $( "<span class=\"icon-chevron-right Next\"></span>" ) )
         }
 
     }

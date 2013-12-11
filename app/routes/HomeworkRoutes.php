@@ -89,6 +89,14 @@ class HomeworkRoutes extends Phalcon\Mvc\Router\Group {
                 "action"     => "show"
             )
         );
+
+        $this->add(
+            "/teacher/homework/edit/{homeworkId}",
+            array(
+                "controller" => "homework",
+                "action"     => "edit"
+            )
+        );
     }
 }
 ?>

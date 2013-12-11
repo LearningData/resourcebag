@@ -59,7 +59,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <ul class="paginator homework">
+    <ul class="pagination">
         <li>
             {{ link_to("/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev" ) }}
         </li>

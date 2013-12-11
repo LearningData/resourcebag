@@ -150,12 +150,3 @@
 .ld-homework .week-view tbody tr.week-group {
     color: #4D4D4F;
 }
-/* Paginator */
-.paginator.homework a {
-    color: #ff9e19;
-}
-.paginator.homework .this-page a {
-    color: #fff;
-    background-color: #a30c00;
-    cursor: default;
-}

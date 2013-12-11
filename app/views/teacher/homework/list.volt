@@ -47,7 +47,7 @@
         <thead>
             <tr>
                 <th>{{ t._("student") }}</th>
-                <th>{{ t._("homework title") }}</th>
+                <th>{{ t._("homework-title") }}</th>
                 <th>{{ t._("assigned date") }}</th>
                 <th>{{ t._("due date") }}</th>
                 <th>{{ t._("action") }}</th>
@@ -79,7 +79,7 @@
                 <td></td>
             </tr>
             {% endfor %}
-            
+
         </tbody>
     </table>
     <ul class="paginator homework">
@@ -102,7 +102,7 @@
         <thead>
             <tr>
                 <th>{{ t._("student") }}</th>
-                <th>{{ t._("homework title") }}</th>
+                <th>{{ t._("homework-title") }}</th>
                 <th>{{ t._("assigned date") }}</th>
                 <th>{{ t._("due date") }}</th>
                 <th>{{ t._("status") }}</th>

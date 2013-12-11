@@ -183,7 +183,7 @@ var calendarPage = (function() {
         } modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
         modalBody.append("<hr/>")
-        modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span")
+        modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span>")
         modalBody.append("<span class=\"icon-link\"></span><span class=\"modal-value\"> <a href=" + data.url + " target=\"_blank\">" + data.url + "</a></span>")
         modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-align-left\"></span> <p class=\"value\">" + data.description + "</p>")
@@ -233,7 +233,7 @@ var calendarPage = (function() {
     var createDeleteEventDialog = function(data) {
         var modal = $("<div class=\"modal fade\" id=\"createDeleteEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
         var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h4 class=\"modal-title\">" + _t("delete-event") + "</h4></div>")
-        var modalBody = $("<div class=\"modal-body\"><p>" + _t("confirm-delete-event") + " " + data.title + " </p></div>")
+        var modalBody = $("<div class=\"modal-body\"><p>" + _t("confirm-delete-event") + " <strong>" + data.title + " </strong> </p></div>")
 
         //buttons
         var send = $("<a>", {

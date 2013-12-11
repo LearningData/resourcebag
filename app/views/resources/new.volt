@@ -1,4 +1,4 @@
-<div class="resources viridian">
+<div class="resources blue">
     <header>
         <h1>{{ t._("resources") }}</h1>
         <h2>{{ t._("resource-upload") }}</h2>
