@@ -130,7 +130,7 @@ div.checker, div.ld-CheckClass {
 div.checker, div.checker span, div.checker input,
 div.ld-CheckClass, div.ld-CheckClass span, div.ld-CheckClass input {
     width: 22px;
-    height: 22px;
+    height: 25px;
 }
 div.checker span    {
     display: -moz-inline-box;

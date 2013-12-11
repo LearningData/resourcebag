@@ -120,13 +120,3 @@
     color: #FFFFFF;
     font-size: 12px;
 }
-
-/* Paginator */
-.paginator.homework a {
-    color: #ff9e19;
-}
-.paginator.homework .this-page a {
-    color: #fff;
-    background-color: #a30c00;
-    cursor: default;
-}

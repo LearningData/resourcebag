@@ -80,11 +80,17 @@
     display: table;
 }
 /* delete event */
-.ld-calendar .btn-delete {
+.btn-delete, .modal-footer .btn-delete {
     float: right;
     font-size: 14px;
     padding-top: 7px;
     background: none;
+}
+.btn-delete {
+    float: none;
+}
+.btn-delete span {
+    margin-right: 5px;
 }
 .ld-calendar form .btn-delete {
     padding-right: 50px;
