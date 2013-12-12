@@ -72,6 +72,14 @@ class PoliciesController extends ControllerBase {
         $user = $this->getUserBySession();
         $dir = $config->files->dir . $user->schoolId . "/";
 
+        if (!file_exists($config->files->dir)) {
+            mkdir($config->files->dir);
+        }
+
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
+
         return $dir;
     }
 }
