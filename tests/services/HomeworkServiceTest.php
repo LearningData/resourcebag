@@ -15,8 +15,8 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
             "due-time" => "0900"
         );
 
-        $this->homework = HomeworkService::create($this->user,
-            $this->classList, $this->params);
+        $this->homework = HomeworkService::create($this->classList,
+            $this->params, $this->user->id);
     }
     public function testCreateHomeworkNotNull() {
         $this->assertNotNull($this->homework);
@@ -72,6 +72,7 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
     private function getClassList() {
         $classList = new ClassStub();
         $classList->id = 1;
+        $classList->schoolId = 1;
         $classList->user = new User();
         $classList->user->id = 2;
 
@@ -82,5 +83,6 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
 class ClassStub {
     public $id;
     public $user;
+    public $schoolId;
 }
 ?>

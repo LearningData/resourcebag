@@ -34,6 +34,9 @@ class TeacherController extends UsersController {
         $this->view->classList->id = 0;
         $this->view->action = "new";
 
+        $this->view->subjectAreas = new SubjectAreas();
+        $this->view->freeSubjects = SubjectAreas::getFreeSubjects();
+
         $slots = array();
         for($i = 1; $i <=6; $i++) {
             $slots[$i] = Timetable::getEmptySlotsByDay($user, $i);
