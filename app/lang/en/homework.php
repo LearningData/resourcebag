@@ -37,6 +37,8 @@ $messages = array(
     "homework-reviewed" => "The homework was reviewed.",
     "homework-not-reviewed" => "The homework was not reviewed.",
     "work-box" => "Work Box",
-    "work-files" => "Work Files"
+    "work-files" => "Work Files",
+    "works-in-progress" => "Works In Progress",
+    "works-to-review" => "Works To Review"
 );
 ?>

@@ -19,7 +19,7 @@
                 <td></td><td></td><td></td><td></td>
             </tr>
             {% for homework in item["homeworks"] %}
-                <tr class="{{ (homework.status == 0 ? 'not-started' : (homework.status >= 2 ? 'to-review' : ( homework.status == 1 ? 'in-progress' : 'reviewed'))) 
+                <tr class="{{ (homework.status == 0 ? 'not-started' : (homework.status == 2 ? 'to-review' : ( homework.status == 1 ? 'in-progress' : 'reviewed'))) 
                     }}{% if homework.submittedDate > homework.info.dueDate %} overdue {% 
                         elseif homework.submittedDate == 0 and homework.info.dueDate < date() 
                     %} overdue {% endif %}">
@@ -52,7 +52,7 @@
         </tbody>
     </table>
 
-    <ul class="paginator homework">
+    <ul class="pagination">
         <li>{{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&group=date",
         "class":"icon-chevron-left Prev") }}</li>
         {% for link in links %}

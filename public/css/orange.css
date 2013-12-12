@@ -1,9 +1,9 @@
-/*.orange a,*/ .orange .ld-new-buttons a, .orange .ld-new-buttons .custom-icon-new-homework {
+/*.orange a,*/ .orange .ld-new-buttons a, .orange .ld-new-buttons .custom-icon-new-homework, .orange .ld-new-buttons {
     color: #ff9e19;
 }
 
 /* default background */
-.orange header, .orange .btn-icon, .orange .btn, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class*="btn-"], .orange.ld-box .ld-box-head .title, .orange .ld-student-status a {
+.orange header, .orange .btn-icon, .orange .btn, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class^="btn-"], .orange.ld-box .ld-box-head .title, .orange .ld-student-status a {
     background-color: #ff9e19;
 }
 /* hover background */

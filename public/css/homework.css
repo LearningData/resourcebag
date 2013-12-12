@@ -52,7 +52,7 @@
     border-bottom: #760900 solid 5px;
 }
 
-.ld-homework .table [class*="btn-"] {
+.ld-homework .table [class^="btn-"] {
     display: none;
 }
 .ld-homework .table .btn-submit-review {
