@@ -7,7 +7,7 @@
     background-color: #ff9e19;
 }
 /* hover background */
-.orange .btn-icon:hover, .orange .btn-icon:focus, .orange.ld-homework .table [class*="btn-"]:hover {
+.orange .btn-icon:hover, .orange .btn-icon:focus, .orange.ld-homework .table [class^="btn-"]:hover {
     background-color: #f47920;
 }
 .orange .form-control:focus, .orange input:focus, .orange textarea:focus {
