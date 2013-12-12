@@ -82,20 +82,22 @@
 
         </tbody>
     </table>
-    <ul class="paginator homework">
-        <li>
-            {{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}
-        </li>
-        {% for link in links %}
-        <li>
-            {{ link_to(link['url'], link['page']) }}
-        </li>
-        {% endfor %}
-        <li>
-            {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
-        </li>
-        </li>
-    </ul>
+        {% if total_pages > 1 %}
+        <ul class="paginator homework">
+            <li>
+                {{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}
+            </li>
+            {% for link in links %}
+            <li>
+                {{ link_to(link['url'], link['page']) }}
+            </li>
+            {% endfor %}
+            <li>
+                {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
+            </li>
+            </li>
+        </ul>
+        {% endif %}
     </form>
     {% else %}
     <table class="table">
@@ -120,18 +122,20 @@
             {% endfor %}
         </tbody>
     </table>
-    <ul class="paginator homework">
-        <li>{{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&filter="~status,
-        "class":"icon-chevron-left Prev") }}</li>
-        {% for link in links %}
-        <li>
-            {{ link_to(link['url'], link['page']) }}
-        </li>
-        {% endfor %}
-        <li>
-            {{ link_to("teacher/homework/class/"~classId~"?page="~page.next~"&filter="~status,
-                "class":"icon-chevron-right Next") }}</li>
-        </li>
-    </ul>
+        {% if page.total_pages > 1 %}
+        <ul class="paginator homework">
+            <li>{{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&filter="~status,
+            "class":"icon-chevron-left Prev") }}</li>
+            {% for link in links %}
+            <li>
+                {{ link_to(link['url'], link['page']) }}
+            </li>
+            {% endfor %}
+            <li>
+                {{ link_to("teacher/homework/class/"~classId~"?page="~page.next~"&filter="~status,
+                    "class":"icon-chevron-right Next") }}</li>
+            </li>
+        </ul>
+        {% endif %}
     {% endif %}
 </div>
