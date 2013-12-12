@@ -68,7 +68,7 @@
 .ld-homework .table thead > tr > th {
     border-bottom: none;
     vertical-align: bottom;
-    background-color: #eceded;
+    background-color: #e6e7e8;
 }
 
 .ld-homework .table th[colspan="2"], .ld-homework .table th[colspan="7"] {
@@ -89,7 +89,6 @@
 
 .ld-homework .table .collapse td, .ld-homework .table .collapsing td, .ld-homework .table .in td {
     border-top: none;
-    background-color: #FFF9F0;
     padding: 10px 50px 10px 220px;
 }
 .ld-homework .table .collapse-toggle {

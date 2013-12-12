@@ -32,7 +32,7 @@
             <a href="#"><span class="custom-icon-ebooks"></span> {{ t._("ebooks") }} </a>
         </li>
         <li class="resources">
-            <a href="/schoolbag/resources"> <span class="icon-wrench"></span> {{ t._("resources") }} </a>
+            <a href="/schoolbag/resources"> <span class="icon-folder-open"></span> {{ t._("resources") }} </a>
         </li>
         <li class="policies">
             <a href="/schoolbag/{{ user.getController() }}/policies"> <span class="icon-lock"></span>{{ t._("policies") }} </a>

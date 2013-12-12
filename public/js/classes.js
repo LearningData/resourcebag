@@ -38,7 +38,7 @@ var classesPage = (function() {
         $( ".ld-classes header" ).click( function( event ) {
             window.location.href = urlBase + "/" + getUser() + "/classes"
         })
-        $( ".ld-classes .classes .class-item" ).click( function( event ) {
+        $( ".ld-classes .class-item" ).click( function( event ) {
             var id = event.currentTarget.getAttribute("data-class-id")
             window.location.href = urlBase + "/" + getUser() + "/showClass/" + id
         })
