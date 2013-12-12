@@ -154,18 +154,20 @@ input[type="radio"], input[type="checkbox"] {
 .pagination > li {
     display: inline-block;
 }
-.pagination > li > a, .pagination > li > span {
+.pagination > li > a {
     border-radius: 0!important;
     border-color: #bcbec0;
     color: #bcbec0;
+    margin: 0 2px;
 }
-.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+.pagination > li > a:hover, .pagination > li > a:focus {
     background-color: #d1d3d4;
 }
 .pagination > li.this-page > a  {
     background-color: #bcbec0;
     color: #FFFFFF;
 }
+.pagination.AtStart .Prev, .pagination.AtEnd .Next {border-color:#e6e7e8; color: #e6e7e8; background-color: transparent;}
 
 
 /* Fonts */

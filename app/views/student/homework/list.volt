@@ -59,6 +59,7 @@
             {% endfor %}
         </tbody>
     </table>
+    {% if page.total_pages > 1 %}
     <ul class="pagination">
         <li>
             {{ link_to("/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev" ) }}
@@ -72,4 +73,5 @@
             {{ link_to("/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
         </li>
     </ul>
+    {% endif %}
 </div>
