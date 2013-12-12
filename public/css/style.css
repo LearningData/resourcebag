@@ -311,7 +311,6 @@ section table tr:first-child, section table tr:last-child {
     color: #CCCCCC !important;
 }
 .ld-btn-inactive {
-    background-color: #FFFFFF !important;
     cursor: default;
     color: #CCCCCC!important;
 }
