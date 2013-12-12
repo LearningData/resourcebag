@@ -2,20 +2,7 @@
     <header>
         <h1>{{ t._("classes")  }}</h1>
     </header>
-    <section class="classes">
-        <h3>{{ t._("my-classes") }}</h3>
-    {% for classList in user.classes %}
-    <div class="col-xs-4 col-md-3 class">
-        <div class="class-item" data-class-id="{{ classList.id }}">
-            <p class="subject">{{ classList.subject.name }}</p>
-            <p class="extra-info">
-                {{ classList.user.title }} {{ classList.user.lastName }}
-                {{ classList.extraRef }}
-            </p>
-        </div>
-    </div>
-    {% endfor %}
-    </section>
+
     <section>
         <h3>{{ t._("join-class") }}</h3>
 
@@ -32,4 +19,14 @@
         </p>
         </form>
     </section>
+    {% for classList in user.classes %}
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 class class-item" data-class-id="{{ classList.id }}">
+            <div class="thumb-classes">{{ image("img/art-temp.jpg") }} </div>
+            <p class="subject"><strong>{{ classList.subject.name }}</strong></p>
+            <p class="extra-info">
+                {{ classList.user.title }} {{ classList.user.lastName }}
+                {{ classList.extraRef }}
+            </p>
+        </div>
+    {% endfor %}
 </div>

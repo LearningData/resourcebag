@@ -230,7 +230,7 @@ section {
     width: 100%;
     margin: 0 0 30px;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: #e6e7e8;
     border: #ededee solid 1px;
     box-shadow: 0 1px 1px rgba(50, 50, 50, 0.25);
 }
@@ -254,13 +254,6 @@ section table tr {
 section table tr:first-child, section table tr:last-child {
     border-bottom: none;
 }
-/*section table td  {
- text-overflow: ellipsis;
- white-space: nowrap;
- overflow: hidden;
- text-overflow: ellipsis;
- max-width: 50%;
- }*/
 
 /* Buttons */
 .btn, .btn.btn-cancel {
@@ -290,11 +283,12 @@ section table tr:first-child, section table tr:last-child {
 }
 
 .btn.btn-cancel {
-    color: #a7a9ac !important;
-    background-color: #d9d9d9 !important;
+    color: #FFFFFF !important;
+    background-color: #dcddde !important;
 }
 .btn.btn-cancel:hover {
-    background-color: #c5c5c5 !important;
+    background-color: #bcbec0 !important;
+    
 }
 
 .btn-group-xs > .btn {
@@ -446,7 +440,7 @@ span.customSelect {
     border: #eceded solid 1px;
     border-top: 0;
     font-size: 14px;
-    background-color: #f6f6f6;
+    background-color: #f1f2f2;
     margin-bottom: 5px;
 }
 .table > tbody > tr.active > td, .table tr.active, .table tr.active td {
@@ -464,7 +458,7 @@ table > tbody > tr.active td:last-child {
     border-width: 2px 2px 2px 0;
 }
 .table tr:hover {
-    background-color: #f0f2f2;
+    background-color: #e6e7e8;
 }
 
 .table tbody > tr > td, .table thead > tr > th {
@@ -542,6 +536,7 @@ form .validation-error {
 form .error .validation-error:before {
     font-family: FontAwesome;
     content: '\f06a';
+    margin-right: 5px;
 }
 form .error .validation-error {
     display: inline;
@@ -709,11 +704,11 @@ form .error .validation-error {
     border-color: #575a7b;
 }
 .navbar-nav > li.resources a span {
-    color: #438c76;
+    color: #2e3192;
 }
 .navbar-nav > li.resources a:hover, .navbar-nav > li.resources.active a {
-    background-color: #438c76;
-    border-color: #215949;
+    background-color: #2e3192;
+    border-color: #150958;
 }
 .navbar-nav > li.policies a span {
     color: #939598;
