@@ -7,8 +7,8 @@
         {{ securityTag.csrf(csrf_params) }}
         <hr />
     </div>
-    <div id="calendar" class="col-sm-9"></div>
-    <div id="agenda" class="col-sm-3 fc-header fc-header-title agenda">
+    <div id="calendar" class="col-xs-12 col-sm-9"></div>
+    <div id="agenda" class="col-xs-12 col-sm-3 fc-header fc-header-title agenda">
         <h2>{{ t._("diary") }}</h2>
     </div>
 </div>

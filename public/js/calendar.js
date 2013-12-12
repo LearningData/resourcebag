@@ -141,7 +141,31 @@ var calendarPage = (function() {
             agenda.append(agendaItems[item])
         }
         $("#agenda").append(agenda)
-        agenda.css("height", $(".fc-content").css("height"))
+        $(".agenda-list").slimScroll({height: $(".fc-content").css("height")})
+        $(".fc-content").data("size", {w:$(".fc-content").width(),h:$(".fc-content").height()})
+        $(".fc-content").bind( 'resize', function(event) {
+            $(".agenda-list").css("height", $(".fc-content").css("height"))
+            $(".agenda-list").slimScroll()
+            $(".fc-content").data("size", {w:$(".fc-content").width(),h:$(".fc-content").height()})
+        });
+
+        $(window).bind('resize', function(event) {
+            loop_elements()
+        })
+        function loop_elements() {
+            window.setTimeout(function(){
+                var elem = $(".fc-content")
+                width = elem.width()
+                height = elem.height()
+                data = elem.data()
+                    
+                if ( width !== data.size.w || height !== data.size.h ) {
+                    elem.trigger( 'resize', [ data.w = width, data.h = height ] );
+                }
+                loop_elements();
+              
+            }, 60);
+        }
     }
     var getAgendaElement = function(data, startTime) {
         agendaItems[startTime.format("DMMMYYYY")] = agendaItems[startTime.format("DMMMYYYY")] || $("<div class='agenda-item'><div class='day-format'><span class='day-week'>" + startTime.format("dddd") + "</span><span class='day-month'>" + startTime.format(" Do MMM ") + "</span></div></div>")

@@ -28,7 +28,7 @@
 }
 /* agenda */
 .ld-calendar .agenda-list {
-    overflow: auto;
+    overflow: hidden;
     margin-top: 35px;
 }
 .ld-calendar .agenda-item span {
