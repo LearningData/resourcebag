@@ -1,4 +1,4 @@
-.blue header, .blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .tooltip-inner, .blue.ld-timetable .header-navigation, .blue .uploader .action {
+.blue header, .blue .btn-icon, .blue .btn, .blue.ld-box .ld-box-head .title, .blue .tooltip-inner, .blue.ld-timetable .header-navigation, .blue .uploader .action, .blue div.ld-CheckClass span.checked, .blue div.ld-CheckClass.hover span.checked, .blue div.ld-RadioClass span.checked, .blue div.ld-RadioClass.hover span.checked {
     background-color: #2e3192;
 }
 
@@ -14,37 +14,9 @@
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(46, 49, 146 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(46, 49, 146, 0.6);
 }
-.blue .modal-title {
+.blue .modal-title, .blue div.ld-CheckClass span, .blue div.ld-CheckClass.hover span, .blue div.ld-RadioClass span, .blue div.ld-RadioClass.hover span {
     border-color: #2e3192;
 }
 .blue .tooltip.top .tooltip-arrow {
     border-top-color: #2e3192;
-}
-
-/* Checkbox */
-.blue div.ld-CheckClass span {
-    background-position: 0 -410px;
-}
-.blue div.ld-CheckClass span.checked {
-    background-position: -30px -410px;
-}
-.blue div.ld-CheckClass.hover span {
-    background-position: -60px -410px;
-}
-.blue div.ld-CheckClass.hover span.checked {
-    background-position: -30px -410px;
-}
-
-/* Radio */
-.blue div.ld-RadioClass span {
-    background-position: 0 -440px;
-}
-.blue div.ld-RadioClass span.checked {
-    background-position: -30px -440px;
-}
-.blue div.ld-RadioClass.hover span {
-    background-position: -60px -440px;
-}
-.blue div.ld-RadioClass.hover span.checked {
-    background-position: 0 -440px;
 }

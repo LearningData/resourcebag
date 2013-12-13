@@ -3,7 +3,7 @@
     color: #0ba6d3;
 }
 /* default background */
-.cerulean header, .cerulean .btn-icon, .cerulean .btn, .cerulean .tooltip-inner, .cerulean.ld-homework .nav ul li a, .cerulean.ld-homework .table [class*="btn-"], .cerulean.ld-box .ld-box-head .title, .cerulean .ld-student-status a, .cerulean .uploader .action, .cerulean .uploader .action {
+.cerulean header, .cerulean .btn-icon, .cerulean .btn, .cerulean .tooltip-inner, .cerulean.ld-homework .nav ul li a, .cerulean.ld-homework .table [class*="btn-"], .cerulean.ld-box .ld-box-head .title, .cerulean .ld-student-status a, .cerulean .uploader .action, .cerulean div.ld-CheckClass span.checked, .cerulean div.ld-CheckClass.hover span.checked, .cerulean div.ld-RadioClass span.checked, .cerulean div.ld-RadioClass.hover span.checked {
     background-color: #0ba6d3;
 }
 
@@ -17,7 +17,7 @@
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(11, 166, 211, 0.6);
 }
 
-.cerulean .modal-title, .cerulean h1 {
+.cerulean .modal-title, .cerulean div.ld-CheckClass span, .cerulean div.ld-CheckClass.hover span, .cerulean div.ld-RadioClass span, .cerulean div.ld-RadioClass.hover span {
     border-color: #0ba6d3;
 }
 /* tooltip border arrow */
@@ -26,31 +26,4 @@
 }
 .cerulean .tooltip.right .tooltip-arrow {
   border-right-color: #0ba6d3;
-}
-/* Checkbox */
-.cerulean div.ld-CheckClass span {
-    background-position: 0 -109px;
- }
-.cerulean div.ld-CheckClass span.checked {
-    background-position: -30px -109px;
-}
-.cerulean div.ld-CheckClass.hover span {
-    background-position: -60px -109px;
-}
-.cerulean div.ld-CheckClass.hover span.checked {
-    background-position: -30px -109px;
-}
-
-/* Radio */
-.cerulean div.ld-RadioClass span {
-    background-position: 0 -140px;
-}
-.cerulean div.ld-RadioClass span.checked {
-    background-position: -30px -140px;
-}
-.cerulean div.ld-RadioClass.hover span {
-    background-position: -60px -140px;
-}
-.cerulean div.ld-RadioClass.hover span.checked {
-    background-position: -30px -140px;
 }
