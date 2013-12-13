@@ -17,6 +17,9 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
 
         $this->homework = HomeworkService::create($this->classList,
             $this->params, $this->user->id);
+
+        $this->homeworkUser = HomeworkService::createHomeworkUser(1,
+            $this->user->id);
     }
     public function testCreateHomeworkNotNull() {
         $this->assertNotNull($this->homework);
@@ -45,7 +48,7 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(
             Homework::$PENDING,
-            $this->homework->status
+            $this->homeworkUser->status
         );
 
         $this->assertEquals(
@@ -60,7 +63,7 @@ class HomerworkServiceTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(
             $this->user->id,
-            $this->homework->studentId
+            $this->homeworkUser->studentId
         );
 
         $this->assertEquals(

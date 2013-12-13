@@ -128,7 +128,7 @@ class User extends \Phalcon\Mvc\Model {
     public function validation() {
         // $this->validate(new EmailValidator(array("field" => "email")));
 
-        // $this->validate(new PresenceOf(array("field" => "name")));
+        $this->validate(new PresenceOf(array("field" => "name")));
 
         if ($this->validationHasFailed() == true) { return false; }
 

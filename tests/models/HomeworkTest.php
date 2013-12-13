@@ -1,10 +1,12 @@
 <?php
 require 'app/models/Homework.php';
+require 'app/models/HomeworkUser.php';
 
 class HomeworkTest extends PHPUnit_Framework_TestCase {
     public function setUp() {
         $this->homework = new Homework();
-        $this->homework->status = Homework::$PENDING;
+        $this->homeworkUser = new HomeworkUser();
+        $this->homeworkUser->status = Homework::$PENDING;
     }
 
     public function testStatusPending() {
@@ -24,30 +26,30 @@ class HomeworkTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testIsReviewedFalse() {
-        $this->assertFalse($this->homework->isReviewed());
+        $this->assertFalse($this->homeworkUser->isReviewed());
     }
 
     public function testIsReviewed() {
-        $this->homework->status = Homework::$REVIEWED;
-        $this->assertTrue($this->homework->isReviewed());
+        $this->homeworkUser->status = Homework::$REVIEWED;
+        $this->assertTrue($this->homeworkUser->isReviewed());
     }
 
     public function testIsPendingFalse() {
-        $this->homework->status = Homework::$REVIEWED;
-        $this->assertFalse($this->homework->isPending());
+        $this->homeworkUser->status = Homework::$REVIEWED;
+        $this->assertFalse($this->homeworkUser->isPending());
     }
 
     public function testIsPending() {
-        $this->assertTrue($this->homework->isPending());
+        $this->assertTrue($this->homeworkUser->isPending());
     }
 
     public function testIsSubmittedFalse() {
-        $this->assertFalse($this->homework->isSubmitted());
+        $this->assertFalse($this->homeworkUser->isSubmitted());
     }
 
     public function testIsSubmitted() {
-        $this->homework->status = Homework::$SUBMITTED;
-        $this->assertTrue($this->homework->isSubmitted());
+        $this->homeworkUser->status = Homework::$SUBMITTED;
+        $this->assertTrue($this->homeworkUser->isSubmitted());
     }
 }
 ?>
