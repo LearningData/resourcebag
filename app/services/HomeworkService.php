@@ -100,7 +100,7 @@ class HomeworkService {
         return $links;
     }
 
-    public static function getLinksByclass($controller,$classId, $pages, $status) {
+    public static function getLinksByClass($controller,$classId, $pages, $status) {
         $links = array();
         foreach (range(1, $pages) as $page) {
             $url = "$controller/homework/class/$classId?page=$page&filter=$status";
