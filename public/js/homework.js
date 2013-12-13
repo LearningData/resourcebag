@@ -133,6 +133,7 @@ var homeworkPage = (function() {
                 form.submit()
             }
         })
+        $( selectClass ).uniform();
     }
 
     var uploadHomeworkFileDialog = function( homeworkId ) {
