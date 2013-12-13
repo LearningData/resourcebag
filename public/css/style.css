@@ -56,7 +56,7 @@ ul {
     padding: 0;
     border: none;
 }
-a   {
+a {
     color: #4d4d4f;
 }
 a:hover, a:focus {
@@ -80,13 +80,14 @@ input[type="radio"], input[type="checkbox"] {
     max-width: 400px;
 }
 /*button close modal*/
-.close  {
+.close {
     font-size: 24px;
 }
 
 /* Reset Summernote */
 .note-editor .note-editable {
     overflow: auto;
+    background-color: #FFFFFF;
 }
 .note-editor .note-editable u {
     text-decoration: underline;
@@ -129,12 +130,12 @@ input[type="radio"], input[type="checkbox"] {
     margin-right: 0;
 }
 .note-editor .btn.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
-.note-editor .note-toolbar .btn i{
+.note-editor .note-toolbar .btn i {
     color: #333333;
 }
 .popover {
@@ -155,7 +156,7 @@ input[type="radio"], input[type="checkbox"] {
     display: inline-block;
 }
 .pagination > li > a {
-    border-radius: 0!important;
+    border-radius: 0 !important;
     border-color: #bcbec0;
     color: #bcbec0;
     margin: 0 2px;
@@ -163,12 +164,195 @@ input[type="radio"], input[type="checkbox"] {
 .pagination > li > a:hover, .pagination > li > a:focus {
     background-color: #d1d3d4;
 }
-.pagination > li.this-page > a  {
+.pagination > li.this-page > a {
     background-color: #bcbec0;
     color: #FFFFFF;
 }
-.pagination.AtStart .Prev, .pagination.AtEnd .Next {border-color:#e6e7e8; color: #e6e7e8; background-color: transparent;}
+.pagination.AtStart .Prev, .pagination.AtEnd .Next {
+    border-color: #e6e7e8;
+    color: #e6e7e8;
+    background-color: transparent;
+}
 
+/*Reset Uniform*/
+div.ld-CheckClass, div.ld-RadioClass, div.uploader, div.selector {
+    float: left;
+    margin-right: 5px;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+}
+div.ld-CheckClass, div.ld-CheckClass span, div.ld-CheckClass input, div.ld-RadioClass, div.ld-RadioClass span, div.ld-RadioClass input {
+    width: 20px;
+    height: 20px;
+}
+div.ld-CheckClass:focus, div.ld-RadioClass:focus, div.uploader:focus {
+    outline: 0;
+}
+
+/* Checkbox */
+div.ld-CheckClass, div.ld-CheckClass span.checked, div.ld-RadioClass, div.ld-RadioClass span.checked {
+    position: relative;
+}
+div.ld-CheckClass span.checked input, div.ld-RadioClass span.checked input {
+    position: absolute;
+    z-index: 1;
+    left: -1px;
+    top: -1px;
+}
+div.ld-CheckClass span.checked:before, div.ld-CheckClass.hover span.checked:before, div.ld-RadioClass span.checked:before, div.ld-RadioClass.hover span.checked:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+    color: #FFFFFF;
+    display: block;
+}
+div.ld-CheckClass.hover span.checked:before, div.ld-RadioClass.hover span.checked:before {
+    margin-top: -1px;
+}
+
+div.ld-CheckClass span, div.ld-RadioClass span {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    text-align: center;
+    border: solid 1px;
+    background-color: #FFFFFF;
+}
+div.ld-CheckClass input, div.ld-RadioClass input {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+div.ld-CheckClass.hover span, div.ld-RadioClass.hover span {
+    border: solid 3px;
+    background-color: #FFFFFF;
+}
+
+/* Radio */
+div.ld-RadioClass span {
+    border-radius: 12px;
+    width: 21px;
+    height: 21px;
+}
+
+/* Uploader */
+div.uploader {
+    height: 65px;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+div.uploader span.action, div.uploader span.filename {
+    height: 45px;
+    width: 30%;
+    line-height: 24px;
+    text-align: center;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: 1px solid #F2F2F2;
+}
+
+div.uploader span.filename {
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    float: left;
+    cursor: default;
+    margin-right: 2%;
+    width: 68%;
+    padding: 0 10 0 0px;
+    color: #d1d3d4;
+    text-align: left;
+    text-transform: capitalize;
+}
+div.uploader input {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    cursor: default;
+    width: 100%;
+    height: 100%;
+}
+
+/* Select */
+div.selector,div.selector span {
+    line-height: 45px;
+    height: 45px;
+    padding: 0 0 0 10px;
+    position: relative;
+    overflow: hidden;
+    border: solid 1px #f2f2f2;
+    margin: 0 0 20px;
+    color: #999;
+    background-color: #fff;
+    width: 100% !important;
+    font-family: 'Open Sans', sans-serif;
+}
+div.selector span {
+    border:none;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    padding-right: 25px;
+    cursor: pointer;
+    color: #c8c8cd;
+}
+div.selector span:after {
+    font-family: FontAwesome;
+    content: "\f0d7";
+    color: #808285;
+    float: right;
+    margin-left: -20px;
+    font-size: 25px;
+}
+
+
+
+div.selector.fixedWidth {
+    width: 190px;
+}
+div.selector.fixedWidth span {
+    width: 155px;
+}
+div.selector select {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    border: none;
+    background: none;
+    position: absolute;
+    height: 40px;
+    top: 2px;
+    left: 0px;
+    width: 100%;
+    cursor: pointer;
+}
+div.selector.active {
+    background-position: 0 -156px;
+}
 
 /* Fonts */
 .classList {
@@ -288,7 +472,6 @@ section table tr:first-child, section table tr:last-child {
 }
 .btn.btn-cancel:hover {
     background-color: #bcbec0 !important;
-    
 }
 
 .btn-group-xs > .btn {
@@ -443,6 +626,8 @@ span.customSelect {
 }
 .table thead > tr > th {
     border-bottom: none;
+    vertical-align: bottom;
+    background-color: #e6e7e8;
 }
 table > tbody > tr.active td:first-child {
     border: #d1d3d4 solid;
@@ -575,7 +760,7 @@ form .error .validation-error {
     padding-left: 0;
     padding-right: 0;
     height: 100%;
-   position: fixed;
+    position: fixed;
     width: 260px;
     z-index: 100;
     top: 0;
@@ -719,7 +904,6 @@ form .error .validation-error {
     text-align: center;
     margin: 20px 0 60px;
 }
-
 
 /*.Headers */
 header {

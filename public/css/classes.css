@@ -16,6 +16,8 @@
     margin: 0;
     margin-left: 4.5%;
     font-size: 16px;
+    height: 25px;
+    overflow: hidden;
 }
 
 .ld-classes .classes .class-item .icon-group {

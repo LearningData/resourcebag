@@ -26,12 +26,12 @@
         <h3>{{ t._("timetable") }}</h3>
         <table class="col-sm-12 ld-classes-timetable">
             <tr>
-                <th class="col-sm-2">Monday</th>
-                <th class="col-sm-2">Tuesday</th>
-                <th class="col-sm-2">Wednesday</th>
-                <th class="col-sm-2">Thursday</th>
-                <th class="col-sm-2">Friday</th>
-                <th class="col-sm-2">Saturday</th>
+                <th class="col-sm-2">{{ t._("monday") }}</th>
+                <th class="col-sm-2">{{ t._("tuesday") }}</th>
+                <th class="col-sm-2">{{ t._("wednesday") }}</th>
+                <th class="col-sm-2">{{ t._("thursday") }}</th>
+                <th class="col-sm-2">{{ t._("friday") }}</th>
+                <th class="col-sm-2">{{ t._("saturday") }}</th>
             </tr>
             <tr>
             {% for i in 1..6  %}
