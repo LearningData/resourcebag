@@ -26,15 +26,8 @@ class HomeworkUser extends \Phalcon\Mvc\Model {
     }
 
     public function getStatus() {
-        if ($this->reviewedDate == "0000-00-00" and
-            $this->submittedDate != "0000-00-00") {
-
-            return "submitted";
-        }
-
-        if ($this->reviewedDate != "0000-00-00") {
-            return "reviewed";
-        }
+        if ($this->status == Homework::$SUBMITTED) { return "submitted"; }
+        if ($this->status == Homework::$REVIEWED) { return "reviewed"; }
 
         return "pending";
     }
