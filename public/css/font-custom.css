@@ -10,7 +10,7 @@
 
 /* FONT AWESOME CORE
  * -------------------------- */
-[class^="custom-icon-"], [class*=" custom-icon-"] {
+[class^="custom-icon-"] {
     font-family: 'custom-icon';
     line-height: 1;
     font-weight: normal;
@@ -18,7 +18,7 @@
     text-decoration: inherit;
     -webkit-font-smoothing: antialiased;
 }
-[class^="custom-icon-"]:before, [class*=" custom-icon-"]:before {
+[class^="custom-icon-"]:before{
     text-decoration: inherit;
     display: inline-block;
     speak: none;

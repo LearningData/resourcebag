@@ -12,7 +12,7 @@
         <div class="jumbotron">
             <div class="container">
                 <header>
-                    <a href="/" class="schoolbag-brand-login"> <img width="153" heigth="46" src="img/logo-login.png" alt="Schoolbag"></a>
+                    <a href="/" class="schoolbag-brand-login">{{ image("img/logo.png", "alt":"Schoolbag","width":"153", "heigth":"46") }}</a>
                 </header>
             </div>
         </div>
@@ -21,28 +21,28 @@
                 <div class="hidden-xs col-sm-5 col-md-6 col-lg-7 ">
                     <div class="col-block-images">
                         <div class="block1">
-                            <img src="img/artwork/art-work-01.jpg" width="160" height="180" class="img-responsive" />
-                            <img src="img/artwork/art-work-02.jpg" width="80" height="90" class="img-responsive" />
-                            <img src="img/artwork/art-work-03.jpg" width="80" height="90" class="img-responsive" />
-                            <img src="img/artwork/art-work-04.jpg" width="160" height="90" class="img-responsive" />
+                            {{ image("img/artwork/art-work-01.jpg", "alt":"Schoolbag","width":"160", "heigth":"180", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-02.jpg", "alt":"Schoolbag","width":"80", "heigth":"180", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-03.jpg", "alt":"Schoolbag","width":"80", "heigth":"180", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-04.jpg", "alt":"Schoolbag","width":"160", "heigth":"180", "class":"img-responsive") }}
                         </div>
                         <div class="block2">
-                            <img src="img/artwork/art-work-06.jpg" width="60" height="65" class="img-responsive" />
-                            <img src="img/artwork/art-work-07.jpg" width="60" height="65" class="img-responsive" />
-                            <img src="img/artwork/art-work-05.jpg" width="120" height="135" class="img-responsive" />
-                            <img src="img/artwork/art-work-08.jpg" width="160" height="90" class="img-responsive" />
+                            {{ image("img/artwork/art-work-06.jpg", "alt":"Schoolbag","width":"60", "heigth":"65", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-07.jpg", "alt":"Schoolbag","width":"60", "heigth":"65", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-05.jpg", "alt":"Schoolbag","width":"120", "heigth":"135", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-08.jpg", "alt":"Schoolbag","width":"160", "heigth":"90", "class":"img-responsive") }}
                         </div>
                         <div class="block3">
-                            <img src="img/artwork/art-work-09.jpg" width="80" height="90" class="img-responsive" />
-                            <img src="img/artwork/art-work-12.jpg" width="80" height="45" class="img-responsive" />
-                            <img src="img/artwork/art-work-10.jpg" width="40" height="45" class="img-responsive" />
-                            <img src="img/artwork/art-work-11.jpg" width="40" height="45" class="img-responsive" />
+                            {{ image("img/artwork/art-work-09.jpg", "alt":"Schoolbag","width":"80", "heigth":"90", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-12.jpg", "alt":"Schoolbag","width":"80", "heigth":"45", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-10.jpg", "alt":"Schoolbag","width":"40", "heigth":"45", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-11.jpg", "alt":"Schoolbag","width":"40", "heigth":"45", "class":"img-responsive") }}
                         </div>
                         <div class="block4">
-                            <img src="img/artwork/art-work-14.jpg" width="20" height="23" class="img-responsive" />
-                            <img src="img/artwork/art-work-15.jpg" width="20" height="23" class="img-responsive" />
-                            <img src="img/artwork/art-work-13.jpg" width="40" height="45" class="img-responsive" />
-                            <img src="img/artwork/art-work-16.jpg" width="40" height="23" class="img-responsive" />
+                            {{ image("img/artwork/art-work-14.jpg", "alt":"Schoolbag","width":"20", "heigth":"23", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-15.jpg", "alt":"Schoolbag","width":"20", "heigth":"23", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-13.jpg", "alt":"Schoolbag","width":"40", "heigth":"23", "class":"img-responsive") }}
+                            {{ image("img/artwork/art-work-16.jpg", "alt":"Schoolbag","width":"40", "heigth":"23", "class":"img-responsive") }}
                         </div>
                     </div>
                 </div>
@@ -69,9 +69,7 @@
                         </form>
                         <br>
                         <p>
-                            <a href="login/microsoft">
-                                <img src="img/microsoft_login.png"
-                                    alt="Login with Microsoft"/></a>
+                            <a href="login/microsoft"> {{ image("img/microsoft_login.png", "alt":"Login with Microsoft") }} </a>
                         </p>
                     </div>
                 </div>
