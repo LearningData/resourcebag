@@ -12,6 +12,7 @@ $messages = array(
     "homework-exit" => "Back",
     "homework-title" => "Homework Title",
     "in-progress" => "In Progress",
+    "my-own-work" => "I am happy that this homework is my own work",
     "newTitle" => "New Homework",
     "new" => "New",
     "review" => "Review",

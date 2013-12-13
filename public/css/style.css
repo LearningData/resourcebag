@@ -714,15 +714,15 @@ form input[disabled] {
 form .error .form-control, form .error input[type='text'], form .error texxtarea {
     border-color: #e26a6a;
 }
-form .validation-error {
+.validation-error {
     display: none;
 }
-form .error .validation-error:before {
+.error .validation-error:before {
     font-family: FontAwesome;
     content: '\f06a';
     margin-right: 5px;
 }
-form .error .validation-error {
+.error .validation-error {
     display: inline;
     color: #e26a6a;
 }

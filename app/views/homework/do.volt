@@ -65,12 +65,18 @@
         {% endif %}
 
     </section>
+    <div id="hwk-frm-submit">
+    <label><input type="checkbox" class=""
+             data-target="#hwk-frm-submit" data-required-key="one">
+            {{ t._("my-own-work") }}</label>
+        <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
+    </div>
     {% if homework.files.count() == 0 and homework.text|striptags|trim|length == 0 %}
     <button class="btn mtop-20 btn-inactive">
         {{ t._("submit-homework") }}
     </button>
     {% else %}
-    {{ link_to("student/homework/submit/"~homework.id, "class":"btn mtop-20", t._("submit-homework")) }}
+    {{ link_to("student/homework/submit/"~homework.id, "id":"submit-homework", "class":"btn mtop-20", t._("submit-homework")) }}
     {% endif %}
     <button class="btn mtop-20 btn-cancel return">
         {{ t._("cancel") }}

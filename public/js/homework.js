@@ -368,6 +368,13 @@ var homeworkPage = (function() {
                 form.submit()
             }
         })
+        $(".ld-homework #submit-homework").click( function( event ) {
+            event.preventDefault()
+            var form = $( "#hwk-frm-submit")
+            if (validForm(form)) {
+                 window.location.href = $( ".ld-homework #submit-homework").attr("href")
+            }
+        })
         $( ".btn-submit" ).click(function( event ) {
             event.preventDefault()
             if ($( event.currentTarget ).hasClass("btn-inactive")) {
