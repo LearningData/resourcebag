@@ -4,6 +4,8 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
     public $id;
     public $subjectId;
     public $areaId;
+    public $schoolId;
+    public $cohortId;
 
     public function getAreas() {
         $areas = $this->getModelsManager()->createBuilder()
@@ -43,7 +45,9 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
         return array(
             'id' => 'id',
             'subjectId' => 'subjectId',
-            'areaId' => 'areaId'
+            'areaId' => 'areaId',
+            'cohortId' => 'cohortId',
+            'schoolId' => 'schoolId'
         );
     }
 }
