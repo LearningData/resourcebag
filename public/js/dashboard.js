@@ -142,7 +142,7 @@ var dashboard = (function() {
                 "</span>    " + moment(dueDate).fromNow() +
                 "</p>"
             homeworkItems.push("<li class=\"ld-tooltip\">" +
-                "<a  href=\"" + urlBase + "/student/homework/do/" +
+                "<a  href=\"" + urlBase + "/student/homework/start/" +
                 homework[i].id + "\">" + btnIcon + "<p>" +
                 homework[i].title + " (" + homework[i].subject +
                 ")</p>" + due + "</a></li>"

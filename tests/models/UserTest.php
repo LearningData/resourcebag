@@ -18,14 +18,9 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue($this->user->validation());
     }
 
-    function testRequireEmail() {
+    function testNotRequireEmail() {
         $this->user->email = null;
-        $this->assertFalse($this->user->validation());
-    }
-
-    function testValidateEmailFormat() {
-        $this->user->email = "incorrect";
-        $this->assertFalse($this->user->validation());
+        $this->assertTrue($this->user->validation());
     }
 
     function testRequiredNameOk() {

@@ -6,9 +6,27 @@
     {{ form("teacher/createClass", "method":"post", "class":"form-inline") }}
         <p class="col-md-6" id="hwk-cls-subject">
             <label for="subject-id">{{ t._("subject") }}</label>
-            {{ select('subject-id', subjects, 'using': ['id', 'name'], "useEmpty":true,
-            'emptyText': t._('choose-subject'), "class":"form-control",
-            'data-required-key':'true', 'data-target':'#hwk-cls-subject') }}
+            <select name="subject-id" class="form-control"
+                data-target="#hwk-cls-subject" data-required-key="true" >
+                {% for area in subjectAreas.getAreas() %}
+                <optgroup label="{{ area.name }}">
+                    {% for subject in subjectAreas.getSubjectsByArea(area.id) %}
+                        <option value="{{ subject.id }}">
+                            {{ subject.name }}
+                        </option>
+                    {% endfor %}
+                </optgroup>
+                {% endfor %}
+                {% if freeSubjects %}
+                    <optgroup label="Free">
+                    {% for subject in freeSubjects %}
+                        <option value="{{ subject.id }}">
+                            {{ subject.name}}
+                        </option>
+                    {% endfor %}
+                    </optgroup>
+                {% endif %}
+            </select>
             <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
         </p>
         <p class="col-md-6" id="hwk-cls-cohort">

@@ -7,35 +7,40 @@
     <table class="table table-hover fixed">
         <thead>
             <tr>
-                <th colspan=7>{{ t._("class") }}</th>
+                <th>{{ t._("class") }}</th>
                 <th></th>
                 <th>{{ t._("students") }}</th>
-                <th>{{ t._("set") }}</th>
-                <th>{{ t._("in-progress") }}</th>
-                <th>{{ t._("completed") }}</th>
+                <th>{{ t._("works-in-progress") }}</th>
+                <th>{{ t._("works-to-review") }}</th>
             </tr>
         </thead>
         <tbody>
             {% for classList in classes %}
             <tr>
-                <td colspan=7>
+                <td class="ld-link">
                     {{ link_to("teacher/homework/class/"~classList.id~"?filter=2&group=date", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
                 </td>
                 <td class="ld-new-buttons"><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class=" custom-icon-new-homework"></span>{{ t._("new") }} </a>
-                    {% if classList.getSubmittedHomework() %}
-                        <a href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span class="icon-ok-circle"></span>{{ t._("correct") }} </a>
-                    {% endif %}
                 </td>
                 <td class="ld-student-status">
-            {% if classList.getSubmittedHomework() %}
+                {{ classList.users.count() }}
+            <!-- {% if classList.getSubmittedHomework() %}
                         {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
-                    {% else %}
+                    {% else %} 
                         {{ classList.users.count() }}
-                    {% endif %}
+                    {% endif %}  -->
                 </td>
-                <td>{{ classList.getPendingHomework()|length }}</td>
-                <td>{{ classList.getStartedHomework()|length }}</td>
-                <td>{{ classList.getSubmittedHomework()|length }}</td>
+                <td>{{ classList.getPendingHomework()|length + classList.getStartedHomework()|length }}</td>
+                {% if classList.getSubmittedHomework() %}
+                <td 
+                    class="ld-new-buttons">{{ classList.getSubmittedHomework()|length }}    <a 
+                    href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span
+                    class="icon-ok-circle"></span>{{ t._("correct") }} </a></td>
+                {% else %}
+                <td class="ld-new-buttons ld-btn-inactive">0     <span 
+                    data-title="{{ homework.info.title }}" class="icon-ok-circle"
+                    ></span>{{ t._("correct") }}</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

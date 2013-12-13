@@ -493,6 +493,10 @@ section table tr:first-child, section table tr:last-child {
     border: solid 1px #CCCCCC;
     color: #CCCCCC !important;
 }
+.ld-btn-inactive {
+    cursor: default;
+    color: #CCCCCC!important;
+}
 
 /* Icons */
 .btn-icon {
@@ -1303,5 +1307,9 @@ table.ui-datepicker-calendar .ui-datepicker-week-end.ui-datepicker-other-month {
 .link {
     color: #428bca;
     cursor: pointer;
+}
+.ld-link {
+    color: #4d4d4f;
+    font-size: larger;
 }
 

@@ -275,8 +275,8 @@ var homeworkPage = (function() {
     }
 
     var stylePaginator = function() {
-        var paginator = $( ".pagination" )[0]
-        if ( paginator == undefined )
+        var paginator = $( ".pagination" )
+        if ( paginator.length == 0 )
             return
         var pageNumber = 1
         var startPos = window.location.href.indexOf( "?" )
@@ -285,16 +285,16 @@ var homeworkPage = (function() {
             var endPos = window.location.href.indexOf( "&" )
             pageNumber = parseInt(window.location.href.substring( startPos, endPos ).split( "=" )[1])
         }
-        paginator.children[pageNumber].classList.add( "this-page" )
-        paginator.children[pageNumber].onclick = function() {
+        paginator[0].children[pageNumber].addClass += " this-page"
+        paginator[0].children[pageNumber].onclick = function() {
             event.preventDefault()
         }
         if ( pageNumber == 1) {
-            paginator.classList.add("AtStart")
+            paginator.addClass("AtStart")
             $( ".pagination .Prev" ).replaceWith( $( "<span class=\"icon-chevron-left Prev\"></span>" ) )
         }
         if ( pageNumber == paginator.children.length - 2) {
-            paginator.classList.add("AtEnd")
+            paginator.addClass("AtEnd")
             $( ".pagination .Next" ).replaceWith( $( "<span class=\"icon-chevron-right Next\"></span>" ) )
         }
 
