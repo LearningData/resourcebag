@@ -37,23 +37,23 @@ class HomeworkUserTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testGetSubmittedDateDefault() {
-        $this->assertEquals($this->homeworkUser->getSubmittedDate(),
-            "Fri 13th Dec 2013");
+        $this->assertEquals("Fri 13th Dec 2013",
+            $this->homeworkUser->getSubmittedDate());
     }
 
     public function testGetSubmittedDateWithFormat() {
-        $this->assertEquals($this->homeworkUser->getSubmittedDate("Y/m/d"),
-            "2013/12/13");
+        $this->assertEquals("2013/12/13",
+            $this->homeworkUser->getSubmittedDate("Y/m/d"));
     }
 
     public function testGetReviewedDateDefault() {
-        $this->assertEquals($this->homeworkUser->getReviewedDate(),
-            "Mon 16th Dec 2013");
+        $this->assertEquals("Mon 16th Dec 2013",
+            $this->homeworkUser->getReviewedDate());
     }
 
     public function testGetReviewedDateWithFormat() {
-        $this->assertEquals($this->homeworkUser->getReviewedDate("Y/m/d"),
-            "2013/12/16");
+        $this->assertEquals("2013/12/16",
+            $this->homeworkUser->getReviewedDate("Y/m/d"));
     }
 
     public function testGetStatusReviewed() {
@@ -75,6 +75,18 @@ class HomeworkUserTest extends PHPUnit_Framework_TestCase {
     public function testGetStatusStarted() {
         $this->homeworkUser->status = Homework::$STARTED;
         $this->assertEquals("pending", $this->homeworkUser->getStatus());
+    }
+
+    public function testColumnMap() {
+        $columns = $this->homeworkUser->columnMap();
+
+        $this->assertEquals("id", $columns["id"]);
+        $this->assertEquals("homeworkId", $columns["homeworkId"]);
+        $this->assertEquals("studentId", $columns["studentId"]);
+        $this->assertEquals("submittedDate", $columns["submittedDate"]);
+        $this->assertEquals("reviewedDate", $columns["reviewedDate"]);
+        $this->assertEquals("text", $columns["text"]);
+        $this->assertEquals("status", $columns["status"]);
     }
 }
 ?>

@@ -3,11 +3,11 @@ use Phalcon\Mvc\User\Component;
 require "SessionService.php";
 
 class Authenticate extends Component {
-    public function authentication($email, $password) {
-        if(strstr($email, '@')) {
-            $user = User::findFirstByEmail($email);
+    public function authentication($login, $password) {
+        if(strstr($login, '@')) {
+            $user = User::findFirstByEmail($login);
         } else {
-            $user = User::findFirstByUsername($email);
+            $user = User::findFirstByUsername($login);
         }
 
         if($user) {
