@@ -1,5 +1,7 @@
 var homeworkPage = (function() {
 
+    var dirtyHomeworkText = false
+
     var getClasses = function( dfdDialog ) {
         var url = urlBase + "/service/classes/";
         $.get( url, function(response) {
@@ -332,7 +334,6 @@ var homeworkPage = (function() {
         if ($( "#homework-text-editor" ).length > 0) {
             $( "#homework-text-editor" ).summernote({
                 height: 150,
-                focus: true,
                 toolbar: [
                     ['style', ['style']],
                     [ "style", [ "bold", "italic", "underline" ] ],
@@ -344,14 +345,17 @@ var homeworkPage = (function() {
         }
         $( ".ld-homework .homework-text .note-toolbar" ).addClass("hidden")
         $( ".ld-homework .homework-text .note-editable" ).click(function(event) {
+            $(document).on("keydown", ".note-editable" ,function( event ) {
+                dirtyHomeworkText = true
+            })
             $( ".ld-homework .homework-text .note-toolbar" ).removeClass("hidden")
         })
         $( "#save-homework-text" ).click(function( event ) {
             event.preventDefault()
+                dirtyHomeworkText = false
             $('textarea[name="content-homework"]').val($('#homework-text-editor').code())[0]
             $("#text-form").submit()
         })
-
         $( ".btn-remove" ).click(function( event ) {
             event.preventDefault()
             removeHomeworkFileDialog( $ ( this ).data() )
@@ -388,6 +392,12 @@ var homeworkPage = (function() {
             $( iconTarget )[0].classList.toggle("icon-chevron-down")
             
         })
+        // check if unsaved changes to dialog
+        window.addEventListener("beforeunload", function( event ) {
+            if (dirtyHomeworkText) {
+                event.returnValue = "You have unsaved changes to your homework."
+            }
+        });
     }
 
     return {
