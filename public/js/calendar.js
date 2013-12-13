@@ -112,7 +112,11 @@ var calendarPage = (function() {
         
     }
     var fillAgenda = function(data) {
-        $(".agenda-list").remove()
+        if ($(".agenda-list").parent().hasClass("slimScrollDiv")) {
+            $(".agenda-list").parent().remove()
+        } else {
+            $(".agenda-list").remove()
+        }
         data.sort(function(a, b) {
             allA = (a["allDay"] || 0)
             allB = (b["allDay"] || 0)
