@@ -33,7 +33,7 @@
                 {% else %}
                     <td colspan=2>{{ t._("selected-classes") }}</td>
                 {% endif %}
-                <td colspan=2 class="format-date">{{ myNotice.date }}
+                <td colspan=2 class="format-date">{{ myNotice.date }}</td>
                 <td colspan=2 class="format-date">{{ myNotice.expiryDate }}</td>
                 <td class="ld-tooltip">{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}
                     <span data-id={{ myNotice.id }} data-toggle="tooltip"
@@ -51,8 +51,7 @@
         {% for notice in notices %}
         <div class="notice-space">
             <div class="note {{ notice.category }}  ld-tooltip">
-                <span class="date format-date">{{ notice.date }}
-                </span> | <span class="author">{{ t._(notice.author.title) }}
+                <span class="date format-date">{{ notice.date }}</span> | <span class="author">{{ t._(notice.author.title) }}
                 {{ notice.author.lastName }}</span>
                 <p class="message">
                     <span class="ld-notice-icon"></span>
