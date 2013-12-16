@@ -70,6 +70,7 @@
                         <br>
                         <p>
                             <a href="login/microsoft"> {{ image("img/microsoft_login.png", "alt":"Login with Microsoft") }} </a>
+                            <a href="login/google"> {{ image("img/google_login.png", "alt":"Login with Google", "width":"208px", "height":"30px") }} </a>
                         </p>
                     </div>
                 </div>

@@ -33,6 +33,14 @@ class SessionController extends Phalcon\Mvc\Controller {
                     "oauth20_logout.srf?client_id=$clientId&redirect_uri=$redirectUri",
                     true);
             }
+
+            if($session["type"] == "google") {
+                SessionService::destroySession();
+                $redirectUri = 'http://'.$_SERVER['HTTP_HOST'] . "/schoolbag";
+
+                return $this->response->redirect("https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=$redirectUri",
+                    true);
+            }
         }
 
         SessionService::destroySession();

@@ -36,5 +36,12 @@ return new \Phalcon\Config(array(
         'api' => 'https://apis.live.net/v5.0/me',
         'clientId' => '000000004010EC5C',
         'clientSecret' => '1aiidbRFG8BYbHG-qeJwhJ3SAxbgqU2W'
+    ),
+    'google' => array(
+        'applicationName' => 'Schoolbag Demo',
+        'scopes' => '',
+        'clientId' => '362461578866-a9g95qrq1kmcrusgeskup25o63lsnhkc.apps.googleusercontent.com',
+        'clientSecret' => 'MPwkjWbIlJkceAo6XhM40Ibl',
+        'developerKey' => 'AIzaSyAknjqI4We6SiIl8NKnjyeakXpwa3jM47g'
     )
 ));

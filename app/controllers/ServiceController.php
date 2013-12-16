@@ -10,9 +10,9 @@ class ServiceController extends ControllerBase {
         return $this->setContent($content);
     }
 
-    public function subjectsGroupedAction() {
+    public function subjectsGroupedAction($cohortId) {
         $subjectAreas = new SubjectAreas();
-        $subjects = $subjectAreas->getSubjectsGrouped();
+        $subjects = $subjectAreas->getSubjectsGrouped($cohortId);
         return $this->setContent($subjects);
     }
 

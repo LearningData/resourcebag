@@ -34,6 +34,17 @@ class Authenticate extends Component {
         return false;
     }
 
+    public function authenticationGoogle($user) {
+        if($user) {
+            SessionService::createSession($user, "google");
+            Authenticate::saveSuccess($user);
+            return $user;
+        }
+
+        Authenticate::saveLoginFail($user->id);
+        return false;
+    }
+
     public function checkPassword($password, $hashedPassword) {
         return md5($password) == $hashedPassword;
     }

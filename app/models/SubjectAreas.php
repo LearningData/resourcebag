@@ -18,6 +18,18 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
         return $areas;
     }
 
+    public function getAreasByCohort($cohortId) {
+        $areas = $this->getModelsManager()->createBuilder()
+            ->from("Subject")
+            ->join("SubjectAreas", "Subject.id = SubjectAreas.areaId")
+            ->where("cohortId = $cohortId")
+            ->groupBy("name")
+            ->getQuery()
+            ->execute();
+
+        return $areas;
+    }
+
     public function getSubjectsByArea($subjectId) {
         $areas = $this->getModelsManager()->createBuilder()
             ->from("Subject")
@@ -33,7 +45,7 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
         $freeSubjects = array();
 
         foreach(Subject::find() as $subject) {
-            if(!SubjectAreas::findFirstBySubjectId($subject->id)) {
+            if(!SubjectAreas::findFirst("subjectId = " . $subject->id)) {
                 $freeSubjects []= $subject;
             }
         }
@@ -41,8 +53,13 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
         return $freeSubjects;
     }
 
-    public function getSubjectsGrouped() {
-        $areas = $this->getAreas();
+    public function getSubjectsGrouped($cohortId=0) {
+        if($cohortId > 0) {
+            $areas = $this->getAreasByCohort($cohortId);
+        } else {
+            $areas = $this->getAreas();
+        }
+
         $options = array();
 
         foreach ($areas as $area) {
@@ -51,6 +68,14 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
             $options []= array("area" => $area->name,
                 "subjects" => $subjects->toArray());
         }
+
+        $freeSubjects = $this->getFreeSubjects();
+
+        if(count($freeSubjects) > 0) {
+            $options []= array("area" => "free",
+                "subjects" => $freeSubjects);
+        }
+
         return $options;
     }
 
