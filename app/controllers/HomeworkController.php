@@ -42,6 +42,7 @@ class HomeworkController extends ControllerBase {
         $group = $this->request->get("group");
         $template = "teacher/homework/list";
         $limit = 10;
+        $params = "";
 
         $classList = ClassList::findFirstById($classId);
 
@@ -62,6 +63,7 @@ class HomeworkController extends ControllerBase {
                     }
                     $limit = 2;
                     $template = "teacher/homework/listGrouped";
+                    $params = "&group=date";
                 } else {
                     $homeworks = Homework::findByClassAndStatus($classId,
                         $this->view->status);
@@ -76,7 +78,7 @@ class HomeworkController extends ControllerBase {
         $this->view->links = HomeworkService::getLinksByClass(
             $user->getController(),
             $classId,
-            $totalPages, $this->view->status
+            $totalPages, $this->view->status, $params
         );
         $this->view->classId = $classId;
 
