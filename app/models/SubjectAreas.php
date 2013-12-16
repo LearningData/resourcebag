@@ -41,6 +41,19 @@ class SubjectAreas extends \Phalcon\Mvc\Model {
         return $freeSubjects;
     }
 
+    public function getSubjectsGrouped() {
+        $areas = $this->getAreas();
+        $options = array();
+
+        foreach ($areas as $area) {
+            $subjects = $this->getSubjectsByArea($area->id);
+
+            $options []= array("area" => $area->name,
+                "subjects" => $subjects->toArray());
+        }
+        return $options;
+    }
+
     public function columnMap() {
         return array(
             'id' => 'id',
