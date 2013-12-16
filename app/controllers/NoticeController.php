@@ -48,6 +48,7 @@ class NoticeController extends ControllerBase {
         $classes = ClassListService::getClassesByUser($user);
         $this->view->categories = NoticeBoard::getCategories();
         $this->view->classes = $classes;
+        $this->view->displayDate = date('Y-m-d');
         $this->view->expiryDate = date('Y-m-d', strtotime("+2 month"));
     }
 

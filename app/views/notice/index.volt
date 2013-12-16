@@ -12,35 +12,36 @@
         <table class="user-notices hidden">
             <thead>
             <tr>
-                <th>{{ t._("category") }}</th>
-                <th colspan=6>{{ t._("notice")}}</th>
-                <th>{{ t._("audience") }}</th>
+                <th></th>
+                <th colspan=5>{{ t._("notice")}}</th>
+                <th colspan=2>{{ t._("audience") }}</th>
                 <th colspan=2>{{ t._("display-date") }}</th>
                 <th colspan=2>{{ t._("expiry-date") }}</th>
-                <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
         {% for myNotice in myNotices %}
-            <!--<tr class={% if date('Y-m-d h:i:s') < myNotice.date %}
-                    "pending"
-                {% elseif date('Y-m-d h:i:s') > myNotice.expiryDate %}
-                    "expired"
-                {% else %}
-                    "active"
-                   {% endif %}>-->
+            {% if date('Y-m-d h:i:s') < myNotice.date %}
              <tr>
                 <td class="note {{ myNotice.category }}"><span class="ld-notice-icon"></span></td>
-                <td colspan=6 class="text">{{ myNotice.text }}</td>
-                <td>{{ myNotice.userType }}</td>
+                <td colspan=5 class="text">{{ myNotice.text }}</td>
+                {% if myNotice.userType == 'A' %}
+                    <td colspan=2>{{ t._("everyone") }}</td>
+                {% elseif myNotice.userType == 'T' %}
+                    <td colspan=2>{{ t._("teachers") }}</td>
+                {% else %}
+                    <td colspan=2>{{ t._("selected-classes") }}</td>
+                {% endif %}
                 <td colspan=2>{{ myNotice.getDate(t._("dateformat")) }}
                 <td colspan=2>{{ myNotice.expiryDate }}</td>
-                <td class="ld-tooltip">{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}</td>
-                <td class="ld-tooltip"><span data-id={{ myNotice.id }} data-toggle="tooltip"
+                <td class="ld-tooltip">{{ link_to(user.getController()~"/noticeboard/edit/"~myNotice.id, "class":"btn-icon icon-pencil", "data-toggle":"tooltip", "data-placement":"left auto", "title":t._("edit")) }}
+                    <span data-id={{ myNotice.id }} data-toggle="tooltip"
                     data-placement="left auto" title="{{ t._('delete') }}"
-                    class="btn-icon btn-delete icon-remove"></span></td>
+                    class="btn-icon btn-delete icon-remove"></span>
+                </td>
             </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
         </table>
