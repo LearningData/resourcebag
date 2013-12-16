@@ -88,7 +88,7 @@ class SubjectAreasTest extends PHPUnit_Framework_TestCase {
         $this->assertEmpty($this->subjectAreas->getSubjectsGrouped());
     }
 
-    public function testGetSubjectsGroupedJsonReturnsAreaAndSubject() {
+    public function testGetSubjectsGroupedReturnsAreaAndSubject() {
         $area = $this->createSubject("Test Area");
         $subject = $this->createSubject("subject one");
         $subjectArea = $this->createArea($subject->id, $area->id);
@@ -98,13 +98,25 @@ class SubjectAreasTest extends PHPUnit_Framework_TestCase {
             "subjects" => $this->subjectAreas
                             ->getSubjectsByArea($area->id)->toArray());
 
+        $freeSubjects = array("area" => "free",
+            "subjects" => $this->subjectAreas->getFreeSubjects());
+
         $expectedOptions []= $expectedOption;
+        $expectedOptions []= $freeSubjects;
+
         $groups = $this->subjectAreas->getSubjectsGrouped();
         $options = $groups[0];
 
-        $this->assertEquals($expectedOptions, $groups);
         $this->assertEquals($expectedOption["area"], $options["area"]);
         $this->assertEquals($expectedOption["subjects"], $options["subjects"]);
+    }
+
+    public function testGetSubjectsGroupedReturnsFreeSubjects() {
+        $subject = $this->createSubject("subject one");
+        $groups = $this->subjectAreas->getSubjectsGrouped();
+        $groupFree = $groups[0];
+
+        $this->assertEquals("free", $groupFree["area"]);
     }
 
     private function createSubject($name) {
