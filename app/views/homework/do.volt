@@ -73,10 +73,10 @@
     </div>
     {% if homework.files.count() == 0 and homework.text|striptags|trim|length == 0 %}
     <button class="btn mtop-20 btn-inactive">
-        {{ t._("submit-homework") }}
+        {{ t._("finish-homework") }}
     </button>
     {% else %}
-    {{ link_to("student/homework/submit/"~homework.id, "id":"submit-homework", "class":"btn mtop-20", t._("submit-homework")) }}
+    {{ link_to("student/homework/submit/"~homework.id, "id":"submit-homework", "class":"btn mtop-20", t._("finish-homework")) }}
     {% endif %}
     <button class="btn mtop-20 btn-cancel return">
         {{ t._("cancel") }}

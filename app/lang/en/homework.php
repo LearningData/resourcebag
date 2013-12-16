@@ -9,6 +9,7 @@ $messages = array(
     "completed" => "Completed",
     "due date" => "Due Date",
     "enter-homework-text" => "Enter Homework Text",
+    "finish-homework" => "Finish homework",
     "homework-exit" => "Back",
     "homework-title" => "Homework Title",
     "in-progress" => "In Progress",
