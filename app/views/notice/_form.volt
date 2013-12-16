@@ -48,26 +48,27 @@
         "data-required-key":"true", "data-target":"#nts-frm-msg") }}
         <span class="validation-error">{{ t._("cant-leave-empty") }}</span>
 </div>
-<p id="hwk-nts-display-date" class="col-md-6">
-    {{ t._("notice-date") }}
+<div id="hwk-nts-display-date" class="col-xs-12 col-sm-6">
+    {{ t._("notice-show-on") }}
     {{ text_field("date", "placeholder":t._("date"), "id":"notice-start-date", "class":"form-control",
-        "data-required-key":"date", "data-target":"#hwk-nts-display-date") }}
+        "data-required-key":"date", "data-target":"#hwk-nts-display-date",  "value": displayDate) }}
     <span class="validation-error">{{ t._("needs-date") }}</span>
-</p>
-<p class="col-md-6">
-    {{ t._("add-file") }}
-    <input type="file" name="file">
-</p>
-<p class="col-md-6">
-    <label>{{ t._("notice-category") }}</label>
-    {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
-</p>
-<p class="col-md-6">
-    {{ t._("expiry-date") }}
+</div>
+<div class="col-xs-12 col-sm-6">
+    {{ t._("notice-hide-on") }}
     {{ text_field("expiryDate", "placeholder":t._("expiry-date"),
         "id":"notice-end-date", "class":"form-control",
         "value": expiryDate) }}
-</p>
+</div>
+<div class="col-xs-12 col-sm-6">
+    <label>{{ t._("notice-category") }}</label>
+    {{ select('category', categories, 'using': ['id', 'name'], "class":"form-control") }}
+</div>
+<div class="col-xs-12 col-sm-6">
+    {{ t._("add-file") }}
+    <input type="file" name="file">
+</div>
+
 </div>
 <div class="clearfix"></div>
 {{ submit_button(t._("save"), "class":"btn") }}

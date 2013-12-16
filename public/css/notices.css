@@ -80,6 +80,14 @@
     margin: 5px 0 0 10px;
     display: block;
 }
+/* view upcoming notices */
+.ld-notices .user-notices .btn-icon {
+    float: left;
+}
+.ld-notices .user-notices .btn-icon.btn-delete {
+    padding-top: 3px;
+}
+
 /* delete notice */
 .ld-notices form .btn-delete {
     float: right;

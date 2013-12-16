@@ -10,6 +10,12 @@ class ServiceController extends ControllerBase {
         return $this->setContent($content);
     }
 
+    public function subjectsGroupedAction() {
+        $subjectAreas = new SubjectAreas();
+        $subjects = $subjectAreas->getSubjectsGrouped();
+        return $this->setContent($subjects);
+    }
+
     public function subjectsAndClassesAction() {
         $user = $this->getUserBySession();
         $subjects = Subject::find();

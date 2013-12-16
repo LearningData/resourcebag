@@ -267,6 +267,8 @@ function setUpEvents() {
         minDate : 0,
         firstDay: 1
     })
+    $(".ld-calendar #start-date, .ld-calendar #end-date, #notice-start-date, #notice-end-date").attr("readonly", true)
+    $(".ld-calendar #start-date, .ld-calendar #end-date, #notice-start-date, #notice-end-date").css({"background": "transparent", "cursor": "pointer"})
     $("#start-date, #end-date").datepicker("widget").addClass("event-page")
     $("#notice-start-date, #notice-end-date").datepicker("widget").addClass("datepicker-note")
     //alerts
