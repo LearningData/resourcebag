@@ -172,9 +172,16 @@ class HomeworkService {
 
         for($week = 1; $week <= 4; $week++) {
             $next = date('Y-m-d',strtotime("monday +$week week"));
-            $works = HomeworkService::getHomeworkByWeek($classId, $first, $next);
-            $homeworks []= array("week" => "$first - $next", "homeworks" => $works,
-                        "start" => $first);
+            $works = HomeworkService::getHomeworkByWeek($classId,
+                $first, $next);
+
+            if(count($works) > 0) {
+                $homeworks []= array("week" => "$first - $next",
+                    "homeworks" => $works,
+                    "start" => $first
+                );
+            }
+
             $first = $next;
         }
 
