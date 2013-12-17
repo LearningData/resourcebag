@@ -91,18 +91,25 @@ function init() {
         }
     })
     $(".format-date-range").each(function(index, element) {
-        var start = element.getAttribute("data-start")
-        var end = element.getAttribute("data-end")
-        console.log(start, end)
-        if (moment(start).isSame(end,'month')) {
-            element.textContent = moment(start).format("ddd Do") + "-" + 
-moment(end).format("ddd Do, MMM YYYY")
-        } else {
-            element.textContent = moment(start).format("Do MMM YYYY")+ "-" + 
-moment(end).format("Do MMM YYYY")
-        }
+        formatDateRange(element)
     })
 
+}
+
+function formatDate() {
+
+}
+
+function formatDateRange(element) {
+    var start = element.getAttribute("data-start")
+    var end = element.getAttribute("data-end")
+    if (moment(start).isSame(end,'month')) {
+        element.textContent = moment(start).format("Do") + "-" + 
+moment(end).format("Do, MMM YYYY")
+    } else {
+        element.textContent = moment(start).format("Do MMM YYYY")+ "-" + 
+moment(end).format("Do MMM YYYY")
+    }
 }
 
 function getUser() {
@@ -213,19 +220,6 @@ function dayOfWeek(date) {
     return days[date.getUTCDay()]
 }
 
-function prettyDay(date) {
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    return days[date.getUTCDay()] + " " + date.getUTCDate()
-}
-
-function prettyDate(date) {
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    return date.getUTCDate() + " " + months[date.getMonth()]
-}
-function prettyDateMonth(date) {
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    return months[date.getMonth()]
-}
 
 function hiddenRadioElements() {
     $(":radio").each(function(index, element) {

@@ -43,7 +43,7 @@ var timetablePage = (function() {
             refreshTables()
         })
         $( ".teacher .ld-timetable .btn-edit").click( function() {
-        //    $( ".teacher .ld-timetable .table" ).toggleClass( "edit" )
+            //$( ".teacher .ld-timetable .table" ).toggleClass( "edit" )
         })
     }
 
@@ -79,7 +79,7 @@ var timetablePage = (function() {
                 var date = new Date(displayDate)
                 date.setDate(date.getDate() - date.getDay() + day)
                 header.empty()
-                header.append(prettyDay(date))
+                header.append(moment(date).format("dddd Do"))
 
                 timetable.append( tableBody )
                 $( ".ld-timetable .ld-responsive-xs .table" ).replaceWith( timetable )
@@ -96,7 +96,8 @@ var timetablePage = (function() {
         lastDay.setDate(lastDay.getDate() + Object.keys(week).length)
         var header = $( ".ld-timetable .ld-responsive-sm .nav .title h2" )
         header.empty()
-        header.append(prettyDate(firstDay) + " - " + prettyDate(lastDay) )
+        header.append(moment(firstDay).format('D MMM') + " - " +
+            moment(lastDay).format('D MMM'))
         
     }
 
@@ -106,7 +107,7 @@ var timetablePage = (function() {
             for (var i = 0; i < headRows.length; i++ ) {
                 var thisDay = new Date( firstDay )
                 thisDay.setDate(thisDay.getDate() + i)
-                headRows[i].textContent = dayOfWeek(thisDay)
+                headRows[i].textContent = moment(thisDay).format('dddd')
        }
        return tableHead
     }
@@ -169,10 +170,10 @@ var timetablePage = (function() {
                 event.stopPropagation()
                 window.location.href = urlBase + "/" + getUser() + "/showClass/" + event.target.getAttribute("data-class-id")
             })
-            $( ".teacher .ld-timetable .table.week td").click(function( event ) {
-            //    $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
-            //    event.currentTarget.classList.add( "edit" )
-            })
+            /*$( ".teacher .ld-timetable .table.week td").click(function( event ) {
+                $( ".teacher .ld-timetable .table.week td").removeClass( "edit" )
+                event.currentTarget.classList.add( "edit" )
+            })*/
         })
     }
 

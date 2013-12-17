@@ -186,7 +186,7 @@ var dashboard = (function() {
     var populateTimetable = function( date ) {
         var header = $( "#dashboard-timetable-contents .header-navigation h3")
         header.empty()
-        header.append(prettyDay(date))
+        header.append(moment(date).format("dddd Do"))
         var url = urlBase + "/service/timetable/" //TODO add dates
         $.get(url, function(response) {
             var day = date.getDay()
