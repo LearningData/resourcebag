@@ -36,23 +36,25 @@ class LoginController extends Phalcon\Mvc\Controller {
 
         if($client->exit) { exit; }
 
+        $newUser = array();
+        $newUser['authprovider'] = "microsoft";
+        $newUser['photo'] = "";
+        $newUser['name'] = $user->first_name;
+        $newUser['lastname'] = $user->last_name;
+        $newUser['email'] = $user->emails->preferred;
+
+        session_start(); 
+        $_SESSION['newUser'] = $newUser;
+
         if($success) {
             $schoolUser = User::findFirstByEmail($user->emails->preferred);
 
             if(!$schoolUser) {
-                $schoolUser = new User();
-                $schoolUser->schoolId = 1;
-                $schoolUser->type = User::getTypeStudent();
-                $schoolUser->name = $user->first_name;
-                $schoolUser->lastName = $user->last_name;
-                $schoolUser->password = "084e0343a0486ff05530df6c705c8bb4";
-                $schoolUser->email = $user->emails->preferred;
-
-                $schoolUser->save();
+                return $this->response->redirect("register/accessCode");
+            } else {
+                Authenticate::authenticationMicrosoft($schoolUser);
+                return $this->response->redirect("dashboard");
             }
-
-            Authenticate::authenticationMicrosoft($schoolUser);
-            return $this->response->redirect("dashboard");
         }
     }
 
@@ -77,25 +79,32 @@ class LoginController extends Phalcon\Mvc\Controller {
         $plus = new Google_PlusService($client);
         $oauth2 = new Google_Oauth2Service($client);
 
-        if(isset($_GET['code'])){
+        if(isset($_GET['code'])) {
             $client->authenticate();
             $_SESSION['access_token'] = $client->getAccessToken();
         }
 
-        if(isset($_SESSION['access_token'])){
+        if(isset($_SESSION['access_token'])) {
             $client->setAccessToken($_SESSION['access_token']);
         }
 
-        if($client->getAccessToken()){
+        if($client->getAccessToken()) {
             $user = $oauth2->userinfo->get();
-            $me = $plus->people->get('me');
-            $profile_photo = "https://plus.google.com/s2/photos/profile/" . $me['id'] . "?sz=150";
-            $optParams = array('maxResults' => 100);
-            $activities = $plus->activities->listActivities('me','public',$optParams);
+            $user = array_merge($user,$plus->people->get('me'));
+
+            $newUser = array();
+            $newUser['authprovider'] = "google";
+            $newUser['photo'] = "https://plus.google.com/s2/photos/profile/" . $user['id'] . "?sz=150";
+            $newUser['name'] = $user['given_name'];
+            $newUser['lastname'] = $user['family_name'];
+            $newUser['email'] = $user['email'];
+
+            session_start(); 
+            $_SESSION['newUser'] = $newUser;
+
             $_SESSION['access_token'] = $client->getAccessToken();
-            $email = filter_var($user['email'], FILTER_SANITIZE_EMAIL);
             $success = true;
-        } else{
+        } else {
             $authUrl = $client->createAuthUrl();
             header('Location: ' . $authUrl);
             $success = false;
@@ -105,35 +114,11 @@ class LoginController extends Phalcon\Mvc\Controller {
             $schoolUser = User::findFirstByEmail($user['email']);
 
             if(!$schoolUser) {
-                $schoolUser = new User();
-                $schoolUser->schoolId = 1;
-                $schoolUser->type = User::getTypeStudent();
-                $schoolUser->name = $user['given_name'];
-                $schoolUser->lastName = $user['family_name'];
-                $schoolUser->password = "084e0343a0486ff05530df6c705c8bb4";
-                $schoolUser->email = $user['email'];
-
-                $schoolUser->save();
+                return $this->response->redirect("register/accessCode");
+            } else {
+                Authenticate::authenticationGoogle($schoolUser);
+                return $this->response->redirect("dashboard");
             }
-
-            $userId=$schoolUser->id;
-            $photo = UserPhoto::findFirst("userId = " . $userId);
-
-            if (!$photo) {
-                $photo = new UserPhoto();
-                $photo->userId = $userId;
-                $photo->originalName = $user['email'];
-                $photo->name = $user['email'].rand();
-                $photo->size = '';
-                $photo->type = '';
-                $photo->file = file_get_contents($profile_photo);
-
-                $photo->save();
-            }
-
-
-            Authenticate::authenticationGoogle($schoolUser);
-            return $this->response->redirect("dashboard");
         }
     }
 }
