@@ -35,6 +35,36 @@ class HomeworkController extends ControllerBase {
         $this->view->pick($template);
     }
 
+    public function listAction($homeworkId) {
+        $this->view->homework = Homework::findFirstById($homeworkId);
+        $this->view->status = $this->request->get("filter");
+        $currentPage = $this->request->getQuery("page", "int");
+        $user = Authenticate::getUser();
+
+        switch ($this->view->status) {
+            case Homework::$STARTED:
+                $homeworks = $this->view->homework->pendingHomeworks();
+                break;
+            case Homework::$SUBMITTED:
+                $homeworks = $this->view->homework->submittedHomeworks();
+                break;
+            case Homework::$REVIEWED:
+                $homeworks = $this->view->homework->submittedHomeworks();
+                break;
+            default:
+                $homeworks = $this->view->homework->works;
+                break;
+        }
+
+        $this->view->page = HomeworkService::getPage($homeworks, $currentPage);
+        $totalPages = $this->view->page->total_pages;
+        $this->view->links = HomeworkService::linksHomeworks(
+            $user->getController(),
+            $this->view->homework->id, $totalPages, $this->view->status);
+
+        $this->view->pick("teacher/homework/listHomeworks");
+    }
+
     public function listByClassAction($classId) {
         $user = $this->getUserBySession();
         $currentPage = $this->request->getQuery("page", "int");

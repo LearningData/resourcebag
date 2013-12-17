@@ -76,6 +76,14 @@ class Homework extends \Phalcon\Mvc\Model {
         return $homeworks;
     }
 
+    public function submittedHomeworks() {
+        return $this->getWorks("status = " . Homework::$SUBMITTED);
+    }
+
+    public function pendingHomeworks() {
+        return $this->getWorks("status <= " . Homework::$STARTED);
+    }
+
     public function columnMap() {
         return array(
             'homeworkID' => 'id',
