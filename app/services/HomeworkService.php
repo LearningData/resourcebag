@@ -152,5 +152,20 @@ class HomeworkService {
 
         return $homeworks;
     }
+
+    public function homeworksGroupedByWeek($classId) {
+        $homeworks = array();
+        $first = date('Y-m-d',strtotime('monday +0 week'));
+
+        for($week = 1; $week <= 4; $week++) {
+            $next = date('Y-m-d',strtotime("monday +$week week"));
+            $works = HomeworkService::getHomeworkByWeek($classId, $first, $next);
+            $homeworks []= array("week" => "$first - $next", "homeworks" => $works,
+                        "start" => $first);
+            $first = $next;
+        }
+
+        return $homeworks;
+    }
 }
 ?>

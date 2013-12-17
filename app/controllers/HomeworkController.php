@@ -51,17 +51,8 @@ class HomeworkController extends ControllerBase {
         } else {
             if($classList && $classList->teacherId == $user->id) {
                 if($group && $group == "date") {
-                    $homeworks = array();
-                    $first = date('Y-m-d',strtotime('monday +0 week'));
-
-                    for($week = 1; $week <= 4; $week++) {
-                        $next = date('Y-m-d',strtotime("monday +$week week"));
-                        $works = HomeworkService::getHomeworkByWeek($classId, $first, $next);
-                        $homeworks []= array("week" => "$first - $next", "homeworks" => $works,
-                                    "start" => $first);
-                        $first = $next;
-                    }
-                    $limit = 2;
+                    $homeworks = HomeworkService::homeworksGroupedByWeek($classId);
+                    $limit = 1;
                     $template = "teacher/homework/listGrouped";
                     $params = "&group=date";
                 } else {

@@ -26,20 +26,20 @@
                 {{ classList.users.count() }}
             <!-- {% if classList.getSubmittedHomework() %}
                         {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
-                    {% else %} 
+                    {% else %}
                         {{ classList.users.count() }}
                     {% endif %}  -->
                 </td>
                 <td>{{ classList.getPendingHomework()|length + classList.getStartedHomework()|length }}</td>
                 {% if classList.getSubmittedHomework() %}
-                <td 
-                    class="ld-new-buttons">{{ classList.getSubmittedHomework()|length }}    <a 
+                <td
+                    class="ld-new-buttons">{{ classList.getSubmittedHomework()|length }}    <a
                     href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span
                     class="icon-ok-circle"></span>{{ t._("correct") }} </a></td>
                 {% else %}
-                <td class="ld-new-buttons ld-btn-inactive">0     <span 
-                    data-title="{{ homework.info.title }}" class="icon-ok-circle"
-                    ></span>{{ t._("correct") }}</td>
+                <td class="ld-new-buttons ld-btn-inactive">
+                    0 <span class="icon-ok-circle"></span>{{ t._("correct") }}
+                </td>
                 {% endif %}
             </tr>
             {% endfor %}
