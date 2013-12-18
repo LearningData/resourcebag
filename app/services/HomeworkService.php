@@ -112,6 +112,18 @@ class HomeworkService {
         return $links;
     }
 
+    public static function linksHomeworks($controller,$homeworkId, $pages, $status) {
+        $links = array();
+        foreach (range(1, $pages) as $page) {
+            $url = "$controller/homework/list/$homeworkId?page=$page&filter=$status";
+            $links []= array("url"=> $url,
+                "page" => $page
+            );
+        }
+
+        return $links;
+    }
+
     public static function getPage($homeworks, $currentPage, $limit = 10) {
         $params = array("data" => $homeworks,
             "limit"=> $limit, "page" => $currentPage
@@ -142,11 +154,12 @@ class HomeworkService {
 
     public function getHomeworkByWeek($classId, $firstWeek, $secondWeek) {
         $homeworks = $this->modelsManager->createBuilder()
-            ->from("HomeworkUser")
-            ->innerJoin("Homework", 'Homework.id = HomeworkUser.homeworkId')
+            ->from("Homework")
+            ->innerJoin("HomeworkUser", 'Homework.id = HomeworkUser.homeworkId')
             ->where("classId = $classId")
             ->andWhere("dueDate >= '$firstWeek'")
             ->andWhere("dueDate <= '$secondWeek'")
+            ->groupBy("Homework.id")
             ->getQuery()
             ->execute();
 
@@ -159,9 +172,16 @@ class HomeworkService {
 
         for($week = 1; $week <= 4; $week++) {
             $next = date('Y-m-d',strtotime("monday +$week week"));
-            $works = HomeworkService::getHomeworkByWeek($classId, $first, $next);
-            $homeworks []= array("week" => "$first - $next", "homeworks" => $works,
-                        "start" => $first);
+            $works = HomeworkService::getHomeworkByWeek($classId,
+                $first, $next);
+
+            if(count($works) > 0) {
+                $homeworks []= array("week" => "$first - $next",
+                    "homeworks" => $works,
+                    "start" => $first
+                );
+            }
+
             $first = $next;
         }
 

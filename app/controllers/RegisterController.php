@@ -17,6 +17,18 @@ class RegisterController extends Phalcon\Mvc\Controller {
         $this->view->t = Translation::get(Language::get(), "user");
     }
 
+    public function accessCodeAction() {
+        $tokenKey = $this->security->getTokenKey();
+        $token = $this->security->getToken();
+
+        $this->view->csrf_params = array("name" => $tokenKey,
+            "value" => $token);
+
+        $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+
+        $this->view->t = Translation::get(Language::get(), "user");
+    }
+
     public function createAction() {
         $t = Translation::get(Language::get(), "user");
 
@@ -67,6 +79,59 @@ class RegisterController extends Phalcon\Mvc\Controller {
 
         $this->flash->success($t->_("user-created"));
         return $this->toIndex();
+    }
+
+    public function accessCodeCheckAction() {
+        $t = Translation::get(Language::get(), "user");
+
+        $this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+
+        $accessCode = $this->request->getPost("accessCode");
+        $school = School::findFirstByAccessCode($accessCode);
+
+        if ($accessCode != '' && $school) {
+            $user = $_SESSION['newUser'];
+            $schoolUser = new User();
+            $schoolUser->schoolId = $school->id;
+            $schoolUser->type = User::getTypeStudent();
+            $schoolUser->name = $user['name'];
+            $schoolUser->lastName = $user['lastname'];
+            $schoolUser->password = "084e0343a0486ff05530df6c705c8bb4";
+            $schoolUser->email = $user['email'];
+
+            $schoolUser->save();
+
+            if (isset($user['photo']) && $user['photo'] != '') {
+                $userId=$schoolUser->id;
+                $photo = UserPhoto::findFirst("userId = " . $userId);
+
+                if (!$photo) {
+                    $photo = new UserPhoto();
+                    $photo->userId = $userId;
+                    $photo->originalName = $user['email'];
+                    $photo->name = $user['email'].rand();
+                    $photo->size = '';
+                    $photo->type = '';
+                    $photo->file = file_get_contents($user['photo']);
+
+                    $photo->save();
+                }
+            }
+
+            if ($user['authprovider'] == "google") {
+                Authenticate::authenticationGoogle($schoolUser);
+            } elseif ($user['authprovider'] == "microsoft") {
+                Authenticate::authenticationMicrosoft($schoolUser);
+            }
+
+            return $this->response->redirect("dashboard");
+        } else {
+            $this->flash->error($t->_("get-access-code"));
+            return $this->dispatcher->forward(array(
+                "controller" => "register",
+                "action" => "accessCode"
+            ));
+        }
     }
 
     private function toIndex() {
