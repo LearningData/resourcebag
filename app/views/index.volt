@@ -46,16 +46,16 @@
         </div>
         -->
 
-        {{ javascript_include("js/jquery-1.9.1.js") }}
-        {{ javascript_include("js/jquery-ui-1.10.3.custom.min.js") }}
-        {{ javascript_include("js/bootstrap.min.js") }}
-        {{ javascript_include("js/external/moment-with-langs.min.js") }}
-        {{ javascript_include("js/jquery.uniform.min.js") }}
-        {{ javascript_include("js/jquery.slimscroll.min.js") }}
-        {{ javascript_include("js/summernote.min.js") }}
-        {{ javascript_include("js/fullcalendar.min.js") }}
+        {{ javascript_include("js/libs/jquery-1.9.1.js") }}
+        {{ javascript_include("js/libs/jquery-ui-1.10.3.custom.min.js") }}
+        {{ javascript_include("js/libs/bootstrap.min.js") }}
+        {{ javascript_include("js/libs/moment-with-langs.min.js") }}
+        {{ javascript_include("js/libs/jquery.uniform.min.js") }}
+        {{ javascript_include("js/libs/jquery.slimscroll.min.js") }}
+        {{ javascript_include("js/libs/summernote.min.js") }}
+        {{ javascript_include("js/libs/fullcalendar.min.js") }}
         {{ javascript_include("js/createTimetable.js") }}
-        {{ javascript_include("js/jquery.timepicker.min.js") }}
+        {{ javascript_include("js/libs/jquery.timepicker.min.js") }}
         {{ javascript_include("js/translate.en.js") }}
         {{ javascript_include("js/dashboard.js") }}
         {{ javascript_include("js/calendar.js") }}
