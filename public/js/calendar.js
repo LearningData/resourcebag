@@ -128,9 +128,9 @@ var calendarPage = (function() {
             }
         })
         parent.on("click", ".btn-cancel.details" ,function(event) {
-            var get = "title=" + encodeURIComponent($('#createNewEventPopover #title').val()) +
-                "&start=" + encodeURIComponent($('#createNewEventPopover #start').val()) +
-                "&end=" + encodeURIComponent($('#createNewEventPopover #end').val())
+            var get = "title=" + encodeURIComponent($('.popover #title').val()) +
+                "&start=" + encodeURIComponent($('.popover #start').val()) +
+                "&end=" + encodeURIComponent($('.popover #end').val())
             window.location.href = urlBase + "/" + getUser() + "/calendar/new?" + get
         })
         $( ".ld-calendar .btn-delete" ).click(function( event ) {
