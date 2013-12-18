@@ -127,6 +127,12 @@ var calendarPage = (function() {
                 form.submit()
             }
         })
+        parent.on("click", ".btn-cancel.details" ,function(event) {
+            var get = "title=" + encodeURIComponent($('#createNewEventPopover #title').val()) +
+                "&start=" + encodeURIComponent($('#createNewEventPopover #start').val()) +
+                "&end=" + encodeURIComponent($('#createNewEventPopover #end').val())
+            window.location.href = urlBase + "/" + getUser() + "/calendar/edit/?" + get
+        })
         $( ".ld-calendar .btn-delete" ).click(function( event ) {
             event.preventDefault()
             createDeleteEventDialog( $ ( this ).data() )
