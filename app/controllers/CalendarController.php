@@ -14,8 +14,24 @@ class CalendarController extends ControllerBase {
         $this->view->options = array(false => "False", true => "True");
 
         $event = new Event();
-        $event->start = date("Y-m-d");
-        $event->end = date("Y-m-d");
+
+        if($this->request->get("title")) {
+            $event->title = $this->request->get("title");
+        }
+
+        if($this->request->get("start")) {
+            $event->start = $this->request->get("start");
+        } else {
+            $event->start = date("Y-m-d");
+        }
+
+        if($this->request->get("end")) {
+            $event->end = $this->request->get("end");
+        } else {
+            $event->end = date("Y-m-d");
+        }
+
+
         $time = new DateTime("NOW");
         $this->view->startTime = $time->format("H:i:s");
         $time->modify( '+1 hour' );
