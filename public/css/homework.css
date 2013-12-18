@@ -116,6 +116,14 @@
     color: #FFFFFF;
     font-size: 12px;
 }
+/* homework item page */
+.ld-homework h3 .status {
+    float: right;
+    text-align: center
+}
+.ld-homework h3 .overdue {
+    color: #e00;
+}
 /* homework week grouping */
 .ld-homework .week-view tbody tr {
     color: #bbb;

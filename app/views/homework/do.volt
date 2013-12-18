@@ -10,7 +10,16 @@
             <span class="h4"> {{ t._("with") }}</span>
             {{ t._(homework.info.classList.user.title) }}
             {{ homework.info.classList.user.lastName}}
-            {{ homework.info.getDueDate(t._("dateformat")) }}
+            <span class="status">
+                <span class="format-date">{{ homework.info.getDueDate("Y-m-d") }}</span> <br/>
+                {% if homework.status >= 2 %}
+                    {{ t._("finished") }}
+                {% elseif homework.info.getDueDate("U") < time() %}
+                   <span class="overdue">{{ t._("overdue") }}</span>
+                {% else %}
+                    {t._("in-progress") }}
+                {% endif %}
+            </span>
         </h3>
         <div class="col-sm-12">
             <h4></h4>
