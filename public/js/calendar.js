@@ -242,12 +242,20 @@ var calendarPage = (function() {
 
         if (!data.allDay) dateElement.attr("data-date-special", "inc-time")
         modalBody.append("<hr/>")
-        modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
-        modalBody.append("<hr/>")
-        modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span>")
-        modalBody.append("<span class=\"icon-link\"></span><span class=\"modal-value\"> <a href=" + data.url + " target=\"_blank\">" + data.url + "</a></span>")
-        modalBody.append("<hr/>")
-        modalBody.append("<span class=\"icon-align-left\"></span> <p class=\"value\">" + data.description + "</p>")
+        if (data.location) {
+            modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
+            modalBody.append("<hr/>")
+        }
+        if (data.contact) {
+            modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span>")
+        }
+        if (data.url) {
+            modalBody.append("<span class=\"icon-link\"></span><span class=\"modal-value\"> <a href=" + data.url + " target=\"_blank\">" + data.url + "</a></span>")
+            modalBody.append("<hr/>")
+        }
+        if (data.descriptio) {
+            modalBody.append("<span class=\"icon-align-left\"></span> <p class=\"value\">" + data.description + "</p>")
+        }
 
         var edit = $("<button>", {
             type : "button",
