@@ -5,7 +5,15 @@
     </header>
     <section>
         <div class="col-sm-12">
-            <h3>{{ homework.info.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.info.classList.user.title }} {{ homework.info.classList.user.lastName}}</h3>
+            <h3>{{ homework.info.classList.subject.name }} <span class="h6">{{ t._("with") }}</span> {{ homework.info.classList.user.title }} {{ homework.info.classList.user.lastName}}
+            <span class="status">
+               {% if homework.status >= 2 %}
+                    {{ t._("completed-on") }}<br/>
+                    <span class="format-date">{{ homework.submittedDate }}</span>
+                {% endif %}
+                    
+            </span>
+            </h3>
         </div>
         <div class="col-sm-12">
             <h4></h4>
@@ -14,16 +22,19 @@
             <h6>{{ t._("description") }}</h6>
             <p>
                 <strong>{{ homework.title }}</strong><br />
-                {{ homework.text }}
+                {{ homework.info.text }}
             </p>
         </div>
     </section>
     <section class="homework-view">
         <div id="text-inputs">
+            <h4>{{ t._("text-added") }}</h4>
             <div class="homework-subheader">
-                {{ homework.textEditor }}
+                {{ homework.text }}
             </div>
         </div>
+    </section>    
+    <section class="homework-view">
         <h4>{{ t._("files-uploaded") }}</h4>
         {% if homework.files.count() != 0 %}
         <table class="table">
