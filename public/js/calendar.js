@@ -131,7 +131,7 @@ var calendarPage = (function() {
             var get = "title=" + encodeURIComponent($('#createNewEventPopover #title').val()) +
                 "&start=" + encodeURIComponent($('#createNewEventPopover #start').val()) +
                 "&end=" + encodeURIComponent($('#createNewEventPopover #end').val())
-            window.location.href = urlBase + "/" + getUser() + "/calendar/edit/?" + get
+            window.location.href = urlBase + "/" + getUser() + "/calendar/new?" + get
         })
         $( ".ld-calendar .btn-delete" ).click(function( event ) {
             event.preventDefault()
