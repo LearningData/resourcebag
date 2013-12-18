@@ -288,15 +288,15 @@ var homeworkPage = (function() {
             var endPos = window.location.href.indexOf( "&" )
             pageNumber = parseInt(window.location.href.substring( startPos, endPos ).split( "=" )[1])
         }
-        paginator[0].children[pageNumber].addClass += " this-page"
-        paginator[0].children[pageNumber].onclick = function() {
+        paginator.children().eq(pageNumber).addClass("this-page")
+        paginator.children().eq(pageNumber).click(function(event) {
             event.preventDefault()
-        }
+        })
         if ( pageNumber == 1) {
             paginator.addClass("AtStart")
             $( ".pagination .Prev" ).replaceWith( $( "<span class=\"icon-chevron-left Prev\"></span>" ) )
         }
-        if ( pageNumber == paginator.children.length - 2) {
+        if ( pageNumber == paginator.children().length - 2) {
             paginator.addClass("AtEnd")
             $( ".pagination .Next" ).replaceWith( $( "<span class=\"icon-chevron-right Next\"></span>" ) )
         }
