@@ -17,29 +17,21 @@
         <tbody>
             {% for classList in classes %}
             <tr>
-                <td class="ld-link">
-                    {{ link_to("teacher/homework/class/"~classList.id~"?filter=2&group=date", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }}
-                </td>
-                <td class="ld-new-buttons"><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class=" custom-icon-new-homework"></span>{{ t._("new") }} </a>
-                </td>
-                <td class="ld-student-status">
+                <td class="ld-link"> {{ link_to("teacher/homework/class/"~classList.id~"?filter=2&group=date", classList.subject.name~" ("~classList.extraRef~") - "~classList.cohort.stage) }} </td>
+                <td class="ld-new-buttons"><a href="/schoolbag/teacher/homework/new/{{ classList.id }}"><span class="custom-icon-new-homework"></span>{{ t._("new") }} </a></td>
+                <td class="ld-student-status"> {{ classList.users.count() }} <!-- {% if classList.getSubmittedHomework() %}
+                {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
+                {% else %}
                 {{ classList.users.count() }}
-            <!-- {% if classList.getSubmittedHomework() %}
-                        {{ link_to("teacher/homework/class/"~classList.id~"?filter=2", classList.users.count()) }}
-                    {% else %}
-                        {{ classList.users.count() }}
-                    {% endif %}  -->
-                </td>
+                {% endif %}  --></td>
                 <td>{{ classList.getPendingHomework()|length + classList.getStartedHomework()|length }}</td>
                 {% if classList.getSubmittedHomework() %}
                 <td
-                    class="ld-new-buttons">{{ classList.getSubmittedHomework()|length }}    <a
-                    href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span
-                    class="icon-ok-circle"></span>{{ t._("correct") }} </a></td>
+                class="ld-new-buttons">{{ classList.getSubmittedHomework()|length }} <a
+                href="/schoolbag/teacher/homework/class/{{ classList.id }}?filter=2"><span
+                class="icon-ok-circle"></span>{{ t._("correct") }} </a></td>
                 {% else %}
-                <td class="ld-new-buttons ld-btn-inactive">
-                    0 <span class="icon-ok-circle"></span>{{ t._("correct") }}
-                </td>
+                <td class="ld-new-buttons ld-btn-inactive"> 0 <span class="icon-ok-circle"></span>{{ t._("correct") }} </td>
                 {% endif %}
             </tr>
             {% endfor %}
@@ -56,8 +48,10 @@
                 <th>{{ t._("assigned date") }}</th>
                 <th>{{ t._("due date") }}</th>
                 <th>{{ t._("action") }}</th>
-                <th><input type="checkbox" class="ld-check-parent" data-child=".ld-homework .ld-check-child">
-                <input type="submit" value="{{ t._('review') }}" class="btn btn-review-many btn-left"></th>
+                <th>
+                <input type="checkbox" class="ld-check-parent" data-child=".ld-homework .ld-check-child">
+                <input type="submit" value="{{ t._('review') }}" class="btn btn-review-many btn-left">
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -87,22 +81,22 @@
 
         </tbody>
     </table>
-        {% if total_pages > 1 %}
-        <ul class="paginator homework">
-            <li>
-                {{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}
-            </li>
-            {% for link in links %}
-            <li>
-                {{ link_to(link['url'], link['page']) }}
-            </li>
-            {% endfor %}
-            <li>
-                {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
-            </li>
-            </li>
-        </ul>
-        {% endif %}
+    {% if total_pages > 1 %}
+    <ul class="paginator homework">
+        <li>
+            {{ link_to("teacher/homework?page="~page.before~"&filter="~status, "class":"icon-chevron-left Prev") }}
+        </li>
+        {% for link in links %}
+        <li>
+            {{ link_to(link['url'], link['page']) }}
+        </li>
+        {% endfor %}
+        <li>
+            {{ link_to("teacher/homework?page="~page.next~"&filter="~status, "class":"icon-chevron-right Next") }}
+        </li>
+        </li>
+    </ul>
+    {% endif %}
     </form>
     {% else %}
     <table class="table">
@@ -127,20 +121,23 @@
             {% endfor %}
         </tbody>
     </table>
-        {% if page.total_pages > 1 %}
-        <ul class="paginator homework">
-            <li>{{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&filter="~status,
-            "class":"icon-chevron-left Prev") }}</li>
-            {% for link in links %}
-            <li>
-                {{ link_to(link['url'], link['page']) }}
-            </li>
-            {% endfor %}
-            <li>
-                {{ link_to("teacher/homework/class/"~classId~"?page="~page.next~"&filter="~status,
-                    "class":"icon-chevron-right Next") }}</li>
-            </li>
-        </ul>
-        {% endif %}
+    {% if page.total_pages > 1 %}
+    <ul class="paginator homework">
+        <li>
+            {{ link_to("teacher/homework/class/"~classId~"?page="~page.before~"&filter="~status,
+            "class":"icon-chevron-left Prev") }}
+        </li>
+        {% for link in links %}
+        <li>
+            {{ link_to(link['url'], link['page']) }}
+        </li>
+        {% endfor %}
+        <li>
+            {{ link_to("teacher/homework/class/"~classId~"?page="~page.next~"&filter="~status,
+            "class":"icon-chevron-right Next") }}
+        </li>
+        </li>
+    </ul>
+    {% endif %}
     {% endif %}
 </div>

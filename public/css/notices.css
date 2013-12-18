@@ -58,7 +58,7 @@
 .ld-notices .ld-tree {
     display: inline-block;
     color: #a2a2a2;
-    margin:10px 0 20px;
+    margin: 10px 0 20px;
 }
 
 .ld-notices .ld-tree > label {
@@ -102,29 +102,31 @@
 /* List page - all 5 notices */
 .notice-space {
     margin: 0 0 10px;
-    padding: 20px 20px 0 0 ;
+    padding: 20px 20px 0 0;
     color: #6d6e71;
     min-height: 190px;
     width: 33.3333%;
     float: left;
 }
-.notice-space .note{
+.notice-space .note {
     height: 200px;
 }
 
 .note {
-    padding:20px;
+    padding: 20px;
     border-bottom: solid 1px #cad3e2;
     position: relative;
 }
-.notice-space:first-of-type    {
+.notice-space:last-child .note {
+    border-bottom: none;
+}
+.notice-space:first-of-type {
     width: 66.6667%;
 }
 
-.notice-space:first-of-type .note,
-.notice-space:nth-child(2) .note {
+.notice-space:first-of-type .note, .notice-space:nth-child(2) .note {
     height: 300px;
-}   
+}
 .notice-space .date, .notice-space .author, .notice-page-show .date, .notice-page-show .author {
     font-size: 14px;
     color: #6d6e71;
@@ -152,17 +154,16 @@
     margin: 5px 0 20px;
 }
 
-.notice-space:first-of-type .message,
-.notice-space:nth-child(2) .message {
+.notice-space:first-of-type .message, .notice-space:nth-child(2) .message {
     height: 185px;
 }
 
-.notice-space .btn-group  {
+.notice-space .btn-group {
     position: absolute;
     bottom: 10px;
-    right:10px;
+    right: 10px;
 }
-.notice-space a  {
+.notice-space a {
     display: block;
     float: left;
 }
@@ -195,7 +196,6 @@ table.user-notices tbody tr td.text {
     overflow: hidden;
 }
 
-
 /* Rules for icons and categorys */
 .message span:first-of-type {
     float: left;
@@ -212,21 +212,21 @@ table.user-notices tbody tr td.text {
 }
 
 /* Show page */
-.notice-space.notice-page-show   {
-    width: 100%!important;
-    padding:20px;
+.notice-space.notice-page-show {
+    width: 100% !important;
+    padding: 20px;
 }
-.notice-space.notice-page-show .icon-download  {
+.notice-space.notice-page-show .icon-download {
     font-size: 40px;
 }
-.notice-page-show   {
+.notice-page-show {
     border: none;
 }
-.notice-page-show .message   {
+.notice-page-show .message {
     margin-top: 20px;
     line-height: 24px;
 }
-.notice-page-show .message span:first-child   {
+.notice-page-show .message span:first-child {
     font-size: 75px;
     line-height: 75px;
 }
