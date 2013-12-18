@@ -24,7 +24,7 @@ var calendarPage = (function() {
             if (validForm(form)) {
                 form.submit()
             }
-        })
+        }) 
         //Set times for mysql format
         $(".ld-calendar #start-time, .ld-calendar #start-date").change(function(event) {
             var millsecs = $(".ld-calendar #start-time").timepicker('getSecondsFromMidnight') * 1000
@@ -63,9 +63,32 @@ var calendarPage = (function() {
             dayClick : function(date, allDay, jsEvent, view) {
                 updateNewEventDialog(date)
                 $("body").popover("show")
-                $(".popover").css('top', jsEvent.currentTarget.offsetTop+jsEvent.currentTarget.clientHeight)
-                $(".popover").css('left', jsEvent.currentTarget.offsetLeft + 
-                    jsEvent.currentTarget.clientWidth/2 - $(".popover")[0].clientWidth/2)
+                var pop = $(".popover")
+                pop.css('top', jsEvent.currentTarget.offsetTop+jsEvent.currentTarget.clientHeight)
+                var left = jsEvent.currentTarget.offsetLeft + 
+                    jsEvent.currentTarget.clientWidth/2 - pop[0].clientWidth/2
+                pop.css('left', left)
+                //check height
+                var posTop =  pop.offset().top
+                var posHeight = pop.height()
+                var allowedHeight = $(window).scrollTop() + $(window).height()
+                if(posTop + posHeight > allowedHeight) {
+                    pop.css('top', jsEvent.currentTarget.offsetTop - posHeight )
+                    pop.removeClass("bottom")
+                    pop.addClass("top")
+                }
+                //check width
+                var posLeft =  pop.offset().left
+                var posWidth = pop.width()
+                var allowedWidth = $(window).scrollLeft() + $(window).width()
+                if (left < 0) {
+                    pop.css('left', 0)
+                    pop.find('.arrow').css("left", ((left/(pop[0].clientWidth/2) * 50) + 50) + "%")
+                } else if(posLeft + posWidth > allowedWidth) {
+                    var offset =  posLeft + posWidth - allowedWidth
+                    pop.css('left', left - offset)
+                    pop.find('.arrow').css("left", ((offset/(pop[0].clientWidth/2) * 50) + 50) + "%")
+                }
             },
             eventClick : function(data, jsEvent, view) {
                 createEditEventDialog(data)
@@ -194,7 +217,8 @@ var calendarPage = (function() {
     }
     var updateNewEventDialog = function(date) {
         $('#createNewEventPopover #event-date').empty()
-        $('#createNewEventPopover #event-date').append(moment(date).format("dddd Do MMM YYYY"))
+        $('#createNewEventPopover #event-date').append(date)
+        formatDate($('#createNewEventPopover #event-date')[0])
         $('#createNewEventPopover #start').val(moment(date).format("YYYY-MM-DD 00:00:00"))
         $('#createNewEventPopover #end').val(moment(date).format("YYYY-MM-DD 23:59:00"))
 
@@ -204,11 +228,14 @@ var calendarPage = (function() {
         var modal = $("<div class=\"modal fade\" id=\"createEditEventModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">")
         var modalHeader = $("<div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button><h2 class=\"modal-title\">" + data.title + "</h2></div>")
         var modalBody = $("<div class=\"modal-body\"></div>")
-        if (data.allDay) {
-        modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY") + "</span>")
-        } else { 
-        modalBody.append("<span class=\"icon-calendar\"></span><span class=\"modal-value\">" + moment(data.start).format("ddd, MMMM D, YYYY, h:mm a") + " - </span><span class=\"modal-value\">" + moment(data.end).format("ddd, MMMM D, YYYY, h:mm a") + "</span>")
-        } modalBody.append("<hr/>")
+        var dateElement = $("<span class='modal-value' data-start='" + data.start + "' data-end='" + data.end + "' ></span>")
+        formatDateRange(dateElement[0])
+        modalBody.append("<span class=\"icon-calendar\"></span>")
+        modalBody.append(dateElement)
+        
+
+        if (!data.allDay) dateElement.attr("data-date-special", "inc-time")
+        modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-map-marker\"></span><span class=\"modal-value\">" + data.location + "</span>")
         modalBody.append("<hr/>")
         modalBody.append("<span class=\"icon-phone\"></span><span class=\"modal-value\">" + data.contact + "</span>")

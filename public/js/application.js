@@ -71,24 +71,7 @@ $("input[type=file]").uniform();
 
 function init() {
     $(".format-date").each(function(index, element) {
-        var text = element.textContent
-        switch (element.getAttribute("data-date-special")) {
-            case("week-begins"):
-                if(moment(text).week() == moment().week()) {
-                    element.textContent = "This Week"
-                } else {
-                    element.textContent = "Week of " + 
-                    moment(text).format("dddd, Do MMM")
-                }
-            break
-            default:
-                var text = element.textContent
-                if (moment(text).isSame(new Date(),'year')) {
-                    element.textContent = moment(text).format("dddd, Do MMM")
-                } else {
-                    element.textContent = moment(text).format("dddd, Do MMM YYYY")
-                }
-        }
+        formatDate(element)
     })
     $(".format-date-range").each(function(index, element) {
         formatDateRange(element)
@@ -96,19 +79,54 @@ function init() {
 
 }
 
-function formatDate() {
-
+function formatDate(element) {
+    var text = element.textContent
+    switch (element.getAttribute("data-date-special")) {
+    case("week-begins"):
+        if(moment(text).week() == moment().week()) {
+            element.textContent = "This Week"
+        } else {
+            element.textContent = "Week of " + 
+            moment(text).format("dddd, Do MMM")
+        }
+        break
+    default:
+        var text = element.textContent
+        if (moment(text).isSame(new Date(),'year')) {
+            element.textContent = moment(text).format("dddd, Do MMM")
+        } else {
+            element.textContent = moment(text).format("dddd, Do MMM YYYY")
+        }
+        break
+    }
 }
 
 function formatDateRange(element) {
-    var start = element.getAttribute("data-start")
-    var end = element.getAttribute("data-end")
-    if (moment(start).isSame(end,'month')) {
-        element.textContent = moment(start).format("Do") + "-" + 
-moment(end).format("Do, MMM YYYY")
-    } else {
-        element.textContent = moment(start).format("Do MMM YYYY")+ "-" + 
-moment(end).format("Do MMM YYYY")
+    var start = moment(element.getAttribute("data-start"))
+    var end = moment(element.getAttribute("data-end"))
+    switch (element.getAttribute("data-date-special")) {
+    case("inc-time"):
+        if(start.isSame(end, 'day')) {
+            element.textContent = start.format('hh:mma') + " - " +
+                end.format('hh:mma, dddd Do MMM')
+        } else if(start.isSame(end, 'month')) {
+            element.textContent = start.format('hh:mma ddd Do') + " - " +
+                end.format('hh:mma ddd Do, MMM')
+        } else {
+            element.textContent = start.format('hh:mma ddd Do MMM') + " - " +
+                end.format('hh:mma ddd Do MMM')
+        }
+        break
+    default:
+        if (moment(start).isSame(end,'day')) {
+            element.textContent = start.format('dddd, Do MMM')
+        } else if (moment(start).isSame(end,'month')) {
+            element.textContent = moment(start).format("ddd Do") + "-" + 
+    moment(end).format("ddd Do, MMM")
+        } else {
+            element.textContent = moment(start).format("Do MMM YYYY")+ "-" + 
+    moment(end).format("Do MMM YYYY")
+        }
     }
 }
 
