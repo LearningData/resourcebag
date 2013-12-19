@@ -1,4 +1,7 @@
 var mongo = require("mongodb");
+var GridStore = mongo.GridStore;
+var ObjectID = mongo.ObjectID;
+
 var Server = mongo.Server;
 var Db = mongo.Db;
 var BSON = mongo.BSONPure;
@@ -18,7 +21,7 @@ db.open(function(err, db) {
 });
 
 exports.list = function(req, res) {
-    db.collection('files', function(err, collection) {
+    db.collection('fs.files', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
         });
@@ -28,43 +31,40 @@ exports.list = function(req, res) {
 exports.show = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving file: ' + id);
-    db.collection('files', function(err, collection) {
+    db.collection('fs.files', function(err, collection) {
         collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+            if(err) {
+                console.log("Error to show file " + id);
+                return;
+            }
+
             res.send(item);
         });
     });
 };
 
 exports.create = function(req, res) {
-    var file = req.body;
-    console.log('Adding file: ' + JSON.stringify(file));
-    db.collection('files', function(err, collection) {
-        collection.insert(file, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
+    console.log('Adding file: ' + req.files.file.name);
+    var gridStore = new GridStore(db, new ObjectID(), "w");
+    gridStore.writeFile(req.files.file.path, function(err, result) {
+        if(err) {
+            console.log("Error to upload file.");
+            return;
+        }
+
+        res.send({"success": "File was saved."});
     });
 };
 
-exports.update = function(req, res) {
+exports.download = function(req, res) {
     var id = req.params.id;
-    var file = req.body;
-    console.log('Updating file: ' + id);
-    console.log(JSON.stringify(file));
-    db.collection('files', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, file, {safe:true}, function(err, result) {
-            if (err) {
-                console.log('Error updating file: ' + err);
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('' + result + ' document(s) updated');
-                res.send(file);
-            }
-        });
+
+    GridStore.read(db, new BSON.ObjectID(id), function(err, data) {
+        if(err) {
+            console.log("Error to download file");
+        }
+
+        res.send(data);
     });
 };
 
@@ -72,12 +72,12 @@ exports.delete = function(req, res) {
     var id = req.params.id;
     console.log('Removing file: ' + id);
 
-    db.collection('files', function(err, collection) {
+    db.collection('fs.files', function(err, collection) {
         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
             } else {
-                console.log('' + result + ' document(s) deleted');
+                console.log('' + result + ' file deleted');
                 res.send(req.body);
             }
         });
