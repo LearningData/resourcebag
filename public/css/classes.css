@@ -45,6 +45,20 @@
 .ld-classes .homework .status-header {
     background: #E6E7E8
 }
+/* class list */
+.ld-classes .table tbody > tr > td, .ld-classes .table thead > tr > th {
+    padding: 10px;
+}
+.ld-classes td .btn-icon {
+    float: left;
+}
+.ld-classes td a:not(.btn-icon) {
+    font-weight: 600;
+}
+.ld-classes td a:not(.btn-icon):hover {
+    text-decoration: underline;
+}
+
 /* view homework */
 .ld-classes .view-all {
     color: #ff9e19;
