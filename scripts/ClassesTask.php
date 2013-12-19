@@ -20,7 +20,7 @@ class classesTask extends \Phalcon\CLI\Task {
                 ",dc=" . $config->ldap->dc2;
 
             $info = $ldap->search($dn, "cn=*");
-            $this->syncTeachers($info);
+	    $this->syncTeachers($info);
 
             $dn = "ou=StdEnrol,ou=$school->clientId,dc=" . $config->ldap->dc1 .
                 ",dc=" . $config->ldap->dc2;
@@ -35,19 +35,19 @@ class classesTask extends \Phalcon\CLI\Task {
     public function syncTeachers($info) {
         for($i=0; $i < $info["count"]; $i++) {
             $cn =  $info[$i]["cn"][0];
-            $teacher = User::findFirstByUsername($info[0]["memberuid"][0]);
+            $teacher = User::findFirstByUsername($info[$i]["memberuid"][0]);
 
             if(!$teacher) { continue; }
 
             $splited = split("-", $cn);
-            $stage = substr($splited[1], -3);
-            $ref = substr($splited[1], 0, -3);
+	    $stage = substr(strrchr($splited[1], " "), 1);
+            $ref = substr($splited[1], 0, strripos($splited[1]," "));
             $cohort = Cohort::findFirstByStage($stage);
 
             if(!$cohort) {
                 $cohort = new Cohort();
                 $cohort->stage = $stage;
-                $cohort->schoolId = $teacher->id;
+                $cohort->schoolId = $teacher->schoolId;
                 $cohort->schoolYear = 2014;
                 $cohort->courseId = 1;
                 $cohort->groupId = 3;
@@ -59,26 +59,27 @@ class classesTask extends \Phalcon\CLI\Task {
                 }
             }
             $subject = Subject::findFirstByName($splited[0]);
-
             if(!$subject) {
                 $subject = new Subject();
                 $subject->name = $splited[0];
-
                 $subject->save();
+                foreach ($subject->getMessages() as $m) {
+                    echo $m . "\n";
+                }
             }
 
             $classList = ClassList::findFirst("cohortId = " .
-                $cohort->id . "and subjectId = " . $subject->id .
-                " and schoolId = 75");
+                $cohort->id . " and subjectId = " . $subject->id 
+		." and schoolId = " . $teacher->schoolId);
 
             if(!$classList) {
                 $classList = new ClassList();
                 $classList->teacherId = $teacher->id;
                 $classList->subjectId = $subject->id;
-                $classList->schoolId = 75;
+                $classList->schoolId = $teacher->schoolId;
                 $classList->extraRef = $subject->name;
                 $classList->cohortId = $cohort->id;
-
+		if($classList->save()){echo "\nsaved>>>>>>>";}
                 if(!$classList->save()) {
                     foreach ($classList->getMessages() as $m) {
                         echo $m . "\n";
@@ -93,7 +94,7 @@ class classesTask extends \Phalcon\CLI\Task {
         for($i=0; $i < $info["count"]; $i++) {
             $names = $info[$i]["memberuid"];
             foreach($names as $username) {
-                $user = User::findFirstByUsername($username);
+                $user = User::findFirstByUsername(strtolower($username));
 
                 if(!$user) { continue; }
 
@@ -101,8 +102,8 @@ class classesTask extends \Phalcon\CLI\Task {
                     $cn =  $info[$i]["cn"][0];
                     $splited = split("-", $cn);
 
-                    $stage = substr($splited[1], -3);
-                    $ref = substr($splited[1], 0, -3);
+                    $stage = substr(strrchr($splited[1], " "), 1);
+                    $ref = substr($splited[1], 0, strripos($splited[1]," "));
 
                     $cohort = Cohort::findFirstByStage($stage);
                     $subject = Subject::findFirstByName($splited[0]);
