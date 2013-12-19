@@ -75,8 +75,8 @@
                     </div>
                 </div>
             </div>
-            {{ javascript_include("js/jquery-1.9.1.js") }}
-            {{ javascript_include("js/bootstrap.min.js") }}
+            {{ javascript_include("js/libs/jquery-1.9.1.js") }}
+            {{ javascript_include("js/libs/bootstrap.min.js") }}
     </body>
 </html>
 
