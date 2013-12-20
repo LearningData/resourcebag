@@ -3,7 +3,7 @@
 }
 
 /* default background */
-.orange header, .orange .btn-icon, .orange .btn, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class^="btn-"], .orange.ld-box .ld-box-head .title, .orange .ld-student-status a, .orange div.ld-CheckClass span.checked, .orange div.ld-CheckClass.hover span.checked, .orange div.ld-RadioClass span.checked, .orange div.ld-RadioClass.hover span.checked {
+.orange header, .orange .btn-icon, .orange .action, .orange .btn, .orange .tooltip-inner, .orange.ld-homework .nav ul li a, .orange.ld-homework .table [class^="btn-"], .orange.ld-box .ld-box-head .title, .orange .ld-student-status a, .orange div.ld-CheckClass span.checked, .orange div.ld-CheckClass.hover span.checked, .orange div.ld-RadioClass span.checked, .orange div.ld-RadioClass.hover span.checked {
     background-color: #ff9e19;
 }
 /* hover background */
