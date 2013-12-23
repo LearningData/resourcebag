@@ -12,7 +12,6 @@ var Resource = {
         });
     },
     show: function(resourceId, callback) {
-        console.log("ID: " + resourceId);
         resourceId = new BSON.ObjectID(resourceId);
 
         Resource.collection.findOne({'_id': resourceId}, function(err, resource){
