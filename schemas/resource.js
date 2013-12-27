@@ -26,7 +26,7 @@ var Resource = {
     save: function(resource, callback) {
         var gridStore = new GridStore(db, new ObjectID(), "w");
         console.log("RES: " + resource);
-        gridStore.writeFile(resource, function(err, result) {
+        gridStore.writeFile(resource.path, function(err, result) {
             if(err) {
                 console.log("Error to upload file.");
                 result = {"fail": "File was not upload"};
