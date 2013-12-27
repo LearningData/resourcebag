@@ -7,9 +7,9 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.multipart());
-app.use(express.urlencoded());
+app.use(express.json({limit: '1000mb'}));
+app.use(express.multipart({limit: '1000mb'}));
+app.use(express.urlencoded({limit: '1000mb'}));
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
@@ -24,6 +24,7 @@ if ('development' == app.get('env')) {
 app.get('/resources', files.list);
 app.get('/resources/:id', files.show);
 app.get('/resources/download/:id', files.download);
+app.get('/resources/search/:param', files.search);
 app.post('/resources', files.create);
 app.delete('/resources/:id', files.delete);
 

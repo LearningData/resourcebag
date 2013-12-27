@@ -6,6 +6,14 @@ exports.list = function(req, res) {
     });
 };
 
+exports.search = function(req, res) {
+    var param = req.params.param;
+
+    Resource.search(param, function(items){
+        res.send(items);
+    });
+};
+
 exports.show = function(req, res) {
     var id = req.params.id;
     Resource.show(id, function(resource){

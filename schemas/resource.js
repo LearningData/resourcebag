@@ -11,6 +11,11 @@ var Resource = {
             callback(items);
         });
     },
+    search: function(param, callback) {
+        Resource.collection.find({filename: param}).toArray(function(err, items){
+            callback(items);
+        });
+    },
     show: function(resourceId, callback) {
         resourceId = new BSON.ObjectID(resourceId);
 
