@@ -25,11 +25,7 @@ exports.create = function(req, res) {
 exports.download = function(req, res) {
     var id = req.params.id;
 
-    GridStore.read(db, new BSON.ObjectID(id), function(err, data) {
-        if(err) {
-            console.log("Error to download file");
-        }
-
+    Resource.download(id, function(data){
         res.send(data);
     });
 };
@@ -38,14 +34,7 @@ exports.delete = function(req, res) {
     var id = req.params.id;
     console.log('Removing file: ' + id);
 
-    db.collection('fs.files', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred - ' + err});
-            } else {
-                console.log('' + result + ' file deleted');
-                res.send(req.body);
-            }
-        });
+    Resource.delete(id, function(response){
+        res.send(response);
     });
 };

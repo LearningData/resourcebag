@@ -36,6 +36,27 @@ var Resource = {
 
             callback(result);
         });
+    },
+    delete: function(resourceId, callback) {
+        resourceId = new BSON.ObjectID(resourceId);
+
+        Resource.collection.remove({'_id':resourceId}, {safe:true}, function(err, result) {
+            if (err) {
+                callback({"fail": "File was not deleted - " + err});
+            } else {
+                console.log('' + result + ' file deleted');
+                callback({"success": "File was deleted"});
+            }
+        });
+    },
+    download: function(resourceId, callback) {
+        GridStore.read(db, new BSON.ObjectID(resourceId), function(err, data) {
+            if(err) {
+                console.log("Error to download file");
+            }
+
+            callback(data);
+        });
     }
 };
 
