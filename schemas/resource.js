@@ -19,12 +19,12 @@ var Resource = {
         });
     },
     show: function(resourceId, callback) {
-        resourceId = new BSON.ObjectID(resourceId);
+        var id = new BSON.ObjectID(resourceId);
 
-        Resource.collection.findOne({'_id': resourceId}, function(err, resource){
+        Resource.collection.findOne({'_id': id}, function(err, resource){
             if(err) {
                 console.log("Error to show file " + resourceId);
-                return;
+                callback({"fail": "The id " + resourceId + " does not exist."});
             }
 
             callback(resource);
