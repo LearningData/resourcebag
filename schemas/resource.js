@@ -12,7 +12,9 @@ var Resource = {
         });
     },
     search: function(param, callback) {
-        Resource.collection.find({filename: param}).toArray(function(err, items){
+        var re = new RegExp(param);
+
+        Resource.collection.find({filename: re}).toArray(function(err, items){
             callback(items);
         });
     },
