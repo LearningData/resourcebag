@@ -29,5 +29,5 @@ app.post('/resources', files.create);
 app.delete('/resources/:id', files.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Running File Server on port ' + app.get('port'));
+  console.log('Running Resourcebag on port ' + app.get('port'));
 });
