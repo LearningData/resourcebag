@@ -8,6 +8,6 @@ describe("Resource", function(){
         });
 
         expect(items).toBe("BLA");
-        if(items !== null) console.log("FINISH: " + items[0]);
+        if(items !== null) console.log("FINISH: " + items);
     });
 });
