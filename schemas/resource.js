@@ -31,8 +31,8 @@ var Resource = {
         });
     },
     save: function(resource, callback) {
-        var gridStore = new GridStore(db, new ObjectID(), "w");
-        console.log("RES: " + resource);
+        console.log("FILENAME: " + resource.name);
+        var gridStore = new GridStore(db, new ObjectID(), resource.name, "w");
         gridStore.writeFile(resource.path, function(err, result) {
             if(err) {
                 console.log("Error to upload file.");
@@ -40,7 +40,7 @@ var Resource = {
             } else {
                 result = {"success": "File was saved."};
             }
-
+            db.close();
             callback(result);
         });
     },
