@@ -73,6 +73,20 @@ var Resource = {
             });
         });
     },
+    deleteAll: function(callback) {
+        db.close();
+        db.open(function(err, db) {
+            db.collection("fs.files").remove({}, function(err, result) {
+                if (err) {
+                    db.close();
+                    callback({"fail": "Files was not deleted - " + err});
+                } else {
+                    db.close();
+                    callback({"success": "Files was deleted"});
+                }
+            });
+        });
+    },
     download: function(resourceId, callback) {
         db.open(function(err, db) {
             GridStore.read(db, new BSON.ObjectID(resourceId), function(err, data) {

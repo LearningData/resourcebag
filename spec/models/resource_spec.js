@@ -2,12 +2,22 @@ process.env.NODE_ENV = 'test';
 var Resource = require("../../schemas/resource.js").Resource;
 
 describe("Resource", function(){
-    it("returns a empty json", function(){
-        var items = Resource.all(function(items){
-            return items;
-        });
+    var resource = {
+        "name": "test_file_server.txt",
+        "path": "/tmp/test_file_server.txt"
+    };
 
-        expect(items).toBe("BLA");
-        if(items !== null) console.log("FINISH: " + items);
+    it("returns a empty json", function(done){
+        Resource.all(function(items){
+            expect(items).toEqual([]);
+            done();
+        });
+    });
+
+    it("uploads an file", function(done){
+        Resource.save(resource, function(result){
+            expect(result).toEqual({"success": "File was saved."});
+            done();
+        });
     });
 });
