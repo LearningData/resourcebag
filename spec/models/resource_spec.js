@@ -17,6 +17,7 @@ describe("Resource", function(){
     it("uploads an file", function(done){
         Resource.save(resource, function(result){
             expect(result).toEqual({"success": "File was saved."});
+            Resource.deleteAll(function(){ return true; });
             done();
         });
     });
