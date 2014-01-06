@@ -22,7 +22,6 @@ exports.show = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    console.log('Adding file: ' + req.files.file.name);
     var resource = req.files.file;
 
     Resource.save(resource, function(result){
@@ -40,7 +39,6 @@ exports.download = function(req, res) {
 
 exports.delete = function(req, res) {
     var id = req.params.id;
-    console.log('Removing file: ' + id);
 
     Resource.delete(id, function(response){
         res.send(response);
