@@ -24,20 +24,20 @@ describe("Resource", function(){
     it("returns json with all resources", function(done){
         Resource.all(function(items){
             expect(items[0].filename).toEqual(resource.name);
-            resource.id = items[0]._id;
+            resource.id = items[0]._id.toString();
             done();
         });
     });
 
     it("shows json with a specifc id", function(done){
-        Resource.show(resource.id + "", function(file){
+        Resource.show(resource.id, function(file){
             expect(file.filename).toEqual(resource.name);
             done();
         });
     });
 
     it("removes resource with specifc id", function(done){
-        Resource.delete(resource.id + "", function(response){
+        Resource.delete(resource.id, function(response){
             expect(response).toEqual({"success": "File was deleted"});
             done();
         });
