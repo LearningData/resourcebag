@@ -94,7 +94,6 @@ var Resource = {
                 if(err) {
                     console.log("Error to download file");
                 }
-
                 callback(data);
             });
         });
