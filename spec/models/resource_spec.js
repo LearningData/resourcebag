@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 process.env.NODE_ENV = 'test';
 var Resource = require("../../schemas/resource.js").Resource;
 
@@ -6,6 +8,14 @@ describe("Resource", function(){
         "name": "test_file_server.txt",
         "path": "/tmp/test_file_server.txt"
     };
+
+    beforeEach(function(){
+        fs.openSync(resource.path, "w");
+    });
+
+    afterEach(function(){
+        fs.unlinkSync(resource.path);
+    });
 
     it("returns a empty json", function(done){
         Resource.all(function(items){
