@@ -33,7 +33,13 @@ exports.download = function(req, res) {
     var id = req.params.id;
 
     Resource.download(id, function(data){
-        res.send(data);
+        Resource.show(id, function(resource){
+            console.log("Downloading file: " + resource.filename);
+
+            res.setHeader('Content-disposition',
+                'attachment; filename=' + resource.filename);
+            res.send(data);
+        });
     });
 };
 
