@@ -40,7 +40,7 @@ describe("Resource", function(){
     });
 
     it("shows json with a specifc id", function(done){
-        Resource.show(resource.id, function(file){
+        Resource.get(resource.id, function(file){
             expect(file.filename).toEqual(resource.name);
             done();
         });

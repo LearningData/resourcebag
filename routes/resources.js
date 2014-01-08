@@ -16,7 +16,7 @@ exports.search = function(req, res) {
 
 exports.show = function(req, res) {
     var id = req.params.id;
-    Resource.show(id, function(resource){
+    Resource.get(id, function(resource){
         res.send(resource);
     });
 };
@@ -33,7 +33,7 @@ exports.download = function(req, res) {
     var id = req.params.id;
 
     Resource.download(id, function(data){
-        Resource.show(id, function(resource){
+        Resource.get(id, function(resource){
             console.log("Downloading file: " + resource.filename);
 
             res.setHeader('Content-disposition',

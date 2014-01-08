@@ -25,7 +25,7 @@ var Resource = {
             });
         });
     },
-    show: function(resourceId, callback) {
+    get: function(resourceId, callback) {
         var id = new BSON.ObjectID(resourceId);
         db.open(function(err, db) {
             db.collection("fs.files").findOne({'_id': id}, function(err, resource){
