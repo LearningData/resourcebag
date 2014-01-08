@@ -3,7 +3,6 @@ set :application, 'file-server'
 set :repo_url, "https://github.com/edgarlatorre/website.git"
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-set :application_path, "/Projects/file-server"
 set :deploy_to, '/Projects/file-server'
 set :deploy_via, :remote_cache
 set :scm, :git
