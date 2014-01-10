@@ -42,6 +42,8 @@ var Resource = {
     },
     save: function(resource, params, callback) {
         db.open(function(err, db) {
+            params["content_type"] = resource.type;
+
             var gridStore = new GridStore(db, new ObjectID(),
                 resource.name, "w", {"metadata": params});
 
