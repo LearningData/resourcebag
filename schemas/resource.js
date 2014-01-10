@@ -40,9 +40,10 @@ var Resource = {
             });
         });
     },
-    save: function(resource, callback) {
+    save: function(resource, params, callback) {
         db.open(function(err, db) {
-            var gridStore = new GridStore(db, new ObjectID(), resource.name, "w");
+            var gridStore = new GridStore(db, new ObjectID(),
+                resource.name, "w", {"metadata": params});
 
             gridStore.writeFile(resource.path, function(err, result) {
                 db.close();

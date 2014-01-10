@@ -24,7 +24,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
     var resource = req.files.file;
 
-    Resource.save(resource, function(result){
+    Resource.save(resource, req.body, function(result){
         res.send(result);
     });
 };
