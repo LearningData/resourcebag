@@ -41,6 +41,15 @@ var Resource = {
         });
     },
     save: function(resource, params, callback) {
+        db.close();
+        if(!params.owner) {
+            callback({"fail": "Resource needs an owner"});
+            return;
+        }
+        if(!params.school) {
+            callback({"fail": "Resource needs a school"});
+            return;
+        }
         db.open(function(err, db) {
             params["content_type"] = resource.type;
 

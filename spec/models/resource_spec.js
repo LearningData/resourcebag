@@ -24,8 +24,22 @@ describe("Resource", function(){
         });
     });
 
+    it("requires an owner", function(done){
+        Resource.save(resource, {}, function(result){
+            expect(result).toEqual({"fail": "Resource needs an owner"});
+            done();
+        });
+    });
+
+    it("requires a school", function(done){
+        Resource.save(resource, {"owner": "test"}, function(result){
+            expect(result).toEqual({"fail": "Resource needs a school"});
+            done();
+        });
+    });
+
     it("uploads an file", function(done){
-        Resource.save(resource, function(result){
+        Resource.save(resource, {"owner": "test", "school": 1}, function(result){
             expect(result).toEqual({"success": "File was saved."});
             done();
         });
