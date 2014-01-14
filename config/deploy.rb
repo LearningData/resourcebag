@@ -10,7 +10,7 @@ set :scm_password, "LD46marmita"
 set :scm_passphrase, "LD46marmita"
 set :use_sudo, false
 set :pty, true
-set :ssh_options, {:forward_agent => true}
+set :ssh_options, {:forward_agent => true, keys: [File.join(ENV["HOME"], ".ssh", "id_rsa")]}
 # set :format, :pretty
 # set :log_level, :debug
 # set :scm_verbose, true

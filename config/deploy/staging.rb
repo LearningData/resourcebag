@@ -13,6 +13,6 @@ server '137.116.242.92',
   ssh_options: {
     port: 3536,
     user: 'azureuser',
-    forward_agent: true,
-    auth_methods: %w(password),
+    forward_agent: false,
+    keys: [File.join(ENV["HOME"], ".ssh", "id_rsa")]
   }
