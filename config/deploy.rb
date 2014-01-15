@@ -1,5 +1,5 @@
 set :application, 'file-server'
-set :repo_url, 'git@git.learningdata.net:/srv/d_jess01/git/repositories/resourcebag.git'
+set :repo_url, 'git@git.learningdata.net:resourcebag.git'
 # set :repo_url, 'file:///Users/edgar/Projects/file-server/.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -41,9 +41,17 @@ namespace :deploy do
   desc 'Npm install'
   task :npm_install do
     on roles(:web) do
-      execute "cd #{deploy_to} && npm install"
+      execute "cd #{deploy_to}/current && npm install"
     end
   end
 
-  after :finishing, 'deploy:restart'
+  desc "Install dependencies and restart the server"
+  task :configure do
+    on roles(:web), in: :sequence, wait: 5 do
+      depend :npm_install
+      depend :restart
+    end
+  end
+
+  after :finishing, 'deploy:configure'
 end
