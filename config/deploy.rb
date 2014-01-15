@@ -6,8 +6,6 @@ set :repo_url, 'git@git.learningdata.net:/srv/d_jess01/git/repositories/resource
 set :deploy_to, '/home/azureuser/resourcebag'
 set :deploy_via, :copy
 set :scm, :git
-set :scm_password, "LD46marmita"
-set :scm_passphrase, "LD46marmita"
 set :use_sudo, false
 set :pty, true
 set :ssh_options, {:forward_agent => true, keys: [File.join(ENV["HOME"], ".ssh", "id_rsa")]}
@@ -22,21 +20,21 @@ namespace :deploy do
   desc "Start application"
   task :start do
     on roles(:web) do
-      execute "cd #{deploy_to} && forever start app.js"
+      execute "cd #{deploy_to}/current && forever start app.js"
     end
   end
 
   desc "Stop application"
   task :stop do
     on roles(:web) do
-      execute "cd #{deploy_to} && forever stop app.js"
+      execute "cd #{deploy_to}/current && forever stop app.js"
     end
   end
 
   desc 'Restart application'
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
-      execute "cd #{deploy_to} && forever restart app.js"
+      execute "cd #{deploy_to}/current && forever restart app.js"
     end
   end
 
@@ -47,5 +45,5 @@ namespace :deploy do
     end
   end
 
-  after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:restart'
 end
