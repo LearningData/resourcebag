@@ -34,24 +34,15 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:web), in: :sequence, wait: 5 do
+      execute "cd #{deploy_to}/current && npm install"
       execute "cd #{deploy_to}/current && forever restart app.js"
     end
   end
 
   desc 'Npm install'
   task :npm_install do
-    on roles(:web) do
+    on roles(:web), in: :sequence do
       execute "cd #{deploy_to}/current && npm install"
     end
   end
-
-  desc "Install dependencies and restart the server"
-  task :configure do
-    on roles(:web), in: :sequence, wait: 5 do
-      depend :npm_install
-      depend :restart
-    end
-  end
-
-  after :finishing, 'deploy:configure'
 end
