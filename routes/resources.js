@@ -25,7 +25,11 @@ exports.create = function(req, res) {
     var resource = req.files.file;
 
     Resource.save(resource, req.body, function(result){
-        res.send(result);
+        if(req.query.redirect) {
+            res.redirect(req.query.redirect);
+        } else {
+            res.send(result);
+        }
     });
 };
 
