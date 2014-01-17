@@ -16,10 +16,8 @@ var Resource = {
         });
     },
     search: function(param, callback) {
-        var re = new RegExp(param);
-
         db.open(function(err, db) {
-            db.collection("fs.files").find({filename: re}).toArray(function(err, items){
+            db.collection("fs.files").find(param).toArray(function(err, items){
                 db.close();
                 callback(items);
             });

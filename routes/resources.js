@@ -8,8 +8,17 @@ exports.list = function(req, res) {
 
 exports.search = function(req, res) {
     var param = req.params.param;
+    var re = new RegExp(param);
 
-    Resource.search(param, function(items){
+    Resource.search({"filename": re}, function(items){
+        res.send(items);
+    });
+};
+
+exports.searchTags = function(req, res) {
+    var param = req.params.param;
+
+    Resource.search({"metadata.type-tags": {$in: [param]}}, function(items){
         res.send(items);
     });
 };

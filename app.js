@@ -25,6 +25,7 @@ app.get('/resources', files.list);
 app.get('/resources/:id', files.show);
 app.get('/resources/download/:id', files.download);
 app.get('/resources/search/:param', files.search);
+app.get('/resources/search/tags/:param', files.searchTags);
 app.post('/resources', files.create);
 app.delete('/resources/:id', files.delete);
 
