@@ -31,7 +31,7 @@ describe("Resource", function(){
         });
     });
 
-    it("requires a school", function(done){
+    it("requires a cliendId", function(done){
         Resource.save(resource, {"owner": "test"}, function(result){
             expect(result).toEqual({"fail": "Resource needs a school"});
             done();
@@ -39,7 +39,7 @@ describe("Resource", function(){
     });
 
     it("uploads an file", function(done){
-        Resource.save(resource, {"owner": "test", "school": 1}, function(result){
+        Resource.save(resource, {"owner": "test", "clientId": "client"}, function(result){
             expect(result).toEqual({"success": "File was saved."});
             done();
         });

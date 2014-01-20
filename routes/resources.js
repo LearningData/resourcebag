@@ -1,4 +1,5 @@
 var Resource = require("../schemas/resource.js").Resource;
+var Permission = require("../modules/permissions.js").Permission;
 
 exports.list = function(req, res) {
     Resource.all(function(items){
@@ -33,11 +34,17 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
     var resource = req.files.file;
 
-    Resource.save(resource, req.body, function(result){
-        if(req.query.redirect) {
-            res.redirect(req.query.redirect);
+    Permission.isAllowed(req.headers.referer, function(isAllowed){
+        if(isAllowed) {
+            Resource.save(resource, req.body, function(result){
+                if(req.query.redirect) {
+                    res.redirect(req.query.redirect);
+                } else {
+                    res.send(result);
+                }
+            });
         } else {
-            res.send(result);
+            res.send("Permission denied.");
         }
     });
 };
