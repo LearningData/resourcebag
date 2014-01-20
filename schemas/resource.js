@@ -44,7 +44,7 @@ var Resource = {
             callback({"fail": "Resource needs an owner"});
             return;
         }
-        if(!params.school) {
+        if(!params.clientId) {
             callback({"fail": "Resource needs a school"});
             return;
         }
