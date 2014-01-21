@@ -49,6 +49,7 @@ var Resource = {
             return;
         }
         db.open(function(err, db) {
+            delete params["key"];
             params["content_type"] = resource.type;
 
             var gridStore = new GridStore(db, new ObjectID(),
