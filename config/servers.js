@@ -1,6 +1,6 @@
 var domains = [
     "demo.learningdata.net",
-    "invalid"
+    "localhost"
 ];
 
 exports.domains = domains;
