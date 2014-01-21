@@ -3,10 +3,12 @@ var url = require("url");
 
 var Permission = {
     isAllowed: function(referer, callback) {
-        var hostname = url.parse(referer).hostname;
-        if(domains.indexOf(hostname) >= 0) {
-            callback(true);
-            return;
+        if(referer) {
+            var hostname = url.parse(referer).hostname;
+            if(domains.indexOf(hostname) >= 0) {
+                callback(true);
+                return;
+            }
         }
 
         callback(false);

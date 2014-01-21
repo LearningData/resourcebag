@@ -15,4 +15,11 @@ describe("Permission", function() {
             done();
         });
     });
+
+    it("returns false without a referer", function(done){
+        Permission.isAllowed(null, function(response){
+            expect(response).toBe(false);
+            done();
+        });
+    });
 });
