@@ -34,7 +34,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
     var resource = req.files.file;
 
-    Permission.isAllowed(req.headers.referer, function(isAllowed){
+    Permission.isAllowed(req.headers.referer, req.body.key, function(isAllowed){
         if(isAllowed) {
             Resource.save(resource, req.body, function(result){
                 if(req.query.redirect) {

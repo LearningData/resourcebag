@@ -1,6 +1,5 @@
-var domains = [
-    "demo.learningdata.net",
-    "localhost"
-];
+var domains = {
+    "localhost": "mykey"
+};
 
 exports.domains = domains;
