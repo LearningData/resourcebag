@@ -40,7 +40,14 @@ describe("Resource", function(){
 
     it("uploads an file", function(done){
         Resource.save(resource, {"owner": "test", "clientId": "client"}, function(result){
-            expect(result).toEqual({"success": "File was saved."});
+            expect(result["success"]).toEqual("File was saved.");
+            done();
+        });
+    });
+
+    it("returns resource id", function(done){
+        Resource.save(resource, {"owner": "test", "clientId": "client"}, function(result){
+            expect(result.id).not.toBeUndefined();
             done();
         });
     });
@@ -63,6 +70,13 @@ describe("Resource", function(){
     it("removes resource with specifc id", function(done){
         Resource.delete(resource.id, function(response){
             expect(response).toEqual({"success": "File was deleted"});
+            done();
+        });
+    });
+
+    it("removes all the resources", function(done){
+        Resource.deleteAll(function(response){
+            expect(response).toEqual({"success": "Files was deleted"});
             done();
         });
     });

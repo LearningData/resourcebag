@@ -51,8 +51,8 @@ var Resource = {
         db.open(function(err, db) {
             delete params["key"];
             params["content_type"] = resource.type;
-
-            var gridStore = new GridStore(db, new ObjectID(),
+            var id = new ObjectID();
+            var gridStore = new GridStore(db, id,
                 resource.name, "w", {"metadata": params});
 
             gridStore.writeFile(resource.path, function(err, result) {
@@ -62,7 +62,7 @@ var Resource = {
                     console.log("Error to upload file.");
                     result = {"fail": "File was not upload"};
                 } else {
-                    result = {"success": "File was saved."};
+                    result = {"success": "File was saved.", "id": id};
                 }
 
                 callback(result);
