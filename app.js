@@ -23,14 +23,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.all("/resources", permissionMiddleware);
-app.get('/resources', files.list);
-app.get('/resources/:id', files.show);
-app.get('/resources/download/:id', files.download);
-app.get('/resources/search/:param', files.search);
-app.get('/resources/search/tags/:param', files.searchTags);
-app.post('/resources', files.create);
-app.delete('/resources/:id', files.delete);
+app.get('/resources', permissionMiddleware, files.list);
+app.get('/resources/:id', permissionMiddleware, files.show);
+app.get('/resources/download/:id', permissionMiddleware, files.download);
+app.get('/resources/search/:param', permissionMiddleware, files.search);
+app.get('/resources/search/tags/:param', permissionMiddleware, files.searchTags);
+app.post('/resources', permissionMiddleware, files.create);
+app.delete('/resources/:id', permissionMiddleware, files.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Running Resourcebag on port ' + app.get('port'));

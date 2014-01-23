@@ -1,7 +1,15 @@
 var Permission = require("../modules/permissions.js").Permission;
 
 exports.permissionMiddleware = function(req, res, next) {
-    Permission.isAllowed(req.headers.referer, req.body.key, function(isAllowed){
+    var key;
+
+    if(req.body.key) {
+        key = req.body.key;
+    } else {
+        key = req.query.key;
+    }
+
+    Permission.isAllowed(req.headers.referer, key, function(isAllowed){
         if(isAllowed) {
             next();
             return;
