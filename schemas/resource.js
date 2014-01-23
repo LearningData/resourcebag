@@ -24,7 +24,13 @@ var Resource = {
         });
     },
     get: function(resourceId, callback) {
-        var id = new BSON.ObjectID(resourceId);
+        if(resourceId.match(/^[0-9a-fA-F]{24}$/)) {
+            var id = new BSON.ObjectID(resourceId);
+        } else {
+            callback({"fail": "The id " + resourceId + " is not valid"});
+            return;
+        }
+
         db.open(function(err, db) {
             db.collection("fs.files").findOne({'_id': id}, function(err, resource){
                 db.close();
@@ -32,9 +38,11 @@ var Resource = {
                 if(err) {
                     console.log("Error to show file " + resourceId);
                     callback({"fail": "The id " + resourceId + " does not exist."});
+                    return;
                 }
 
                 callback(resource);
+                return;
             });
         });
     },

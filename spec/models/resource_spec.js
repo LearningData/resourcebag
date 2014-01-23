@@ -68,8 +68,8 @@ describe("Resource", function(){
     });
 
     it("returns empty json if invalid id", function(done){
-        Resource.get(resource.id, function(file){
-            expect(file).toEqual({});
+        Resource.get("invalid", function(file){
+            expect(file).toEqual({"fail": 'The id invalid is not valid'});
             done();
         });
     });
