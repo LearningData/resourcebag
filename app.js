@@ -1,6 +1,8 @@
 var express = require('express');
 var files = require('./routes/resources');
 var http = require('http');
+var permissionMiddleware = require("./middlewares/permission_middleware.js")
+    .permissionMiddleware;
 
 var app = express();
 
@@ -21,6 +23,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.all("/resources", permissionMiddleware);
 app.get('/resources', files.list);
 app.get('/resources/:id', files.show);
 app.get('/resources/download/:id', files.download);

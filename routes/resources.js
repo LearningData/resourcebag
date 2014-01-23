@@ -34,17 +34,11 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
     var resource = req.files.file;
 
-    Permission.isAllowed(req.headers.referer, req.body.key, function(isAllowed){
-        if(isAllowed) {
-            Resource.save(resource, req.body, function(result){
-                if(req.query.redirect) {
-                    res.redirect(req.query.redirect);
-                } else {
-                    res.send(result);
-                }
-            });
+    Resource.save(resource, req.body, function(result){
+        if(req.query.redirect) {
+            res.redirect(req.query.redirect);
         } else {
-            res.send("Permission denied.");
+            res.send(result);
         }
     });
 };

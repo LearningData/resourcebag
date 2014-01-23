@@ -67,6 +67,13 @@ describe("Resource", function(){
         });
     });
 
+    it("returns empty json if invalid id", function(done){
+        Resource.get(resource.id, function(file){
+            expect(file).toEqual({});
+            done();
+        });
+    });
+
     it("removes resource with specifc id", function(done){
         Resource.delete(resource.id, function(response){
             expect(response).toEqual({"success": "File was deleted"});
