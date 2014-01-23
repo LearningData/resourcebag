@@ -48,6 +48,10 @@ var Resource = {
     },
     save: function(resource, params, callback) {
         db.close();
+        if(!resource.name) {
+            callback({"fail": "Resource needs a file"});
+            return;
+        }
         if(!params.owner) {
             callback({"fail": "Resource needs an owner"});
             return;

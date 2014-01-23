@@ -38,6 +38,13 @@ describe("Resource", function(){
         });
     });
 
+    it("requires a file", function(done){
+        Resource.save({}, {"owner": "test", "clientId": "client"}, function(result){
+            expect(result).toEqual({"fail": "Resource needs a file"});
+            done();
+        });
+    });
+
     it("uploads an file", function(done){
         Resource.save(resource, {"owner": "test", "clientId": "client"}, function(result){
             expect(result["success"]).toEqual("File was saved.");
