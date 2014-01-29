@@ -5,12 +5,17 @@ var GridStore = mongo.GridStore;
 var ObjectID = mongo.ObjectID;
 
 var Resource = {
+    db: function() {
+        db.open(function(err, db){
+            return db;
+        });
+    },
     all: function(callback) {
         db.open(function(err, db) {
             if(!err) {
                 db.collection("fs.files").find().toArray(function(err, items){
                     db.close();
-                    callback(items);
+                    return callback(items);
                 });
             }
         });
@@ -19,7 +24,7 @@ var Resource = {
         db.open(function(err, db) {
             db.collection("fs.files").find(param).toArray(function(err, items){
                 db.close();
-                callback(items);
+                return callback(items);
             });
         });
     },
@@ -27,8 +32,7 @@ var Resource = {
         if(resourceId.match(/^[0-9a-fA-F]{24}$/)) {
             var id = new BSON.ObjectID(resourceId);
         } else {
-            callback({"fail": "The id " + resourceId + " is not valid"});
-            return;
+            return callback({"fail": "The id " + resourceId + " is not valid"});
         }
 
         db.open(function(err, db) {
@@ -37,28 +41,24 @@ var Resource = {
 
                 if(err) {
                     console.log("Error to show file " + resourceId);
-                    callback({"fail": "The id " + resourceId + " does not exist."});
-                    return;
+                    return callback({"fail": "The id " + resourceId +
+                        " does not exist."});
                 }
 
-                callback(resource);
-                return;
+                return callback(resource);
             });
         });
     },
     save: function(resource, params, callback) {
         db.close();
         if(!resource.name) {
-            callback({"fail": "Resource needs a file"});
-            return;
+            return callback({"fail": "Resource needs a file"});
         }
         if(!params.owner) {
-            callback({"fail": "Resource needs an owner"});
-            return;
+            return callback({"fail": "Resource needs an owner"});
         }
         if(!params.clientId) {
-            callback({"fail": "Resource needs a school"});
-            return;
+            return callback({"fail": "Resource needs a school"});
         }
         db.open(function(err, db) {
             delete params["key"];
@@ -77,7 +77,7 @@ var Resource = {
                     result = {"success": "File was saved.", "id": id};
                 }
 
-                callback(result);
+                return callback(result);
             });
         });
     },
@@ -89,9 +89,9 @@ var Resource = {
                 db.close();
 
                 if (err) {
-                    callback({"fail": "File was not deleted - " + err});
+                    return callback({"fail": "File was not deleted - " + err});
                 } else {
-                    callback({"success": "File was deleted"});
+                    return callback({"success": "File was deleted"});
                 }
             });
         });
@@ -102,10 +102,10 @@ var Resource = {
             db.collection("fs.files").remove({}, function(err, result) {
                 if (err) {
                     db.close();
-                    callback({"fail": "Files was not deleted - " + err});
+                    return callback({"fail": "Files was not deleted - " + err});
                 } else {
                     db.close();
-                    callback({"success": "Files was deleted"});
+                    return callback({"success": "Files was deleted"});
                 }
             });
         });
@@ -117,7 +117,7 @@ var Resource = {
                 if(err) {
                     console.log("Error to download file");
                 }
-                callback(data);
+                return callback(data);
             });
         });
     }
