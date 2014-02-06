@@ -1,8 +1,9 @@
 var Resource = require("../schemas/resource.js").Resource;
 var Permission = require("../modules/permissions.js").Permission;
+var resource = new Resource();
 
 exports.list = function(req, res) {
-    Resource.all(function(items){
+    resource.all(function(items){
         res.send(items);
     });
 };
@@ -11,7 +12,7 @@ exports.search = function(req, res) {
     var param = req.params.param;
     var re = new RegExp(param);
 
-    Resource.search({"filename": re}, function(items){
+    resource.search({"filename": re}, function(items){
         res.send(items);
     });
 };
@@ -19,22 +20,22 @@ exports.search = function(req, res) {
 exports.searchTags = function(req, res) {
     var param = req.params.param;
 
-    Resource.search({"metadata.type-tags": {$in: [param]}}, function(items){
+    resource.search({"metadata.type-tags": {$in: [param]}}, function(items){
         res.send(items);
     });
 };
 
 exports.show = function(req, res) {
     var id = req.params.id;
-    Resource.get(id, function(resource){
+    resource.get(id, function(resource){
         res.send(resource);
     });
 };
 
 exports.create = function(req, res) {
-    var resource = req.files.file;
+    var file = req.files.file;
 
-    Resource.save(resource, req.body, function(result){
+    resource.save(file, req.body, function(result){
         if(req.query.redirect) {
             res.redirect(req.query.redirect);
         } else {
@@ -46,8 +47,8 @@ exports.create = function(req, res) {
 exports.download = function(req, res) {
     var id = req.params.id;
 
-    Resource.download(id, function(data){
-        Resource.get(id, function(resource){
+    resource.download(id, function(data){
+        resource.get(id, function(resource){
             console.log("Downloading file: " + resource.filename);
 
             res.setHeader('Content-disposition',
@@ -60,7 +61,7 @@ exports.download = function(req, res) {
 exports.delete = function(req, res) {
     var id = req.params.id;
 
-    Resource.delete(id, function(response){
+    resource.delete(id, function(response){
         res.send(response);
     });
 };
