@@ -17,6 +17,19 @@ exports.search = function(req, res) {
     });
 };
 
+exports.searchByParam = function(req, res) {
+    var param = req.params.param;
+    var value = req.params.value;
+    var params = {};
+    params["metadata." + param] = value;
+
+    console.log("SEARCHING BY: " + param + " = " + value);
+
+    resource.search(params, function(items){
+        res.send(items);
+    });
+}
+
 exports.searchTags = function(req, res) {
     var param = req.params.param;
 
