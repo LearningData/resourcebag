@@ -17,6 +17,12 @@ exports.search = function(req, res) {
     });
 };
 
+exports.update = function(req, res) {
+    resource.update(req.body, function(result){
+        res.send(result)
+    });
+}
+
 exports.searchByParam = function(req, res) {
     var param = req.params.param;
     var value = req.params.value;

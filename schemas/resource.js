@@ -12,6 +12,10 @@ Resource = function() {
 
 Resource.prototype.all = function(callback) {
     this.db.collection("fs.files").find().toArray(function(err, items) {
+        if (err) {
+            return callback({"fail": "Error to list all resources."})
+        };
+
         return callback(items);
     });
 };
@@ -55,10 +59,11 @@ Resource.prototype.save = function(resource, params, callback) {
     var id = new ObjectID();
     var gridStore = new GridStore(this.db, id,
         resource.name, "w", {"metadata": params});
+    var result = {"fail": "Was not possible to upload the resource"};
 
     gridStore.writeFile(resource.path, function(err, result) {
         if(err) {
-            console.log("Error to upload file.");
+            console.log(err);
             result = {"fail": "File was not upload"};
         } else {
             result = {"success": "File was saved.", "id": id};
@@ -66,7 +71,25 @@ Resource.prototype.save = function(resource, params, callback) {
 
         return callback(result);
     });
+
+    return callback(result);
 };
+
+Resource.prototype.update = function(params, callback) {
+    var resourceId = new BSON.ObjectID(params.id);
+    delete params["id"];
+    delete params["key"];
+
+    this.db.collection("fs.files").update({"_id": resourceId},
+        {$set: params}, function(err, result) {
+            if(err) {
+                return callback({"fail": "Was not possible to update"})
+            }
+
+            return callback({"success": "Resource was uploaded"})
+    });
+};
+
 Resource.prototype.delete = function(resourceId, callback) {
     resourceId = new BSON.ObjectID(resourceId);
 

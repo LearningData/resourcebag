@@ -30,6 +30,7 @@ app.get('/resources/search/:param', permissionMiddleware, files.search);
 app.get('/resources/search/tags/:param', permissionMiddleware, files.searchTags);
 app.get('/resources/search/:param/:value', permissionMiddleware, files.searchByParam);
 app.post('/resources', permissionMiddleware, files.create);
+app.post('/resources/update', permissionMiddleware, files.update);
 app.delete('/resources/:id', permissionMiddleware, files.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
