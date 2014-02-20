@@ -59,20 +59,17 @@ Resource.prototype.save = function(resource, params, callback) {
     var id = new ObjectID();
     var gridStore = new GridStore(this.db, id,
         resource.name, "w", {"metadata": params});
-    var result = {"fail": "Was not possible to upload the resource"};
 
     gridStore.writeFile(resource.path, function(err, result) {
         if(err) {
             console.log(err);
-            result = {"fail": "File was not upload"};
+            result = {"fail": "File was not uploaded"};
         } else {
             result = {"success": "File was saved.", "id": id};
         }
 
         return callback(result);
     });
-
-    return callback(result);
 };
 
 Resource.prototype.update = function(params, callback) {
