@@ -27,9 +27,9 @@ exports.searchByParam = function(req, res) {
     var param = req.params.param;
     var value = req.params.value;
     var params = {};
-    params["metadata." + param] = value;
+    params["metadata." + param] = new RegExp(value, "i");
 
-    console.log("SEARCHING BY: " + param + " = " + value);
+    console.log("Searching by: " + param + " = " + value);
 
     resource.search(params, function(items){
         res.send(items);
