@@ -7,7 +7,7 @@ var permissionMiddleware = require("./middlewares/permission_middleware.js")
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.use(express.logger('dev'));
 app.use(express.json({limit: '1000mb'}));
 app.use(express.multipart({limit: '1000mb'}));
