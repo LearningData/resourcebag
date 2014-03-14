@@ -45,6 +45,23 @@ exports.searchByParamsWithAnd = function(req, res) {
     });
 }
 
+exports.searchByParamsWithOr = function(req, res) {
+    console.log("Searching by params with or");
+    var params = [];
+
+    for(key in req.query) {
+        var param = {};
+        param[key] = req.query[key];
+        params.push(param);
+    }
+
+    var query = {$or: params}
+
+    resource.search(query, function(items){
+        res.send(items);
+    });
+}
+
 exports.searchTags = function(req, res) {
     var param = req.params.param;
 
