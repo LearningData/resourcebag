@@ -70,6 +70,15 @@ exports.searchTags = function(req, res) {
     });
 };
 
+exports.addTag = function(req, res){
+    console.log("Adding tag: " +
+        req.params.tag + " to Resource: " + req.params.id);
+
+    resource.addTag(req.params.id, req.params.tag, function(response){
+        res.end(response);
+    });
+}
+
 exports.show = function(req, res) {
     var id = req.params.id;
     resource.get(id, function(resource){

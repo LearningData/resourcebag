@@ -117,4 +117,15 @@ Resource.prototype.download = function(resourceId, callback) {
     });
 };
 
+Resource.prototype.addTag = function(id, tag, callback) {
+    console.log("HERE: " + id + " - " + "TAG: " + tag);
+    resourceId = new BSON.ObjectID(id);
+
+    this.db.collection("fs.files").update({"_id": resourceId},
+        {$addToSet: {"metadata.tags": tag}}, function(err, result) {
+
+        return callback(result);
+    });
+};
+
 exports.Resource = Resource;
