@@ -25,6 +25,7 @@ Resource.prototype.search = function(param, callback) {
         return callback(items);
     });
 };
+
 Resource.prototype.get = function(resourceId, callback) {
     var id = "";
     if(resourceId.match(/^[0-9a-fA-F]{24}$/)) {

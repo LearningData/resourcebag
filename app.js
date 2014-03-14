@@ -27,6 +27,7 @@ app.get('/resources', permissionMiddleware, files.list);
 app.get('/resources/:id', permissionMiddleware, files.show);
 app.get('/resources/download/:id', permissionMiddleware, files.download);
 app.get('/resources/search/:param', permissionMiddleware, files.search);
+app.get('/resources/and/search', permissionMiddleware, files.searchByParamsWithAnd);
 app.get('/resources/search/tags/:param', permissionMiddleware, files.searchTags);
 app.get('/resources/search/:param/:value', permissionMiddleware, files.searchByParam);
 app.post('/resources', permissionMiddleware, files.create);
