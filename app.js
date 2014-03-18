@@ -7,7 +7,7 @@ var permissionMiddleware = require("./middlewares/permission_middleware.js")
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.use(express.logger('dev'));
 app.use(express.json({limit: '1000mb'}));
 app.use(express.multipart({limit: '1000mb'}));
@@ -30,7 +30,7 @@ app.get('/resources/search/:param', permissionMiddleware, files.search);
 app.get('/resources/and/search', permissionMiddleware, files.searchByParamsWithAnd);
 app.get('/resources/or/search', permissionMiddleware, files.searchByParamsWithOr);
 app.get('/resources/search/tags/:param', permissionMiddleware, files.searchTags);
-app.get('/resources/:id/tags/add/:tag', permissionMiddleware, files.addTag);
+app.post('/resources/:id/tags/add/:tag', permissionMiddleware, files.addTag);
 app.get('/resources/search/:param/:value', permissionMiddleware, files.searchByParam);
 app.post('/resources', permissionMiddleware, files.create);
 app.post('/resources/update', permissionMiddleware, files.update);

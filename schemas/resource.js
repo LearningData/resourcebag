@@ -118,7 +118,7 @@ Resource.prototype.download = function(resourceId, callback) {
 };
 
 Resource.prototype.addTag = function(id, tag, callback) {
-    console.log("HERE: " + id + " - " + "TAG: " + tag);
+    console.log("Adding tag: " + tag + " to resource: " + id);
     resourceId = new BSON.ObjectID(id);
 
     this.db.collection("fs.files").update({"_id": resourceId},
