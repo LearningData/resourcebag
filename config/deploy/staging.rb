@@ -1,13 +1,13 @@
 set :stage, :staging
 
-role :web, %w{azureuser@137.116.242.92}
+role :web, %w{azureuser@resourcebag.cloudapp.net}
 
 # set :ssh_options, { port: 3536, forward_agent: true, auth_methods: %w(password)}
 
 # server 'azureuser@137.116.242.92 -p', user: 'azureuser', roles: %w{web}
 
 
-server '137.116.242.92',
+server 'resourcebag.cloudapp.net',
   user: 'azureuser',
   roles: %w{app},
   ssh_options: {

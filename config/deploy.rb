@@ -45,4 +45,6 @@ namespace :deploy do
       execute "cd #{deploy_to}/current && npm install"
     end
   end
+
+  after "deploy", "deploy:npm_install"
 end
