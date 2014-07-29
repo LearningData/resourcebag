@@ -19,21 +19,21 @@ set :ssh_options, {:forward_agent => true, keys: [File.join(ENV["HOME"], ".ssh",
 namespace :deploy do
   desc "Start application"
   task :start do
-    on roles(:web) do
+    on roles(:app) do
       execute "cd #{deploy_to}/current && forever start app.js"
     end
   end
 
   desc "Stop application"
   task :stop do
-    on roles(:web) do
+    on roles(:app) do
       execute "cd #{deploy_to}/current && forever stop app.js"
     end
   end
 
   desc 'Restart application'
   task :restart do
-    on roles(:web), in: :sequence, wait: 5 do
+    on roles(:app), in: :sequence, wait: 5 do
       execute "cd #{deploy_to}/current && sudo npm install"
       execute "cd #{deploy_to}/current && forever restart app.js"
     end
@@ -41,8 +41,8 @@ namespace :deploy do
 
   desc 'Npm install'
   task :npm_install do
-    on roles(:web), in: :sequence do
-      execute "cd #{deploy_to}/current && npm install"
+    on roles(:app), in: :sequence do
+      execute "cd #{deploy_to}/current && sudo npm install"
     end
   end
 
