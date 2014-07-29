@@ -74,9 +74,8 @@ exports.searchBySubjects = function(req, res) {
     var param = req.params.param;
     var schoolId = req.params.school_id;
     var subjects = req.params.subjects.split(",");;
-
     var query = {"metadata.school": schoolId,
-        "metadata.subject": {$in: [subjects]}};
+        "metadata.subject": {$in: subjects}};
 
     resource.search(query, function(items){
         res.send(items);
