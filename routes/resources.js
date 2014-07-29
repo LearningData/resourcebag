@@ -70,6 +70,19 @@ exports.searchTags = function(req, res) {
     });
 };
 
+exports.searchBySubjects = function(req, res) {
+    var param = req.params.param;
+    var schoolId = req.params.school_id;
+    var subjects = req.params.subjects;
+
+    var query = {"metadata.school": schoolId,
+        "metadata.subject": {$in: [subjects]}};
+
+    resource.search(query, function(items){
+        res.send(items);
+    });
+};
+
 exports.addTag = function(req, res){
     console.log("Adding tag: " +
         req.params.tag + " to Resource: " + req.params.id);

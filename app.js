@@ -32,6 +32,7 @@ app.get('/resources/or/search', permissionMiddleware, files.searchByParamsWithOr
 app.get('/resources/search/tags/:param', permissionMiddleware, files.searchTags);
 app.post('/resources/:id/tags/add/:tag', permissionMiddleware, files.addTag);
 app.get('/resources/search/:param/:value', permissionMiddleware, files.searchByParam);
+app.get('/resources/search/:school_id/subjects/:subjects', permissionMiddleware, files.searchBySubjects);
 app.post('/resources', permissionMiddleware, files.create);
 app.post('/resources/update', permissionMiddleware, files.update);
 app.delete('/resources/:id', permissionMiddleware, files.delete);
