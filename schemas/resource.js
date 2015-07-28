@@ -10,8 +10,8 @@ Resource = function() {
 };
 
 
-Resource.prototype.all = function(callback) {
-    this.db.collection("fs.files").find().toArray(function(err, items) {
+Resource.prototype.all = function(page, limit, callback) {
+    this.db.collection("fs.files").find().skip((page - 1 ) * limit).limit(limit).toArray(function(err, items) {
         if (err) {
             return callback({"fail": "Error to list all resources."})
         };

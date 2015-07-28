@@ -3,8 +3,17 @@ var Permission = require("../modules/permissions.js").Permission;
 var resource = new Resource();
 
 exports.list = function(req, res) {
-    resource.all(function(items){
-        res.send(items);
+    var page = parseInt(req.query.page) || 1;
+    var limit = parseInt(req.query.limit) || 12;
+
+    resource.all(page, limit, function(items){
+        var response = {};
+        response.current = page;
+        response.next = page + 1;
+        response.previous = page - 1;
+        response.items = items;
+
+        res.send(response);
     });
 };
 
