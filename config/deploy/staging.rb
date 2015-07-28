@@ -9,7 +9,7 @@ server 'resourcebag.cloudapp.net',
   user: 'azureuser',
   roles: %w{app},
   ssh_options: {
-    port: 3536,
+    port: 3535,
     user: 'azureuser',
     forward_agent: false,
     keys: [File.join(ENV["HOME"], "Projects/keys", "azure.key")]
