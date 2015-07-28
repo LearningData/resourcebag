@@ -16,7 +16,13 @@ Resource.prototype.all = function(page, limit, callback) {
             return callback({"fail": "Error to list all resources."})
         };
 
-        return callback(items);
+        var response = {};
+        response.current = page;
+        response.next = page + 1;
+        response.previous = page - 1;
+        response.items = items;
+
+        return callback(response);
     });
 };
 

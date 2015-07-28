@@ -7,13 +7,7 @@ exports.list = function(req, res) {
     var limit = parseInt(req.query.limit) || 12;
 
     resource.all(page, limit, function(items){
-        var response = {};
-        response.current = page;
-        response.next = page + 1;
-        response.previous = page - 1;
-        response.items = items;
-
-        res.send(response);
+        res.send(items);
     });
 };
 
