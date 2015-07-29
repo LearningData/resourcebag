@@ -11,7 +11,9 @@ Resource = function() {
 
 
 Resource.prototype.all = function(page, limit, callback) {
-    this.db.collection("fs.files").find().skip((page - 1 ) * limit).limit(limit).toArray(function(err, items) {
+    this.db.collection("fs.files").find().skip((page - 1 ) * limit)
+        .limit(limit).toArray(function(err, items) {
+
         if (err) {
             return callback({"fail": "Error to list all resources."})
         };
@@ -26,8 +28,10 @@ Resource.prototype.all = function(page, limit, callback) {
     });
 };
 
-Resource.prototype.search = function(param, callback) {
-    this.db.collection("fs.files").find(param).toArray(function(err, items){
+Resource.prototype.search = function(param, page, limit, callback) {
+    this.db.collection("fs.files").find(param)
+        .skip((page - 1 ) * limit).limit(limit).toArray(function(err, items){
+
         return callback(items);
     });
 };

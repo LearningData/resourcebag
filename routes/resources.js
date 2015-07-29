@@ -15,7 +15,10 @@ exports.search = function(req, res) {
     var param = req.params.param;
     var re = new RegExp(param);
 
-    resource.search({"filename": re}, function(items){
+    var page = parseInt(req.query.page) || 1;
+    var limit = parseInt(req.query.limit) || 12;
+
+    resource.search({"filename": re}, page, limit, function(items){
         res.send(items);
     });
 };
