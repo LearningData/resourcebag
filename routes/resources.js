@@ -32,12 +32,15 @@ exports.update = function(req, res) {
 exports.searchByParam = function(req, res) {
     var param = req.params.param;
     var value = req.params.value;
+    var page = parseInt(req.query.page) || 1;
+    var limit = parseInt(req.query.limit) || 12;
     var params = {};
+
     params["metadata." + param] = new RegExp(value, "i");
 
     console.log("Searching by: " + param + " = " + value);
 
-    resource.search(params, function(items){
+    resource.search(params, page, limit, function(items){
         res.send(items);
     });
 }

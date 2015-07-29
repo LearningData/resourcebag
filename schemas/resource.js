@@ -32,7 +32,13 @@ Resource.prototype.search = function(param, page, limit, callback) {
     this.db.collection("fs.files").find(param)
         .skip((page - 1 ) * limit).limit(limit).toArray(function(err, items){
 
-        return callback(items);
+        var response = {};
+        response.current = page;
+        response.next = page + 1;
+        response.previous = page - 1;
+        response.items = items;
+
+        return callback(response);
     });
 };
 
