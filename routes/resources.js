@@ -1,10 +1,12 @@
 var Resource = require("../schemas/resource.js").Resource;
 var Permission = require("../modules/permissions.js").Permission;
 var resource = new Resource();
+var pageDefault = 1;
+var limitDefault = 12;
 
 exports.list = function(req, res) {
-    var page = parseInt(req.query.page) || 1;
-    var limit = parseInt(req.query.limit) || 12;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
 
     resource.all(page, limit, function(items){
         res.send(items);
@@ -15,8 +17,8 @@ exports.search = function(req, res) {
     var param = req.params.param;
     var re = new RegExp(param);
 
-    var page = parseInt(req.query.page) || 1;
-    var limit = parseInt(req.query.limit) || 12;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
 
     resource.search({"filename": re}, page, limit, function(items){
         res.send(items);
@@ -32,8 +34,8 @@ exports.update = function(req, res) {
 exports.searchByParam = function(req, res) {
     var param = req.params.param;
     var value = req.params.value;
-    var page = parseInt(req.query.page) || 1;
-    var limit = parseInt(req.query.limit) || 12;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
     var params = {};
 
     params["metadata." + param] = new RegExp(value, "i");
