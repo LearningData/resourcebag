@@ -88,7 +88,10 @@ exports.searchBySubjects = function(req, res) {
     var query = {"metadata.school": schoolId,
         "metadata.subject": {$in: subjects}};
 
-    resource.search(query, function(items){
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    resource.search(query, page, limit, function(items){
         res.send(items);
     });
 };
