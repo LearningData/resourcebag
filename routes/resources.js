@@ -51,7 +51,13 @@ exports.searchByParamsWithAnd = function(req, res) {
     console.log("Searching by params with and");
     var params = req.query;
 
-    resource.search(params, function(items){
+    var page = parseInt(params.page) || pageDefault;
+    var limit = parseInt(params.limit) || limitDefault;
+
+    delete params["page"];
+    delete params["limit"];
+
+    resource.search(params, page, limit, function(items){
         res.send(items);
     });
 }
@@ -66,17 +72,25 @@ exports.searchByParamsWithOr = function(req, res) {
         params.push(param);
     }
 
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    delete req.query["page"];
+    delete req.query["limit"];
+
     var query = {$or: params}
 
-    resource.search(query, function(items){
+    resource.search(query, page, limit, function(items){
         res.send(items);
     });
 }
 
 exports.searchTags = function(req, res) {
     var param = req.params.param;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
 
-    resource.search({"metadata.type-tags": {$in: [param]}}, function(items){
+    resource.search({"metadata.type-tags": {$in: [param]}}, page, limit, function(items){
         res.send(items);
     });
 };
