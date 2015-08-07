@@ -10,19 +10,35 @@ Resource = function() {
 };
 
 
-Resource.prototype.all = function(callback) {
-    this.db.collection("fs.files").find().toArray(function(err, items) {
+Resource.prototype.all = function(page, limit, callback) {
+    this.db.collection("fs.files").find().skip((page - 1 ) * limit)
+        .limit(limit).toArray(function(err, items) {
+
         if (err) {
             return callback({"fail": "Error to list all resources."})
         };
 
-        return callback(items);
+        var response = {};
+        response.current = page;
+        response.next = page + 1;
+        response.previous = page - 1;
+        response.items = items;
+
+        return callback(response);
     });
 };
 
-Resource.prototype.search = function(param, callback) {
-    this.db.collection("fs.files").find(param).toArray(function(err, items){
-        return callback(items);
+Resource.prototype.search = function(param, page, limit, callback) {
+    this.db.collection("fs.files").find(param)
+        .skip((page - 1 ) * limit).limit(limit).toArray(function(err, items){
+
+        var response = {};
+        response.current = page;
+        response.next = page + 1;
+        response.previous = page - 1;
+        response.items = items;
+
+        return callback(response);
     });
 };
 

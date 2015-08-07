@@ -1,9 +1,14 @@
 var Resource = require("../schemas/resource.js").Resource;
 var Permission = require("../modules/permissions.js").Permission;
 var resource = new Resource();
+var pageDefault = 1;
+var limitDefault = 12;
 
 exports.list = function(req, res) {
-    resource.all(function(items){
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    resource.all(page, limit, function(items){
         res.send(items);
     });
 };
@@ -12,7 +17,10 @@ exports.search = function(req, res) {
     var param = req.params.param;
     var re = new RegExp(param);
 
-    resource.search({"filename": re}, function(items){
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    resource.search({"filename": re}, page, limit, function(items){
         res.send(items);
     });
 };
@@ -26,12 +34,15 @@ exports.update = function(req, res) {
 exports.searchByParam = function(req, res) {
     var param = req.params.param;
     var value = req.params.value;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
     var params = {};
+
     params["metadata." + param] = new RegExp(value, "i");
 
     console.log("Searching by: " + param + " = " + value);
 
-    resource.search(params, function(items){
+    resource.search(params, page, limit, function(items){
         res.send(items);
     });
 }
@@ -40,7 +51,13 @@ exports.searchByParamsWithAnd = function(req, res) {
     console.log("Searching by params with and");
     var params = req.query;
 
-    resource.search(params, function(items){
+    var page = parseInt(params.page) || pageDefault;
+    var limit = parseInt(params.limit) || limitDefault;
+
+    delete params["page"];
+    delete params["limit"];
+
+    resource.search(params, page, limit, function(items){
         res.send(items);
     });
 }
@@ -55,17 +72,25 @@ exports.searchByParamsWithOr = function(req, res) {
         params.push(param);
     }
 
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    delete req.query["page"];
+    delete req.query["limit"];
+
     var query = {$or: params}
 
-    resource.search(query, function(items){
+    resource.search(query, page, limit, function(items){
         res.send(items);
     });
 }
 
 exports.searchTags = function(req, res) {
     var param = req.params.param;
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
 
-    resource.search({"metadata.type-tags": {$in: [param]}}, function(items){
+    resource.search({"metadata.type-tags": {$in: [param]}}, page, limit, function(items){
         res.send(items);
     });
 };
@@ -77,7 +102,10 @@ exports.searchBySubjects = function(req, res) {
     var query = {"metadata.school": schoolId,
         "metadata.subject": {$in: subjects}};
 
-    resource.search(query, function(items){
+    var page = parseInt(req.query.page) || pageDefault;
+    var limit = parseInt(req.query.limit) || limitDefault;
+
+    resource.search(query, page, limit, function(items){
         res.send(items);
     });
 };
