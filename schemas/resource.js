@@ -1,4 +1,5 @@
 var db = require("../modules/database").db;
+var Tag = require("../modules/tags").Tag;
 var mongo = require("mongodb");
 var BSON = mongo.BSONPure;
 var GridStore = mongo.GridStore;
@@ -141,6 +142,17 @@ Resource.prototype.addTag = function(id, tag, callback) {
         {$addToSet: {"metadata.tags": tag}}, function(err, result) {
 
         return callback(result);
+    });
+};
+
+Resource.prototype.searchTags = function(param, callback) {
+    this.db.collection("fs.files")
+            .find(Tag.conditions, Tag.visibility)
+            .toArray(function(err, items){
+
+        Tag.filter(items, Tag.types, function(tags){
+            return callback(tags);
+        });
     });
 };
 
