@@ -160,3 +160,9 @@ exports.delete = function(req, res) {
         res.send(response);
     });
 };
+
+exports.tags = function(req, res) {
+    resource.searchTags({}, function(response){
+        res.send(response);
+    });
+};
