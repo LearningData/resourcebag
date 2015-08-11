@@ -145,9 +145,9 @@ Resource.prototype.addTag = function(id, tag, callback) {
     });
 };
 
-Resource.prototype.searchTags = function(param, callback) {
+Resource.prototype.searchTags = function(params, callback) {
     this.db.collection("fs.files")
-            .find(Tag.conditions, Tag.visibility)
+            .find(Tag.conditions(params), Tag.visibility)
             .toArray(function(err, items){
 
         Tag.filter(items, Tag.types, function(tags){

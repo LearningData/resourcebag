@@ -1,15 +1,23 @@
 var Tag = {
     types: ["type-tags", "level-tags", "topic-tags"],
-    conditions: { $or: [
-        {"metadata.type-tags": {$ne: ""}},
-        {"metadata.level-tags": {$ne: ""}},
-        {"metadata.topic-tags": {$ne: ""}},
-    ]},
     visibility: {
         "_id": 0,
         "metadata.type-tags": 1,
         "metadata.level-tags": 1,
         "metadata.topic-tags": 1
+    },
+    conditions: function(params){
+        var conditions = { $or: [
+            {"metadata.type-tags": {$ne: ""}},
+            {"metadata.level-tags": {$ne: ""}},
+            {"metadata.topic-tags": {$ne: ""}},
+        ]};
+
+        for(param in params){
+            conditions[param] = params[param];
+        }
+
+        return conditions;
     },
     filter: function(items, types, callback){
         var tags = [];

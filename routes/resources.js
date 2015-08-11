@@ -162,7 +162,25 @@ exports.delete = function(req, res) {
 };
 
 exports.tags = function(req, res) {
-    resource.searchTags({}, function(response){
+    params = {};
+
+    if(req.query.clientId){
+        params["metadata.clientId"] = req.query.clientId;
+    }
+
+    if(req.query.owner){
+        params["metadata.owner"] = req.query.owner;
+    }
+
+    if(req.query.visibility){
+        params["metadata.visibility"] = parseInt(req.query.visibility);
+    }
+
+    if(req.query.subject){
+        params["metadata.subject"] = req.query.subject;
+    }
+
+    resource.searchTags(params, function(response){
         res.send(response);
     });
 };
