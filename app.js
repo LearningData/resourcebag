@@ -37,6 +37,8 @@ app.post('/resources', permissionMiddleware, files.create);
 app.post('/resources/update', permissionMiddleware, files.update);
 app.delete('/resources/:id', permissionMiddleware, files.delete);
 
+app.get('/tags', permissionMiddleware, files.tags);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Running Resourcebag on port ' + app.get('port'));
 });

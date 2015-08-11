@@ -160,3 +160,27 @@ exports.delete = function(req, res) {
         res.send(response);
     });
 };
+
+exports.tags = function(req, res) {
+    params = {};
+
+    if(req.query.clientId){
+        params["metadata.clientId"] = req.query.clientId;
+    }
+
+    if(req.query.owner){
+        params["metadata.owner"] = req.query.owner;
+    }
+
+    if(req.query.visibility){
+        params["metadata.visibility"] = parseInt(req.query.visibility);
+    }
+
+    if(req.query.subject){
+        params["metadata.subject"] = req.query.subject;
+    }
+
+    resource.searchTags(params, function(response){
+        res.send(response);
+    });
+};
