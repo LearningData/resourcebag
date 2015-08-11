@@ -7,8 +7,18 @@ var limitDefault = 12;
 exports.list = function(req, res) {
     var page = parseInt(req.query.page) || pageDefault;
     var limit = parseInt(req.query.limit) || limitDefault;
+    params = {};
 
-    resource.all(page, limit, function(items){
+    if(req.query.query){
+        try{
+            params = JSON.parse(req.query.query);
+        }catch(e){
+            console.log("Error to parse: " + req.query.query);
+            res.send({"status": "error", "message": "Error to parse: " + req.query.query});
+        }
+    }
+
+    resource.all(params, page, limit, function(items){
         res.send(items);
     });
 };

@@ -11,8 +11,8 @@ Resource = function() {
 };
 
 
-Resource.prototype.all = function(page, limit, callback) {
-    this.db.collection("fs.files").find().skip((page - 1 ) * limit)
+Resource.prototype.all = function(params, page, limit, callback) {
+    this.db.collection("fs.files").find(params).skip((page - 1 ) * limit)
         .limit(limit).toArray(function(err, items) {
 
         if (err) {
