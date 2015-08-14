@@ -153,12 +153,17 @@ exports.download = function(req, res) {
 
     resource.download(id, function(data){
         resource.get(id, function(resource){
-            console.log("Downloading file: " + resource.filename);
+            if(resource){
+                console.log("Downloading file: " + resource.filename);
+                res.setHeader('Content-disposition',
+                    'attachment; filename=' + resource.filename);
+                res.setHeader('content-type', resource.metadata.content_type);
 
-            res.setHeader('Content-disposition',
-                'attachment; filename=' + resource.filename);
-            res.setHeader('content-type', resource.metadata.content_type);
-            res.send(data);
+                res.send(data);
+            }
+
+            res.send("File not found", 404);
+
         });
     });
 };
