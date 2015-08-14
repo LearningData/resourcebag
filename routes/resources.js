@@ -160,10 +160,9 @@ exports.download = function(req, res) {
                 res.setHeader('content-type', resource.metadata.content_type);
 
                 res.send(data);
+            } else {
+                res.send("File not found", 404);
             }
-
-            res.send("File not found", 404);
-
         });
     });
 };
