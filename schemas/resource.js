@@ -1,7 +1,6 @@
 var db = require("../modules/database").db;
 var Tag = require("../modules/tags").Tag;
 var mongo = require("mongodb");
-var BSON = mongo.BSONPure;
 var GridStore = mongo.GridStore;
 var ObjectID = mongo.ObjectID;
 
@@ -46,7 +45,7 @@ Resource.prototype.search = function(param, page, limit, callback) {
 Resource.prototype.get = function(resourceId, callback) {
     var id = "";
     if(resourceId.match(/^[0-9a-fA-F]{24}$/)) {
-        id = new BSON.ObjectID(resourceId);
+        id = new ObjectID(resourceId);
     } else {
         return callback({"fail": "The id " + resourceId + " is not valid"});
     }
@@ -91,7 +90,7 @@ Resource.prototype.save = function(resource, params, callback) {
 };
 
 Resource.prototype.update = function(params, callback) {
-    var resourceId = new BSON.ObjectID(params.id);
+    var resourceId = new ObjectID(params.id);
     delete params["id"];
     delete params["key"];
 
@@ -106,7 +105,7 @@ Resource.prototype.update = function(params, callback) {
 };
 
 Resource.prototype.delete = function(resourceId, callback) {
-    resourceId = new BSON.ObjectID(resourceId);
+    resourceId = new ObjectID(resourceId);
 
     this.db.collection("fs.files").remove({'_id':resourceId}, {safe:true}, function(err, result) {
         if (err) {
@@ -126,17 +125,19 @@ Resource.prototype.deleteAll = function(callback) {
     });
 };
 Resource.prototype.download = function(resourceId, callback) {
-    GridStore.read(this.db, new BSON.ObjectID(resourceId), function(err, data) {
+    GridStore.read(this.db, new ObjectID(resourceId), function(err, data) {
         if(err) {
             console.log("Error to download file");
+            return callback({"fail": "Error to download the file"});
         }
+
         return callback(data);
     });
 };
 
 Resource.prototype.addTag = function(id, tag, callback) {
     console.log("Adding tag: " + tag + " to resource: " + id);
-    resourceId = new BSON.ObjectID(id);
+    resourceId = new ObjectID(id);
 
     this.db.collection("fs.files").update({"_id": resourceId},
         {$addToSet: {"metadata.tags": tag}}, function(err, result) {
