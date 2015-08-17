@@ -11,7 +11,8 @@ Resource = function() {
 
 
 Resource.prototype.all = function(params, page, limit, callback) {
-    this.db.collection("fs.files").find(params).skip((page - 1 ) * limit)
+    this.db.collection("fs.files").find(params)
+        .sort({"uploadDate": -1}).skip((page - 1 ) * limit)
         .limit(limit).toArray(function(err, items) {
 
         if (err) {
@@ -30,7 +31,10 @@ Resource.prototype.all = function(params, page, limit, callback) {
 
 Resource.prototype.search = function(param, page, limit, callback) {
     this.db.collection("fs.files").find(param)
-        .skip((page - 1 ) * limit).limit(limit).toArray(function(err, items){
+        .skip((page - 1 ) * limit)
+        .sort({"uploadDate": -1})
+        .limit(limit)
+        .toArray(function(err, items){
 
         var response = {};
         response.current = page;
