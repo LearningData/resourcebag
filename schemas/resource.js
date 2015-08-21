@@ -27,6 +27,7 @@ Resource.prototype.all = function(params, page, limit, callback) {
             var response = {};
             response.current = page;
             response.lastPage = lastPage;
+            response.total = count;
 
             if(page + 1 > lastPage){
                 response.next = 1;
@@ -62,6 +63,7 @@ Resource.prototype.search = function(param, page, limit, callback) {
             var response = {};
             response.current = page;
             response.lastPage = lastPage;
+            response.total = count;
 
             if(page + 1 > lastPage){
                 response.next = 1;
